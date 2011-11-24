@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E205E486147F0C6D004B721B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E205E485147F0C6D004B721B /* UIKit.framework */; };
+		E205E488147F0C6D004B721B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E205E487147F0C6D004B721B /* Foundation.framework */; };
+		E205E48A147F0C6D004B721B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E205E489147F0C6D004B721B /* CoreGraphics.framework */; };
+		E205E490147F0C6D004B721B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E205E48E147F0C6D004B721B /* InfoPlist.strings */; };
+		E205E492147F0C6D004B721B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E205E491147F0C6D004B721B /* main.m */; };
+		E205E496147F0C6D004B721B /* TKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E205E495147F0C6D004B721B /* TKAppDelegate.m */; };
+		E205E499147F0C6D004B721B /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E205E497147F0C6D004B721B /* MainStoryboard.storyboard */; };
+		E205E49C147F0C6D004B721B /* TKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E205E49B147F0C6D004B721B /* TKViewController.m */; };
+		E205E4A4147F0C6E004B721B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E205E4A3147F0C6E004B721B /* SenTestingKit.framework */; };
+		E205E4A5147F0C6E004B721B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E205E485147F0C6D004B721B /* UIKit.framework */; };
+		E205E4A6147F0C6E004B721B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E205E487147F0C6D004B721B /* Foundation.framework */; };
+		E205E4AE147F0C6E004B721B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E205E4AC147F0C6E004B721B /* InfoPlist.strings */; };
+		E205E4B1147F0C6E004B721B /* TimekeeperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E205E4B0147F0C6E004B721B /* TimekeeperTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E205E4A7147F0C6E004B721B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E205E478147F0C6D004B721B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E205E480147F0C6D004B721B;
+			remoteInfo = Timekeeper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E205E481147F0C6D004B721B /* Timekeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timekeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E205E485147F0C6D004B721B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E205E487147F0C6D004B721B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E205E489147F0C6D004B721B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E205E48D147F0C6D004B721B /* Timekeeper-Info.plist */ = {isa = PBXFileReference; path = "Timekeeper-Info.plist"; sourceTree = "<group>"; };
+		E205E48F147F0C6D004B721B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E205E491147F0C6D004B721B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E205E493147F0C6D004B721B /* Timekeeper-Prefix.pch */ = {isa = PBXFileReference; path = "Timekeeper-Prefix.pch"; sourceTree = "<group>"; };
+		E205E494147F0C6D004B721B /* TKAppDelegate.h */ = {isa = PBXFileReference; path = TKAppDelegate.h; sourceTree = "<group>"; };
+		E205E495147F0C6D004B721B /* TKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKAppDelegate.m; sourceTree = "<group>"; };
+		E205E498147F0C6D004B721B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		E205E49A147F0C6D004B721B /* TKViewController.h */ = {isa = PBXFileReference; path = TKViewController.h; sourceTree = "<group>"; };
+		E205E49B147F0C6D004B721B /* TKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKViewController.m; sourceTree = "<group>"; };
+		E205E4A2147F0C6D004B721B /* TimekeeperTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimekeeperTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E205E4A3147F0C6E004B721B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		E205E4AB147F0C6E004B721B /* TimekeeperTests-Info.plist */ = {isa = PBXFileReference; path = "TimekeeperTests-Info.plist"; sourceTree = "<group>"; };
+		E205E4AD147F0C6E004B721B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E205E4AF147F0C6E004B721B /* TimekeeperTests.h */ = {isa = PBXFileReference; path = TimekeeperTests.h; sourceTree = "<group>"; };
+		E205E4B0147F0C6E004B721B /* TimekeeperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimekeeperTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E205E47E147F0C6D004B721B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E205E486147F0C6D004B721B /* UIKit.framework in Frameworks */,
+				E205E488147F0C6D004B721B /* Foundation.framework in Frameworks */,
+				E205E48A147F0C6D004B721B /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E205E49E147F0C6D004B721B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E205E4A4147F0C6E004B721B /* SenTestingKit.framework in Frameworks */,
+				E205E4A5147F0C6E004B721B /* UIKit.framework in Frameworks */,
+				E205E4A6147F0C6E004B721B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E205E476147F0C6D004B721B = {
+			isa = PBXGroup;
+			children = (
+				E205E48B147F0C6D004B721B /* Timekeeper */,
+				E205E4A9147F0C6E004B721B /* TimekeeperTests */,
+				E205E484147F0C6D004B721B /* Frameworks */,
+				E205E482147F0C6D004B721B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E205E482147F0C6D004B721B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E205E481147F0C6D004B721B /* Timekeeper.app */,
+				E205E4A2147F0C6D004B721B /* TimekeeperTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E205E484147F0C6D004B721B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E205E485147F0C6D004B721B /* UIKit.framework */,
+				E205E487147F0C6D004B721B /* Foundation.framework */,
+				E205E489147F0C6D004B721B /* CoreGraphics.framework */,
+				E205E4A3147F0C6E004B721B /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E205E48B147F0C6D004B721B /* Timekeeper */ = {
+			isa = PBXGroup;
+			children = (
+				E205E494147F0C6D004B721B /* TKAppDelegate.h */,
+				E205E495147F0C6D004B721B /* TKAppDelegate.m */,
+				E205E497147F0C6D004B721B /* MainStoryboard.storyboard */,
+				E205E49A147F0C6D004B721B /* TKViewController.h */,
+				E205E49B147F0C6D004B721B /* TKViewController.m */,
+				E205E48C147F0C6D004B721B /* Supporting Files */,
+			);
+			path = Timekeeper;
+			sourceTree = "<group>";
+		};
+		E205E48C147F0C6D004B721B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E205E48D147F0C6D004B721B /* Timekeeper-Info.plist */,
+				E205E48E147F0C6D004B721B /* InfoPlist.strings */,
+				E205E491147F0C6D004B721B /* main.m */,
+				E205E493147F0C6D004B721B /* Timekeeper-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E205E4A9147F0C6E004B721B /* TimekeeperTests */ = {
+			isa = PBXGroup;
+			children = (
+				E205E4AF147F0C6E004B721B /* TimekeeperTests.h */,
+				E205E4B0147F0C6E004B721B /* TimekeeperTests.m */,
+				E205E4AA147F0C6E004B721B /* Supporting Files */,
+			);
+			path = TimekeeperTests;
+			sourceTree = "<group>";
+		};
+		E205E4AA147F0C6E004B721B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E205E4AB147F0C6E004B721B /* TimekeeperTests-Info.plist */,
+				E205E4AC147F0C6E004B721B /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E205E480147F0C6D004B721B /* Timekeeper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E205E4B4147F0C6E004B721B /* Build configuration list for PBXNativeTarget "Timekeeper" */;
+			buildPhases = (
+				E205E47D147F0C6D004B721B /* Sources */,
+				E205E47E147F0C6D004B721B /* Frameworks */,
+				E205E47F147F0C6D004B721B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Timekeeper;
+			productName = Timekeeper;
+			productReference = E205E481147F0C6D004B721B /* Timekeeper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E205E4A1147F0C6D004B721B /* TimekeeperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E205E4B7147F0C6E004B721B /* Build configuration list for PBXNativeTarget "TimekeeperTests" */;
+			buildPhases = (
+				E205E49D147F0C6D004B721B /* Sources */,
+				E205E49E147F0C6D004B721B /* Frameworks */,
+				E205E49F147F0C6D004B721B /* Resources */,
+				E205E4A0147F0C6D004B721B /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E205E4A8147F0C6E004B721B /* PBXTargetDependency */,
+			);
+			name = TimekeeperTests;
+			productName = TimekeeperTests;
+			productReference = E205E4A2147F0C6D004B721B /* TimekeeperTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E205E478147F0C6D004B721B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = E205E47B147F0C6D004B721B /* Build configuration list for PBXProject "Timekeeper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E205E476147F0C6D004B721B;
+			productRefGroup = E205E482147F0C6D004B721B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E205E480147F0C6D004B721B /* Timekeeper */,
+				E205E4A1147F0C6D004B721B /* TimekeeperTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E205E47F147F0C6D004B721B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E205E490147F0C6D004B721B /* InfoPlist.strings in Resources */,
+				E205E499147F0C6D004B721B /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E205E49F147F0C6D004B721B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E205E4AE147F0C6E004B721B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E205E4A0147F0C6D004B721B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E205E47D147F0C6D004B721B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E205E492147F0C6D004B721B /* main.m in Sources */,
+				E205E496147F0C6D004B721B /* TKAppDelegate.m in Sources */,
+				E205E49C147F0C6D004B721B /* TKViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E205E49D147F0C6D004B721B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E205E4B1147F0C6E004B721B /* TimekeeperTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E205E4A8147F0C6E004B721B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E205E480147F0C6D004B721B /* Timekeeper */;
+			targetProxy = E205E4A7147F0C6E004B721B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E205E48E147F0C6D004B721B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E205E48F147F0C6D004B721B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E205E497147F0C6D004B721B /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E205E498147F0C6D004B721B /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		E205E4AC147F0C6E004B721B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E205E4AD147F0C6E004B721B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E205E4B2147F0C6E004B721B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E205E4B3147F0C6E004B721B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E205E4B5147F0C6E004B721B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Timekeeper/Timekeeper-Prefix.pch";
+				INFOPLIST_FILE = "Timekeeper/Timekeeper-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E205E4B6147F0C6E004B721B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Timekeeper/Timekeeper-Prefix.pch";
+				INFOPLIST_FILE = "Timekeeper/Timekeeper-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E205E4B8147F0C6E004B721B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Timekeeper.app/Timekeeper";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Timekeeper/Timekeeper-Prefix.pch";
+				INFOPLIST_FILE = "TimekeeperTests/TimekeeperTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		E205E4B9147F0C6E004B721B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Timekeeper.app/Timekeeper";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Timekeeper/Timekeeper-Prefix.pch";
+				INFOPLIST_FILE = "TimekeeperTests/TimekeeperTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E205E47B147F0C6D004B721B /* Build configuration list for PBXProject "Timekeeper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E205E4B2147F0C6E004B721B /* Debug */,
+				E205E4B3147F0C6E004B721B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E205E4B4147F0C6E004B721B /* Build configuration list for PBXNativeTarget "Timekeeper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E205E4B5147F0C6E004B721B /* Debug */,
+				E205E4B6147F0C6E004B721B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E205E4B7147F0C6E004B721B /* Build configuration list for PBXNativeTarget "TimekeeperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E205E4B8147F0C6E004B721B /* Debug */,
+				E205E4B9147F0C6E004B721B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E205E478147F0C6D004B721B /* Project object */;
+}
