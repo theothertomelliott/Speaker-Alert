@@ -97,29 +97,36 @@
 }
 
 - (void)atGreen {
-    [myView setBackgroundColor:[UIColor greenColor]];
+    myView.backgroundColor = [UIColor colorWithRed:0.0f green:0.75f blue:0.0f alpha:1.0f];
     if([SharedConfig sharedInstance].shouldVibrate){
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        [VibrateQueue vibrateWithRepetitions:1];
     }
 }
 
 - (void)atAmber {
-    [myView setBackgroundColor:[UIColor yellowColor]]; 
+    myView.backgroundColor = [UIColor yellowColor]; 
     if([SharedConfig sharedInstance].shouldVibrate){
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        [VibrateQueue vibrateWithRepetitions:2];
     }
 }
 
 - (void)atRed {
-    [myView setBackgroundColor:[UIColor redColor]];
+    myView.backgroundColor = [UIColor redColor];
     if([SharedConfig sharedInstance].shouldVibrate){
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        [VibrateQueue vibrateWithRepetitions:3];
     }
 }
 
 - (IBAction)StopPressed:(id)sender {
     NSTimeInterval currentTime = [myTimer getCurrentTime];
     [SharedConfig sharedInstance].lastSpeech = currentTime;
+    
+    // Stop the timer
+    if(myTimer){
+        [myTimer kill];
+        myTimer = nil;
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

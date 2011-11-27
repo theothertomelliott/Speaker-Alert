@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AudioToolbox/AudioToolbox.h>
 
 #import "SpeechTimer.h"
 #import "SharedConfig.h"
 #import "TKConst.h"
+#import "VibrateQueue.h"
 
 @interface TKViewController : UIViewController <SpeechTimerListener> {
     SpeechTimer* myTimer;
