@@ -35,6 +35,9 @@ static SharedConfig* sharedInstance;
 }
 
 +(SharedConfig*)sharedInstance{
+    if(sharedInstance == nil){
+        [SharedConfig setup];
+    }
     return sharedInstance;
 }
 

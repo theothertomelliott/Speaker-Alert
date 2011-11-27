@@ -14,10 +14,6 @@
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
-        
-        // Initialize the config object
-        [SharedConfig setup];
-        
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([TKAppDelegate class]));
     }
 }
