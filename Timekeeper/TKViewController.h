@@ -14,13 +14,21 @@
 #import "VibrateQueue.h"
 
 @interface TKViewController : UIViewController <SpeechTimerListener> {
+    // Model for this Timer view.
     SpeechTimer* myTimer;
 }
 
+// Label displaying the current time
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+// Full view object - outlet required for background colour changes.
 @property (weak, nonatomic) IBOutlet UIView *myView;
-- (IBAction)StopPressed:(id)sender;
-- (IBAction)PausePressed:(id)sender;
+// Pause button - outlet required to change title to Pause/Resume.
 @property (weak, nonatomic) IBOutlet UIButton *PauseButton;
+
+// Stop button action (stop the timer and return to the Overview)
+- (IBAction)StopPressed:(id)sender;
+// Pause button pressed (pause myTimer)
+- (IBAction)PausePressed:(id)sender;
+
 
 @end

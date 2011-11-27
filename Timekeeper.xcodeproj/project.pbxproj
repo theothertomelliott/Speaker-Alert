@@ -22,9 +22,10 @@
 		E205E4B1147F0C6E004B721B /* TimekeeperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E205E4B0147F0C6E004B721B /* TimekeeperTests.m */; };
 		E205E4BC147F1819004B721B /* SpeechTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = E205E4BB147F1819004B721B /* SpeechTimer.m */; };
 		E21DF5EE1482BC070012D456 /* VibrateQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E21DF5ED1482BC070012D456 /* VibrateQueue.m */; };
+		E21DF5F11482CC720012D456 /* TimerSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = E21DF5F01482CC710012D456 /* TimerSettings.plist */; };
 		E25C9BA81481BCFA00FA84C3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25C9BA71481BCFA00FA84C3 /* AudioToolbox.framework */; };
 		E2F3121A148027E300044C15 /* SharedConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F31219148027E300044C15 /* SharedConfig.m */; };
-		E2F312201480509600044C15 /* TimePickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F3121F1480509600044C15 /* TimePickerDataSource.m */; };
+		E2F312201480509600044C15 /* TKTimePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F3121F1480509600044C15 /* TKTimePickerController.m */; };
 		E2F3122314805FED00044C15 /* TKOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F3122214805FEC00044C15 /* TKOverviewController.m */; };
 /* End PBXBuildFile section */
 
@@ -62,12 +63,13 @@
 		E205E4BB147F1819004B721B /* SpeechTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechTimer.m; sourceTree = "<group>"; };
 		E21DF5EC1482BC070012D456 /* VibrateQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VibrateQueue.h; sourceTree = "<group>"; };
 		E21DF5ED1482BC070012D456 /* VibrateQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VibrateQueue.m; sourceTree = "<group>"; };
+		E21DF5F01482CC710012D456 /* TimerSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TimerSettings.plist; sourceTree = "<group>"; };
 		E25C9BA51481B89E00FA84C3 /* TKConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKConst.h; sourceTree = "<group>"; };
 		E25C9BA71481BCFA00FA84C3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E2F31218148027E300044C15 /* SharedConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedConfig.h; sourceTree = "<group>"; };
 		E2F31219148027E300044C15 /* SharedConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedConfig.m; sourceTree = "<group>"; };
-		E2F3121E1480509600044C15 /* TimePickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimePickerDataSource.h; sourceTree = "<group>"; };
-		E2F3121F1480509600044C15 /* TimePickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimePickerDataSource.m; sourceTree = "<group>"; };
+		E2F3121E1480509600044C15 /* TKTimePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKTimePickerController.h; sourceTree = "<group>"; };
+		E2F3121F1480509600044C15 /* TKTimePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTimePickerController.m; sourceTree = "<group>"; };
 		E2F3122114805FEC00044C15 /* TKOverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOverviewController.h; sourceTree = "<group>"; };
 		E2F3122214805FEC00044C15 /* TKOverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKOverviewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,13 +143,14 @@
 				E205E4BB147F1819004B721B /* SpeechTimer.m */,
 				E2F31218148027E300044C15 /* SharedConfig.h */,
 				E2F31219148027E300044C15 /* SharedConfig.m */,
-				E2F3121E1480509600044C15 /* TimePickerDataSource.h */,
-				E2F3121F1480509600044C15 /* TimePickerDataSource.m */,
+				E2F3121E1480509600044C15 /* TKTimePickerController.h */,
+				E2F3121F1480509600044C15 /* TKTimePickerController.m */,
 				E2F3122114805FEC00044C15 /* TKOverviewController.h */,
 				E2F3122214805FEC00044C15 /* TKOverviewController.m */,
 				E25C9BA51481B89E00FA84C3 /* TKConst.h */,
 				E21DF5EC1482BC070012D456 /* VibrateQueue.h */,
 				E21DF5ED1482BC070012D456 /* VibrateQueue.m */,
+				E21DF5F01482CC710012D456 /* TimerSettings.plist */,
 			);
 			path = Timekeeper;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			files = (
 				E205E490147F0C6D004B721B /* InfoPlist.strings in Resources */,
 				E205E499147F0C6D004B721B /* MainStoryboard.storyboard in Resources */,
+				E21DF5F11482CC720012D456 /* TimerSettings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +297,7 @@
 				E205E49C147F0C6D004B721B /* TKViewController.m in Sources */,
 				E205E4BC147F1819004B721B /* SpeechTimer.m in Sources */,
 				E2F3121A148027E300044C15 /* SharedConfig.m in Sources */,
-				E2F312201480509600044C15 /* TimePickerDataSource.m in Sources */,
+				E2F312201480509600044C15 /* TKTimePickerController.m in Sources */,
 				E2F3122314805FED00044C15 /* TKOverviewController.m in Sources */,
 				E21DF5EE1482BC070012D456 /* VibrateQueue.m in Sources */,
 			);

@@ -14,7 +14,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="HGQ-Ec-cx8">
-                                <rect key="frame" x="37.5" y="80" width="246" height="172"/>
+                                <rect key="frame" x="37" y="80" width="246" height="172"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="90"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -66,7 +66,7 @@
         <scene sceneID="cB9-YL-iRG">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9U-YP-vAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="Rqs-aa-RYK" customClass="TimePickerDataSource" sceneMemberID="viewController">
+                <viewController id="Rqs-aa-RYK" customClass="TKTimePickerController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YA4-Qy-h8e">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -75,8 +75,8 @@
                                 <rect key="frame" x="0.0" y="146" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="Rqs-aa-RYK" id="DEm-kl-Vmy"/>
-                                    <outlet property="delegate" destination="Rqs-aa-RYK" id="K3G-ZH-Am1"/>
+                                    <outlet property="dataSource" destination="Rqs-aa-RYK" id="DvV-5z-IsE"/>
+                                    <outlet property="delegate" destination="Rqs-aa-RYK" id="u4e-nM-4Xb"/>
                                 </connections>
                             </pickerView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Red" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="JYR-GS-5Ub">
@@ -205,7 +205,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2" kind="push" id="poT-gg-Ceh"/>
+                                    <action selector="StartPressed:" destination="IsL-70-elF" eventType="touchUpInside" id="eDs-Bn-A7f"/>
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="msp-gy-X1x">
@@ -247,6 +247,7 @@
                         <outlet property="lastSpeechTime" destination="NZb-FJ-khd" id="RwD-8v-urF"/>
                         <outlet property="redTimeLab" destination="1iX-OB-RZz" id="beb-rO-Eab"/>
                         <segue destination="Rqs-aa-RYK" kind="push" identifier="editingSegue" id="tLO-1D-vRv"/>
+                        <segue destination="2" kind="push" identifier="startTimer" id="Uyt-fW-2jI"/>
                     </connections>
                 </viewController>
             </objects>
@@ -258,7 +259,6 @@
                 <navigationController definesPresentationContext="YES" id="EEP-lC-ISp" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="p5e-53-ab1">
                         <rect key="frame" x="0.0" y="-74" width="0.0" height="74"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -275,6 +275,7 @@
         <class className="TKOverviewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TKOverviewController.h"/>
             <relationships>
+                <relationship kind="action" name="StartPressed:"/>
                 <relationship kind="action" name="VibrateValueChanged:"/>
                 <relationship kind="action" name="amberEditing:"/>
                 <relationship kind="action" name="greenEditing:"/>
@@ -286,6 +287,13 @@
                 <relationship kind="outlet" name="redTimeLab" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="TKTimePickerController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKTimePickerController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lightLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
         <class className="TKViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TKViewController.h"/>
             <relationships>
@@ -294,13 +302,6 @@
                 <relationship kind="outlet" name="PauseButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="myView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TimePickerDataSource" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimePickerDataSource.h"/>
-            <relationships>
-                <relationship kind="outlet" name="lightLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
             </relationships>
         </class>
     </classes>

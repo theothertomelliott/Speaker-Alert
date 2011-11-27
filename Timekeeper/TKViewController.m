@@ -62,6 +62,9 @@
     
     myTimer = [[SpeechTimer alloc] init];
     [myTimer startTimerWithGreen:greenTime Amber:amberTime Red:redTime andDelegate:self];
+    
+    // Prevent locking or dimming while idle.
+    [UIApplication sharedApplication].idleTimerDisabled=YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -72,17 +75,14 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
+    
+    // Reset idle timer
+    [UIApplication sharedApplication].idleTimerDisabled=NO;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 #pragma mark - Timer listener
@@ -97,6 +97,7 @@
 }
 
 - (void)atGreen {
+    NSLog(@"Reached green");
     myView.backgroundColor = [UIColor colorWithRed:0.0f green:0.75f blue:0.0f alpha:1.0f];
     if([SharedConfig sharedInstance].shouldVibrate){
         [VibrateQueue vibrateWithRepetitions:1];
@@ -104,6 +105,7 @@
 }
 
 - (void)atAmber {
+    NSLog(@"Reached amber");
     myView.backgroundColor = [UIColor yellowColor]; 
     if([SharedConfig sharedInstance].shouldVibrate){
         [VibrateQueue vibrateWithRepetitions:2];
@@ -111,6 +113,7 @@
 }
 
 - (void)atRed {
+    NSLog(@"Reached red");
     myView.backgroundColor = [UIColor redColor];
     if([SharedConfig sharedInstance].shouldVibrate){
         [VibrateQueue vibrateWithRepetitions:3];

@@ -23,5 +23,6 @@
 - (IBAction)amberEditing:(id)sender;
 - (IBAction)redEditing:(id)sender;
 - (IBAction)VibrateValueChanged:(id)sender;
+- (IBAction)StartPressed:(id)sender;
 
 @end

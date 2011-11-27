@@ -8,6 +8,7 @@
 
 #import "TKOverviewController.h"
 #import "SharedConfig.h"
+#import "TKTimePickerController.h"
 
 @implementation TKOverviewController
 @synthesize VibrateSlider;
@@ -90,21 +91,33 @@
 }
 
 - (IBAction)greenEditing:(id)sender {
-    [SharedConfig sharedInstance].editingState = kGreen;
+    [TKTimePickerController setEditingState:kGreen];
     [self performSegueWithIdentifier:@"editingSegue" sender:self];
 }
 
 - (IBAction)amberEditing:(id)sender {
-    [SharedConfig sharedInstance].editingState = kAmber;
+    [TKTimePickerController setEditingState:kAmber];
     [self performSegueWithIdentifier:@"editingSegue" sender:self];
 }
 
 - (IBAction)redEditing:(id)sender {
-    [SharedConfig sharedInstance].editingState = kRed;
+    [TKTimePickerController setEditingState:kRed];
     [self performSegueWithIdentifier:@"editingSegue" sender:self];
 }
 
 - (IBAction)VibrateValueChanged:(id)sender {
     [SharedConfig sharedInstance].shouldVibrate = [VibrateSlider isOn];
+}
+
+- (IBAction)StartPressed:(id)sender {
+    
+    SharedConfig* config = [SharedConfig sharedInstance];
+    // Validate config
+    if(config.green < config.amber && config.amber < config.red){
+        [self performSegueWithIdentifier:@"startTimer" sender:self];
+    } else {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Invalid light times" message:@"Times for the Green, Amber and Red lights must be different and in order." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alert show];
+    }
 }
 @end

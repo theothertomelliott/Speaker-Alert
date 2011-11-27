@@ -10,14 +10,11 @@
 #import "SpeechTimer.h"
 #import "TKConst.h"
 
-@interface TimePickerDataSource : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate> {
-    
-    LightState editingState;
-    int mins;
-    int secs;
-    
-}
+@interface TKTimePickerController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (weak, nonatomic) IBOutlet UILabel *lightLabel;
+
++ (void) setEditingState:(LightState) newState;
 
 @end
