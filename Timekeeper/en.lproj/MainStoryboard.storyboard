@@ -193,7 +193,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aC3-aC-DwD">
-                                <rect key="frame" x="46" y="327" width="240" height="45"/>
+                                <rect key="frame" x="36" y="327" width="250" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Start">
@@ -229,7 +229,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="NZb-FJ-khd">
-                                <rect key="frame" x="257" y="256" width="43" height="21"/>
+                                <rect key="frame" x="242" y="256" width="43" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -243,6 +243,7 @@
                         <outlet property="VibrateSlider" destination="msp-gy-X1x" id="ZdY-0c-P15"/>
                         <outlet property="amberTimeLab" destination="zlO-Sr-K0H" id="rfZ-kd-NSN"/>
                         <outlet property="greenTimeLab" destination="ubI-7b-duU" id="y02-Dh-yFJ"/>
+                        <outlet property="lastSpeechTime" destination="NZb-FJ-khd" id="RwD-8v-urF"/>
                         <outlet property="redTimeLab" destination="1iX-OB-RZz" id="beb-rO-Eab"/>
                         <segue destination="Rqs-aa-RYK" kind="push" identifier="editingSegue" id="tLO-1D-vRv"/>
                     </connections>
@@ -265,37 +266,6 @@
             <point key="canvasLocation" x="-118" y="1279"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="TKOverviewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKOverviewController.h"/>
-            <relationships>
-                <relationship kind="action" name="VibrateValueChanged:"/>
-                <relationship kind="action" name="amberEditing:"/>
-                <relationship kind="action" name="greenEditing:"/>
-                <relationship kind="action" name="redEditing:"/>
-                <relationship kind="outlet" name="VibrateSlider" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="amberTimeLab" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="greenTimeLab" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="redTimeLab" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TKViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TKViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="PausePressed:"/>
-                <relationship kind="action" name="StopPressed:"/>
-                <relationship kind="outlet" name="myView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TimePickerDataSource" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimePickerDataSource.h"/>
-            <relationships>
-                <relationship kind="outlet" name="lightLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

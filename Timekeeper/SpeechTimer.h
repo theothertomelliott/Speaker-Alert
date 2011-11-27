@@ -41,5 +41,6 @@ typedef enum {
 -(void) kill;
 -(void) tick;
 -(void) startTimerWithGreen:(int) green Amber: (int) amber Red:(int) red andDelegate: (id<SpeechTimerListener>) theListener;
+-(NSTimeInterval) getCurrentTime;
 
 @end

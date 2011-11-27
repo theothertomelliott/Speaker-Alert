@@ -116,6 +116,8 @@
 }
 
 - (IBAction)StopPressed:(id)sender {
+    NSTimeInterval currentTime = [myTimer getCurrentTime];
+    [SharedConfig sharedInstance].lastSpeech = currentTime;
     [self.navigationController popViewControllerAnimated:YES];
 }
 

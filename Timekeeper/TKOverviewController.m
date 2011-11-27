@@ -11,6 +11,7 @@
 
 @implementation TKOverviewController
 @synthesize VibrateSlider;
+@synthesize lastSpeechTime;
 @synthesize greenTimeLab;
 @synthesize amberTimeLab;
 @synthesize redTimeLab;
@@ -34,12 +35,24 @@
 
 #pragma mark - View lifecycle
 
+- (NSString*) formatTimer:(int) time {
+    return [NSString stringWithFormat:@"%02d:%02d", (int)(time/SECONDS_IN_A_MINUTE),(time%SECONDS_IN_A_MINUTE)];
+
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     SharedConfig* config = [SharedConfig sharedInstance];
     
-    greenTimeLab.text = [NSString stringWithFormat:@"%02d:%02d", (int)(config.green/SECONDS_IN_A_MINUTE),(config.green%SECONDS_IN_A_MINUTE)];
-    amberTimeLab.text = [NSString stringWithFormat:@"%02d:%02d", (int)(config.amber/SECONDS_IN_A_MINUTE),(config.amber%SECONDS_IN_A_MINUTE)];
-    redTimeLab.text = [NSString stringWithFormat:@"%02d:%02d",(int)(config.red/SECONDS_IN_A_MINUTE),(config.red%SECONDS_IN_A_MINUTE)];
+    greenTimeLab.text = [self formatTimer:config.green];   
+    amberTimeLab.text = [self formatTimer:config.amber];
+    redTimeLab.text = [self formatTimer:config.red];
+    
+    if(config.lastSpeech != -1){
+        lastSpeechTime.text = [self formatTimer:config.lastSpeech];
+    } else {
+        lastSpeechTime.text = @"--:--";
+    }
+    
     [VibrateSlider setOn:config.shouldVibrate];
 }
 
@@ -64,6 +77,7 @@
     [self setAmberTimeLab:nil];
     [self setRedTimeLab:nil];
     [self setVibrateSlider:nil];
+    [self setLastSpeechTime:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

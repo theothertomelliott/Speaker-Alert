@@ -10,6 +10,11 @@
 
 @implementation SpeechTimer
 
+-(NSTimeInterval) getCurrentTime {
+    NSDate* now = [NSDate date];
+    return [now timeIntervalSinceDate: startTime];
+}
+
 -(void) startTimerWithGreen:(int) green Amber: (int) amber Red:(int) red andDelegate: (id<SpeechTimerListener>) theListener;
 {
     
@@ -30,8 +35,7 @@
 }
 
 -(void) tick {
-    NSDate* now = [NSDate date];
-    NSTimeInterval interval = [now timeIntervalSinceDate: startTime];
+    NSTimeInterval interval = [self getCurrentTime];
     [listener timeUpdated:interval];
     
     if((interval >= greenAtS) && state == kNone){

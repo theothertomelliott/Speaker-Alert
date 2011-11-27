@@ -10,13 +10,18 @@
 #import "TKConst.h"
 
 @interface TKOverviewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UILabel *greenTimeLab;
 @property (weak, nonatomic) IBOutlet UILabel *amberTimeLab;
 @property (weak, nonatomic) IBOutlet UILabel *redTimeLab;
+@property (weak, nonatomic) IBOutlet UISwitch *VibrateSlider;
+@property (weak, nonatomic) IBOutlet UILabel *lastSpeechTime;
+
+- (NSString*) formatTimer:(int) time;
+
 - (IBAction)greenEditing:(id)sender;
 - (IBAction)amberEditing:(id)sender;
 - (IBAction)redEditing:(id)sender;
 - (IBAction)VibrateValueChanged:(id)sender;
-@property (weak, nonatomic) IBOutlet UISwitch *VibrateSlider;
 
 @end
