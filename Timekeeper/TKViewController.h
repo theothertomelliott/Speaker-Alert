@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
 
-@interface TKViewController : UIViewController
+#import "SpeechTimer.h"
+#import "SharedConfig.h"
+#import "TKConst.h"
+
+@interface TKViewController : UIViewController <SpeechTimerListener> {
+    SpeechTimer* myTimer;
+}
+
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIView *myView;
+- (IBAction)StopPressed:(id)sender;
+- (IBAction)PausePressed:(id)sender;
 
 @end
