@@ -9,6 +9,7 @@
 #import "TKViewController.h"
 
 @implementation TKViewController
+@synthesize PauseButton;
 @synthesize timeLabel;
 @synthesize myView;
 
@@ -37,6 +38,7 @@
     
     [self setTimeLabel:nil];
     [self setMyView:nil];
+    [self setPauseButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -122,5 +124,12 @@
 }
 
 - (IBAction)PausePressed:(id)sender {
+    if([myTimer isPaused]){
+        [myTimer resume];
+        [PauseButton setTitle:@"Pause" forState:UIControlStateNormal];
+    } else {
+        [myTimer pause];
+        [PauseButton setTitle:@"Resume" forState:UIControlStateNormal];
+    }
 }
 @end

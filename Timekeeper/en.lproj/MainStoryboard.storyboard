@@ -23,10 +23,11 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wWt-xP-atY">
                                 <rect key="frame" x="20" y="337" width="134" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Stop">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,6 +56,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9CX-HU-ZML"/>
                     <connections>
+                        <outlet property="PauseButton" destination="lLA-Ob-M6e" id="4bE-vL-fdK"/>
                         <outlet property="myView" destination="3" id="lIy-5U-peO"/>
                         <outlet property="timeLabel" destination="HGQ-Ec-cx8" id="geI-af-Vpo"/>
                     </connections>

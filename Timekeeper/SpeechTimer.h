@@ -25,7 +25,12 @@ typedef enum {
 
 @interface SpeechTimer : NSObject {
     NSTimer* timer;
+    
+    // Time the timer was last started or paused
     NSDate* startTime;
+    
+    // Time offset as a result of pausing
+    NSTimeInterval timeOffset;
     
     // Times for each light
     int greenAtS;
@@ -37,6 +42,10 @@ typedef enum {
     id<SpeechTimerListener> listener;
 
 }
+
+-(void) pause;
+-(void) resume;
+-(BOOL) isPaused;
 
 -(void) kill;
 -(void) tick;

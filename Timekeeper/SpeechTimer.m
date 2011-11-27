@@ -12,13 +12,27 @@
 
 -(NSTimeInterval) getCurrentTime {
     NSDate* now = [NSDate date];
-    return [now timeIntervalSinceDate: startTime];
+    int offset = timeOffset != -1 ? timeOffset : 0;
+    return [now timeIntervalSinceDate: startTime] + offset;
+}
+
+-(void) doStart {    
+    startTime = [NSDate date];
+    
+    if(timer){
+        [timer invalidate];
+        timer = nil;
+    }
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+}
+
+-(SpeechTimer*) init {
+    timeOffset = -1;
+    return self;
 }
 
 -(void) startTimerWithGreen:(int) green Amber: (int) amber Red:(int) red andDelegate: (id<SpeechTimerListener>) theListener;
 {
-    
-    startTime = [NSDate date];
     greenAtS = green;
     amberAtS = amber;
     redAtS = red;
@@ -27,11 +41,7 @@
     
     state = kNone;
     
-    if(timer){
-        [timer invalidate];
-         timer = nil;
-    }
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+    [self doStart];
 }
 
 -(void) tick {
@@ -51,6 +61,25 @@
     if((interval >= redAtS) && state == kAmber){
         [listener atRed];
         state = kRed;
+    }
+}
+
+-(BOOL) isPaused {
+    return (timer == nil && timeOffset != -1);
+}
+
+-(void) pause {
+    if(![self isPaused]){
+        [timer invalidate];
+        timer = nil;
+    
+        timeOffset = [self getCurrentTime];
+    }
+}
+
+-(void) resume {
+    if([self isPaused]){
+        [self doStart];
     }
 }
 

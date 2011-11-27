@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIView *myView;
 - (IBAction)StopPressed:(id)sender;
 - (IBAction)PausePressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *PauseButton;
 
 @end
