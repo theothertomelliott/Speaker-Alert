@@ -14,8 +14,6 @@
 #import "VibrateQueue.h"
 
 @interface TKViewController : UIViewController <SpeechTimerListener> {
-    // Model for this Timer view.
-    SpeechTimer* myTimer;
 }
 
 // Label displaying the current time
@@ -30,5 +28,7 @@
 // Pause button pressed (pause myTimer)
 - (IBAction)PausePressed:(id)sender;
 
+// Get the current speech timer
++ (SpeechTimer*) getTimer;
 
 @end

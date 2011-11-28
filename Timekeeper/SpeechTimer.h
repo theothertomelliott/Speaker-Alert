@@ -21,7 +21,16 @@
 @end
 
 /*
- * Possible states for Lights
+ * State of timer (independant of elapsed time).
+ */
+typedef enum {
+    kStopped,
+    kRunning,
+    kPaused
+} TimingState;
+
+/*
+ * Possible states for Lights.
  */
 typedef enum {
     kNone,
@@ -45,7 +54,10 @@ typedef enum {
     int redAtS;
     
     // Current light state.
-    LightState state;
+    LightState lightState;
+    
+    // Current timer state.
+    TimingState timerState;
     
     // Listener to receive timer events.
     id<SpeechTimerListener> listener;
@@ -56,18 +68,29 @@ typedef enum {
 -(void) pause;
 // Resume the timer if paused, do nothing if running.
 -(void) resume;
-// Returns true when the timer is paused.
--(BOOL) isPaused;
+
+// Return timing state
+-(TimingState) getTimingState;
+// Return light state
+-(LightState) getLightState;
 
 // Stop the timer and clean up resources.
 -(void) kill;
 
 -(void) tick;
 
-// 
--(void) startTimerWithGreen:(int) green Amber: (int) amber Red:(int) red andDelegate: (id<SpeechTimerListener>) theListener;
+// Create a timer
+-(SpeechTimer*) initTimerWithGreen:(int) green Amber: (int) amber Red:(int) red andDelegate: (id<SpeechTimerListener>) theListener;
+
+// Start the timer
+-(void) start;
 
 // Returns the current elapsed time.
 -(NSTimeInterval) getCurrentTime;
+
+// Times for each light (at this point)
+-(NSDate*) greenTime;
+-(NSDate*) amberTime;
+-(NSDate*) redTime;
 
 @end

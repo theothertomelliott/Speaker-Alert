@@ -8,6 +8,7 @@
 
 #import "TKAppDelegate.h"
 #import "SharedConfig.h"
+#import "TKViewController.h"
 
 @implementation TKAppDelegate
 
@@ -28,6 +29,36 @@
     [[SharedConfig sharedInstance] saveSettings];
 }
 
+- (void) createNotification:(NSString*) light withDate:(NSDate*) time {
+    UIApplication* app = [UIApplication sharedApplication];
+
+    // Create a new notification.
+    UILocalNotification* alarm = [[UILocalNotification alloc] init];
+    if (alarm)
+    {
+        alarm.fireDate = time;
+        alarm.timeZone = [NSTimeZone defaultTimeZone];
+        alarm.repeatInterval = 0;
+        alarm.soundName = UILocalNotificationDefaultSoundName;
+        alarm.alertBody = [NSString stringWithFormat:@"%@ light.",light];
+        
+        [app scheduleLocalNotification:alarm];
+    }
+}
+
+- (void) clearNotifications {
+    UIApplication* app = [UIApplication sharedApplication];
+    NSArray*    oldNotifications = [app scheduledLocalNotifications];
+    // Clear out the old notification before scheduling a new one.
+    if ([oldNotifications count] > 0){
+        NSEnumerator *e = [oldNotifications objectEnumerator];
+        UILocalNotification* object;
+        while (object = [e nextObject]) {
+            [app cancelLocalNotification:object];
+        }
+    }
+}
+
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     /*
@@ -35,24 +66,21 @@
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
     
-    UIApplication* app = [UIApplication sharedApplication];
-    NSArray*    oldNotifications = [app scheduledLocalNotifications];
+    [self clearNotifications];
     
-    // Clear out the old notification before scheduling a new one.
-    if ([oldNotifications count] > 0)
-        [app cancelAllLocalNotifications];
-    
-    // Create a new notification.
-    UILocalNotification* alarm = [[UILocalNotification alloc] init];
-    if (alarm)
-    {
-        alarm.fireDate = [[NSDate date] dateByAddingTimeInterval:5];
-        alarm.timeZone = [NSTimeZone defaultTimeZone];
-        alarm.repeatInterval = 0;
-        alarm.soundName = UILocalNotificationDefaultSoundName;
-        alarm.alertBody = @"Green";
+    SpeechTimer* timer = [TKViewController getTimer];
+    if([timer getTimingState] == kRunning){
+        LightState light = [timer getLightState];
         
-        [app scheduleLocalNotification:alarm];
+        if(light == kNone){
+            [self createNotification:@"Green" withDate:[timer greenTime]];
+        }
+        if(light != kAmber && light != kRed){
+            [self createNotification:@"Amber" withDate:[timer amberTime]];
+        }
+        if(light != kRed){
+            [self createNotification:@"Red" withDate:[timer redTime]];
+        }
     }
 }
 
@@ -61,13 +89,8 @@
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
-    UIApplication* app = [UIApplication sharedApplication];
-    NSArray*    oldNotifications = [app scheduledLocalNotifications];
-    
-    // Clear out the old notification before scheduling a new one.
-    if ([oldNotifications count] > 0){
-        [app cancelAllLocalNotifications];
-    }
+    NSLog(@"Dismissing alerts.");
+    [self clearNotifications];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

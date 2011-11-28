@@ -13,6 +13,10 @@
 @synthesize timeLabel;
 @synthesize myView;
 
+// Model for this Timer view.
+static SpeechTimer* myTimer;
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -60,9 +64,8 @@
     int amberTime = [config amber];
     int redTime = [config red];
     
-    myTimer = [[SpeechTimer alloc] init];
-    [myTimer startTimerWithGreen:greenTime Amber:amberTime Red:redTime andDelegate:self];
-    
+    myTimer = [[SpeechTimer alloc] initTimerWithGreen:greenTime Amber:amberTime Red:redTime andDelegate:self];
+    [myTimer start];    
     // Prevent locking or dimming while idle.
     [UIApplication sharedApplication].idleTimerDisabled=YES;
 }
@@ -134,7 +137,7 @@
 }
 
 - (IBAction)PausePressed:(id)sender {
-    if([myTimer isPaused]){
+    if([myTimer getTimingState] == kPaused){
         [myTimer resume];
         [PauseButton setTitle:@"Pause" forState:UIControlStateNormal];
     } else {
@@ -142,4 +145,10 @@
         [PauseButton setTitle:@"Resume" forState:UIControlStateNormal];
     }
 }
+
+// Get the current speech timer
++ (SpeechTimer*) getTimer {
+    return myTimer;
+}
+
 @end

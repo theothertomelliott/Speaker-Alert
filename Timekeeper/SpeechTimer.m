@@ -16,8 +16,9 @@
     return [now timeIntervalSinceDate: startTime] + offset;
 }
 
--(void) doStart {    
+-(void) start {    
     startTime = [NSDate date];
+    timerState = kRunning;
     
     if(timer){
         [timer invalidate];
@@ -31,7 +32,7 @@
     return self;
 }
 
--(void) startTimerWithGreen:(int) green Amber: (int) amber Red:(int) red andDelegate: (id<SpeechTimerListener>) theListener;
+-(SpeechTimer*) initTimerWithGreen:(int) green Amber: (int) amber Red:(int) red andDelegate: (id<SpeechTimerListener>) theListener;
 {
     greenAtS = green;
     amberAtS = amber;
@@ -39,47 +40,53 @@
     
     listener = theListener;
     
-    state = kNone;
+    lightState = kNone;
+    timerState = kStopped;
     
-    [self doStart];
+    return self;
 }
 
 -(void) tick {
     NSTimeInterval interval = [self getCurrentTime];
     [listener timeUpdated:interval];
     
-    if((interval >= greenAtS) && state == kNone){
+    if((interval >= greenAtS) && lightState == kNone){
         [listener atGreen];
-        state = kGreen;
+        lightState = kGreen;
     }
     
-    if((interval >= amberAtS) && state == kGreen){
+    if((interval >= amberAtS) && lightState == kGreen){
         [listener atAmber];
-        state = kAmber;
+        lightState = kAmber;
     }
     
-    if((interval >= redAtS) && state == kAmber){
+    if((interval >= redAtS) && lightState == kAmber){
         [listener atRed];
-        state = kRed;
+        lightState = kRed;
     }
 }
 
--(BOOL) isPaused {
-    return (timer == nil && timeOffset != -1);
+-(TimingState) getTimingState {
+    return timerState;
+}
+
+-(LightState) getLightState {
+    return lightState;
 }
 
 -(void) pause {
-    if(![self isPaused]){
+    if(!(timerState == kPaused)){
         [timer invalidate];
         timer = nil;
     
         timeOffset = [self getCurrentTime];
+        timerState = kPaused;
     }
 }
 
 -(void) resume {
-    if([self isPaused]){
-        [self doStart];
+    if(timerState == kPaused){
+        [self start];
     }
 }
 
@@ -87,6 +94,22 @@
     NSLog(@"Stopping timer");
     [timer invalidate];
     timer = nil;
+    timerState = kStopped;
+}
+
+-(NSDate*) greenTime {
+    int offset = timeOffset != -1 ? timeOffset : 0;
+    return [startTime dateByAddingTimeInterval:(greenAtS - offset)];
+}
+
+-(NSDate*) amberTime {
+    int offset = timeOffset != -1 ? timeOffset : 0;
+    return [startTime dateByAddingTimeInterval:(amberAtS - offset)];   
+}
+
+-(NSDate*) redTime {
+    int offset = timeOffset != -1 ? timeOffset : 0;
+    return [startTime dateByAddingTimeInterval:(redAtS - offset)];
 }
 
 @end
