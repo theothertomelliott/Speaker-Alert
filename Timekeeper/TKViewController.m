@@ -166,7 +166,9 @@ static SpeechTimer* myTimer;
     
     if(flashOn){
         myView.backgroundColor = [UIColor lightGrayColor];
-        [VibrateQueue vibrateWithRepetitions:1];
+        if([[NSUserDefaults standardUserDefaults] boolForKey:KEY_VIBRATE]){
+            [VibrateQueue vibrateWithRepetitions:1];
+        }
     } else {
         myView.backgroundColor = [UIColor redColor];
     }
