@@ -46,6 +46,10 @@
     }
 }
 
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    NSLog(@"Received local notification: %@", notification.alertBody);
+}
+
 /*
  * Clear out all old notifications and reset the badge number
  * We can assume that all notifications have become void once the
@@ -53,6 +57,12 @@
  */
 - (void) clearNotifications {
     UIApplication* app = [UIApplication sharedApplication];
+
+    NSArray* notifications = [app scheduledLocalNotifications];
+    for (id notification in notifications) {
+        NSLog(@"Body: %@", ((UILocalNotification*)notification).alertBody);
+    }
+    
     [app cancelAllLocalNotifications];
 }
 
@@ -65,20 +75,24 @@
     
     [self clearNotifications];
     
+    // Create local alerts and suspend the timer if running
     SpeechTimer* timer = [TKViewController getTimer];
     if([timer getTimingState] == kRunning){
         LightState light = [timer getLightState];
         
-        if(light == kNone){
+        if(light < kGreen){
             [self createNotification:@"Green" withDate:[timer greenTime]];
         }
-        if(light != kAmber && light != kRed){
+        if(light < kAmber){
             [self createNotification:@"Amber" withDate:[timer amberTime]];
         }
-        if(light != kRed){
+        if(light < kRed){
             [self createNotification:@"Red" withDate:[timer redTime]];
         }
+        
+        [timer suspend];
     }
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -86,8 +100,14 @@
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
-    NSLog(@"Dismissing alerts.");
+
     [self clearNotifications];
+
+    // Resume the timer if suspended
+    SpeechTimer* timer = [TKViewController getTimer];
+    if([timer getTimingState] == kSuspended){
+        [timer resume];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

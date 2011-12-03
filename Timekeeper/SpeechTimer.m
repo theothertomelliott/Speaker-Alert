@@ -16,8 +16,7 @@
     return [now timeIntervalSinceDate: startTime] + offset;
 }
 
--(void) start {    
-    startTime = [NSDate date];
+-(void) createTimer{
     timerState = kRunning;
     
     if(timer){
@@ -25,6 +24,12 @@
         timer = nil;
     }
     timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+}
+
+
+-(void) start {
+    startTime = [NSDate date];
+    [self createTimer];
 }
 
 -(SpeechTimer*) init {
@@ -46,24 +51,28 @@
     return self;
 }
 
--(void) tick {
+-(void) doTick:(BOOL) wasSuspended {
     NSTimeInterval interval = [self getCurrentTime];
     [listener timeUpdated:interval];
     
-    if((interval >= greenAtS) && lightState == kNone){
-        [listener atGreen];
+    if((interval >= greenAtS) && lightState < kGreen){
+        [listener atGreen:wasSuspended];
         lightState = kGreen;
     }
     
-    if((interval >= amberAtS) && lightState == kGreen){
-        [listener atAmber];
+    if((interval >= amberAtS) && lightState < kAmber){
+        [listener atAmber:wasSuspended];
         lightState = kAmber;
     }
     
-    if((interval >= redAtS) && lightState == kAmber){
-        [listener atRed];
+    if((interval >= redAtS) && lightState < kRed){
+        [listener atRed:wasSuspended];
         lightState = kRed;
     }
+}
+
+-(void) tick {
+    [self doTick:NO];
 }
 
 -(TimingState) getTimingState {
@@ -87,6 +96,17 @@
 -(void) resume {
     if(timerState == kPaused){
         [self start];
+    } else if(timerState == kSuspended){
+        [self doTick:YES];
+        [self createTimer];
+    }
+}
+
+-(void) suspend {
+    if(timerState == kRunning){
+        [timer invalidate];
+        timer = nil;
+        timerState = kSuspended;
     }
 }
 

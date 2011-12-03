@@ -99,26 +99,26 @@ static SpeechTimer* myTimer;
     [timeLabel setText:[NSString stringWithFormat: @"%d:%02d", elapsedM, elapsedS]];
 }
 
-- (void)atGreen {
+- (void)atGreen:(BOOL) wasSuspended {
     NSLog(@"Reached green");
     myView.backgroundColor = [UIColor colorWithRed:0.0f green:0.75f blue:0.0f alpha:1.0f];
-    if([SharedConfig sharedInstance].shouldVibrate){
+    if([SharedConfig sharedInstance].shouldVibrate && !wasSuspended){
         [VibrateQueue vibrateWithRepetitions:1];
     }
 }
 
-- (void)atAmber {
+- (void)atAmber:(BOOL) wasSuspended {
     NSLog(@"Reached amber");
     myView.backgroundColor = [UIColor yellowColor]; 
-    if([SharedConfig sharedInstance].shouldVibrate){
+    if([SharedConfig sharedInstance].shouldVibrate && !wasSuspended){
         [VibrateQueue vibrateWithRepetitions:2];
     }
 }
 
-- (void)atRed {
+- (void)atRed:(BOOL) wasSuspended {
     NSLog(@"Reached red");
     myView.backgroundColor = [UIColor redColor];
-    if([SharedConfig sharedInstance].shouldVibrate){
+    if([SharedConfig sharedInstance].shouldVibrate && !wasSuspended){
         [VibrateQueue vibrateWithRepetitions:3];
     }
 }

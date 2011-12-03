@@ -15,9 +15,9 @@
 @protocol SpeechTimerListener
 @required
 - (void)timeUpdated:(NSTimeInterval) elapsed;
-- (void)atGreen;
-- (void)atAmber;
-- (void)atRed;
+- (void)atGreen:(BOOL) wasSuspended;
+- (void)atAmber:(BOOL) wasSuspended;
+- (void)atRed:(BOOL) wasSuspended;
 @end
 
 /*
@@ -26,17 +26,18 @@
 typedef enum {
     kStopped,
     kRunning,
-    kPaused
+    kPaused,
+    kSuspended
 } TimingState;
 
 /*
  * Possible states for Lights.
  */
 typedef enum {
-    kNone,
-    kGreen,
-    kAmber,
-    kRed
+    kNone = 0,
+    kGreen = 1,
+    kAmber = 2,
+    kRed = 3,
 } LightState;
 
 @interface SpeechTimer : NSObject {
@@ -87,6 +88,9 @@ typedef enum {
 
 // Returns the current elapsed time.
 -(NSTimeInterval) getCurrentTime;
+
+// Suspend the timer for running in the background
+-(void) suspend;
 
 // Times for each light (at this point)
 -(NSDate*) greenTime;
