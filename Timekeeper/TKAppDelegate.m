@@ -46,17 +46,14 @@
     }
 }
 
+/*
+ * Clear out all old notifications and reset the badge number
+ * We can assume that all notifications have become void once the
+ * app reloads, as current state will be visible to the user.
+ */
 - (void) clearNotifications {
     UIApplication* app = [UIApplication sharedApplication];
-    NSArray*    oldNotifications = [app scheduledLocalNotifications];
-    // Clear out the old notification before scheduling a new one.
-    if ([oldNotifications count] > 0){
-        NSEnumerator *e = [oldNotifications objectEnumerator];
-        UILocalNotification* object;
-        while (object = [e nextObject]) {
-            [app cancelLocalNotification:object];
-        }
-    }
+    [app cancelAllLocalNotifications];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
