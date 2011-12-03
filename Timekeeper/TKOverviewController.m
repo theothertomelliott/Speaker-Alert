@@ -10,9 +10,7 @@
 #import "TKTimePickerController.h"
 
 @implementation TKOverviewController
-@synthesize VibrateSlider;
 @synthesize lastSpeechTime;
-@synthesize DisplayTimeSlider;
 @synthesize greenTimeLab;
 @synthesize amberTimeLab;
 @synthesize redTimeLab;
@@ -55,9 +53,6 @@
     } else {
         lastSpeechTime.text = @"--:--";
     }
-    
-    [VibrateSlider setOn:[[NSUserDefaults standardUserDefaults] boolForKey:KEY_VIBRATE]];
-    [DisplayTimeSlider setOn:[[NSUserDefaults standardUserDefaults] boolForKey:KEY_SHOW_TIME]];
 }
 
 /*
@@ -80,10 +75,8 @@
     [self setGreenTimeLab:nil];
     [self setAmberTimeLab:nil];
     [self setRedTimeLab:nil];
-    [self setVibrateSlider:nil];
     [self setLastSpeechTime:nil];
     [self setFlashTimeLab:nil];
-    [self setDisplayTimeSlider:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -115,10 +108,6 @@
     [self performSegueWithIdentifier:@"editingSegue" sender:self];
 }
 
-- (IBAction)VibrateValueChanged:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setBool:[VibrateSlider isOn] forKey:KEY_VIBRATE];
-}
-
 - (IBAction)StartPressed:(id)sender {
     
     int green = [[NSUserDefaults standardUserDefaults] integerForKey:KEY_GREEN_TIME];
@@ -135,7 +124,4 @@
     }
 }
 
-- (IBAction)DisplayTimeValueChanged:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setBool:[DisplayTimeSlider isOn] forKey:KEY_SHOW_TIME];
-}
 @end

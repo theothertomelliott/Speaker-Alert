@@ -15,9 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *amberTimeLab;
 @property (weak, nonatomic) IBOutlet UILabel *redTimeLab;
 @property (weak, nonatomic) IBOutlet UILabel *flashTimeLab;
-@property (weak, nonatomic) IBOutlet UISwitch *VibrateSlider;
 @property (weak, nonatomic) IBOutlet UILabel *lastSpeechTime;
-@property (weak, nonatomic) IBOutlet UISwitch *DisplayTimeSlider;
 
 - (NSString*) formatTimer:(int) time;
 
@@ -25,8 +23,6 @@
 - (IBAction)amberEditing:(id)sender;
 - (IBAction)redEditing:(id)sender;
 - (IBAction)flashEditing:(id)sender;
-- (IBAction)VibrateValueChanged:(id)sender;
 - (IBAction)StartPressed:(id)sender;
-- (IBAction)DisplayTimeValueChanged:(id)sender;
 
 @end
