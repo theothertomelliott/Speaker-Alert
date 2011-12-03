@@ -111,8 +111,9 @@ static SpeechTimer* myTimer;
     } else if(state == kRed){
         color = [UIColor redColor];
     } else if(state == kFlash){
-        color = [UIColor whiteColor];
-        // TODO: Create a timer for flashing
+        flashOn = NO;
+        [self flash];
+        flashTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(flash) userInfo:nil repeats:YES];
     }
 
     myView.backgroundColor = color;
@@ -132,6 +133,12 @@ static SpeechTimer* myTimer;
         myTimer = nil;
     }
     
+    // Clean up flash timer as required
+    if(flashTimer){
+        [flashTimer invalidate];
+        flashTimer = nil;
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -148,6 +155,17 @@ static SpeechTimer* myTimer;
 // Get the current speech timer
 + (SpeechTimer*) getTimer {
     return myTimer;
+}
+
+- (void) flash {
+    flashOn = !flashOn;
+    
+    if(flashOn){
+        myView.backgroundColor = [UIColor lightGrayColor];
+        [VibrateQueue vibrateWithRepetitions:1];
+    } else {
+        myView.backgroundColor = [UIColor redColor];
+    }
 }
 
 @end

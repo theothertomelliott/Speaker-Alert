@@ -13,6 +13,10 @@
 #import "VibrateQueue.h"
 
 @interface TKViewController : UIViewController <SpeechTimerListener> {
+    
+    NSTimer* flashTimer;
+    BOOL flashOn;
+    
 }
 
 // Label displaying the current time
@@ -29,5 +33,8 @@
 
 // Get the current speech timer
 + (SpeechTimer*) getTimer;
+
+// Callback for flashing the screen
+- (void) flash;
 
 @end
