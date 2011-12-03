@@ -9,18 +9,6 @@
 #import <Foundation/Foundation.h>
 
 /*
- * Protocol for receiving timer events.
- * Handles updates to the time elapsed and state transitions.
- */
-@protocol SpeechTimerListener
-@required
-- (void)timeUpdated:(NSTimeInterval) elapsed;
-- (void)atGreen:(BOOL) wasSuspended;
-- (void)atAmber:(BOOL) wasSuspended;
-- (void)atRed:(BOOL) wasSuspended;
-@end
-
-/*
  * State of timer (independant of elapsed time).
  */
 typedef enum {
@@ -38,7 +26,18 @@ typedef enum {
     kGreen = 1,
     kAmber = 2,
     kRed = 3,
+    kFlash = 4
 } LightState;
+
+/*
+ * Protocol for receiving timer events.
+ * Handles updates to the time elapsed and state transitions.
+ */
+@protocol SpeechTimerListener
+@required
+- (void)timeUpdated:(NSTimeInterval) elapsed;
+- (void)lightChanged:(LightState) state fromSuspension:(BOOL) wasSuspended;
+@end
 
 @interface SpeechTimer : NSObject {
     NSTimer* timer;
@@ -50,9 +49,7 @@ typedef enum {
     NSTimeInterval timeOffset;
     
     // Times for each light
-    int greenAtS;
-    int amberAtS;
-    int redAtS;
+    NSArray* times;
     
     // Current light state.
     LightState lightState;
@@ -81,7 +78,7 @@ typedef enum {
 -(void) tick;
 
 // Create a timer
--(SpeechTimer*) initTimerWithGreen:(int) green Amber: (int) amber Red:(int) red andDelegate: (id<SpeechTimerListener>) theListener;
+-(SpeechTimer*) initTimerWithGreen:(NSInteger) green Amber: (NSInteger) amber Red:(NSInteger) red Flash:(NSInteger) flash andDelegate: (id<SpeechTimerListener>) theListener;
 
 // Start the timer
 -(void) start;
@@ -93,8 +90,6 @@ typedef enum {
 -(void) suspend;
 
 // Times for each light (at this point)
--(NSDate*) greenTime;
--(NSDate*) amberTime;
--(NSDate*) redTime;
+-(NSDate*) getTimeForState:(LightState) state;
 
 @end

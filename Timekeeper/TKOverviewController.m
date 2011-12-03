@@ -7,15 +7,16 @@
 //
 
 #import "TKOverviewController.h"
-#import "SharedConfig.h"
 #import "TKTimePickerController.h"
 
 @implementation TKOverviewController
 @synthesize VibrateSlider;
 @synthesize lastSpeechTime;
+@synthesize DisplayTimeSlider;
 @synthesize greenTimeLab;
 @synthesize amberTimeLab;
 @synthesize redTimeLab;
+@synthesize flashTimeLab;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,19 +43,21 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    SharedConfig* config = [SharedConfig sharedInstance];
     
-    greenTimeLab.text = [self formatTimer:config.green];   
-    amberTimeLab.text = [self formatTimer:config.amber];
-    redTimeLab.text = [self formatTimer:config.red];
+    greenTimeLab.text = [self formatTimer:[[NSUserDefaults standardUserDefaults] integerForKey:KEY_GREEN_TIME]];   
+    amberTimeLab.text = [self formatTimer:[[NSUserDefaults standardUserDefaults] integerForKey:KEY_AMBER_TIME]];
+    redTimeLab.text = [self formatTimer:[[NSUserDefaults standardUserDefaults] integerForKey:KEY_RED_TIME]];
+    flashTimeLab.text = [self formatTimer:[[NSUserDefaults standardUserDefaults] integerForKey:KEY_FLASH_TIME]];
     
-    if(config.lastSpeech != -1){
-        lastSpeechTime.text = [self formatTimer:config.lastSpeech];
+    int lastTime = [[NSUserDefaults standardUserDefaults] integerForKey:KEY_LAST_TIME];
+    if(lastTime != -1){
+        lastSpeechTime.text = [self formatTimer:lastTime];
     } else {
         lastSpeechTime.text = @"--:--";
     }
     
-    [VibrateSlider setOn:config.shouldVibrate];
+    [VibrateSlider setOn:[[NSUserDefaults standardUserDefaults] boolForKey:KEY_VIBRATE]];
+    [DisplayTimeSlider setOn:[[NSUserDefaults standardUserDefaults] boolForKey:KEY_SHOW_TIME]];
 }
 
 /*
@@ -79,6 +82,8 @@
     [self setRedTimeLab:nil];
     [self setVibrateSlider:nil];
     [self setLastSpeechTime:nil];
+    [self setFlashTimeLab:nil];
+    [self setDisplayTimeSlider:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -105,19 +110,32 @@
     [self performSegueWithIdentifier:@"editingSegue" sender:self];
 }
 
+- (IBAction)flashEditing:(id)sender {
+    [TKTimePickerController setEditingState:kFlash];
+    [self performSegueWithIdentifier:@"editingSegue" sender:self];
+}
+
 - (IBAction)VibrateValueChanged:(id)sender {
-    [SharedConfig sharedInstance].shouldVibrate = [VibrateSlider isOn];
+    [[NSUserDefaults standardUserDefaults] setBool:[VibrateSlider isOn] forKey:KEY_VIBRATE];
 }
 
 - (IBAction)StartPressed:(id)sender {
     
-    SharedConfig* config = [SharedConfig sharedInstance];
+    int green = [[NSUserDefaults standardUserDefaults] integerForKey:KEY_GREEN_TIME];
+    int amber = [[NSUserDefaults standardUserDefaults] integerForKey:KEY_AMBER_TIME];
+    int red = [[NSUserDefaults standardUserDefaults] integerForKey:KEY_RED_TIME];
+    int flash = [[NSUserDefaults standardUserDefaults] integerForKey:KEY_FLASH_TIME];
+    
     // Validate config
-    if(config.green < config.amber && config.amber < config.red){
+    if(green < amber && amber < red && red < flash){
         [self performSegueWithIdentifier:@"startTimer" sender:self];
     } else {
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Invalid light times" message:@"Times for the Green, Amber and Red lights must be different and in order." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Invalid light times" message:@"Times for the Green, Amber, Red and flashing lights must be different and in order." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [alert show];
     }
+}
+
+- (IBAction)DisplayTimeValueChanged:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:[DisplayTimeSlider isOn] forKey:KEY_SHOW_TIME];
 }
 @end

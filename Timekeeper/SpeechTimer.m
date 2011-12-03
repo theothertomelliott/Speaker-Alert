@@ -12,7 +12,7 @@
 
 -(NSTimeInterval) getCurrentTime {
     NSDate* now = [NSDate date];
-    int offset = timeOffset != -1 ? timeOffset : 0;
+    NSInteger offset = timeOffset != -1 ? timeOffset : 0;
     return [now timeIntervalSinceDate: startTime] + offset;
 }
 
@@ -37,16 +37,25 @@
     return self;
 }
 
--(SpeechTimer*) initTimerWithGreen:(int) green Amber: (int) amber Red:(int) red andDelegate: (id<SpeechTimerListener>) theListener;
+-(SpeechTimer*) initTimerWithGreen:(NSInteger) green Amber: (NSInteger) amber Red:(NSInteger) red Flash:(NSInteger) flash andDelegate: (id<SpeechTimerListener>) theListener;
 {
-    greenAtS = green;
-    amberAtS = amber;
-    redAtS = red;
+    times = [NSArray arrayWithObjects: 
+             [NSNumber numberWithInt:0],
+             [NSNumber numberWithInt:green],
+             [NSNumber numberWithInt:amber],
+             [NSNumber numberWithInt:red],
+             [NSNumber numberWithInt:flash], nil];
     
     listener = theListener;
     
     lightState = kNone;
     timerState = kStopped;
+    
+    NSLog(@"Green = %@, Amber = %@, Red = %@, Flash = %@", 
+          [times objectAtIndex:kGreen], 
+          [times objectAtIndex:kAmber], 
+          [times objectAtIndex:kRed],
+          [times objectAtIndex:kFlash]);
     
     return self;
 }
@@ -55,19 +64,10 @@
     NSTimeInterval interval = [self getCurrentTime];
     [listener timeUpdated:interval];
     
-    if((interval >= greenAtS) && lightState < kGreen){
-        [listener atGreen:wasSuspended];
-        lightState = kGreen;
-    }
-    
-    if((interval >= amberAtS) && lightState < kAmber){
-        [listener atAmber:wasSuspended];
-        lightState = kAmber;
-    }
-    
-    if((interval >= redAtS) && lightState < kRed){
-        [listener atRed:wasSuspended];
-        lightState = kRed;
+    if(lightState+1 < [times count] && 
+       (interval >= [[times objectAtIndex:lightState+1] integerValue])){
+        lightState++;
+        [listener lightChanged:lightState fromSuspension:wasSuspended];
     }
 }
 
@@ -117,19 +117,13 @@
     timerState = kStopped;
 }
 
--(NSDate*) greenTime {
-    int offset = timeOffset != -1 ? timeOffset : 0;
-    return [startTime dateByAddingTimeInterval:(greenAtS - offset)];
-}
-
--(NSDate*) amberTime {
-    int offset = timeOffset != -1 ? timeOffset : 0;
-    return [startTime dateByAddingTimeInterval:(amberAtS - offset)];   
-}
-
--(NSDate*) redTime {
-    int offset = timeOffset != -1 ? timeOffset : 0;
-    return [startTime dateByAddingTimeInterval:(redAtS - offset)];
+-(NSDate*) getTimeForState:(LightState) state {
+    if(state < kGreen){
+        return nil;
+    }
+    
+    NSInteger offset = timeOffset != -1 ? timeOffset : 0;
+    return [startTime dateByAddingTimeInterval:([[times objectAtIndex:state] integerValue] - offset)];
 }
 
 @end

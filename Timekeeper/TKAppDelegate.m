@@ -7,8 +7,8 @@
 //
 
 #import "TKAppDelegate.h"
-#import "SharedConfig.h"
 #import "TKViewController.h"
+#import "TKConst.h"
 
 @implementation TKAppDelegate
 
@@ -16,7 +16,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+
+    [[NSUserDefaults standardUserDefaults] registerDefaults:
+        [NSDictionary dictionaryWithObjectsAndKeys:
+         [NSNumber numberWithBool:INITIAL_SHOW_TIME],
+         KEY_SHOW_TIME,
+         [NSNumber numberWithBool:INITIAL_VIBRATE],
+         KEY_VIBRATE,
+         [NSNumber numberWithInt:INITIAL_GREEN_S],
+         KEY_GREEN_TIME,
+         [NSNumber numberWithInt:INITIAL_AMBER_S],
+         KEY_AMBER_TIME,
+         [NSNumber numberWithInt:INITIAL_RED_S],
+         KEY_RED_TIME,
+         [NSNumber numberWithInt:INITIAL_FLASH_S],
+         KEY_FLASH_TIME,
+         nil]
+     ];
+    
+    
     return YES;
 }
 							
@@ -26,10 +44,9 @@
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
-    [[SharedConfig sharedInstance] saveSettings];
 }
 
-- (void) createNotification:(NSString*) light withDate:(NSDate*) time {
+- (void) createNotification:(NSString*) body withDate:(NSDate*) time {
     UIApplication* app = [UIApplication sharedApplication];
 
     // Create a new notification.
@@ -40,7 +57,7 @@
         alarm.timeZone = [NSTimeZone defaultTimeZone];
         alarm.repeatInterval = 0;
         alarm.soundName = UILocalNotificationDefaultSoundName;
-        alarm.alertBody = [NSString stringWithFormat:@"%@ light.",light];
+        alarm.alertBody = body;
         
         [app scheduleLocalNotification:alarm];
     }
@@ -81,13 +98,16 @@
         LightState light = [timer getLightState];
         
         if(light < kGreen){
-            [self createNotification:@"Green" withDate:[timer greenTime]];
+            [self createNotification:@"Green Light" withDate:[timer getTimeForState:kGreen]];
         }
         if(light < kAmber){
-            [self createNotification:@"Amber" withDate:[timer amberTime]];
+            [self createNotification:@"Amber Light" withDate:[timer getTimeForState:kAmber]];
         }
         if(light < kRed){
-            [self createNotification:@"Red" withDate:[timer redTime]];
+            [self createNotification:@"Red Light" withDate:[timer getTimeForState:kRed]];
+        }
+        if(light < kFlash){
+            [self createNotification:@"Time's up." withDate:[timer getTimeForState:kFlash]];
         }
         
         [timer suspend];

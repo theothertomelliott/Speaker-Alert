@@ -58,14 +58,16 @@ static SpeechTimer* myTimer;
         myTimer = nil;
     }
     
-    SharedConfig* config = [SharedConfig sharedInstance];
+    NSInteger greenTime = [[NSUserDefaults standardUserDefaults] integerForKey:KEY_GREEN_TIME];
+    NSInteger amberTime = [[NSUserDefaults standardUserDefaults] integerForKey:KEY_AMBER_TIME];
+    NSInteger redTime = [[NSUserDefaults standardUserDefaults] integerForKey:KEY_RED_TIME];
+    NSInteger flashTime = [[NSUserDefaults standardUserDefaults] integerForKey:KEY_FLASH_TIME];
     
-    int greenTime = [config green];
-    int amberTime = [config amber];
-    int redTime = [config red];
+    myTimer = [[SpeechTimer alloc] initTimerWithGreen:greenTime Amber:amberTime Red:redTime Flash:flashTime andDelegate:self];
+    [myTimer start];
     
-    myTimer = [[SpeechTimer alloc] initTimerWithGreen:greenTime Amber:amberTime Red:redTime andDelegate:self];
-    [myTimer start];    
+    [timeLabel setHidden:![[NSUserDefaults standardUserDefaults] boolForKey:KEY_SHOW_TIME]];
+    
     // Prevent locking or dimming while idle.
     [UIApplication sharedApplication].idleTimerDisabled=YES;
 }
@@ -99,33 +101,30 @@ static SpeechTimer* myTimer;
     [timeLabel setText:[NSString stringWithFormat: @"%d:%02d", elapsedM, elapsedS]];
 }
 
-- (void)atGreen:(BOOL) wasSuspended {
-    NSLog(@"Reached green");
-    myView.backgroundColor = [UIColor colorWithRed:0.0f green:0.75f blue:0.0f alpha:1.0f];
-    if([SharedConfig sharedInstance].shouldVibrate && !wasSuspended){
-        [VibrateQueue vibrateWithRepetitions:1];
+- (void)lightChanged:(LightState)state fromSuspension:(BOOL)wasSuspended {
+    
+    UIColor* color = nil;
+    if(state == kGreen){
+        color = [UIColor colorWithRed:0.0f green:0.75f blue:0.0f alpha:1.0f];    
+    } else if(state == kAmber){
+        color = [UIColor yellowColor];
+    } else if(state == kRed){
+        color = [UIColor redColor];
+    } else if(state == kFlash){
+        color = [UIColor whiteColor];
+        // TODO: Create a timer for flashing
     }
-}
 
-- (void)atAmber:(BOOL) wasSuspended {
-    NSLog(@"Reached amber");
-    myView.backgroundColor = [UIColor yellowColor]; 
-    if([SharedConfig sharedInstance].shouldVibrate && !wasSuspended){
-        [VibrateQueue vibrateWithRepetitions:2];
-    }
-}
-
-- (void)atRed:(BOOL) wasSuspended {
-    NSLog(@"Reached red");
-    myView.backgroundColor = [UIColor redColor];
-    if([SharedConfig sharedInstance].shouldVibrate && !wasSuspended){
-        [VibrateQueue vibrateWithRepetitions:3];
+    myView.backgroundColor = color;
+    
+    if([[NSUserDefaults standardUserDefaults] boolForKey:KEY_VIBRATE] && !wasSuspended){
+        [VibrateQueue vibrateWithRepetitions:state];
     }
 }
 
 - (IBAction)StopPressed:(id)sender {
     NSTimeInterval currentTime = [myTimer getCurrentTime];
-    [SharedConfig sharedInstance].lastSpeech = currentTime;
+    [[NSUserDefaults standardUserDefaults] setInteger:currentTime forKey:KEY_LAST_TIME];
     
     // Stop the timer
     if(myTimer){

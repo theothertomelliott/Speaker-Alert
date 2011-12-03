@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import "SpeechTimer.h"
-#import "SharedConfig.h"
 #import "TKConst.h"
 #import "VibrateQueue.h"
 

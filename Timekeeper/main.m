@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import "TKAppDelegate.h"
-#import "SharedConfig.h"
 
 int main(int argc, char *argv[])
 {
