@@ -72,6 +72,10 @@ static SpeechTimer* myTimer;
     [UIApplication sharedApplication].idleTimerDisabled=YES;
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
