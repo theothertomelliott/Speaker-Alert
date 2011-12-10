@@ -42,12 +42,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    greenTimeLab.text = [self formatTimer:[[NSUserDefaults standardUserDefaults] integerForKey:KEY_GREEN_TIME]];   
-    amberTimeLab.text = [self formatTimer:[[NSUserDefaults standardUserDefaults] integerForKey:KEY_AMBER_TIME]];
-    redTimeLab.text = [self formatTimer:[[NSUserDefaults standardUserDefaults] integerForKey:KEY_RED_TIME]];
-    flashTimeLab.text = [self formatTimer:[[NSUserDefaults standardUserDefaults] integerForKey:KEY_FLASH_TIME]];
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     
-    int lastTime = [[NSUserDefaults standardUserDefaults] integerForKey:KEY_LAST_TIME];
+    greenTimeLab.text = [self formatTimer:[defaults integerForKey:KEY_GREEN_TIME]];   
+    amberTimeLab.text = [self formatTimer:[defaults integerForKey:KEY_AMBER_TIME]];
+    redTimeLab.text = [self formatTimer:[defaults integerForKey:KEY_RED_TIME]];
+    flashTimeLab.text = [self formatTimer:[defaults integerForKey:KEY_FLASH_TIME]];
+    
+    int lastTime = [defaults integerForKey:KEY_LAST_TIME];
     if(lastTime != -1){
         lastSpeechTime.text = [self formatTimer:lastTime];
     } else {

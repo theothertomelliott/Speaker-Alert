@@ -113,10 +113,15 @@
         [timer suspend];
     }
     
+    // Save defaults
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+    // Ensure defaults are up to date
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */

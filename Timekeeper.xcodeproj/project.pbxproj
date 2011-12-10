@@ -99,7 +99,6 @@
 		E205E476147F0C6D004B721B = {
 			isa = PBXGroup;
 			children = (
-				E25C9BA71481BCFA00FA84C3 /* AudioToolbox.framework */,
 				E205E48B147F0C6D004B721B /* Timekeeper */,
 				E205E4A9147F0C6E004B721B /* TimekeeperTests */,
 				E205E484147F0C6D004B721B /* Frameworks */,
@@ -119,6 +118,7 @@
 		E205E484147F0C6D004B721B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E25C9BA71481BCFA00FA84C3 /* AudioToolbox.framework */,
 				E205E485147F0C6D004B721B /* UIKit.framework */,
 				E205E487147F0C6D004B721B /* Foundation.framework */,
 				E205E489147F0C6D004B721B /* CoreGraphics.framework */,
