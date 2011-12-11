@@ -24,6 +24,10 @@
 		E21DF5EE1482BC070012D456 /* VibrateQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E21DF5ED1482BC070012D456 /* VibrateQueue.m */; };
 		E238BB08148A815F006AE488 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E238BB07148A815F006AE488 /* Settings.bundle */; };
 		E25C9BA81481BCFA00FA84C3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25C9BA71481BCFA00FA84C3 /* AudioToolbox.framework */; };
+		E28896DE1495300200784B18 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E28896DD1495300200784B18 /* Default@2x.png */; };
+		E28896E11495306B00784B18 /* icon-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = E28896E01495306B00784B18 /* icon-retina.png */; };
+		E28896E31495307100784B18 /* iconfull-small.png in Resources */ = {isa = PBXBuildFile; fileRef = E28896E21495307100784B18 /* iconfull-small.png */; };
+		E28896E5149530C400784B18 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E28896E4149530C400784B18 /* Default.png */; };
 		E2F312201480509600044C15 /* TKTimePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F3121F1480509600044C15 /* TKTimePickerController.m */; };
 		E2F3122314805FED00044C15 /* TKOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F3122214805FEC00044C15 /* TKOverviewController.m */; };
 /* End PBXBuildFile section */
@@ -65,6 +69,10 @@
 		E238BB07148A815F006AE488 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E25C9BA51481B89E00FA84C3 /* TKConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKConst.h; sourceTree = "<group>"; };
 		E25C9BA71481BCFA00FA84C3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E28896DD1495300200784B18 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		E28896E01495306B00784B18 /* icon-retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-retina.png"; sourceTree = "<group>"; };
+		E28896E21495307100784B18 /* iconfull-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfull-small.png"; sourceTree = "<group>"; };
+		E28896E4149530C400784B18 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		E2F3121E1480509600044C15 /* TKTimePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKTimePickerController.h; sourceTree = "<group>"; };
 		E2F3121F1480509600044C15 /* TKTimePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTimePickerController.m; sourceTree = "<group>"; };
 		E2F3122114805FEC00044C15 /* TKOverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOverviewController.h; sourceTree = "<group>"; };
@@ -99,6 +107,10 @@
 		E205E476147F0C6D004B721B = {
 			isa = PBXGroup;
 			children = (
+				E28896E4149530C400784B18 /* Default.png */,
+				E28896E21495307100784B18 /* iconfull-small.png */,
+				E28896E01495306B00784B18 /* icon-retina.png */,
+				E28896DD1495300200784B18 /* Default@2x.png */,
 				E205E48B147F0C6D004B721B /* Timekeeper */,
 				E205E4A9147F0C6E004B721B /* TimekeeperTests */,
 				E205E484147F0C6D004B721B /* Frameworks */,
@@ -253,6 +265,10 @@
 				E205E490147F0C6D004B721B /* InfoPlist.strings in Resources */,
 				E205E499147F0C6D004B721B /* MainStoryboard.storyboard in Resources */,
 				E238BB08148A815F006AE488 /* Settings.bundle in Resources */,
+				E28896DE1495300200784B18 /* Default@2x.png in Resources */,
+				E28896E11495306B00784B18 /* icon-retina.png in Resources */,
+				E28896E31495307100784B18 /* iconfull-small.png in Resources */,
+				E28896E5149530C400784B18 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +460,56 @@
 			};
 			name = Release;
 		};
+		E28896E614953C7200784B18 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
+		E28896E714953C7200784B18 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tom Elliott";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Timekeeper/Timekeeper-Prefix.pch";
+				INFOPLIST_FILE = "Timekeeper/Timekeeper-Info.plist";
+				PRODUCT_NAME = SpeakerAlert;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "95428B36-AADC-4537-B35A-97FCA046CE90";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Distribution;
+		};
+		E28896E814953C7200784B18 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Timekeeper.app/Timekeeper";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Timekeeper/Timekeeper-Prefix.pch";
+				INFOPLIST_FILE = "TimekeeperTests/TimekeeperTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Distribution;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -452,6 +518,7 @@
 			buildConfigurations = (
 				E205E4B2147F0C6E004B721B /* Debug */,
 				E205E4B3147F0C6E004B721B /* Release */,
+				E28896E614953C7200784B18 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -461,6 +528,7 @@
 			buildConfigurations = (
 				E205E4B5147F0C6E004B721B /* Debug */,
 				E205E4B6147F0C6E004B721B /* Release */,
+				E28896E714953C7200784B18 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -470,6 +538,7 @@
 			buildConfigurations = (
 				E205E4B8147F0C6E004B721B /* Debug */,
 				E205E4B9147F0C6E004B721B /* Release */,
+				E28896E814953C7200784B18 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
