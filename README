@@ -1,6 +1,0 @@
-Speaker Alert
-=============
-
-A personal challenge to write an iOS app over a weekend.
-
-Speaker Alert is a simple iPhone app for timing speeches, based on the Toastmasters "Traffic Light" model. The elapsed time is displayed in the centre of the main view, and the background of the app changes at set times: Green for the target speech time, Amber approaching the maximum time, and Red when the maximum time has been used. Vibration alerts are also given when the lights change.
