@@ -23,6 +23,8 @@
 		E23481281B2906EB0076247D /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23481271B2906EB0076247D /* NotificationController.swift */; };
 		E234812A1B2906EB0076247D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23481291B2906EB0076247D /* ComplicationController.swift */; };
 		E234812C1B2906EB0076247D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E234812B1B2906EB0076247D /* Assets.xcassets */; };
+		E28AA3571B2CA74F000F5A15 /* Timing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3561B2CA74F000F5A15 /* Timing.swift */; };
+		E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +109,8 @@
 		E23481291B2906EB0076247D /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		E234812B1B2906EB0076247D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E234812D1B2906EB0076247D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E28AA3561B2CA74F000F5A15 /* Timing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timing.swift; sourceTree = "<group>"; };
+		E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,7 @@
 		E23480E71B2906EA0076247D /* SpeakerAlert */ = {
 			isa = PBXGroup;
 			children = (
+				E28AA3531B2CA70F000F5A15 /* SpeechTimer */,
 				E23480E81B2906EA0076247D /* AppDelegate.swift */,
 				E23480EA1B2906EA0076247D /* ViewController.swift */,
 				E23480EC1B2906EA0076247D /* Main.storyboard */,
@@ -226,6 +231,15 @@
 				E23481221B2906EB0076247D /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E28AA3531B2CA70F000F5A15 /* SpeechTimer */ = {
+			isa = PBXGroup;
+			children = (
+				E28AA3561B2CA74F000F5A15 /* Timing.swift */,
+				E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */,
+			);
+			name = SpeechTimer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,6 +435,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23480EB1B2906EA0076247D /* ViewController.swift in Sources */,
+				E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */,
+				E28AA3571B2CA74F000F5A15 /* Timing.swift in Sources */,
 				E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -749,6 +765,7 @@
 				E23481321B2906EB0076247D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E23481341B2906EB0076247D /* Build configuration list for PBXNativeTarget "SpeakerAlert WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -757,6 +774,7 @@
 				E23481361B2906EB0076247D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E23481381B2906EB0076247D /* Build configuration list for PBXNativeTarget "SpeakerAlert" */ = {
 			isa = XCConfigurationList;
@@ -765,6 +783,7 @@
 				E234813A1B2906EB0076247D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E234813B1B2906EB0076247D /* Build configuration list for PBXNativeTarget "SpeakerAlertTests" */ = {
 			isa = XCConfigurationList;
@@ -773,6 +792,7 @@
 				E234813D1B2906EB0076247D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E234813E1B2906EB0076247D /* Build configuration list for PBXNativeTarget "SpeakerAlertUITests" */ = {
 			isa = XCConfigurationList;
@@ -781,6 +801,7 @@
 				E23481401B2906EB0076247D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
