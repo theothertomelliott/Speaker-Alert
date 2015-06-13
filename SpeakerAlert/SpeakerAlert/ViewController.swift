@@ -12,6 +12,15 @@ class ViewController: UIViewController {
 
     var timer : SpeechTimer?;
     
+    class TD : NSObject, SpeechTimerDelegate {
+        
+        func green(timer : SpeechTimer) { NSLog("Delegate Green"); }
+        func yellow(timer : SpeechTimer) { NSLog("Delegate Yellow"); }
+        func red(timer : SpeechTimer) { NSLog("Delegate Red"); }
+        func redBlink(timer : SpeechTimer) { NSLog("Delegate Red Blink"); }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,6 +28,7 @@ class ViewController: UIViewController {
         let timings : Timing = Timing(withName: "Test", greenInterval: 1, yellowInterval: 20, redInterval: 30, redBlinkInterval: 35);
         timer = SpeechTimer(withTimings: timings);
         
+        timer?.delegate = TD();
     }
     
     @IBAction func start(sender : UIButton){

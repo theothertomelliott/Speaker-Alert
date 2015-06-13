@@ -10,6 +10,8 @@ import Foundation
 
 public class SpeechTimer : NSObject {
     
+    var delegate : SpeechTimerDelegate?;
+    
     var timings : Timing;
     var greenTimer : NSTimer?;
     var yellowTimer : NSTimer?;
@@ -81,14 +83,20 @@ public class SpeechTimer : NSObject {
     
     func green(timer: NSTimer!){
         NSLog("Green");
+        
+        delegate?.green(self);
     }
     
     func yellow(timer: NSTimer!){
         NSLog("Yellow");
+        
+        delegate?.yellow(self);
     }
     
     func red(timer: NSTimer!){
         NSLog("Red");
+        
+        delegate?.red(self);
     }
     
     func redBlink(timer: NSTimer!){
@@ -96,6 +104,18 @@ public class SpeechTimer : NSObject {
         
         // This is the last interval, stop here
         stop();
+        
+        delegate?.redBlink(self);
     }
     
 }
+
+protocol SpeechTimerDelegate {
+    
+    func green(timer : SpeechTimer);
+    func yellow(timer : SpeechTimer);
+    func red(timer : SpeechTimer);
+    func redBlink(timer : SpeechTimer);
+    
+}
+
