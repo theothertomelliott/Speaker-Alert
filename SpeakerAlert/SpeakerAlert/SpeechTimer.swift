@@ -29,6 +29,11 @@ public class SpeechTimer : NSObject {
         running = false;
     }
     
+    /**
+        Start this timer.
+
+        If this timer was previously paused, start from the interval at which it was paused.
+    */
     func start(){
         
         if(!running){
@@ -51,6 +56,13 @@ public class SpeechTimer : NSObject {
         }
     }
     
+    /**
+        Pause this timer.
+    
+        If the timer is not running, does nothing.
+    
+        When start() is next called, the timer will resume from the time at which it was paused.
+    */
     func pause(){
         
         if(running){
@@ -66,6 +78,13 @@ public class SpeechTimer : NSObject {
         }
     }
     
+    /**
+        Stop this timer.
+    
+        If the timer is not running, does nothing.
+    
+        When start() is next called, the timer will start from zero.
+    */
     func stop(){
         if(running){
             NSLog("Stopping");
