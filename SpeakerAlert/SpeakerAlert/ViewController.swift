@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
@@ -25,7 +26,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let timings : Timing = Timing(withName: "Test", greenInterval: 1, yellowInterval: 20, redInterval: 30, redBlinkInterval: 35);
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        //2
+        let entity =  NSEntityDescription.entityForName("Timing",
+            inManagedObjectContext:
+            managedContext)!
+        
+        let timings = Timing(entity: entity, insertIntoManagedObjectContext: managedContext)
+        timings.name = "Test"
+        timings.green = 1
+        timings.yellow = 20
+        timings.red = 30
+        timings.redBlink = 35
+        
         timer = SpeechTimer(withTimings: timings);
         
         timer?.delegate = TD();

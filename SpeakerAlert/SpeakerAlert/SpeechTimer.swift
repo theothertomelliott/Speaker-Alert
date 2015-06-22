@@ -39,17 +39,17 @@ public class SpeechTimer : NSObject {
         if(!running){
             NSLog("Starting, pause interval = %g", pauseInterval);
             
-            if(pauseInterval < timings.green){
-                greenTimer = NSTimer.scheduledTimerWithTimeInterval(timings.green - pauseInterval, target: self, selector: "green:", userInfo: nil, repeats: false);
+            if(pauseInterval < NSTimeInterval(timings.green!)){
+                greenTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(timings.green!) - pauseInterval, target: self, selector: "green:", userInfo: nil, repeats: false);
             }
-            if(pauseInterval < timings.yellow){
-                yellowTimer = NSTimer.scheduledTimerWithTimeInterval(timings.yellow - pauseInterval, target: self, selector: "yellow:", userInfo: nil, repeats: false);
+            if(pauseInterval < NSTimeInterval(timings.yellow!)){
+                yellowTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(timings.yellow!) - pauseInterval, target: self, selector: "yellow:", userInfo: nil, repeats: false);
             }
-            if(pauseInterval < timings.red){
-                redTimer = NSTimer.scheduledTimerWithTimeInterval(timings.red - pauseInterval, target: self, selector: "red:", userInfo: nil, repeats: false);
+            if(pauseInterval < NSTimeInterval(timings.red!)){
+                redTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(timings.red!) - pauseInterval, target: self, selector: "red:", userInfo: nil, repeats: false);
             }
-            if(pauseInterval < timings.redBlink){
-                redBlinkTimer = NSTimer.scheduledTimerWithTimeInterval(timings.redBlink - pauseInterval, target: self, selector: "redBlink:", userInfo: nil, repeats: false);
+            if(pauseInterval < NSTimeInterval(timings.redBlink!)){
+                redBlinkTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(timings.redBlink!) - pauseInterval, target: self, selector: "redBlink:", userInfo: nil, repeats: false);
             }
             startTime = NSDate();
             running = true;
