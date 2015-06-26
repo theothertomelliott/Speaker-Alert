@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8E21BF70E82BF41BC4BBC79 /* Pods_SpeakerAlertTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C1174FD04EBE60B6AA870B /* Pods_SpeakerAlertTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D2C50F50FDE26C573823F396 /* Pods_SpeakerAlert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23480E81B2906EA0076247D /* AppDelegate.swift */; };
 		E23480EB1B2906EA0076247D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23480EA1B2906EA0076247D /* ViewController.swift */; };
 		E23480EE1B2906EA0076247D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23480EC1B2906EA0076247D /* Main.storyboard */; };
@@ -24,6 +26,9 @@
 		E234812A1B2906EB0076247D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23481291B2906EB0076247D /* ComplicationController.swift */; };
 		E234812C1B2906EB0076247D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E234812B1B2906EB0076247D /* Assets.xcassets */; };
 		E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
+		E2929A891B3CCE6E007030D4 /* Timing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Timing.swift */; };
+		E2929A8A1B3CCE71007030D4 /* Timing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Timing+CoreDataProperties.swift */; };
+		E2929A8B1B3CCE74007030D4 /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
 		E2C9020C1B33BA5600B39D37 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C9020B1B33BA5600B39D37 /* CoreData.framework */; };
 		E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2C9020D1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld */; };
 		E2F6B5F11B378F2600210504 /* Timing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Timing+CoreDataProperties.swift */; };
@@ -87,6 +92,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		037A8FF3AD0A07FC5FF59EA7 /* Pods-SpeakerAlert.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlert.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlert/Pods-SpeakerAlert.debug.xcconfig"; sourceTree = "<group>"; };
+		4E6C05D69A1F923D69A1DAE7 /* Pods-SpeakerAlertTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlertTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlertTests/Pods-SpeakerAlertTests.release.xcconfig"; sourceTree = "<group>"; };
+		56C1174FD04EBE60B6AA870B /* Pods_SpeakerAlertTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeakerAlertTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeakerAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		762393DDD7583B928EBD75E6 /* Pods-SpeakerAlertTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlertTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlertTests/Pods-SpeakerAlertTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D43FA6F56ECA171B284DC711 /* Pods-SpeakerAlert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlert.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlert/Pods-SpeakerAlert.release.xcconfig"; sourceTree = "<group>"; };
 		E23480E51B2906EA0076247D /* SpeakerAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakerAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23480E81B2906EA0076247D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E23480EA1B2906EA0076247D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +124,7 @@
 		E234812B1B2906EB0076247D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E234812D1B2906EB0076247D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechTimer.swift; sourceTree = "<group>"; };
+		E2929A881B3CCD14007030D4 /* SpeakerAlert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeakerAlert-Bridging-Header.h"; sourceTree = "<group>"; };
 		E2C9020B1B33BA5600B39D37 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E2C9020E1B33BAA300B39D37 /* SpeakerAlert.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpeakerAlert.xcdatamodel; sourceTree = "<group>"; };
 		E2F6B5EF1B378F2600210504 /* Timing+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Timing+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -125,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2C9020C1B33BA5600B39D37 /* CoreData.framework in Frameworks */,
+				D2C50F50FDE26C573823F396 /* Pods_SpeakerAlert.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8E21BF70E82BF41BC4BBC79 /* Pods_SpeakerAlertTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,9 +166,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F8F9C42A66E73FB67688328 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				037A8FF3AD0A07FC5FF59EA7 /* Pods-SpeakerAlert.debug.xcconfig */,
+				D43FA6F56ECA171B284DC711 /* Pods-SpeakerAlert.release.xcconfig */,
+				762393DDD7583B928EBD75E6 /* Pods-SpeakerAlertTests.debug.xcconfig */,
+				4E6C05D69A1F923D69A1DAE7 /* Pods-SpeakerAlertTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E23480DC1B2906EA0076247D = {
 			isa = PBXGroup;
 			children = (
+				E2929A881B3CCD14007030D4 /* SpeakerAlert-Bridging-Header.h */,
 				E2C9020B1B33BA5600B39D37 /* CoreData.framework */,
 				E23480E71B2906EA0076247D /* SpeakerAlert */,
 				E23480FC1B2906EB0076247D /* SpeakerAlertTests */,
@@ -162,6 +188,8 @@
 				E23481111B2906EB0076247D /* SpeakerAlert WatchKit App */,
 				E23481201B2906EB0076247D /* SpeakerAlert WatchKit Extension */,
 				E23480E61B2906EA0076247D /* Products */,
+				7F8F9C42A66E73FB67688328 /* Pods */,
+				E80F4507498E5D6E3CB32507 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -252,6 +280,15 @@
 			name = SpeechTimer;
 			sourceTree = "<group>";
 		};
+		E80F4507498E5D6E3CB32507 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */,
+				56C1174FD04EBE60B6AA870B /* Pods_SpeakerAlertTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -259,10 +296,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E23481381B2906EB0076247D /* Build configuration list for PBXNativeTarget "SpeakerAlert" */;
 			buildPhases = (
+				3D7A4282BA74DBAA2AFA4C64 /* Check Pods Manifest.lock */,
 				E23480E11B2906EA0076247D /* Sources */,
 				E23480E21B2906EA0076247D /* Frameworks */,
 				E23480E31B2906EA0076247D /* Resources */,
 				E23481371B2906EB0076247D /* Embed Watch Content */,
+				5E0806541896A766B2E33215 /* Embed Pods Frameworks */,
+				A4402814F1D513040E22E67A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -278,9 +318,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E234813B1B2906EB0076247D /* Build configuration list for PBXNativeTarget "SpeakerAlertTests" */;
 			buildPhases = (
+				85EFFFB814D211DA37ACDAF2 /* Check Pods Manifest.lock */,
 				E23480F51B2906EB0076247D /* Sources */,
 				E23480F61B2906EB0076247D /* Frameworks */,
 				E23480F71B2906EB0076247D /* Resources */,
+				689D663AD1EF2530307026DE /* Embed Pods Frameworks */,
+				9AA4B1DAF22C729DBAA09D50 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -439,6 +482,99 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3D7A4282BA74DBAA2AFA4C64 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5E0806541896A766B2E33215 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-SpeakerAlert/Pods-SpeakerAlert-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		689D663AD1EF2530307026DE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-SpeakerAlertTests/Pods-SpeakerAlertTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85EFFFB814D211DA37ACDAF2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9AA4B1DAF22C729DBAA09D50 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-SpeakerAlertTests/Pods-SpeakerAlertTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4402814F1D513040E22E67A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-SpeakerAlert/Pods-SpeakerAlert-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E23480E11B2906EA0076247D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -458,6 +594,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23480FE1B2906EB0076247D /* SpeakerAlertTests.swift in Sources */,
+				E2929A8B1B3CCE74007030D4 /* SpeechTimer.swift in Sources */,
+				E2929A8A1B3CCE71007030D4 /* Timing+CoreDataProperties.swift in Sources */,
+				E2929A891B3CCE6E007030D4 /* Timing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +823,7 @@
 		};
 		E23481391B2906EB0076247D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 037A8FF3AD0A07FC5FF59EA7 /* Pods-SpeakerAlert.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -693,11 +833,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.theothertomelliott.SpeakerAlert;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpeakerAlert-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		E234813A1B2906EB0076247D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D43FA6F56ECA171B284DC711 /* Pods-SpeakerAlert.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -707,29 +849,34 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.theothertomelliott.SpeakerAlert;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpeakerAlert-Bridging-Header.h";
 			};
 			name = Release;
 		};
 		E234813C1B2906EB0076247D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 762393DDD7583B928EBD75E6 /* Pods-SpeakerAlertTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SpeakerAlertTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.theothertomelliott.SpeakerAlertTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpeakerAlert-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeakerAlert.app/SpeakerAlert";
 			};
 			name = Debug;
 		};
 		E234813D1B2906EB0076247D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E6C05D69A1F923D69A1DAE7 /* Pods-SpeakerAlertTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SpeakerAlertTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.theothertomelliott.SpeakerAlertTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpeakerAlert-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeakerAlert.app/SpeakerAlert";
 			};
 			name = Release;

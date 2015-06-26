@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import MagicalRecord
 
 class SpeakerAlertTests: XCTestCase {
     
@@ -23,6 +24,17 @@ class SpeakerAlertTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        MagicalRecord.setupCoreDataStackWithInMemoryStore()
+        
+        let timer : Timing = Timing.MR_createEntity();
+        timer.green = 1;
+        timer.yellow = 2;
+        timer.red = 3;
+        timer.redBlink = 4;
+
+        // TODO: We need to effectively save the context
+        
     }
     
     func testPerformanceExample() {

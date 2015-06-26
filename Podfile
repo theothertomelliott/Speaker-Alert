@@ -5,9 +5,11 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'SpeakerAlert' do
+	pod "MagicalRecord"
 end
 
 target 'SpeakerAlertTests' do
+	pod "MagicalRecord"
 end
 
 target 'SpeakerAlertUITests' do
