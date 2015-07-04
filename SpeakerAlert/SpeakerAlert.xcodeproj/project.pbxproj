@@ -10,7 +10,6 @@
 		B8E21BF70E82BF41BC4BBC79 /* Pods_SpeakerAlertTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C1174FD04EBE60B6AA870B /* Pods_SpeakerAlertTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D2C50F50FDE26C573823F396 /* Pods_SpeakerAlert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23480E81B2906EA0076247D /* AppDelegate.swift */; };
-		E23480EB1B2906EA0076247D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23480EA1B2906EA0076247D /* ViewController.swift */; };
 		E23480EE1B2906EA0076247D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23480EC1B2906EA0076247D /* Main.storyboard */; };
 		E23480F01B2906EA0076247D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E23480EF1B2906EA0076247D /* Assets.xcassets */; };
 		E23480F31B2906EA0076247D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23480F11B2906EA0076247D /* LaunchScreen.storyboard */; };
@@ -25,6 +24,11 @@
 		E23481281B2906EB0076247D /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23481271B2906EB0076247D /* NotificationController.swift */; };
 		E234812A1B2906EB0076247D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23481291B2906EB0076247D /* ComplicationController.swift */; };
 		E234812C1B2906EB0076247D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E234812B1B2906EB0076247D /* Assets.xcassets */; };
+		E24408A11B48338400EB056C /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */; };
+		E24408A21B48338400EB056C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A01B48338400EB056C /* Group.swift */; };
+		E24408A31B4834F200EB056C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A01B48338400EB056C /* Group.swift */; };
+		E24408A41B4834F400EB056C /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */; };
+		E24408A61B483C8400EB056C /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A51B483C8400EB056C /* GroupTableViewController.swift */; };
 		E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
 		E2929A891B3CCE6E007030D4 /* Timing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Timing.swift */; };
 		E2929A8A1B3CCE71007030D4 /* Timing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Timing+CoreDataProperties.swift */; };
@@ -100,7 +104,6 @@
 		D43FA6F56ECA171B284DC711 /* Pods-SpeakerAlert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlert.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlert/Pods-SpeakerAlert.release.xcconfig"; sourceTree = "<group>"; };
 		E23480E51B2906EA0076247D /* SpeakerAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakerAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23480E81B2906EA0076247D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E23480EA1B2906EA0076247D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E23480ED1B2906EA0076247D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E23480EF1B2906EA0076247D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E23480F21B2906EA0076247D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -123,6 +126,9 @@
 		E23481291B2906EB0076247D /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		E234812B1B2906EB0076247D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E234812D1B2906EB0076247D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E24408A01B48338400EB056C /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		E24408A51B483C8400EB056C /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechTimer.swift; sourceTree = "<group>"; };
 		E2929A881B3CCD14007030D4 /* SpeakerAlert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeakerAlert-Bridging-Header.h"; sourceTree = "<group>"; };
 		E2C9020B1B33BA5600B39D37 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -210,12 +216,12 @@
 			children = (
 				E28AA3531B2CA70F000F5A15 /* SpeechTimer */,
 				E23480E81B2906EA0076247D /* AppDelegate.swift */,
-				E23480EA1B2906EA0076247D /* ViewController.swift */,
 				E23480EC1B2906EA0076247D /* Main.storyboard */,
 				E23480EF1B2906EA0076247D /* Assets.xcassets */,
 				E23480F11B2906EA0076247D /* LaunchScreen.storyboard */,
 				E23480F41B2906EA0076247D /* Info.plist */,
 				E2C9020D1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld */,
+				E24408A51B483C8400EB056C /* GroupTableViewController.swift */,
 			);
 			path = SpeakerAlert;
 			sourceTree = "<group>";
@@ -276,6 +282,8 @@
 				E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */,
 				E2F6B5EF1B378F2600210504 /* Timing+CoreDataProperties.swift */,
 				E2F6B5F01B378F2600210504 /* Timing.swift */,
+				E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */,
+				E24408A01B48338400EB056C /* Group.swift */,
 			);
 			name = SpeechTimer;
 			sourceTree = "<group>";
@@ -393,6 +401,7 @@
 		E23480DD1B2906EA0076247D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "The Other Tom Elliott";
 				TargetAttributes = {
@@ -582,10 +591,12 @@
 			files = (
 				E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */,
 				E2F6B5F21B378F2600210504 /* Timing.swift in Sources */,
-				E23480EB1B2906EA0076247D /* ViewController.swift in Sources */,
+				E24408A21B48338400EB056C /* Group.swift in Sources */,
 				E2F6B5F11B378F2600210504 /* Timing+CoreDataProperties.swift in Sources */,
 				E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */,
 				E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */,
+				E24408A11B48338400EB056C /* Group+CoreDataProperties.swift in Sources */,
+				E24408A61B483C8400EB056C /* GroupTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,8 +605,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23480FE1B2906EB0076247D /* SpeakerAlertTests.swift in Sources */,
+				E24408A41B4834F400EB056C /* Group+CoreDataProperties.swift in Sources */,
 				E2929A8B1B3CCE74007030D4 /* SpeechTimer.swift in Sources */,
 				E2929A8A1B3CCE71007030D4 /* Timing+CoreDataProperties.swift in Sources */,
+				E24408A31B4834F200EB056C /* Group.swift in Sources */,
 				E2929A891B3CCE6E007030D4 /* Timing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

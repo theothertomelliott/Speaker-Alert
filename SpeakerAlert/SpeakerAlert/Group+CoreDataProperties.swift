@@ -1,5 +1,5 @@
 //
-//  Timing+CoreDataProperties.swift
+//  Group+CoreDataProperties.swift
 //  SpeakerAlert
 //
 //  Created by Thomas Elliott on 7/4/15.
@@ -12,13 +12,9 @@
 import Foundation
 import CoreData
 
-extension Timing {
+extension Group {
 
-    @NSManaged var green: NSNumber?
     @NSManaged var name: String?
-    @NSManaged var red: NSNumber?
-    @NSManaged var redBlink: NSNumber?
-    @NSManaged var yellow: NSNumber?
-    @NSManaged var parent: Group?
+    @NSManaged var childTimings: NSSet?
 
 }

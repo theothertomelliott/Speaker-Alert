@@ -13,19 +13,51 @@ class SpeakerAlertTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        MagicalRecord.setupCoreDataStackWithInMemoryStore()
+        
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        
+        MagicalRecord.cleanUp()
+    }
+    
+    func testInitialContextIsEmpty(){
+        let timings : NSArray = Timing.MR_findAll()
+        let groups : NSArray = Group.MR_findAll()
+        
+        XCTAssert(timings.count == 0)
+        XCTAssert(groups.count == 0)
+    }
+    
+    func testTimingsCanBeGroupChildren(){
+        let group : Group = Group.MR_createEntity()
+        group.name = "Group1"
+        
+        let timer : Timing = Timing.MR_createEntity();
+        timer.name = "Timer1"
+        
+        timer.parent = group
+        
+        if let ct = group.childTimings {
+            XCTAssert(ct.containsObject(timer))
+        } else {
+            XCTFail("Expected a set of children in the group")
+        }
+        
+        let timings : NSArray = Timing.MR_findAll()
+        let groups : NSArray = Group.MR_findAll()
+        
+        XCTAssert(timings.count == 1)
+        XCTAssert(groups.count == 1)
     }
     
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
-        MagicalRecord.setupCoreDataStackWithInMemoryStore()
         
         let timer : Timing = Timing.MR_createEntity();
         timer.green = 1;
