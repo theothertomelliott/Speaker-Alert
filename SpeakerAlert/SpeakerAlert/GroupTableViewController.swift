@@ -12,25 +12,64 @@ import MagicalRecord
 
 class GroupTableViewController: UITableViewController {
 
-    @IBAction func addGroup(sender: AnyObject) {
+    func createGroupWithName(name : String){
+        MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
+            // This block runs in background thread
+            
+            let group : Group = Group.MR_createEntityInContext(localContext)
+            group.name = name
+            
+            }, completion: { (success : Bool, error : NSError!) in
+                // This block runs in main thread
+                self.tableView.reloadData()
+        })
+    }
+    
+    func createGroup(){
+        let alertController = UIAlertController(title: "Create Group", message: "Please name your new group", preferredStyle: .Alert)
         
-        NSLog("Adding Group")
+        let createAction = UIAlertAction(title: "Create", style: .Default) { (_) in
+            let groupNameField = alertController.textFields![0] as UITextField
+            self.createGroupWithName(groupNameField.text!)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+        
+        alertController.addAction(createAction)
+        alertController.addAction(cancelAction)
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = "Name"
+        }
+        
+        self.presentViewController(alertController, animated: true) {
+            // ...
+        }
+        
+    }
+    
+    func createTiming(){
+        MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
+            // This block runs in background thread
+            
+            let timing : Timing = Timing.MR_createEntityInContext(localContext)
+            timing.name = "New Timing"
+            
+            }, completion: { (success : Bool, error : NSError!) in
+                // This block runs in main thread
+                self.tableView.reloadData()
+        })
+    }
+    
+    @IBAction func addGroup(sender: AnyObject) {
         
         let alertController = UIAlertController(title: "Add", message: "What would you like to create?", preferredStyle: .Alert)
         
         let oneAction = UIAlertAction(title: "New Group", style: .Default) { (_) in
-            MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
-                // This block runs in background thread
-                
-                let group : Group = Group.MR_createEntityInContext(localContext)
-                group.name = "New Group"
-                
-                }, completion: { (success : Bool, error : NSError!) in
-                    // This block runs in main thread
-                    self.tableView.reloadData()
-            })
+            self.createGroup()
         }
-        let twoAction = UIAlertAction(title: "New Timing", style: .Default) { (_) in }
+        let twoAction = UIAlertAction(title: "New Timing", style: .Default) { (_) in
+            self.createTiming()
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
         
         alertController.addAction(oneAction)
@@ -69,19 +108,23 @@ class GroupTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        let count = Group.MR_findAll().count
-        NSLog("Table view row count: \(count)")
-        return count
+        let count : UInt = Group.MR_countOfEntities() + Timing.MR_countOfEntities()
+        return Int(count)
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 
         // Configure the cell...
-        let groups : NSArray = Group.MR_findAll()
-        let group = groups.objectAtIndex(indexPath.row)
-        
-        cell.textLabel!.text = group.name
+        if(indexPath.row < Int(Group.MR_countOfEntities())){
+            let groups : NSArray = Group.MR_findAll()
+            let group = groups.objectAtIndex(indexPath.row)
+            cell.textLabel!.text = group.name
+        } else {
+            let timings : NSArray = Timing.MR_findAll()
+            let timing = timings.objectAtIndex(indexPath.row - Int(Group.MR_countOfEntities()))
+            cell.textLabel!.text = timing.name
+        }
         
         return cell
     }
