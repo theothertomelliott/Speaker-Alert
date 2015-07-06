@@ -12,6 +12,17 @@ import MagicalRecord
 
 class GroupTableViewController: UITableViewController {
     
+    var groups : [AnyObject] = []
+    var timings : [AnyObject] = []
+    var parentGroup : Group? = nil
+    
+    func setParent(g : Group){
+        parentGroup = g
+        groups = []
+        timings = []
+        self.reloadData()
+    }
+    
     func createGroupWithName(name : String){
         MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
             // This block runs in background thread
@@ -21,8 +32,49 @@ class GroupTableViewController: UITableViewController {
             
             }, completion: { (success : Bool, error : NSError!) in
                 // This block runs in main thread
-                self.tableView.reloadData()
+                self.reloadData()
         })
+    }
+    
+    func createTiming(){
+        MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
+            // This block runs in background thread
+            
+            let timing : Timing = Timing.MR_createEntityInContext(localContext)
+            timing.name = "New Timing"
+            
+            if let pg : Group = self.parentGroup {
+                let cpg : Group = pg.MR_inContext(localContext)
+                timing.parent = cpg
+                
+                NSLog("Timing parent name = \(timing.parent?.name)")
+            } else {
+                NSLog("No timing parent")
+            }
+            
+            
+            }, completion: { (success : Bool, error : NSError!) in
+                // This block runs in main thread
+                self.reloadData()
+        })
+    }
+    
+    func reloadData(){
+        
+        if let pg = parentGroup {
+            // TODO: Reload the parent group
+            
+            timings = (pg.childTimings?.allObjects)!
+            
+        } else {
+            
+            groups = Group.MR_findAll()
+
+            let predicate = NSPredicate(format: "parent = nil")
+            timings = Timing.MR_findAllWithPredicate(predicate)
+        }
+        
+        self.tableView.reloadData()
     }
     
     func createGroup(){
@@ -47,20 +99,12 @@ class GroupTableViewController: UITableViewController {
         
     }
     
-    func createTiming(){
-        MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
-            // This block runs in background thread
-            
-            let timing : Timing = Timing.MR_createEntityInContext(localContext)
-            timing.name = "New Timing"
-            
-            }, completion: { (success : Bool, error : NSError!) in
-                // This block runs in main thread
-                self.tableView.reloadData()
-        })
-    }
-    
     @IBAction func addGroup(sender: AnyObject) {
+        
+        if(parentGroup != nil){
+            self.createTiming()
+            return
+        }
         
         let alertController = UIAlertController(title: "Add", message: "What would you like to create?", preferredStyle: .Alert)
         
@@ -85,15 +129,18 @@ class GroupTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSLog("GroupTableView didLoad")
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
     }
 
+    override func viewDidAppear(animated: Bool) {
+        self.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -108,25 +155,39 @@ class GroupTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        let count : UInt = Group.MR_countOfEntities() + Timing.MR_countOfEntities()
-        return Int(count)
+        return groups.count + timings.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-
+    
         // Configure the cell...
-        if(indexPath.row < Int(Group.MR_countOfEntities())){
-            let groups : NSArray = Group.MR_findAll()
-            let group = groups.objectAtIndex(indexPath.row)
+        if(indexPath.row < groups.count){
+            let cell = tableView.dequeueReusableCellWithIdentifier("GroupCell", forIndexPath: indexPath)
+            let group = groups[indexPath.row]
+
             cell.textLabel!.text = group.name
-        } else {
-            let timings : NSArray = Timing.MR_findAll()
-            let timing = timings.objectAtIndex(indexPath.row - Int(Group.MR_countOfEntities()))
-            cell.textLabel!.text = timing.name
-        }
         
-        return cell
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("TimingCell", forIndexPath: indexPath)
+            
+            let timing = timings[indexPath.row - groups.count]
+            
+                let tn : String = timing.name!
+                cell.textLabel!.text = tn
+            /*
+            if(timing.parentGroup != nil){
+                if let pg : Group = timing.parentGroup {
+                    let pn : String = pg.name!
+                    cell.textLabel!.text = "\(tn) - \(pn)"
+                } else {
+                    cell.textLabel!.text = tn
+                }
+            }
+            */
+            return cell
+        }
+
     }
 
     
@@ -158,7 +219,7 @@ class GroupTableViewController: UITableViewController {
                 
                 }, completion: { (success : Bool, error : NSError!) in
                     // This block runs in main thread
-                    self.tableView.reloadData()
+                    self.reloadData()
             })
 
         } else if editingStyle == .Insert {
@@ -182,14 +243,26 @@ class GroupTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+            let indexPath : NSIndexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
+        
+            NSLog("Row for segue sender = \(indexPath.row)")
+        
+            let g : Group = self.groups[indexPath.row] as! Group
+        
+            NSLog("Group found = \(g.name)")
+            
+            let destination : GroupTableViewController = segue.destinationViewController as! GroupTableViewController
+            destination.setParent(g)
+            destination.title = g.name
+        
     }
-    */
-
+    
 }
