@@ -20,6 +20,7 @@ class GroupTableViewController: UITableViewController {
         parentGroup = g
         groups = []
         timings = []
+        self.title = g.name
         self.reloadData()
     }
     
@@ -251,17 +252,20 @@ class GroupTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-            let indexPath : NSIndexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
+        let indexPath : NSIndexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
         
-            NSLog("Row for segue sender = \(indexPath.row)")
-        
+        if("groupSegue" == segue.identifier){
             let g : Group = self.groups[indexPath.row] as! Group
         
-            NSLog("Group found = \(g.name)")
-            
             let destination : GroupTableViewController = segue.destinationViewController as! GroupTableViewController
             destination.setParent(g)
-            destination.title = g.name
+        }
+        
+        if("timingSegue" == segue.identifier){
+            // TODO: Populate the destination with this timing object
+            let destination : TimingViewController = segue.destinationViewController as! TimingViewController
+            destination.timing = self.timings[indexPath.row - self.groups.count] as! Timing
+        }
         
     }
     
