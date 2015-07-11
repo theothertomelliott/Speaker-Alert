@@ -7,13 +7,11 @@
 //
 
 import UIKit
+import MagicalRecord
 
 class TimingViewController: UIViewController {
 
-    @IBOutlet var greenLabel: UILabel!
-    @IBOutlet var yellowLabel: UILabel!
-    @IBOutlet var redLabel: UILabel!
-    @IBOutlet var redBlinkLabel: UILabel!
+    var maximumTimeS : NSTimeInterval = 0
     
     private var _timing : Timing!
     var timing : Timing! {
@@ -25,7 +23,80 @@ class TimingViewController: UIViewController {
             self._timing = newTiming
             // Apply to view
             self.title = newTiming.name
+            
+            self.maximumTimeS = NSTimeInterval(Double(_timing.redBlink!)*MAX_TIMING_FACTOR)
         }
+    }
+    
+    @IBOutlet var greenLabel: UILabel!
+    @IBOutlet var yellowLabel: UILabel!
+    @IBOutlet var redLabel: UILabel!
+    @IBOutlet var redBlinkLabel: UILabel!
+    
+    @IBOutlet weak var maxTimeTextField: UITextField!
+    
+    let MAX_TIMING_FACTOR = 1.1
+    
+    @IBAction func maxTimeAltered(sender: AnyObject) {
+        
+        NSLog("Max time is now: %@", maxTimeTextField.text!)
+        
+        if let num : NSNumber = Int(maxTimeTextField.text!) {
+            maximumTimeS = NSTimeInterval(num)
+            if(num != Double(_timing.redBlink!)*MAX_TIMING_FACTOR){
+                // Set new values
+                _timing.redBlink = maximumTimeS
+                // Fixed values for now
+                _timing.red = maximumTimeS - 30
+                _timing.yellow = maximumTimeS - 60
+                _timing.green = maximumTimeS - 90
+            }
+            updateLabels()
+        }
+        
+        
+    }
+    
+    @IBOutlet weak var nameLabel: UITextField!
+    @IBAction func nameLabelChanged(sender: AnyObject) {
+        self.timing.name = nameLabel.text
+    }
+    
+    @IBOutlet weak var greenSlider: UISlider!
+    @IBOutlet weak var yellowSlider: UISlider!
+    @IBOutlet weak var redSlider: UISlider!
+    @IBOutlet weak var redBlinkSlider: UISlider!
+    
+    func updateTimingFromSliders(){
+        _timing.green = NSTimeInterval(greenSlider.value);
+        _timing.yellow = NSTimeInterval(yellowSlider.value);
+        _timing.red = NSTimeInterval(redSlider.value);
+        _timing.redBlink = NSTimeInterval(redBlinkSlider.value);
+    }
+    
+    func updateLabels(){
+        self.nameLabel.text = self.timing.name
+        
+        self.greenLabel.text = "\(self.timing.green!)s"
+        self.yellowLabel.text = "\(self.timing.yellow!)s"
+        self.redLabel.text = "\(self.timing.red!)s"
+        self.redBlinkLabel.text = "\(self.timing.redBlink!)s"
+        
+        greenSlider.maximumValue = Float(maximumTimeS)
+        yellowSlider.maximumValue = Float(maximumTimeS)
+        redSlider.maximumValue = Float(maximumTimeS)
+        redBlinkSlider.maximumValue = Float(maximumTimeS)
+        
+        self.greenSlider.value = Float(self._timing.green!)
+        self.yellowSlider.value = Float(self._timing.yellow!)
+        self.redSlider.value = Float(self._timing.red!)
+        self.redBlinkSlider.value = Float(self._timing.redBlink!)
+        
+    }
+    
+    @IBAction func sliderValueChanged(sender: AnyObject) {
+        updateTimingFromSliders()
+        updateLabels()
     }
     
     override func viewDidLoad() {
@@ -33,10 +104,23 @@ class TimingViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        self.greenLabel.text = "\(self.timing.green!)s"
-        self.yellowLabel.text = "\(self.timing.yellow!)s"
-        self.redLabel.text = "\(self.timing.red!)s"
-        self.redBlinkLabel.text = "\(self.timing.redBlink!)s"
+        updateLabels()
+        self.maxTimeTextField.text = "\(self.maximumTimeS)"
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        // TODO: Save our timer settings
+        MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
+            // This block runs in background thread
+            let storedTiming : Timing = self._timing.MR_inContext(localContext)
+            storedTiming.green = self._timing.green
+            storedTiming.yellow = self._timing.yellow
+            storedTiming.red = self._timing.red
+            storedTiming.redBlink = self._timing.redBlink
+            storedTiming.name = self._timing.name
+        })
+
+        
     }
 
     override func didReceiveMemoryWarning() {
