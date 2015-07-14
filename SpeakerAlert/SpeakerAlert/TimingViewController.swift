@@ -74,13 +74,24 @@ class TimingViewController: UIViewController {
         _timing.redBlink = NSTimeInterval(redBlinkSlider.value);
     }
     
+    func formatTime(interval: NSNumber) -> String {
+        let formatter = NSDateComponentsFormatter()
+        formatter.unitsStyle = .Abbreviated
+        
+        let components = NSDateComponents()
+        components.minute = Int(interval)/60
+        components.second = Int(interval)%60
+
+        return formatter.stringFromDateComponents(components)!
+    }
+    
     func updateLabels(){
         self.nameLabel.text = self.timing.name
         
-        self.greenLabel.text = "\(self.timing.green!)s"
-        self.yellowLabel.text = "\(self.timing.yellow!)s"
-        self.redLabel.text = "\(self.timing.red!)s"
-        self.redBlinkLabel.text = "\(self.timing.redBlink!)s"
+        self.greenLabel.text = self.formatTime(self.timing.green!)
+        self.yellowLabel.text = self.formatTime(self.timing.yellow!)
+        self.redLabel.text = self.formatTime(self.timing.red!)
+        self.redBlinkLabel.text = self.formatTime(self.timing.redBlink!)
         
         greenSlider.maximumValue = Float(maximumTimeS)
         yellowSlider.maximumValue = Float(maximumTimeS)
