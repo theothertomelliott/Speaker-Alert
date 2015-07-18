@@ -68,6 +68,18 @@ class TimingViewController: UIViewController {
     @IBOutlet weak var redBlinkSlider: UISlider!
     
     func updateTimingFromSliders(){
+
+        // Ensure appropriate ordering of slider values
+        if(redBlinkSlider.value < redSlider.value){
+            redSlider.value = redBlinkSlider.value
+        }
+        if(redSlider.value < yellowSlider.value){
+            yellowSlider.value = redSlider.value
+        }
+        if(yellowSlider.value < greenSlider.value){
+            greenSlider.value = yellowSlider.value
+        }
+        
         _timing.green = NSTimeInterval(greenSlider.value);
         _timing.yellow = NSTimeInterval(yellowSlider.value);
         _timing.red = NSTimeInterval(redSlider.value);
