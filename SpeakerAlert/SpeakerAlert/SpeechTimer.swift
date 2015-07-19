@@ -17,6 +17,7 @@ public class SpeechTimer : NSObject {
     var yellowTimer : NSTimer?;
     var redTimer : NSTimer?;
     var redBlinkTimer : NSTimer?;
+    var tickTimer : NSTimer?
     
     var running : Bool;
     
@@ -51,6 +52,9 @@ public class SpeechTimer : NSObject {
             if(pauseInterval < NSTimeInterval(timings.redBlink!)){
                 redBlinkTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(timings.redBlink!) - pauseInterval, target: self, selector: "redBlink:", userInfo: nil, repeats: false);
             }
+            
+            tickTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tick:", userInfo: nil, repeats: true)
+            
             startTime = NSDate();
             running = true;
         }
@@ -74,6 +78,7 @@ public class SpeechTimer : NSObject {
             yellowTimer?.invalidate();
             redTimer?.invalidate();
             redBlinkTimer?.invalidate();
+            tickTimer?.invalidate()
             running = false;
         }
     }
@@ -96,6 +101,7 @@ public class SpeechTimer : NSObject {
             yellowTimer?.invalidate();
             redTimer?.invalidate();
             redBlinkTimer?.invalidate();
+            tickTimer?.invalidate()
             running = false;
         }
     }
@@ -120,21 +126,24 @@ public class SpeechTimer : NSObject {
     
     func redBlink(timer: NSTimer!){
         NSLog("RedBlink");
-        
-        // This is the last interval, stop here
-        stop();
-        
         delegate?.redBlink(self);
+    }
+    
+    func tick(timer: NSTimer!){
+        NSLog("Tick")
+        delegate?.tick(NSDate().timeIntervalSinceDate(startTime!))
     }
     
 }
 
 protocol SpeechTimerDelegate {
     
-    func green(timer : SpeechTimer);
-    func yellow(timer : SpeechTimer);
-    func red(timer : SpeechTimer);
-    func redBlink(timer : SpeechTimer);
+    func green(timer : SpeechTimer)
+    func yellow(timer : SpeechTimer)
+    func red(timer : SpeechTimer)
+    func redBlink(timer : SpeechTimer)
+    
+    func tick(elapsed : NSTimeInterval)
     
 }
 

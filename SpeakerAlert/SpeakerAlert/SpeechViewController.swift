@@ -26,6 +26,11 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
         // Set up blinking here
     }
     
+    func tick(elapsed : NSTimeInterval){
+        elapsedTimeLabel.text = "\(elapsed)"
+    }
+
+    
     @IBOutlet weak var elapsedTimeLabel: UILabel!
 
     override func viewDidLoad() {
