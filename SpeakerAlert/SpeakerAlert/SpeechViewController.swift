@@ -23,11 +23,11 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
         self.view.backgroundColor = UIColor.redColor()
     }
     func redBlink(timer : SpeechTimer) {
-        // Set up blinking here
+        // TODO: Set up blinking here
     }
     
     func tick(elapsed : NSTimeInterval){
-        elapsedTimeLabel.text = "\(elapsed)"
+        elapsedTimeLabel.text = TimeUtils.formatStopwatch(elapsed)
     }
 
     
@@ -41,6 +41,10 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
             timer.delegate = self
             timer.start()
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        timer.pause()
     }
 
     override func didReceiveMemoryWarning() {
