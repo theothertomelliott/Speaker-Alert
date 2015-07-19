@@ -8,12 +8,34 @@
 
 import UIKit
 
-class SpeechViewController: UIViewController {
+class SpeechViewController: UIViewController, SpeechTimerDelegate {
+    
+    var timing : Timing!
+    var timer : SpeechTimer!
+    
+    func green(timer : SpeechTimer) {
+        self.view.backgroundColor = UIColor.greenColor()
+    }
+    func yellow(timer : SpeechTimer) {
+        self.view.backgroundColor = UIColor.yellowColor()
+    }
+    func red(timer : SpeechTimer) {
+        self.view.backgroundColor = UIColor.redColor()
+    }
+    func redBlink(timer : SpeechTimer) {
+        // Set up blinking here
+    }
+    
+    @IBOutlet weak var elapsedTimeLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if let t : Timing = timing {
+            timer = SpeechTimer(withTimings: t)
+            timer.delegate = self
+            timer.start()
+        }
     }
 
     override func didReceiveMemoryWarning() {
