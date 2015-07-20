@@ -10,6 +10,24 @@ import UIKit
 
 class SpeechViewController: UIViewController, SpeechTimerDelegate {
     
+    @IBAction func pausePressed(sender: AnyObject) {
+        if let t : SpeechTimer = timer {
+            t.pause()
+        }
+    }
+    
+    @IBAction func stopPressed(sender: AnyObject) {
+        if let t : SpeechTimer = timer {
+            t.stop()
+        }
+    }
+    
+    @IBAction func resumePressed(sender: AnyObject) {
+        if let t : SpeechTimer = timer {
+            t.start()
+        }
+    }
+    
     var timing : Timing!
     var timer : SpeechTimer!
     

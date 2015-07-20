@@ -131,7 +131,7 @@ public class SpeechTimer : NSObject {
     
     func tick(timer: NSTimer!){
         NSLog("Tick")
-        delegate?.tick(NSDate().timeIntervalSinceDate(startTime!))
+        delegate?.tick(pauseInterval + NSDate().timeIntervalSinceDate(startTime!))
     }
     
 }
