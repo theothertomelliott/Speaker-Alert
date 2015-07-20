@@ -13,6 +13,9 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
     var timing : Timing!
     var timer : SpeechTimer!
     
+    var blinkState : Bool = false
+    var blinkOn : Bool = false
+    
     func green(timer : SpeechTimer) {
         self.view.backgroundColor = UIColor.greenColor()
     }
@@ -23,11 +26,20 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
         self.view.backgroundColor = UIColor.redColor()
     }
     func redBlink(timer : SpeechTimer) {
-        // TODO: Set up blinking here
+        blinkState = true;
     }
     
     func tick(elapsed : NSTimeInterval){
         elapsedTimeLabel.text = TimeUtils.formatStopwatch(elapsed)
+        
+        if(blinkState){
+            if(blinkOn){
+                self.view.backgroundColor = UIColor.redColor()
+            } else {
+                self.view.backgroundColor = UIColor.whiteColor()
+            }
+            blinkOn = !blinkOn
+        }
     }
 
     
@@ -37,6 +49,8 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
         super.viewDidLoad()
 
         if let t : Timing = timing {
+            blinkState = false
+            
             timer = SpeechTimer(withTimings: t)
             timer.delegate = self
             timer.start()
