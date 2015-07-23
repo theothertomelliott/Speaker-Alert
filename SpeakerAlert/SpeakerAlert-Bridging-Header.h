@@ -9,6 +9,7 @@
 #ifndef SpeakerAlert_Bridging_Header_h
 #define SpeakerAlert_Bridging_Header_h
 
+#import "Typhoon/Typhoon.h"
 #import <MagicalRecord/MagicalRecord.h>
 
 #endif /* SpeakerAlert_Bridging_Header_h */

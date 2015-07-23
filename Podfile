@@ -6,10 +6,12 @@ use_frameworks!
 
 target 'SpeakerAlert' do
 	pod "MagicalRecord"
+	pod "Typhoon"
 end
 
 target 'SpeakerAlertTests' do
 	pod "MagicalRecord"
+	pod "Typhoon"
 end
 
 target 'SpeakerAlertUITests' do
