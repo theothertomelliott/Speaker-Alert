@@ -7,6 +7,7 @@ use_frameworks!
 target 'SpeakerAlert' do
 	pod "MagicalRecord"
 	pod "Typhoon"
+	pod "FontAwesome.swift", :git => 'https://github.com/theothertomelliott/FontAwesome.swift.git'
 end
 
 target 'SpeakerAlertTests' do

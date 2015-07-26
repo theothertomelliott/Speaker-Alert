@@ -29,6 +29,8 @@
 		E24408A31B4834F200EB056C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A01B48338400EB056C /* Group.swift */; };
 		E24408A41B4834F400EB056C /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */; };
 		E24408A61B483C8400EB056C /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A51B483C8400EB056C /* GroupTableViewController.swift */; };
+		E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */; };
+		E25E86C61B65748D00F120FA /* FontAwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */; };
 		E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
 		E2929A891B3CCE6E007030D4 /* Timing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Timing.swift */; };
 		E2929A8A1B3CCE71007030D4 /* Timing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Timing+CoreDataProperties.swift */; };
@@ -132,6 +134,8 @@
 		E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E24408A01B48338400EB056C /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		E24408A51B483C8400EB056C /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
+		E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeFactory.swift; sourceTree = "<group>"; };
+		E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeButton.swift; sourceTree = "<group>"; };
 		E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechTimer.swift; sourceTree = "<group>"; };
 		E2929A881B3CCD14007030D4 /* SpeakerAlert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeakerAlert-Bridging-Header.h"; sourceTree = "<group>"; };
 		E2C9020B1B33BA5600B39D37 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -189,6 +193,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E22969E01B65202F00C18012 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */,
+				E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		E23480DC1B2906EA0076247D = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +233,7 @@
 		E23480E71B2906EA0076247D /* SpeakerAlert */ = {
 			isa = PBXGroup;
 			children = (
+				E22969E01B65202F00C18012 /* Views */,
 				E2DD5E391B5BE00400EF0997 /* Utilities */,
 				E28AA3531B2CA70F000F5A15 /* SpeechTimer */,
 				E23480E81B2906EA0076247D /* AppDelegate.swift */,
@@ -606,6 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E25E86C61B65748D00F120FA /* FontAwesomeButton.swift in Sources */,
 				E2DD5E3F1B5BE25B00EF0997 /* TimingViewController.swift in Sources */,
 				E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */,
 				E2F6B5F21B378F2600210504 /* Timing.swift in Sources */,
@@ -614,6 +629,7 @@
 				E2F6B5F11B378F2600210504 /* Timing+CoreDataProperties.swift in Sources */,
 				E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */,
 				E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */,
+				E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */,
 				E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */,
 				E24408A11B48338400EB056C /* Group+CoreDataProperties.swift in Sources */,
 				E24408A61B483C8400EB056C /* GroupTableViewController.swift in Sources */,
