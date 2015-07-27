@@ -22,4 +22,25 @@ public class ApplicationAssembly: TyphoonAssembly {
         }
     }
     
+    public dynamic func groupTableViewController() -> AnyObject {
+        return TyphoonDefinition.withClass(GroupTableViewController.self) {
+            (definition) in
+            NSLog("Loaded GroupTableViewController")
+        }
+    }
+    
+    public dynamic func timingViewController() -> AnyObject {
+        return TyphoonDefinition.withClass(TimingViewController.self) {
+            (definition) in
+            NSLog("Loaded TimingViewController")
+        }
+    }
+    
+    public dynamic func speechViewController() -> AnyObject {
+        return TyphoonDefinition.withClass(SpeechViewController.self) {
+            (definition) in
+            NSLog("Loaded SpeechViewController")
+        }
+    }
+    
 }
