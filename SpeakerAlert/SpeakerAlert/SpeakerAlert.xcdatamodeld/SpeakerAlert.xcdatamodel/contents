@@ -2,9 +2,9 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8118.20" systemVersion="14E46" minimumToolsVersion="Xcode 7.0">
     <entity name="Group" representedClassName="Group" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="childTimings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Timing" inverseName="parent" inverseEntity="Timing" syncable="YES"/>
+        <relationship name="childTimings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Profile" inverseName="parent" inverseEntity="Profile" syncable="YES"/>
     </entity>
-    <entity name="Timing" representedClassName="Timing" syncable="YES">
+    <entity name="Profile" representedClassName="Profile" syncable="YES">
         <attribute name="green" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="red" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -14,6 +14,6 @@
     </entity>
     <elements>
         <element name="Group" positionX="-18" positionY="54" width="128" height="73"/>
-        <element name="Timing" positionX="178" positionY="54" width="128" height="135"/>
+        <element name="Profile" positionX="178" positionY="54" width="128" height="135"/>
     </elements>
 </model>

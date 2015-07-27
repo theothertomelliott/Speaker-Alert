@@ -13,8 +13,8 @@ class TimingViewController: UIViewController {
 
     var maximumTimeS : NSTimeInterval = 0
     
-    private var _timing : Timing!
-    var timing : Timing! {
+    private var _timing : Profile!
+    var timing : Profile! {
         get {
             return _timing
         }
@@ -124,7 +124,7 @@ class TimingViewController: UIViewController {
         // TODO: Save our timer settings
         MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
             // This block runs in background thread
-            let storedTiming : Timing = self._timing.MR_inContext(localContext)
+            let storedTiming : Profile = self._timing.MR_inContext(localContext)
             storedTiming.green = self._timing.green
             storedTiming.yellow = self._timing.yellow
             storedTiming.red = self._timing.red

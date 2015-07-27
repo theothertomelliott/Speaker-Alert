@@ -12,7 +12,7 @@
 import Foundation
 import CoreData
 
-extension Timing {
+extension Profile {
 
     @NSManaged var green: NSNumber?
     @NSManaged var name: String?

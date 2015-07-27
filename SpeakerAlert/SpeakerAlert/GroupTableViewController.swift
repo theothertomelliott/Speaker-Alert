@@ -41,16 +41,16 @@ class GroupTableViewController: UITableViewController {
         MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
             // This block runs in background thread
             
-            let timing : Timing = Timing.MR_createEntityInContext(localContext)
-            timing.name = "New Timing"
+            let timing : Profile = Profile.MR_createEntityInContext(localContext)
+            timing.name = "New Speech Profile"
             
             if let pg : Group = self.parentGroup {
                 let cpg : Group = pg.MR_inContext(localContext)
                 timing.parent = cpg
                 
-                NSLog("Timing parent name = \(timing.parent?.name)")
+                NSLog("Speech profile parent name = \(timing.parent?.name)")
             } else {
-                NSLog("No timing parent")
+                NSLog("No profile parent")
             }
             
             
@@ -72,7 +72,7 @@ class GroupTableViewController: UITableViewController {
             groups = Group.MR_findAll()
 
             let predicate = NSPredicate(format: "parent = nil")
-            timings = Timing.MR_findAllWithPredicate(predicate)
+            timings = Profile.MR_findAllWithPredicate(predicate)
         }
         
         self.tableView.reloadData()
@@ -112,7 +112,7 @@ class GroupTableViewController: UITableViewController {
         let oneAction = UIAlertAction(title: "New Group", style: .Default) { (_) in
             self.createGroup()
         }
-        let twoAction = UIAlertAction(title: "New Timing", style: .Default) { (_) in
+        let twoAction = UIAlertAction(title: "New Speech Profile", style: .Default) { (_) in
             self.createTiming()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
@@ -213,7 +213,7 @@ class GroupTableViewController: UITableViewController {
                     let group = groups.objectAtIndex(indexPath.row)
                     group.MR_deleteEntity()
                 } else {
-                    let timings : NSArray = Timing.MR_findAllInContext(localContext)
+                    let timings : NSArray = Profile.MR_findAllInContext(localContext)
                     let timing = timings.objectAtIndex(indexPath.row - Int(Group.MR_countOfEntities()))
                     timing.MR_deleteEntity()
                 }
@@ -264,7 +264,7 @@ class GroupTableViewController: UITableViewController {
         if("timingSegue" == segue.identifier){
             // TODO: Populate the destination with this timing object
             let destination : TimingViewController = segue.destinationViewController as! TimingViewController
-            destination.timing = self.timings[indexPath.row - self.groups.count] as! Timing
+            destination.timing = self.timings[indexPath.row - self.groups.count] as! Profile
         }
         
     }

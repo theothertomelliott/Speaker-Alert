@@ -33,16 +33,16 @@
 		E25E86C61B65748D00F120FA /* FontAwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */; };
 		E25E86C91B65D73A00F120FA /* ApplicationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C81B65D73A00F120FA /* ApplicationAssembly.swift */; };
 		E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
-		E2929A891B3CCE6E007030D4 /* Timing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Timing.swift */; };
-		E2929A8A1B3CCE71007030D4 /* Timing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Timing+CoreDataProperties.swift */; };
+		E2929A891B3CCE6E007030D4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
+		E2929A8A1B3CCE71007030D4 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
 		E2929A8B1B3CCE74007030D4 /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
 		E2C9020C1B33BA5600B39D37 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C9020B1B33BA5600B39D37 /* CoreData.framework */; };
 		E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2C9020D1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld */; };
 		E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D273CD1B516EF500155349 /* SpeechViewController.swift */; };
 		E2DD5E3B1B5BE03800EF0997 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
 		E2DD5E3F1B5BE25B00EF0997 /* TimingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3E1B5BE25B00EF0997 /* TimingViewController.swift */; };
-		E2F6B5F11B378F2600210504 /* Timing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Timing+CoreDataProperties.swift */; };
-		E2F6B5F21B378F2600210504 /* Timing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Timing.swift */; };
+		E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
+		E2F6B5F21B378F2600210504 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,8 +145,8 @@
 		E2D273CD1B516EF500155349 /* SpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
 		E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
 		E2DD5E3E1B5BE25B00EF0997 /* TimingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingViewController.swift; sourceTree = "<group>"; };
-		E2F6B5EF1B378F2600210504 /* Timing+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Timing+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E2F6B5F01B378F2600210504 /* Timing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timing.swift; sourceTree = "<group>"; };
+		E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E2F6B5F01B378F2600210504 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,8 +314,8 @@
 			isa = PBXGroup;
 			children = (
 				E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */,
-				E2F6B5EF1B378F2600210504 /* Timing+CoreDataProperties.swift */,
-				E2F6B5F01B378F2600210504 /* Timing.swift */,
+				E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */,
+				E2F6B5F01B378F2600210504 /* Profile.swift */,
 				E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */,
 				E24408A01B48338400EB056C /* Group.swift */,
 			);
@@ -634,11 +634,11 @@
 				E25E86C61B65748D00F120FA /* FontAwesomeButton.swift in Sources */,
 				E2DD5E3F1B5BE25B00EF0997 /* TimingViewController.swift in Sources */,
 				E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */,
-				E2F6B5F21B378F2600210504 /* Timing.swift in Sources */,
+				E2F6B5F21B378F2600210504 /* Profile.swift in Sources */,
 				E25E86C91B65D73A00F120FA /* ApplicationAssembly.swift in Sources */,
 				E24408A21B48338400EB056C /* Group.swift in Sources */,
 				E2DD5E3B1B5BE03800EF0997 /* TimeUtils.swift in Sources */,
-				E2F6B5F11B378F2600210504 /* Timing+CoreDataProperties.swift in Sources */,
+				E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */,
 				E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */,
 				E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */,
 				E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */,
@@ -655,9 +655,9 @@
 				E23480FE1B2906EB0076247D /* SpeakerAlertTests.swift in Sources */,
 				E24408A41B4834F400EB056C /* Group+CoreDataProperties.swift in Sources */,
 				E2929A8B1B3CCE74007030D4 /* SpeechTimer.swift in Sources */,
-				E2929A8A1B3CCE71007030D4 /* Timing+CoreDataProperties.swift in Sources */,
+				E2929A8A1B3CCE71007030D4 /* Profile+CoreDataProperties.swift in Sources */,
 				E24408A31B4834F200EB056C /* Group.swift in Sources */,
-				E2929A891B3CCE6E007030D4 /* Timing.swift in Sources */,
+				E2929A891B3CCE6E007030D4 /* Profile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

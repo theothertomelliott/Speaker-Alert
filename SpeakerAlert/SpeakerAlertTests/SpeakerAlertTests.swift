@@ -26,7 +26,7 @@ class SpeakerAlertTests: XCTestCase {
     }
     
     func testInitialContextIsEmpty(){
-        let timings : NSArray = Timing.MR_findAll()
+        let timings : NSArray = Profile.MR_findAll()
         let groups : NSArray = Group.MR_findAll()
         
         XCTAssert(timings.count == 0)
@@ -37,7 +37,7 @@ class SpeakerAlertTests: XCTestCase {
         let group : Group = Group.MR_createEntity()
         group.name = "Group1"
         
-        let timer : Timing = Timing.MR_createEntity();
+        let timer : Profile = Profile.MR_createEntity();
         timer.name = "Timer1"
         
         timer.parent = group
@@ -48,7 +48,7 @@ class SpeakerAlertTests: XCTestCase {
             XCTFail("Expected a set of children in the group")
         }
         
-        let timings : NSArray = Timing.MR_findAll()
+        let timings : NSArray = Profile.MR_findAll()
         let groups : NSArray = Group.MR_findAll()
         
         XCTAssert(timings.count == 1)
@@ -59,7 +59,7 @@ class SpeakerAlertTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
-        let timer : Timing = Timing.MR_createEntity();
+        let timer : Profile = Profile.MR_createEntity();
         timer.green = 1;
         timer.yellow = 2;
         timer.red = 3;

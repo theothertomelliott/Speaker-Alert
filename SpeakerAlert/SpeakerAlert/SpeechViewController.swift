@@ -28,7 +28,7 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
         }
     }
     
-    var timing : Timing!
+    var timing : Profile!
     var timer : SpeechTimer!
     
     var blinkState : Bool = false
@@ -66,7 +66,7 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let t : Timing = timing {
+        if let t : Profile = timing {
             blinkState = false
             
             timer = SpeechTimer(withTimings: t)

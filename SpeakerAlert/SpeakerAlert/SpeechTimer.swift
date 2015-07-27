@@ -12,7 +12,7 @@ public class SpeechTimer : NSObject {
     
     var delegate : SpeechTimerDelegate?;
     
-    var timings : Timing;
+    var timings : Profile;
     var greenTimer : NSTimer?;
     var yellowTimer : NSTimer?;
     var redTimer : NSTimer?;
@@ -25,7 +25,7 @@ public class SpeechTimer : NSObject {
     var startTime : NSDate?;
     var pauseInterval : NSTimeInterval = 0;
     
-    init(withTimings timing : Timing){
+    init(withTimings timing : Profile){
         self.timings = timing;
         running = false;
     }
@@ -130,7 +130,6 @@ public class SpeechTimer : NSObject {
     }
     
     func tick(timer: NSTimer!){
-        NSLog("Tick")
         delegate?.tick(pauseInterval + NSDate().timeIntervalSinceDate(startTime!))
     }
     
