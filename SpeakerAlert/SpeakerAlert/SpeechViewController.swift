@@ -10,26 +10,19 @@ import UIKit
 
 class SpeechViewController: UIViewController, SpeechTimerDelegate {
     
+    var speechMan : SpeechManager?;
+    
     @IBAction func pausePressed(sender: AnyObject) {
-        if let t : SpeechTimer = timer {
-            t.pause()
-        }
+        speechMan?.pause()
     }
     
     @IBAction func stopPressed(sender: AnyObject) {
-        if let t : SpeechTimer = timer {
-            t.stop()
-        }
+        speechMan?.stop()
     }
     
     @IBAction func resumePressed(sender: AnyObject) {
-        if let t : SpeechTimer = timer {
-            t.start()
-        }
+        speechMan?.start()
     }
-    
-    var timing : Profile!
-    var timer : SpeechTimer!
     
     var blinkState : Bool = false
     var blinkOn : Bool = false
@@ -65,18 +58,9 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let t : Profile = timing {
-            blinkState = false
-            
-            timer = SpeechTimer(withTimings: t)
-            timer.delegate = self
-            timer.start()
-        }
     }
     
     override func viewWillDisappear(animated: Bool) {
-        timer.pause()
     }
 
     override func didReceiveMemoryWarning() {

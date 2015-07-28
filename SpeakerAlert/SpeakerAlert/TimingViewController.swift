@@ -11,6 +11,8 @@ import MagicalRecord
 
 class TimingViewController: UIViewController {
 
+    var speechMan : SpeechManager?;
+    
     var maximumTimeS : NSTimeInterval = 0
     
     private var _timing : Profile!
@@ -146,8 +148,7 @@ class TimingViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Pass along our timimg to start the timer
         if("startSegue" == segue.identifier){
-            let svc : SpeechViewController = segue.destinationViewController as! SpeechViewController
-            svc.timing = _timing
+            speechMan?.profile = _timing;
         }
     }
     

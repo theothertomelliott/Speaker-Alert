@@ -18,28 +18,33 @@ public class ApplicationAssembly: TyphoonAssembly {
     public dynamic func appDelegate() -> AnyObject {
         return TyphoonDefinition.withClass(AppDelegate.self) {
             (definition) in
-            NSLog("Loaded AppDelegate");
+        }
+    }
+    
+    public dynamic func speechManager() -> AnyObject {
+        return TyphoonDefinition.withClass(SpeechManager.self) {
+            (definition) in
+            definition.scope = TyphoonScope.Singleton
         }
     }
     
     public dynamic func groupTableViewController() -> AnyObject {
         return TyphoonDefinition.withClass(GroupTableViewController.self) {
             (definition) in
-            NSLog("Loaded GroupTableViewController")
         }
     }
     
     public dynamic func timingViewController() -> AnyObject {
         return TyphoonDefinition.withClass(TimingViewController.self) {
             (definition) in
-            NSLog("Loaded TimingViewController")
+            definition.injectProperty("speechMan", with: self.speechManager())
         }
     }
     
     public dynamic func speechViewController() -> AnyObject {
         return TyphoonDefinition.withClass(SpeechViewController.self) {
             (definition) in
-            NSLog("Loaded SpeechViewController")
+            definition.injectProperty("speechMan", with: self.speechManager())
         }
     }
     
