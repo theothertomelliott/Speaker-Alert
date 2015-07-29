@@ -13,22 +13,20 @@ import UIKit
 */
 class SpeechManager: NSObject, SpeechTimerDelegate {
 
-    private var _notificationCenter : NSNotificationCenter;
-    
-    let NOTIFICATION_KEY_PREFIX = "SpeakerAlert.SpeechManager."
-    let STATE_CHANGE_NOTIFICATION = "StateChanged"
-    let TICK_NOTIFICATION = "Tick"
-    
     // Speech timer
     private var timer : SpeechTimer?;
     
-    override init(){
-        _notificationCenter = NSNotificationCenter.defaultCenter()
-        super.init()
+    private var observers = [SpeechTimerDelegate]()
+    
+    func addObserver(observer: SpeechTimerDelegate) {
+        observers.append(observer)
     }
     
-    init(notificationCenter: NSNotificationCenter){
-        _notificationCenter = notificationCenter
+    func removeObserver(observer: SpeechTimerDelegate){
+        // TODO: Figure out how to do this safely
+    }
+    
+    override init(){
         super.init()
     }
     
@@ -56,10 +54,16 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
     
     func stateChanged(state: SpeechState, timer: SpeechTimer) {
         NSLog("Speech timer state changed: \(state)")
+        for observer in observers {
+            observer.stateChanged(state, timer: timer)
+        }
     }
     
     func tick(elapsed : NSTimeInterval){
         NSLog("Tick")
+        for observer in observers {
+            observer.tick(elapsed)
+        }
     }
     
     // Start, pause and stop methods for current speech

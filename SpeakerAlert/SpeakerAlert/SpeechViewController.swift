@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpeechViewController: UIViewController {
+class SpeechViewController: UIViewController, SpeechTimerDelegate {
     
     var speechMan : SpeechManager?;
     
@@ -27,18 +27,19 @@ class SpeechViewController: UIViewController {
     var blinkState : Bool = false
     var blinkOn : Bool = false
     
-    // TODO: Replace this with interaction with SpeechManager
-    func green(timer : SpeechTimer) {
-        self.view.backgroundColor = UIColor.greenColor()
-    }
-    func yellow(timer : SpeechTimer) {
-        self.view.backgroundColor = UIColor.yellowColor()
-    }
-    func red(timer : SpeechTimer) {
-        self.view.backgroundColor = UIColor.redColor()
-    }
-    func redBlink(timer : SpeechTimer) {
-        blinkState = true;
+    func stateChanged(state: SpeechState, timer: SpeechTimer) {
+        if(state == SpeechState.GREEN){
+            self.view.backgroundColor = UIColor.greenColor()
+        }
+        if(state == SpeechState.YELLOW){
+            self.view.backgroundColor = UIColor.yellowColor()
+        }
+        if(state == SpeechState.RED){
+            self.view.backgroundColor = UIColor.redColor()
+        }
+        if(state == SpeechState.OVER_MAXIMUM){
+            blinkState = true;
+        }
     }
     
     func tick(elapsed : NSTimeInterval){
@@ -53,13 +54,15 @@ class SpeechViewController: UIViewController {
             blinkOn = !blinkOn
         }
     }
-
     
     @IBOutlet weak var elapsedTimeLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        speechMan?.addObserver(self)
     }
+    
+    // TODO: Add code to remove from manager
     
     override func viewWillDisappear(animated: Bool) {
     }
