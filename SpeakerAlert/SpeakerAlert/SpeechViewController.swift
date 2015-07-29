@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpeechViewController: UIViewController, SpeechTimerDelegate {
+class SpeechViewController: UIViewController {
     
     var speechMan : SpeechManager?;
     
@@ -27,6 +27,7 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
     var blinkState : Bool = false
     var blinkOn : Bool = false
     
+    // TODO: Replace this with interaction with SpeechManager
     func green(timer : SpeechTimer) {
         self.view.backgroundColor = UIColor.greenColor()
     }

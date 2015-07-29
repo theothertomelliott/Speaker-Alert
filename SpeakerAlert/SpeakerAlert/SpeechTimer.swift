@@ -12,6 +12,12 @@ public class SpeechTimer : NSObject {
     
     var delegate : SpeechTimerDelegate?;
     
+    var state : SpeechState {
+        didSet {
+            delegate?.stateChanged(state, timer: self)
+        }
+    }
+    
     var timings : Profile;
     var greenTimer : NSTimer?;
     var yellowTimer : NSTimer?;
@@ -26,6 +32,7 @@ public class SpeechTimer : NSObject {
     var pauseInterval : NSTimeInterval = 0;
     
     init(withTimings timing : Profile){
+        state = SpeechState.BELOW_MINIMUM
         self.timings = timing;
         running = false;
     }
@@ -107,26 +114,19 @@ public class SpeechTimer : NSObject {
     }
     
     func green(timer: NSTimer!){
-        NSLog("Green");
-        
-        delegate?.green(self);
+        state = SpeechState.GREEN
     }
     
     func yellow(timer: NSTimer!){
-        NSLog("Yellow");
-        
-        delegate?.yellow(self);
+        state = SpeechState.YELLOW
     }
     
     func red(timer: NSTimer!){
-        NSLog("Red");
-        
-        delegate?.red(self);
+        state = SpeechState.RED
     }
     
     func redBlink(timer: NSTimer!){
-        NSLog("RedBlink");
-        delegate?.redBlink(self);
+        state = SpeechState.OVER_MAXIMUM
     }
     
     func tick(timer: NSTimer!){
@@ -136,12 +136,8 @@ public class SpeechTimer : NSObject {
 }
 
 protocol SpeechTimerDelegate {
-    
-    func green(timer : SpeechTimer)
-    func yellow(timer : SpeechTimer)
-    func red(timer : SpeechTimer)
-    func redBlink(timer : SpeechTimer)
-    
+
+    func stateChanged(state: SpeechState, timer: SpeechTimer)
     func tick(elapsed : NSTimeInterval)
     
 }

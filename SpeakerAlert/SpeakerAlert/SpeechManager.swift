@@ -13,8 +13,24 @@ import UIKit
 */
 class SpeechManager: NSObject, SpeechTimerDelegate {
 
+    private var _notificationCenter : NSNotificationCenter;
+    
+    let NOTIFICATION_KEY_PREFIX = "SpeakerAlert.SpeechManager."
+    let STATE_CHANGE_NOTIFICATION = "StateChanged"
+    let TICK_NOTIFICATION = "Tick"
+    
     // Speech timer
     private var timer : SpeechTimer?;
+    
+    override init(){
+        _notificationCenter = NSNotificationCenter.defaultCenter()
+        super.init()
+    }
+    
+    init(notificationCenter: NSNotificationCenter){
+        _notificationCenter = notificationCenter
+        super.init()
+    }
     
     var profile : Profile? {
         set(value) {
@@ -38,17 +54,8 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         }
     }
     
-    func green(timer : SpeechTimer){
-        NSLog("Green")
-    }
-    func yellow(timer : SpeechTimer){
-        NSLog("Yellow")
-    }
-    func red(timer : SpeechTimer){
-        NSLog("Red")
-    }
-    func redBlink(timer : SpeechTimer){
-        NSLog("RedBlink")
+    func stateChanged(state: SpeechState, timer: SpeechTimer) {
+        NSLog("Speech timer state changed: \(state)")
     }
     
     func tick(elapsed : NSTimeInterval){

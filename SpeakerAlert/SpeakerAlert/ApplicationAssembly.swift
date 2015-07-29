@@ -10,7 +10,7 @@ import UIKit
 import Typhoon
 
 public class ApplicationAssembly: TyphoonAssembly {
-
+    
     /*
     * This is the definition for our AppDelegate. Typhoon will inject the specified properties
     * at application startup.
