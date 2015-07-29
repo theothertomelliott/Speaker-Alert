@@ -65,6 +65,7 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
     // TODO: Add code to remove from manager
     
     override func viewWillDisappear(animated: Bool) {
+        speechMan?.removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
