@@ -18,11 +18,11 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
     
     private var observers = [SpeechTimerDelegate]()
     
-    func addObserver(observer: SpeechTimerDelegate) {
+    func addSpeechObserver(observer: SpeechTimerDelegate) {
         observers.append(observer)
     }
     
-    func removeObserver(observer: SpeechTimerDelegate){
+    func removeSpeechObserver(observer: SpeechTimerDelegate){
         // TODO: Figure out how to do this safely
         var index : Int? = nil
         for(var i : Int = 0; i < observers.count; i++){
@@ -64,14 +64,14 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         }
     }
     
-    func stateChanged(state: SpeechState, timer: SpeechTimer) {
+    public func stateChanged(state: SpeechState, timer: SpeechTimer) {
         NSLog("Speech timer state changed: \(state)")
         for observer in observers {
             observer.stateChanged(state, timer: timer)
         }
     }
     
-    func tick(elapsed : NSTimeInterval){
+    public func tick(elapsed : NSTimeInterval){
         NSLog("Tick")
         for observer in observers {
             observer.tick(elapsed)

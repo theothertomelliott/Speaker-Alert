@@ -28,6 +28,16 @@ public class ApplicationAssembly: TyphoonAssembly {
         }
     }
     
+    public dynamic func vibrationAlertManager() -> AnyObject {
+        return TyphoonDefinition.withClass(VibrationAlertManager.self) {
+            (definition) in
+            definition.scope = TyphoonScope.Singleton
+            definition.injectProperty("speechMan", with: self.speechManager())
+        }
+    }
+    
+    // MARK: View Controllers
+    
     public dynamic func groupTableViewController() -> AnyObject {
         return TyphoonDefinition.withClass(GroupTableViewController.self) {
             (definition) in

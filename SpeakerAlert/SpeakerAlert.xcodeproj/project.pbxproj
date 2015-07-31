@@ -10,6 +10,7 @@
 		B8E21BF70E82BF41BC4BBC79 /* Pods_SpeakerAlertTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C1174FD04EBE60B6AA870B /* Pods_SpeakerAlertTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D2C50F50FDE26C573823F396 /* Pods_SpeakerAlert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E20B85801B66661300D55578 /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20B857F1B66661300D55578 /* SpeechManager.swift */; };
+		E22E8C441B6BA23000DD0793 /* VibrationAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */; };
 		E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23480E81B2906EA0076247D /* AppDelegate.swift */; };
 		E23480EE1B2906EA0076247D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23480EC1B2906EA0076247D /* Main.storyboard */; };
 		E23480F01B2906EA0076247D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E23480EF1B2906EA0076247D /* Assets.xcassets */; };
@@ -111,6 +112,7 @@
 		762393DDD7583B928EBD75E6 /* Pods-SpeakerAlertTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlertTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlertTests/Pods-SpeakerAlertTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D43FA6F56ECA171B284DC711 /* Pods-SpeakerAlert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlert.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlert/Pods-SpeakerAlert.release.xcconfig"; sourceTree = "<group>"; };
 		E20B857F1B66661300D55578 /* SpeechManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
+		E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibrationAlertManager.swift; sourceTree = "<group>"; };
 		E23480E51B2906EA0076247D /* SpeakerAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakerAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23480E81B2906EA0076247D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E23480ED1B2906EA0076247D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -208,6 +210,35 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		E22E8C3D1B6BA08600DD0793 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E22969E01B65202F00C18012 /* Views */,
+				E22E8C3E1B6BA09300DD0793 /* IB */,
+				E24408A51B483C8400EB056C /* GroupTableViewController.swift */,
+				E2DD5E3E1B5BE25B00EF0997 /* TimingViewController.swift */,
+				E2D273CD1B516EF500155349 /* SpeechViewController.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		E22E8C3E1B6BA09300DD0793 /* IB */ = {
+			isa = PBXGroup;
+			children = (
+				E23480EC1B2906EA0076247D /* Main.storyboard */,
+				E23480F11B2906EA0076247D /* LaunchScreen.storyboard */,
+			);
+			name = IB;
+			sourceTree = "<group>";
+		};
+		E22E8C3F1B6BA13500DD0793 /* UserNotification */ = {
+			isa = PBXGroup;
+			children = (
+				E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */,
+			);
+			name = UserNotification;
+			sourceTree = "<group>";
+		};
 		E23480DC1B2906EA0076247D = {
 			isa = PBXGroup;
 			children = (
@@ -239,19 +270,15 @@
 		E23480E71B2906EA0076247D /* SpeakerAlert */ = {
 			isa = PBXGroup;
 			children = (
+				E22E8C3F1B6BA13500DD0793 /* UserNotification */,
+				E22E8C3D1B6BA08600DD0793 /* UI */,
 				E25E86C71B65D70C00F120FA /* Assembly */,
-				E22969E01B65202F00C18012 /* Views */,
 				E2DD5E391B5BE00400EF0997 /* Utilities */,
 				E28AA3531B2CA70F000F5A15 /* SpeechTimer */,
 				E23480E81B2906EA0076247D /* AppDelegate.swift */,
-				E23480EC1B2906EA0076247D /* Main.storyboard */,
 				E23480EF1B2906EA0076247D /* Assets.xcassets */,
-				E23480F11B2906EA0076247D /* LaunchScreen.storyboard */,
 				E23480F41B2906EA0076247D /* Info.plist */,
 				E2C9020D1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld */,
-				E24408A51B483C8400EB056C /* GroupTableViewController.swift */,
-				E2DD5E3E1B5BE25B00EF0997 /* TimingViewController.swift */,
-				E2D273CD1B516EF500155349 /* SpeechViewController.swift */,
 			);
 			path = SpeakerAlert;
 			sourceTree = "<group>";
@@ -645,6 +672,7 @@
 				E2C2E7CC1B685AF3004BD7FD /* SpeechState.swift in Sources */,
 				E25E86C91B65D73A00F120FA /* ApplicationAssembly.swift in Sources */,
 				E24408A21B48338400EB056C /* Group.swift in Sources */,
+				E22E8C441B6BA23000DD0793 /* VibrationAlertManager.swift in Sources */,
 				E2DD5E3B1B5BE03800EF0997 /* TimeUtils.swift in Sources */,
 				E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */,
 				E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */,
