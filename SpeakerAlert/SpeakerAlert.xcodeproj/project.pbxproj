@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		B8E21BF70E82BF41BC4BBC79 /* Pods_SpeakerAlertTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C1174FD04EBE60B6AA870B /* Pods_SpeakerAlertTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		D2C50F50FDE26C573823F396 /* Pods_SpeakerAlert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D2C50F50FDE26C573823F396 /* Pods_SpeakerAlert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		E20B85801B66661300D55578 /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20B857F1B66661300D55578 /* SpeechManager.swift */; };
+		E2159F221B6D9D8B0075E77E /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */; };
+		E2159F251B6D9F330075E77E /* WatchCommsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2159F241B6D9F330075E77E /* WatchCommsManager.swift */; };
 		E22E8C441B6BA23000DD0793 /* VibrationAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */; };
 		E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23480E81B2906EA0076247D /* AppDelegate.swift */; };
 		E23480EE1B2906EA0076247D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23480EC1B2906EA0076247D /* Main.storyboard */; };
@@ -39,11 +41,12 @@
 		E2929A8A1B3CCE71007030D4 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
 		E2929A8B1B3CCE74007030D4 /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
 		E2C2E7CC1B685AF3004BD7FD /* SpeechState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2E7CB1B685AF3004BD7FD /* SpeechState.swift */; };
-		E2C9020C1B33BA5600B39D37 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C9020B1B33BA5600B39D37 /* CoreData.framework */; };
+		E2C9020C1B33BA5600B39D37 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C9020B1B33BA5600B39D37 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2C9020D1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld */; };
 		E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D273CD1B516EF500155349 /* SpeechViewController.swift */; };
 		E2DD5E3B1B5BE03800EF0997 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
 		E2DD5E3F1B5BE25B00EF0997 /* TimingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3E1B5BE25B00EF0997 /* TimingViewController.swift */; };
+		E2E8DD5D1B6DD021003D3F7C /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
 		E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
 		E2F6B5F21B378F2600210504 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
 /* End PBXBuildFile section */
@@ -112,6 +115,8 @@
 		762393DDD7583B928EBD75E6 /* Pods-SpeakerAlertTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlertTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlertTests/Pods-SpeakerAlertTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D43FA6F56ECA171B284DC711 /* Pods-SpeakerAlert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlert.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlert/Pods-SpeakerAlert.release.xcconfig"; sourceTree = "<group>"; };
 		E20B857F1B66661300D55578 /* SpeechManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
+		E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
+		E2159F241B6D9F330075E77E /* WatchCommsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchCommsManager.swift; sourceTree = "<group>"; };
 		E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibrationAlertManager.swift; sourceTree = "<group>"; };
 		E23480E51B2906EA0076247D /* SpeakerAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakerAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23480E81B2906EA0076247D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +156,7 @@
 		E2D273CD1B516EF500155349 /* SpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
 		E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
 		E2DD5E3E1B5BE25B00EF0997 /* TimingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingViewController.swift; sourceTree = "<group>"; };
+		E2F2A1DD1B6DB91A0014D4A0 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
 		E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E2F6B5F01B378F2600210504 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2159F221B6D9D8B0075E77E /* WatchConnectivity.framework in Frameworks */,
 				E2C9020C1B33BA5600B39D37 /* CoreData.framework in Frameworks */,
 				D2C50F50FDE26C573823F396 /* Pods_SpeakerAlert.framework in Frameworks */,
 			);
@@ -199,6 +206,14 @@
 				4E6C05D69A1F923D69A1DAE7 /* Pods-SpeakerAlertTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E2159F231B6D9F1B0075E77E /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				E2159F241B6D9F330075E77E /* WatchCommsManager.swift */,
+			);
+			name = Watch;
 			sourceTree = "<group>";
 		};
 		E22969E01B65202F00C18012 /* Views */ = {
@@ -270,6 +285,7 @@
 		E23480E71B2906EA0076247D /* SpeakerAlert */ = {
 			isa = PBXGroup;
 			children = (
+				E2159F231B6D9F1B0075E77E /* Watch */,
 				E22E8C3F1B6BA13500DD0793 /* UserNotification */,
 				E22E8C3D1B6BA08600DD0793 /* UI */,
 				E25E86C71B65D70C00F120FA /* Assembly */,
@@ -366,6 +382,8 @@
 		E80F4507498E5D6E3CB32507 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E2F2A1DD1B6DB91A0014D4A0 /* WatchKit.framework */,
+				E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */,
 				5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */,
 				56C1174FD04EBE60B6AA870B /* Pods_SpeakerAlertTests.framework */,
 			);
@@ -675,6 +693,7 @@
 				E22E8C441B6BA23000DD0793 /* VibrationAlertManager.swift in Sources */,
 				E2DD5E3B1B5BE03800EF0997 /* TimeUtils.swift in Sources */,
 				E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */,
+				E2159F251B6D9F330075E77E /* WatchCommsManager.swift in Sources */,
 				E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */,
 				E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */,
 				E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */,
@@ -710,6 +729,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23481281B2906EB0076247D /* NotificationController.swift in Sources */,
+				E2E8DD5D1B6DD021003D3F7C /* TimeUtils.swift in Sources */,
 				E234812A1B2906EB0076247D /* ComplicationController.swift in Sources */,
 				E23481261B2906EB0076247D /* ExtensionDelegate.swift in Sources */,
 				E23481241B2906EB0076247D /* InterfaceController.swift in Sources */,

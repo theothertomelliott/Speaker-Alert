@@ -28,6 +28,15 @@ public class ApplicationAssembly: TyphoonAssembly {
         }
     }
     
+    public dynamic func watchCommsManager() -> AnyObject {
+        return TyphoonDefinition.withClass(WatchCommsManager.self){
+            (definition) in
+            definition.scope = TyphoonScope.Singleton
+            definition.injectProperty("speechMan", with: self.speechManager())
+            definition.injectMethod("activate", parameters: nil)
+        }
+    }
+    
     public dynamic func vibrationAlertManager() -> AnyObject {
         return TyphoonDefinition.withClass(VibrationAlertManager.self) {
             (definition) in
