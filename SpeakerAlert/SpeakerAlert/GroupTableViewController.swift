@@ -25,20 +25,23 @@ class GroupTableViewController: UITableViewController {
     }
     
     func createGroupWithName(name : String){
-        MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
+
+        MagicalRecord.saveWithBlock { (localContext: NSManagedObjectContext!) -> Void in
             // This block runs in background thread
             
             let group : Group = Group.MR_createEntityInContext(localContext)
             group.name = name
             
-            }, completion: { (success : Bool, error : NSError!) in
-                // This block runs in main thread
-                self.reloadData()
-        })
+            // TODO: This should be in a completion block, but having weird problems
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
+                Int64(0.25 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(),{
+                self.reloadData();
+            })
+        }
     }
     
     func createTiming(){
-        MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
+        MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) -> Void in
             // This block runs in background thread
             
             let timing : Profile = Profile.MR_createEntityInContext(localContext)
@@ -53,10 +56,11 @@ class GroupTableViewController: UITableViewController {
                 NSLog("No profile parent")
             }
             
-            
-            }, completion: { (success : Bool, error : NSError!) in
-                // This block runs in main thread
-                self.reloadData()
+            // TODO: This should be in a completion block, but having weird problems
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
+                Int64(0.25 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(),{
+                self.reloadData();
+            })
         })
     }
     
@@ -218,9 +222,11 @@ class GroupTableViewController: UITableViewController {
                     timing.MR_deleteEntity()
                 }
                 
-                }, completion: { (success : Bool, error : NSError!) in
-                    // This block runs in main thread
+                // TODO: This should be in a completion handler, but been having issues
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
+                    Int64(0.25 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(),{
                     self.reloadData()
+                })
             })
 
         } else if editingStyle == .Insert {
