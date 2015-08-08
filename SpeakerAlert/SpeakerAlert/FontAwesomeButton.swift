@@ -39,7 +39,7 @@ class FontAwesomeButton: UIButton {
     }
     
     #if !TARGET_INTERFACE_BUILDER
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self._setup()
     }
