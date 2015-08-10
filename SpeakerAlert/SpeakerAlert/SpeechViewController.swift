@@ -27,23 +27,23 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
     var blinkState : Bool = false
     var blinkOn : Bool = false
     
-    func stateChanged(state: SpeechState, timer: SpeechTimer) {
-        if(state == SpeechState.GREEN){
+    func phaseChanged(state: SpeechState, timer: SpeechTimer) {
+        if(state.phase == SpeechPhase.GREEN){
             self.view.backgroundColor = UIColor.greenColor()
         }
-        if(state == SpeechState.YELLOW){
+        if(state.phase == SpeechPhase.YELLOW){
             self.view.backgroundColor = UIColor.yellowColor()
         }
-        if(state == SpeechState.RED){
+        if(state.phase == SpeechPhase.RED){
             self.view.backgroundColor = UIColor.redColor()
         }
-        if(state == SpeechState.OVER_MAXIMUM){
+        if(state.phase == SpeechPhase.OVER_MAXIMUM){
             blinkState = true;
         }
     }
     
-    func tick(elapsed : NSTimeInterval){
-        elapsedTimeLabel.text = TimeUtils.formatStopwatch(elapsed)
+    func tick(state: SpeechState, timer: SpeechTimer){
+        elapsedTimeLabel.text = TimeUtils.formatStopwatch(state.elapsed)
         
         if(blinkState){
             if(blinkOn){

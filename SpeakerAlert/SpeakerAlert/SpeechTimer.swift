@@ -14,27 +14,34 @@ public class SpeechTimer : NSObject {
     
     var state : SpeechState {
         didSet {
-            delegate?.stateChanged(state, timer: self)
+            delegate?.phaseChanged(state, timer: self)
         }
     }
     
+    private func setRunning(running : SpeechRunning){
+        state = SpeechState(running: running, phase: state.phase, elapsed: elapsed())
+    }
+    
+    private func setPhase(phase : SpeechPhase){
+        state = SpeechState(running: state.running, phase: phase, elapsed: elapsed())
+    }
+    
     var timings : Profile;
+    
+    // Timers for tracking state changes
     var greenTimer : NSTimer?;
     var yellowTimer : NSTimer?;
     var redTimer : NSTimer?;
     var redBlinkTimer : NSTimer?;
     var tickTimer : NSTimer?
     
-    var running : Bool;
-    
     // Required for pausing
     var startTime : NSDate?;
     var pauseInterval : NSTimeInterval = 0;
     
     init(withTimings timing : Profile){
-        state = SpeechState.BELOW_MINIMUM
+        state = SpeechState()
         self.timings = timing;
-        running = false;
     }
     
     /**
@@ -44,7 +51,7 @@ public class SpeechTimer : NSObject {
     */
     func start(){
         
-        if(!running){
+        if(state.running != SpeechRunning.RUNNING){
             NSLog("Starting, pause interval = %g", pauseInterval);
             
             if(pauseInterval < NSTimeInterval(timings.green!)){
@@ -63,7 +70,7 @@ public class SpeechTimer : NSObject {
             tickTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tick:", userInfo: nil, repeats: true)
             
             startTime = NSDate();
-            running = true;
+            setRunning(SpeechRunning.RUNNING)
         }
     }
     
@@ -76,7 +83,7 @@ public class SpeechTimer : NSObject {
     */
     func pause(){
         
-        if(running){
+        if(state.running == SpeechRunning.RUNNING){
             pauseInterval = pauseInterval + NSDate().timeIntervalSinceDate(startTime!);
             
             NSLog("Pausing with interval %g", pauseInterval);
@@ -86,7 +93,7 @@ public class SpeechTimer : NSObject {
             redTimer?.invalidate();
             redBlinkTimer?.invalidate();
             tickTimer?.invalidate()
-            running = false;
+            setRunning(SpeechRunning.PAUSED)
         }
     }
     
@@ -98,47 +105,56 @@ public class SpeechTimer : NSObject {
         When start() is next called, the timer will start from zero.
     */
     func stop(){
-        if(running){
+        if(state.running != SpeechRunning.STOPPED){
             NSLog("Stopping");
-            
-            pauseInterval = 0;
-            startTime = nil;
+            setRunning(SpeechRunning.STOPPED)
 
             greenTimer?.invalidate();
             yellowTimer?.invalidate();
             redTimer?.invalidate();
             redBlinkTimer?.invalidate();
             tickTimer?.invalidate()
-            running = false;
+            
+            // Reset the timer
+            pauseInterval = 0;
+            startTime = nil;
         }
     }
     
     func green(timer: NSTimer!){
-        state = SpeechState.GREEN
+        setPhase(SpeechPhase.GREEN)
     }
     
     func yellow(timer: NSTimer!){
-        state = SpeechState.YELLOW
+        setPhase(SpeechPhase.YELLOW)
     }
     
     func red(timer: NSTimer!){
-        state = SpeechState.RED
+        setPhase(SpeechPhase.RED)
     }
     
     func redBlink(timer: NSTimer!){
-        state = SpeechState.OVER_MAXIMUM
+        setPhase(SpeechPhase.OVER_MAXIMUM)
     }
     
     func tick(timer: NSTimer!){
-        delegate?.tick(pauseInterval + NSDate().timeIntervalSinceDate(startTime!))
+        delegate?.tick(SpeechState(running: state.running, phase: state.phase, elapsed: elapsed()), timer: self)
+    }
+    
+    func elapsed() -> NSTimeInterval {
+        if let s : NSDate = startTime {
+            return pauseInterval + NSDate().timeIntervalSinceDate(s)
+        } else {
+            return pauseInterval
+        }
     }
     
 }
 
 protocol SpeechTimerDelegate {
 
-    func stateChanged(state: SpeechState, timer: SpeechTimer)
-    func tick(elapsed : NSTimeInterval)
+    func phaseChanged(state: SpeechState, timer: SpeechTimer)
+    func tick(state: SpeechState, timer: SpeechTimer)
     
 }
 

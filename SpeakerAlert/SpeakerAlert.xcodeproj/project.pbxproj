@@ -40,6 +40,15 @@
 		E2929A891B3CCE6E007030D4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
 		E2929A8A1B3CCE71007030D4 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
 		E2929A8B1B3CCE74007030D4 /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
+		E2A377F71B78561A007FA8FE /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
+		E2A377F81B78561A007FA8FE /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20B857F1B66661300D55578 /* SpeechManager.swift */; };
+		E2A377F91B78561A007FA8FE /* SpeechState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2E7CB1B685AF3004BD7FD /* SpeechState.swift */; };
+		E2A377FA1B7856EE007FA8FE /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20B857F1B66661300D55578 /* SpeechManager.swift */; };
+		E2A377FB1B7856F0007FA8FE /* SpeechState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2E7CB1B685AF3004BD7FD /* SpeechState.swift */; };
+		E2A377FC1B785702007FA8FE /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
+		E2A377FD1B785705007FA8FE /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
+		E2A377FE1B785707007FA8FE /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */; };
+		E2A377FF1B78570A007FA8FE /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A01B48338400EB056C /* Group.swift */; };
 		E2C2E7CC1B685AF3004BD7FD /* SpeechState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2E7CB1B685AF3004BD7FD /* SpeechState.swift */; };
 		E2C9020C1B33BA5600B39D37 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C9020B1B33BA5600B39D37 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2C9020D1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld */; };
@@ -285,6 +294,7 @@
 		E23480E71B2906EA0076247D /* SpeakerAlert */ = {
 			isa = PBXGroup;
 			children = (
+				E25F8F221B76B94900A16A92 /* Models */,
 				E2159F231B6D9F1B0075E77E /* Watch */,
 				E22E8C3F1B6BA13500DD0793 /* UserNotification */,
 				E22E8C3D1B6BA08600DD0793 /* UI */,
@@ -357,14 +367,21 @@
 			name = Assembly;
 			sourceTree = "<group>";
 		};
-		E28AA3531B2CA70F000F5A15 /* SpeechTimer */ = {
+		E25F8F221B76B94900A16A92 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */,
 				E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */,
 				E2F6B5F01B378F2600210504 /* Profile.swift */,
 				E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */,
 				E24408A01B48338400EB056C /* Group.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E28AA3531B2CA70F000F5A15 /* SpeechTimer */ = {
+			isa = PBXGroup;
+			children = (
+				E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */,
 				E20B857F1B66661300D55578 /* SpeechManager.swift */,
 				E2C2E7CB1B685AF3004BD7FD /* SpeechState.swift */,
 			);
@@ -712,7 +729,9 @@
 				E2929A8B1B3CCE74007030D4 /* SpeechTimer.swift in Sources */,
 				E2929A8A1B3CCE71007030D4 /* Profile+CoreDataProperties.swift in Sources */,
 				E24408A31B4834F200EB056C /* Group.swift in Sources */,
+				E2A377FB1B7856F0007FA8FE /* SpeechState.swift in Sources */,
 				E2929A891B3CCE6E007030D4 /* Profile.swift in Sources */,
+				E2A377FA1B7856EE007FA8FE /* SpeechManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,9 +749,16 @@
 			files = (
 				E23481281B2906EB0076247D /* NotificationController.swift in Sources */,
 				E2E8DD5D1B6DD021003D3F7C /* TimeUtils.swift in Sources */,
+				E2A377FD1B785705007FA8FE /* Profile+CoreDataProperties.swift in Sources */,
+				E2A377FF1B78570A007FA8FE /* Group.swift in Sources */,
 				E234812A1B2906EB0076247D /* ComplicationController.swift in Sources */,
+				E2A377F71B78561A007FA8FE /* SpeechTimer.swift in Sources */,
 				E23481261B2906EB0076247D /* ExtensionDelegate.swift in Sources */,
+				E2A377F91B78561A007FA8FE /* SpeechState.swift in Sources */,
 				E23481241B2906EB0076247D /* InterfaceController.swift in Sources */,
+				E2A377FC1B785702007FA8FE /* Profile.swift in Sources */,
+				E2A377F81B78561A007FA8FE /* SpeechManager.swift in Sources */,
+				E2A377FE1B785707007FA8FE /* Group+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

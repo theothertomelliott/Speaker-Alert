@@ -17,11 +17,11 @@ class VibrationAlertManager: NSObject, SpeechTimerDelegate {
         }
     }
     
-    func stateChanged(state: SpeechState, timer: SpeechTimer){
+    func phaseChanged(state: SpeechState, timer: SpeechTimer){
         NSLog("Vibrating")
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
     
-    func tick(elapsed : NSTimeInterval){}
+    func tick(state: SpeechState, timer: SpeechTimer){}
     
 }

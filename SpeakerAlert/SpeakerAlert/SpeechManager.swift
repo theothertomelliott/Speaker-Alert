@@ -64,17 +64,16 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         }
     }
     
-    public func stateChanged(state: SpeechState, timer: SpeechTimer) {
+    func phaseChanged(state: SpeechState, timer: SpeechTimer) {
         NSLog("Speech timer state changed: \(state)")
         for observer in observers {
-            observer.stateChanged(state, timer: timer)
+            observer.phaseChanged(state, timer: timer)
         }
     }
     
-    public func tick(elapsed : NSTimeInterval){
-        NSLog("Tick")
+    func tick(state: SpeechState, timer: SpeechTimer){
         for observer in observers {
-            observer.tick(elapsed)
+            observer.tick(state, timer: timer)
         }
     }
     

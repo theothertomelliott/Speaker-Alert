@@ -38,18 +38,22 @@ class WatchCommsManager: NSObject, WCSessionDelegate, SpeechTimerDelegate {
         }
     }
     
-    func stateChanged(state: SpeechState, timer: SpeechTimer){
-        
-    }
-    
-    func tick(elapsed : NSTimeInterval){
+    private func updateState(state : SpeechState){
         do {
             try watchSession?.updateApplicationContext(
-                ["elapsed" : elapsed]
+                ["state" : state]
             )
         } catch let error as NSError {
-            NSLog("Updating the context failed: " + error.localizedDescription)
+            //NSLog("Updating the context failed: " + error.localizedDescription)
         }
+    }
+    
+    func phaseChanged(state: SpeechState, timer: SpeechTimer){
+        updateState(state)
+    }
+    
+    func tick(state: SpeechState, timer: SpeechTimer){
+        updateState(state)
     }
     
 }
