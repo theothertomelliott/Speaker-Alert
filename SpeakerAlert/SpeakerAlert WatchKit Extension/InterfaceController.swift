@@ -17,8 +17,8 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     /** Called on the delegate of the receiver. Will be called on startup if an applicationContext is available. */
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]){
         NSLog("session:didReceiveApplicationContext:")
-        let elapsedTime : SpeechState = applicationContext["state"] as! SpeechState
-        timeElapsedLabel.setText(TimeUtils.formatStopwatch(elapsedTime.elapsed))
+        let elapsedTime : NSTimeInterval = applicationContext["elapsed"] as! NSTimeInterval
+        timeElapsedLabel.setText(TimeUtils.formatStopwatch(elapsedTime))
     }
     
     var watchSession : WCSession?

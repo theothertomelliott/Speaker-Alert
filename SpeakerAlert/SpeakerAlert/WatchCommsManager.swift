@@ -41,7 +41,7 @@ class WatchCommsManager: NSObject, WCSessionDelegate, SpeechTimerDelegate {
     private func updateState(state : SpeechState){
         do {
             try watchSession?.updateApplicationContext(
-                ["state" : state]
+                ["elapsed" : state.elapsed]
             )
         } catch let error as NSError {
             //NSLog("Updating the context failed: " + error.localizedDescription)
