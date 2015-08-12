@@ -28,6 +28,44 @@ class SpeechState {
         self.phase = phase;
         self.elapsed = elapsed
     }
+    
+    static func fromDictionary(dict : [String : AnyObject]) -> SpeechState {
+        
+        let r : Int = dict["running"] as! Int
+        let p : Int = dict["phase"] as! Int
+        
+        var running : SpeechRunning = SpeechRunning.STOPPED
+        if(r == SpeechRunning.PAUSED.hashValue){
+            running = SpeechRunning.PAUSED
+        }
+        if(r == SpeechRunning.RUNNING.hashValue){
+            running = SpeechRunning.RUNNING
+        }
+        
+        var phase : SpeechPhase = SpeechPhase.BELOW_MINIMUM
+        if(p == SpeechPhase.GREEN.hashValue){
+            phase = SpeechPhase.GREEN
+        }
+        if(p == SpeechPhase.YELLOW.hashValue){
+            phase = SpeechPhase.YELLOW
+        }
+        if(p == SpeechPhase.RED.hashValue){
+            phase = SpeechPhase.RED
+        }
+        if(p == SpeechPhase.OVER_MAXIMUM.hashValue){
+            phase = SpeechPhase.OVER_MAXIMUM
+        }
+        
+        return SpeechState(running: running, phase: phase, elapsed: dict["elapsed"] as! NSTimeInterval)
+    }
+    
+    func toDictionary() -> [String : AnyObject] {
+        return [
+            "elapsed" : self.elapsed,
+            "phase" : self.phase.hashValue,
+            "running" : self.running.hashValue
+        ]
+    }
 
 }
 

@@ -13,12 +13,24 @@ import WatchConnectivity
 
 class InterfaceController: WKInterfaceController,WCSessionDelegate {
 
+    @IBOutlet var mainGroup: WKInterfaceGroup!
+    
     @IBOutlet var timeElapsedLabel: WKInterfaceLabel!
     /** Called on the delegate of the receiver. Will be called on startup if an applicationContext is available. */
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]){
         NSLog("session:didReceiveApplicationContext:")
-        let elapsedTime : NSTimeInterval = applicationContext["elapsed"] as! NSTimeInterval
-        timeElapsedLabel.setText(TimeUtils.formatStopwatch(elapsedTime))
+        let speechState : SpeechState = SpeechState.fromDictionary(applicationContext)
+        timeElapsedLabel.setText(TimeUtils.formatStopwatch(speechState.elapsed))
+        
+        if(speechState.phase == SpeechPhase.GREEN){
+            mainGroup.setBackgroundColor(UIColor.greenColor())
+        }
+        if(speechState.phase == SpeechPhase.YELLOW){
+            mainGroup.setBackgroundColor(UIColor.yellowColor())
+        }
+        if(speechState.phase == SpeechPhase.RED){
+            mainGroup.setBackgroundColor(UIColor.redColor())
+        }
     }
     
     var watchSession : WCSession?
