@@ -56,4 +56,13 @@ class WatchCommsManager: NSObject, WCSessionDelegate, SpeechTimerDelegate {
         updateState(state)
     }
     
+    // WSSessionDelegate
+    
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]){
+        let messageName : String = message["messageName"] as! String
+        if messageName == "startStop" {
+            speechMan!.stop();
+        }
+    }
+    
 }

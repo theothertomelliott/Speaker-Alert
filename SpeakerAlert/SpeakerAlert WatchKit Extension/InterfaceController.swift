@@ -36,15 +36,11 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     var watchSession : WCSession?
     
     @IBAction func stopStartPressed() {
-        let cancel = WKAlertAction(title: "Cancel", style: WKAlertActionStyle.Cancel, handler: { () -> Void in
-            
+        watchSession?.sendMessage(["messageName" : "startStop"], replyHandler: { (reply : [String : AnyObject]) -> Void in
+            NSLog("Reply received")
+            }, errorHandler: { (error : NSError) -> Void in
+            NSLog("Error received")
         })
-        
-        let action = WKAlertAction(title: "Action", style: WKAlertActionStyle.Default, handler: { () -> Void in
-            
-        })
-        
-        self.presentAlertControllerWithTitle("Alert", message: "Example watchOS 2 alert interface", preferredStyle: WKAlertControllerStyle.SideBySideButtonsAlert, actions: [cancel, action])
     }
     
     override func awakeWithContext(context: AnyObject?) {
