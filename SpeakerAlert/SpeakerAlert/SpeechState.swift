@@ -15,18 +15,35 @@ class SpeechState {
 
     var running : SpeechRunning
     var phase : SpeechPhase
-    var elapsed : NSTimeInterval
+    var elapsed : NSTimeInterval {
+        get {
+            if let s : NSDate = startTime {
+                return pauseInterval + NSDate().timeIntervalSinceDate(s)
+            } else {
+                return pauseInterval
+            }
+        }
+    }
+    
+    //
+    var startTime : NSDate?
+    var pauseInterval : NSTimeInterval
     
     init(){
         running = SpeechRunning.STOPPED
         phase = SpeechPhase.BELOW_MINIMUM
-        elapsed = 0
+        pauseInterval = 0
     }
     
-    init(running: SpeechRunning, phase : SpeechPhase, elapsed : NSTimeInterval){
-        self.running = running;
-        self.phase = phase;
-        self.elapsed = elapsed
+    init(running: SpeechRunning, phase : SpeechPhase, startTime : NSDate?, pauseInterval : NSTimeInterval?){
+        self.running = running
+        self.phase = phase
+        self.startTime = startTime
+        if let p = pauseInterval {
+            self.pauseInterval = p
+        } else {
+            self.pauseInterval = 0
+        }
     }
     
     static func fromDictionary(dict : [String : AnyObject]) -> SpeechState {
@@ -56,14 +73,15 @@ class SpeechState {
             phase = SpeechPhase.OVER_MAXIMUM
         }
         
-        return SpeechState(running: running, phase: phase, elapsed: dict["elapsed"] as! NSTimeInterval)
+        return SpeechState(running: running, phase: phase, startTime: dict["startTime"] as? NSDate, pauseInterval: dict["pauseInterval"] as? NSTimeInterval)
     }
     
     func toDictionary() -> [String : AnyObject] {
         return [
-            "elapsed" : self.elapsed,
             "phase" : self.phase.hashValue,
-            "running" : self.running.hashValue
+            "running" : self.running.hashValue,
+            "pauseInterval" : self.pauseInterval,
+            "startTime" : self.startTime!
         ]
     }
 

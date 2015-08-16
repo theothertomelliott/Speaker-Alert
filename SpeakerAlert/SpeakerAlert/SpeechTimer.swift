@@ -19,11 +19,11 @@ public class SpeechTimer : NSObject {
     }
     
     private func setRunning(running : SpeechRunning){
-        state = SpeechState(running: running, phase: state.phase, elapsed: elapsed())
+        state = SpeechState(running: running, phase: self.state.phase, startTime: self.state.startTime, pauseInterval: self.state.pauseInterval)
     }
     
     private func setPhase(phase : SpeechPhase){
-        state = SpeechState(running: state.running, phase: phase, elapsed: elapsed())
+        state = SpeechState(running: self.state.running, phase: phase, startTime: self.state.startTime, pauseInterval: self.state.pauseInterval)
     }
     
     var timings : Profile;
@@ -34,10 +34,6 @@ public class SpeechTimer : NSObject {
     var redTimer : NSTimer?;
     var redBlinkTimer : NSTimer?;
     var tickTimer : NSTimer?
-    
-    // Required for pausing
-    var startTime : NSDate?;
-    var pauseInterval : NSTimeInterval = 0;
     
     init(withTimings timing : Profile){
         state = SpeechState()
@@ -52,24 +48,24 @@ public class SpeechTimer : NSObject {
     func start(){
         
         if(state.running != SpeechRunning.RUNNING){
-            NSLog("Starting, pause interval = %g", pauseInterval);
+            NSLog("Starting, pause interval = %g", self.state.pauseInterval);
             
-            if(pauseInterval < NSTimeInterval(timings.green!)){
-                greenTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(timings.green!) - pauseInterval, target: self, selector: "green:", userInfo: nil, repeats: false);
+            if(self.state.pauseInterval < NSTimeInterval(timings.green!)){
+                greenTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(timings.green!) - self.state.pauseInterval, target: self, selector: "green:", userInfo: nil, repeats: false);
             }
-            if(pauseInterval < NSTimeInterval(timings.yellow!)){
-                yellowTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(timings.yellow!) - pauseInterval, target: self, selector: "yellow:", userInfo: nil, repeats: false);
+            if(self.state.pauseInterval < NSTimeInterval(timings.yellow!)){
+                yellowTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(timings.yellow!) - self.state.pauseInterval, target: self, selector: "yellow:", userInfo: nil, repeats: false);
             }
-            if(pauseInterval < NSTimeInterval(timings.red!)){
-                redTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(timings.red!) - pauseInterval, target: self, selector: "red:", userInfo: nil, repeats: false);
+            if(self.state.pauseInterval < NSTimeInterval(timings.red!)){
+                redTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(timings.red!) - self.state.pauseInterval, target: self, selector: "red:", userInfo: nil, repeats: false);
             }
-            if(pauseInterval < NSTimeInterval(timings.redBlink!)){
-                redBlinkTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(timings.redBlink!) - pauseInterval, target: self, selector: "redBlink:", userInfo: nil, repeats: false);
+            if(self.state.pauseInterval < NSTimeInterval(timings.redBlink!)){
+                redBlinkTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(timings.redBlink!) - self.state.pauseInterval, target: self, selector: "redBlink:", userInfo: nil, repeats: false);
             }
             
             tickTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tick:", userInfo: nil, repeats: true)
             
-            startTime = NSDate();
+            self.state.startTime = NSDate();
             setRunning(SpeechRunning.RUNNING)
         }
     }
@@ -84,9 +80,9 @@ public class SpeechTimer : NSObject {
     func pause(){
         
         if(state.running == SpeechRunning.RUNNING){
-            pauseInterval = pauseInterval + NSDate().timeIntervalSinceDate(startTime!);
+            self.state.pauseInterval = self.state.pauseInterval + NSDate().timeIntervalSinceDate(self.state.startTime!);
             
-            NSLog("Pausing with interval %g", pauseInterval);
+            NSLog("Pausing with interval %g", self.state.pauseInterval);
             
             greenTimer?.invalidate();
             yellowTimer?.invalidate();
@@ -116,8 +112,8 @@ public class SpeechTimer : NSObject {
             tickTimer?.invalidate()
             
             // Reset the timer
-            pauseInterval = 0;
-            startTime = nil;
+            self.state.pauseInterval = 0;
+            self.state.startTime = nil;
         }
     }
     
@@ -138,14 +134,14 @@ public class SpeechTimer : NSObject {
     }
     
     func tick(timer: NSTimer!){
-        delegate?.tick(SpeechState(running: state.running, phase: state.phase, elapsed: elapsed()), timer: self)
+        delegate?.tick(SpeechState(running: state.running, phase: state.phase, startTime: state.startTime, pauseInterval: state.pauseInterval), timer: self)
     }
     
     func elapsed() -> NSTimeInterval {
-        if let s : NSDate = startTime {
-            return pauseInterval + NSDate().timeIntervalSinceDate(s)
+        if let s : NSDate = self.state.startTime {
+            return self.state.pauseInterval + NSDate().timeIntervalSinceDate(s)
         } else {
-            return pauseInterval
+            return self.state.pauseInterval
         }
     }
     
