@@ -60,7 +60,7 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         }
         
         get {
-            return timer!.timings;
+            return timer!.state.profile;
         }
     }
     
