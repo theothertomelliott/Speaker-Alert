@@ -33,8 +33,8 @@ public class SpeechTimer : NSObject {
     var redBlinkTimer : NSTimer?;
     var tickTimer : NSTimer?
     
-    init(withTimings timing : Profile){
-        state = SpeechState(profile: timing)
+    init(withProfile profile : Profile){
+        state = SpeechState(profile: SpeechProfileFactory.SpeechProfileWithProfile(profile))
     }
     
     /**
@@ -47,17 +47,17 @@ public class SpeechTimer : NSObject {
         if(state.running != SpeechRunning.RUNNING){
             NSLog("Starting, pause interval = %g", self.state.pauseInterval);
             
-            if(self.state.pauseInterval < NSTimeInterval(state.profile.green!)){
-                greenTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.green!) - self.state.pauseInterval, target: self, selector: "green:", userInfo: nil, repeats: false);
+            if(self.state.pauseInterval < NSTimeInterval(state.profile.green)){
+                greenTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.green) - self.state.pauseInterval, target: self, selector: "green:", userInfo: nil, repeats: false);
             }
-            if(self.state.pauseInterval < NSTimeInterval(state.profile.yellow!)){
-                yellowTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.yellow!) - self.state.pauseInterval, target: self, selector: "yellow:", userInfo: nil, repeats: false);
+            if(self.state.pauseInterval < NSTimeInterval(state.profile.yellow)){
+                yellowTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.yellow) - self.state.pauseInterval, target: self, selector: "yellow:", userInfo: nil, repeats: false);
             }
-            if(self.state.pauseInterval < NSTimeInterval(state.profile.red!)){
-                redTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.red!) - self.state.pauseInterval, target: self, selector: "red:", userInfo: nil, repeats: false);
+            if(self.state.pauseInterval < NSTimeInterval(state.profile.red)){
+                redTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.red) - self.state.pauseInterval, target: self, selector: "red:", userInfo: nil, repeats: false);
             }
-            if(self.state.pauseInterval < NSTimeInterval(state.profile.redBlink!)){
-                redBlinkTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.redBlink!) - self.state.pauseInterval, target: self, selector: "redBlink:", userInfo: nil, repeats: false);
+            if(self.state.pauseInterval < NSTimeInterval(state.profile.redBlink)){
+                redBlinkTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.redBlink) - self.state.pauseInterval, target: self, selector: "redBlink:", userInfo: nil, repeats: false);
             }
             
             tickTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tick:", userInfo: nil, repeats: true)
