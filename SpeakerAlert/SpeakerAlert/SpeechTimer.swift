@@ -40,16 +40,16 @@ public class SpeechTimer : NSObject {
             NSLog("Starting, pause interval = %g", self.state.pauseInterval);
             
             if(self.state.pauseInterval < NSTimeInterval(state.profile.green)){
-                greenTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.green) - self.state.pauseInterval, target: self, selector: "phaseChange:", userInfo: nil, repeats: false);
+                greenTimer = NSTimer.scheduledTimerWithTimeInterval(state.timeUntil(SpeechPhase.GREEN), target: self, selector: "phaseChange:", userInfo: nil, repeats: false);
             }
             if(self.state.pauseInterval < NSTimeInterval(state.profile.yellow)){
-                yellowTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.yellow) - self.state.pauseInterval, target: self, selector: "phaseChange:", userInfo: nil, repeats: false);
+                yellowTimer = NSTimer.scheduledTimerWithTimeInterval(state.timeUntil(SpeechPhase.YELLOW), target: self, selector: "phaseChange:", userInfo: nil, repeats: false);
             }
             if(self.state.pauseInterval < NSTimeInterval(state.profile.red)){
-                redTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.red) - self.state.pauseInterval, target: self, selector: "phaseChange:", userInfo: nil, repeats: false);
+                redTimer = NSTimer.scheduledTimerWithTimeInterval(state.timeUntil(SpeechPhase.RED), target: self, selector: "phaseChange:", userInfo: nil, repeats: false);
             }
             if(self.state.pauseInterval < NSTimeInterval(state.profile.redBlink)){
-                redBlinkTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.redBlink) - self.state.pauseInterval, target: self, selector: "phaseChange:", userInfo: nil, repeats: false);
+                redBlinkTimer = NSTimer.scheduledTimerWithTimeInterval(state.timeUntil(SpeechPhase.OVER_MAXIMUM), target: self, selector: "phaseChange:", userInfo: nil, repeats: false);
             }
             
             tickTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tick:", userInfo: nil, repeats: true)

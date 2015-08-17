@@ -34,6 +34,24 @@ class SpeechState {
         }
     }
     
+
+    func timeUntil(phase: SpeechPhase) -> NSTimeInterval {
+        var targetElapsed : NSTimeInterval = 0
+        switch phase {
+        case SpeechPhase.GREEN:
+            targetElapsed = self.profile.green
+        case SpeechPhase.YELLOW:
+            targetElapsed = self.profile.yellow
+        case SpeechPhase.RED:
+            targetElapsed = self.profile.red
+        case SpeechPhase.OVER_MAXIMUM:
+            targetElapsed = self.profile.redBlink
+        default:
+            targetElapsed = 0
+        }
+        let e : NSTimeInterval = elapsed
+        return targetElapsed - e
+    }
     
     
     var elapsed : NSTimeInterval {
@@ -59,7 +77,11 @@ class SpeechState {
     init(profile: SpeechProfile, running: SpeechRunning, startTime : NSDate?, pauseInterval : NSTimeInterval?){
         self.profile = profile
         self.running = running
-        self.startTime = startTime
+        if(running == SpeechRunning.RUNNING){
+            self.startTime = startTime
+        } else {
+            self.startTime = nil
+        }
         if let p = pauseInterval {
             self.pauseInterval = p
         } else {
