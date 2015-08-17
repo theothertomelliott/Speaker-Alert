@@ -19,6 +19,10 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     /** Called on the delegate of the receiver. Will be called on startup if an applicationContext is available. */
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]){
         NSLog("session:didReceiveApplicationContext:")
+
+        // Set purple to indicate we got a message
+        mainGroup.setBackgroundColor(UIColor.purpleColor())
+
         let speechState : SpeechState = SpeechState.fromDictionary(applicationContext)
         timeElapsedLabel.setText(TimeUtils.formatStopwatch(speechState.elapsed))
         
@@ -36,6 +40,11 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     var watchSession : WCSession?
     
     @IBAction func stopStartPressed() {
+        
+        // Set orange to indicate the button was pressed.
+        mainGroup.setBackgroundColor(UIColor.orangeColor())
+        
+        NSLog("StopStartPressed")
         watchSession?.sendMessage(["messageName" : "startStop"], replyHandler: { (reply : [String : AnyObject]) -> Void in
             NSLog("Reply received")
             }, errorHandler: { (error : NSError) -> Void in
