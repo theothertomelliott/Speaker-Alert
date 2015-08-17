@@ -147,4 +147,6 @@ enum SpeechPhase {
     case YELLOW
     case RED
     case OVER_MAXIMUM // Speaker has gone significantly over time
+    
+    static var allCases: [SpeechPhase] = [.BELOW_MINIMUM, .GREEN, .YELLOW, .RED, .OVER_MAXIMUM]
 }
