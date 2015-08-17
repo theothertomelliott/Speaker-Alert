@@ -113,8 +113,6 @@ class SpeechState {
     }
     
     func toDictionary() -> [String : AnyObject] {
-        // TODO: Write profile into dictionary
-        
         var dict : [String : AnyObject] = [
             "profile" : [
                 "green" : profile.green,
