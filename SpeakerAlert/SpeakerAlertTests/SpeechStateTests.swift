@@ -23,8 +23,12 @@ class SpeechStateTests: XCTestCase {
     func testItSerializesCorrectly() {
         
         let profile : SpeechProfile = SpeechProfile(green: 1, yellow: 2, red: 3, redBlink: 4)
-        let state : SpeechState = SpeechState(profile: profile)
+        let startTime : NSDate = NSDate()
+        let pauseInterval : NSTimeInterval = 5;
+        let state : SpeechState = SpeechState(profile: profile, running: SpeechRunning.RUNNING, startTime: startTime, pauseInterval: pauseInterval)
         let dict : [String : AnyObject] = state.toDictionary()
+        
+        XCTAssert(dict["pauseInterval"] as! NSTimeInterval == 5)
         
         if let profileRetrieved : [String : AnyObject] = dict["profile"] as? [String : AnyObject] {
             XCTAssert(profileRetrieved["green"] as? Int == 1);
@@ -40,7 +44,9 @@ class SpeechStateTests: XCTestCase {
     func testItDeserializesCorrectly() {
         
         let profile : SpeechProfile = SpeechProfile(green: 1, yellow: 2, red: 3, redBlink: 4)
-        let state : SpeechState = SpeechState(profile: profile)
+        let startTime : NSDate = NSDate()
+        let pauseInterval : NSTimeInterval = 5;
+let state : SpeechState = SpeechState(profile: profile, running: SpeechRunning.RUNNING, startTime: startTime, pauseInterval: pauseInterval)
         let dict : [String : AnyObject] = state.toDictionary()
         
         let stateRetrieved : SpeechState = SpeechState.fromDictionary(dict)
@@ -49,6 +55,9 @@ class SpeechStateTests: XCTestCase {
         XCTAssert(stateRetrieved.profile.yellow == 2)
         XCTAssert(stateRetrieved.profile.red == 3)
         XCTAssert(stateRetrieved.profile.redBlink == 4)
+        XCTAssert(stateRetrieved.pauseInterval == 5)
+        XCTAssert(stateRetrieved.phase == SpeechPhase.OVER_MAXIMUM)
+        XCTAssert(stateRetrieved.running == SpeechRunning.RUNNING)
         
     }
 

@@ -12,20 +12,12 @@ public class SpeechTimer : NSObject {
     
     var delegate : SpeechTimerDelegate?;
     
-    var state : SpeechState {
-        didSet {
-            delegate?.phaseChanged(state, timer: self)
-        }
-    }
+    var state : SpeechState
     
     private func setRunning(running : SpeechRunning){
-        state = SpeechState(profile: self.state.profile, running: running, phase: self.state.phase, startTime: self.state.startTime, pauseInterval: self.state.pauseInterval)
+        state = SpeechState(profile: self.state.profile, running: running, startTime: self.state.startTime, pauseInterval: self.state.pauseInterval)
     }
     
-    private func setPhase(phase : SpeechPhase){
-        state = SpeechState(profile: self.state.profile, running: self.state.running, phase: phase, startTime: self.state.startTime, pauseInterval: self.state.pauseInterval)
-    }
-        
     // Timers for tracking state changes
     var greenTimer : NSTimer?;
     var yellowTimer : NSTimer?;
@@ -48,16 +40,16 @@ public class SpeechTimer : NSObject {
             NSLog("Starting, pause interval = %g", self.state.pauseInterval);
             
             if(self.state.pauseInterval < NSTimeInterval(state.profile.green)){
-                greenTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.green) - self.state.pauseInterval, target: self, selector: "green:", userInfo: nil, repeats: false);
+                greenTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.green) - self.state.pauseInterval, target: self, selector: "phaseChange:", userInfo: nil, repeats: false);
             }
             if(self.state.pauseInterval < NSTimeInterval(state.profile.yellow)){
-                yellowTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.yellow) - self.state.pauseInterval, target: self, selector: "yellow:", userInfo: nil, repeats: false);
+                yellowTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.yellow) - self.state.pauseInterval, target: self, selector: "phaseChange:", userInfo: nil, repeats: false);
             }
             if(self.state.pauseInterval < NSTimeInterval(state.profile.red)){
-                redTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.red) - self.state.pauseInterval, target: self, selector: "red:", userInfo: nil, repeats: false);
+                redTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.red) - self.state.pauseInterval, target: self, selector: "phaseChange:", userInfo: nil, repeats: false);
             }
             if(self.state.pauseInterval < NSTimeInterval(state.profile.redBlink)){
-                redBlinkTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.redBlink) - self.state.pauseInterval, target: self, selector: "redBlink:", userInfo: nil, repeats: false);
+                redBlinkTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(state.profile.redBlink) - self.state.pauseInterval, target: self, selector: "phaseChange:", userInfo: nil, repeats: false);
             }
             
             tickTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tick:", userInfo: nil, repeats: true)
@@ -114,24 +106,12 @@ public class SpeechTimer : NSObject {
         }
     }
     
-    func green(timer: NSTimer!){
-        setPhase(SpeechPhase.GREEN)
-    }
-    
-    func yellow(timer: NSTimer!){
-        setPhase(SpeechPhase.YELLOW)
-    }
-    
-    func red(timer: NSTimer!){
-        setPhase(SpeechPhase.RED)
-    }
-    
-    func redBlink(timer: NSTimer!){
-        setPhase(SpeechPhase.OVER_MAXIMUM)
+    func phaseChange(timer: NSTimer!){
+        delegate?.phaseChanged(state, timer: self)
     }
     
     func tick(timer: NSTimer!){
-        delegate?.tick(SpeechState(profile: state.profile, running: state.running, phase: state.phase, startTime: state.startTime, pauseInterval: state.pauseInterval), timer: self)
+        delegate?.tick(SpeechState(profile: state.profile, running: state.running, startTime: state.startTime, pauseInterval: state.pauseInterval), timer: self)
     }
     
     func elapsed() -> NSTimeInterval {
