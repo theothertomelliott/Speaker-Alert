@@ -55,6 +55,8 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
         }
     }
     
+    func runningChanged(state: SpeechState, timer: SpeechTimer){}
+    
     @IBOutlet weak var elapsedTimeLabel: UILabel!
 
     override func viewDidLoad() {

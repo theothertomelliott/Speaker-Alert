@@ -24,4 +24,6 @@ class VibrationAlertManager: NSObject, SpeechTimerDelegate {
     
     func tick(state: SpeechState, timer: SpeechTimer){}
     
+    func runningChanged(state: SpeechState, timer: SpeechTimer){}
+    
 }

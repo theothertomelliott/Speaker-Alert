@@ -80,6 +80,12 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         }
     }
     
+    func runningChanged(state: SpeechState, timer: SpeechTimer){
+        for observer in observers {
+            observer.runningChanged(state, timer: timer)
+        }
+    }
+    
     // Start, pause and stop methods for current speech
     func start(){
         timer?.start()

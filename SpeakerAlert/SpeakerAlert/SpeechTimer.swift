@@ -13,10 +13,6 @@ public class SpeechTimer : NSObject {
     var delegate : SpeechTimerDelegate?;
     var state : SpeechState
     
-    private func setRunning(running : SpeechRunning){
-        state = SpeechState(profile: self.state.profile, running: running, startTime: self.state.startTime, pauseInterval: self.state.pauseInterval)
-    }
-    
     // Timers for tracking state changes
     var phaseTimers : [SpeechPhase : NSTimer]
     var tickTimer : NSTimer?
@@ -96,6 +92,11 @@ public class SpeechTimer : NSObject {
         }
     }
     
+    private func setRunning(running : SpeechRunning){
+        state = SpeechState(profile: self.state.profile, running: running, startTime: self.state.startTime, pauseInterval: self.state.pauseInterval)
+        delegate?.runningChanged(self.state, timer: self)
+    }
+    
     func phaseChange(timer: NSTimer!){
         delegate?.phaseChanged(state, timer: self)
     }
@@ -118,6 +119,7 @@ protocol SpeechTimerDelegate {
 
     func phaseChanged(state: SpeechState, timer: SpeechTimer)
     func tick(state: SpeechState, timer: SpeechTimer)
+    func runningChanged(state: SpeechState, timer: SpeechTimer)
     
 }
 
