@@ -42,6 +42,7 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         super.init()
     }
     
+    private var _profile : Profile?
     var profile : Profile? {
         set(value) {
             
@@ -52,15 +53,17 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
             
             // Create a new timer with the appropriate profile
             if let p : Profile = value {
-                timer = SpeechTimer(withTimings: p)
+                timer = SpeechTimer(withProfile: p)
                 timer?.delegate = self
             } else {
                 timer = nil
             }
+            
+            _profile = value
         }
         
         get {
-            return timer!.timings;
+            return _profile;
         }
     }
     

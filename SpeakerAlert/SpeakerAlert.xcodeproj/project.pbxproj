@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		B8E21BF70E82BF41BC4BBC79 /* Pods_SpeakerAlertTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C1174FD04EBE60B6AA870B /* Pods_SpeakerAlertTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D2C50F50FDE26C573823F396 /* Pods_SpeakerAlert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		E20A8E961B816E6400ECC443 /* SpeechStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A8E951B816E6400ECC443 /* SpeechStateTests.swift */; };
+		E20A8E981B81766000ECC443 /* SpeechProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A8E971B81766000ECC443 /* SpeechProfile.swift */; };
+		E20A8E9A1B817E7500ECC443 /* SpeechProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A8E991B817E7500ECC443 /* SpeechProfileFactory.swift */; };
+		E20A8E9B1B81825300ECC443 /* SpeechProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A8E971B81766000ECC443 /* SpeechProfile.swift */; };
+		E20A8E9C1B81825600ECC443 /* SpeechProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A8E971B81766000ECC443 /* SpeechProfile.swift */; };
+		E20A8E9D1B8183B500ECC443 /* SpeechProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A8E991B817E7500ECC443 /* SpeechProfileFactory.swift */; };
+		E20A8E9E1B8183B600ECC443 /* SpeechProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A8E991B817E7500ECC443 /* SpeechProfileFactory.swift */; };
 		E20B85801B66661300D55578 /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20B857F1B66661300D55578 /* SpeechManager.swift */; };
 		E2159F221B6D9D8B0075E77E /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */; };
 		E2159F251B6D9F330075E77E /* WatchCommsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2159F241B6D9F330075E77E /* WatchCommsManager.swift */; };
@@ -123,6 +130,9 @@
 		5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeakerAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		762393DDD7583B928EBD75E6 /* Pods-SpeakerAlertTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlertTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlertTests/Pods-SpeakerAlertTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D43FA6F56ECA171B284DC711 /* Pods-SpeakerAlert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlert.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlert/Pods-SpeakerAlert.release.xcconfig"; sourceTree = "<group>"; };
+		E20A8E951B816E6400ECC443 /* SpeechStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechStateTests.swift; sourceTree = "<group>"; };
+		E20A8E971B81766000ECC443 /* SpeechProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechProfile.swift; sourceTree = "<group>"; };
+		E20A8E991B817E7500ECC443 /* SpeechProfileFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechProfileFactory.swift; sourceTree = "<group>"; };
 		E20B857F1B66661300D55578 /* SpeechManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
 		E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
 		E2159F241B6D9F330075E77E /* WatchCommsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchCommsManager.swift; sourceTree = "<group>"; };
@@ -314,6 +324,7 @@
 			children = (
 				E23480FD1B2906EB0076247D /* SpeakerAlertTests.swift */,
 				E23480FF1B2906EB0076247D /* Info.plist */,
+				E20A8E951B816E6400ECC443 /* SpeechStateTests.swift */,
 			);
 			path = SpeakerAlertTests;
 			sourceTree = "<group>";
@@ -384,6 +395,8 @@
 				E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */,
 				E20B857F1B66661300D55578 /* SpeechManager.swift */,
 				E2C2E7CB1B685AF3004BD7FD /* SpeechState.swift */,
+				E20A8E971B81766000ECC443 /* SpeechProfile.swift */,
+				E20A8E991B817E7500ECC443 /* SpeechProfileFactory.swift */,
 			);
 			name = SpeechTimer;
 			sourceTree = "<group>";
@@ -705,6 +718,7 @@
 				E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */,
 				E2F6B5F21B378F2600210504 /* Profile.swift in Sources */,
 				E2C2E7CC1B685AF3004BD7FD /* SpeechState.swift in Sources */,
+				E20A8E9A1B817E7500ECC443 /* SpeechProfileFactory.swift in Sources */,
 				E25E86C91B65D73A00F120FA /* ApplicationAssembly.swift in Sources */,
 				E24408A21B48338400EB056C /* Group.swift in Sources */,
 				E22E8C441B6BA23000DD0793 /* VibrationAlertManager.swift in Sources */,
@@ -716,6 +730,7 @@
 				E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */,
 				E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */,
 				E24408A11B48338400EB056C /* Group+CoreDataProperties.swift in Sources */,
+				E20A8E981B81766000ECC443 /* SpeechProfile.swift in Sources */,
 				E24408A61B483C8400EB056C /* GroupTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -726,9 +741,12 @@
 			files = (
 				E23480FE1B2906EB0076247D /* SpeakerAlertTests.swift in Sources */,
 				E24408A41B4834F400EB056C /* Group+CoreDataProperties.swift in Sources */,
+				E20A8E961B816E6400ECC443 /* SpeechStateTests.swift in Sources */,
 				E2929A8B1B3CCE74007030D4 /* SpeechTimer.swift in Sources */,
 				E2929A8A1B3CCE71007030D4 /* Profile+CoreDataProperties.swift in Sources */,
+				E20A8E9B1B81825300ECC443 /* SpeechProfile.swift in Sources */,
 				E24408A31B4834F200EB056C /* Group.swift in Sources */,
+				E20A8E9D1B8183B500ECC443 /* SpeechProfileFactory.swift in Sources */,
 				E2A377FB1B7856F0007FA8FE /* SpeechState.swift in Sources */,
 				E2929A891B3CCE6E007030D4 /* Profile.swift in Sources */,
 				E2A377FA1B7856EE007FA8FE /* SpeechManager.swift in Sources */,
@@ -757,6 +775,8 @@
 				E2A377F91B78561A007FA8FE /* SpeechState.swift in Sources */,
 				E23481241B2906EB0076247D /* InterfaceController.swift in Sources */,
 				E2A377FC1B785702007FA8FE /* Profile.swift in Sources */,
+				E20A8E9E1B8183B600ECC443 /* SpeechProfileFactory.swift in Sources */,
+				E20A8E9C1B81825600ECC443 /* SpeechProfile.swift in Sources */,
 				E2A377F81B78561A007FA8FE /* SpeechManager.swift in Sources */,
 				E2A377FE1B785707007FA8FE /* Group+CoreDataProperties.swift in Sources */,
 			);

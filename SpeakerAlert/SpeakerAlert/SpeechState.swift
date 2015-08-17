@@ -14,6 +14,7 @@ import Foundation
 class SpeechState {
 
     var running : SpeechRunning
+    var profile : SpeechProfile
     var phase : SpeechPhase
     var elapsed : NSTimeInterval {
         get {
@@ -29,13 +30,15 @@ class SpeechState {
     var startTime : NSDate?
     var pauseInterval : NSTimeInterval
     
-    init(){
+    init(profile: SpeechProfile){
+        self.profile = profile
         running = SpeechRunning.STOPPED
         phase = SpeechPhase.BELOW_MINIMUM
         pauseInterval = 0
     }
     
-    init(running: SpeechRunning, phase : SpeechPhase, startTime : NSDate?, pauseInterval : NSTimeInterval?){
+    init(profile: SpeechProfile, running: SpeechRunning, phase : SpeechPhase, startTime : NSDate?, pauseInterval : NSTimeInterval?){
+        self.profile = profile
         self.running = running
         self.phase = phase
         self.startTime = startTime
@@ -73,16 +76,37 @@ class SpeechState {
             phase = SpeechPhase.OVER_MAXIMUM
         }
         
-        return SpeechState(running: running, phase: phase, startTime: dict["startTime"] as? NSDate, pauseInterval: dict["pauseInterval"] as? NSTimeInterval)
+        // Parse profile from dictionary
+        let profileDict : [String : AnyObject] = (dict["profile"] as? [String : AnyObject])!
+        let green : NSTimeInterval = (profileDict["green"] as? NSTimeInterval)!
+        let yellow : NSTimeInterval  = (profileDict["yellow"] as? NSTimeInterval)!
+        let red : NSTimeInterval  = (profileDict["red"] as? NSTimeInterval)!
+        let redBlink : NSTimeInterval = (profileDict["redBlink"] as? NSTimeInterval)!
+        
+        let profile : SpeechProfile = SpeechProfile(green: green, yellow: yellow, red: red, redBlink: redBlink)
+        return SpeechState(profile: profile, running: running, phase: phase, startTime: dict["startTime"] as? NSDate, pauseInterval: dict["pauseInterval"] as? NSTimeInterval)
     }
     
     func toDictionary() -> [String : AnyObject] {
-        return [
+        // TODO: Write profile into dictionary
+        
+        var dict : [String : AnyObject] = [
+            "profile" : [
+                "green" : profile.green,
+                "yellow" : profile.yellow,
+                "red" : profile.red,
+                "redBlink" : profile.redBlink
+            ],
             "phase" : self.phase.hashValue,
             "running" : self.running.hashValue,
-            "pauseInterval" : self.pauseInterval,
-            "startTime" : self.startTime!
+            "pauseInterval" : self.pauseInterval
         ]
+
+        if let s : NSDate = self.startTime {
+            dict["startTime"] = s
+        }
+        
+        return dict
     }
 
 }
