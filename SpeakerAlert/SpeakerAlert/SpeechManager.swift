@@ -18,6 +18,12 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
     
     private var observers = [SpeechTimerDelegate]()
     
+    var state : SpeechState? {
+        get {
+            return timer?.state
+        }
+    }
+    
     func addSpeechObserver(observer: SpeechTimerDelegate) {
         observers.append(observer)
     }

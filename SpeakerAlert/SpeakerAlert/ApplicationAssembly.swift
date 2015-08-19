@@ -18,6 +18,7 @@ public class ApplicationAssembly: TyphoonAssembly {
     public dynamic func appDelegate() -> AnyObject {
         return TyphoonDefinition.withClass(AppDelegate.self) {
             (definition) in
+            definition.injectProperty("localNotificationManager", with: self.localNotificationManager())
         }
     }
     
@@ -25,6 +26,14 @@ public class ApplicationAssembly: TyphoonAssembly {
         return TyphoonDefinition.withClass(SpeechManager.self) {
             (definition) in
             definition.scope = TyphoonScope.Singleton
+        }
+    }
+    
+    public dynamic func localNotificationManager() -> AnyObject {
+        return TyphoonDefinition.withClass(LocalNotificationManager.self){
+            (definition) in
+            definition.scope = TyphoonScope.Singleton
+            definition.injectProperty("speechMan", with: self.speechManager())
         }
     }
     

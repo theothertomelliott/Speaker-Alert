@@ -15,7 +15,6 @@
 		E205E496147F0C6D004B721B /* TKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E205E495147F0C6D004B721B /* TKAppDelegate.m */; };
 		E205E499147F0C6D004B721B /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E205E497147F0C6D004B721B /* MainStoryboard.storyboard */; };
 		E205E49C147F0C6D004B721B /* TKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E205E49B147F0C6D004B721B /* TKViewController.m */; };
-		E205E4A4147F0C6E004B721B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E205E4A3147F0C6E004B721B /* SenTestingKit.framework */; };
 		E205E4A5147F0C6E004B721B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E205E485147F0C6D004B721B /* UIKit.framework */; };
 		E205E4A6147F0C6E004B721B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E205E487147F0C6D004B721B /* Foundation.framework */; };
 		E205E4AE147F0C6E004B721B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E205E4AC147F0C6E004B721B /* InfoPlist.strings */; };
@@ -56,8 +55,7 @@
 		E205E498147F0C6D004B721B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		E205E49A147F0C6D004B721B /* TKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKViewController.h; sourceTree = "<group>"; };
 		E205E49B147F0C6D004B721B /* TKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKViewController.m; sourceTree = "<group>"; };
-		E205E4A2147F0C6D004B721B /* TimekeeperTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimekeeperTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E205E4A3147F0C6E004B721B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		E205E4A2147F0C6D004B721B /* TimekeeperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimekeeperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E205E4AB147F0C6E004B721B /* TimekeeperTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TimekeeperTests-Info.plist"; sourceTree = "<group>"; };
 		E205E4AD147F0C6E004B721B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E205E4AF147F0C6E004B721B /* TimekeeperTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimekeeperTests.h; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E205E4A4147F0C6E004B721B /* SenTestingKit.framework in Frameworks */,
 				E205E4A5147F0C6E004B721B /* UIKit.framework in Frameworks */,
 				E205E4A6147F0C6E004B721B /* Foundation.framework in Frameworks */,
 			);
@@ -122,7 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				E205E481147F0C6D004B721B /* SpeakerAlert.app */,
-				E205E4A2147F0C6D004B721B /* TimekeeperTests.octest */,
+				E205E4A2147F0C6D004B721B /* TimekeeperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,7 +131,6 @@
 				E205E485147F0C6D004B721B /* UIKit.framework */,
 				E205E487147F0C6D004B721B /* Foundation.framework */,
 				E205E489147F0C6D004B721B /* CoreGraphics.framework */,
-				E205E4A3147F0C6E004B721B /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -228,8 +224,8 @@
 			);
 			name = TimekeeperTests;
 			productName = TimekeeperTests;
-			productReference = E205E4A2147F0C6D004B721B /* TimekeeperTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = E205E4A2147F0C6D004B721B /* TimekeeperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -237,6 +233,7 @@
 		E205E478147F0C6D004B721B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0700;
 				LastUpgradeCheck = 0420;
 			};
 			buildConfigurationList = E205E47B147F0C6D004B721B /* Build configuration list for PBXProject "Timekeeper" */;
@@ -432,14 +429,13 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Timekeeper.app/Timekeeper";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Timekeeper/Timekeeper-Prefix.pch";
 				INFOPLIST_FILE = "TimekeeperTests/TimekeeperTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -449,14 +445,13 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Timekeeper.app/Timekeeper";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Timekeeper/Timekeeper-Prefix.pch";
 				INFOPLIST_FILE = "TimekeeperTests/TimekeeperTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -499,14 +494,13 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Timekeeper.app/Timekeeper";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Timekeeper/Timekeeper-Prefix.pch";
 				INFOPLIST_FILE = "TimekeeperTests/TimekeeperTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Distribution;
 		};
