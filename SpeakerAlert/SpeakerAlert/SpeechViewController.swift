@@ -28,6 +28,10 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
     var blinkOn : Bool = false
     
     func phaseChanged(state: SpeechState, timer: SpeechTimer) {
+        blinkState = false;
+        if(state.phase == SpeechPhase.BELOW_MINIMUM){
+            self.view.backgroundColor = UIColor.whiteColor()
+        }
         if(state.phase == SpeechPhase.GREEN){
             self.view.backgroundColor = UIColor.greenColor()
         }
@@ -55,7 +59,12 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
         }
     }
     
-    func runningChanged(state: SpeechState, timer: SpeechTimer){}
+    func runningChanged(state: SpeechState, timer: SpeechTimer){
+        if(state.running == SpeechRunning.RUNNING){
+            self.tick(state, timer: timer)
+            self.phaseChanged(state, timer: timer)
+        }
+    }
     
     @IBOutlet weak var elapsedTimeLabel: UILabel!
 
