@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MagicalRecord.setupCoreDataStack()
         //MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("SpeakerAlert")
         
+        // TODO: Add seed data
+        
+        
         return true
     }
 

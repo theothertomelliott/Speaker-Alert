@@ -15,8 +15,12 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
 
     // Speech timer
     private var timer : SpeechTimer?;
-    
+    // Observers who receive state updates
     private var observers = [SpeechTimerDelegate]()
+    
+    override init(){
+        super.init()
+    }
     
     var state : SpeechState? {
         get {
@@ -29,7 +33,6 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
     }
     
     func removeSpeechObserver(observer: SpeechTimerDelegate){
-        // TODO: Figure out how to do this safely
         var index : Int? = nil
         for(var i : Int = 0; i < observers.count; i++){
             let obs : NSObject = observer as! NSObject
@@ -42,10 +45,6 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         if let ix = index {
             observers.removeAtIndex(ix)
         }
-    }
-    
-    override init(){
-        super.init()
     }
     
     private var _profile : Profile?
@@ -73,6 +72,8 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         }
     }
     
+    // MARK: SpeechTimerDelegate
+    
     func phaseChanged(state: SpeechState, timer: SpeechTimer) {
         NSLog("Speech timer state changed: \(state)")
         for observer in observers {
@@ -92,7 +93,8 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         }
     }
     
-    // Start, pause and stop methods for current speech
+    // MARK: Timer lifecycle methods
+    
     func start(){
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             timer?.start()
@@ -110,6 +112,5 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
             timer?.pause()
         })
     }
-    
-    // TODO: Add notifications for changes in state and ticks
+
 }
