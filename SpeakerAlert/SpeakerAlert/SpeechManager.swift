@@ -94,15 +94,21 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
     
     // Start, pause and stop methods for current speech
     func start(){
-        timer?.start()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            timer?.start()
+        })
     }
     
     func stop(){
-        timer?.stop()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            timer?.stop()
+        })
     }
     
     func pause(){
-        timer?.pause()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            timer?.pause()
+        })
     }
     
     // TODO: Add notifications for changes in state and ticks

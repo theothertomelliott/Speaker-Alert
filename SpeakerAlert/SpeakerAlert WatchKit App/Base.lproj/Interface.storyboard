@@ -24,15 +24,26 @@
                             </items>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </group>
-                        <button width="0.90000000000000002" alignment="center" verticalAlignment="bottom" title="Stop" id="kc8-E2-OXk">
-                            <connections>
-                                <action selector="stopStartPressed" destination="AgC-eL-Hgc" id="eB3-09-Nam"/>
-                            </connections>
-                        </button>
+                        <group width="0.94999999999999996" height="0.40000000000000002" alignment="center" id="zSO-Hu-VAn">
+                            <items>
+                                <button width="0.5" height="0.5" alignment="center" verticalAlignment="center" title="Stop" id="kc8-E2-OXk">
+                                    <connections>
+                                        <action selector="stopStartPressed" destination="AgC-eL-Hgc" id="eB3-09-Nam"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" height="0.5" alignment="center" verticalAlignment="center" title="Pause" id="XTP-HN-ero">
+                                    <connections>
+                                        <action selector="pausePressed" destination="AgC-eL-Hgc" id="bDT-ne-5Dp"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
                     </items>
                     <color key="backgroundColor" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="mainGroup" destination="mwE-Ub-xNa" id="MbY-vK-mUZ"/>
+                        <outlet property="pauseButton" destination="XTP-HN-ero" id="yht-JY-Ije"/>
+                        <outlet property="startStopButton" destination="kc8-E2-OXk" id="zvt-qj-5i8"/>
                         <outlet property="timeElapsedLabel" destination="aTB-lZ-faV" id="mqZ-oM-nls"/>
                     </connections>
                 </controller>

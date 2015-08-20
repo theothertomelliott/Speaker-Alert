@@ -12,16 +12,71 @@ import WatchConnectivity
 
 
 class InterfaceController: WKInterfaceController,WCSessionDelegate {
+    
+    var watchSession : WCSession?
 
     @IBOutlet var mainGroup: WKInterfaceGroup!
-    
     @IBOutlet var timeElapsedLabel: WKInterfaceLabel!
+    @IBOutlet var startStopButton: WKInterfaceButton!
+    @IBOutlet var pauseButton: WKInterfaceButton!
+    
+    override func awakeWithContext(context: AnyObject?) {
+        super.awakeWithContext(context)
+        
+        // Configure interface objects here.
+        // Set up initial state
+        self.startStopButton.setTitle("Start")
+        self.pauseButton.setEnabled(false)
+        self.pauseButton.setTitle("Pause")
+        
+        if(WCSession.isSupported()){
+            NSLog("WCSession supported, initializing")
+            watchSession = WCSession.defaultSession()
+            NSLog("Activating WCSession and adding delegate")
+            watchSession!.delegate = self
+            watchSession!.activateSession()
+        } else {
+            NSLog("WCSession is not supported, will not initialize")
+        }
+    }
+    
+    override func willActivate() {
+        // This method is called when watch view controller is about to be visible to user
+        super.willActivate()
+    }
+    
+    override func didDeactivate() {
+        // This method is called when watch view controller is no longer visible
+        super.didDeactivate()
+    }
+    
     /** Called on the delegate of the receiver. Will be called on startup if an applicationContext is available. */
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]){
         NSLog("session:didReceiveApplicationContext:")
         let speechState : SpeechState = SpeechState.fromDictionary(applicationContext)
+        
+        // Only allow pausing if the speech is currently running
+        
+        if(speechState.running == SpeechRunning.RUNNING){
+            self.startStopButton.setTitle("Stop")
+            self.pauseButton.setTitle("Pause")
+            self.pauseButton.setEnabled(true)
+        } else if(speechState.running == SpeechRunning.PAUSED) {
+            self.startStopButton.setTitle("Stop")
+            self.pauseButton.setTitle("Resume")
+            self.pauseButton.setEnabled(true)
+        } else {
+            // Stopped
+            self.startStopButton.setTitle("Start")
+            self.pauseButton.setEnabled(false)
+            self.pauseButton.setTitle("Pause")
+        }
+        
         timeElapsedLabel.setText(TimeUtils.formatStopwatch(speechState.elapsed))
         
+        if(speechState.phase == SpeechPhase.BELOW_MINIMUM){
+            mainGroup.setBackgroundColor(UIColor.whiteColor())
+        }
         if(speechState.phase == SpeechPhase.GREEN){
             mainGroup.setBackgroundColor(UIColor.greenColor())
         }
@@ -33,8 +88,6 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
         }
     }
     
-    var watchSession : WCSession?
-    
     @IBAction func stopStartPressed() {
         watchSession?.sendMessage(["messageName" : "startStop"], replyHandler: { (reply : [String : AnyObject]) -> Void in
             NSLog("Reply received")
@@ -43,31 +96,12 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
         })
     }
     
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
-        
-        // Configure interface objects here.
+    @IBAction func pausePressed() {
+        watchSession?.sendMessage(["messageName" : "pauseResume"], replyHandler: { (reply : [String : AnyObject]) -> Void in
+            NSLog("Reply received")
+            }, errorHandler: { (error : NSError) -> Void in
+                NSLog("Error received")
+        })
     }
-
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
-        
-        if(WCSession.isSupported()){
-            NSLog("WCSession supported, initializing")
-            watchSession = WCSession.defaultSession()
-            NSLog("Activating WCSession and adding delegate")
-            watchSession!.delegate = self
-            watchSession!.activateSession()
-        } else {
-            NSLog("WCSession is not supported, will not initialize")
-        }
-
-    }
-
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-    }
-
+    
 }
