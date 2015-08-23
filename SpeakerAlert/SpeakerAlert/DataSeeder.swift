@@ -22,8 +22,10 @@ class DataSeeder: NSObject {
         MagicalRecord.saveWithBlock { (localContext: NSManagedObjectContext!) -> Void in
             // This block runs in background thread
             
-            let group : Group = Group.MR_createEntityInContext(localContext)
-            group.name = "Toastmasters"
+            // Toastmasters
+        
+            let groupToastmasters : Group = Group.MR_createEntityInContext(localContext)
+            groupToastmasters.name = "Toastmasters"
 
             let tableTopic : Profile = Profile.MR_createEntityInContext(localContext)
             tableTopic.name = "Table Topic"
@@ -67,7 +69,44 @@ class DataSeeder: NSObject {
             generalEval.red = 10*60
             generalEval.redBlink = 10*60 + 30
             
-            group.childTimings = [tableTopic, speechEvaluation, fourToSix, fiveToSeven, eightToTen, generalEval]
+            groupToastmasters.childTimings = [tableTopic, speechEvaluation, fourToSix, fiveToSeven, eightToTen, generalEval]
+            
+            // General timings
+            
+            let fiveMinutes : Profile = Profile.MR_createEntityInContext(localContext)
+            fiveMinutes.name = "Five Minutes"
+            fiveMinutes.green = 4*60
+            fiveMinutes.yellow = 4*60 + 30
+            fiveMinutes.red = 5*60
+            fiveMinutes.redBlink = 5*60 + 30
+            
+            let tenMinutes : Profile = Profile.MR_createEntityInContext(localContext)
+            tenMinutes.name = "Ten Minutes"
+            tenMinutes.green = 8*60
+            tenMinutes.yellow = 9*60
+            tenMinutes.red = 10*60
+            tenMinutes.redBlink = 10*60 + 30
+            
+            let twentyMinutes : Profile = Profile.MR_createEntityInContext(localContext)
+            twentyMinutes.name = "Twenty Minutes"
+            twentyMinutes.green = 18*60
+            twentyMinutes.yellow = 19*60
+            twentyMinutes.red = 20*60
+            twentyMinutes.redBlink = 20*60 + 30
+            
+            let thirtyMinutes : Profile = Profile.MR_createEntityInContext(localContext)
+            thirtyMinutes.name = "Thirty Minutes"
+            thirtyMinutes.green = 25*60
+            thirtyMinutes.yellow = 27*60 + 30
+            thirtyMinutes.red = 30*60
+            thirtyMinutes.redBlink = 30*60 + 30
+            
+            let oneHour : Profile = Profile.MR_createEntityInContext(localContext)
+            oneHour.name = "One Hour"
+            oneHour.green = 50*60
+            oneHour.yellow = 55*60
+            oneHour.red = 60*60
+            oneHour.redBlink = 60*60 + 30
             
         }
     }
