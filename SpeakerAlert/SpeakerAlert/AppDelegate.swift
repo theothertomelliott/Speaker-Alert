@@ -16,17 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     var localNotificationManager : LocalNotificationManager?
+    
+    var dataSeeder : DataSeeder?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: (NSSet(array: ["MyCategory"])) as? Set<UIUserNotificationCategory>))
         
+        // Configure core data
         MagicalRecord.setupCoreDataStack()
-        //MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("SpeakerAlert")
         
-        // TODO: Add seed data
-        
+        // Add seed data
+        dataSeeder?.seedAsRequired()
         
         return true
     }

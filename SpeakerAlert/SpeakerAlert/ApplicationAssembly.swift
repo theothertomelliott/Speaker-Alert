@@ -19,6 +19,14 @@ public class ApplicationAssembly: TyphoonAssembly {
         return TyphoonDefinition.withClass(AppDelegate.self) {
             (definition) in
             definition.injectProperty("localNotificationManager", with: self.localNotificationManager())
+            definition.injectProperty("dataSeeder", with: self.dataSeeder())
+        }
+    }
+
+    public dynamic func dataSeeder() -> AnyObject {
+        return TyphoonDefinition.withClass(DataSeeder.self) {
+            (definition) in
+            definition.scope = TyphoonScope.Singleton
         }
     }
     
