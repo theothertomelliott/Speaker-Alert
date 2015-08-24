@@ -59,6 +59,9 @@
 		E2AB35961B82DC97001F8362 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AB35951B82DC97001F8362 /* LocalNotificationManager.swift */; };
 		E2B2CCD11B8755800038C067 /* DataSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B2CCD01B8755800038C067 /* DataSeeder.swift */; };
 		E2C2E7CC1B685AF3004BD7FD /* SpeechState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2E7CB1B685AF3004BD7FD /* SpeechState.swift */; };
+		E2C571B91B8AA5A400C83D92 /* FontAwesomeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C571B81B8AA5A400C83D92 /* FontAwesomeImageView.swift */; };
+		E2C571BB1B8AB1A300C83D92 /* NamedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C571BA1B8AB1A300C83D92 /* NamedTableViewCell.swift */; };
+		E2C6D30D1B8ABA85002C69D7 /* FontAwesomeTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6D30C1B8ABA85002C69D7 /* FontAwesomeTabBarItem.swift */; };
 		E2C9020C1B33BA5600B39D37 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C9020B1B33BA5600B39D37 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2C9020D1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld */; };
 		E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D273CD1B516EF500155349 /* SpeechViewController.swift */; };
@@ -174,6 +177,9 @@
 		E2AB35951B82DC97001F8362 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		E2B2CCD01B8755800038C067 /* DataSeeder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSeeder.swift; sourceTree = "<group>"; };
 		E2C2E7CB1B685AF3004BD7FD /* SpeechState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechState.swift; sourceTree = "<group>"; };
+		E2C571B81B8AA5A400C83D92 /* FontAwesomeImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeImageView.swift; sourceTree = "<group>"; };
+		E2C571BA1B8AB1A300C83D92 /* NamedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamedTableViewCell.swift; sourceTree = "<group>"; };
+		E2C6D30C1B8ABA85002C69D7 /* FontAwesomeTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeTabBarItem.swift; sourceTree = "<group>"; };
 		E2C9020B1B33BA5600B39D37 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E2C9020E1B33BAA300B39D37 /* SpeakerAlert.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpeakerAlert.xcdatamodel; sourceTree = "<group>"; };
 		E2D273CD1B516EF500155349 /* SpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
@@ -242,8 +248,8 @@
 		E22969E01B65202F00C18012 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */,
-				E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */,
+				E2C571BC1B8AB3F600C83D92 /* FontAwesome */,
+				E2C571BA1B8AB1A300C83D92 /* NamedTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -413,6 +419,17 @@
 				E2B2CCD01B8755800038C067 /* DataSeeder.swift */,
 			);
 			name = "Data Management";
+			sourceTree = "<group>";
+		};
+		E2C571BC1B8AB3F600C83D92 /* FontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+				E2C6D30C1B8ABA85002C69D7 /* FontAwesomeTabBarItem.swift */,
+				E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */,
+				E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */,
+				E2C571B81B8AA5A400C83D92 /* FontAwesomeImageView.swift */,
+			);
+			name = FontAwesome;
 			sourceTree = "<group>";
 		};
 		E2DD5E391B5BE00400EF0997 /* Utilities */ = {
@@ -727,7 +744,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2AB35961B82DC97001F8362 /* LocalNotificationManager.swift in Sources */,
+				E2C6D30D1B8ABA85002C69D7 /* FontAwesomeTabBarItem.swift in Sources */,
 				E25E86C61B65748D00F120FA /* FontAwesomeButton.swift in Sources */,
+				E2C571B91B8AA5A400C83D92 /* FontAwesomeImageView.swift in Sources */,
+				E2C571BB1B8AB1A300C83D92 /* NamedTableViewCell.swift in Sources */,
 				E20B85801B66661300D55578 /* SpeechManager.swift in Sources */,
 				E2DD5E3F1B5BE25B00EF0997 /* TimingViewController.swift in Sources */,
 				E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */,

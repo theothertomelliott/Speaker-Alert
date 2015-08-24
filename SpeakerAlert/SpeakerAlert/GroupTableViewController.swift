@@ -167,19 +167,19 @@ class GroupTableViewController: UITableViewController {
     
         // Configure the cell...
         if(indexPath.row < groups.count){
-            let cell = tableView.dequeueReusableCellWithIdentifier("GroupCell", forIndexPath: indexPath)
+            let cell : NamedTableViewCell = tableView.dequeueReusableCellWithIdentifier("GroupCell", forIndexPath: indexPath) as! NamedTableViewCell
             let group = groups[indexPath.row]
 
-            cell.textLabel!.text = group.name
+            cell.nameLabel!.text = group.name
         
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("TimingCell", forIndexPath: indexPath)
+            let cell : NamedTableViewCell = tableView.dequeueReusableCellWithIdentifier("TimingCell", forIndexPath: indexPath) as! NamedTableViewCell
             
             let timing = timings[indexPath.row - groups.count]
             
                 let tn : String = timing.name!
-                cell.textLabel!.text = tn
+                cell.nameLabel!.text = tn
             /*
             if(timing.parentGroup != nil){
                 if let pg : Group = timing.parentGroup {

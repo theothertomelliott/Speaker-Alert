@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4nM-yf-Rt1">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -15,25 +16,83 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupCell" id="PAB-y8-6qA">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupCell" id="PAB-y8-6qA" customClass="NamedTableViewCell" customModule="SpeakerAlert" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PAB-y8-6qA" id="YK3-Go-YqJ">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xcl-oQ-5dr" customClass="FontAwesomeImageView" customModule="SpeakerAlert" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="11" width="19.5" height="21.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="xcl-oQ-5dr" secondAttribute="height" multiplier="1:1.1" id="BAR-AG-SKX"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Folder"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="IconColor">
+                                                    <color key="value" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itA-VF-GTW">
+                                            <rect key="frame" x="45.5" y="8" width="42" height="27.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="xcl-oQ-5dr" secondAttribute="bottom" constant="3" id="7cQ-mE-1Dq"/>
+                                        <constraint firstItem="itA-VF-GTW" firstAttribute="leading" secondItem="xcl-oQ-5dr" secondAttribute="trailing" constant="10" id="Fel-5J-THy"/>
+                                        <constraint firstItem="xcl-oQ-5dr" firstAttribute="leading" secondItem="YK3-Go-YqJ" secondAttribute="leadingMargin" constant="8" id="VpZ-zO-ZfW"/>
+                                        <constraint firstItem="itA-VF-GTW" firstAttribute="top" secondItem="YK3-Go-YqJ" secondAttribute="topMargin" id="jI5-yc-dUE"/>
+                                        <constraint firstItem="xcl-oQ-5dr" firstAttribute="top" secondItem="YK3-Go-YqJ" secondAttribute="topMargin" constant="3" id="ruW-6U-MZR"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="itA-VF-GTW" secondAttribute="bottom" id="sXg-rj-P0h"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="nameLabel" destination="itA-VF-GTW" id="lJk-1V-FhE"/>
                                     <segue destination="UID-Pv-8Du" kind="show" identifier="groupSegue" id="wxq-9L-dLW"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimingCell" id="cRY-3F-hyp">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimingCell" id="cRY-3F-hyp" customClass="NamedTableViewCell" customModule="SpeakerAlert" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="130" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cRY-3F-hyp" id="g12-nL-uVX">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5zk-8C-z24" customClass="FontAwesomeImageView" customModule="SpeakerAlert" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="11" width="19.5" height="21.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="5zk-8C-z24" secondAttribute="height" multiplier="1:1.1" id="o1K-15-t3D"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="ClockO"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="IconColor">
+                                                    <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukF-fQ-Hbn">
+                                            <rect key="frame" x="45.5" y="8" width="42" height="27.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ukF-fQ-Hbn" secondAttribute="bottom" id="23e-Yy-mah"/>
+                                        <constraint firstItem="ukF-fQ-Hbn" firstAttribute="top" secondItem="g12-nL-uVX" secondAttribute="topMargin" id="2uc-em-43Q"/>
+                                        <constraint firstItem="ukF-fQ-Hbn" firstAttribute="leading" secondItem="5zk-8C-z24" secondAttribute="trailing" constant="10" id="3Fa-Vf-tio"/>
+                                        <constraint firstItem="5zk-8C-z24" firstAttribute="leading" secondItem="g12-nL-uVX" secondAttribute="leadingMargin" constant="8" id="dXH-MR-CDe"/>
+                                        <constraint firstItem="5zk-8C-z24" firstAttribute="top" secondItem="g12-nL-uVX" secondAttribute="topMargin" constant="3" id="i3J-bN-sMe"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="5zk-8C-z24" secondAttribute="bottom" constant="3" id="o8X-z3-DME"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="nameLabel" destination="ukF-fQ-Hbn" id="4KY-Z2-g4s"/>
                                     <segue destination="Xzk-Z0-o1M" kind="show" identifier="timingSegue" id="FI8-nX-iJt"/>
                                 </connections>
                             </tableViewCell>
@@ -379,7 +438,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.0" green="0.44648729291091133" blue="0.93580334595959591" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="selectedImageTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
@@ -407,7 +466,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTj-x5-x0G">
                                 <rect key="frame" x="252.5" y="279" width="96" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -417,7 +476,17 @@
                             <constraint firstItem="cTj-x5-x0G" firstAttribute="centerY" secondItem="awe-w5-xhW" secondAttribute="centerY" id="FFc-fd-CmI"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="About" id="lsD-h0-coj"/>
+                    <tabBarItem key="tabBarItem" title="About" id="lsD-h0-coj" customClass="FontAwesomeTabBarItem" customModule="SpeakerAlert" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Info"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="SelectedColor">
+                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="UnselectedColor">
+                                <color key="value" red="0.72062419919999998" green="0.92822429120000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ihs-b7-hpS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -446,7 +515,17 @@
                             <outlet property="delegate" destination="pOa-tF-z3O" id="JZb-lJ-uZT"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Settings" id="cr6-vl-uM0"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="cr6-vl-uM0" customClass="FontAwesomeTabBarItem" customModule="SpeakerAlert" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Cog"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="SelectedColor">
+                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="UnselectedColor">
+                                <color key="value" red="0.7206241992255864" green="0.92822429123636707" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bY-uk-Oe4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -456,7 +535,17 @@
         <scene sceneID="pkW-Rz-f4X">
             <objects>
                 <navigationController title="Speech" id="5S5-J6-2IJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Speech" id="fvI-zr-H0b"/>
+                    <tabBarItem key="tabBarItem" title="Speech" id="fvI-zr-H0b" customClass="FontAwesomeTabBarItem" customModule="SpeakerAlert" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="SelectedColor">
+                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="UnselectedColor">
+                                <color key="value" red="0.72062419919999998" green="0.92822429120000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="CommentO"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3cu-yO-R8v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -479,4 +568,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="ZVv-6d-Z7f"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
