@@ -333,16 +333,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7o-Bg-pvs">
-                                <rect key="frame" x="261" y="279" width="77" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="36" translatesAutoresizingMaskIntoConstraints="NO" id="E7o-Bg-pvs">
+                                <rect key="frame" x="144" y="211" width="311" height="179.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="150"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcd-Dn-PIr" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
-                                <rect key="frame" x="396" y="518" width="30" height="32"/>
+                                <rect key="frame" x="402.5" y="517" width="43" height="63"/>
                                 <state key="normal" title="Pause">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <state key="disabled">
                                     <color key="titleColor" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>
@@ -356,7 +356,7 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Pause"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="IconSize">
-                                        <real key="value" value="20"/>
+                                        <real key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -364,9 +364,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-ch-or0" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
-                                <rect key="frame" x="285" y="518" width="30" height="32"/>
+                                <rect key="frame" x="278" y="517" width="43" height="63"/>
                                 <state key="normal" title="Stop">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <state key="disabled">
                                     <color key="titleColor" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>
@@ -380,7 +380,7 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Stop"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="IconSize">
-                                        <real key="value" value="20"/>
+                                        <real key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -388,9 +388,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-ZC-aid" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
-                                <rect key="frame" x="177" y="518" width="30" height="32"/>
+                                <rect key="frame" x="160" y="517" width="40" height="63"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Resume">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <state key="selected">
                                     <color key="titleColor" red="0.3432785377" green="0.99520959899999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -400,6 +401,9 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Play"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="IconSize">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="resumePressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="ZhC-zG-XyW"/>
@@ -409,7 +413,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Nxk-ch-or0" firstAttribute="centerX" secondItem="ZOg-E5-qK8" secondAttribute="centerX" id="6el-s5-tsw"/>
-                            <constraint firstItem="R63-DW-HFX" firstAttribute="top" secondItem="Nxk-ch-or0" secondAttribute="bottom" constant="50" id="A0R-yh-eOw"/>
+                            <constraint firstItem="R63-DW-HFX" firstAttribute="top" secondItem="Nxk-ch-or0" secondAttribute="bottom" constant="20" id="A0R-yh-eOw"/>
                             <constraint firstItem="Kcd-Dn-PIr" firstAttribute="centerY" secondItem="Nxk-ch-or0" secondAttribute="centerY" id="Idv-1b-m26"/>
                             <constraint firstItem="Kcd-Dn-PIr" firstAttribute="leading" secondItem="Nxk-ch-or0" secondAttribute="trailing" constant="81" id="crr-jq-xXU"/>
                             <constraint firstItem="Nxk-ch-or0" firstAttribute="leading" secondItem="p1F-ZC-aid" secondAttribute="trailing" constant="78" id="fUN-m3-z0q"/>
