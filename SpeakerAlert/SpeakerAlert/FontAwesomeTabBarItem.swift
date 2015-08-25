@@ -35,6 +35,10 @@ class FontAwesomeTabBarItem: UITabBarItem {
     }
     
     private func setFontAwesome(icon: FontAwesome){
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: self.UnselectedColor], forState: UIControlState.Normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: self.SelectedColor], forState: UIControlState.Selected)
+        
         let selectedImg : UIImage = UIImage.fontAwesomeIconWithName(icon, textColor: self.SelectedColor, size: CGSizeMake(20,20))
         let unselectedImg : UIImage = UIImage.fontAwesomeIconWithName(icon, textColor: self.UnselectedColor, size: CGSizeMake(20,20))
         self.image = unselectedImg.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
