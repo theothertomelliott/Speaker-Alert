@@ -190,7 +190,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYF-U1-gi5" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYF-U1-gi5" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                 <rect key="frame" x="251" y="509" width="97" height="42"/>
                                 <state key="normal" title="Start">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -342,7 +342,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcd-Dn-PIr" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcd-Dn-PIr" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                 <rect key="frame" x="402" y="517" width="43" height="63"/>
                                 <state key="normal" title="Pause">
                                     <color key="titleColor" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>
@@ -366,7 +366,7 @@
                                     <action selector="pausePressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="WOA-1x-jTS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-ch-or0" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-ch-or0" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                 <rect key="frame" x="278" y="517" width="43" height="63"/>
                                 <state key="normal" title="Stop">
                                     <color key="titleColor" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>
@@ -390,7 +390,7 @@
                                     <action selector="stopPressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="Nd1-lv-o3d"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-ZC-aid" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-ZC-aid" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                 <rect key="frame" x="160" y="517" width="40" height="63"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Resume">
