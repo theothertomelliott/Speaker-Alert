@@ -26,18 +26,13 @@ class GroupTableViewController: UITableViewController {
     
     func createGroupWithName(name : String){
 
-        MagicalRecord.saveWithBlock { (localContext: NSManagedObjectContext!) -> Void in
-            // This block runs in background thread
-            
+        MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) -> Void in
             let group : Group = Group.MR_createEntityInContext(localContext)
             group.name = name
-            
-            // TODO: This should be in a completion block, but having weird problems
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-                Int64(0.25 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(),{
-                self.reloadData();
-            })
+        }) { (success: Bool, error: NSError!) -> Void in
+            self.reloadData();
         }
+        
     }
     
     func createTiming(){
@@ -55,13 +50,9 @@ class GroupTableViewController: UITableViewController {
             } else {
                 NSLog("No profile parent")
             }
-            
-            // TODO: This should be in a completion block, but having weird problems
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-                Int64(0.25 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(),{
+        }) { (success: Bool, error: NSError!) -> Void in
                 self.reloadData();
-            })
-        })
+        }
     }
     
     func reloadData(){
@@ -222,12 +213,9 @@ class GroupTableViewController: UITableViewController {
                     timing.MR_deleteEntity()
                 }
                 
-                // TODO: This should be in a completion handler, but been having issues
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-                    Int64(0.25 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(),{
-                    self.reloadData()
-                })
-            })
+            }) { (success: Bool, error: NSError!) -> Void in
+                    self.reloadData();
+            }
 
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
