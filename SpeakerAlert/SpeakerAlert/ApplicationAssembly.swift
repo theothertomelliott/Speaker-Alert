@@ -23,6 +23,14 @@ public class ApplicationAssembly: TyphoonAssembly {
         }
     }
 
+    public dynamic func appColorManager() -> AnyObject {
+        return TyphoonDefinition.withClass(AppColorManager.self) {
+            (definition) in
+            definition.scope = TyphoonScope.Singleton
+            definition.injectProperty("baseColor", with: UIColor(red: 160/255, green: 213/255, blue: 227/255, alpha: 1.0))
+        }
+    }
+    
     public dynamic func dataSeeder() -> AnyObject {
         return TyphoonDefinition.withClass(DataSeeder.self) {
             (definition) in

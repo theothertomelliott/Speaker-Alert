@@ -190,7 +190,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYF-U1-gi5" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYF-U1-gi5" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                 <rect key="frame" x="251" y="509" width="97" height="42"/>
                                 <state key="normal" title="Start">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -342,7 +342,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcd-Dn-PIr" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcd-Dn-PIr" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                 <rect key="frame" x="402" y="517" width="43" height="63"/>
                                 <state key="normal" title="Pause">
                                     <color key="titleColor" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>
@@ -366,7 +366,7 @@
                                     <action selector="pausePressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="WOA-1x-jTS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-ch-or0" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-ch-or0" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                 <rect key="frame" x="278" y="517" width="43" height="63"/>
                                 <state key="normal" title="Stop">
                                     <color key="titleColor" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>
@@ -390,7 +390,7 @@
                                     <action selector="stopPressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="Nd1-lv-o3d"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-ZC-aid" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-ZC-aid" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                 <rect key="frame" x="160" y="517" width="40" height="63"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Resume">
@@ -454,10 +454,6 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="hWR-gY-hYs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.62745098040000002" green="0.83529411760000005" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="selectedImageTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="5S5-J6-2IJ" kind="relationship" relationship="viewControllers" id="jiS-fO-Zmw"/>
@@ -497,12 +493,6 @@
                     <tabBarItem key="tabBarItem" title="About" id="lsD-h0-coj" customClass="FontAwesomeTabBarItem" customModule="SpeakerAlert" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Info"/>
-                            <userDefinedRuntimeAttribute type="color" keyPath="SelectedColor">
-                                <color key="value" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="UnselectedColor">
-                                <color key="value" red="0.4038842151" green="0.54696016700000005" blue="0.58877840910000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                 </viewController>
@@ -536,12 +526,6 @@
                     <tabBarItem key="tabBarItem" title="Settings" id="cr6-vl-uM0" customClass="FontAwesomeTabBarItem" customModule="SpeakerAlert" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Cog"/>
-                            <userDefinedRuntimeAttribute type="color" keyPath="SelectedColor">
-                                <color key="value" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="UnselectedColor">
-                                <color key="value" red="0.4038842151" green="0.54696016700000005" blue="0.58877840910000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                 </tableViewController>
@@ -555,12 +539,6 @@
                 <navigationController title="Speech" id="5S5-J6-2IJ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Speech" id="fvI-zr-H0b" customClass="FontAwesomeTabBarItem" customModule="SpeakerAlert" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="SelectedColor">
-                                <color key="value" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="UnselectedColor">
-                                <color key="value" red="0.40388421508737821" green="0.54696016695887184" blue="0.58877840909090917" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="CommentO"/>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
@@ -568,7 +546,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.62745098039215685" green="0.83529411764705885" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="textShadowColor" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>

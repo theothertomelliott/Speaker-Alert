@@ -12,19 +12,9 @@ import FontAwesome_swift
 @IBDesignable
 class FontAwesomeTabBarItem: UITabBarItem {
 
-    @IBInspectable var IconName : String = "Warning" {
-        didSet {
-            self._setup()
-        }
-    }
-
-    @IBInspectable var SelectedColor : UIColor = UIColor.blackColor() {
-        didSet {
-            self._setup()
-        }
-    }
+    private var faIcon : FontAwesome?
     
-    @IBInspectable var UnselectedColor : UIColor = UIColor.blackColor() {
+    @IBInspectable var IconName : String = "Warning" {
         didSet {
             self._setup()
         }
@@ -35,14 +25,17 @@ class FontAwesomeTabBarItem: UITabBarItem {
     }
     
     private func setFontAwesome(icon: FontAwesome){
+        NSLog("SetFontAwesome")
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: self.UnselectedColor], forState: UIControlState.Normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: self.SelectedColor], forState: UIControlState.Selected)
-        
-        let selectedImg : UIImage = UIImage.fontAwesomeIconWithName(icon, textColor: self.SelectedColor, size: CGSizeMake(20,20))
-        let unselectedImg : UIImage = UIImage.fontAwesomeIconWithName(icon, textColor: self.UnselectedColor, size: CGSizeMake(20,20))
-        self.image = unselectedImg.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        self.selectedImage = selectedImg.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        let selectedImg : UIImage = UIImage.fontAwesomeIconWithName(icon, textColor: UIColor.whiteColor(), size: CGSizeMake(20,20))
+        self.selectedImage = selectedImg.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        self.image = selectedImg.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+
+        let attrs = UITabBarItem.appearance().titleTextAttributesForState(UIControlState.Normal)
+        if let color = attrs?[NSForegroundColorAttributeName] {
+            let unselectedImg : UIImage = UIImage.fontAwesomeIconWithName(icon, textColor: color as! UIColor, size: CGSizeMake(20,20))
+            self.image = unselectedImg.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        }
     }
     
     private func _setup(){

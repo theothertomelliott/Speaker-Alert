@@ -20,6 +20,8 @@
 		E2159F221B6D9D8B0075E77E /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */; };
 		E2159F251B6D9F330075E77E /* WatchCommsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2159F241B6D9F330075E77E /* WatchCommsManager.swift */; };
 		E22E8C441B6BA23000DD0793 /* VibrationAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */; };
+		E22FD26A1B93F1F10022F0B1 /* UIColor+TintAndShade.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD2691B93F1F10022F0B1 /* UIColor+TintAndShade.swift */; settings = {ASSET_TAGS = (); }; };
+		E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */; settings = {ASSET_TAGS = (); }; };
 		E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23480E81B2906EA0076247D /* AppDelegate.swift */; };
 		E23480EE1B2906EA0076247D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23480EC1B2906EA0076247D /* Main.storyboard */; };
 		E23480F01B2906EA0076247D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E23480EF1B2906EA0076247D /* Assets.xcassets */; };
@@ -142,6 +144,8 @@
 		E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
 		E2159F241B6D9F330075E77E /* WatchCommsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchCommsManager.swift; sourceTree = "<group>"; };
 		E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibrationAlertManager.swift; sourceTree = "<group>"; };
+		E22FD2691B93F1F10022F0B1 /* UIColor+TintAndShade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+TintAndShade.swift"; sourceTree = "<group>"; };
+		E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColorManager.swift; sourceTree = "<group>"; };
 		E23480E51B2906EA0076247D /* SpeakerAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakerAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23480E81B2906EA0076247D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E23480ED1B2906EA0076247D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -284,6 +288,15 @@
 			name = UserNotification;
 			sourceTree = "<group>";
 		};
+		E22FD2681B93F1D70022F0B1 /* ColorUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				E22FD2691B93F1F10022F0B1 /* UIColor+TintAndShade.swift */,
+				E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */,
+			);
+			name = ColorUtilities;
+			sourceTree = "<group>";
+		};
 		E23480DC1B2906EA0076247D = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +328,7 @@
 		E23480E71B2906EA0076247D /* SpeakerAlert */ = {
 			isa = PBXGroup;
 			children = (
+				E22FD2681B93F1D70022F0B1 /* ColorUtilities */,
 				E2B2CCCF1B87556D0038C067 /* Data Management */,
 				E25F8F221B76B94900A16A92 /* Models */,
 				E2159F231B6D9F1B0075E77E /* Watch */,
@@ -763,9 +777,11 @@
 				E2DD5E3B1B5BE03800EF0997 /* TimeUtils.swift in Sources */,
 				E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */,
 				E2159F251B6D9F330075E77E /* WatchCommsManager.swift in Sources */,
+				E22FD26A1B93F1F10022F0B1 /* UIColor+TintAndShade.swift in Sources */,
 				E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */,
 				E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */,
 				E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */,
+				E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */,
 				E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */,
 				E24408A11B48338400EB056C /* Group+CoreDataProperties.swift in Sources */,
 				E20A8E981B81766000ECC443 /* SpeechProfile.swift in Sources */,
