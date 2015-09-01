@@ -23,8 +23,6 @@ public class AppColorManager: NSObject {
     
     public func configureColorsFrom(baseColor: UIColor){
         
-        NSLog("Configuring colors")
-        
         let highlight : UIColor = baseColor.twe_tintWithFactor(0.9)
         let shadow : UIColor  = baseColor.twe_shadeWithFactor(0.25)
         

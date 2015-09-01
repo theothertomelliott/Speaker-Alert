@@ -25,7 +25,6 @@ class FontAwesomeTabBarItem: UITabBarItem {
     }
     
     private func setFontAwesome(icon: FontAwesome){
-        NSLog("SetFontAwesome")
         
         let selectedImg : UIImage = UIImage.fontAwesomeIconWithName(icon, textColor: UIColor.whiteColor(), size: CGSizeMake(20,20))
         self.selectedImage = selectedImg.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
