@@ -8,6 +8,7 @@ target 'SpeakerAlert' do
 	pod "MagicalRecord"
 	pod "Typhoon"
 	pod "FontAwesome.swift", :git => 'https://github.com/theothertomelliott/FontAwesome.swift.git'
+	pod "TWETimeIntervalField", :git => 'https://github.com/theothertomelliott/TWETimeIntervalField.git'
 end
 
 target 'SpeakerAlertTests' do

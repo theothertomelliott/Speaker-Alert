@@ -8,6 +8,7 @@
 
 import UIKit
 import MagicalRecord
+import TWETimeIntervalField
 
 class TimingViewController: UIViewController {
 
@@ -35,17 +36,16 @@ class TimingViewController: UIViewController {
     @IBOutlet var redLabel: UILabel!
     @IBOutlet var redBlinkLabel: UILabel!
     
-    @IBOutlet weak var maxTimeTextField: UITextField!
+    @IBOutlet weak var maxTimeTextField: TWETimeIntervalField!
     
     let MAX_TIMING_FACTOR = 1.1
     
     @IBAction func maxTimeAltered(sender: AnyObject) {
         
         NSLog("Max time is now: %@", maxTimeTextField.text!)
-        
-        if let num : NSNumber = Int(maxTimeTextField.text!) {
-            maximumTimeS = NSTimeInterval(num)
-            if(num != Double(_timing.redBlink!)*MAX_TIMING_FACTOR){
+    
+            maximumTimeS = maxTimeTextField.timeInterval
+            if(maximumTimeS != Double(_timing.redBlink!)*MAX_TIMING_FACTOR){
                 // Set new values
                 _timing.redBlink = maximumTimeS
                 // Fixed values for now
@@ -54,7 +54,6 @@ class TimingViewController: UIViewController {
                 _timing.green = maximumTimeS - 90
             }
             updateLabels()
-        }
         
         
     }
