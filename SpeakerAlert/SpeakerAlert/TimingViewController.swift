@@ -118,7 +118,7 @@ class TimingViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         updateLabels()
-        self.maxTimeTextField.text = "\(self.maximumTimeS)"
+        self.maxTimeTextField.timeInterval = self.maximumTimeS
     }
     
     override func viewWillDisappear(animated: Bool) {
