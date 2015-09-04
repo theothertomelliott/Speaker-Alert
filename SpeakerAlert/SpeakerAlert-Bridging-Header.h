@@ -12,5 +12,6 @@
 #import "Typhoon/Typhoon.h"
 #import <MagicalRecord/MagicalRecord.h>
 #import "TWETimeIntervalField/TWETimeIntervalField.h"
+#import "RFAboutView/RFAboutViewController.h"
 
 #endif /* SpeakerAlert_Bridging_Header_h */

@@ -42,6 +42,7 @@
 		E24408A31B4834F200EB056C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A01B48338400EB056C /* Group.swift */; };
 		E24408A41B4834F400EB056C /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */; };
 		E24408A61B483C8400EB056C /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A51B483C8400EB056C /* GroupTableViewController.swift */; };
+		E24628DF1B9803C2007DD28B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24628DE1B9803C2007DD28B /* SettingsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */; };
 		E25E86C61B65748D00F120FA /* FontAwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */; };
 		E25E86C91B65D73A00F120FA /* ApplicationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C81B65D73A00F120FA /* ApplicationAssembly.swift */; };
@@ -72,6 +73,7 @@
 		E2E8DD5D1B6DD021003D3F7C /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
 		E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
 		E2F6B5F21B378F2600210504 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
+		E2FF3C971B98100F0083CC4F /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2FF3C961B98100F0083CC4F /* Acknowledgements.plist */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +175,7 @@
 		E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E24408A01B48338400EB056C /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		E24408A51B483C8400EB056C /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
+		E24628DE1B9803C2007DD28B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeFactory.swift; sourceTree = "<group>"; };
 		E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeButton.swift; sourceTree = "<group>"; };
 		E25E86C81B65D73A00F120FA /* ApplicationAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationAssembly.swift; sourceTree = "<group>"; };
@@ -192,6 +195,7 @@
 		E2F2A1DD1B6DB91A0014D4A0 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
 		E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E2F6B5F01B378F2600210504 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		E2FF3C961B98100F0083CC4F /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +270,7 @@
 				E24408A51B483C8400EB056C /* GroupTableViewController.swift */,
 				E2DD5E3E1B5BE25B00EF0997 /* TimingViewController.swift */,
 				E2D273CD1B516EF500155349 /* SpeechViewController.swift */,
+				E24628DE1B9803C2007DD28B /* SettingsViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 		E23480DC1B2906EA0076247D = {
 			isa = PBXGroup;
 			children = (
+				E2FF3C961B98100F0083CC4F /* Acknowledgements.plist */,
 				E2929A881B3CCD14007030D4 /* SpeakerAlert-Bridging-Header.h */,
 				E2C9020B1B33BA5600B39D37 /* CoreData.framework */,
 				E23480E71B2906EA0076247D /* SpeakerAlert */,
@@ -625,6 +631,7 @@
 				E23480F31B2906EA0076247D /* LaunchScreen.storyboard in Resources */,
 				E23480F01B2906EA0076247D /* Assets.xcassets in Resources */,
 				E23480EE1B2906EA0076247D /* Main.storyboard in Resources */,
+				E2FF3C971B98100F0083CC4F /* Acknowledgements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,6 +789,7 @@
 				E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */,
 				E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */,
 				E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */,
+				E24628DF1B9803C2007DD28B /* SettingsViewController.swift in Sources */,
 				E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */,
 				E24408A11B48338400EB056C /* Group+CoreDataProperties.swift in Sources */,
 				E20A8E981B81766000ECC443 /* SpeechProfile.swift in Sources */,

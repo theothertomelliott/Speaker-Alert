@@ -9,6 +9,7 @@ target 'SpeakerAlert' do
 	pod "Typhoon"
 	pod "FontAwesome.swift", :git => 'https://github.com/theothertomelliott/FontAwesome.swift.git'
 	pod "TWETimeIntervalField", :git => 'https://github.com/theothertomelliott/TWETimeIntervalField.git'
+	pod "RFAboutView", '~> 1.0.4'
 end
 
 target 'SpeakerAlertTests' do
@@ -26,4 +27,9 @@ end
 
 target 'SpeakerAlert WatchKit Extension' do
 
+end
+
+post_install do |installer|
+  require 'fileutils'
+  FileUtils.cp_r('Pods/Target Support Files/Pods-SpeakerAlert/Pods-SpeakerAlert-acknowledgements.plist', 'SpeakerAlert/Acknowledgements.plist', :remove_destination => true)
 end
