@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Colours
 
 public class AppColorManager: NSObject {
 
@@ -21,24 +22,25 @@ public class AppColorManager: NSObject {
         }
     }
     
-    public func configureColorsFrom(baseColor: UIColor){
+    public func configureColorsFrom(var baseColor: UIColor){
         
-        let highlight : UIColor = baseColor.twe_tintWithFactor(0.9)
-        let shadow : UIColor  = baseColor.twe_shadeWithFactor(0.25)
+        baseColor = baseColor.darken(0.1)
+        
+        let colors = baseColor.colorSchemeOfType(ColorScheme.Monochromatic)
         
         // Tab bar background
         UITabBar.appearance().barTintColor = baseColor
         // Selected image color
-        UITabBar.appearance().tintColor = highlight
+        UITabBar.appearance().tintColor = baseColor.blackOrWhiteContrastingColor()
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: shadow], forState: UIControlState.Normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: highlight], forState: UIControlState.Selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: colors[2]], forState: UIControlState.Normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: baseColor.blackOrWhiteContrastingColor()], forState: UIControlState.Selected)
         
-        UINavigationBar.appearance().tintColor = highlight
+        UINavigationBar.appearance().tintColor = colors[1] as? UIColor
         UINavigationBar.appearance().barTintColor = baseColor
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().titleTextAttributes = [
-            NSForegroundColorAttributeName: shadow
+            NSForegroundColorAttributeName: baseColor.blackOrWhiteContrastingColor()
         ]
         
     }
