@@ -11,6 +11,8 @@ import AudioToolbox
 
 class VibrationAlertManager: NSObject, SpeechTimerDelegate {
 
+    var configMan : ConfigurationManager?
+    
     var speechMan : SpeechManager? {
         didSet {
             speechMan?.addSpeechObserver(self)
@@ -18,8 +20,12 @@ class VibrationAlertManager: NSObject, SpeechTimerDelegate {
     }
     
     func phaseChanged(state: SpeechState, timer: SpeechTimer){
-        NSLog("Vibrating")
-        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        if let cm = configMan {
+            if cm.isVibrationEnabled {
+                NSLog("Vibrating")
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            }
+        }
     }
     
     func tick(state: SpeechState, timer: SpeechTimer){}

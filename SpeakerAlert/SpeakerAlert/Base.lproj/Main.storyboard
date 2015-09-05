@@ -659,6 +659,11 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Settings" id="Vwb-Yj-TEb"/>
+                    <connections>
+                        <outlet property="autoStartSwitch" destination="wE1-fm-Bwn" id="6Aw-h6-haf"/>
+                        <outlet property="displayTimeSwitch" destination="TGm-wd-3ZZ" id="hBC-ID-fiI"/>
+                        <outlet property="vibrationSwitch" destination="uTb-hV-ubH" id="gQu-Dg-eJi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bY-uk-Oe4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

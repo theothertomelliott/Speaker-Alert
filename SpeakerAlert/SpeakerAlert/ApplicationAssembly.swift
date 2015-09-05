@@ -22,6 +22,13 @@ public class ApplicationAssembly: TyphoonAssembly {
             definition.injectProperty("dataSeeder", with: self.dataSeeder())
         }
     }
+    
+    public dynamic func configurationManager() -> AnyObject {
+        return TyphoonDefinition.withClass(ConfigurationManager.self) {
+            (definition) in
+            definition.scope = TyphoonScope.Singleton
+        }
+    }
 
     public dynamic func appColorManager() -> AnyObject {
         return TyphoonDefinition.withClass(AppColorManager.self) {
@@ -67,6 +74,7 @@ public class ApplicationAssembly: TyphoonAssembly {
             (definition) in
             definition.scope = TyphoonScope.Singleton
             definition.injectProperty("speechMan", with: self.speechManager())
+            definition.injectProperty("configMan", with: self.configurationManager())
         }
     }
     
@@ -89,6 +97,14 @@ public class ApplicationAssembly: TyphoonAssembly {
         return TyphoonDefinition.withClass(SpeechViewController.self) {
             (definition) in
             definition.injectProperty("speechMan", with: self.speechManager())
+            definition.injectProperty("configMan", with: self.configurationManager())
+        }
+    }
+    
+    public dynamic func settingsViewController() -> AnyObject {
+        return TyphoonDefinition.withClass(SettingsViewController.self) {
+            (definition) in
+            definition.injectProperty("configManager", with: self.configurationManager())
         }
     }
     

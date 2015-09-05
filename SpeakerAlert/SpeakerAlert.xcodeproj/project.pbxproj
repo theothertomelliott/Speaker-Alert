@@ -19,6 +19,7 @@
 		E20B85801B66661300D55578 /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20B857F1B66661300D55578 /* SpeechManager.swift */; };
 		E2159F221B6D9D8B0075E77E /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */; };
 		E2159F251B6D9F330075E77E /* WatchCommsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2159F241B6D9F330075E77E /* WatchCommsManager.swift */; };
+		E21B306C1B9B54BA00B89D9F /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */; settings = {ASSET_TAGS = (); }; };
 		E22E8C441B6BA23000DD0793 /* VibrationAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */; };
 		E22FD26A1B93F1F10022F0B1 /* UIColor+TintAndShade.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD2691B93F1F10022F0B1 /* UIColor+TintAndShade.swift */; settings = {ASSET_TAGS = (); }; };
 		E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */; settings = {ASSET_TAGS = (); }; };
@@ -145,6 +146,7 @@
 		E20B857F1B66661300D55578 /* SpeechManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
 		E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
 		E2159F241B6D9F330075E77E /* WatchCommsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchCommsManager.swift; sourceTree = "<group>"; };
+		E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibrationAlertManager.swift; sourceTree = "<group>"; };
 		E22FD2691B93F1F10022F0B1 /* UIColor+TintAndShade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+TintAndShade.swift"; sourceTree = "<group>"; };
 		E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColorManager.swift; sourceTree = "<group>"; };
@@ -253,6 +255,14 @@
 			name = Watch;
 			sourceTree = "<group>";
 		};
+		E21B306A1B9B549E00B89D9F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		E22969E01B65202F00C18012 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +344,7 @@
 		E23480E71B2906EA0076247D /* SpeakerAlert */ = {
 			isa = PBXGroup;
 			children = (
+				E21B306A1B9B549E00B89D9F /* Settings */,
 				E22FD2681B93F1D70022F0B1 /* ColorUtilities */,
 				E2B2CCCF1B87556D0038C067 /* Data Management */,
 				E25F8F221B76B94900A16A92 /* Models */,
@@ -776,6 +787,7 @@
 				E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */,
 				E2F6B5F21B378F2600210504 /* Profile.swift in Sources */,
 				E2C2E7CC1B685AF3004BD7FD /* SpeechState.swift in Sources */,
+				E21B306C1B9B54BA00B89D9F /* ConfigurationManager.swift in Sources */,
 				E20A8E9A1B817E7500ECC443 /* SpeechProfileFactory.swift in Sources */,
 				E25E86C91B65D73A00F120FA /* ApplicationAssembly.swift in Sources */,
 				E24408A21B48338400EB056C /* Group.swift in Sources */,

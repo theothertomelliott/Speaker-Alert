@@ -10,26 +10,56 @@ import UIKit
 
 class SpeechViewController: UIViewController, SpeechTimerDelegate {
     
-    @IBOutlet weak var hideShowTimeButton: UIButton!
+    var speechMan : SpeechManager?
+    var configMan : ConfigurationManager?
     
-    @IBAction func hideShowTime(sender: AnyObject) {
+    @IBOutlet weak var hideShowTimeButton: UIButton!
+    @IBOutlet weak var elapsedTimeLabel: UILabel!
+    var blinkState : Bool = false
+    var blinkOn : Bool = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        speechMan?.addSpeechObserver(self)
         
-        let previous : Bool = self.elapsedTimeLabel.hidden
-        if previous {
-            self.hideShowTimeButton.setTitle("Hide Time", forState: UIControlState.Normal)
-            self.hideShowTimeButton.setTitle("Hide Time", forState: UIControlState.Highlighted)
-            self.hideShowTimeButton.setTitle("Hide Time", forState: UIControlState.Selected)
-        } else {
-            self.hideShowTimeButton.setTitle("Show Time", forState: UIControlState.Normal)
-            self.hideShowTimeButton.setTitle("Show Time", forState: UIControlState.Highlighted)
-            self.hideShowTimeButton.setTitle("Show Time", forState: UIControlState.Selected)
+        if let cm = configMan {
+            if cm.isAutoStartEnabled {
+                self.resumePressed(self)
+            }
         }
-        
-        self.elapsedTimeLabel.hidden = !self.elapsedTimeLabel.hidden
     }
     
-    var speechMan : SpeechManager?;
+    override func viewWillAppear(animated: Bool) {
+        self.setShowTime(configMan!.isDisplayTime)
+    }
     
+    override func viewWillDisappear(animated: Bool) {
+        speechMan?.removeSpeechObserver(self)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func setShowTime(isVisible : Bool){
+        if let cm = configMan {
+            cm.isDisplayTime = isVisible
+            if isVisible {
+                self.hideShowTimeButton.setTitle("Hide Time", forState: UIControlState.Normal)
+            } else {
+                self.hideShowTimeButton.setTitle("Show Time", forState: UIControlState.Normal)
+            }
+            self.elapsedTimeLabel.hidden = !isVisible
+        }
+    }
+    
+    @IBAction func hideShowTime(sender: AnyObject) {
+        if let cm = configMan {
+            self.setShowTime(!cm.isDisplayTime)
+        }
+    }
+
     // Code from: http://stackoverflow.com/questions/27008737/how-do-i-hide-show-tabbar-when-tapped-using-swift-in-ios8/27072876#27072876
     func setTabBarVisible(visible:Bool, animated:Bool) {
         
@@ -85,9 +115,6 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
         self.hideShowTimeButton.hidden = true;
     }
     
-    var blinkState : Bool = false
-    var blinkOn : Bool = false
-    
     func phaseChanged(state: SpeechState, timer: SpeechTimer) {
         blinkState = false;
         if(state.phase == SpeechPhase.BELOW_MINIMUM){
@@ -127,23 +154,6 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
         }
     }
     
-    @IBOutlet weak var elapsedTimeLabel: UILabel!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        speechMan?.addSpeechObserver(self)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        speechMan?.removeSpeechObserver(self)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
     /*
     // MARK: - Navigation
 

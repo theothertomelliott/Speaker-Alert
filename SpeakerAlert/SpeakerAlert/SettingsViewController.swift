@@ -11,21 +11,31 @@ import RFAboutView
 
 class SettingsViewController: UITableViewController {
 
+    var configManager : ConfigurationManager?
+    @IBOutlet weak var autoStartSwitch: UISwitch!
+    @IBOutlet weak var displayTimeSwitch: UISwitch!
+    @IBOutlet weak var vibrationSwitch: UISwitch!
+    
+    override func viewWillAppear(animated: Bool) {
+        if let cm = configManager {
+            autoStartSwitch.setOn(cm.isAutoStartEnabled, animated: false)
+            displayTimeSwitch.setOn(cm.isDisplayTime, animated: false)
+            vibrationSwitch.setOn(cm.isVibrationEnabled, animated: false)
+        }
+    }
+    
     @IBAction func autoStartChanged(sender: AnyObject) {
-        // TODO: Update autostart setting
+        configManager?.isAutoStartEnabled = (sender as! UISwitch).on
     }
     
     @IBAction func displayTimeChanged(sender: AnyObject) {
-        // TODO: Update display time by default setting
+        configManager?.isDisplayTime = (sender as! UISwitch).on
     }
     
     @IBAction func vibrationChanged(sender: AnyObject) {
-        // TODO: Update vibration alert setting
+        configManager?.isVibrationEnabled = (sender as! UISwitch).on
     }
-    
-    override func viewDidLoad() {
-    }
-    
+
     override func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView.cellForRowAtIndexPath(indexPath)?.selectionStyle = UITableViewCellSelectionStyle.None
@@ -38,9 +48,11 @@ class SettingsViewController: UITableViewController {
     
     func showAbout(){
         let aboutView : RFAboutViewController = RFAboutViewController(appName: "Speaker Alert", appVersion: "2.0.0", appBuild: "1", copyrightHolderName: "Tom Elliott", contactEmail: "tom.w.elliott@gmail.com", titleForEmail: "Tom Elliott", websiteURL: NSURL(string: "http://telliott.io"), titleForWebsiteURL: "telliott.io", andPublicationYear: "2015")
-        aboutView.headerBackgroundColor = .blackColor()
-        aboutView.headerTextColor = .whiteColor()
-        aboutView.blurStyle = .Dark
+
+        // TODO: Figure out how to use default colors
+        //        aboutView.headerBackgroundColor = .blackColor()
+        //        aboutView.headerTextColor = .whiteColor()
+        //        aboutView.blurStyle = .Dark
         aboutView.headerBackgroundImage = UIImage(named: "Icon1024")
         
         self.navigationController?.pushViewController(aboutView, animated: true)
