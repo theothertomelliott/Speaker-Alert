@@ -9,8 +9,9 @@
 import Foundation
 import WatchConnectivity
 
+@available(iOS 9, *)
 class WatchCommsManager: NSObject, WCSessionDelegate, SpeechTimerDelegate {
-
+    
     var watchSession : WCSession?
     
     var speechMan : SpeechManager? {
@@ -20,11 +21,13 @@ class WatchCommsManager: NSObject, WCSessionDelegate, SpeechTimerDelegate {
     }
     
     override init() {
-        if(WCSession.isSupported()){
-            NSLog("WCSession supported, initializing")
-            watchSession = WCSession.defaultSession()
-        } else {
-            NSLog("WCSession is not supported, will not initialize")
+        if #available(iOS 9, *) {
+            if(WCSession.isSupported()){
+                NSLog("WCSession supported, initializing")
+                watchSession = WCSession.defaultSession()
+            } else {
+                NSLog("WCSession is not supported, will not initialize")
+            }
         }
     }
     

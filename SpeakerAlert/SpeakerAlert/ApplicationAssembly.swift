@@ -60,6 +60,7 @@ public class ApplicationAssembly: TyphoonAssembly {
         }
     }
     
+    @available(iOS 9, *)
     public dynamic func watchCommsManager() -> AnyObject {
         return TyphoonDefinition.withClass(WatchCommsManager.self){
             (definition) in
