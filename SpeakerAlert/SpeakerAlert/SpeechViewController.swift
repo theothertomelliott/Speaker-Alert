@@ -7,25 +7,40 @@
 //
 
 import UIKit
+import Colours
 
 class SpeechViewController: UIViewController, SpeechTimerDelegate {
     
     var speechMan : SpeechManager?
     var configMan : ConfigurationManager?
     
+    @IBOutlet weak var profileSummaryLabel: UILabel!
+    
+    @IBOutlet weak var playButton: FontAwesomeButton!
+    @IBOutlet weak var stopButton: FontAwesomeButton!
+    @IBOutlet weak var pauseButton: FontAwesomeButton!
+    
     @IBOutlet weak var elapsedTimeLabel: UILabel!
     var blinkState : Bool = false
     var blinkOn : Bool = false
     
+    var phaseColor : UIColor = UIColor.whiteColor()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        speechMan?.addSpeechObserver(self)
+        if let sm = speechMan {
+            sm.addSpeechObserver(self)
+            profileSummaryLabel?.attributedText = ProfileTimeRenderer.timesAsAttributedString(sm.profile!)
+            self.title = sm.profile?.name
+        }
         
         if let cm = configMan {
             if cm.isAutoStartEnabled {
                 self.resumePressed(self)
             }
         }
+        
+        self.updateDisplay()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -83,54 +98,118 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
         setTabBarVisible(!tabBarIsVisible(), animated: true)
     }
     
+    func setRunningMode(isRunning : Bool) {
+        self.navigationController?.setNavigationBarHidden(isRunning, animated: true)
+        self.setTabBarVisible(!isRunning, animated: true)
+        self.profileSummaryLabel?.hidden = isRunning
+        // TODO: show/hide the status bar
+        self.updateDisplay()
+    }
+
     @IBAction func pausePressed(sender: AnyObject) {
         speechMan?.pause()
+        self.setRunningMode(false)
     }
     
     @IBAction func stopPressed(sender: AnyObject) {
         speechMan?.stop()
-        // TODO: show the status bar
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.setTabBarVisible(true, animated: true)
+        self.setRunningMode(false)
     }
     
     @IBAction func resumePressed(sender: AnyObject) {
         speechMan?.start()
-        // TODO: hide the status bar
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.setTabBarVisible(false, animated: true)
+        self.setRunningMode(true)
+    }
+    
+    func updatePhase(){
+        if let phase = speechMan?.state?.phase {
+            blinkState = false;
+            if(phase == SpeechPhase.BELOW_MINIMUM){
+                self.phaseColor = UIColor.whiteColor()
+            }
+            if(phase == SpeechPhase.GREEN){
+                self.phaseColor = UIColor.successColor()
+            }
+            if(phase == SpeechPhase.YELLOW){
+                self.phaseColor = UIColor.warningColor()
+            }
+            if(phase == SpeechPhase.RED){
+                self.phaseColor = UIColor.dangerColor()
+            }
+            if(phase == SpeechPhase.OVER_MAXIMUM){
+                self.phaseColor = UIColor.dangerColor()
+                blinkState = true;
+            }
+        }
     }
     
     func phaseChanged(state: SpeechState, timer: SpeechTimer) {
-        blinkState = false;
-        if(state.phase == SpeechPhase.BELOW_MINIMUM){
-            self.view.backgroundColor = UIColor.whiteColor()
+        self.updatePhase()
+    }
+    
+    func updateTimeLabel(){
+        let running : Bool = speechMan?.state?.running == SpeechRunning.RUNNING
+        let timeStr = TimeUtils.formatStopwatch(speechMan!.state!.elapsed)
+        var timeAttr: NSMutableAttributedString = NSMutableAttributedString(string: "\(timeStr)")
+        if(!running){
+            timeAttr = NSMutableAttributedString(string: "● \(timeStr)")
+            if(speechMan?.state?.phase == SpeechPhase.OVER_MAXIMUM) {
+                timeAttr = NSMutableAttributedString(string: "◎ \(timeStr)")
+            }
+            if(speechMan?.state?.phase == SpeechPhase.BELOW_MINIMUM) {
+                timeAttr = NSMutableAttributedString(string: "◦ \(timeStr)")
+            } else {
+                timeAttr.addAttribute(NSForegroundColorAttributeName, value: self.phaseColor, range: NSMakeRange(0, 1))
+            }
         }
-        if(state.phase == SpeechPhase.GREEN){
-            self.view.backgroundColor = UIColor.greenColor()
-        }
-        if(state.phase == SpeechPhase.YELLOW){
-            self.view.backgroundColor = UIColor.yellowColor()
-        }
-        if(state.phase == SpeechPhase.RED){
-            self.view.backgroundColor = UIColor.redColor()
-        }
-        if(state.phase == SpeechPhase.OVER_MAXIMUM){
-            blinkState = true;
+        
+        elapsedTimeLabel.attributedText = timeAttr
+    }
+    
+    func updateControls(){
+        if let state = speechMan?.state {
+            switch state.running {
+            case .PAUSED:
+                self.playButton.enabled = true
+                self.pauseButton.enabled = false
+                self.stopButton.enabled = true
+            case .RUNNING:
+                self.playButton.enabled = false
+                self.pauseButton.enabled = true
+                self.stopButton.enabled = true
+            case .STOPPED:
+                self.playButton.enabled = true
+                self.pauseButton.enabled = false
+                self.stopButton.enabled = false
+            }
         }
     }
     
-    func tick(state: SpeechState, timer: SpeechTimer){
-        elapsedTimeLabel.text = TimeUtils.formatStopwatch(state.elapsed)
+    func updateDisplay() {
+        let running : Bool = speechMan?.state?.running == SpeechRunning.RUNNING
+        self.updateTimeLabel()
+        self.updateControls()
         
-        if(blinkState){
-            if(blinkOn){
-                self.view.backgroundColor = UIColor.redColor()
+        if(running){
+            if(blinkState){
+                if(blinkOn){
+                    self.view.backgroundColor = phaseColor
+                } else {
+                    self.view.backgroundColor = UIColor.whiteColor()
+                }
+                blinkOn = !blinkOn
             } else {
-                self.view.backgroundColor = UIColor.whiteColor()
+                self.view.backgroundColor = phaseColor
             }
-            blinkOn = !blinkOn
+        } else {
+            self.view.backgroundColor = UIColor.whiteColor()
         }
+
+        
+    }
+    
+    func tick(state: SpeechState, timer: SpeechTimer){
+        self.updateDisplay()
     }
     
     func runningChanged(state: SpeechState, timer: SpeechTimer){
@@ -138,6 +217,7 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
             self.tick(state, timer: timer)
             self.phaseChanged(state, timer: timer)
         }
+        self.updateDisplay()
     }
     
     /*

@@ -426,18 +426,31 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4L-Mx-pbd">
+                                <rect key="frame" x="28" y="82" width="544" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KbZ-nH-ahp" firstAttribute="leading" secondItem="ZOg-E5-qK8" secondAttribute="leadingMargin" constant="10" id="0SZ-Je-dsu"/>
+                            <constraint firstItem="p4L-Mx-pbd" firstAttribute="leading" secondItem="ZOg-E5-qK8" secondAttribute="leadingMargin" constant="8" id="7Cd-d3-AMv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p4L-Mx-pbd" secondAttribute="trailing" constant="8" id="PfR-iX-oZF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KbZ-nH-ahp" secondAttribute="trailing" constant="10" id="cfe-3n-q4v"/>
                             <constraint firstItem="KbZ-nH-ahp" firstAttribute="centerX" secondItem="ZOg-E5-qK8" secondAttribute="centerX" id="fnW-XA-hKN"/>
+                            <constraint firstItem="p4L-Mx-pbd" firstAttribute="top" secondItem="LOg-uw-c5V" secondAttribute="bottom" constant="18" id="rac-BA-QwH"/>
                             <constraint firstItem="KbZ-nH-ahp" firstAttribute="centerY" secondItem="ZOg-E5-qK8" secondAttribute="centerY" id="vsu-el-eQb"/>
                         </constraints>
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="elapsedTimeLabel" destination="E7o-Bg-pvs" id="kWH-zp-aD0"/>
+                        <outlet property="pauseButton" destination="Kcd-Dn-PIr" id="bfP-rZ-yWf"/>
+                        <outlet property="playButton" destination="p1F-ZC-aid" id="BTy-xz-KKg"/>
+                        <outlet property="profileSummaryLabel" destination="p4L-Mx-pbd" id="4cY-WT-en8"/>
+                        <outlet property="stopButton" destination="Nxk-ch-or0" id="yyA-Rm-rcG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5H-ak-Azo" userLabel="First Responder" sceneMemberID="firstResponder"/>
