@@ -13,7 +13,6 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
     var speechMan : SpeechManager?
     var configMan : ConfigurationManager?
     
-    @IBOutlet weak var hideShowTimeButton: UIButton!
     @IBOutlet weak var elapsedTimeLabel: UILabel!
     var blinkState : Bool = false
     var blinkOn : Bool = false
@@ -45,21 +44,10 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
     func setShowTime(isVisible : Bool){
         if let cm = configMan {
             cm.isDisplayTime = isVisible
-            if isVisible {
-                self.hideShowTimeButton.setTitle("Hide Time", forState: UIControlState.Normal)
-            } else {
-                self.hideShowTimeButton.setTitle("Show Time", forState: UIControlState.Normal)
-            }
             self.elapsedTimeLabel.hidden = !isVisible
         }
     }
     
-    @IBAction func hideShowTime(sender: AnyObject) {
-        if let cm = configMan {
-            self.setShowTime(!cm.isDisplayTime)
-        }
-    }
-
     // Code from: http://stackoverflow.com/questions/27008737/how-do-i-hide-show-tabbar-when-tapped-using-swift-in-ios8/27072876#27072876
     func setTabBarVisible(visible:Bool, animated:Bool) {
         
@@ -104,7 +92,6 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
         // TODO: show the status bar
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.setTabBarVisible(true, animated: true)
-        self.hideShowTimeButton.hidden = false;
     }
     
     @IBAction func resumePressed(sender: AnyObject) {
@@ -112,7 +99,6 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
         // TODO: hide the status bar
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.setTabBarVisible(false, animated: true)
-        self.hideShowTimeButton.hidden = true;
     }
     
     func phaseChanged(state: SpeechState, timer: SpeechTimer) {

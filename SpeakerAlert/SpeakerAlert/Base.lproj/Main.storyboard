@@ -389,24 +389,13 @@
                                     <action selector="resumePressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="ZhC-zG-XyW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLZ-aW-jo6">
-                                <rect key="frame" x="502" y="72" width="70" height="30"/>
-                                <state key="normal" title="Hide Time">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="hideShowTime:" destination="Ons-tk-MNb" eventType="touchUpInside" id="J70-dc-sAK"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Nxk-ch-or0" firstAttribute="centerX" secondItem="ZOg-E5-qK8" secondAttribute="centerX" id="6el-s5-tsw"/>
                             <constraint firstItem="R63-DW-HFX" firstAttribute="top" secondItem="Nxk-ch-or0" secondAttribute="bottom" constant="20" id="A0R-yh-eOw"/>
                             <constraint firstItem="Kcd-Dn-PIr" firstAttribute="centerY" secondItem="Nxk-ch-or0" secondAttribute="centerY" id="Idv-1b-m26"/>
-                            <constraint firstItem="iLZ-aW-jo6" firstAttribute="top" secondItem="LOg-uw-c5V" secondAttribute="bottom" constant="8" id="NMp-jd-Gj2"/>
                             <constraint firstItem="Kcd-Dn-PIr" firstAttribute="leading" secondItem="Nxk-ch-or0" secondAttribute="trailing" constant="81" id="crr-jq-xXU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iLZ-aW-jo6" secondAttribute="trailing" constant="8" id="drA-Kq-dkG"/>
                             <constraint firstItem="Nxk-ch-or0" firstAttribute="leading" secondItem="p1F-ZC-aid" secondAttribute="trailing" constant="78" id="fUN-m3-z0q"/>
                             <constraint firstItem="E7o-Bg-pvs" firstAttribute="centerX" secondItem="ZOg-E5-qK8" secondAttribute="centerX" id="fn8-IV-bfp"/>
                             <constraint firstItem="p1F-ZC-aid" firstAttribute="centerY" secondItem="Nxk-ch-or0" secondAttribute="centerY" id="mo9-hx-Pon"/>
@@ -416,7 +405,6 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="elapsedTimeLabel" destination="E7o-Bg-pvs" id="kWH-zp-aD0"/>
-                        <outlet property="hideShowTimeButton" destination="iLZ-aW-jo6" id="T1s-M6-yqB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5H-ak-Azo" userLabel="First Responder" sceneMemberID="firstResponder"/>
