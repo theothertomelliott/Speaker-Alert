@@ -282,7 +282,7 @@ class GroupTableViewController: UITableViewController {
         }
         
         if("timingSegue" == segue.identifier){
-            speechMan?.profile = self.timings[indexPath.row - self.groups.count] as! Profile
+            speechMan?.profile = self.timings[indexPath.row - self.groups.count] as? Profile
         }
         
     }
