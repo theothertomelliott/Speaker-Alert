@@ -168,22 +168,13 @@ class GroupTableViewController: UITableViewController {
         
             return cell
         } else {
-            let cell : NamedTableViewCell = tableView.dequeueReusableCellWithIdentifier("TimingCell", forIndexPath: indexPath) as! NamedTableViewCell
+            let cell : ProfileTableViewCell = tableView.dequeueReusableCellWithIdentifier("TimingCell", forIndexPath: indexPath) as! ProfileTableViewCell
             
-            let timing = timings[indexPath.row - groups.count]
+            let timing : Profile = timings[indexPath.row - groups.count] as! Profile
             
-                let tn : String = timing.name!
-                cell.nameLabel!.text = tn
-            /*
-            if(timing.parentGroup != nil){
-                if let pg : Group = timing.parentGroup {
-                    let pn : String = pg.name!
-                    cell.textLabel!.text = "\(tn) - \(pn)"
-                } else {
-                    cell.textLabel!.text = tn
-                }
-            }
-            */
+            let tn : String = timing.name!
+            cell.nameLabel!.text = tn
+            cell.profileTimesLabel!.attributedText = ProfileTimeRenderer.timesAsAttributedString(timing)
             return cell
         }
 
@@ -236,6 +227,7 @@ class GroupTableViewController: UITableViewController {
                 self.performSegueWithIdentifier("timingEditSegue", sender: tableView.cellForRowAtIndexPath(indexPath))
             }
         });
+        // TODO: Change this color
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
         
         let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in

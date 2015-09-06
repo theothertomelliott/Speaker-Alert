@@ -46,6 +46,8 @@
 		E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */; };
 		E25E86C61B65748D00F120FA /* FontAwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */; };
 		E25E86C91B65D73A00F120FA /* ApplicationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C81B65D73A00F120FA /* ApplicationAssembly.swift */; };
+		E2784A641B9C8FE30046BF0D /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2784A631B9C8FE30046BF0D /* ProfileTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		E2784A671B9C97180046BF0D /* ProfileTimeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2784A661B9C97180046BF0D /* ProfileTimeRenderer.swift */; settings = {ASSET_TAGS = (); }; };
 		E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
 		E2929A891B3CCE6E007030D4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
 		E2929A8A1B3CCE71007030D4 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
@@ -179,6 +181,8 @@
 		E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeFactory.swift; sourceTree = "<group>"; };
 		E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeButton.swift; sourceTree = "<group>"; };
 		E25E86C81B65D73A00F120FA /* ApplicationAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationAssembly.swift; sourceTree = "<group>"; };
+		E2784A631B9C8FE30046BF0D /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		E2784A661B9C97180046BF0D /* ProfileTimeRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTimeRenderer.swift; sourceTree = "<group>"; };
 		E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechTimer.swift; sourceTree = "<group>"; };
 		E2929A881B3CCD14007030D4 /* SpeakerAlert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeakerAlert-Bridging-Header.h"; sourceTree = "<group>"; };
 		E2AB35951B82DC97001F8362 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 			children = (
 				E2C571BC1B8AB3F600C83D92 /* FontAwesome */,
 				E2C571BA1B8AB1A300C83D92 /* NamedTableViewCell.swift */,
+				E2784A631B9C8FE30046BF0D /* ProfileTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -301,12 +306,12 @@
 			name = UserNotification;
 			sourceTree = "<group>";
 		};
-		E22FD2681B93F1D70022F0B1 /* ColorUtilities */ = {
+		E22FD2681B93F1D70022F0B1 /* Styling */ = {
 			isa = PBXGroup;
 			children = (
 				E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */,
 			);
-			name = ColorUtilities;
+			name = Styling;
 			sourceTree = "<group>";
 		};
 		E23480DC1B2906EA0076247D = {
@@ -342,7 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				E21B306A1B9B549E00B89D9F /* Settings */,
-				E22FD2681B93F1D70022F0B1 /* ColorUtilities */,
+				E22FD2681B93F1D70022F0B1 /* Styling */,
 				E2B2CCCF1B87556D0038C067 /* Data Management */,
 				E25F8F221B76B94900A16A92 /* Models */,
 				E2159F231B6D9F1B0075E77E /* Watch */,
@@ -421,12 +426,21 @@
 		E25F8F221B76B94900A16A92 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E2784A651B9C97050046BF0D /* Rendering Utils */,
 				E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */,
 				E2F6B5F01B378F2600210504 /* Profile.swift */,
 				E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */,
 				E24408A01B48338400EB056C /* Group.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		E2784A651B9C97050046BF0D /* Rendering Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E2784A661B9C97180046BF0D /* ProfileTimeRenderer.swift */,
+			);
+			name = "Rendering Utils";
 			sourceTree = "<group>";
 		};
 		E28AA3531B2CA70F000F5A15 /* SpeechTimer */ = {
@@ -796,6 +810,8 @@
 				E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */,
 				E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */,
 				E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */,
+				E2784A641B9C8FE30046BF0D /* ProfileTableViewCell.swift in Sources */,
+				E2784A671B9C97180046BF0D /* ProfileTimeRenderer.swift in Sources */,
 				E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */,
 				E24628DF1B9803C2007DD28B /* SettingsViewController.swift in Sources */,
 				E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */,
