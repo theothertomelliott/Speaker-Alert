@@ -313,93 +313,126 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="36" translatesAutoresizingMaskIntoConstraints="NO" id="E7o-Bg-pvs">
-                                <rect key="frame" x="144" y="211" width="311" height="179.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="150"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcd-Dn-PIr" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
-                                <rect key="frame" x="402" y="517" width="43" height="63"/>
-                                <state key="normal" title="Pause">
-                                    <color key="titleColor" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="selected">
-                                    <color key="titleColor" red="0.3432785377" green="0.99520959899999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.3432785377" green="0.99520959899999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Pause"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="IconSize">
-                                        <real key="value" value="50"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="pausePressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="WOA-1x-jTS"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-ch-or0" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
-                                <rect key="frame" x="278" y="517" width="43" height="63"/>
-                                <state key="normal" title="Stop">
-                                    <color key="titleColor" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="selected">
-                                    <color key="titleColor" red="0.3432785377" green="0.99520959899999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.3432785377" green="0.99520959899999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Stop"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="IconSize">
-                                        <real key="value" value="50"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="stopPressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="Nd1-lv-o3d"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-ZC-aid" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
-                                <rect key="frame" x="160" y="517" width="40" height="63"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Resume">
-                                    <color key="titleColor" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="selected">
-                                    <color key="titleColor" red="0.3432785377" green="0.99520959899999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.3432785377" green="0.99520959899999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Play"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="IconSize">
-                                        <real key="value" value="50"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="resumePressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="ZhC-zG-XyW"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbZ-nH-ahp">
+                                <rect key="frame" x="30" y="150" width="540" height="300"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="E7o-Bg-pvs">
+                                        <rect key="frame" x="0.0" y="10" width="540" height="193"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="120"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlb-wr-EIt">
+                                        <rect key="frame" x="10" y="218" width="520" height="72"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-ZC-aid" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="4" width="40" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="Resume">
+                                                    <color key="titleColor" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" red="0.3432785377" green="0.99520959899999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" red="0.3432785377" green="0.99520959899999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Play"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="IconSize">
+                                                        <real key="value" value="50"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="resumePressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="ZhC-zG-XyW"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-ch-or0" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                                <rect key="frame" x="238" y="4" width="43" height="63"/>
+                                                <state key="normal" title="Stop">
+                                                    <color key="titleColor" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" red="0.3432785377" green="0.99520959899999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" red="0.3432785377" green="0.99520959899999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Stop"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="IconSize">
+                                                        <real key="value" value="50"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="stopPressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="Nd1-lv-o3d"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcd-Dn-PIr" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                                <rect key="frame" x="469" y="4" width="43" height="63"/>
+                                                <state key="normal" title="Pause">
+                                                    <color key="titleColor" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" red="0.3432785377" green="0.99520959899999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" red="0.3432785377" green="0.99520959899999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Pause"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="IconSize">
+                                                        <real key="value" value="50"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="pausePressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="WOA-1x-jTS"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Nxk-ch-or0" firstAttribute="centerY" secondItem="jlb-wr-EIt" secondAttribute="centerY" id="4h4-q6-X0K"/>
+                                            <constraint firstAttribute="trailing" secondItem="Kcd-Dn-PIr" secondAttribute="trailing" constant="8" id="8Tu-Kc-OJL"/>
+                                            <constraint firstItem="p1F-ZC-aid" firstAttribute="centerY" secondItem="jlb-wr-EIt" secondAttribute="centerY" id="9tb-Cv-Eqv"/>
+                                            <constraint firstAttribute="height" constant="72" id="E4p-RO-Q2l"/>
+                                            <constraint firstItem="p1F-ZC-aid" firstAttribute="leading" secondItem="jlb-wr-EIt" secondAttribute="leading" constant="20" id="FYZ-TN-qw9"/>
+                                            <constraint firstItem="Kcd-Dn-PIr" firstAttribute="centerY" secondItem="jlb-wr-EIt" secondAttribute="centerY" id="oS0-IJ-tsJ"/>
+                                            <constraint firstItem="Nxk-ch-or0" firstAttribute="centerX" secondItem="jlb-wr-EIt" secondAttribute="centerX" id="y81-1l-pdG"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="jlb-wr-EIt" firstAttribute="leading" secondItem="KbZ-nH-ahp" secondAttribute="leading" constant="10" id="56N-nT-eSU"/>
+                                    <constraint firstItem="jlb-wr-EIt" firstAttribute="top" secondItem="E7o-Bg-pvs" secondAttribute="bottom" constant="15" id="6zr-Kd-LYK"/>
+                                    <constraint firstAttribute="trailing" secondItem="jlb-wr-EIt" secondAttribute="trailing" constant="10" id="LhE-bA-NPE"/>
+                                    <constraint firstItem="E7o-Bg-pvs" firstAttribute="centerX" secondItem="KbZ-nH-ahp" secondAttribute="centerX" id="M88-DR-dmj"/>
+                                    <constraint firstItem="E7o-Bg-pvs" firstAttribute="leading" secondItem="KbZ-nH-ahp" secondAttribute="leading" id="ZB8-bN-99C"/>
+                                    <constraint firstItem="E7o-Bg-pvs" firstAttribute="top" secondItem="KbZ-nH-ahp" secondAttribute="top" constant="10" id="a5e-q1-gg6"/>
+                                    <constraint firstAttribute="bottom" secondItem="jlb-wr-EIt" secondAttribute="bottom" constant="10" id="fU2-Nl-hs7"/>
+                                    <constraint firstAttribute="trailing" secondItem="E7o-Bg-pvs" secondAttribute="trailing" id="fqC-h0-DDs"/>
+                                    <constraint firstAttribute="width" constant="350" id="ng0-KK-7XI"/>
+                                    <constraint firstAttribute="height" constant="300" id="rJz-Vw-hwS"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ng0-KK-7XI"/>
+                                        <exclude reference="M88-DR-dmj"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Nxk-ch-or0" firstAttribute="centerX" secondItem="ZOg-E5-qK8" secondAttribute="centerX" id="6el-s5-tsw"/>
-                            <constraint firstItem="R63-DW-HFX" firstAttribute="top" secondItem="Nxk-ch-or0" secondAttribute="bottom" constant="20" id="A0R-yh-eOw"/>
-                            <constraint firstItem="Kcd-Dn-PIr" firstAttribute="centerY" secondItem="Nxk-ch-or0" secondAttribute="centerY" id="Idv-1b-m26"/>
-                            <constraint firstItem="Kcd-Dn-PIr" firstAttribute="leading" secondItem="Nxk-ch-or0" secondAttribute="trailing" constant="81" id="crr-jq-xXU"/>
-                            <constraint firstItem="Nxk-ch-or0" firstAttribute="leading" secondItem="p1F-ZC-aid" secondAttribute="trailing" constant="78" id="fUN-m3-z0q"/>
-                            <constraint firstItem="E7o-Bg-pvs" firstAttribute="centerX" secondItem="ZOg-E5-qK8" secondAttribute="centerX" id="fn8-IV-bfp"/>
-                            <constraint firstItem="p1F-ZC-aid" firstAttribute="centerY" secondItem="Nxk-ch-or0" secondAttribute="centerY" id="mo9-hx-Pon"/>
-                            <constraint firstItem="E7o-Bg-pvs" firstAttribute="centerY" secondItem="ZOg-E5-qK8" secondAttribute="centerY" id="pUk-fW-27W"/>
+                            <constraint firstItem="KbZ-nH-ahp" firstAttribute="leading" secondItem="ZOg-E5-qK8" secondAttribute="leadingMargin" constant="10" id="0SZ-Je-dsu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KbZ-nH-ahp" secondAttribute="trailing" constant="10" id="cfe-3n-q4v"/>
+                            <constraint firstItem="KbZ-nH-ahp" firstAttribute="centerX" secondItem="ZOg-E5-qK8" secondAttribute="centerX" id="fnW-XA-hKN"/>
+                            <constraint firstItem="KbZ-nH-ahp" firstAttribute="centerY" secondItem="ZOg-E5-qK8" secondAttribute="centerY" id="vsu-el-eQb"/>
                         </constraints>
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
