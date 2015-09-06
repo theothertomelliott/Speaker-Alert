@@ -27,11 +27,13 @@
                         <group width="0.94999999999999996" height="0.40000000000000002" alignment="center" id="zSO-Hu-VAn">
                             <items>
                                 <button width="0.5" height="0.5" alignment="center" verticalAlignment="center" title="Stop" id="kc8-E2-OXk">
+                                    <fontDescription key="font" type="system" pointSize="12"/>
                                     <connections>
                                         <action selector="stopStartPressed" destination="AgC-eL-Hgc" id="eB3-09-Nam"/>
                                     </connections>
                                 </button>
                                 <button width="0.5" height="0.5" alignment="center" verticalAlignment="center" title="Pause" id="XTP-HN-ero">
+                                    <fontDescription key="font" type="system" pointSize="12"/>
                                     <connections>
                                         <action selector="pausePressed" destination="AgC-eL-Hgc" id="bDT-ne-5Dp"/>
                                     </connections>

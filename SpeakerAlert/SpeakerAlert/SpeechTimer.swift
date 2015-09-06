@@ -15,7 +15,6 @@ public class SpeechTimer : NSObject {
     
     // Timers for tracking state changes
     var phaseTimers : [SpeechPhase : NSTimer]
-    var tickTimer : NSTimer?
     
     init(withProfile profile : Profile){
         state = SpeechState(profile: SpeechProfileFactory.SpeechProfileWithProfile(profile))
@@ -38,8 +37,7 @@ public class SpeechTimer : NSObject {
                     phaseTimers[p] = NSTimer.scheduledTimerWithTimeInterval(timeUntil, target: self, selector: "phaseChange:", userInfo: nil, repeats: false);
                 }
             }
-            tickTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tick:", userInfo: nil, repeats: true)
-            
+
             self.state.startTime = NSDate();
             setRunning(SpeechRunning.RUNNING)
         }
@@ -63,7 +61,6 @@ public class SpeechTimer : NSObject {
                 let t : NSTimer = phaseTimers[p]!
                 t.invalidate()
             }
-            tickTimer?.invalidate()
             setRunning(SpeechRunning.PAUSED)
         }
     }
@@ -84,7 +81,6 @@ public class SpeechTimer : NSObject {
                 let t : NSTimer = phaseTimers[p]!
                 t.invalidate()
             }
-            tickTimer?.invalidate()
             
             // Reset the timer
             self.state.pauseInterval = 0;
@@ -101,10 +97,6 @@ public class SpeechTimer : NSObject {
         delegate?.phaseChanged(state, timer: self)
     }
     
-    func tick(timer: NSTimer!){
-        delegate?.tick(SpeechState(profile: state.profile, running: state.running, startTime: state.startTime, pauseInterval: state.pauseInterval), timer: self)
-    }
-    
     func elapsed() -> NSTimeInterval {
         if let s : NSDate = self.state.startTime {
             return self.state.pauseInterval + NSDate().timeIntervalSinceDate(s)
@@ -118,7 +110,6 @@ public class SpeechTimer : NSObject {
 protocol SpeechTimerDelegate {
 
     func phaseChanged(state: SpeechState, timer: SpeechTimer)
-    func tick(state: SpeechState, timer: SpeechTimer)
     func runningChanged(state: SpeechState, timer: SpeechTimer)
     
 }

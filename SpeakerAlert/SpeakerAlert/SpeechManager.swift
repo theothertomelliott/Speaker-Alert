@@ -80,13 +80,7 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
             observer.phaseChanged(state, timer: timer)
         }
     }
-    
-    func tick(state: SpeechState, timer: SpeechTimer){
-        for observer in observers {
-            observer.tick(state, timer: timer)
-        }
-    }
-    
+
     func runningChanged(state: SpeechState, timer: SpeechTimer){
         for observer in observers {
             observer.runningChanged(state, timer: timer)

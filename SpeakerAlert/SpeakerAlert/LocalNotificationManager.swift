@@ -20,10 +20,6 @@ class LocalNotificationManager: NSObject, SpeechTimerDelegate {
         // Nothing to do
     }
     
-    func tick(state: SpeechState, timer: SpeechTimer){
-        // Nothing to do
-    }
-    
     func runningChanged(state: SpeechState, timer: SpeechTimer){
     }
     

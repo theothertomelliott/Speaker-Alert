@@ -21,8 +21,15 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
     @IBOutlet weak var pauseButton: FontAwesomeButton!
     
     @IBOutlet weak var elapsedTimeLabel: UILabel!
+    
     var blinkState : Bool = false
     var blinkOn : Bool = false
+    // Number of ticks before changing colour in blink
+    let blinkCycle = 10
+    // Position in blink cycle
+    var blinkCycleIndex = 0
+    
+    var tickTimer : NSTimer = NSTimer()
     
     var phaseColor : UIColor = UIColor.whiteColor()
     
@@ -45,10 +52,21 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
     
     override func viewWillAppear(animated: Bool) {
         self.setShowTime(configMan!.isDisplayTime)
+        if tickTimer.valid {
+            tickTimer.invalidate()
+        }
+        tickTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("doTick:"), userInfo: nil, repeats: true)
+    }
+    
+    func doTick(timer : NSTimer) {
+        self.updateDisplay()
     }
     
     override func viewWillDisappear(animated: Bool) {
         speechMan?.removeSpeechObserver(self)
+        if tickTimer.valid {
+            tickTimer.invalidate()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -192,12 +210,16 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
         
         if(running){
             if(blinkState){
-                if(blinkOn){
-                    self.view.backgroundColor = phaseColor
-                } else {
-                    self.view.backgroundColor = UIColor.whiteColor()
+                if blinkCycleIndex >= blinkCycle {
+                    blinkCycleIndex = 0
+                    if(blinkOn){
+                        self.view.backgroundColor = phaseColor
+                    } else {
+                        self.view.backgroundColor = UIColor.whiteColor()
+                    }
+                    blinkOn = !blinkOn
                 }
-                blinkOn = !blinkOn
+                blinkCycleIndex++
             } else {
                 self.view.backgroundColor = phaseColor
             }
@@ -208,13 +230,8 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
         
     }
     
-    func tick(state: SpeechState, timer: SpeechTimer){
-        self.updateDisplay()
-    }
-    
     func runningChanged(state: SpeechState, timer: SpeechTimer){
         if(state.running == SpeechRunning.RUNNING){
-            self.tick(state, timer: timer)
             self.phaseChanged(state, timer: timer)
         }
         self.updateDisplay()

@@ -54,13 +54,9 @@ class WatchCommsManager: NSObject, WCSessionDelegate, SpeechTimerDelegate {
     // SpeechTimerDelegate
     
     func phaseChanged(state: SpeechState, timer: SpeechTimer){
-        updateState(state)
+        // Watch app will catch phase changes, so no need to send
     }
-    
-    func tick(state: SpeechState, timer: SpeechTimer){
-        updateState(state)
-    }
-    
+        
     func runningChanged(state: SpeechState, timer: SpeechTimer){
         updateState(state)
     }
