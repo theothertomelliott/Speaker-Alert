@@ -12,9 +12,31 @@ import MagicalRecord
 
 class GroupTableViewController: UITableViewController {
     
+    var speechMan : SpeechManager?
+
     var groups : [AnyObject] = []
     var timings : [AnyObject] = []
     var parentGroup : Group? = nil
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addItem:")
+        self.navigationItem.rightBarButtonItems = [addButton]
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.reloadData()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     func setParent(g : Group){
         parentGroup = g
@@ -95,7 +117,8 @@ class GroupTableViewController: UITableViewController {
         
     }
     
-    @IBAction func addGroup(sender: AnyObject) {
+    @objc
+    func addItem(sender: AnyObject) {
         
         if(parentGroup != nil){
             self.createTiming()
@@ -122,26 +145,6 @@ class GroupTableViewController: UITableViewController {
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        //self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        self.reloadData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -193,36 +196,54 @@ class GroupTableViewController: UITableViewController {
         return true
     }
     
+    func deleteItemAtIndexPath(indexPath: NSIndexPath){
+        MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
+            // This block runs in background thread
+            
+            // Configure the cell...
+            if(indexPath.row < Int(Group.MR_countOfEntitiesWithContext(localContext))){
+                let groups : NSArray = Group.MR_findAllInContext(localContext)
+                let group = groups.objectAtIndex(indexPath.row)
+                group.MR_deleteEntity()
+            } else {
+                let timings : NSArray = Profile.MR_findAllInContext(localContext)
+                let timing = timings.objectAtIndex(indexPath.row - Int(Group.MR_countOfEntities()))
+                timing.MR_deleteEntity()
+            }
+            
+            }) { (success: Bool, error: NSError!) -> Void in
+                self.reloadData();
+        }
+    }
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
             NSLog("Deleting row at \(indexPath.row)")
-            
-            MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
-                // This block runs in background thread
-                
-                // Configure the cell...
-                if(indexPath.row < Int(Group.MR_countOfEntitiesWithContext(localContext))){
-                    let groups : NSArray = Group.MR_findAllInContext(localContext)
-                    let group = groups.objectAtIndex(indexPath.row)
-                    group.MR_deleteEntity()
-                } else {
-                    let timings : NSArray = Profile.MR_findAllInContext(localContext)
-                    let timing = timings.objectAtIndex(indexPath.row - Int(Group.MR_countOfEntities()))
-                    timing.MR_deleteEntity()
-                }
-                
-            }) { (success: Bool, error: NSError!) -> Void in
-                    self.reloadData();
-            }
-
+            self.deleteItemAtIndexPath(indexPath)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-
-
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Edit", handler:{action, indexpath in
+            
+            if(indexPath.row < Int(Group.MR_countOfEntities())){
+                // TODO: Allow changing of a group name
+            } else {
+                self.performSegueWithIdentifier("timingEditSegue", sender: tableView.cellForRowAtIndexPath(indexPath))
+            }
+        });
+        moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
+        
+        let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in
+            self.deleteItemAtIndexPath(indexPath)
+        });
+        
+        return [deleteRowAction, moreRowAction];
+    }
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
@@ -254,11 +275,14 @@ class GroupTableViewController: UITableViewController {
             let destination : GroupTableViewController = segue.destinationViewController as! GroupTableViewController
             destination.setParent(g)
         }
-        
-        if("timingSegue" == segue.identifier){
-            // TODO: Populate the destination with this timing object
+
+        if("timingEditSegue" == segue.identifier){
             let destination : TimingViewController = segue.destinationViewController as! TimingViewController
             destination.timing = self.timings[indexPath.row - self.groups.count] as! Profile
+        }
+        
+        if("timingSegue" == segue.identifier){
+            speechMan?.profile = self.timings[indexPath.row - self.groups.count] as! Profile
         }
         
     }

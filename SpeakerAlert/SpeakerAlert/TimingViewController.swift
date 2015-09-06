@@ -12,8 +12,6 @@ import TWETimeIntervalField
 
 class TimingViewController: UIViewController {
 
-    var speechMan : SpeechManager?;
-    
     var maximumTimeS : NSTimeInterval = 0
     
     private var _timing : Profile!
@@ -140,16 +138,5 @@ class TimingViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    
-    // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Pass along our timimg to start the timer
-        if("startSegue" == segue.identifier){
-            speechMan?.profile = _timing;
-        }
-    }
-    
 
 }

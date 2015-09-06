@@ -84,13 +84,13 @@ public class ApplicationAssembly: TyphoonAssembly {
     public dynamic func groupTableViewController() -> AnyObject {
         return TyphoonDefinition.withClass(GroupTableViewController.self) {
             (definition) in
+            definition.injectProperty("speechMan", with: self.speechManager())
         }
     }
     
     public dynamic func timingViewController() -> AnyObject {
         return TyphoonDefinition.withClass(TimingViewController.self) {
             (definition) in
-            definition.injectProperty("speechMan", with: self.speechManager())
         }
     }
     
