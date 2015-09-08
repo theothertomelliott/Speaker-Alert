@@ -126,17 +126,14 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
 
     @IBAction func pausePressed(sender: AnyObject) {
         speechMan?.pause()
-        self.setRunningMode(false)
     }
     
     @IBAction func stopPressed(sender: AnyObject) {
         speechMan?.stop()
-        self.setRunningMode(false)
     }
     
     @IBAction func resumePressed(sender: AnyObject) {
         speechMan?.start()
-        self.setRunningMode(true)
     }
     
     func updatePhase(){
@@ -231,6 +228,7 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
     }
     
     func runningChanged(state: SpeechState, timer: SpeechTimer){
+        self.setRunningMode(state.running == SpeechRunning.RUNNING)
         if(state.running == SpeechRunning.RUNNING){
             self.phaseChanged(state, timer: timer)
         }
