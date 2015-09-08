@@ -9,7 +9,7 @@
 import Foundation
 import AudioToolbox
 
-class VibrationAlertManager: NSObject, SpeechTimerDelegate {
+class VibrationAlertManager: NSObject, SpeechManagerDelegate {
 
     var configMan : ConfigurationManager?
     
@@ -30,4 +30,6 @@ class VibrationAlertManager: NSObject, SpeechTimerDelegate {
     
     func runningChanged(state: SpeechState, timer: SpeechTimer){}
     
+    func speechComplete(state: SpeechState, timer: SpeechTimer) {
+    }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import Colours
 
-class SpeechViewController: UIViewController, SpeechTimerDelegate {
+class SpeechViewController: UIViewController, SpeechManagerDelegate {
     
     var speechMan : SpeechManager?
     var configMan : ConfigurationManager?
@@ -160,6 +160,11 @@ class SpeechViewController: UIViewController, SpeechTimerDelegate {
     
     func phaseChanged(state: SpeechState, timer: SpeechTimer) {
         self.updatePhase()
+    }
+    
+    func speechComplete(state: SpeechState, timer: SpeechTimer) {
+        // Leave this speech
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func updateTimeLabel(){

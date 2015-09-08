@@ -16,7 +16,7 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
     // Speech timer
     private var timer : SpeechTimer?;
     // Observers who receive state updates
-    private var observers = [SpeechTimerDelegate]()
+    private var observers = [SpeechManagerDelegate]()
     
     override init(){
         super.init()
@@ -28,11 +28,11 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         }
     }
     
-    func addSpeechObserver(observer: SpeechTimerDelegate) {
+    func addSpeechObserver(observer: SpeechManagerDelegate) {
         observers.append(observer)
     }
     
-    func removeSpeechObserver(observer: SpeechTimerDelegate){
+    func removeSpeechObserver(observer: SpeechManagerDelegate){
         var index : Int? = nil
         for(var i : Int = 0; i < observers.count; i++){
             let obs : NSObject = observer as! NSObject
@@ -87,24 +87,40 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         }
     }
     
+    func speechComplete(state: SpeechState, timer: SpeechTimer){
+        for observer in observers {
+            observer.speechComplete(state, timer: timer)
+        }
+    }
+    
     // MARK: Timer lifecycle methods
     
     func start(){
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            timer?.start()
+            self.timer?.start()
         })
     }
     
     func stop(){
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            timer?.stop()
+            self.speechComplete(self.state!, timer: self.timer!)
+            self.timer?.stop()
+            self.timer = nil
         })
     }
     
     func pause(){
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            timer?.pause()
+            self.timer?.pause()
         })
     }
 
+}
+
+protocol SpeechManagerDelegate {
+    
+    func phaseChanged(state: SpeechState, timer: SpeechTimer)
+    func runningChanged(state: SpeechState, timer: SpeechTimer)
+    func speechComplete(state: SpeechState, timer: SpeechTimer)
+    
 }

@@ -10,7 +10,7 @@ import Foundation
 import WatchConnectivity
 
 @available(iOS 9, *)
-class WatchCommsManager: NSObject, WCSessionDelegate, SpeechTimerDelegate {
+class WatchCommsManager: NSObject, WCSessionDelegate, SpeechManagerDelegate {
     
     var watchSession : WCSession?
     
@@ -59,6 +59,22 @@ class WatchCommsManager: NSObject, WCSessionDelegate, SpeechTimerDelegate {
         
     func runningChanged(state: SpeechState, timer: SpeechTimer){
         updateState(state)
+    }
+    
+    func speechComplete(state: SpeechState, timer: SpeechTimer) {
+        do {
+            // Send a notification that the speech ended
+            watchSession?.sendMessage(["messageName" : "speechComplete", "state" : state.toDictionary()], replyHandler: { (reply : [String : AnyObject]) -> Void in
+                NSLog("Reply received")
+                }, errorHandler: { (error : NSError) -> Void in
+                    NSLog("Error received")
+            })
+            
+            // Update with an empty context to indicate no speech
+            try watchSession?.updateApplicationContext([ : ])
+        } catch let error as NSError {
+            NSLog("Updating the context failed: " + error.localizedDescription)
+        }
     }
     
     // WSSessionDelegate

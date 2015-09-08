@@ -78,69 +78,98 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
         super.didDeactivate()
     }
 
+    func updateUI(){
+        if let s = self.speechState {
+            self.timeElapsedLabel.setText(TimeUtils.formatStopwatch(s.elapsed))
+            
+            // Only allow pausing if the speech is currently running
+            
+            if(s.running == SpeechRunning.RUNNING){
+                self.startStopButton.setTitle("Stop")
+                self.pauseButton.setTitle("Pause")
+                self.pauseButton.setEnabled(true)
+                self.startStopButton.setEnabled(true)
+            } else if(s.running == SpeechRunning.PAUSED) {
+                self.startStopButton.setTitle("Stop")
+                self.pauseButton.setTitle("Resume")
+                self.pauseButton.setEnabled(true)
+                self.startStopButton.setEnabled(true)
+            } else {
+                // Stopped
+                self.startStopButton.setTitle("Start")
+                self.pauseButton.setEnabled(false)
+                self.pauseButton.setTitle("Pause")
+                self.startStopButton.setEnabled(true)
+            }
+            
+            if(s.phase == SpeechPhase.BELOW_MINIMUM){
+                self.phaseColor = (UIColor.whiteColor())
+            }
+            if(s.phase == SpeechPhase.GREEN){
+                self.phaseColor = (UIColor(red: 83/255, green: 215/255, blue: 106/255, alpha: 1.0))
+            }
+            if(s.phase == SpeechPhase.YELLOW){
+                self.phaseColor = (UIColor(red: 221/255, green: 170/255, blue: 59/255, alpha: 1.0))
+            }
+            if(s.phase == SpeechPhase.RED){
+                self.phaseColor = (UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0))
+            }
+            if s.phase == SpeechPhase.OVER_MAXIMUM {
+                self.phaseColor = UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0)
+                self.blinkState = true
+            }
+            
+            if(self.blinkState){
+                if self.blinkCycleIndex >= self.blinkCycle {
+                    self.blinkCycleIndex = 0
+                    if(self.blinkOn){
+                        self.mainGroup.setBackgroundColor(self.phaseColor)
+                    } else {
+                        self.mainGroup.setBackgroundColor(UIColor.whiteColor())
+                    }
+                    self.blinkOn = !self.blinkOn
+                }
+                self.blinkCycleIndex++
+            } else {
+                self.mainGroup.setBackgroundColor(self.phaseColor)
+            }
+        } else {
+            self.startStopButton.setEnabled(false)
+            self.pauseButton.setEnabled(false)
+            self.timeElapsedLabel.setText("-- : --")
+            self.phaseColor = UIColor.whiteColor()
+            self.mainGroup.setBackgroundColor(self.phaseColor)
+        }
+    }
+    
     @objc
     func tick(timer: NSTimer!){
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            if let s = self.speechState {
-                self.timeElapsedLabel.setText(TimeUtils.formatStopwatch(s.elapsed))
-                
-                if(s.phase == SpeechPhase.BELOW_MINIMUM){
-                    self.phaseColor = (UIColor.whiteColor())
-                }
-                if(s.phase == SpeechPhase.GREEN){
-                    self.phaseColor = (UIColor(red: 83/255, green: 215/255, blue: 106/255, alpha: 1.0))
-                }
-                if(s.phase == SpeechPhase.YELLOW){
-                    self.phaseColor = (UIColor(red: 221/255, green: 170/255, blue: 59/255, alpha: 1.0))
-                }
-                if(s.phase == SpeechPhase.RED){
-                    self.phaseColor = (UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0))
-                }
-                if s.phase == SpeechPhase.OVER_MAXIMUM {
-                    self.phaseColor = UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0)
-                    self.blinkState = true
-                }
-                
-                if(self.blinkState){
-                    if self.blinkCycleIndex >= self.blinkCycle {
-                        self.blinkCycleIndex = 0
-                        if(self.blinkOn){
-                            self.mainGroup.setBackgroundColor(self.phaseColor)
-                        } else {
-                            self.mainGroup.setBackgroundColor(UIColor.whiteColor())
-                        }
-                        self.blinkOn = !self.blinkOn
-                    }
-                    self.blinkCycleIndex++
-                } else {
-                    self.mainGroup.setBackgroundColor(self.phaseColor)
-                }
-            }
+            self.updateUI()
         })
     }
     
     /** Called on the delegate of the receiver. Will be called on startup if an applicationContext is available. */
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]){
-        NSLog("session:didReceiveApplicationContext:")
+        self.speechState = SpeechState.fromDictionary(applicationContext)
+    }
+    
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]){
         
-        speechState = SpeechState.fromDictionary(applicationContext)
+        NSLog("Message = \(message)")
         
-        // Only allow pausing if the speech is currently running
-        
-        if(speechState!.running == SpeechRunning.RUNNING){
-            self.startStopButton.setTitle("Stop")
-            self.pauseButton.setTitle("Pause")
-            self.pauseButton.setEnabled(true)
-        } else if(speechState!.running == SpeechRunning.PAUSED) {
-            self.startStopButton.setTitle("Stop")
-            self.pauseButton.setTitle("Resume")
-            self.pauseButton.setEnabled(true)
-        } else {
-            // Stopped
-            self.startStopButton.setTitle("Start")
-            self.pauseButton.setEnabled(false)
-            self.pauseButton.setTitle("Pause")
+        if let messageName : String = message["messageName"] as? String {
+            if messageName == "speechComplete" {
+                if let stateDict = message["state"] as? [String : AnyObject] {
+                    if let speechState = SpeechState.fromDictionary(stateDict) {
+                        NSLog("TODO: Notify user that speech finished at: \(speechState.elapsed)s")
+                    }
+                }
+                // TODO: Handle completion message
+            }
         }
+
+        
     }
     
     @IBAction func stopStartPressed() {

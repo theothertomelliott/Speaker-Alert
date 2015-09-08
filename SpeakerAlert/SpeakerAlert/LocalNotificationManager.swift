@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LocalNotificationManager: NSObject, SpeechTimerDelegate {
+class LocalNotificationManager: NSObject, SpeechManagerDelegate {
 
     var speechMan : SpeechManager? {
         didSet {
@@ -21,6 +21,9 @@ class LocalNotificationManager: NSObject, SpeechTimerDelegate {
     }
     
     func runningChanged(state: SpeechState, timer: SpeechTimer){
+    }
+    
+    func speechComplete(state: SpeechState, timer: SpeechTimer) {
     }
     
     private func setNotificationForPhase(phase : SpeechPhase){
