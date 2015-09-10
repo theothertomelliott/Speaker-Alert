@@ -50,9 +50,9 @@ class SettingsViewController: UITableViewController {
         let aboutView : RFAboutViewController = RFAboutViewController(appName: "Speaker Alert", appVersion: "2.0.0", appBuild: "1", copyrightHolderName: "Tom Elliott", contactEmail: "tom.w.elliott@gmail.com", titleForEmail: "Tom Elliott", websiteURL: NSURL(string: "http://telliott.io"), titleForWebsiteURL: "telliott.io", andPublicationYear: "2015")
 
         // TODO: Figure out how to use default colors
-        //        aboutView.headerBackgroundColor = .blackColor()
-        //        aboutView.headerTextColor = .whiteColor()
-        //        aboutView.blurStyle = .Dark
+        aboutView.navigationBarBarTintColor = UINavigationBar.appearance().barTintColor
+        aboutView.navigationBarTintColor = UINavigationBar.appearance().tintColor
+        aboutView.blurStyle = .Dark
         aboutView.headerBackgroundImage = UIImage(named: "Icon1024")
         
         self.navigationController?.pushViewController(aboutView, animated: true)
