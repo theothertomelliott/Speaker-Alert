@@ -174,7 +174,7 @@ class GroupTableViewController: UITableViewController {
         } else {
             let cell : ProfileTableViewCell = tableView.dequeueReusableCellWithIdentifier("TimingCell", forIndexPath: indexPath) as! ProfileTableViewCell
             
-            let timing : Profile = timings[indexPath.row - groups.count] as! Profile
+            let timing : Profile = timings[indexPath.row - groups.count]
             
             let tn : String = timing.name!
             cell.nameLabel!.text = tn
@@ -193,17 +193,13 @@ class GroupTableViewController: UITableViewController {
     
     func deleteItemAtIndexPath(indexPath: NSIndexPath){
         MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
-            // This block runs in background thread
-            
-            // Configure the cell...
-            if(indexPath.row < Int(Group.MR_countOfEntitiesWithContext(localContext))){
-                let groups : NSArray = Group.MR_findAllInContext(localContext)
-                let group = groups.objectAtIndex(indexPath.row)
-                group.MR_deleteEntity()
+            // Delete the appropriate object
+            if indexPath.row < self.groups.count {
+                let group = self.groups[indexPath.row]
+                group.MR_deleteEntityInContext(localContext)
             } else {
-                let timings : NSArray = Profile.MR_findAllInContext(localContext)
-                let timing = timings.objectAtIndex(indexPath.row - Int(Group.MR_countOfEntities()))
-                timing.MR_deleteEntity()
+                let timing = self.timings[indexPath.row - self.groups.count]
+                timing.MR_deleteEntityInContext(localContext)
             }
             
             }) { (success: Bool, error: NSError!) -> Void in
@@ -266,7 +262,7 @@ class GroupTableViewController: UITableViewController {
         let indexPath : NSIndexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
         
         if("groupSegue" == segue.identifier){
-            let g : Group = self.groups[indexPath.row] as! Group
+            let g : Group = self.groups[indexPath.row]
         
             let destination : GroupTableViewController = segue.destinationViewController as! GroupTableViewController
             destination.setParent(g)
@@ -274,11 +270,11 @@ class GroupTableViewController: UITableViewController {
 
         if("timingEditSegue" == segue.identifier){
             let destination : TimingViewController = segue.destinationViewController as! TimingViewController
-            destination.timing = self.timings[indexPath.row - self.groups.count] as! Profile
+            destination.timing = self.timings[indexPath.row - self.groups.count]
         }
         
         if("timingSegue" == segue.identifier){
-            speechMan?.profile = self.timings[indexPath.row - self.groups.count] as? Profile
+            speechMan?.profile = self.timings[indexPath.row - self.groups.count]
         }
         
     }
