@@ -14,8 +14,8 @@ class GroupTableViewController: UITableViewController {
     
     var speechMan : SpeechManager?
 
-    var groups : [AnyObject] = []
-    var timings : [AnyObject] = []
+    var groups : [Group] = []
+    var timings : [Profile] = []
     var parentGroup : Group? = nil
     
     override func viewDidLoad() {
@@ -27,6 +27,7 @@ class GroupTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addItem:")
         self.navigationItem.rightBarButtonItems = [addButton]
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -82,15 +83,18 @@ class GroupTableViewController: UITableViewController {
         if let pg = parentGroup {
             // TODO: Reload the parent group
             
-            timings = (pg.childTimings?.allObjects)!
+            timings = (pg.childTimings?.allObjects) as! [Profile]
             
         } else {
             
-            groups = Group.MR_findAll()
+            groups = Group.MR_findAll() as! [Group]
 
             let predicate = NSPredicate(format: "parent = nil")
-            timings = Profile.MR_findAllWithPredicate(predicate)
+            timings = Profile.MR_findAllWithPredicate(predicate) as! [Profile]
         }
+        
+        groups = groups.sort({ $0.name < $1.name })
+        timings = timings.sort({ $0.name < $1.name })
         
         self.tableView.reloadData()
     }
