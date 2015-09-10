@@ -162,10 +162,9 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
             if messageName == "speechComplete" {
                 if let stateDict = message["state"] as? [String : AnyObject] {
                     if let speechState = SpeechState.fromDictionary(stateDict) {
-                        NSLog("TODO: Notify user that speech finished at: \(speechState.elapsed)s")
+                        self.pushControllerWithName("SpeechComplete", context: speechState)
                     }
                 }
-                // TODO: Handle completion message
             }
         }
 

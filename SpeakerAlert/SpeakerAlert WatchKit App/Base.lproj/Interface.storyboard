@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8092"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -67,6 +67,28 @@
                 </notificationController>
             </objects>
             <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--SpeechComplete-->
+        <scene sceneID="Zgw-pe-U0C">
+            <objects>
+                <controller identifier="SpeechComplete" hidesWhenLoading="NO" id="6Dt-Xq-QDN" customClass="SpeechCompleteInterfaceController" customModule="SpeakerAlert_WatchKit_Extension">
+                    <items>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="OK" id="Q8h-RC-EpJ">
+                            <connections>
+                                <action selector="okPressed" destination="6Dt-Xq-QDN" id="M3J-aW-ciM"/>
+                            </connections>
+                        </button>
+                        <label width="1" alignment="left" text="Speech completed at:" textAlignment="center" numberOfLines="0" id="RNU-43-CGN"/>
+                        <label alignment="center" verticalAlignment="center" text="0:00" id="h1y-XJ-Cfj">
+                            <fontDescription key="font" type="system" pointSize="36"/>
+                        </label>
+                    </items>
+                    <connections>
+                        <outlet property="elapsedTimeLabel" destination="h1y-XJ-Cfj" id="Klp-p5-xIE"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="459" y="343"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
