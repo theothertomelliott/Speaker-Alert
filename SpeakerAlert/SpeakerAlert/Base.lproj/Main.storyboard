@@ -451,11 +451,85 @@
                         <outlet property="playButton" destination="p1F-ZC-aid" id="BTy-xz-KKg"/>
                         <outlet property="profileSummaryLabel" destination="p4L-Mx-pbd" id="4cY-WT-en8"/>
                         <outlet property="stopButton" destination="Nxk-ch-or0" id="yyA-Rm-rcG"/>
+                        <segue destination="a1d-R4-lgQ" kind="show" identifier="SpeechComplete" id="1P6-Y5-NmS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5H-ak-Azo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1973" y="-422"/>
+            <point key="canvasLocation" x="2023" y="-412"/>
+        </scene>
+        <!--Speech Complete View Controller-->
+        <scene sceneID="BtF-7c-PMG">
+            <objects>
+                <viewController id="a1d-R4-lgQ" customClass="SpeechCompleteViewController" customModule="SpeakerAlert" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1RG-9p-4we"/>
+                        <viewControllerLayoutGuide type="bottom" id="8do-IX-Qyh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qq9-8x-RXD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speech Complete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blo-hj-SEp">
+                                <rect key="frame" x="20" y="79" width="560" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Elapsed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUj-Uu-xBI">
+                                <rect key="frame" x="20" y="210" width="560" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iu6-qg-zfL">
+                                <rect key="frame" x="20" y="240" width="560" height="119.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ig-4y-qjR">
+                                <rect key="frame" x="20" y="545" width="560" height="45"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleColor" red="0.0" green="0.28535160659999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="okButtonPressed:" destination="a1d-R4-lgQ" eventType="touchUpInside" id="d9Z-Um-eUN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QUj-Uu-xBI" firstAttribute="leading" secondItem="qq9-8x-RXD" secondAttribute="leadingMargin" id="5Cf-za-nEJ"/>
+                            <constraint firstItem="Iu6-qg-zfL" firstAttribute="top" secondItem="QUj-Uu-xBI" secondAttribute="bottom" constant="10" id="5zl-EW-VHM"/>
+                            <constraint firstItem="8do-IX-Qyh" firstAttribute="top" secondItem="5ig-4y-qjR" secondAttribute="bottom" constant="10" id="6Va-Oz-9XM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5ig-4y-qjR" secondAttribute="trailing" id="8uf-Vj-aKw"/>
+                            <constraint firstItem="Iu6-qg-zfL" firstAttribute="centerY" secondItem="qq9-8x-RXD" secondAttribute="centerY" id="9HW-Oc-qcf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="blo-hj-SEp" secondAttribute="trailing" id="M0I-Nh-gwx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Iu6-qg-zfL" secondAttribute="trailing" id="PKP-6w-9s9"/>
+                            <constraint firstItem="blo-hj-SEp" firstAttribute="leading" secondItem="qq9-8x-RXD" secondAttribute="leadingMargin" id="PMk-H2-Lnh"/>
+                            <constraint firstItem="blo-hj-SEp" firstAttribute="top" secondItem="1RG-9p-4we" secondAttribute="bottom" constant="15" id="PXh-yg-8Fa"/>
+                            <constraint firstItem="Iu6-qg-zfL" firstAttribute="top" secondItem="QUj-Uu-xBI" secondAttribute="bottom" constant="10" id="h5F-9S-QBI"/>
+                            <constraint firstItem="Iu6-qg-zfL" firstAttribute="leading" secondItem="qq9-8x-RXD" secondAttribute="leadingMargin" id="hxk-5k-LQ8"/>
+                            <constraint firstItem="QUj-Uu-xBI" firstAttribute="top" secondItem="blo-hj-SEp" secondAttribute="bottom" constant="40" id="r9t-qA-Qem"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QUj-Uu-xBI" secondAttribute="trailing" id="rcO-Gq-Iha"/>
+                            <constraint firstItem="5ig-4y-qjR" firstAttribute="leading" secondItem="qq9-8x-RXD" secondAttribute="leadingMargin" id="umi-mE-4wu"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="r9t-qA-Qem"/>
+                                <exclude reference="5zl-EW-VHM"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="timeElapsedLabel" destination="Iu6-qg-zfL" id="vja-8W-Hgy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4MH-vM-x1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2738" y="-412"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="l3g-E9-0SO">

@@ -58,6 +58,14 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         tickTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("doTick:"), userInfo: nil, repeats: true)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if let _ = self.speechMan?.state {
+            // Nothing to do here
+        } else {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+    }
+    
     func doTick(timer : NSTimer) {
         self.updateDisplay()
     }
@@ -120,7 +128,6 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         self.navigationController?.setNavigationBarHidden(isRunning, animated: true)
         self.setTabBarVisible(!isRunning, animated: true)
         self.profileSummaryLabel?.hidden = isRunning
-        // TODO: show/hide the status bar
         self.updateDisplay()
     }
 
@@ -164,26 +171,31 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     
     func speechComplete(state: SpeechState, timer: SpeechTimer) {
         // Leave this speech
-        self.navigationController?.popViewControllerAnimated(true)
+        self.performSegueWithIdentifier("SpeechComplete", sender: self)
     }
     
     func updateTimeLabel(){
-        let running : Bool = speechMan?.state?.running == SpeechRunning.RUNNING
-        let timeStr = TimeUtils.formatStopwatch(speechMan!.state!.elapsed)
-        var timeAttr: NSMutableAttributedString = NSMutableAttributedString(string: "\(timeStr)")
-        if(!running){
-            timeAttr = NSMutableAttributedString(string: "● \(timeStr)")
-            if(speechMan?.state?.phase == SpeechPhase.OVER_MAXIMUM) {
-                timeAttr = NSMutableAttributedString(string: "◎ \(timeStr)")
-            }
-            if(speechMan?.state?.phase == SpeechPhase.BELOW_MINIMUM) {
-                timeAttr = NSMutableAttributedString(string: "◦ \(timeStr)")
-            } else {
-                timeAttr.addAttribute(NSForegroundColorAttributeName, value: self.phaseColor, range: NSMakeRange(0, 1))
-            }
-        }
         
-        elapsedTimeLabel.attributedText = timeAttr
+        if let state = speechMan?.state {
+            
+            let running : Bool = speechMan?.state?.running == SpeechRunning.RUNNING
+            let timeStr = TimeUtils.formatStopwatch(state.elapsed)
+            var timeAttr: NSMutableAttributedString = NSMutableAttributedString(string: "\(timeStr)")
+            if(!running){
+                timeAttr = NSMutableAttributedString(string: "● \(timeStr)")
+                if(state.phase == SpeechPhase.OVER_MAXIMUM) {
+                    timeAttr = NSMutableAttributedString(string: "◎ \(timeStr)")
+                }
+                if(state.phase == SpeechPhase.BELOW_MINIMUM) {
+                    timeAttr = NSMutableAttributedString(string: "◦ \(timeStr)")
+                } else {
+                    timeAttr.addAttribute(NSForegroundColorAttributeName, value: self.phaseColor, range: NSMakeRange(0, 1))
+                }
+            }
+            
+            elapsedTimeLabel.attributedText = timeAttr
+            
+        }
     }
     
     func updateControls(){
@@ -239,15 +251,13 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         }
         self.updateDisplay()
     }
-    
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let scvc : SpeechCompleteViewController = segue.destinationViewController as! SpeechCompleteViewController
+        scvc.timeElapsed = 50
     }
-    */
 
 }

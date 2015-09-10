@@ -20,6 +20,7 @@
 		E2159F221B6D9D8B0075E77E /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */; };
 		E2159F251B6D9F330075E77E /* WatchCommsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2159F241B6D9F330075E77E /* WatchCommsManager.swift */; };
 		E21ADBE01BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21ADBDF1BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift */; settings = {ASSET_TAGS = (); }; };
+		E21ADBE21BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E21B306C1B9B54BA00B89D9F /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */; settings = {ASSET_TAGS = (); }; };
 		E22E8C441B6BA23000DD0793 /* VibrationAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */; };
 		E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */; settings = {ASSET_TAGS = (); }; };
@@ -151,6 +152,7 @@
 		E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
 		E2159F241B6D9F330075E77E /* WatchCommsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchCommsManager.swift; sourceTree = "<group>"; };
 		E21ADBDF1BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechCompleteInterfaceController.swift; sourceTree = "<group>"; };
+		E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechCompleteViewController.swift; sourceTree = "<group>"; };
 		E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibrationAlertManager.swift; sourceTree = "<group>"; };
 		E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColorManager.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				E2DD5E3E1B5BE25B00EF0997 /* TimingViewController.swift */,
 				E2D273CD1B516EF500155349 /* SpeechViewController.swift */,
 				E24628DE1B9803C2007DD28B /* SettingsViewController.swift */,
+				E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 				E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */,
 				E24628DF1B9803C2007DD28B /* SettingsViewController.swift in Sources */,
 				E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */,
+				E21ADBE21BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift in Sources */,
 				E24408A11B48338400EB056C /* Group+CoreDataProperties.swift in Sources */,
 				E20A8E981B81766000ECC443 /* SpeechProfile.swift in Sources */,
 				E24408A61B483C8400EB056C /* GroupTableViewController.swift in Sources */,
