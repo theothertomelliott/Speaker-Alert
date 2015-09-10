@@ -169,8 +169,10 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         self.updatePhase()
     }
     
+    var lastSpeechElapsed : NSTimeInterval?
     func speechComplete(state: SpeechState, timer: SpeechTimer) {
         // Leave this speech
+        lastSpeechElapsed = state.elapsed
         self.performSegueWithIdentifier("SpeechComplete", sender: self)
     }
     
@@ -257,7 +259,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let scvc : SpeechCompleteViewController = segue.destinationViewController as! SpeechCompleteViewController
-        scvc.timeElapsed = 50
+        scvc.timeElapsed = lastSpeechElapsed
     }
 
 }
