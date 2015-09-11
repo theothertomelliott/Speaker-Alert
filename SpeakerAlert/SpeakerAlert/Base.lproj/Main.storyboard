@@ -206,7 +206,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="intervalFieldChanged:" destination="Xzk-Z0-o1M" eventType="editingChanged" id="71b-8P-NfU"/>
+                                    <action selector="intervalFieldChanged:" destination="Xzk-Z0-o1M" eventType="editingDidEnd" id="cMd-1o-9VE"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00:00:00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyV-QQ-lrY" customClass="TWETimeIntervalField">
@@ -214,7 +214,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="intervalFieldChanged:" destination="Xzk-Z0-o1M" eventType="editingChanged" id="D3o-2s-8Ue"/>
+                                    <action selector="intervalFieldChanged:" destination="Xzk-Z0-o1M" eventType="editingDidEnd" id="nHA-CM-Gmo"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00:00:00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bbz-g2-9H2" customClass="TWETimeIntervalField">
@@ -222,7 +222,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="intervalFieldChanged:" destination="Xzk-Z0-o1M" eventType="editingChanged" id="9QZ-Is-7ZR"/>
+                                    <action selector="intervalFieldChanged:" destination="Xzk-Z0-o1M" eventType="editingDidEnd" id="jqZ-2F-eL4"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00:00:00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eHx-Bs-h9d" customClass="TWETimeIntervalField">
@@ -233,7 +233,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="intervalFieldChanged:" destination="Xzk-Z0-o1M" eventType="editingChanged" id="hJ3-mY-q4F"/>
+                                    <action selector="intervalFieldChanged:" destination="Xzk-Z0-o1M" eventType="editingDidEnd" id="Qpv-GT-Er1"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Green time cannot be greater than yellow" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuO-49-RHB">
