@@ -28,15 +28,11 @@ class TimingViewController: UIViewController {
             self.maximumTimeS = NSTimeInterval(Double(_timing.redBlink!)*MAX_TIMING_FACTOR)
         }
     }
+    
     @IBOutlet weak var greenIntervalField: TWETimeIntervalField!
     @IBOutlet weak var yellowIntervalField: TWETimeIntervalField!
     @IBOutlet weak var redIntervalField: TWETimeIntervalField!
     @IBOutlet weak var alertIntervalField: TWETimeIntervalField!
-    
-    @IBOutlet var greenLabel: UILabel!
-    @IBOutlet var yellowLabel: UILabel!
-    @IBOutlet var redLabel: UILabel!
-    @IBOutlet var redBlinkLabel: UILabel!
     
     let MAX_TIMING_FACTOR = 1.1
     
@@ -56,6 +52,14 @@ class TimingViewController: UIViewController {
     @IBOutlet weak var redSlider: UISlider!
     @IBOutlet weak var redBlinkSlider: UISlider!
     
+    @IBOutlet weak var greenError: UILabel!
+    @IBOutlet weak var yellowError: UILabel!
+    @IBOutlet weak var redError: UILabel!
+
+    var isGreenError : Bool = false
+    var isYellowError : Bool = false
+    var isRedError : Bool = false
+    
     func updateTimingFromIntervalFields(){
         _timing.green = self.greenIntervalField.timeInterval
         _timing.yellow = self.yellowIntervalField.timeInterval
@@ -72,12 +76,7 @@ class TimingViewController: UIViewController {
     
     func updateLabels(){
         self.nameLabel.text = self.timing.name
-        
-        self.greenLabel.text = TimeUtils.formatTime(self.timing.green!)
-        self.yellowLabel.text = TimeUtils.formatTime(self.timing.yellow!)
-        self.redLabel.text = TimeUtils.formatTime(self.timing.red!)
-        self.redBlinkLabel.text = TimeUtils.formatTime(self.timing.redBlink!)
-        
+
         self.greenIntervalField.timeInterval = NSTimeInterval(self.timing.green!)
         self.yellowIntervalField.timeInterval = NSTimeInterval(self.timing.yellow!)
         self.redIntervalField.timeInterval = NSTimeInterval(self.timing.red!)
@@ -93,18 +92,28 @@ class TimingViewController: UIViewController {
         self.redSlider.value = Float(self._timing.red!)
         self.redBlinkSlider.value = Float(self._timing.redBlink!)
         
+        self.greenError.hidden = !self.isGreenError
+        self.yellowError.hidden = !self.isYellowError
+        self.redError.hidden = !self.isRedError
     }
     
     func validateAndUpdate(){
+        self.isGreenError = false
+        self.isYellowError = false
+        self.isRedError = false
+        
         // Ensure appropriate ordering of slider values
         if(_timing.redBlink?.integerValue < _timing.red?.integerValue){
             _timing.red = _timing.redBlink
+            self.isRedError = true
         }
         if(_timing.red?.integerValue < _timing.yellow?.integerValue){
             _timing.yellow = _timing.red
+            self.isYellowError = true
         }
         if(_timing.yellow?.integerValue < _timing.green?.integerValue){
             _timing.green = _timing.yellow
+            self.isGreenError = true
         }
         
         self.maximumTimeS = NSTimeInterval(Double(_timing.redBlink!)*MAX_TIMING_FACTOR)

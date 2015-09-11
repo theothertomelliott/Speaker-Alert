@@ -185,7 +185,7 @@
                                     <action selector="sliderValueChanged:" destination="Xzk-Z0-o1M" eventType="valueChanged" id="dJC-LG-cXn"/>
                                 </connections>
                             </slider>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoJ-Aw-tRI">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Profile Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoJ-Aw-tRI">
                                 <rect key="frame" x="20" y="77" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -201,7 +201,7 @@
                                     <action selector="sliderValueChanged:" destination="Xzk-Z0-o1M" eventType="valueChanged" id="Mi0-xv-rUt"/>
                                 </connections>
                             </slider>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fLI-JR-AKF" customClass="TWETimeIntervalField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00:00:00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fLI-JR-AKF" customClass="TWETimeIntervalField">
                                 <rect key="frame" x="86" y="197" width="112" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -209,7 +209,7 @@
                                     <action selector="intervalFieldChanged:" destination="Xzk-Z0-o1M" eventType="editingChanged" id="71b-8P-NfU"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyV-QQ-lrY" customClass="TWETimeIntervalField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00:00:00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyV-QQ-lrY" customClass="TWETimeIntervalField">
                                 <rect key="frame" x="86" y="279" width="112" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -217,7 +217,7 @@
                                     <action selector="intervalFieldChanged:" destination="Xzk-Z0-o1M" eventType="editingChanged" id="D3o-2s-8Ue"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bbz-g2-9H2" customClass="TWETimeIntervalField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00:00:00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bbz-g2-9H2" customClass="TWETimeIntervalField">
                                 <rect key="frame" x="86" y="360" width="112" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -225,7 +225,7 @@
                                     <action selector="intervalFieldChanged:" destination="Xzk-Z0-o1M" eventType="editingChanged" id="9QZ-Is-7ZR"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eHx-Bs-h9d" customClass="TWETimeIntervalField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00:00:00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eHx-Bs-h9d" customClass="TWETimeIntervalField">
                                 <rect key="frame" x="86" y="118" width="112" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="112" id="AQa-kI-1kw"/>
@@ -236,6 +236,24 @@
                                     <action selector="intervalFieldChanged:" destination="Xzk-Z0-o1M" eventType="editingChanged" id="hJ3-mY-q4F"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Green time cannot be greater than yellow" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuO-49-RHB">
+                                <rect key="frame" x="227" y="124" width="346.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.74940814389999999" green="0.067594980279999994" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yellow time cannot be greater than red" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBV-RZ-He1">
+                                <rect key="frame" x="227" y="203.5" width="249.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.74940814389999999" green="0.067594980279999994" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red time cannot be greater than alert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgD-Bx-rJE">
+                                <rect key="frame" x="227" y="285.5" width="241.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.74940814389999999" green="0.067594980279999994" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -258,6 +276,9 @@
                             <constraint firstItem="Bbz-g2-9H2" firstAttribute="leading" secondItem="MyH-UD-rRv" secondAttribute="trailing" constant="20" id="M0q-LR-hMn"/>
                             <constraint firstItem="hyV-QQ-lrY" firstAttribute="width" secondItem="fLI-JR-AKF" secondAttribute="width" id="M1O-QA-L0Y"/>
                             <constraint firstItem="hyV-QQ-lrY" firstAttribute="leading" secondItem="fLI-JR-AKF" secondAttribute="leading" id="NEk-sW-M4R"/>
+                            <constraint firstItem="GBV-RZ-He1" firstAttribute="leading" secondItem="fLI-JR-AKF" secondAttribute="trailing" constant="29" id="ONC-2e-40A"/>
+                            <constraint firstItem="GBV-RZ-He1" firstAttribute="centerY" secondItem="fLI-JR-AKF" secondAttribute="centerY" id="Se0-st-CBt"/>
+                            <constraint firstItem="GgD-Bx-rJE" firstAttribute="leading" secondItem="hyV-QQ-lrY" secondAttribute="trailing" constant="29" id="TcO-NB-W8i"/>
                             <constraint firstItem="fLI-JR-AKF" firstAttribute="leading" secondItem="eHx-Bs-h9d" secondAttribute="leading" id="Txw-kG-Kii"/>
                             <constraint firstItem="hyV-QQ-lrY" firstAttribute="centerY" secondItem="EEL-Qj-qVW" secondAttribute="centerY" id="UYH-5Z-GKF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Gxq-v3-1zp" secondAttribute="trailing" id="Wfb-s7-7xR"/>
@@ -274,8 +295,12 @@
                             <constraint firstItem="X6j-vN-YZe" firstAttribute="leading" secondItem="9Qj-lm-f7T" secondAttribute="leadingMargin" id="fPT-kP-RtD"/>
                             <constraint firstItem="EEL-Qj-qVW" firstAttribute="top" secondItem="nbL-76-Yp9" secondAttribute="bottom" constant="20" id="fse-zM-TQa"/>
                             <constraint firstItem="eHx-Bs-h9d" firstAttribute="leading" secondItem="X6j-vN-YZe" secondAttribute="trailing" constant="20" id="gxQ-Gl-38o"/>
+                            <constraint firstItem="GgD-Bx-rJE" firstAttribute="centerY" secondItem="hyV-QQ-lrY" secondAttribute="centerY" id="hhT-ju-fQy"/>
+                            <constraint firstItem="BuO-49-RHB" firstAttribute="leading" secondItem="eHx-Bs-h9d" secondAttribute="trailing" constant="29" id="kQJ-BN-kQS"/>
                             <constraint firstItem="X6j-vN-YZe" firstAttribute="top" secondItem="xoJ-Aw-tRI" secondAttribute="bottom" constant="15" id="mpA-mK-u8K"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BuO-49-RHB" secondAttribute="trailing" constant="86.5" id="oDe-NK-er2"/>
                             <constraint firstItem="fLI-JR-AKF" firstAttribute="leading" secondItem="Bwf-yu-wj8" secondAttribute="trailing" constant="20" id="v1i-xA-wHQ"/>
+                            <constraint firstItem="BuO-49-RHB" firstAttribute="centerY" secondItem="eHx-Bs-h9d" secondAttribute="centerY" id="xbl-cb-TqR"/>
                             <constraint firstItem="Bbz-g2-9H2" firstAttribute="centerY" secondItem="MyH-UD-rRv" secondAttribute="centerY" id="ztT-sO-2VL"/>
                         </constraints>
                         <variation key="default">
@@ -288,12 +313,15 @@
                     </view>
                     <connections>
                         <outlet property="alertIntervalField" destination="Bbz-g2-9H2" id="3sB-1k-3VY"/>
+                        <outlet property="greenError" destination="BuO-49-RHB" id="wx2-Xy-eUb"/>
                         <outlet property="greenIntervalField" destination="eHx-Bs-h9d" id="p4s-Cv-Xjf"/>
                         <outlet property="greenSlider" destination="Nto-jp-jla" id="i51-Ln-jv1"/>
                         <outlet property="nameLabel" destination="xoJ-Aw-tRI" id="xMq-pQ-fbS"/>
                         <outlet property="redBlinkSlider" destination="Gxq-v3-1zp" id="xKL-JK-gsf"/>
+                        <outlet property="redError" destination="GgD-Bx-rJE" id="vMw-Uk-n1U"/>
                         <outlet property="redIntervalField" destination="hyV-QQ-lrY" id="06j-sH-J1T"/>
                         <outlet property="redSlider" destination="Zt9-xf-AM8" id="OLC-xb-lN2"/>
+                        <outlet property="yellowError" destination="GBV-RZ-He1" id="WpI-Pc-zjV"/>
                         <outlet property="yellowIntervalField" destination="fLI-JR-AKF" id="pRl-vx-Dq5"/>
                         <outlet property="yellowSlider" destination="nbL-76-Yp9" id="Frc-Ff-1TA"/>
                     </connections>
