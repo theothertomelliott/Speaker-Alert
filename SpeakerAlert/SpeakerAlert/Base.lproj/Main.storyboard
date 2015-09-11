@@ -137,7 +137,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6j-vN-YZe">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Green" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6j-vN-YZe">
                                 <rect key="frame" x="20" y="122" width="46.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -236,20 +236,20 @@
                                     <action selector="intervalFieldChanged:" destination="Xzk-Z0-o1M" eventType="editingChanged" id="hJ3-mY-q4F"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Green time cannot be greater than yellow" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuO-49-RHB">
-                                <rect key="frame" x="227" y="124" width="346.5" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Green time cannot be greater than yellow" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuO-49-RHB">
+                                <rect key="frame" x="227" y="124" width="353" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.74940814389999999" green="0.067594980279999994" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yellow time cannot be greater than red" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBV-RZ-He1">
-                                <rect key="frame" x="227" y="203.5" width="249.5" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Yellow time cannot be greater than red" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBV-RZ-He1">
+                                <rect key="frame" x="227" y="203" width="353" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.74940814389999999" green="0.067594980279999994" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red time cannot be greater than alert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgD-Bx-rJE">
-                                <rect key="frame" x="227" y="285.5" width="241.5" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Red time cannot be greater than alert" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgD-Bx-rJE">
+                                <rect key="frame" x="227" y="285" width="353" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.74940814389999999" green="0.067594980279999994" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -273,6 +273,7 @@
                             <constraint firstItem="xoJ-Aw-tRI" firstAttribute="top" secondItem="186-zl-SvA" secondAttribute="bottom" constant="13" id="FI2-U9-fcY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Zt9-xf-AM8" secondAttribute="trailing" id="GXf-WO-ysH"/>
                             <constraint firstItem="fLI-JR-AKF" firstAttribute="width" secondItem="eHx-Bs-h9d" secondAttribute="width" id="GYB-iP-Yxa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BuO-49-RHB" secondAttribute="trailing" id="HKd-84-rCP"/>
                             <constraint firstItem="Bbz-g2-9H2" firstAttribute="leading" secondItem="MyH-UD-rRv" secondAttribute="trailing" constant="20" id="M0q-LR-hMn"/>
                             <constraint firstItem="hyV-QQ-lrY" firstAttribute="width" secondItem="fLI-JR-AKF" secondAttribute="width" id="M1O-QA-L0Y"/>
                             <constraint firstItem="hyV-QQ-lrY" firstAttribute="leading" secondItem="fLI-JR-AKF" secondAttribute="leading" id="NEk-sW-M4R"/>
@@ -285,6 +286,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="nbL-76-Yp9" secondAttribute="trailing" id="Wn2-Ye-b9S"/>
                             <constraint firstItem="MyH-UD-rRv" firstAttribute="leading" secondItem="9Qj-lm-f7T" secondAttribute="leadingMargin" id="YbF-eD-9re"/>
                             <constraint firstItem="nbL-76-Yp9" firstAttribute="top" secondItem="Bwf-yu-wj8" secondAttribute="bottom" constant="10.5" id="ZUN-Zb-8b5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GBV-RZ-He1" secondAttribute="trailing" id="ZX3-vu-BYp"/>
                             <constraint firstItem="Zt9-xf-AM8" firstAttribute="top" secondItem="EEL-Qj-qVW" secondAttribute="bottom" constant="10.5" id="bqG-4y-hWn"/>
                             <constraint firstItem="eHx-Bs-h9d" firstAttribute="centerY" secondItem="X6j-vN-YZe" secondAttribute="centerY" id="cAY-tw-aN2"/>
                             <constraint firstItem="Zt9-xf-AM8" firstAttribute="leading" secondItem="9Qj-lm-f7T" secondAttribute="leadingMargin" id="dcw-mm-VGX"/>
@@ -298,6 +300,7 @@
                             <constraint firstItem="GgD-Bx-rJE" firstAttribute="centerY" secondItem="hyV-QQ-lrY" secondAttribute="centerY" id="hhT-ju-fQy"/>
                             <constraint firstItem="BuO-49-RHB" firstAttribute="leading" secondItem="eHx-Bs-h9d" secondAttribute="trailing" constant="29" id="kQJ-BN-kQS"/>
                             <constraint firstItem="X6j-vN-YZe" firstAttribute="top" secondItem="xoJ-Aw-tRI" secondAttribute="bottom" constant="15" id="mpA-mK-u8K"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GgD-Bx-rJE" secondAttribute="trailing" id="ndp-2Y-kuh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BuO-49-RHB" secondAttribute="trailing" constant="86.5" id="oDe-NK-er2"/>
                             <constraint firstItem="fLI-JR-AKF" firstAttribute="leading" secondItem="Bwf-yu-wj8" secondAttribute="trailing" constant="20" id="v1i-xA-wHQ"/>
                             <constraint firstItem="BuO-49-RHB" firstAttribute="centerY" secondItem="eHx-Bs-h9d" secondAttribute="centerY" id="xbl-cb-TqR"/>
@@ -306,6 +309,7 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="v1i-xA-wHQ"/>
+                                <exclude reference="oDe-NK-er2"/>
                                 <exclude reference="27E-gp-sQC"/>
                                 <exclude reference="M0q-LR-hMn"/>
                             </mask>
