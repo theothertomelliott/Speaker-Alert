@@ -11,6 +11,7 @@ target 'SpeakerAlert' do
 	pod "TWETimeIntervalField", :git => 'https://github.com/theothertomelliott/TWETimeIntervalField.git'
 	pod "RFAboutView", '~> 1.0.4'
 	pod 'Colours', '~> 5'
+	pod 'IQKeyboardManager'
 end
 
 target 'SpeakerAlertTests' do
