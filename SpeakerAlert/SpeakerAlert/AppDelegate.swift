@@ -17,8 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var localNotificationManager : LocalNotificationManager?
     
-    var dataSeeder : DataSeeder?
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -26,9 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Configure core data
         MagicalRecord.setupCoreDataStack()
-        
-        // Add seed data
-        dataSeeder?.seedAsRequired()
         
         return true
     }

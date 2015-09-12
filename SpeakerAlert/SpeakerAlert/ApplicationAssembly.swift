@@ -19,7 +19,6 @@ public class ApplicationAssembly: TyphoonAssembly {
         return TyphoonDefinition.withClass(AppDelegate.self) {
             (definition) in
             definition.injectProperty("localNotificationManager", with: self.localNotificationManager())
-            definition.injectProperty("dataSeeder", with: self.dataSeeder())
         }
     }
     
@@ -80,6 +79,13 @@ public class ApplicationAssembly: TyphoonAssembly {
     }
     
     // MARK: View Controllers
+    
+    public dynamic func loadingViewController() -> AnyObject {
+        return TyphoonDefinition.withClass(LoadingViewController.self) {
+            (definition) in
+            definition.injectProperty("dataSeeder", with: self.dataSeeder())
+        }
+    }
     
     public dynamic func groupTableViewController() -> AnyObject {
         return TyphoonDefinition.withClass(GroupTableViewController.self) {

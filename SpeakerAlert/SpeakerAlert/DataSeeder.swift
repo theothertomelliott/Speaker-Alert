@@ -19,7 +19,7 @@ class DataSeeder: NSObject {
         
         // Toastmasters speech timings
         
-        MagicalRecord.saveWithBlock { (localContext: NSManagedObjectContext!) -> Void in
+        MagicalRecord.saveWithBlockAndWait { (localContext: NSManagedObjectContext!) -> Void in
             // This block runs in background thread
             
             // Toastmasters
