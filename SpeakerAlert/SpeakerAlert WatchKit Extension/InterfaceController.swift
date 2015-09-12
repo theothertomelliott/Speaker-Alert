@@ -18,6 +18,8 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     var speechState : SpeechState?
     var vibration : NSNumber = 0
     
+    @IBOutlet var speechNameLabel: WKInterfaceLabel!
+    
     @IBOutlet var mainGroup: WKInterfaceGroup!
     @IBOutlet var timeElapsedLabel: WKInterfaceLabel!
     @IBOutlet var startStopButton: WKInterfaceButton!
@@ -146,6 +148,7 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
         } else {
             self.startStopButton.setEnabled(false)
             self.pauseButton.setEnabled(false)
+            self.speechNameLabel.setText("< No Speech >")
             self.timeElapsedLabel.setText("-- : --")
             self.phaseColor = UIColor.whiteColor()
             self.mainGroup.setBackgroundColor(self.phaseColor)
@@ -161,6 +164,9 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     
     /** Called on the delegate of the receiver. Will be called on startup if an applicationContext is available. */
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]){
+        if let n = applicationContext["speechName"] as? String {
+            self.speechNameLabel.setText(n)
+        }
         if let v = applicationContext["vibration"] as? NSNumber {
             self.vibration = v
         }

@@ -49,8 +49,14 @@ class WatchCommsManager: NSObject, WCSessionDelegate, SpeechManagerDelegate {
                 vibration = cm.isVibrationEnabled
             }
             
+            var speechName = ""
+            if let sn = speechMan?.profile?.name {
+                speechName = sn
+            }
+
             try watchSession?.updateApplicationContext(
                 [
+                    "speechName" : speechName,
                     "vibration" : vibration,
                     "state" : state.toDictionary()
                     ]

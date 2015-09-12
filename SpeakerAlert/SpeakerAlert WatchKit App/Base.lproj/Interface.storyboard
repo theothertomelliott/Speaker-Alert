@@ -15,6 +15,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SpeakerAlert_WatchKit_App" customModuleProvider="target">
                     <items>
+                        <label width="1" alignment="center" text="Speech Name" textAlignment="center" id="wZh-ZM-OGU"/>
                         <group width="0.90000000000000002" height="0.5" alignment="center" layout="vertical" id="mwE-Ub-xNa">
                             <items>
                                 <label width="1" alignment="center" verticalAlignment="center" text="0:00" textAlignment="center" id="aTB-lZ-faV">
@@ -45,6 +46,7 @@
                     <connections>
                         <outlet property="mainGroup" destination="mwE-Ub-xNa" id="MbY-vK-mUZ"/>
                         <outlet property="pauseButton" destination="XTP-HN-ero" id="yht-JY-Ije"/>
+                        <outlet property="speechNameLabel" destination="wZh-ZM-OGU" id="G3y-Cs-IgK"/>
                         <outlet property="startStopButton" destination="kc8-E2-OXk" id="zvt-qj-5i8"/>
                         <outlet property="timeElapsedLabel" destination="aTB-lZ-faV" id="mqZ-oM-nls"/>
                     </connections>
