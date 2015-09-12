@@ -80,10 +80,6 @@ class ProfileTimeTableViewCell: UITableViewCell {
         }
         timeSlider.minimumTrackTintColor = timeSlider.maximumTrackTintColor
         
-        if let max = self.profileUpdateReceiver?.phaseTimes[SpeechPhase.OVER_MAXIMUM] {
-            timeSlider.maximumValue = Float(max * 1.1)
-        }
-        
         self.updateValues()
     }
     
