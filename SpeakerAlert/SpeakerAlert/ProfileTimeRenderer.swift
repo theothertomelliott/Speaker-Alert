@@ -24,7 +24,7 @@ class ProfileTimeRenderer: NSObject {
         let greenStr : String = ProfileTimeRenderer.timeAsHMS(profile.green!)
         let yellowStr : String = ProfileTimeRenderer.timeAsHMS(profile.yellow!)
         let redStr : String = ProfileTimeRenderer.timeAsHMS(profile.red!)
-        let alertString : String = ProfileTimeRenderer.timeAsHMS(profile.red!)
+        let alertString : String = ProfileTimeRenderer.timeAsHMS(profile.redBlink!)
         
         let outStr : NSMutableAttributedString = NSMutableAttributedString(string: "● \(greenStr) ● \(yellowStr) ● \(redStr) ○ \(alertString)")
         var index = 0

@@ -88,12 +88,6 @@ public class ApplicationAssembly: TyphoonAssembly {
         }
     }
     
-    public dynamic func timingViewController() -> AnyObject {
-        return TyphoonDefinition.withClass(TimingViewController.self) {
-            (definition) in
-        }
-    }
-    
     public dynamic func speechViewController() -> AnyObject {
         return TyphoonDefinition.withClass(SpeechViewController.self) {
             (definition) in

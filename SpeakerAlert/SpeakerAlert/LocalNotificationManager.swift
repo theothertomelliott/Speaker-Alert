@@ -65,6 +65,7 @@ class LocalNotificationManager: NSObject, SpeechManagerDelegate {
     
     func leftBackground(){
         NSLog("Left background")
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
     }
     
 }

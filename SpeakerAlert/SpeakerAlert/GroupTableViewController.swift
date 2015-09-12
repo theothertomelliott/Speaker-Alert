@@ -269,8 +269,8 @@ class GroupTableViewController: UITableViewController {
         }
 
         if("timingEditSegue" == segue.identifier){
-            let destination : TimingViewController = segue.destinationViewController as! TimingViewController
-            destination.timing = self.timings[indexPath.row - self.groups.count]
+            let destination : ProfileTableViewController = segue.destinationViewController as! ProfileTableViewController
+            destination.profile = self.timings[indexPath.row - self.groups.count]
         }
         
         if("timingSegue" == segue.identifier){

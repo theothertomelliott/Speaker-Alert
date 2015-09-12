@@ -52,6 +52,9 @@
 		E27453BF1B9E8DE00058086C /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27453BD1B9E8DE00058086C /* Speech.swift */; settings = {ASSET_TAGS = (); }; };
 		E2784A641B9C8FE30046BF0D /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2784A631B9C8FE30046BF0D /* ProfileTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E2784A671B9C97180046BF0D /* ProfileTimeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2784A661B9C97180046BF0D /* ProfileTimeRenderer.swift */; settings = {ASSET_TAGS = (); }; };
+		E284FC1C1BA3E89000ABFA68 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC1B1BA3E89000ABFA68 /* ProfileTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E284FC1F1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC1E1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		E284FC211BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC201BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
 		E2929A891B3CCE6E007030D4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
 		E2929A8A1B3CCE71007030D4 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
@@ -75,7 +78,6 @@
 		E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2C9020D1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld */; };
 		E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D273CD1B516EF500155349 /* SpeechViewController.swift */; };
 		E2DD5E3B1B5BE03800EF0997 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
-		E2DD5E3F1B5BE25B00EF0997 /* TimingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3E1B5BE25B00EF0997 /* TimingViewController.swift */; };
 		E2E8DD5D1B6DD021003D3F7C /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
 		E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
 		E2F6B5F21B378F2600210504 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
@@ -191,6 +193,9 @@
 		E27453BD1B9E8DE00058086C /* Speech.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speech.swift; sourceTree = "<group>"; };
 		E2784A631B9C8FE30046BF0D /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		E2784A661B9C97180046BF0D /* ProfileTimeRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTimeRenderer.swift; sourceTree = "<group>"; };
+		E284FC1B1BA3E89000ABFA68 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		E284FC1E1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileNameTableViewCell.swift; sourceTree = "<group>"; };
+		E284FC201BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTimeTableViewCell.swift; sourceTree = "<group>"; };
 		E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechTimer.swift; sourceTree = "<group>"; };
 		E2929A881B3CCD14007030D4 /* SpeakerAlert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeakerAlert-Bridging-Header.h"; sourceTree = "<group>"; };
 		E2AB35951B82DC97001F8362 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
@@ -203,7 +208,6 @@
 		E2C9020E1B33BAA300B39D37 /* SpeakerAlert.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpeakerAlert.xcdatamodel; sourceTree = "<group>"; };
 		E2D273CD1B516EF500155349 /* SpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
 		E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
-		E2DD5E3E1B5BE25B00EF0997 /* TimingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingViewController.swift; sourceTree = "<group>"; };
 		E2F2A1DD1B6DB91A0014D4A0 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
 		E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E2F6B5F01B378F2600210504 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -286,10 +290,10 @@
 		E22E8C3D1B6BA08600DD0793 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E284FC1D1BA3E9F700ABFA68 /* ProfileEdit */,
 				E22969E01B65202F00C18012 /* Views */,
 				E22E8C3E1B6BA09300DD0793 /* IB */,
 				E24408A51B483C8400EB056C /* GroupTableViewController.swift */,
-				E2DD5E3E1B5BE25B00EF0997 /* TimingViewController.swift */,
 				E2D273CD1B516EF500155349 /* SpeechViewController.swift */,
 				E24628DE1B9803C2007DD28B /* SettingsViewController.swift */,
 				E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */,
@@ -453,6 +457,16 @@
 				E2784A661B9C97180046BF0D /* ProfileTimeRenderer.swift */,
 			);
 			name = "Rendering Utils";
+			sourceTree = "<group>";
+		};
+		E284FC1D1BA3E9F700ABFA68 /* ProfileEdit */ = {
+			isa = PBXGroup;
+			children = (
+				E284FC1B1BA3E89000ABFA68 /* ProfileTableViewController.swift */,
+				E284FC1E1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift */,
+				E284FC201BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift */,
+			);
+			name = ProfileEdit;
 			sourceTree = "<group>";
 		};
 		E28AA3531B2CA70F000F5A15 /* SpeechTimer */ = {
@@ -806,7 +820,6 @@
 				E2C571B91B8AA5A400C83D92 /* FontAwesomeImageView.swift in Sources */,
 				E2C571BB1B8AB1A300C83D92 /* NamedTableViewCell.swift in Sources */,
 				E20B85801B66661300D55578 /* SpeechManager.swift in Sources */,
-				E2DD5E3F1B5BE25B00EF0997 /* TimingViewController.swift in Sources */,
 				E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */,
 				E27453BE1B9E8DE00058086C /* Speech+CoreDataProperties.swift in Sources */,
 				E2F6B5F21B378F2600210504 /* Profile.swift in Sources */,
@@ -820,11 +833,14 @@
 				E2DD5E3B1B5BE03800EF0997 /* TimeUtils.swift in Sources */,
 				E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */,
 				E2159F251B6D9F330075E77E /* WatchCommsManager.swift in Sources */,
+				E284FC211BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift in Sources */,
 				E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */,
 				E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */,
 				E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */,
 				E2784A641B9C8FE30046BF0D /* ProfileTableViewCell.swift in Sources */,
+				E284FC1C1BA3E89000ABFA68 /* ProfileTableViewController.swift in Sources */,
 				E2784A671B9C97180046BF0D /* ProfileTimeRenderer.swift in Sources */,
+				E284FC1F1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift in Sources */,
 				E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */,
 				E24628DF1B9803C2007DD28B /* SettingsViewController.swift in Sources */,
 				E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */,
