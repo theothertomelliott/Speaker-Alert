@@ -12,6 +12,7 @@ import WatchConnectivity
 @available(iOS 9, *)
 class WatchCommsManager: NSObject, WCSessionDelegate, SpeechManagerDelegate {
     
+    var configMan : ConfigurationManager?
     var watchSession : WCSession?
     
     var speechMan : SpeechManager? {
@@ -43,8 +44,16 @@ class WatchCommsManager: NSObject, WCSessionDelegate, SpeechManagerDelegate {
     
     private func updateState(state : SpeechState){
         do {
+            var vibration : Bool = false
+            if let cm : ConfigurationManager = self.configMan {
+                vibration = cm.isVibrationEnabled
+            }
+            
             try watchSession?.updateApplicationContext(
-                state.toDictionary()
+                [
+                    "vibration" : vibration,
+                    "state" : state.toDictionary()
+                    ]
             )
         } catch let error as NSError {
             NSLog("Updating the context failed: " + error.localizedDescription)

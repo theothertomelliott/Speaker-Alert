@@ -16,6 +16,7 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     var watchSession : WCSession?
     var tickTimer : NSTimer = NSTimer()
     var speechState : SpeechState?
+    var vibration : NSNumber = 0
     
     @IBOutlet var mainGroup: WKInterfaceGroup!
     @IBOutlet var timeElapsedLabel: WKInterfaceLabel!
@@ -102,22 +103,31 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
                 self.startStopButton.setEnabled(true)
             }
             
+            var newPhaseColor = self.phaseColor
             if(s.phase == SpeechPhase.BELOW_MINIMUM){
-                self.phaseColor = (UIColor.whiteColor())
+                newPhaseColor = (UIColor.whiteColor())
             }
             if(s.phase == SpeechPhase.GREEN){
-                self.phaseColor = (UIColor(red: 83/255, green: 215/255, blue: 106/255, alpha: 1.0))
+                newPhaseColor = (UIColor(red: 83/255, green: 215/255, blue: 106/255, alpha: 1.0))
             }
             if(s.phase == SpeechPhase.YELLOW){
-                self.phaseColor = (UIColor(red: 221/255, green: 170/255, blue: 59/255, alpha: 1.0))
+                newPhaseColor = (UIColor(red: 221/255, green: 170/255, blue: 59/255, alpha: 1.0))
             }
             if(s.phase == SpeechPhase.RED){
-                self.phaseColor = (UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0))
+                newPhaseColor = (UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0))
             }
             if s.phase == SpeechPhase.OVER_MAXIMUM {
-                self.phaseColor = UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0)
+                newPhaseColor = UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0)
                 self.blinkState = true
             }
+            
+            if newPhaseColor != self.phaseColor {
+                if self.vibration != 0 {
+                    NSLog("Vibrate!")
+                    WKInterfaceDevice().playHaptic(.Notification)
+                }
+            }
+            self.phaseColor = newPhaseColor
             
             if(self.blinkState){
                 if self.blinkCycleIndex >= self.blinkCycle {
@@ -151,7 +161,12 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     
     /** Called on the delegate of the receiver. Will be called on startup if an applicationContext is available. */
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]){
-        self.speechState = SpeechState.fromDictionary(applicationContext)
+        if let v = applicationContext["vibration"] as? NSNumber {
+            self.vibration = v
+        }
+        if let state = applicationContext["state"] as? [String : AnyObject] {
+            self.speechState = SpeechState.fromDictionary(state)
+        }
     }
     
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]){
