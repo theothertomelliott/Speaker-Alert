@@ -11,6 +11,8 @@ import RFAboutView
 
 class SettingsViewController: UITableViewController {
 
+    let APP_ID = "488585337"
+    
     var configManager : ConfigurationManager?
     @IBOutlet weak var autoStartSwitch: UISwitch!
     @IBOutlet weak var displayTimeSwitch: UISwitch!
@@ -40,10 +42,16 @@ class SettingsViewController: UITableViewController {
         
         tableView.cellForRowAtIndexPath(indexPath)?.selectionStyle = UITableViewCellSelectionStyle.None
         
-        if(indexPath.section == 1 && indexPath.row == 0){
+        if indexPath.section == 1 && indexPath.row == 0 {
             self.showAbout()
+        } else if indexPath.section == 1 && indexPath.row == 1 {
+            self.rateApp()
         } else {
         }
+    }
+    
+    func rateApp(){
+        UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(APP_ID)&onlyLatestVersion=true&pageNumber=0&sortOrdering=1)")!);
     }
     
     func showAbout(){
