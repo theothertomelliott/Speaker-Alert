@@ -30,7 +30,7 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     var blinkState : Bool = false
     var blinkOn : Bool = false
     // Number of ticks before changing colour in blink
-    let blinkCycle = 10
+    let blinkCycle = 1/0.2
     // Position in blink cycle
     var blinkCycleIndex = 0
     
@@ -57,12 +57,11 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     override func willActivate() {
         NSLog("willActivate")
         
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            if self.tickTimer.valid {
-                self.tickTimer.invalidate()
-            }
-            self.tickTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("tick:"), userInfo: nil, repeats: true)
-        })
+        if self.tickTimer.valid {
+            self.tickTimer.invalidate()
+        }
+        self.tickTimer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: Selector("tick:"), userInfo: nil, repeats: true)
+        self.tickTimer.tolerance = 0.1
         
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
@@ -71,11 +70,9 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     override func didDeactivate() {
         NSLog("didDeactivate")
         
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            if self.tickTimer.valid {
-                self.tickTimer.invalidate()
-            }
-        })
+        if self.tickTimer.valid {
+            self.tickTimer.invalidate()
+        }
         
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
@@ -132,7 +129,7 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
             self.phaseColor = newPhaseColor
             
             if(self.blinkState){
-                if self.blinkCycleIndex >= self.blinkCycle {
+                if Double(self.blinkCycleIndex) >= self.blinkCycle {
                     self.blinkCycleIndex = 0
                     if(self.blinkOn){
                         self.mainGroup.setBackgroundColor(self.phaseColor)
@@ -157,9 +154,7 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     
     @objc
     func tick(timer: NSTimer!){
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.updateUI()
-        })
+        self.updateUI()
     }
     
     /** Called on the delegate of the receiver. Will be called on startup if an applicationContext is available. */
