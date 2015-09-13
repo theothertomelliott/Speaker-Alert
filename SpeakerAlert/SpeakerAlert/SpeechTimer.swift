@@ -34,7 +34,8 @@ public class SpeechTimer : NSObject {
             for p : SpeechPhase in SpeechPhase.allCases {
                 let timeUntil : NSTimeInterval = state.timeUntil(p)
                 if(timeUntil > 0){
-                    phaseTimers[p] = NSTimer.scheduledTimerWithTimeInterval(timeUntil, target: self, selector: "phaseChange:", userInfo: nil, repeats: false);
+                    phaseTimers[p] = NSTimer.scheduledTimerWithTimeInterval(timeUntil + 0.1, target: self, selector: "phaseChange:", userInfo: nil, repeats: false);
+                    phaseTimers[p]?.tolerance = 0.05
                 }
             }
 
