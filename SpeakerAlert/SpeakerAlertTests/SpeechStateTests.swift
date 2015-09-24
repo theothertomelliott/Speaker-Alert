@@ -49,7 +49,7 @@ class SpeechStateTests: XCTestCase {
 let state : SpeechState = SpeechState(profile: profile, running: SpeechRunning.RUNNING, startTime: startTime, pauseInterval: pauseInterval)
         let dict : [String : AnyObject] = state.toDictionary()
         
-        let stateRetrieved : SpeechState = SpeechState.fromDictionary(dict)
+        let stateRetrieved : SpeechState = SpeechState.fromDictionary(dict)!
         
         XCTAssert(stateRetrieved.profile.green == 1)
         XCTAssert(stateRetrieved.profile.yellow == 2)

@@ -74,38 +74,32 @@ class ProfileTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
 
-        // Configure the cell...
-        if indexPath.row == 0 {
-            if let nameCell : ProfileNameTableViewCell = cell as? ProfileNameTableViewCell {
-                self.nameLabel = nameCell.profileName
-                nameCell.profileName.text = self.profile.name
-            }
+        if let nameCell : ProfileNameTableViewCell = cell as? ProfileNameTableViewCell,
+            let timeCell : ProfileTimeTableViewCell = cell as? ProfileTimeTableViewCell {
+                
+                // Configure the cell...
+                if indexPath.row == 0 {
+                    self.nameLabel = nameCell.profileName
+                    nameCell.profileName.text = self.profile.name
+                }
+                
+                if indexPath.row == 1 {
+                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.GREEN, nextPhase: SpeechPhase.YELLOW, previousPhase: nil)
+                }
+                
+                if indexPath.row == 2 {
+                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.YELLOW, nextPhase: SpeechPhase.RED, previousPhase: SpeechPhase.GREEN)
+                }
+                
+                if indexPath.row == 3 {
+                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.RED, nextPhase: SpeechPhase.OVER_MAXIMUM, previousPhase: SpeechPhase.YELLOW)
+                }
+                
+                if indexPath.row == 4 {
+                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.OVER_MAXIMUM, nextPhase: nil, previousPhase: SpeechPhase.RED)
+                }
+                
         }
-        
-        if indexPath.row == 1 {
-            if let timeCell : ProfileTimeTableViewCell = cell as? ProfileTimeTableViewCell {
-                timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.GREEN, nextPhase: SpeechPhase.YELLOW, previousPhase: nil)
-            }
-        }
-        
-        if indexPath.row == 2 {
-            if let timeCell : ProfileTimeTableViewCell = cell as? ProfileTimeTableViewCell {
-                timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.YELLOW, nextPhase: SpeechPhase.RED, previousPhase: SpeechPhase.GREEN)
-            }
-        }
-        
-        if indexPath.row == 3 {
-            if let timeCell : ProfileTimeTableViewCell = cell as? ProfileTimeTableViewCell {
-timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.RED, nextPhase: SpeechPhase.OVER_MAXIMUM, previousPhase: SpeechPhase.YELLOW)
-            }
-        }
-        
-        if indexPath.row == 4 {
-            if let timeCell : ProfileTimeTableViewCell = cell as? ProfileTimeTableViewCell {
-timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.OVER_MAXIMUM, nextPhase: nil, previousPhase: SpeechPhase.RED)
-            }
-        }
-        
         
         return cell
     }

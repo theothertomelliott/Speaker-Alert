@@ -174,14 +174,11 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
         
         NSLog("Message = \(message)")
         
-        if let messageName : String = message["messageName"] as? String {
-            if messageName == "speechComplete" {
-                if let stateDict = message["state"] as? [String : AnyObject] {
-                    if let speechState = SpeechState.fromDictionary(stateDict) {
-                        self.pushControllerWithName("SpeechComplete", context: speechState)
-                    }
-                }
-            }
+        if let messageName : String = message["messageName"] as? String,
+            let stateDict = message["state"] as? [String : AnyObject],
+            let speechState = SpeechState.fromDictionary(stateDict)
+            where messageName == "speechComplete" {
+                self.pushControllerWithName("SpeechComplete", context: speechState)
         }
 
         

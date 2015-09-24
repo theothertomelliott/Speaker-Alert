@@ -41,10 +41,8 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
             self.title = sm.profile?.name
         }
         
-        if let cm = configMan {
-            if cm.isAutoStartEnabled {
-                self.resumePressed(self)
-            }
+        if let cm = configMan where cm.isAutoStartEnabled {
+            self.resumePressed(self)
         }
         
         self.updateDisplay()

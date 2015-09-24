@@ -126,11 +126,8 @@ class DataSeeder: NSObject {
         
         var shouldSeed : Bool = true;
         
-        if let seedVersion : Int = defaults.integerForKey(seedVersionKey)
-        {
-            if seedVersion >= self.seedVersion {
-                shouldSeed = false
-            }
+        if let seedVersion : Int = defaults.integerForKey(seedVersionKey) where seedVersion >= self.seedVersion {
+            shouldSeed = false
         }
         
         if shouldSeed {

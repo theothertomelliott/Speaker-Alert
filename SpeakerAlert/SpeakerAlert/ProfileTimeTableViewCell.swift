@@ -39,21 +39,15 @@ class ProfileTimeTableViewCell: UITableViewCell {
     }
     
     func validateValues(){
-        if let phase = self.phase {
-            if let receiver = self.profileUpdateReceiver {
+        if let phase = self.phase, let receiver = self.profileUpdateReceiver {
             let phaseValue = receiver.phaseTimes[phase]
-            if let nextPhase = self.nextPhase {
-                if receiver.phaseTimes[nextPhase] < phaseValue {
-                    receiver.phaseTimes[nextPhase] = phaseValue
-                }
+            if let nextPhase = self.nextPhase where receiver.phaseTimes[nextPhase] < phaseValue {
+                receiver.phaseTimes[nextPhase] = phaseValue
             }
-            if let previousPhase = self.previousPhase {
-                if receiver.phaseTimes[previousPhase] > phaseValue {
-                    receiver.phaseTimes[previousPhase] = phaseValue
-                }
+            if let previousPhase = self.previousPhase where receiver.phaseTimes[previousPhase] > phaseValue {
+                receiver.phaseTimes[previousPhase] = phaseValue
             }
         }
-    }
     }
     
     func setProfileUpdateReceiver(profileUpdateReceiver : ProfileTableViewController, phase : SpeechPhase, nextPhase : SpeechPhase?, previousPhase : SpeechPhase?){
@@ -85,10 +79,8 @@ class ProfileTimeTableViewCell: UITableViewCell {
     
     func updateValues(){
         if let phase = self.phase {
-            if let max = self.profileUpdateReceiver?.phaseTimes[SpeechPhase.OVER_MAXIMUM] {
-                if timeSlider.maximumValue < Float(max * 1.1) {
-                    timeSlider.maximumValue = Float(max * 1.1)
-                }
+            if let max = self.profileUpdateReceiver?.phaseTimes[SpeechPhase.OVER_MAXIMUM] where timeSlider.maximumValue < Float(max * 1.1) {
+                timeSlider.maximumValue = Float(max * 1.1)
             }
             if let interval = self.profileUpdateReceiver?.phaseTimes[phase] {
                 timeIntervalField.timeInterval = interval
