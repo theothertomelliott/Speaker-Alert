@@ -57,10 +57,9 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if let _ = self.speechMan?.state {
-            // Nothing to do here
-        } else {
+        guard let _ = self.speechMan?.state else {
             self.navigationController?.popViewControllerAnimated(true)
+            return
         }
     }
     
