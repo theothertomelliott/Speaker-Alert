@@ -126,6 +126,9 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         self.setTabBarVisible(!isRunning, animated: true)
         self.profileSummaryLabel?.hidden = isRunning
         self.updateDisplay()
+        
+        // Prevent the screen dimming or locking when idle
+        UIApplication.sharedApplication().idleTimerDisabled = isRunning
     }
 
     @IBAction func pausePressed(sender: AnyObject) {
