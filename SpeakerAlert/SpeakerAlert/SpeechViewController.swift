@@ -54,6 +54,8 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
             tickTimer.invalidate()
         }
         tickTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("doTick:"), userInfo: nil, repeats: true)
+        self.updatePhase()
+        self.updateDisplay()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -64,6 +66,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     }
     
     func doTick(timer : NSTimer) {
+        self.updatePhase();
         self.updateDisplay()
     }
     
