@@ -9,6 +9,48 @@
 import UIKit
 import Colours
 
+class DemoSpeechState : SpeechState{
+    
+    override var running : SpeechRunning {
+        get { return SpeechRunning.RUNNING }
+        set {}
+    }
+    
+    private var _phase : SpeechPhase
+    override var phase : SpeechPhase {
+        get { return _phase }
+    }
+    
+    func nextPhase(){
+        // Go to the next phase
+        switch (self._phase){
+        case .BELOW_MINIMUM:
+            self._phase = .GREEN
+        case .GREEN:
+            self._phase = .YELLOW
+        case .YELLOW:
+            self._phase = .RED
+        case .RED:
+            self._phase = .OVER_MAXIMUM
+        case .OVER_MAXIMUM:
+            self._phase = .OVER_MAXIMUM
+        }
+    }
+    
+    override func timeUntil(phase: SpeechPhase) -> NSTimeInterval {
+        return 0
+    }
+    
+    init(){
+        _phase = SpeechPhase.BELOW_MINIMUM
+        super.init(profile: SpeechProfile(green: 0, yellow: 0, red: 0, redBlink: 0));
+    }
+    
+    override func toDictionary() -> [String : AnyObject] {
+        return [:]
+    }
+}
+
 class SpeechViewController: UIViewController, SpeechManagerDelegate {
     
     var speechMan : SpeechManager?
@@ -22,6 +64,8 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     
     @IBOutlet weak var elapsedTimeLabel: UILabel!
     
+    var demoMode : Bool = false
+    var demoState : DemoSpeechState?
     var blinkState : Bool = false
     var blinkOn : Bool = false
     // Number of ticks before changing colour in blink
@@ -33,11 +77,48 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     
     var phaseColor : UIColor = UIColor.whiteColor()
     
+    // MARK: Demo mode
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if motion == .MotionShake {
+            if self.demoMode && self.demoState?.running == SpeechRunning.RUNNING {
+                self.demoState?.nextPhase()
+                self.updateDisplay()
+            }
+        }
+    }
+    
+    // MARK: End demo mode
+    
+    var state : SpeechState? {
+        get {
+            if let sm = speechMan, let st = sm.state {
+                return st
+            }
+            if self.demoMode {
+                return demoState;
+            }
+            return nil
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let sm = speechMan {
+        
+        if self.demoMode {
+            // TODO: Configure demo mode
+            profileSummaryLabel?.text = "Demo Mode"
+            self.demoState = DemoSpeechState()
+        }
+        
+        // Configure speech manager if not in demo mode
+        if let sm = speechMan, let profile = sm.profile where !self.demoMode {
             sm.addSpeechObserver(self)
-            profileSummaryLabel?.attributedText = ProfileTimeRenderer.timesAsAttributedString(sm.profile!)
+            profileSummaryLabel?.attributedText = ProfileTimeRenderer.timesAsAttributedString(profile)
             self.title = sm.profile?.name
         }
         
@@ -59,7 +140,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        guard let _ = self.speechMan?.state else {
+        guard let _ = self.state else {
             self.navigationController?.popViewControllerAnimated(true)
             return
         }
@@ -135,19 +216,28 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     }
 
     @IBAction func pausePressed(sender: AnyObject) {
+        if self.demoMode {
+            return
+        }
         speechMan?.pause()
     }
     
     @IBAction func stopPressed(sender: AnyObject) {
+        if self.demoMode {
+            return
+        }
         speechMan?.stop()
     }
     
     @IBAction func resumePressed(sender: AnyObject) {
+        if self.demoMode {
+            return
+        }
         speechMan?.start()
     }
     
     func updatePhase(){
-        if let phase = speechMan?.state?.phase {
+        if let phase = self.state?.phase {
             blinkState = false;
             if(phase == SpeechPhase.BELOW_MINIMUM){
                 self.phaseColor = UIColor.whiteColor()
@@ -183,7 +273,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         
         if let state = speechMan?.state {
             
-            let running : Bool = speechMan?.state?.running == SpeechRunning.RUNNING
+            let running : Bool = state.running == SpeechRunning.RUNNING
             let timeStr = TimeUtils.formatStopwatch(state.elapsed)
             var timeAttr: NSMutableAttributedString = NSMutableAttributedString(string: "\(timeStr)")
             if(!running){
@@ -204,7 +294,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     }
     
     func updateControls(){
-        if let state = speechMan?.state {
+        if let state = self.state {
             switch state.running {
             case .PAUSED:
                 self.playButton.enabled = true
@@ -223,7 +313,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     }
     
     func updateDisplay() {
-        let running : Bool = speechMan?.state?.running == SpeechRunning.RUNNING
+        let running : Bool = self.state?.running == SpeechRunning.RUNNING
         self.updateTimeLabel()
         self.updateControls()
         
@@ -245,7 +335,6 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         } else {
             self.view.backgroundColor = UIColor.whiteColor()
         }
-
         
     }
     

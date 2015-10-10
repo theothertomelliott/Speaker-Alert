@@ -66,5 +66,14 @@ class SettingsViewController: UITableViewController {
         self.navigationController?.pushViewController(aboutView, animated: true)
     }
     
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        if segue.identifier == "demoSegue" {
+            if let speechVC : SpeechViewController = segue.destinationViewController as? SpeechViewController {
+                speechVC.demoMode = true
+            }
+        }
+    }
     
 }
