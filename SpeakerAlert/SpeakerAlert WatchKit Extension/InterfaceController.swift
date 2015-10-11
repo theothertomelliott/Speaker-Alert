@@ -23,7 +23,6 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     @IBOutlet var mainGroup: WKInterfaceGroup!
     @IBOutlet var timeElapsedLabel: WKInterfaceLabel!
     @IBOutlet var startStopButton: WKInterfaceButton!
-    @IBOutlet var pauseButton: WKInterfaceButton!
     
     var phaseColor : UIColor = UIColor.whiteColor()
     
@@ -40,8 +39,8 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
         // Configure interface objects here.
         // Set up initial state
         self.startStopButton.setTitle("Start")
-        self.pauseButton.setEnabled(false)
-        self.pauseButton.setTitle("Pause")
+        self.startStopButton.setEnabled(false)
+        self.startStopButton.setBackgroundColor(UIColor.lightGrayColor())
         
         if(WCSession.isSupported()){
             NSLog("WCSession supported, initializing")
@@ -84,21 +83,14 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
             
             // Only allow pausing if the speech is currently running
             
-            if(s.running == SpeechRunning.RUNNING){
+            if(s.running == SpeechRunning.RUNNING || s.running == SpeechRunning.PAUSED){
                 self.startStopButton.setTitle("Stop")
-                self.pauseButton.setTitle("Pause")
-                self.pauseButton.setEnabled(true)
-                self.startStopButton.setEnabled(true)
-            } else if(s.running == SpeechRunning.PAUSED) {
-                self.startStopButton.setTitle("Stop")
-                self.pauseButton.setTitle("Resume")
-                self.pauseButton.setEnabled(true)
+                self.startStopButton.setBackgroundColor(UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0))
                 self.startStopButton.setEnabled(true)
             } else {
                 // Stopped
                 self.startStopButton.setTitle("Start")
-                self.pauseButton.setEnabled(false)
-                self.pauseButton.setTitle("Pause")
+                self.startStopButton.setBackgroundColor(UIColor(red: 83/255, green: 215/255, blue: 106/255, alpha: 1.0))
                 self.startStopButton.setEnabled(true)
             }
             
@@ -146,7 +138,7 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
             }
         } else {
             self.startStopButton.setEnabled(false)
-            self.pauseButton.setEnabled(false)
+            self.startStopButton.setBackgroundColor(UIColor.lightGrayColor())
             self.speechNameLabel.setText("< No Speech >")
             self.timeElapsedLabel.setText("-- : --")
             self.phaseColor = UIColor.whiteColor()
@@ -193,13 +185,5 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
             NSLog("Error received")
         })
     }
-    
-    @IBAction func pausePressed() {
-        watchSession?.sendMessage(["messageName" : "pauseResume"], replyHandler: { (reply : [String : AnyObject]) -> Void in
-            NSLog("Reply received")
-            }, errorHandler: { (error : NSError) -> Void in
-                NSLog("Error received")
-        })
-    }
-    
+
 }
