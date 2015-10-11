@@ -131,6 +131,8 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
             if(self.blinkState){
                 if Double(self.blinkCycleIndex) >= self.blinkCycle {
                     self.blinkCycleIndex = 0
+                }
+                if self.blinkCycleIndex == 0 {
                     if(self.blinkOn){
                         self.mainGroup.setBackgroundColor(self.phaseColor)
                     } else {
