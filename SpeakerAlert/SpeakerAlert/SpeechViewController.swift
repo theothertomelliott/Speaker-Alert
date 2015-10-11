@@ -253,7 +253,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
             }
             if(phase == SpeechPhase.OVER_MAXIMUM){
                 self.phaseColor = UIColor.dangerColor()
-                blinkState = true;
+                blinkState = true
             }
         }
     }
@@ -320,7 +320,9 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         if(running){
             if(blinkState){
                 if blinkCycleIndex >= blinkCycle {
-                    blinkCycleIndex = 0
+                    blinkCycleIndex = 0;
+                }
+                if blinkCycleIndex == 0 {
                     if(blinkOn){
                         self.view.backgroundColor = phaseColor
                     } else {
