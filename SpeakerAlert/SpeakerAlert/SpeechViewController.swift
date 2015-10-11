@@ -111,7 +111,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         
         if self.demoMode {
             // TODO: Configure demo mode
-            profileSummaryLabel?.text = "Demo Mode"
+            profileSummaryLabel?.text = "Demo Mode - Shake to advance"
             self.demoState = DemoSpeechState()
         }
         
