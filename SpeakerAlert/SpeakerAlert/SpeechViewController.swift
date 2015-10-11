@@ -85,10 +85,18 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if motion == .MotionShake {
-            if self.demoMode && self.demoState?.running == SpeechRunning.RUNNING {
-                self.demoState?.nextPhase()
-                self.updateDisplay()
-            }
+            self.demoNextPhase()
+        }
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.demoNextPhase()
+    }
+    
+    func demoNextPhase(){
+        if self.demoMode && self.demoState?.running == SpeechRunning.RUNNING {
+            self.demoState?.nextPhase()
+            self.updateDisplay()
         }
     }
     
@@ -111,7 +119,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         
         if self.demoMode {
             // TODO: Configure demo mode
-            profileSummaryLabel?.text = "Demo Mode - Shake to advance"
+            profileSummaryLabel?.text = "Demo Mode - Shake or tap to advance"
             self.demoState = DemoSpeechState()
         }
         
