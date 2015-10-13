@@ -12,23 +12,24 @@ import MagicalRecord
 class ProfileTableViewController: UITableViewController {
 
     private var _profile : Profile?
-    var profile : Profile {
-        get {
-            if let p = _profile {
-                return p
-            } else {
-                return Profile()
-            }
-        }
+    var profile : Profile? {
+        get { return _profile }
         set {
             _profile = newValue
-            
+            if let v = newValue {
             // Populate internal values
-            self.name = newValue.name
-            self.phaseTimes[SpeechPhase.GREEN] = NSTimeInterval(newValue.green!)
-            self.phaseTimes[SpeechPhase.YELLOW] = NSTimeInterval(newValue.yellow!)
-            self.phaseTimes[SpeechPhase.RED] = NSTimeInterval(newValue.red!)
-            self.phaseTimes[SpeechPhase.OVER_MAXIMUM] = NSTimeInterval(newValue.redBlink!)
+                self.name = v.name
+                self.phaseTimes[SpeechPhase.GREEN] = NSTimeInterval(v.green!)
+                self.phaseTimes[SpeechPhase.YELLOW] = NSTimeInterval(v.yellow!)
+                self.phaseTimes[SpeechPhase.RED] = NSTimeInterval(v.red!)
+                self.phaseTimes[SpeechPhase.OVER_MAXIMUM] = NSTimeInterval(v.redBlink!)
+            } else {
+                self.name = "New Profile"
+                self.phaseTimes[SpeechPhase.GREEN] = 0
+                self.phaseTimes[SpeechPhase.YELLOW] = 0
+                self.phaseTimes[SpeechPhase.RED] = 0
+                self.phaseTimes[SpeechPhase.OVER_MAXIMUM] = 0
+            }
         }
     }
     
@@ -74,15 +75,22 @@ class ProfileTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
 
-        if let nameCell : ProfileNameTableViewCell = cell as? ProfileNameTableViewCell,
-            let timeCell : ProfileTimeTableViewCell = cell as? ProfileTimeTableViewCell {
+        if let nameCell : ProfileNameTableViewCell = cell as? ProfileNameTableViewCell {
                 
                 // Configure the cell...
                 if indexPath.row == 0 {
                     self.nameLabel = nameCell.profileName
-                    nameCell.profileName.text = self.profile.name
+                    if let profile = self.profile {
+                        nameCell.profileName.text = profile.name
+                    } else {
+                        nameCell.profileName.text = "New Profile"
+                    }
                 }
                 
+        }
+        
+        if let timeCell : ProfileTimeTableViewCell = cell as? ProfileTimeTableViewCell {
+        
                 if indexPath.row == 1 {
                     timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.GREEN, nextPhase: SpeechPhase.YELLOW, previousPhase: nil)
                 }
@@ -108,12 +116,41 @@ class ProfileTableViewController: UITableViewController {
         // TODO: Save our timer settings
         MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
             // This block runs in background thread
-            let storedTiming : Profile = self.profile.MR_inContext(localContext)
-            storedTiming.green = self.phaseTimes[SpeechPhase.GREEN]
-            storedTiming.yellow = self.phaseTimes[SpeechPhase.YELLOW]
-            storedTiming.red = self.phaseTimes[SpeechPhase.RED]
-            storedTiming.redBlink = self.phaseTimes[SpeechPhase.OVER_MAXIMUM]
-            storedTiming.name = self.nameLabel?.text
+
+            // TODO: Fix this for a new profile
+            if let p = self.profile {
+                let storedTiming : Profile = p.MR_inContext(localContext)
+                storedTiming.green = self.phaseTimes[SpeechPhase.GREEN]
+                storedTiming.yellow = self.phaseTimes[SpeechPhase.YELLOW]
+                storedTiming.red = self.phaseTimes[SpeechPhase.RED]
+                storedTiming.redBlink = self.phaseTimes[SpeechPhase.OVER_MAXIMUM]
+                storedTiming.name = self.nameLabel?.text
+            } else {
+                // TODO: Create new profile
+                MagicalRecord.saveWithBlockAndWait({ (localContext : NSManagedObjectContext!) -> Void in
+                    // This block runs in background thread
+                    
+                    let newProfile : Profile = Profile.MR_createEntityInContext(localContext)
+                     newProfile.name = "New Speech Profile"
+                     newProfile.green = self.phaseTimes[SpeechPhase.GREEN]
+                     newProfile.yellow = self.phaseTimes[SpeechPhase.YELLOW]
+                     newProfile.red = self.phaseTimes[SpeechPhase.RED]
+                     newProfile.redBlink = self.phaseTimes[SpeechPhase.OVER_MAXIMUM]
+                     newProfile.name = self.nameLabel?.text
+                    // TODO: Store the group appropriately
+                    
+//                    if let pg : Group = self.parentGroup {
+//                        let cpg : Group = pg.MR_inContext(localContext)
+//                        timing.parent = cpg
+//                        
+//                        NSLog("Speech profile parent name = \(timing.parent?.name)")
+//                    } else {
+//                        NSLog("No profile parent")
+//                    }
+//                    }) { (success: Bool, error: NSError!) -> Void in
+//                        self.reloadData();
+                })
+            }
         })
         
         

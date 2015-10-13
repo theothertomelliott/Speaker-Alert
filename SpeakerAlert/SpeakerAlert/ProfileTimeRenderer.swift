@@ -11,20 +11,22 @@ import Colours
 
 class ProfileTimeRenderer: NSObject {
 
-    class func timeAsHMS(time : NSNumber) -> String {
+    class func timeAsHMS(timeOptional : NSNumber?) -> String {
+        if let time = timeOptional {
+            let componentFormatter : NSDateComponentsFormatter = NSDateComponentsFormatter()
+            let interval = NSTimeInterval(time.floatValue)
         
-        let componentFormatter : NSDateComponentsFormatter = NSDateComponentsFormatter()
-        let interval = NSTimeInterval(time.floatValue)
-        
-        return componentFormatter.stringFromTimeInterval(interval)!
+            return componentFormatter.stringFromTimeInterval(interval)!
+        }
+        return ""
     }
     
     class func timesAsAttributedString(profile : Profile) -> NSAttributedString {
         
-        let greenStr : String = ProfileTimeRenderer.timeAsHMS(profile.green!)
-        let yellowStr : String = ProfileTimeRenderer.timeAsHMS(profile.yellow!)
-        let redStr : String = ProfileTimeRenderer.timeAsHMS(profile.red!)
-        let alertString : String = ProfileTimeRenderer.timeAsHMS(profile.redBlink!)
+        let greenStr : String = ProfileTimeRenderer.timeAsHMS(profile.green)
+        let yellowStr : String = ProfileTimeRenderer.timeAsHMS(profile.yellow)
+        let redStr : String = ProfileTimeRenderer.timeAsHMS(profile.red)
+        let alertString : String = ProfileTimeRenderer.timeAsHMS(profile.redBlink)
         
         let outStr : NSMutableAttributedString = NSMutableAttributedString(string: "● \(greenStr) ● \(yellowStr) ● \(redStr) ○ \(alertString)")
         var index = 0

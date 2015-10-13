@@ -59,23 +59,7 @@ class GroupTableViewController: UITableViewController {
     }
     
     func createTiming(){
-        MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) -> Void in
-            // This block runs in background thread
-            
-            let timing : Profile = Profile.MR_createEntityInContext(localContext)
-            timing.name = "New Speech Profile"
-            
-            if let pg : Group = self.parentGroup {
-                let cpg : Group = pg.MR_inContext(localContext)
-                timing.parent = cpg
-                
-                NSLog("Speech profile parent name = \(timing.parent?.name)")
-            } else {
-                NSLog("No profile parent")
-            }
-        }) { (success: Bool, error: NSError!) -> Void in
-                self.reloadData();
-        }
+        self.performSegueWithIdentifier("newProfileSegue", sender: self)
     }
     
     func reloadData(){
@@ -174,11 +158,11 @@ class GroupTableViewController: UITableViewController {
         } else {
             let cell : ProfileTableViewCell = tableView.dequeueReusableCellWithIdentifier("TimingCell", forIndexPath: indexPath) as! ProfileTableViewCell
             
-            let timing : Profile = timings[indexPath.row - groups.count]
-            
-            let tn : String = timing.name!
-            cell.nameLabel!.text = tn
-            cell.profileTimesLabel!.attributedText = ProfileTimeRenderer.timesAsAttributedString(timing)
+            if let timing : Profile = timings[indexPath.row - groups.count], let tn : String = timing.name {
+                cell.nameLabel!.text = tn
+                cell.profileTimesLabel!.attributedText = ProfileTimeRenderer.timesAsAttributedString(timing)
+            }
+
             return cell
         }
 
@@ -258,6 +242,12 @@ class GroupTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if("newProfileSegue" == segue.identifier){
+            let destination : ProfileTableViewController = segue.destinationViewController as! ProfileTableViewController
+            destination.profile = nil
+            return
+        }
         
         let indexPath : NSIndexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
         
