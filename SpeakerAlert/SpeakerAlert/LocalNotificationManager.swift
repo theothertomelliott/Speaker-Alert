@@ -40,15 +40,10 @@ class LocalNotificationManager: NSObject, SpeechManagerDelegate {
         
         // create a corresponding local notification
         let notification = UILocalNotification()
-        //notification.alertTitle = "Title"
         notification.alertBody = "Time Alert: \(phaseName)"
         notification.hasAction = false
-        //notification.alertAction = "dismiss"
         notification.fireDate = NSDate(timeIntervalSinceNow: state.timeUntil(phase))
         notification.soundName = UILocalNotificationDefaultSoundName // play default sound
-//        notification.userInfo = ["UUID": "123" ] // assign a unique identifier to the notification so that we can retrieve it later
-        //notification.category = "TODO_CATEGORY"
-        //notification.applicationIconBadgeNumber = 1
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
     

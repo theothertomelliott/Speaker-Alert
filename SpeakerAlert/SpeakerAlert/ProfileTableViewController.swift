@@ -122,7 +122,6 @@ class ProfileTableViewController: UITableViewController {
                 storedTiming.redBlink = self.phaseTimes[SpeechPhase.OVER_MAXIMUM]
                 storedTiming.name = self.nameLabel?.text
             } else {
-                // TODO: Create new profile
                 MagicalRecord.saveWithBlockAndWait({ (localContext : NSManagedObjectContext!) -> Void in
                     // This block runs in background thread
                     

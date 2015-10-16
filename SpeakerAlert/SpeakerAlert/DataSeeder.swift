@@ -107,14 +107,6 @@ class DataSeeder: NSObject {
             oneHour.yellow = 55*60
             oneHour.red = 60*60
             oneHour.redBlink = 60*60 + 30
-            
-            // TODO: Make this debug only
-//            let debug : Profile = Profile.MR_createEntityInContext(localContext)
-//            debug.name = "Debug (5 second intervals)"
-//            debug.green = 5
-//            debug.yellow = 10
-//            debug.red = 15
-//            debug.redBlink = 20
 
         }
     }
