@@ -111,11 +111,9 @@ class ProfileTableViewController: UITableViewController {
     }
 
     override func viewWillDisappear(animated: Bool) {
-        // TODO: Save our timer settings
         MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
             // This block runs in background thread
             
-            // TODO: Fix this for a new profile
             if let p = self.profile {
                 let storedTiming : Profile = p.MR_inContext(localContext)
                 storedTiming.green = self.phaseTimes[SpeechPhase.GREEN]

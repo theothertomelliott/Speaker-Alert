@@ -105,6 +105,32 @@ class GroupTableViewController: UITableViewController {
         
     }
     
+    func renameGroup(group : Group) {
+        let alertController = UIAlertController(title: "Rename Group", message: "Please enter a new name for your group", preferredStyle: .Alert)
+        
+        let createAction = UIAlertAction(title: "Update", style: .Default) { (_) in
+            let groupNameField = alertController.textFields![0] as UITextField
+            MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) -> Void in
+                let localGroup : Group = group.MR_inContext(localContext)
+                localGroup.name = groupNameField.text
+                }) { (success: Bool, error: NSError!) -> Void in
+                    self.reloadData();
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+        
+        alertController.addAction(createAction)
+        alertController.addAction(cancelAction)
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = group.name
+        }
+        
+        self.presentViewController(alertController, animated: true) {
+            // ...
+        }
+    }
+    
     @objc
     func addItem(sender: AnyObject) {
         
@@ -206,7 +232,7 @@ class GroupTableViewController: UITableViewController {
         let moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Edit", handler:{action, indexpath in
             
             if(indexPath.row < Int(Group.MR_countOfEntities())){
-                // TODO: Allow changing of a group name
+                self.renameGroup(self.groups[indexPath.row])
             } else {
                 self.performSegueWithIdentifier("timingEditSegue", sender: tableView.cellForRowAtIndexPath(indexPath))
             }
