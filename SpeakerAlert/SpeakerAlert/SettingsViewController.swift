@@ -55,7 +55,7 @@ class SettingsViewController: UITableViewController {
     }
     
     func showAbout(){
-        let aboutView : RFAboutViewController = RFAboutViewController(appName: "Speaker Alert", appVersion: "2.0.0", appBuild: "1", copyrightHolderName: "Tom Elliott", contactEmail: "tom.w.elliott@gmail.com", titleForEmail: "Tom Elliott", websiteURL: NSURL(string: "http://telliott.io"), titleForWebsiteURL: "telliott.io", andPublicationYear: "2015")
+        let aboutView : RFAboutViewController = RFAboutViewController(appName: "Speaker Alert", appVersion: nil, appBuild: nil, copyrightHolderName: "Tom Elliott", contactEmail: "tom.w.elliott@gmail.com", titleForEmail: "Tom Elliott", websiteURL: NSURL(string: "http://telliott.io"), titleForWebsiteURL: "telliott.io", andPublicationYear: nil)
 
         // TODO: Figure out how to use default colors
         aboutView.navigationBarBarTintColor = UINavigationBar.appearance().barTintColor
