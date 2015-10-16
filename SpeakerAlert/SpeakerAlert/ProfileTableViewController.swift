@@ -10,14 +10,12 @@ import UIKit
 import MagicalRecord
 
 class ProfileTableViewController: UITableViewController {
-
-    private var _profile : Profile?
+    
+    var parentGroup : Group?
     var profile : Profile? {
-        get { return _profile }
-        set {
-            _profile = newValue
-            if let v = newValue {
-            // Populate internal values
+        didSet {
+            if let v = self.profile {
+                // Populate internal values
                 self.name = v.name
                 self.phaseTimes[SpeechPhase.GREEN] = NSTimeInterval(v.green!)
                 self.phaseTimes[SpeechPhase.YELLOW] = NSTimeInterval(v.yellow!)
@@ -116,7 +114,7 @@ class ProfileTableViewController: UITableViewController {
         // TODO: Save our timer settings
         MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
             // This block runs in background thread
-
+            
             // TODO: Fix this for a new profile
             if let p = self.profile {
                 let storedTiming : Profile = p.MR_inContext(localContext)
@@ -131,74 +129,20 @@ class ProfileTableViewController: UITableViewController {
                     // This block runs in background thread
                     
                     let newProfile : Profile = Profile.MR_createEntityInContext(localContext)
-                     newProfile.name = "New Speech Profile"
-                     newProfile.green = self.phaseTimes[SpeechPhase.GREEN]
-                     newProfile.yellow = self.phaseTimes[SpeechPhase.YELLOW]
-                     newProfile.red = self.phaseTimes[SpeechPhase.RED]
-                     newProfile.redBlink = self.phaseTimes[SpeechPhase.OVER_MAXIMUM]
-                     newProfile.name = self.nameLabel?.text
-                    // TODO: Store the group appropriately
-                    
-//                    if let pg : Group = self.parentGroup {
-//                        let cpg : Group = pg.MR_inContext(localContext)
-//                        timing.parent = cpg
-//                        
-//                        NSLog("Speech profile parent name = \(timing.parent?.name)")
-//                    } else {
-//                        NSLog("No profile parent")
-//                    }
-//                    }) { (success: Bool, error: NSError!) -> Void in
-//                        self.reloadData();
+                    newProfile.name = "New Speech Profile"
+                    newProfile.green = self.phaseTimes[SpeechPhase.GREEN]
+                    newProfile.yellow = self.phaseTimes[SpeechPhase.YELLOW]
+                    newProfile.red = self.phaseTimes[SpeechPhase.RED]
+                    newProfile.redBlink = self.phaseTimes[SpeechPhase.OVER_MAXIMUM]
+                    newProfile.name = self.nameLabel?.text
+                    if let pg : Group = self.parentGroup {
+                        newProfile.parent = pg.MR_inContext(localContext)
+                    }
                 })
             }
         })
         
         
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

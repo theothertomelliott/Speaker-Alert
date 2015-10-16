@@ -245,7 +245,8 @@ class GroupTableViewController: UITableViewController {
         
         if("newProfileSegue" == segue.identifier){
             let destination : ProfileTableViewController = segue.destinationViewController as! ProfileTableViewController
-            destination.profile = nil
+            destination.profile = nil // Creates an empty profile
+            destination.parentGroup = self.parentGroup
             return
         }
         
