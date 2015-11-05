@@ -19,11 +19,11 @@
 		E20B85801B66661300D55578 /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20B857F1B66661300D55578 /* SpeechManager.swift */; };
 		E2159F221B6D9D8B0075E77E /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */; };
 		E2159F251B6D9F330075E77E /* WatchCommsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2159F241B6D9F330075E77E /* WatchCommsManager.swift */; };
-		E21ADBE01BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21ADBDF1BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift */; settings = {ASSET_TAGS = (); }; };
-		E21ADBE21BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E21B306C1B9B54BA00B89D9F /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */; settings = {ASSET_TAGS = (); }; };
+		E21ADBE01BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21ADBDF1BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift */; };
+		E21ADBE21BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */; };
+		E21B306C1B9B54BA00B89D9F /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */; };
 		E22E8C441B6BA23000DD0793 /* VibrationAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */; };
-		E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */; settings = {ASSET_TAGS = (); }; };
+		E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */; };
 		E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23480E81B2906EA0076247D /* AppDelegate.swift */; };
 		E23480EE1B2906EA0076247D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23480EC1B2906EA0076247D /* Main.storyboard */; };
 		E23480F01B2906EA0076247D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E23480EF1B2906EA0076247D /* Assets.xcassets */; };
@@ -44,18 +44,18 @@
 		E24408A31B4834F200EB056C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A01B48338400EB056C /* Group.swift */; };
 		E24408A41B4834F400EB056C /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */; };
 		E24408A61B483C8400EB056C /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A51B483C8400EB056C /* GroupTableViewController.swift */; };
-		E24628DF1B9803C2007DD28B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24628DE1B9803C2007DD28B /* SettingsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E24A428B1BA4BA800071702D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24A428A1BA4BA800071702D /* LoadingViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E24628DF1B9803C2007DD28B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24628DE1B9803C2007DD28B /* SettingsViewController.swift */; };
+		E24A428B1BA4BA800071702D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24A428A1BA4BA800071702D /* LoadingViewController.swift */; };
 		E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */; };
 		E25E86C61B65748D00F120FA /* FontAwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */; };
 		E25E86C91B65D73A00F120FA /* ApplicationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C81B65D73A00F120FA /* ApplicationAssembly.swift */; };
-		E27453BE1B9E8DE00058086C /* Speech+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27453BC1B9E8DE00058086C /* Speech+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
-		E27453BF1B9E8DE00058086C /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27453BD1B9E8DE00058086C /* Speech.swift */; settings = {ASSET_TAGS = (); }; };
-		E2784A641B9C8FE30046BF0D /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2784A631B9C8FE30046BF0D /* ProfileTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E2784A671B9C97180046BF0D /* ProfileTimeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2784A661B9C97180046BF0D /* ProfileTimeRenderer.swift */; settings = {ASSET_TAGS = (); }; };
-		E284FC1C1BA3E89000ABFA68 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC1B1BA3E89000ABFA68 /* ProfileTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E284FC1F1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC1E1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E284FC211BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC201BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		E27453BE1B9E8DE00058086C /* Speech+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27453BC1B9E8DE00058086C /* Speech+CoreDataProperties.swift */; };
+		E27453BF1B9E8DE00058086C /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27453BD1B9E8DE00058086C /* Speech.swift */; };
+		E2784A641B9C8FE30046BF0D /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2784A631B9C8FE30046BF0D /* ProfileTableViewCell.swift */; };
+		E2784A671B9C97180046BF0D /* ProfileTimeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2784A661B9C97180046BF0D /* ProfileTimeRenderer.swift */; };
+		E284FC1C1BA3E89000ABFA68 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC1B1BA3E89000ABFA68 /* ProfileTableViewController.swift */; };
+		E284FC1F1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC1E1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift */; };
+		E284FC211BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC201BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift */; };
 		E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
 		E2929A891B3CCE6E007030D4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
 		E2929A8A1B3CCE71007030D4 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
@@ -82,7 +82,7 @@
 		E2E8DD5D1B6DD021003D3F7C /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
 		E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
 		E2F6B5F21B378F2600210504 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
-		E2FF3C971B98100F0083CC4F /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2FF3C961B98100F0083CC4F /* Acknowledgements.plist */; settings = {ASSET_TAGS = (); }; };
+		E2FF3C971B98100F0083CC4F /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2FF3C961B98100F0083CC4F /* Acknowledgements.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
