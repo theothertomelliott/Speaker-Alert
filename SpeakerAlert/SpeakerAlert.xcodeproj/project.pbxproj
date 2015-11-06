@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B8E21BF70E82BF41BC4BBC79 /* Pods_SpeakerAlertTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C1174FD04EBE60B6AA870B /* Pods_SpeakerAlertTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		D2C50F50FDE26C573823F396 /* Pods_SpeakerAlert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		B8E21BF70E82BF41BC4BBC79 /* Pods_SpeakerAlertTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C1174FD04EBE60B6AA870B /* Pods_SpeakerAlertTests.framework */; };
+		D2C50F50FDE26C573823F396 /* Pods_SpeakerAlert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */; };
 		E20A8E961B816E6400ECC443 /* SpeechStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A8E951B816E6400ECC443 /* SpeechStateTests.swift */; };
 		E20A8E981B81766000ECC443 /* SpeechProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A8E971B81766000ECC443 /* SpeechProfile.swift */; };
 		E20A8E9A1B817E7500ECC443 /* SpeechProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A8E991B817E7500ECC443 /* SpeechProfileFactory.swift */; };
