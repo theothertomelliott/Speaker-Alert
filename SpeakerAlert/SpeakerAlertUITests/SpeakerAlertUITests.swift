@@ -30,6 +30,14 @@ class SpeakerAlertUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // Failed to find matching element please file bug (bugreport.apple.com) and provide output from Console.app
+        
+        let app = XCUIApplication()
+        app.launchArguments = ["isUITesting"]
+        app.launch()
+        app.tables.staticTexts["Five Minutes"].tap()
+        app.navigationBars["Five Minutes"].buttons["Profiles"].tap()
+        
     }
     
 }

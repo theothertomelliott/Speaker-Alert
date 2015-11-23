@@ -22,9 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: (NSSet(array: ["MyCategory"])) as? Set<UIUserNotificationCategory>))
         
-        // Configure core data
-        MagicalRecord.setupCoreDataStack()
-        
+        if NSProcessInfo.processInfo().arguments.contains("isUITesting") {
+            NSLog("UI Testing!")
+            MagicalRecord.setupCoreDataStackWithInMemoryStore()
+        } else {
+            // Configure core data
+            MagicalRecord.setupCoreDataStack()
+        }
         return true
     }
 
