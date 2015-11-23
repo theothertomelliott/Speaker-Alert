@@ -19,7 +19,9 @@ class SpeakerAlertUITests: XCTestCase {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
+        let app = XCUIApplication()
+        app.launchArguments = ["isUITesting"]
+        app.launch()
     }
     
     override func tearDown() {
@@ -27,16 +29,35 @@ class SpeakerAlertUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Failed to find matching element please file bug (bugreport.apple.com) and provide output from Console.app
+    func testAddProfile(){
         
+    }
+    
+    func testLoadProfileAndReturn() {
         let app = XCUIApplication()
-        app.launchArguments = ["isUITesting"]
-        app.launch()
+
+        // Wait until the defaults are loaded
+        let label = app.staticTexts["Five Minutes"]
+        let exists = NSPredicate(format: "exists == 1")
+        
+        expectationForPredicate(exists, evaluatedWithObject: label, handler: nil)
+        waitForExpectationsWithTimeout(5, handler: nil)
+        
+        XCTAssertEqual(app.tables.cells.count, 6);
+        
         app.tables.staticTexts["Five Minutes"].tap()
         app.navigationBars["Five Minutes"].buttons["Profiles"].tap()
+        
+        XCTAssertEqual(app.tables.cells.count, 6);
+    }
+
+    func testLoadAboutScreen() {
+        let app = XCUIApplication()
+        let tabBarsQuery = app.tabBars
+        tabBarsQuery.buttons["Settings"].tap()
+        app.tables.staticTexts["About Speaker Alert"].tap()
+        app.navigationBars["About"].buttons["Settings"].tap()
+        tabBarsQuery.buttons["Speech"].tap()
         
     }
     
