@@ -26,7 +26,7 @@ class GroupTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addItem:")
-        self.navigationItem.rightBarButtonItems = [addButton]
+        self.navigationItem.rightBarButtonItems = [addButton, self.editButtonItem()]
         
     }
     
