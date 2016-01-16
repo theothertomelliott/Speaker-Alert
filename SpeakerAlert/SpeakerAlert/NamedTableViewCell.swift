@@ -10,6 +10,6 @@ import UIKit
 
 class NamedTableViewCell: UITableViewCell {
 
-    @IBOutlet var nameLabel : UILabel?
-    
+    @IBOutlet var nameLabel: UILabel?
+
 }

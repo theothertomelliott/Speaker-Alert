@@ -11,8 +11,8 @@ import Colours
 
 public class AppColorManager: NSObject {
 
-    private var _baseColor : UIColor?
-    var baseColor : UIColor? {
+    private var _baseColor: UIColor?
+    var baseColor: UIColor? {
         get {
             return _baseColor
         }
@@ -21,28 +21,28 @@ public class AppColorManager: NSObject {
             self.configureColorsFrom(newColor!)
         }
     }
-    
-    public func configureColorsFrom(var baseColor: UIColor){
-        
+
+    public func configureColorsFrom(var baseColor: UIColor) {
+
         baseColor = baseColor.darken(0.1)
-        
+
         let colors = baseColor.colorSchemeOfType(ColorScheme.Monochromatic)
-        
+
         // Tab bar background
         UITabBar.appearance().barTintColor = baseColor
         // Selected image color
         UITabBar.appearance().tintColor = baseColor.blackOrWhiteContrastingColor()
-        
+
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: colors[2]], forState: UIControlState.Normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: baseColor.blackOrWhiteContrastingColor()], forState: UIControlState.Selected)
-        
+
         UINavigationBar.appearance().tintColor = colors[1] as? UIColor
         UINavigationBar.appearance().barTintColor = baseColor
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().titleTextAttributes = [
             NSForegroundColorAttributeName: baseColor.blackOrWhiteContrastingColor()
         ]
-        
+
     }
-    
+
 }

@@ -10,26 +10,26 @@ import UIKit
 
 class LoadingViewController: UIViewController {
 
-    var dataSeeder : DataSeeder?
-    
+    var dataSeeder: DataSeeder?
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         // Add seed data
         dataSeeder?.seedAsRequired()
-        
+
         self.performSegueWithIdentifier("showMain", sender: self)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 
     /*
     // MARK: - Navigation

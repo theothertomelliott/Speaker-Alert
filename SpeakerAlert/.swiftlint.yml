@@ -1,0 +1,6 @@
+disabled_rules: # rule identifiers to exclude from running
+  - trailing_whitespace
+  - line_length
+  - variable_name
+  - type_name
+  - force_cast

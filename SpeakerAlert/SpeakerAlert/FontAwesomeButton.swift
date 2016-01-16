@@ -19,60 +19,60 @@ class FontAwesomeButton: UIButton {
         // Drawing code
     }
     */
-    
-    @IBInspectable var IconName : String = "Play" {
+
+    @IBInspectable var IconName: String = "Play" {
         didSet {
             self._setup()
         }
     }
-    
-    @IBInspectable var IconSize : CGFloat = 20.0 {
+
+    @IBInspectable var IconSize: CGFloat = 20.0 {
         didSet {
             self._setup()
         }
     }
-    
-    @IBInspectable var AdditionalText : String = "" {
+
+    @IBInspectable var AdditionalText: String = "" {
         didSet {
             self._setup()
         }
     }
-    
+
     #if !TARGET_INTERFACE_BUILDER
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self._setup()
     }
     #endif
-    
+
     override func prepareForInterfaceBuilder() {
         self._setup()
     }
-    
+
     private func getFullString(icon: FontAwesome, additional: String) -> String {
         return String.fontAwesomeIconWithName(icon) +
             ( additional.characters.count > 0 ? (" " + additional) : "" )
     }
-    
-    private func setFontAwesome(icon: FontAwesome){
-        
-        let str : String = getFullString(icon, additional: AdditionalText)
-        
+
+    private func setFontAwesome(icon: FontAwesome) {
+
+        let str: String = getFullString(icon, additional: AdditionalText)
+
         setTitle(str, forState: UIControlState.Disabled)
         setTitle(str, forState: UIControlState.Highlighted)
         setTitle(str, forState: UIControlState.Normal)
         setTitle(str, forState: UIControlState.Selected)
     }
-    
-    private func _setup(){
-        
+
+    private func _setup() {
+
         self.titleLabel!.font = UIFont.fontAwesomeOfSize(IconSize)
-        
-        if let icon : FontAwesome = FontAwesomeFactory.fetchFontAwesome(IconName)! {
+
+        if let icon: FontAwesome = FontAwesomeFactory.fetchFontAwesome(IconName)! {
             setFontAwesome(icon)
         } else {
            setFontAwesome(FontAwesome.Warning)
         }
     }
-    
+
 }

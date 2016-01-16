@@ -13,30 +13,30 @@ import Foundation
 */
 class SpeechState {
 
-    var running : SpeechRunning
-    var profile : SpeechProfile
-    var phase : SpeechPhase {
+    var running: SpeechRunning
+    var profile: SpeechProfile
+    var phase: SpeechPhase {
         get {
-            var phase : SpeechPhase = SpeechPhase.BELOW_MINIMUM
-            if(elapsed >= profile.green){
+            var phase: SpeechPhase = SpeechPhase.BELOW_MINIMUM
+            if(elapsed >= profile.green) {
                 phase = SpeechPhase.GREEN
             }
-            if(elapsed >= profile.yellow){
+            if(elapsed >= profile.yellow) {
                 phase = SpeechPhase.YELLOW
             }
-            if(elapsed >= profile.red){
+            if(elapsed >= profile.red) {
                 phase = SpeechPhase.RED
             }
-            if(elapsed >= profile.redBlink){
+            if(elapsed >= profile.redBlink) {
                 phase = SpeechPhase.OVER_MAXIMUM
             }
             return phase
         }
     }
-    
+
 
     func timeUntil(phase: SpeechPhase) -> NSTimeInterval {
-        var targetElapsed : NSTimeInterval = 0
+        var targetElapsed: NSTimeInterval = 0
         switch phase {
         case SpeechPhase.GREEN:
             targetElapsed = self.profile.green
@@ -49,35 +49,35 @@ class SpeechState {
         default:
             targetElapsed = 0
         }
-        let e : NSTimeInterval = elapsed
+        let e: NSTimeInterval = elapsed
         return targetElapsed - e
     }
-    
-    
-    var elapsed : NSTimeInterval {
+
+
+    var elapsed: NSTimeInterval {
         get {
-            if let s : NSDate = startTime {
+            if let s: NSDate = startTime {
                 return pauseInterval + NSDate().timeIntervalSinceDate(s)
             } else {
                 return pauseInterval
             }
         }
     }
-    
+
     //
-    var startTime : NSDate?
-    var pauseInterval : NSTimeInterval
-    
-    init(profile: SpeechProfile){
+    var startTime: NSDate?
+    var pauseInterval: NSTimeInterval
+
+    init(profile: SpeechProfile) {
         self.profile = profile
         running = SpeechRunning.STOPPED
         pauseInterval = 0
     }
-    
-    init(profile: SpeechProfile, running: SpeechRunning, startTime : NSDate?, pauseInterval : NSTimeInterval?){
+
+    init(profile: SpeechProfile, running: SpeechRunning, startTime: NSDate?, pauseInterval: NSTimeInterval?) {
         self.profile = profile
         self.running = running
-        if(running == SpeechRunning.RUNNING){
+        if(running == SpeechRunning.RUNNING) {
             self.startTime = startTime
         } else {
             self.startTime = nil
@@ -88,37 +88,37 @@ class SpeechState {
             self.pauseInterval = 0
         }
     }
-    
-    static func fromDictionary(dict : [String : AnyObject]) -> SpeechState? {
-        
-        if let profileDict : [String : AnyObject] = dict["profile"] as? [String : AnyObject] {
-           
-            let r : Int = dict["running"] as! Int
-            
-            var running : SpeechRunning = SpeechRunning.STOPPED
-            if(r == SpeechRunning.PAUSED.hashValue){
+
+    static func fromDictionary(dict: [String : AnyObject]) -> SpeechState? {
+
+        if let profileDict: [String : AnyObject] = dict["profile"] as? [String : AnyObject] {
+
+            let r: Int = dict["running"] as! Int
+
+            var running: SpeechRunning = SpeechRunning.STOPPED
+            if(r == SpeechRunning.PAUSED.hashValue) {
                 running = SpeechRunning.PAUSED
             }
-            if(r == SpeechRunning.RUNNING.hashValue){
+            if(r == SpeechRunning.RUNNING.hashValue) {
                 running = SpeechRunning.RUNNING
             }
-            
+
             // Parse profile from dictionary
-            let green : NSTimeInterval = (profileDict["green"] as? NSTimeInterval)!
-            let yellow : NSTimeInterval  = (profileDict["yellow"] as? NSTimeInterval)!
-            let red : NSTimeInterval  = (profileDict["red"] as? NSTimeInterval)!
-            let redBlink : NSTimeInterval = (profileDict["redBlink"] as? NSTimeInterval)!
-            
-            let profile : SpeechProfile = SpeechProfile(green: green, yellow: yellow, red: red, redBlink: redBlink)
+            let green: NSTimeInterval = (profileDict["green"] as? NSTimeInterval)!
+            let yellow: NSTimeInterval  = (profileDict["yellow"] as? NSTimeInterval)!
+            let red: NSTimeInterval  = (profileDict["red"] as? NSTimeInterval)!
+            let redBlink: NSTimeInterval = (profileDict["redBlink"] as? NSTimeInterval)!
+
+            let profile: SpeechProfile = SpeechProfile(green: green, yellow: yellow, red: red, redBlink: redBlink)
             return SpeechState(profile: profile, running: running, startTime: dict["startTime"] as? NSDate, pauseInterval: dict["pauseInterval"] as? NSTimeInterval)
-            
+
         }
-        
+
         return nil
     }
-    
+
     func toDictionary() -> [String : AnyObject] {
-        var dict : [String : AnyObject] = [
+        var dict: [String : AnyObject] = [
             "profile" : [
                 "green" : profile.green,
                 "yellow" : profile.yellow,
@@ -129,10 +129,10 @@ class SpeechState {
             "pauseInterval" : self.pauseInterval
         ]
 
-        if let s : NSDate = self.startTime {
+        if let s: NSDate = self.startTime {
             dict["startTime"] = s
         }
-        
+
         return dict
     }
 
@@ -150,10 +150,10 @@ enum SpeechPhase {
     case YELLOW
     case RED
     case OVER_MAXIMUM // Speaker has gone significantly over time
-    
+
     static var allCases: [SpeechPhase] = [.BELOW_MINIMUM, .GREEN, .YELLOW, .RED, .OVER_MAXIMUM]
-    
-    static var name : [SpeechPhase : String] = [
+
+    static var name: [SpeechPhase : String] = [
         .BELOW_MINIMUM : "Below Minimum Time",
         .GREEN : "Green",
         .YELLOW : "Yellow",

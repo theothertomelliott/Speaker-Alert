@@ -10,7 +10,7 @@ import UIKit
 import Typhoon
 
 public class ApplicationAssembly: TyphoonAssembly {
-    
+
     /*
     * This is the definition for our AppDelegate. Typhoon will inject the specified properties
     * at application startup.
@@ -21,7 +21,7 @@ public class ApplicationAssembly: TyphoonAssembly {
             definition.injectProperty("localNotificationManager", with: self.localNotificationManager())
         }
     }
-    
+
     public dynamic func configurationManager() -> AnyObject {
         return TyphoonDefinition.withClass(ConfigurationManager.self) {
             (definition) in
@@ -36,32 +36,32 @@ public class ApplicationAssembly: TyphoonAssembly {
             definition.injectProperty("baseColor", with: UIColor(red: 160/255, green: 213/255, blue: 227/255, alpha: 1.0))
         }
     }
-    
+
     public dynamic func dataSeeder() -> AnyObject {
         return TyphoonDefinition.withClass(DataSeeder.self) {
             (definition) in
             definition.scope = TyphoonScope.Singleton
         }
     }
-    
+
     public dynamic func speechManager() -> AnyObject {
         return TyphoonDefinition.withClass(SpeechManager.self) {
             (definition) in
             definition.scope = TyphoonScope.Singleton
         }
     }
-    
+
     public dynamic func localNotificationManager() -> AnyObject {
-        return TyphoonDefinition.withClass(LocalNotificationManager.self){
+        return TyphoonDefinition.withClass(LocalNotificationManager.self) {
             (definition) in
             definition.scope = TyphoonScope.Singleton
             definition.injectProperty("speechMan", with: self.speechManager())
         }
     }
-    
+
     @available(iOS 9, *)
     public dynamic func watchCommsManager() -> AnyObject {
-        return TyphoonDefinition.withClass(WatchCommsManager.self){
+        return TyphoonDefinition.withClass(WatchCommsManager.self) {
             (definition) in
             definition.scope = TyphoonScope.Singleton
             definition.injectProperty("configMan", with: self.configurationManager())
@@ -69,7 +69,7 @@ public class ApplicationAssembly: TyphoonAssembly {
             definition.injectMethod("activate", parameters: nil)
         }
     }
-    
+
     public dynamic func vibrationAlertManager() -> AnyObject {
         return TyphoonDefinition.withClass(VibrationAlertManager.self) {
             (definition) in
@@ -78,23 +78,23 @@ public class ApplicationAssembly: TyphoonAssembly {
             definition.injectProperty("configMan", with: self.configurationManager())
         }
     }
-    
+
     // MARK: View Controllers
-    
+
     public dynamic func loadingViewController() -> AnyObject {
         return TyphoonDefinition.withClass(LoadingViewController.self) {
             (definition) in
             definition.injectProperty("dataSeeder", with: self.dataSeeder())
         }
     }
-    
+
     public dynamic func groupTableViewController() -> AnyObject {
         return TyphoonDefinition.withClass(GroupTableViewController.self) {
             (definition) in
             definition.injectProperty("speechMan", with: self.speechManager())
         }
     }
-    
+
     public dynamic func speechViewController() -> AnyObject {
         return TyphoonDefinition.withClass(SpeechViewController.self) {
             (definition) in
@@ -102,12 +102,12 @@ public class ApplicationAssembly: TyphoonAssembly {
             definition.injectProperty("configMan", with: self.configurationManager())
         }
     }
-    
+
     public dynamic func settingsViewController() -> AnyObject {
         return TyphoonDefinition.withClass(SettingsViewController.self) {
             (definition) in
             definition.injectProperty("configManager", with: self.configurationManager())
         }
     }
-    
+
 }

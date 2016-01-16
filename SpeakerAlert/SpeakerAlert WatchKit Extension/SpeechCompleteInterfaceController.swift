@@ -13,15 +13,15 @@ import Foundation
 class SpeechCompleteInterfaceController: WKInterfaceController {
 
     @IBOutlet var elapsedTimeLabel: WKInterfaceLabel!
-    
+
     @IBAction func okPressed() {
         self.popController()
     }
-    
+
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        
-        if let speechState : SpeechState = context as? SpeechState {
+
+        if let speechState: SpeechState = context as? SpeechState {
             elapsedTimeLabel.setText(TimeUtils.formatStopwatch(speechState.elapsed))
         }
     }

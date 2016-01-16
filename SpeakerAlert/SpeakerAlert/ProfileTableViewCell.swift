@@ -11,5 +11,5 @@ import UIKit
 class ProfileTableViewCell: NamedTableViewCell {
 
     @IBOutlet weak var profileTimesLabel: UILabel!
-    
+
 }

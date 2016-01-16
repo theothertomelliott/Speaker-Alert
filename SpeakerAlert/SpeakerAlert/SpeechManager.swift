@@ -14,66 +14,66 @@ import UIKit
 class SpeechManager: NSObject, SpeechTimerDelegate {
 
     // Speech timer
-    private var timer : SpeechTimer?;
+    private var timer: SpeechTimer?
     // Observers who receive state updates
     private var observers = [SpeechManagerDelegate]()
-    
-    override init(){
+
+    override init() {
         super.init()
     }
-    
-    var state : SpeechState? {
+
+    var state: SpeechState? {
         get {
             return timer?.state
         }
     }
-    
+
     func addSpeechObserver(observer: SpeechManagerDelegate) {
         observers.append(observer)
     }
-    
-    func removeSpeechObserver(observer: SpeechManagerDelegate){
-        var index : Int? = nil
-        for(var i : Int = 0; i < observers.count; i++){
-            let obs : NSObject = observer as! NSObject
-            let obs_i : NSObject = observers[i] as! NSObject
-            if(obs === obs_i){
-                index = i;
+
+    func removeSpeechObserver(observer: SpeechManagerDelegate) {
+        var index: Int? = nil
+        for(var i: Int = 0; i < observers.count; i++) {
+            let obs: NSObject = observer as! NSObject
+            let obs_i: NSObject = observers[i] as! NSObject
+            if(obs === obs_i) {
+                index = i
             }
         }
-        
+
         if let ix = index {
             observers.removeAtIndex(ix)
         }
     }
-    
-    private var _profile : Profile?
-    var profile : Profile? {
+
+    private var _profile: Profile?
+    var profile: Profile? {
         set(value) {
-            
+
             // Stop any currently running timers
-            if let t : SpeechTimer = timer {
+            if let t: SpeechTimer = timer {
                 t.stop()
             }
-            
+
             // Create a new timer with the appropriate profile
-            if let p : Profile = value {
+            if let p: Profile = value {
                 timer = SpeechTimer(withProfile: p)
                 timer?.delegate = self
             } else {
                 timer = nil
             }
-            
+
             _profile = value
         }
-        
+
         get {
-            return _profile;
+            return _profile
         }
     }
-    
+
     // MARK: SpeechTimerDelegate
-    
+
     func phaseChanged(state: SpeechState, timer: SpeechTimer) {
         NSLog("Speech timer state changed: \(state)")
         for observer in observers {
@@ -81,35 +81,35 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         }
     }
 
-    func runningChanged(state: SpeechState, timer: SpeechTimer){
+    func runningChanged(state: SpeechState, timer: SpeechTimer) {
         for observer in observers {
             observer.runningChanged(state, timer: timer)
         }
     }
-    
-    func speechComplete(state: SpeechState, timer: SpeechTimer){
+
+    func speechComplete(state: SpeechState, timer: SpeechTimer) {
         for observer in observers {
             observer.speechComplete(state, timer: timer)
         }
     }
-    
+
     // MARK: Timer lifecycle methods
-    
-    func start(){
+
+    func start() {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.timer?.start()
         })
     }
-    
-    func stop(){
+
+    func stop() {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.speechComplete(self.state!, timer: self.timer!)
             self.timer?.stop()
             self.timer = nil
         })
     }
-    
-    func pause(){
+
+    func pause() {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.timer?.pause()
         })
@@ -118,9 +118,9 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
 }
 
 protocol SpeechManagerDelegate {
-    
+
     func phaseChanged(state: SpeechState, timer: SpeechTimer)
     func runningChanged(state: SpeechState, timer: SpeechTimer)
     func speechComplete(state: SpeechState, timer: SpeechTimer)
-    
+
 }

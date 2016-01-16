@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileNameTableViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var profileName: UITextField!
 
     override func awakeFromNib() {

@@ -10,18 +10,18 @@ import Foundation
 
 class ConfigurationManager: NSObject {
 
-    var defaults : NSUserDefaults
-    
+    var defaults: NSUserDefaults
+
     override init() {
         defaults = NSUserDefaults.standardUserDefaults()
     }
-    
-    init(defaults: NSUserDefaults){
+
+    init(defaults: NSUserDefaults) {
         self.defaults = defaults
     }
 
     let autoStartKey = "autoStartEnabled"
-    var isAutoStartEnabled : Bool {
+    var isAutoStartEnabled: Bool {
         get {
             if let _ = defaults.objectForKey(autoStartKey) {
                 return defaults.boolForKey(autoStartKey)
@@ -33,9 +33,9 @@ class ConfigurationManager: NSObject {
            defaults.setBool(newValue, forKey: autoStartKey)
         }
     }
-    
+
     let displayTimeKey = "displayTimeByDefault"
-    var isDisplayTime : Bool {
+    var isDisplayTime: Bool {
         get {
             if let _ = defaults.objectForKey(displayTimeKey) {
                 return defaults.boolForKey(displayTimeKey)
@@ -46,9 +46,9 @@ class ConfigurationManager: NSObject {
             defaults.setBool(newValue, forKey: displayTimeKey)
         }
     }
-    
+
     let vibrationEnabledKey = "vibrationEnabled"
-    var isVibrationEnabled : Bool {
+    var isVibrationEnabled: Bool {
         get {
             if let _ = defaults.objectForKey(vibrationEnabledKey) {
                 return defaults.boolForKey(vibrationEnabledKey)
@@ -59,5 +59,5 @@ class ConfigurationManager: NSObject {
             defaults.setBool(newValue, forKey: vibrationEnabledKey)
         }
     }
-    
+
 }

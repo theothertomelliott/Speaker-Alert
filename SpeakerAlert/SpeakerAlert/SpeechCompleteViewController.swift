@@ -9,9 +9,9 @@
 import UIKit
 
 class SpeechCompleteViewController: UIViewController {
-    
-    var timeElapsed : NSTimeInterval?
-    
+
+    var timeElapsed: NSTimeInterval?
+
     @IBOutlet weak var timeElapsedLabel: UILabel!
 
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class SpeechCompleteViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @IBAction func okButtonPressed(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }

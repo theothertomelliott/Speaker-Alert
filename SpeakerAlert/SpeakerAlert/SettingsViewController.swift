@@ -12,12 +12,12 @@ import RFAboutView
 class SettingsViewController: UITableViewController {
 
     let APP_ID = "488585337"
-    
-    var configManager : ConfigurationManager?
+
+    var configManager: ConfigurationManager?
     @IBOutlet weak var autoStartSwitch: UISwitch!
     @IBOutlet weak var displayTimeSwitch: UISwitch!
     @IBOutlet weak var vibrationSwitch: UISwitch!
-    
+
     override func viewWillAppear(animated: Bool) {
         if let cm = configManager {
             autoStartSwitch.setOn(cm.isAutoStartEnabled, animated: false)
@@ -25,23 +25,23 @@ class SettingsViewController: UITableViewController {
             vibrationSwitch.setOn(cm.isVibrationEnabled, animated: false)
         }
     }
-    
+
     @IBAction func autoStartChanged(sender: AnyObject) {
         configManager?.isAutoStartEnabled = (sender as! UISwitch).on
     }
-    
+
     @IBAction func displayTimeChanged(sender: AnyObject) {
         configManager?.isDisplayTime = (sender as! UISwitch).on
     }
-    
+
     @IBAction func vibrationChanged(sender: AnyObject) {
         configManager?.isVibrationEnabled = (sender as! UISwitch).on
     }
 
     override func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
-        
+
         tableView.cellForRowAtIndexPath(indexPath)?.selectionStyle = UITableViewCellSelectionStyle.None
-        
+
         if indexPath.section == 1 && indexPath.row == 0 {
             self.showAbout()
         } else if indexPath.section == 1 && indexPath.row == 1 {
@@ -49,29 +49,29 @@ class SettingsViewController: UITableViewController {
         } else {
         }
     }
-    
-    func rateApp(){
-        UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(APP_ID)&onlyLatestVersion=true&pageNumber=0&sortOrdering=1)")!);
+
+    func rateApp() {
+        UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(APP_ID)&onlyLatestVersion=true&pageNumber=0&sortOrdering=1)")!)
     }
-    
-    func showAbout(){
-        let aboutView : RFAboutViewController = RFAboutViewController(appName: "Speaker Alert", appVersion: nil, appBuild: nil, copyrightHolderName: "Tom Elliott", contactEmail: "tom.w.elliott@gmail.com", titleForEmail: "Tom Elliott", websiteURL: NSURL(string: "http://telliott.io"), titleForWebsiteURL: "telliott.io", andPublicationYear: nil)
+
+    func showAbout() {
+        let aboutView: RFAboutViewController = RFAboutViewController(appName: "Speaker Alert", appVersion: nil, appBuild: nil, copyrightHolderName: "Tom Elliott", contactEmail: "tom.w.elliott@gmail.com", titleForEmail: "Tom Elliott", websiteURL: NSURL(string: "http://telliott.io"), titleForWebsiteURL: "telliott.io", andPublicationYear: nil)
         aboutView.navigationBarBarTintColor = UINavigationBar.appearance().barTintColor
         aboutView.navigationBarTintColor = UINavigationBar.appearance().tintColor
         aboutView.blurStyle = .Dark
         aboutView.headerBackgroundImage = UIImage(named: "Icon1024")
-        
+
         self.navigationController?.pushViewController(aboutView, animated: true)
     }
-    
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "demoSegue" {
-            if let speechVC : SpeechViewController = segue.destinationViewController as? SpeechViewController {
+            if let speechVC: SpeechViewController = segue.destinationViewController as? SpeechViewController {
                 speechVC.demoMode = true
             }
         }
     }
-    
+
 }

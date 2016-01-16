@@ -12,40 +12,40 @@ class ProfileTimeSelectorViewController: UIViewController, UIPickerViewDelegate,
 
     // TODO: Accept a phase identifier to modify
 
-    var profile : Profile? {
+    var profile: Profile? {
         didSet {
         }
     }
-    var phase : SpeechPhase?
-    
-    @IBOutlet var picker : UIPickerView?
+    var phase: SpeechPhase?
+
+    @IBOutlet var picker: UIPickerView?
     @IBOutlet weak var colorNameLabel: UILabel!
-    
-    var colorName : String?
-    
+
+    var colorName: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         colorNameLabel.text = colorName
         picker?.selectRow(12*50, inComponent: 0, animated: false)
         picker?.selectRow(60*50, inComponent: 1, animated: false)
         picker?.selectRow(60*50, inComponent: 2, animated: false)
-        
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func save(){
+
+    @IBAction func save() {
         // TODO: Update the profile
     }
-    
+
     @IBAction func dismiss() {
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -59,14 +59,14 @@ class ProfileTimeSelectorViewController: UIViewController, UIPickerViewDelegate,
         // Pass the selected object to the new view controller.
     }
     */
-    
+
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 3
     }
-    
+
     // returns the # of rows in each component..
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if(component == 0){
+        if(component == 0) {
             return 12*100
         } else {
             return 60*100
@@ -74,7 +74,7 @@ class ProfileTimeSelectorViewController: UIViewController, UIPickerViewDelegate,
     }
 
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if(component == 0){
+        if(component == 0) {
             return "\(row%12)"
         } else {
             return "\(row%60)"

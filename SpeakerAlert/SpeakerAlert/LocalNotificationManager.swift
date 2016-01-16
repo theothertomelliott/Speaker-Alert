@@ -10,34 +10,34 @@ import Foundation
 
 class LocalNotificationManager: NSObject, SpeechManagerDelegate {
 
-    var speechMan : SpeechManager? {
+    var speechMan: SpeechManager? {
         didSet {
             speechMan?.addSpeechObserver(self)
         }
     }
-    
-    func phaseChanged(state: SpeechState, timer: SpeechTimer){
+
+    func phaseChanged(state: SpeechState, timer: SpeechTimer) {
         // Nothing to do
     }
-    
-    func runningChanged(state: SpeechState, timer: SpeechTimer){
+
+    func runningChanged(state: SpeechState, timer: SpeechTimer) {
     }
-    
+
     func speechComplete(state: SpeechState, timer: SpeechTimer) {
         // Kill all notifications if a speech has been stopped
         UIApplication.sharedApplication().cancelAllLocalNotifications()
     }
-    
-    private func setNotificationForPhase(phase : SpeechPhase){
-        
+
+    private func setNotificationForPhase(phase: SpeechPhase) {
+
         if speechMan == nil || speechMan!.state == nil || speechMan?.state?.timeUntil(phase) < 0 {
             return
         }
 
-        let state : SpeechState = speechMan!.state!
-        
-        let phaseName : String = SpeechPhase.name[phase]!
-        
+        let state: SpeechState = speechMan!.state!
+
+        let phaseName: String = SpeechPhase.name[phase]!
+
         // create a corresponding local notification
         let notification = UILocalNotification()
         notification.alertBody = "Time Alert: \(phaseName)"
@@ -46,23 +46,23 @@ class LocalNotificationManager: NSObject, SpeechManagerDelegate {
         notification.soundName = UILocalNotificationDefaultSoundName // play default sound
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
-    
-    private func setNotifications(){
+
+    private func setNotifications() {
         if speechMan?.state?.running == SpeechRunning.RUNNING {
-            for s : SpeechPhase in SpeechPhase.allCases {
+            for s: SpeechPhase in SpeechPhase.allCases {
                 setNotificationForPhase(s)
             }
         }
     }
-    
-    func enteredBackground(){
+
+    func enteredBackground() {
         NSLog("Entered background")
         setNotifications()
     }
-    
-    func leftBackground(){
+
+    func leftBackground() {
         NSLog("Left background")
         UIApplication.sharedApplication().cancelAllLocalNotifications()
     }
-    
+
 }

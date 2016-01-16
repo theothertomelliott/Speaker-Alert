@@ -13,38 +13,38 @@ import FontAwesome_swift
 class FontAwesomeImageView: UIImageView {
 
     override func layoutSubviews() {
-        self._setup();
+        self._setup()
         super.layoutSubviews()
     }
-    
-    @IBInspectable var IconName : String = "Stop" {
+
+    @IBInspectable var IconName: String = "Stop" {
         didSet {
             self._setup()
         }
     }
 
-    @IBInspectable var IconColor : UIColor = UIColor.blackColor() {
+    @IBInspectable var IconColor: UIColor = UIColor.blackColor() {
         didSet {
             self.tintColor = IconColor
             self._setup()
         }
     }
-    
+
     override func prepareForInterfaceBuilder() {
         self._setup()
     }
-    
-    private func setFontAwesome(icon: FontAwesome){
+
+    private func setFontAwesome(icon: FontAwesome) {
         self.image = UIImage.fontAwesomeIconWithName(icon, textColor: self.IconColor, size: self.frame.size)
     }
-    
-    private func _setup(){
-        if let icon : FontAwesome = FontAwesomeFactory.fetchFontAwesome(IconName)! {
+
+    private func _setup() {
+        if let icon: FontAwesome = FontAwesomeFactory.fetchFontAwesome(IconName)! {
             setFontAwesome(icon)
         } else {
             setFontAwesome(FontAwesome.Warning)
         }
     }
 
-    
+
 }

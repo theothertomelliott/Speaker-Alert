@@ -14,43 +14,43 @@ class SpeechStateTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-    
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
 
     func testItSerializesCorrectly() {
-        
-        let profile : SpeechProfile = SpeechProfile(green: 1, yellow: 2, red: 3, redBlink: 4)
-        let startTime : NSDate = NSDate()
-        let pauseInterval : NSTimeInterval = 5;
-        let state : SpeechState = SpeechState(profile: profile, running: SpeechRunning.RUNNING, startTime: startTime, pauseInterval: pauseInterval)
-        let dict : [String : AnyObject] = state.toDictionary()
-        
+
+        let profile: SpeechProfile = SpeechProfile(green: 1, yellow: 2, red: 3, redBlink: 4)
+        let startTime: NSDate = NSDate()
+        let pauseInterval: NSTimeInterval = 5
+        let state: SpeechState = SpeechState(profile: profile, running: SpeechRunning.RUNNING, startTime: startTime, pauseInterval: pauseInterval)
+        let dict: [String : AnyObject] = state.toDictionary()
+
         XCTAssert(dict["pauseInterval"] as! NSTimeInterval == 5)
-        
-        if let profileRetrieved : [String : AnyObject] = dict["profile"] as? [String : AnyObject] {
-            XCTAssert(profileRetrieved["green"] as? Int == 1);
-            XCTAssert(profileRetrieved["yellow"] as? Int == 2);
-            XCTAssert(profileRetrieved["red"] as? Int == 3);
-            XCTAssert(profileRetrieved["redBlink"] as? Int == 4);
+
+        if let profileRetrieved: [String : AnyObject] = dict["profile"] as? [String : AnyObject] {
+            XCTAssert(profileRetrieved["green"] as? Int == 1)
+            XCTAssert(profileRetrieved["yellow"] as? Int == 2)
+            XCTAssert(profileRetrieved["red"] as? Int == 3)
+            XCTAssert(profileRetrieved["redBlink"] as? Int == 4)
         } else {
             XCTFail("No profile obtained")
         }
-        
+
     }
-    
+
     func testItDeserializesCorrectly() {
-        
-        let profile : SpeechProfile = SpeechProfile(green: 1, yellow: 2, red: 3, redBlink: 4)
-        let startTime : NSDate = NSDate()
-        let pauseInterval : NSTimeInterval = 5;
-let state : SpeechState = SpeechState(profile: profile, running: SpeechRunning.RUNNING, startTime: startTime, pauseInterval: pauseInterval)
-        let dict : [String : AnyObject] = state.toDictionary()
-        
-        let stateRetrieved : SpeechState = SpeechState.fromDictionary(dict)!
-        
+
+        let profile: SpeechProfile = SpeechProfile(green: 1, yellow: 2, red: 3, redBlink: 4)
+        let startTime: NSDate = NSDate()
+        let pauseInterval: NSTimeInterval = 5
+let state: SpeechState = SpeechState(profile: profile, running: SpeechRunning.RUNNING, startTime: startTime, pauseInterval: pauseInterval)
+        let dict: [String : AnyObject] = state.toDictionary()
+
+        let stateRetrieved: SpeechState = SpeechState.fromDictionary(dict)!
+
         XCTAssert(stateRetrieved.profile.green == 1)
         XCTAssert(stateRetrieved.profile.yellow == 2)
         XCTAssert(stateRetrieved.profile.red == 3)
@@ -58,7 +58,7 @@ let state : SpeechState = SpeechState(profile: profile, running: SpeechRunning.R
         XCTAssert(stateRetrieved.pauseInterval == 5)
         XCTAssert(stateRetrieved.phase == SpeechPhase.OVER_MAXIMUM)
         XCTAssert(stateRetrieved.running == SpeechRunning.RUNNING)
-        
+
     }
 
 }

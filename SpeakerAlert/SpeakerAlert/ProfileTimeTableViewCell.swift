@@ -13,16 +13,16 @@ import Colours
 class ProfileTimeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var colorNameLabel: UILabel!
-    @IBOutlet weak var timeLabel : UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var timeSlider: UISlider!
     @IBOutlet weak var timeIntervalField: TWETimeIntervalField!
-    
-    private var profileUpdateReceiver : ProfileTableViewController?
-    private var phase : SpeechPhase?
-    private var previousPhase : SpeechPhase?
-    private var nextPhase : SpeechPhase?
-    
-    func updateValue(value : NSTimeInterval){
+
+    private var profileUpdateReceiver: ProfileTableViewController?
+    private var phase: SpeechPhase?
+    private var previousPhase: SpeechPhase?
+    private var nextPhase: SpeechPhase?
+
+    func updateValue(value: NSTimeInterval) {
         if let phase = self.phase {
             self.profileUpdateReceiver?.phaseTimes[phase] = value
         }
@@ -30,16 +30,16 @@ class ProfileTimeTableViewCell: UITableViewCell {
         self.updateValues()
         self.profileUpdateReceiver?.phaseUpdated()
     }
-    
+
     @IBAction func sliderUpdated(sender: AnyObject) {
         self.updateValue(NSTimeInterval(self.timeSlider.value))
     }
-    
+
     @IBAction func timeIntervalFieldUpdated(sender: AnyObject) {
         self.updateValue(self.timeIntervalField.timeInterval)
     }
-    
-    func validateValues(){
+
+    func validateValues() {
         if let phase = self.phase, let receiver = self.profileUpdateReceiver {
             let phaseValue = receiver.phaseTimes[phase]
             if let nextPhase = self.nextPhase where receiver.phaseTimes[nextPhase] < phaseValue {
@@ -50,13 +50,13 @@ class ProfileTimeTableViewCell: UITableViewCell {
             }
         }
     }
-    
-    func setProfileUpdateReceiver(profileUpdateReceiver : ProfileTableViewController, phase : SpeechPhase, nextPhase : SpeechPhase?, previousPhase : SpeechPhase?){
+
+    func setProfileUpdateReceiver(profileUpdateReceiver: ProfileTableViewController, phase: SpeechPhase, nextPhase: SpeechPhase?, previousPhase: SpeechPhase?) {
         self.profileUpdateReceiver = profileUpdateReceiver
         self.phase = phase
         self.nextPhase = nextPhase
         self.previousPhase = previousPhase
-        
+
         switch (phase) {
         case .GREEN:
             colorNameLabel.text = "Green"
@@ -74,11 +74,11 @@ class ProfileTimeTableViewCell: UITableViewCell {
             colorNameLabel.text = "Unknown Phase"
         }
         timeSlider?.minimumTrackTintColor = timeSlider.maximumTrackTintColor
-        
+
         self.updateValues()
     }
-    
-    func updateValues(){
+
+    func updateValues() {
         if let phase = self.phase {
             if let max = self.profileUpdateReceiver?.phaseTimes[SpeechPhase.OVER_MAXIMUM] where timeSlider?.maximumValue < Float(max * 1.1) {
                 timeSlider?.maximumValue = Float(max * 1.1)
@@ -89,9 +89,9 @@ class ProfileTimeTableViewCell: UITableViewCell {
                 timeSlider?.value = Float(interval)
             }
         }
-        
+
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

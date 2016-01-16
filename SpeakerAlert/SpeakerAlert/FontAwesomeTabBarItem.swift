@@ -12,38 +12,37 @@ import FontAwesome_swift
 @IBDesignable
 class FontAwesomeTabBarItem: UITabBarItem {
 
-    private var faIcon : FontAwesome?
-    
-    @IBInspectable var IconName : String = "Warning" {
+    private var faIcon: FontAwesome?
+
+    @IBInspectable var IconName: String = "Warning" {
         didSet {
             self._setup()
         }
     }
-    
+
     override func prepareForInterfaceBuilder() {
         self._setup()
     }
-    
-    private func setFontAwesome(icon: FontAwesome){
-        
-        let selectedImg : UIImage = UIImage.fontAwesomeIconWithName(icon, textColor: UIColor.whiteColor(), size: CGSizeMake(20,20))
+
+    private func setFontAwesome(icon: FontAwesome) {
+
+        let selectedImg: UIImage = UIImage.fontAwesomeIconWithName(icon, textColor: UIColor.whiteColor(), size: CGSize(width: 20, height: 20))
         self.selectedImage = selectedImg.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         self.image = selectedImg.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
 
-        let attrs = UITabBarItem.appearance().titleTextAttributesForState(UIControlState.Normal)
-        if let color = attrs?[NSForegroundColorAttributeName] {
-            let unselectedImg : UIImage = UIImage.fontAwesomeIconWithName(icon, textColor: color as! UIColor, size: CGSizeMake(20,20))
+        var attrs = UITabBarItem.appearance().titleTextAttributesForState(UIControlState.Normal)
+        if let color = attrs?[NSForegroundColorAttributeName], let unselectedImg: UIImage = UIImage.fontAwesomeIconWithName(icon, textColor: (color as? UIColor)!, size: CGSize(width: 20, height: 20)) {
             self.image = unselectedImg.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         }
     }
-    
-    private func _setup(){
-        if let icon : FontAwesome = FontAwesomeFactory.fetchFontAwesome(IconName)! {
+
+    private func _setup() {
+        if let icon: FontAwesome = FontAwesomeFactory.fetchFontAwesome(IconName)! {
             setFontAwesome(icon)
         } else {
             setFontAwesome(FontAwesome.Warning)
         }
     }
 
-    
+
 }

@@ -10,9 +10,9 @@ import UIKit
 import MagicalRecord
 
 class ProfileTableViewController: UITableViewController {
-    
-    var parentGroup : Group?
-    var profile : Profile? {
+
+    var parentGroup: Group?
+    var profile: Profile? {
         didSet {
             if let v = self.profile {
                 // Populate internal values
@@ -30,9 +30,9 @@ class ProfileTableViewController: UITableViewController {
             }
         }
     }
-    
-    private var nameLabel : UITextField?
-    
+
+    private var nameLabel: UITextField?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,28 +47,28 @@ class ProfileTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // TODO: Pass the color info to the time picker
-        
-        if let destination : ProfileTimeSelectorViewController = segue.destinationViewController as?ProfileTimeSelectorViewController {
+
+        if let destination: ProfileTimeSelectorViewController = segue.destinationViewController as?ProfileTimeSelectorViewController {
             destination.profile = self.profile
-            
-            if let timeCell : ProfileTimeTableViewCell = sender as? ProfileTimeTableViewCell {
+
+            if let timeCell: ProfileTimeTableViewCell = sender as? ProfileTimeTableViewCell {
                 NSLog("\(timeCell.colorNameLabel.text)")
                 destination.colorName = timeCell.colorNameLabel.text
             }
-            
+
             // TODO: Pick up current color
 
         }
     }
-    
+
     // MARK: ProfileUpdateReceiver
-    
-    var name : String?
-    var phaseTimes : [SpeechPhase : NSTimeInterval ] = [ : ]
-    
+
+    var name: String?
+    var phaseTimes: [SpeechPhase : NSTimeInterval ] = [ : ]
+
     func phaseUpdated() {
         self.tableView.reloadData()
     }
@@ -86,11 +86,11 @@ class ProfileTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let identifier = indexPath.row == 0 ? "NameCell" : "TimeCell"
-        
+
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
 
-        if let nameCell : ProfileNameTableViewCell = cell as? ProfileNameTableViewCell {
-                
+        if let nameCell: ProfileNameTableViewCell = cell as? ProfileNameTableViewCell {
+
                 // Configure the cell...
                 if indexPath.row == 0 {
                     self.nameLabel = nameCell.profileName
@@ -100,62 +100,62 @@ class ProfileTableViewController: UITableViewController {
                         nameCell.profileName.text = "New Profile"
                     }
                 }
-                
+
         }
-        
-        if let timeCell : ProfileTimeTableViewCell = cell as? ProfileTimeTableViewCell {
-        
+
+        if let timeCell: ProfileTimeTableViewCell = cell as? ProfileTimeTableViewCell {
+
                 if indexPath.row == 1 {
                     timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.GREEN, nextPhase: SpeechPhase.YELLOW, previousPhase: nil)
                 }
-                
+
                 if indexPath.row == 2 {
                     timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.YELLOW, nextPhase: SpeechPhase.RED, previousPhase: SpeechPhase.GREEN)
                 }
-                
+
                 if indexPath.row == 3 {
                     timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.RED, nextPhase: SpeechPhase.OVER_MAXIMUM, previousPhase: SpeechPhase.YELLOW)
                 }
-                
+
                 if indexPath.row == 4 {
                     timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.OVER_MAXIMUM, nextPhase: nil, previousPhase: SpeechPhase.RED)
                 }
-                
+
         }
-        
+
         return cell
     }
 
     override func viewWillDisappear(animated: Bool) {
-        MagicalRecord.saveWithBlock({ (localContext : NSManagedObjectContext!) in
+        MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) in
             // This block runs in background thread
-            
+
             if let p = self.profile {
-                let storedTiming : Profile = p.MR_inContext(localContext)
+                let storedTiming: Profile = p.MR_inContext(localContext)
                 storedTiming.green = self.phaseTimes[SpeechPhase.GREEN]
                 storedTiming.yellow = self.phaseTimes[SpeechPhase.YELLOW]
                 storedTiming.red = self.phaseTimes[SpeechPhase.RED]
                 storedTiming.redBlink = self.phaseTimes[SpeechPhase.OVER_MAXIMUM]
                 storedTiming.name = self.nameLabel?.text
             } else {
-                MagicalRecord.saveWithBlockAndWait({ (localContext : NSManagedObjectContext!) -> Void in
+                MagicalRecord.saveWithBlockAndWait({ (localContext: NSManagedObjectContext!) -> Void in
                     // This block runs in background thread
-                    
-                    let newProfile : Profile = Profile.MR_createEntityInContext(localContext)
+
+                    let newProfile: Profile = Profile.MR_createEntityInContext(localContext)
                     newProfile.name = "New Speech Profile"
                     newProfile.green = self.phaseTimes[SpeechPhase.GREEN]
                     newProfile.yellow = self.phaseTimes[SpeechPhase.YELLOW]
                     newProfile.red = self.phaseTimes[SpeechPhase.RED]
                     newProfile.redBlink = self.phaseTimes[SpeechPhase.OVER_MAXIMUM]
                     newProfile.name = self.nameLabel?.text
-                    if let pg : Group = self.parentGroup {
+                    if let pg: Group = self.parentGroup {
                         newProfile.parent = pg.MR_inContext(localContext)
                     }
                 })
             }
         })
-        
-        
+
+
     }
 
 }

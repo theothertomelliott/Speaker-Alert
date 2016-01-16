@@ -9,8 +9,10 @@
 import UIKit
 import FontAwesome_swift
 
+// swiftlint:disable type_body_length
+// swiftlint:disable file_length
 class FontAwesomeFactory: NSObject {
-    
+
     // Map strings to the FontAwesome reference
     static var fontAwesomeMapping: [String: FontAwesome] = [
         "Adjust": FontAwesome.Adjust,
@@ -606,12 +608,12 @@ class FontAwesomeFactory: NSObject {
         "Youtube": FontAwesome.Youtube,
         "YoutubePlay": FontAwesome.YoutubePlay
     ]
-    
-    static func fetchFontAwesome(faName : String) -> FontAwesome? {
-        if let out : FontAwesome = fontAwesomeMapping[faName] {
-            return out;
+
+    static func fetchFontAwesome(faName: String) -> FontAwesome? {
+        if let out: FontAwesome = fontAwesomeMapping[faName] {
+            return out
         }
-        return FontAwesome.Warning;
+        return FontAwesome.Warning
     }
 
 }
