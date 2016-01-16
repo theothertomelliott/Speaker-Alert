@@ -28,12 +28,12 @@ public class SpeechTimer: NSObject {
     */
     func start() {
 
-        if(state.running != SpeechRunning.RUNNING) {
+        if state.running != SpeechRunning.RUNNING {
             NSLog("Starting, pause interval = %g", self.state.pauseInterval)
 
             for p: SpeechPhase in SpeechPhase.allCases {
                 let timeUntil: NSTimeInterval = state.timeUntil(p)
-                if(timeUntil > 0) {
+                if timeUntil > 0 {
                     phaseTimers[p] = NSTimer.scheduledTimerWithTimeInterval(timeUntil + 0.1, target: self, selector: "phaseChange:", userInfo: nil, repeats: false)
                     phaseTimers[p]?.tolerance = 0.05
                 }
@@ -53,7 +53,7 @@ public class SpeechTimer: NSObject {
     */
     func pause() {
 
-        if(state.running == SpeechRunning.RUNNING) {
+        if state.running == SpeechRunning.RUNNING {
             self.state.pauseInterval = self.state.pauseInterval + NSDate().timeIntervalSinceDate(self.state.startTime!)
 
             NSLog("Pausing with interval %g", self.state.pauseInterval)
@@ -74,7 +74,7 @@ public class SpeechTimer: NSObject {
         When start() is next called, the timer will start from zero.
     */
     func stop() {
-        if(state.running != SpeechRunning.STOPPED) {
+        if state.running != SpeechRunning.STOPPED {
             NSLog("Stopping")
             setRunning(SpeechRunning.STOPPED)
 

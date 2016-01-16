@@ -18,16 +18,16 @@ class SpeechState {
     var phase: SpeechPhase {
         get {
             var phase: SpeechPhase = SpeechPhase.BELOW_MINIMUM
-            if(elapsed >= profile.green) {
+            if elapsed >= profile.green {
                 phase = SpeechPhase.GREEN
             }
-            if(elapsed >= profile.yellow) {
+            if elapsed >= profile.yellow {
                 phase = SpeechPhase.YELLOW
             }
-            if(elapsed >= profile.red) {
+            if elapsed >= profile.red {
                 phase = SpeechPhase.RED
             }
-            if(elapsed >= profile.redBlink) {
+            if elapsed >= profile.redBlink {
                 phase = SpeechPhase.OVER_MAXIMUM
             }
             return phase
@@ -77,7 +77,7 @@ class SpeechState {
     init(profile: SpeechProfile, running: SpeechRunning, startTime: NSDate?, pauseInterval: NSTimeInterval?) {
         self.profile = profile
         self.running = running
-        if(running == SpeechRunning.RUNNING) {
+        if running == SpeechRunning.RUNNING {
             self.startTime = startTime
         } else {
             self.startTime = nil
@@ -96,10 +96,10 @@ class SpeechState {
             let r: Int = dict["running"] as! Int
 
             var running: SpeechRunning = SpeechRunning.STOPPED
-            if(r == SpeechRunning.PAUSED.hashValue) {
+            if r == SpeechRunning.PAUSED.hashValue {
                 running = SpeechRunning.PAUSED
             }
-            if(r == SpeechRunning.RUNNING.hashValue) {
+            if r == SpeechRunning.RUNNING.hashValue {
                 running = SpeechRunning.RUNNING
             }
 

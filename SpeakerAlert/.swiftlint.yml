@@ -4,3 +4,7 @@ disabled_rules: # rule identifiers to exclude from running
   - variable_name
   - type_name
   - force_cast
+  - todo
+  - legacy_constructor
+  - function_body_length
+  - type_body_length

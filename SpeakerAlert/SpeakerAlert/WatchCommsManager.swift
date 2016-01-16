@@ -23,7 +23,7 @@ class WatchCommsManager: NSObject, WCSessionDelegate, SpeechManagerDelegate {
 
     override init() {
         if #available(iOS 9, *) {
-            if(WCSession.isSupported()) {
+            if WCSession.isSupported() {
                 NSLog("WCSession supported, initializing")
                 watchSession = WCSession.defaultSession()
             } else {

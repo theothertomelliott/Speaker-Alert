@@ -11,7 +11,7 @@ import Foundation
 import WatchConnectivity
 
 
-class InterfaceController: WKInterfaceController,WCSessionDelegate {
+class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
     var watchSession: WCSession?
     var tickTimer: NSTimer = NSTimer()
@@ -42,7 +42,7 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
         self.startStopButton.setEnabled(false)
         self.startStopButton.setBackgroundColor(UIColor.lightGrayColor())
 
-        if(WCSession.isSupported()) {
+        if WCSession.isSupported() {
             NSLog("WCSession supported, initializing")
             watchSession = WCSession.defaultSession()
             NSLog("Activating WCSession and adding delegate")
@@ -83,7 +83,7 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
 
             // Only allow pausing if the speech is currently running
 
-            if(s.running == SpeechRunning.RUNNING || s.running == SpeechRunning.PAUSED) {
+            if s.running == SpeechRunning.RUNNING || s.running == SpeechRunning.PAUSED {
                 self.startStopButton.setTitle("Stop")
                 self.startStopButton.setBackgroundColor(UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0))
                 self.startStopButton.setEnabled(true)
@@ -95,16 +95,16 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
             }
 
             var newPhaseColor = self.phaseColor
-            if(s.phase == SpeechPhase.BELOW_MINIMUM) {
+            if s.phase == SpeechPhase.BELOW_MINIMUM {
                 newPhaseColor = (UIColor.whiteColor())
             }
-            if(s.phase == SpeechPhase.GREEN) {
+            if s.phase == SpeechPhase.GREEN {
                 newPhaseColor = (UIColor(red: 83/255, green: 215/255, blue: 106/255, alpha: 1.0))
             }
-            if(s.phase == SpeechPhase.YELLOW) {
+            if s.phase == SpeechPhase.YELLOW {
                 newPhaseColor = (UIColor(red: 221/255, green: 170/255, blue: 59/255, alpha: 1.0))
             }
-            if(s.phase == SpeechPhase.RED) {
+            if s.phase == SpeechPhase.RED {
                 newPhaseColor = (UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0))
             }
             if s.phase == SpeechPhase.OVER_MAXIMUM {
@@ -120,12 +120,12 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
             }
             self.phaseColor = newPhaseColor
 
-            if(self.blinkState) {
+            if self.blinkState {
                 if Double(self.blinkCycleIndex) >= self.blinkCycle {
                     self.blinkCycleIndex = 0
                 }
                 if self.blinkCycleIndex == 0 {
-                    if(self.blinkOn) {
+                    if self.blinkOn {
                         self.mainGroup.setBackgroundColor(self.phaseColor)
                     } else {
                         self.mainGroup.setBackgroundColor(UIColor.whiteColor())
@@ -151,7 +151,6 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
         self.updateUI()
     }
 
-    /** Called on the delegate of the receiver. Will be called on startup if an applicationContext is available. */
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
         if let n = applicationContext["speechName"] as? String {
             self.speechNameLabel.setText(n)

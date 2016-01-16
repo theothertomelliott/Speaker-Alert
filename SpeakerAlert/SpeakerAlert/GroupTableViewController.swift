@@ -30,11 +30,11 @@ class GroupTableViewController: UITableViewController {
         self.reloadData()
     }
 
-    func setParent(gp: Group) {
-        parentGroup = gp
+    func setParent(grp: Group) {
+        parentGroup = grp
         groups = []
         timings = []
-        self.title = gp.name
+        self.title = grp.name
         self.reloadData()
     }
 
@@ -154,7 +154,7 @@ class GroupTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         // Configure the cell...
-        if(indexPath.row < groups.count) {
+        if indexPath.row < groups.count {
             let cell: NamedTableViewCell = tableView.dequeueReusableCellWithIdentifier("GroupCell", forIndexPath: indexPath) as! NamedTableViewCell
             let group = groups[indexPath.row]
 
@@ -211,7 +211,7 @@ class GroupTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Edit", handler: {action, indexpath in
 
-            if(indexPath.row < Int(Group.MR_countOfEntities())) {
+            if indexPath.row < Int(Group.MR_countOfEntities()) {
                 self.renameGroup(self.groups[indexPath.row])
             } else {
                 self.performSegueWithIdentifier("timingEditSegue", sender: tableView.cellForRowAtIndexPath(indexPath))
@@ -257,7 +257,7 @@ class GroupTableViewController: UITableViewController {
             destination.profile = self.timings[indexPath.row - self.groups.count]
         }
 
-        if("timingSegue" == segue.identifier) {
+        if "timingSegue" == segue.identifier {
             speechMan?.profile = self.timings[indexPath.row - self.groups.count]
         }
 

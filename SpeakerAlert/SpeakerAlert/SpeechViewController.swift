@@ -23,7 +23,7 @@ class DemoSpeechState: SpeechState {
 
     func nextPhase() {
         // Go to the next phase
-        switch (self._phase) {
+        switch self._phase {
         case .BELOW_MINIMUM:
             self._phase = .GREEN
         case .GREEN:
@@ -178,12 +178,12 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     }
 
     // Code from: http://stackoverflow.com/questions/27008737/how-do-i-hide-show-tabbar-when-tapped-using-swift-in-ios8/27072876#27072876
-    func setTabBarVisible(visible:Bool, animated: Bool) {
+    func setTabBarVisible(visible: Bool, animated: Bool) {
 
         //* This cannot be called before viewDidLayoutSubviews(), because the frame is not set before this time
 
         // bail if the current state matches the desired state
-        if (tabBarIsVisible() == visible) { return }
+        if tabBarIsVisible() == visible { return }
 
         // get a frame calculation ready
         let frame = self.tabBarController?.tabBar.frame
@@ -191,7 +191,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         let offsetY = (visible ? -height! : height)
 
         // zero duration means no animation
-        let duration:NSTimeInterval = (animated ? 0.3 : 0.0)
+        let duration: NSTimeInterval = (animated ? 0.3 : 0.0)
 
         //  animate the tabBar
         if frame != nil {
@@ -202,7 +202,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         }
     }
 
-    func tabBarIsVisible() ->Bool {
+    func tabBarIsVisible() -> Bool {
         return self.tabBarController?.tabBar.frame.origin.y < CGRectGetMaxY(self.view.frame)
     }
 
@@ -246,19 +246,19 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     func updatePhase() {
         if let phase = self.state?.phase {
             blinkState = false
-            if(phase == SpeechPhase.BELOW_MINIMUM) {
+            if phase == SpeechPhase.BELOW_MINIMUM {
                 self.phaseColor = UIColor.whiteColor()
             }
-            if(phase == SpeechPhase.GREEN) {
+            if phase == SpeechPhase.GREEN {
                 self.phaseColor = UIColor.successColor()
             }
-            if(phase == SpeechPhase.YELLOW) {
+            if phase == SpeechPhase.YELLOW {
                 self.phaseColor = UIColor.warningColor()
             }
-            if(phase == SpeechPhase.RED) {
+            if phase == SpeechPhase.RED {
                 self.phaseColor = UIColor.dangerColor()
             }
-            if(phase == SpeechPhase.OVER_MAXIMUM) {
+            if phase == SpeechPhase.OVER_MAXIMUM {
                 self.phaseColor = UIColor.dangerColor()
                 blinkState = true
             }
@@ -325,12 +325,12 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         self.updateControls()
 
         if running {
-            if(blinkState) {
+            if blinkState {
                 if blinkCycleIndex >= blinkCycle {
                     blinkCycleIndex = 0
                 }
                 if blinkCycleIndex == 0 {
-                    if(blinkOn) {
+                    if blinkOn {
                         self.view.backgroundColor = phaseColor
                     } else {
                         self.view.backgroundColor = UIColor.whiteColor()

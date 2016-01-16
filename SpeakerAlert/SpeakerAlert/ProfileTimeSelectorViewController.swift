@@ -66,7 +66,7 @@ class ProfileTimeSelectorViewController: UIViewController, UIPickerViewDelegate,
 
     // returns the # of rows in each component..
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if(component == 0) {
+        if component == 0 {
             return 12*100
         } else {
             return 60*100
@@ -74,7 +74,7 @@ class ProfileTimeSelectorViewController: UIViewController, UIPickerViewDelegate,
     }
 
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if(component == 0) {
+        if component == 0 {
             return "\(row%12)"
         } else {
             return "\(row%60)"

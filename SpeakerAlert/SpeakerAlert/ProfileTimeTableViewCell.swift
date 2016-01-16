@@ -57,7 +57,7 @@ class ProfileTimeTableViewCell: UITableViewCell {
         self.nextPhase = nextPhase
         self.previousPhase = previousPhase
 
-        switch (phase) {
+        switch phase {
         case .GREEN:
             colorNameLabel.text = "Green"
             timeSlider?.maximumTrackTintColor = UIColor.successColor()
