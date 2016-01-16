@@ -28,15 +28,26 @@ class ProfileTimeRenderer: NSObject {
         let redStr: String = ProfileTimeRenderer.timeAsHMS(profile.red)
         let alertString: String = ProfileTimeRenderer.timeAsHMS(profile.redBlink)
 
-        let outStr: NSMutableAttributedString = NSMutableAttributedString(string: "● \(greenStr) ● \(yellowStr) ● \(redStr) ○ \(alertString)")
+        let outStr: NSMutableAttributedString = NSMutableAttributedString(
+            string: "● \(greenStr) ● \(yellowStr) ● \(redStr) ○ \(alertString)")
         var index = 0
-        outStr.addAttribute(NSForegroundColorAttributeName, value: UIColor.successColor(), range: NSMakeRange(index, 1))
+        outStr.addAttribute(
+            NSForegroundColorAttributeName,
+            value: UIColor.successColor(),
+            range: NSMakeRange(index, 1))
         index += 1 + greenStr.characters.count + 2
-        outStr.addAttribute(NSForegroundColorAttributeName, value: UIColor.warningColor(), range: NSMakeRange(index, 1))
+        outStr.addAttribute(
+            NSForegroundColorAttributeName,
+            value: UIColor.warningColor(),
+            range: NSMakeRange(index, 1))
         index += 1 + yellowStr.characters.count + 2
-        outStr.addAttribute(NSForegroundColorAttributeName, value: UIColor.dangerColor(), range: NSMakeRange(index, 1))
+        outStr.addAttribute(NSForegroundColorAttributeName,
+            value: UIColor.dangerColor(),
+            range: NSMakeRange(index, 1))
         index += 1 + redStr.characters.count + 2
-        outStr.addAttribute(NSForegroundColorAttributeName, value: UIColor.dangerColor(), range: NSMakeRange(index, 1))
+        outStr.addAttribute(NSForegroundColorAttributeName,
+            value: UIColor.dangerColor(),
+            range: NSMakeRange(index, 1))
 
         return outStr
     }

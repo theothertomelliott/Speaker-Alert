@@ -35,12 +35,6 @@ class ProfileTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,7 +45,8 @@ class ProfileTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // TODO: Pass the color info to the time picker
 
-        if let destination: ProfileTimeSelectorViewController = segue.destinationViewController as?ProfileTimeSelectorViewController {
+        if let destination: ProfileTimeSelectorViewController =
+            segue.destinationViewController as?ProfileTimeSelectorViewController {
             destination.profile = self.profile
 
             if let timeCell: ProfileTimeTableViewCell = sender as? ProfileTimeTableViewCell {
@@ -84,7 +79,9 @@ class ProfileTableViewController: UITableViewController {
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(
+        tableView: UITableView,
+        cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let identifier = indexPath.row == 0 ? "NameCell" : "TimeCell"
 
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
@@ -106,19 +103,34 @@ class ProfileTableViewController: UITableViewController {
         if let timeCell: ProfileTimeTableViewCell = cell as? ProfileTimeTableViewCell {
 
                 if indexPath.row == 1 {
-                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.GREEN, nextPhase: SpeechPhase.YELLOW, previousPhase: nil)
+                    timeCell.setProfileUpdateReceiver(
+                        self,
+                        phase: SpeechPhase.GREEN,
+                        nextPhase: SpeechPhase.YELLOW,
+                        previousPhase: nil)
                 }
 
                 if indexPath.row == 2 {
-                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.YELLOW, nextPhase: SpeechPhase.RED, previousPhase: SpeechPhase.GREEN)
+                    timeCell.setProfileUpdateReceiver(
+                        self,
+                        phase: SpeechPhase.YELLOW,
+                        nextPhase: SpeechPhase.RED,
+                        previousPhase: SpeechPhase.GREEN)
                 }
 
                 if indexPath.row == 3 {
-                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.RED, nextPhase: SpeechPhase.OVER_MAXIMUM, previousPhase: SpeechPhase.YELLOW)
+                    timeCell.setProfileUpdateReceiver(
+                        self, phase:
+                        SpeechPhase.RED,
+                        nextPhase: SpeechPhase.OVER_MAXIMUM,
+                        previousPhase: SpeechPhase.YELLOW)
                 }
 
                 if indexPath.row == 4 {
-                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.OVER_MAXIMUM, nextPhase: nil, previousPhase: SpeechPhase.RED)
+                    timeCell.setProfileUpdateReceiver(self,
+                        phase: SpeechPhase.OVER_MAXIMUM,
+                        nextPhase: nil,
+                        previousPhase: SpeechPhase.RED)
                 }
 
         }
@@ -138,7 +150,8 @@ class ProfileTableViewController: UITableViewController {
                 storedTiming.redBlink = self.phaseTimes[SpeechPhase.OVER_MAXIMUM]
                 storedTiming.name = self.nameLabel?.text
             } else {
-                MagicalRecord.saveWithBlockAndWait({ (localContext: NSManagedObjectContext!) -> Void in
+                MagicalRecord.saveWithBlockAndWait({(localContext: NSManagedObjectContext!) ->
+                    Void in
                     // This block runs in background thread
 
                     let newProfile: Profile = Profile.MR_createEntityInContext(localContext)

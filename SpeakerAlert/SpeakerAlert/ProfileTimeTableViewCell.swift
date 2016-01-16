@@ -45,13 +45,18 @@ class ProfileTimeTableViewCell: UITableViewCell {
             if let nextPhase = self.nextPhase where receiver.phaseTimes[nextPhase] < phaseValue {
                 receiver.phaseTimes[nextPhase] = phaseValue
             }
-            if let previousPhase = self.previousPhase where receiver.phaseTimes[previousPhase] > phaseValue {
+            if let previousPhase = self.previousPhase
+                where receiver.phaseTimes[previousPhase] > phaseValue {
                 receiver.phaseTimes[previousPhase] = phaseValue
             }
         }
     }
 
-    func setProfileUpdateReceiver(profileUpdateReceiver: ProfileTableViewController, phase: SpeechPhase, nextPhase: SpeechPhase?, previousPhase: SpeechPhase?) {
+    func setProfileUpdateReceiver(
+        profileUpdateReceiver: ProfileTableViewController,
+        phase: SpeechPhase,
+        nextPhase: SpeechPhase?,
+        previousPhase: SpeechPhase?) {
         self.profileUpdateReceiver = profileUpdateReceiver
         self.phase = phase
         self.nextPhase = nextPhase
@@ -80,7 +85,8 @@ class ProfileTimeTableViewCell: UITableViewCell {
 
     func updateValues() {
         if let phase = self.phase {
-            if let max = self.profileUpdateReceiver?.phaseTimes[SpeechPhase.OVER_MAXIMUM] where timeSlider?.maximumValue < Float(max * 1.1) {
+            if let max = self.profileUpdateReceiver?.phaseTimes[SpeechPhase.OVER_MAXIMUM]
+                where timeSlider?.maximumValue < Float(max * 1.1) {
                 timeSlider?.maximumValue = Float(max * 1.1)
             }
             if let interval = self.profileUpdateReceiver?.phaseTimes[phase] {

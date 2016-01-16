@@ -79,7 +79,12 @@ class WatchCommsManager: NSObject, WCSessionDelegate, SpeechManagerDelegate {
     func speechComplete(state: SpeechState, timer: SpeechTimer) {
         do {
             // Send a notification that the speech ended
-            watchSession?.sendMessage(["messageName" : "speechComplete", "state" : state.toDictionary()], replyHandler: { (reply: [String : AnyObject]) -> Void in
+            watchSession?.sendMessage(
+                [
+                "messageName" : "speechComplete",
+                "state" : state.toDictionary()
+                ],
+                replyHandler: { (reply: [String : AnyObject]) -> Void in
                 NSLog("Reply received")
                 }, errorHandler: { (error: NSError) -> Void in
                     NSLog("Error received")
@@ -96,7 +101,8 @@ class WatchCommsManager: NSObject, WCSessionDelegate, SpeechManagerDelegate {
 
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
 
-        if let sm: SpeechManager = speechMan, let messageName: String = message["messageName"] as? String {
+        if let sm: SpeechManager = speechMan,
+            let messageName: String = message["messageName"] as? String {
             if messageName == "startStop" {
                 if sm.state?.running == SpeechRunning.STOPPED {
                     sm.start()

@@ -59,7 +59,12 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         if self.tickTimer.valid {
             self.tickTimer.invalidate()
         }
-        self.tickTimer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: Selector("tick:"), userInfo: nil, repeats: true)
+        self.tickTimer = NSTimer.scheduledTimerWithTimeInterval(
+            0.2,
+            target: self,
+            selector: Selector("tick:"),
+            userInfo: nil,
+            repeats: true)
         self.tickTimer.tolerance = 0.1
 
         // This method is called when watch view controller is about to be visible to user
@@ -85,12 +90,22 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
             if s.running == SpeechRunning.RUNNING || s.running == SpeechRunning.PAUSED {
                 self.startStopButton.setTitle("Stop")
-                self.startStopButton.setBackgroundColor(UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0))
+                self.startStopButton.setBackgroundColor(
+                    UIColor(
+                        red: 229/255,
+                        green: 0/255,
+                        blue: 15/255,
+                        alpha: 1.0))
                 self.startStopButton.setEnabled(true)
             } else {
                 // Stopped
                 self.startStopButton.setTitle("Start")
-                self.startStopButton.setBackgroundColor(UIColor(red: 83/255, green: 215/255, blue: 106/255, alpha: 1.0))
+                self.startStopButton.setBackgroundColor(
+                    UIColor(
+                        red: 83/255,
+                        green: 215/255,
+                        blue: 106/255,
+                        alpha: 1.0))
                 self.startStopButton.setEnabled(true)
             }
 
@@ -151,7 +166,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         self.updateUI()
     }
 
-    func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
+    func session(
+        session: WCSession,
+        didReceiveApplicationContext applicationContext: [String : AnyObject]) {
         if let n = applicationContext["speechName"] as? String {
             self.speechNameLabel.setText(n)
         }
@@ -178,7 +195,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
 
     @IBAction func stopStartPressed() {
-        watchSession?.sendMessage(["messageName" : "startStop"], replyHandler: { (reply: [String : AnyObject]) -> Void in
+        watchSession?.sendMessage(
+            ["messageName" : "startStop"],
+            replyHandler: { (reply: [String : AnyObject]) -> Void in
             NSLog("Reply received")
             }, errorHandler: { (error: NSError) -> Void in
             NSLog("Error received")

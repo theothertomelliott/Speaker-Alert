@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ProfileTimeSelectorViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ProfileTimeSelectorViewController: UIViewController,
+    UIPickerViewDelegate,
+    UIPickerViewDataSource {
 
     // TODO: Accept a phase identifier to modify
 
@@ -50,16 +52,6 @@ class ProfileTimeSelectorViewController: UIViewController, UIPickerViewDelegate,
         self.navigationController?.popViewControllerAnimated(true)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 3
     }
@@ -73,7 +65,10 @@ class ProfileTimeSelectorViewController: UIViewController, UIPickerViewDelegate,
         }
     }
 
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(
+        pickerView: UIPickerView,
+        titleForRow row: Int,
+        forComponent component: Int) -> String? {
         if component == 0 {
             return "\(row%12)"
         } else {

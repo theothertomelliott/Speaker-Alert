@@ -33,8 +33,11 @@ public class AppColorManager: NSObject {
         // Selected image color
         UITabBar.appearance().tintColor = baseColor.blackOrWhiteContrastingColor()
 
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: colors[2]], forState: UIControlState.Normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: baseColor.blackOrWhiteContrastingColor()], forState: UIControlState.Selected)
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSForegroundColorAttributeName: colors[2]], forState: UIControlState.Normal)
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSForegroundColorAttributeName: baseColor.blackOrWhiteContrastingColor()],
+            forState: UIControlState.Selected)
 
         UINavigationBar.appearance().tintColor = colors[1] as? UIColor
         UINavigationBar.appearance().barTintColor = baseColor

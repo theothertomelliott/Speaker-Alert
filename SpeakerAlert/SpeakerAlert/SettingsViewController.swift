@@ -38,9 +38,12 @@ class SettingsViewController: UITableViewController {
         configManager?.isVibrationEnabled = (sender as! UISwitch).on
     }
 
-    override func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(
+        tableView: UITableView,
+        didHighlightRowAtIndexPath indexPath: NSIndexPath) {
 
-        tableView.cellForRowAtIndexPath(indexPath)?.selectionStyle = UITableViewCellSelectionStyle.None
+        tableView.cellForRowAtIndexPath(indexPath)?.selectionStyle =
+            UITableViewCellSelectionStyle.None
 
         if indexPath.section == 1 && indexPath.row == 0 {
             self.showAbout()
@@ -51,11 +54,25 @@ class SettingsViewController: UITableViewController {
     }
 
     func rateApp() {
-        UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(APP_ID)&onlyLatestVersion=true&pageNumber=0&sortOrdering=1)")!)
+        UIApplication.sharedApplication().openURL(
+            NSURL(
+                string : "itms-apps://itunes.apple.com/"
+                + "WebObjects/MZStore.woa/wa/"
+                + "viewContentsUserReviews?id=\(APP_ID)"
+                + "&onlyLatestVersion=true&pageNumber=0&sortOrdering=1)")!)
     }
 
     func showAbout() {
-        let aboutView: RFAboutViewController = RFAboutViewController(appName: "Speaker Alert", appVersion: nil, appBuild: nil, copyrightHolderName: "Tom Elliott", contactEmail: "tom.w.elliott@gmail.com", titleForEmail: "Tom Elliott", websiteURL: NSURL(string: "http://telliott.io"), titleForWebsiteURL: "telliott.io", andPublicationYear: nil)
+        let aboutView: RFAboutViewController = RFAboutViewController(
+            appName: "Speaker Alert",
+            appVersion: nil,
+            appBuild: nil,
+            copyrightHolderName: "Tom Elliott",
+            contactEmail: "tom.w.elliott@gmail.com",
+            titleForEmail: "Tom Elliott",
+            websiteURL: NSURL(string: "http://telliott.io"),
+            titleForWebsiteURL: "telliott.io",
+            andPublicationYear: nil)
         aboutView.navigationBarBarTintColor = UINavigationBar.appearance().barTintColor
         aboutView.navigationBarTintColor = UINavigationBar.appearance().tintColor
         aboutView.blurStyle = .Dark
@@ -64,11 +81,11 @@ class SettingsViewController: UITableViewController {
         self.navigationController?.pushViewController(aboutView, animated: true)
     }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "demoSegue" {
-            if let speechVC: SpeechViewController = segue.destinationViewController as? SpeechViewController {
+            if let speechVC: SpeechViewController =
+                segue.destinationViewController as? SpeechViewController {
                 speechVC.demoMode = true
             }
         }

@@ -35,7 +35,11 @@ class FontAwesomeImageView: UIImageView {
     }
 
     private func setFontAwesome(icon: FontAwesome) {
-        self.image = UIImage.fontAwesomeIconWithName(icon, textColor: self.IconColor, size: self.frame.size)
+        self.image = UIImage.fontAwesomeIconWithName(
+            icon,
+            textColor:
+            self.IconColor,
+            size: self.frame.size)
     }
 
     private func _setup() {

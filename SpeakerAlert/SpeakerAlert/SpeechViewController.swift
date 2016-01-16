@@ -125,7 +125,8 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         // Configure speech manager if not in demo mode
         if let sm = speechMan, let profile = sm.profile where !self.demoMode {
             sm.addSpeechObserver(self)
-            profileSummaryLabel?.attributedText = ProfileTimeRenderer.timesAsAttributedString(profile)
+            profileSummaryLabel?.attributedText =
+                ProfileTimeRenderer.timesAsAttributedString(profile)
             self.title = sm.profile?.name
         }
 
@@ -141,7 +142,12 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         if tickTimer.valid {
             tickTimer.invalidate()
         }
-        tickTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("doTick:"), userInfo: nil, repeats: true)
+        tickTimer = NSTimer.scheduledTimerWithTimeInterval(
+            0.1,
+            target: self,
+            selector: Selector("doTick:"),
+            userInfo: nil,
+            repeats: true)
         self.updatePhase()
         self.updateDisplay()
     }
@@ -177,10 +183,11 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         }
     }
 
-    // Code from: http://stackoverflow.com/questions/27008737/how-do-i-hide-show-tabbar-when-tapped-using-swift-in-ios8/27072876#27072876
+    // Code from: http://bit.ly/1JRtVVb
     func setTabBarVisible(visible: Bool, animated: Bool) {
 
-        //* This cannot be called before viewDidLayoutSubviews(), because the frame is not set before this time
+        /* This cannot be called before viewDidLayoutSubviews(),
+            because the frame is not set before this time */
 
         // bail if the current state matches the desired state
         if tabBarIsVisible() == visible { return }
@@ -282,7 +289,8 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
 
             let running: Bool = state.running == SpeechRunning.RUNNING
             let timeStr = TimeUtils.formatStopwatch(state.elapsed)
-            var timeAttr: NSMutableAttributedString = NSMutableAttributedString(string: "\(timeStr)")
+            var timeAttr: NSMutableAttributedString =
+            NSMutableAttributedString(string: "\(timeStr)")
             if !running {
                 timeAttr = NSMutableAttributedString(string: "● \(timeStr)")
                 if state.phase == SpeechPhase.OVER_MAXIMUM {
@@ -291,7 +299,10 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
                 if state.phase == SpeechPhase.BELOW_MINIMUM {
                     timeAttr = NSMutableAttributedString(string: "◦ \(timeStr)")
                 } else {
-                    timeAttr.addAttribute(NSForegroundColorAttributeName, value: self.phaseColor, range: NSRange(location: 0, length: 1))
+                    timeAttr.addAttribute(
+                        NSForegroundColorAttributeName,
+                        value: self.phaseColor,
+                        range: NSRange(location: 0, length: 1))
                 }
             }
 
@@ -356,10 +367,11 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     }
 
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let scvc: SpeechCompleteViewController = segue.destinationViewController as! SpeechCompleteViewController
+    override func prepareForSegue(
+        segue: UIStoryboardSegue,
+        sender: AnyObject?) {
+        let scvc: SpeechCompleteViewController =
+            segue.destinationViewController as! SpeechCompleteViewController
         scvc.timeElapsed = lastSpeechElapsed
     }
 

@@ -151,22 +151,33 @@ class GroupTableViewController: UITableViewController {
         return groups.count + timings.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(
+        tableView: UITableView,
+        cellForRowAtIndexPath
+        indexPath: NSIndexPath) -> UITableViewCell {
 
         // Configure the cell...
         if indexPath.row < groups.count {
-            let cell: NamedTableViewCell = tableView.dequeueReusableCellWithIdentifier("GroupCell", forIndexPath: indexPath) as! NamedTableViewCell
+            let cell: NamedTableViewCell =
+            tableView.dequeueReusableCellWithIdentifier(
+                "GroupCell",
+                forIndexPath: indexPath) as! NamedTableViewCell
             let group = groups[indexPath.row]
 
             cell.nameLabel!.text = group.name
 
             return cell
         } else {
-            let cell: ProfileTableViewCell = tableView.dequeueReusableCellWithIdentifier("TimingCell", forIndexPath: indexPath) as! ProfileTableViewCell
+            let cell: ProfileTableViewCell =
+            tableView.dequeueReusableCellWithIdentifier(
+                "TimingCell",
+                forIndexPath: indexPath) as! ProfileTableViewCell
 
-            if let timing: Profile = timings[indexPath.row - groups.count], let tn: String = timing.name {
+            if let timing: Profile = timings[indexPath.row - groups.count],
+                let tn: String = timing.name {
                 cell.nameLabel!.text = tn
-                cell.profileTimesLabel!.attributedText = ProfileTimeRenderer.timesAsAttributedString(timing)
+                cell.profileTimesLabel!.attributedText =
+                    ProfileTimeRenderer.timesAsAttributedString(timing)
             }
 
             return cell
@@ -176,7 +187,9 @@ class GroupTableViewController: UITableViewController {
 
 
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(
+        tableView: UITableView,
+        canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
@@ -198,29 +211,44 @@ class GroupTableViewController: UITableViewController {
     }
 
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(
+        tableView: UITableView,
+        commitEditingStyle editingStyle: UITableViewCellEditingStyle,
+        forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
             NSLog("Deleting row at \(indexPath.row)")
             self.deleteItemAtIndexPath(indexPath)
         } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            // Create a new instance of the appropriate class,
+            // insert it into the array, and add a new row to the table view
         }
     }
 
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Edit", handler: {action, indexpath in
+    override func tableView(
+        tableView: UITableView,
+        editActionsForRowAtIndexPath indexPath: NSIndexPath)
+        -> [UITableViewRowAction]? {
+        let moreRowAction = UITableViewRowAction(
+            style: UITableViewRowActionStyle.Default,
+            title: "Edit",
+            handler: {action, indexpath in
 
             if indexPath.row < Int(Group.MR_countOfEntities()) {
                 self.renameGroup(self.groups[indexPath.row])
             } else {
-                self.performSegueWithIdentifier("timingEditSegue", sender: tableView.cellForRowAtIndexPath(indexPath))
+                self.performSegueWithIdentifier(
+                    "timingEditSegue",
+                    sender: tableView.cellForRowAtIndexPath(indexPath))
             }
         })
         // TODO: Change this color
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0)
 
-        let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler: {action, indexpath in
+        let deleteRowAction = UITableViewRowAction(
+            style: UITableViewRowActionStyle.Default,
+            title: "Delete",
+            handler: {action, indexpath in
             self.deleteItemAtIndexPath(indexPath)
         })
 
@@ -253,7 +281,8 @@ class GroupTableViewController: UITableViewController {
         }
 
         if "timingEditSegue" == segue.identifier {
-            let destination: ProfileTableViewController = segue.destinationViewController as! ProfileTableViewController
+            let destination: ProfileTableViewController =
+                segue.destinationViewController as! ProfileTableViewController
             destination.profile = self.timings[indexPath.row - self.groups.count]
         }
 

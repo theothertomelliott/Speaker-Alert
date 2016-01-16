@@ -10,7 +10,10 @@ import Foundation
 
 class SpeechProfile: NSObject {
 
-    init(green: NSTimeInterval, yellow: NSTimeInterval, red: NSTimeInterval, redBlink: NSTimeInterval) {
+    init(green: NSTimeInterval,
+        yellow: NSTimeInterval,
+        red: NSTimeInterval,
+        redBlink: NSTimeInterval) {
         self.green = green
         self.yellow = yellow
         self.red = red

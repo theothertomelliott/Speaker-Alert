@@ -69,7 +69,13 @@ class DataSeeder: NSObject {
             generalEval.red = 10*60
             generalEval.redBlink = 10*60 + 30
 
-            groupToastmasters.childTimings = [tableTopic, speechEvaluation, fourToSix, fiveToSeven, eightToTen, generalEval]
+            groupToastmasters.childTimings = [
+                tableTopic,
+                speechEvaluation,
+                fourToSix,
+                fiveToSeven,
+                eightToTen,
+                generalEval]
 
             // General timings
 
@@ -118,7 +124,8 @@ class DataSeeder: NSObject {
 
         var shouldSeed: Bool = true
 
-        if let seedVersion: Int = defaults.integerForKey(seedVersionKey) where seedVersion >= self.seedVersion {
+        if let seedVersion: Int = defaults.integerForKey(seedVersionKey)
+            where seedVersion >= self.seedVersion {
             shouldSeed = false
         }
 

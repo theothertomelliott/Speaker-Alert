@@ -74,7 +74,10 @@ class SpeechState {
         pauseInterval = 0
     }
 
-    init(profile: SpeechProfile, running: SpeechRunning, startTime: NSDate?, pauseInterval: NSTimeInterval?) {
+    init(profile: SpeechProfile,
+        running: SpeechRunning,
+        startTime: NSDate?,
+        pauseInterval: NSTimeInterval?) {
         self.profile = profile
         self.running = running
         if running == SpeechRunning.RUNNING {
@@ -109,8 +112,16 @@ class SpeechState {
             let red: NSTimeInterval  = (profileDict["red"] as? NSTimeInterval)!
             let redBlink: NSTimeInterval = (profileDict["redBlink"] as? NSTimeInterval)!
 
-            let profile: SpeechProfile = SpeechProfile(green: green, yellow: yellow, red: red, redBlink: redBlink)
-            return SpeechState(profile: profile, running: running, startTime: dict["startTime"] as? NSDate, pauseInterval: dict["pauseInterval"] as? NSTimeInterval)
+            let profile: SpeechProfile = SpeechProfile(
+                green: green,
+                yellow: yellow,
+                red: red,
+                redBlink: redBlink)
+            return SpeechState(
+                profile: profile,
+                running: running,
+                startTime: dict["startTime"] as? NSDate,
+                pauseInterval: dict["pauseInterval"] as? NSTimeInterval)
 
         }
 
