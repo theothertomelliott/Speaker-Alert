@@ -48,6 +48,22 @@ class ProfileTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // TODO: Pass the color info to the time picker
+        
+        if let destination : ProfileTimeSelectorViewController = segue.destinationViewController as?ProfileTimeSelectorViewController {
+            destination.profile = self.profile
+            
+            if let timeCell : ProfileTimeTableViewCell = sender as? ProfileTimeTableViewCell {
+                NSLog("\(timeCell.colorNameLabel.text)")
+                destination.colorName = timeCell.colorNameLabel.text
+            }
+            
+            // TODO: Pick up current color
+
+        }
+    }
+    
     // MARK: ProfileUpdateReceiver
     
     var name : String?

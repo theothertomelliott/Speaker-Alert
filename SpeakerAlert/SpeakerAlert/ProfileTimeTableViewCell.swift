@@ -13,6 +13,7 @@ import Colours
 class ProfileTimeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var colorNameLabel: UILabel!
+    @IBOutlet weak var timeLabel : UILabel!
     @IBOutlet weak var timeSlider: UISlider!
     @IBOutlet weak var timeIntervalField: TWETimeIntervalField!
     
@@ -59,32 +60,33 @@ class ProfileTimeTableViewCell: UITableViewCell {
         switch (phase) {
         case .GREEN:
             colorNameLabel.text = "Green"
-            timeSlider.maximumTrackTintColor = UIColor.successColor()
+            timeSlider?.maximumTrackTintColor = UIColor.successColor()
         case .YELLOW:
             colorNameLabel.text = "Yellow"
-            timeSlider.maximumTrackTintColor = UIColor.warningColor()
+            timeSlider?.maximumTrackTintColor = UIColor.warningColor()
         case.RED:
             colorNameLabel.text = "Red"
-            timeSlider.maximumTrackTintColor = UIColor.dangerColor()
+            timeSlider?.maximumTrackTintColor = UIColor.dangerColor()
         case.OVER_MAXIMUM:
             colorNameLabel.text = "Alert!"
-            timeSlider.maximumTrackTintColor = UIColor.dangerColor()
+            timeSlider?.maximumTrackTintColor = UIColor.dangerColor()
         default:
             colorNameLabel.text = "Unknown Phase"
         }
-        timeSlider.minimumTrackTintColor = timeSlider.maximumTrackTintColor
+        timeSlider?.minimumTrackTintColor = timeSlider.maximumTrackTintColor
         
         self.updateValues()
     }
     
     func updateValues(){
         if let phase = self.phase {
-            if let max = self.profileUpdateReceiver?.phaseTimes[SpeechPhase.OVER_MAXIMUM] where timeSlider.maximumValue < Float(max * 1.1) {
-                timeSlider.maximumValue = Float(max * 1.1)
+            if let max = self.profileUpdateReceiver?.phaseTimes[SpeechPhase.OVER_MAXIMUM] where timeSlider?.maximumValue < Float(max * 1.1) {
+                timeSlider?.maximumValue = Float(max * 1.1)
             }
             if let interval = self.profileUpdateReceiver?.phaseTimes[phase] {
-                timeIntervalField.timeInterval = interval
-                timeSlider.value = Float(interval)
+                timeIntervalField?.timeInterval = interval
+                timeLabel.text = "\(interval)"
+                timeSlider?.value = Float(interval)
             }
         }
         

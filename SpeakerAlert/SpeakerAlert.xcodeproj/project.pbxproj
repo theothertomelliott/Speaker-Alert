@@ -24,6 +24,7 @@
 		E21B306C1B9B54BA00B89D9F /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */; };
 		E22E8C441B6BA23000DD0793 /* VibrationAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */; };
 		E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */; };
+		E2308A8A1C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2308A891C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift */; };
 		E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23480E81B2906EA0076247D /* AppDelegate.swift */; };
 		E23480EE1B2906EA0076247D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23480EC1B2906EA0076247D /* Main.storyboard */; };
 		E23480F01B2906EA0076247D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E23480EF1B2906EA0076247D /* Assets.xcassets */; };
@@ -159,6 +160,7 @@
 		E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibrationAlertManager.swift; sourceTree = "<group>"; };
 		E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColorManager.swift; sourceTree = "<group>"; };
+		E2308A891C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTimeSelectorViewController.swift; sourceTree = "<group>"; };
 		E23480E51B2906EA0076247D /* SpeakerAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakerAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23480E81B2906EA0076247D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E23480ED1B2906EA0076247D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 				E284FC1B1BA3E89000ABFA68 /* ProfileTableViewController.swift */,
 				E284FC1E1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift */,
 				E284FC201BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift */,
+				E2308A891C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift */,
 			);
 			name = ProfileEdit;
 			sourceTree = "<group>";
@@ -857,6 +860,7 @@
 				E24A428B1BA4BA800071702D /* LoadingViewController.swift in Sources */,
 				E2784A641B9C8FE30046BF0D /* ProfileTableViewCell.swift in Sources */,
 				E284FC1C1BA3E89000ABFA68 /* ProfileTableViewController.swift in Sources */,
+				E2308A8A1C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift in Sources */,
 				E2784A671B9C97180046BF0D /* ProfileTimeRenderer.swift in Sources */,
 				E284FC1F1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift in Sources */,
 				E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */,
