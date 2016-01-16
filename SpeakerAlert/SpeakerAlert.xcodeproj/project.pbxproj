@@ -529,6 +529,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E23481381B2906EB0076247D /* Build configuration list for PBXNativeTarget "SpeakerAlert" */;
 			buildPhases = (
+				E28248521C4A96310055FA24 /* ShellScript */,
 				3D7A4282BA74DBAA2AFA4C64 /* Check Pods Manifest.lock */,
 				E23480E11B2906EA0076247D /* Sources */,
 				E23480E21B2906EA0076247D /* Frameworks */,
@@ -809,6 +810,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-SpeakerAlert/Pods-SpeakerAlert-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E28248521C4A96310055FA24 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
