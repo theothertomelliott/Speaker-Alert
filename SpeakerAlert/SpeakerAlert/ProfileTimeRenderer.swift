@@ -31,23 +31,24 @@ class ProfileTimeRenderer: NSObject {
         let outStr: NSMutableAttributedString = NSMutableAttributedString(
             string: "● \(greenStr) ● \(yellowStr) ● \(redStr) ○ \(alertString)")
         var index = 0
+
         outStr.addAttribute(
             NSForegroundColorAttributeName,
             value: UIColor.successColor(),
-            range: NSMakeRange(index, 1))
+            range: NSRange(location: index, length: 1))
         index += 1 + greenStr.characters.count + 2
         outStr.addAttribute(
             NSForegroundColorAttributeName,
             value: UIColor.warningColor(),
-            range: NSMakeRange(index, 1))
+            range: NSRange(location: index, length: 1))
         index += 1 + yellowStr.characters.count + 2
         outStr.addAttribute(NSForegroundColorAttributeName,
             value: UIColor.dangerColor(),
-            range: NSMakeRange(index, 1))
+            range: NSRange(location: index, length: 1))
         index += 1 + redStr.characters.count + 2
         outStr.addAttribute(NSForegroundColorAttributeName,
             value: UIColor.dangerColor(),
-            range: NSMakeRange(index, 1))
+            range: NSRange(location: index, length: 1))
 
         return outStr
     }
