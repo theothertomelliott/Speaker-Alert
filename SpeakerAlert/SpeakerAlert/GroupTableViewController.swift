@@ -57,11 +57,17 @@ class GroupTableViewController: UITableViewController {
 
         if let pg = parentGroup {
             // TODO: Reload the parent group
-            timings = ((pg.childTimings?.allObjects) as? [Profile])!
+            if let t = pg.childTimings?.allObjects as? [Profile] {
+                timings = t
+            }
         } else {
-            groups = Group.MR_findAll() as! [Group]
+            if let g = Group.MR_findAll() as? [Group] {
+                groups = g
+            }
             let predicate = NSPredicate(format: "parent = nil")
-            timings = Profile.MR_findAllWithPredicate(predicate) as! [Profile]
+            if let t = Profile.MR_findAllWithPredicate(predicate) as? [Profile] {
+                timings = t
+            }
         }
         groups = groups.sort({ $0.name < $1.name })
         timings = timings.sort({ $0.name < $1.name })
@@ -158,25 +164,26 @@ class GroupTableViewController: UITableViewController {
 
         // Configure the cell...
         if indexPath.row < groups.count {
-            let cell: NamedTableViewCell =
-            tableView.dequeueReusableCellWithIdentifier(
+            let cell = tableView.dequeueReusableCellWithIdentifier(
                 "GroupCell",
-                forIndexPath: indexPath) as! NamedTableViewCell
+                forIndexPath: indexPath)
             let group = groups[indexPath.row]
 
-            cell.nameLabel!.text = group.name
+            if let nameCell: NamedTableViewCell = cell as? NamedTableViewCell {
+                nameCell.nameLabel!.text = group.name
+            }
 
             return cell
         } else {
-            let cell: ProfileTableViewCell =
-            tableView.dequeueReusableCellWithIdentifier(
+            let cell = tableView.dequeueReusableCellWithIdentifier(
                 "TimingCell",
-                forIndexPath: indexPath) as! ProfileTableViewCell
+                forIndexPath: indexPath)
 
             if let timing: Profile = timings[indexPath.row - groups.count],
-                let tn: String = timing.name {
-                cell.nameLabel!.text = tn
-                cell.profileTimesLabel!.attributedText =
+                let tn: String = timing.name,
+                let profileCell: ProfileTableViewCell = cell as? ProfileTableViewCell {
+                profileCell.nameLabel!.text = tn
+                profileCell.profileTimesLabel!.attributedText =
                     ProfileTimeRenderer.timesAsAttributedString(timing)
             }
 
@@ -280,9 +287,8 @@ class GroupTableViewController: UITableViewController {
             }
         }
 
-        if "timingEditSegue" == segue.identifier {
-            let destination: ProfileTableViewController =
-                segue.destinationViewController as! ProfileTableViewController
+        if "timingEditSegue" == segue.identifier, let destination: ProfileTableViewController =
+            segue.destinationViewController as? ProfileTableViewController {
             destination.profile = self.timings[indexPath.row - self.groups.count]
         }
 

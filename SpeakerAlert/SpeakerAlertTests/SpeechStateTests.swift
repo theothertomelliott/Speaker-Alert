@@ -30,7 +30,11 @@ class SpeechStateTests: XCTestCase {
             pauseInterval: pauseInterval)
         let dict: [String : AnyObject] = state.toDictionary()
 
-        XCTAssert(dict["pauseInterval"] as! NSTimeInterval == 5)
+        if let interval = dict["pauseInterval"] as? NSTimeInterval {
+            XCTAssert(interval == 5)
+        } else {
+            XCTFail("pauseInterval was not a time interval object")
+        }
 
         if let profileRetrieved: [String : AnyObject] = dict["profile"] as? [String : AnyObject] {
             XCTAssert(profileRetrieved["green"] as? Int == 1)

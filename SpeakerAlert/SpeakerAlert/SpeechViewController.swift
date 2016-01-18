@@ -370,9 +370,10 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     override func prepareForSegue(
         segue: UIStoryboardSegue,
         sender: AnyObject?) {
-        let scvc: SpeechCompleteViewController =
-            segue.destinationViewController as! SpeechCompleteViewController
-        scvc.timeElapsed = lastSpeechElapsed
+        if let scvc: SpeechCompleteViewController =
+            segue.destinationViewController as? SpeechCompleteViewController {
+                scvc.timeElapsed = lastSpeechElapsed
+            }
     }
 
 }

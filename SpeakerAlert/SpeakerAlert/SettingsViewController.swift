@@ -27,15 +27,21 @@ class SettingsViewController: UITableViewController {
     }
 
     @IBAction func autoStartChanged(sender: AnyObject) {
-        configManager?.isAutoStartEnabled = (sender as! UISwitch).on
+        if let sendSwitch: UISwitch = sender as? UISwitch {
+            configManager?.isAutoStartEnabled = sendSwitch.on
+        }
     }
 
     @IBAction func displayTimeChanged(sender: AnyObject) {
-        configManager?.isDisplayTime = (sender as! UISwitch).on
+        if let sendSwitch: UISwitch = sender as? UISwitch {
+            configManager?.isDisplayTime = sendSwitch.on
+        }
     }
 
     @IBAction func vibrationChanged(sender: AnyObject) {
-        configManager?.isVibrationEnabled = (sender as! UISwitch).on
+        if let sendSwitch: UISwitch = sender as? UISwitch {
+            configManager?.isVibrationEnabled = sendSwitch.on
+        }
     }
 
     override func tableView(
