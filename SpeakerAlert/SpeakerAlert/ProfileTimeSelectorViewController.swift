@@ -19,7 +19,8 @@ class ProfileTimeSelectorViewController: UIViewController,
         }
     }
     var phase: SpeechPhase = SpeechPhase.BELOW_MINIMUM
-
+    var profileUpdateReceiver: ProfileTableViewController?
+    
     @IBOutlet var picker: UIPickerView?
     @IBOutlet weak var colorNameLabel: UILabel!
 
@@ -56,7 +57,16 @@ class ProfileTimeSelectorViewController: UIViewController,
     }
 
     @IBAction func save() {
-        // TODO: Update the profile
+        if let p = self.picker {
+            self.profileUpdateReceiver?.phaseTimes[phase] =
+                NSTimeInterval(
+                    p.selectedRowInComponent(0)%60 * 3600 +
+                    p.selectedRowInComponent(1)%60 * 60 +
+                    p.selectedRowInComponent(2)%60
+            )
+        }
+        self.profileUpdateReceiver?.phaseUpdated()
+        self.dismiss()
     }
 
     @IBAction func dismiss() {

@@ -54,6 +54,7 @@ class ProfileTableViewController: UITableViewController {
                 if let phase = timeCell.phase {
                     destination.phase = phase
                 }
+                destination.profileUpdateReceiver = self
                 destination.profile = self.profile
             }
         }
@@ -103,34 +104,19 @@ class ProfileTableViewController: UITableViewController {
         if let timeCell: ProfileTimeTableViewCell = cell as? ProfileTimeTableViewCell {
 
                 if indexPath.row == 1 {
-                    timeCell.setProfileUpdateReceiver(
-                        self,
-                        phase: SpeechPhase.GREEN,
-                        nextPhase: SpeechPhase.YELLOW,
-                        previousPhase: nil)
+                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.GREEN)
                 }
 
                 if indexPath.row == 2 {
-                    timeCell.setProfileUpdateReceiver(
-                        self,
-                        phase: SpeechPhase.YELLOW,
-                        nextPhase: SpeechPhase.RED,
-                        previousPhase: SpeechPhase.GREEN)
+                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.YELLOW)
                 }
 
                 if indexPath.row == 3 {
-                    timeCell.setProfileUpdateReceiver(
-                        self, phase:
-                        SpeechPhase.RED,
-                        nextPhase: SpeechPhase.OVER_MAXIMUM,
-                        previousPhase: SpeechPhase.YELLOW)
+                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.RED)
                 }
 
                 if indexPath.row == 4 {
-                    timeCell.setProfileUpdateReceiver(self,
-                        phase: SpeechPhase.OVER_MAXIMUM,
-                        nextPhase: nil,
-                        previousPhase: SpeechPhase.RED)
+                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.OVER_MAXIMUM)
                 }
 
         }
