@@ -18,7 +18,7 @@ class ProfileTimeSelectorViewController: UIViewController,
         didSet {
         }
     }
-    var phase: SpeechPhase?
+    var phase: SpeechPhase = SpeechPhase.BELOW_MINIMUM
 
     @IBOutlet var picker: UIPickerView?
     @IBOutlet weak var colorNameLabel: UILabel!
@@ -32,10 +32,21 @@ class ProfileTimeSelectorViewController: UIViewController,
     }
 
     override func viewWillAppear(animated: Bool) {
-        colorNameLabel.text = colorName
-        picker?.selectRow(12*50, inComponent: 0, animated: false)
-        picker?.selectRow(60*50, inComponent: 1, animated: false)
-        picker?.selectRow(60*50, inComponent: 2, animated: false)
+        var time: NSNumber?
+
+        switch self.phase {
+        case .BELOW_MINIMUM: break
+        case .OVER_MAXIMUM: time = self.profile?.redBlink
+        case .GREEN: time = self.profile?.green
+        case .YELLOW: time = self.profile?.yellow
+        case .RED: time = self.profile?.red
+        }
+
+        if let t = time {
+            picker?.selectRow(12*50 + Int(t.intValue/3600), inComponent: 0, animated: false)
+            picker?.selectRow(60*50 + Int(t.intValue/60 % 60), inComponent: 1, animated: false)
+            picker?.selectRow(60*50 + Int(t.intValue % 60), inComponent: 2, animated: false)
+        }
 
     }
 

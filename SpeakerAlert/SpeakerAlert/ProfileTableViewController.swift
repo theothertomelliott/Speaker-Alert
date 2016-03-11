@@ -43,19 +43,19 @@ class ProfileTableViewController: UITableViewController {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // TODO: Pass the color info to the time picker
 
         if let destination: ProfileTimeSelectorViewController =
-            segue.destinationViewController as?ProfileTimeSelectorViewController {
-            destination.profile = self.profile
+            segue.destinationViewController as? ProfileTimeSelectorViewController {
 
             if let timeCell: ProfileTimeTableViewCell = sender as? ProfileTimeTableViewCell {
                 NSLog("\(timeCell.colorNameLabel.text)")
                 destination.colorName = timeCell.colorNameLabel.text
+
+                if let phase = timeCell.phase {
+                    destination.phase = phase
+                }
+                destination.profile = self.profile
             }
-
-            // TODO: Pick up current color
-
         }
     }
 

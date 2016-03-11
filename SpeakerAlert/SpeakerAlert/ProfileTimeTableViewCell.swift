@@ -18,7 +18,7 @@ class ProfileTimeTableViewCell: UITableViewCell {
     @IBOutlet weak var timeIntervalField: TWETimeIntervalField!
 
     private var profileUpdateReceiver: ProfileTableViewController?
-    private var phase: SpeechPhase?
+    var phase: SpeechPhase?
     private var previousPhase: SpeechPhase?
     private var nextPhase: SpeechPhase?
 
