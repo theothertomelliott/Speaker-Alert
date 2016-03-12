@@ -217,19 +217,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ov0-Mq-Pkd">
-                                <rect key="frame" x="20" y="28" width="41.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ov0-Mq-Pkd">
+                                <rect key="frame" x="20" y="72" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cjK-Ij-tPX">
-                                <rect key="frame" x="20" y="102" width="560" height="216"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="T2G-bZ-3CM" id="nPJ-Be-vvc"/>
-                                    <outlet property="delegate" destination="T2G-bZ-3CM" id="stg-6y-tP5"/>
-                                </connections>
-                            </pickerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCC-4K-K40">
+                                <rect key="frame" x="30" y="102.5" width="540" height="400.5"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cjK-Ij-tPX">
+                                        <rect key="frame" x="0.0" y="92.5" width="540" height="216"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="T2G-bZ-3CM" id="nPJ-Be-vvc"/>
+                                            <outlet property="delegate" destination="T2G-bZ-3CM" id="stg-6y-tP5"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="cjK-Ij-tPX" secondAttribute="trailing" id="6D3-ro-WAJ"/>
+                                    <constraint firstItem="cjK-Ij-tPX" firstAttribute="leading" secondItem="hCC-4K-K40" secondAttribute="leading" id="96p-T2-gsh"/>
+                                    <constraint firstItem="cjK-Ij-tPX" firstAttribute="centerY" secondItem="hCC-4K-K40" secondAttribute="centerY" id="gMb-eU-cdJ"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4P-7C-LOV">
                                 <rect key="frame" x="343" y="513" width="30" height="30"/>
                                 <state key="normal" title="OK">
@@ -254,12 +265,13 @@
                             <constraint firstItem="zFp-0m-YF2" firstAttribute="top" secondItem="e4P-7C-LOV" secondAttribute="bottom" constant="8" id="0nb-QP-3Dn"/>
                             <constraint firstItem="ov0-Mq-Pkd" firstAttribute="leading" secondItem="oL5-4o-NIN" secondAttribute="leadingMargin" id="2R6-dl-zGu"/>
                             <constraint firstItem="zFp-0m-YF2" firstAttribute="top" secondItem="ieO-3j-MIS" secondAttribute="bottom" constant="8" id="5fq-7l-iNn"/>
-                            <constraint firstItem="cjK-Ij-tPX" firstAttribute="top" secondItem="ov0-Mq-Pkd" secondAttribute="bottom" constant="10" id="JSu-Ji-5rW"/>
                             <constraint firstItem="ov0-Mq-Pkd" firstAttribute="top" secondItem="fSQ-hT-Spa" secondAttribute="bottom" constant="8" id="MK9-1m-bs4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cjK-Ij-tPX" secondAttribute="trailing" id="XD5-dW-GGJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hCC-4K-K40" secondAttribute="trailing" constant="10" id="Vs5-jj-d2W"/>
+                            <constraint firstItem="hCC-4K-K40" firstAttribute="leading" secondItem="oL5-4o-NIN" secondAttribute="leadingMargin" constant="10" id="fEM-d3-xzV"/>
                             <constraint firstItem="e4P-7C-LOV" firstAttribute="centerX" secondItem="oL5-4o-NIN" secondAttribute="centerX" constant="58" id="fH5-9v-vjY"/>
-                            <constraint firstItem="cjK-Ij-tPX" firstAttribute="leading" secondItem="oL5-4o-NIN" secondAttribute="leadingMargin" id="uII-bD-vEb"/>
+                            <constraint firstItem="hCC-4K-K40" firstAttribute="top" secondItem="ov0-Mq-Pkd" secondAttribute="bottom" constant="10" id="rR0-Am-ynP"/>
                             <constraint firstItem="ieO-3j-MIS" firstAttribute="centerX" secondItem="oL5-4o-NIN" secondAttribute="centerX" constant="-24.5" id="v9i-JR-Tda"/>
+                            <constraint firstItem="ieO-3j-MIS" firstAttribute="top" secondItem="hCC-4K-K40" secondAttribute="bottom" constant="10" id="zkg-BU-0WD"/>
                         </constraints>
                     </view>
                     <connections>

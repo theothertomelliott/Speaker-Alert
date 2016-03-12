@@ -104,19 +104,19 @@ class ProfileTableViewController: UITableViewController {
         if let timeCell: ProfileTimeTableViewCell = cell as? ProfileTimeTableViewCell {
 
                 if indexPath.row == 1 {
-                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.GREEN)
+                    timeCell.setControllerAndPhase(self, phase: SpeechPhase.GREEN)
                 }
 
                 if indexPath.row == 2 {
-                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.YELLOW)
+                    timeCell.setControllerAndPhase(self, phase: SpeechPhase.YELLOW)
                 }
 
                 if indexPath.row == 3 {
-                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.RED)
+                    timeCell.setControllerAndPhase(self, phase: SpeechPhase.RED)
                 }
 
                 if indexPath.row == 4 {
-                    timeCell.setProfileUpdateReceiver(self, phase: SpeechPhase.OVER_MAXIMUM)
+                    timeCell.setControllerAndPhase(self, phase: SpeechPhase.OVER_MAXIMUM)
                 }
 
         }

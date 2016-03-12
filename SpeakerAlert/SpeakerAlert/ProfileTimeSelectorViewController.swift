@@ -20,7 +20,7 @@ class ProfileTimeSelectorViewController: UIViewController,
     }
     var phase: SpeechPhase = SpeechPhase.BELOW_MINIMUM
     var profileUpdateReceiver: ProfileTableViewController?
-    
+
     @IBOutlet var picker: UIPickerView?
     @IBOutlet weak var colorNameLabel: UILabel!
 
@@ -48,6 +48,8 @@ class ProfileTimeSelectorViewController: UIViewController,
             picker?.selectRow(60*50 + Int(t.intValue/60 % 60), inComponent: 1, animated: false)
             picker?.selectRow(60*50 + Int(t.intValue % 60), inComponent: 2, animated: false)
         }
+
+        self.colorNameLabel.text = SpeechPhase.name[self.phase]
 
     }
 

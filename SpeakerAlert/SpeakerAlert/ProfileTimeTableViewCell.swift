@@ -14,41 +14,8 @@ class ProfileTimeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var colorNameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var timeIntervalField: TWETimeIntervalField!
 
     var phase: SpeechPhase?
-
-    private var profileUpdateReceiver: ProfileTableViewController?
-
-    func updateValue(value: NSTimeInterval) {
-        if let phase = self.phase {
-            self.profileUpdateReceiver?.phaseTimes[phase] = value
-        }
-        self.updateValues()
-        self.profileUpdateReceiver?.phaseUpdated()
-    }
-
-    @IBAction func timeIntervalFieldUpdated(sender: AnyObject) {
-        self.updateValue(self.timeIntervalField.timeInterval)
-    }
-
-    func setProfileUpdateReceiver(
-        profileUpdateReceiver: ProfileTableViewController,
-        phase: SpeechPhase) {
-        self.profileUpdateReceiver = profileUpdateReceiver
-        self.phase = phase
-        self.updateValues()
-    }
-
-    func updateValues() {
-        if let phase = self.phase {
-            if let interval = self.profileUpdateReceiver?.phaseTimes[phase] {
-                timeIntervalField?.timeInterval = interval
-                timeLabel.text = "\(interval)"
-            }
-        }
-
-    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -59,6 +26,18 @@ class ProfileTimeTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+
+    func setControllerAndPhase(
+        controller: ProfileTableViewController,
+        phase: SpeechPhase) {
+            self.phase = phase
+            if let phase = self.phase {
+                colorNameLabel.text = SpeechPhase.name[phase]
+                if let interval = controller.phaseTimes[phase] {
+                    timeLabel.text = TimeUtils.formatTime(interval)
+                }
+            }
     }
 
 }
