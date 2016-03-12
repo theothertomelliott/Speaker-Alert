@@ -142,15 +142,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="88"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXX-3r-cCC">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXX-3r-cCC">
                                             <rect key="frame" x="8" y="8" width="41.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A47-QH-F6u">
-                                            <rect key="frame" x="64" y="8" width="71.5" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="A47-QH-F6u">
+                                            <rect key="frame" x="8" y="33.5" width="551" height="41.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -158,9 +158,19 @@
                                     <constraints>
                                         <constraint firstAttribute="topMargin" secondItem="A47-QH-F6u" secondAttribute="top" id="7Jp-Vf-VbQ"/>
                                         <constraint firstItem="qXX-3r-cCC" firstAttribute="top" secondItem="sZ9-g1-dIk" secondAttribute="topMargin" id="IJC-2s-LMa"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="A47-QH-F6u" secondAttribute="bottom" constant="5" id="Nz1-jB-jeQ"/>
+                                        <constraint firstItem="A47-QH-F6u" firstAttribute="leading" secondItem="sZ9-g1-dIk" secondAttribute="leadingMargin" id="QDf-fb-9wE"/>
                                         <constraint firstItem="A47-QH-F6u" firstAttribute="leading" secondItem="qXX-3r-cCC" secondAttribute="trailing" constant="14.5" id="SzZ-ws-luu"/>
+                                        <constraint firstItem="A47-QH-F6u" firstAttribute="top" secondItem="qXX-3r-cCC" secondAttribute="bottom" constant="5" id="hPF-PS-7XL"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="A47-QH-F6u" secondAttribute="trailing" id="iOi-GY-AYq"/>
                                         <constraint firstItem="qXX-3r-cCC" firstAttribute="leading" secondItem="sZ9-g1-dIk" secondAttribute="leadingMargin" id="k4E-Tn-KHN"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="7Jp-Vf-VbQ"/>
+                                            <exclude reference="SzZ-ws-luu"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="colorNameLabel" destination="qXX-3r-cCC" id="xaM-bm-xLi"/>

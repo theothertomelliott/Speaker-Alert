@@ -35,7 +35,7 @@ class ProfileTimeTableViewCell: UITableViewCell {
             if let phase = self.phase {
                 colorNameLabel.text = SpeechPhase.name[phase]
                 if let interval = controller.phaseTimes[phase] {
-                    timeLabel.text = TimeUtils.formatTime(interval)
+                    timeLabel.text = TimeUtils.formatStopwatch(interval)
                 }
             }
     }
