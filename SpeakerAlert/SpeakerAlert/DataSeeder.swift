@@ -65,51 +65,77 @@ class DataSeeder: NSObject {
         oneHour.redBlink = 60*60 + 30
     }
 
-    func configureToastmastersTimings(localContext: NSManagedObjectContext) {
-        let groupToastmasters: Group = Group.MR_createEntityInContext(localContext)
-        groupToastmasters.name = "Toastmasters"
-
-        let tableTopic: Profile = Profile.MR_createEntityInContext(localContext)
+    func tableTopicTiming(localContext: NSManagedObjectContext) -> Profile {
+        let tableTopic: Profile =
+Profile.MR_createEntityInContext(localContext)
         tableTopic.name = "Table Topic"
         tableTopic.green = 1*60
         tableTopic.yellow = 1*60 + 30
         tableTopic.red = 2*60
         tableTopic.redBlink = 2*60 + 30
+        return tableTopic
+    }
 
+    func speechEvaluationTiming(localContext: NSManagedObjectContext) -> Profile {
         let speechEvaluation: Profile = Profile.MR_createEntityInContext(localContext)
         speechEvaluation.name = "Speech Evaluation"
         speechEvaluation.green = 2*60
         speechEvaluation.yellow = 2*60 + 30
         speechEvaluation.red = 3*60
         speechEvaluation.redBlink = 3*60 + 30
+        return speechEvaluation
+    }
 
-        let fourToSix: Profile = Profile.MR_createEntityInContext(localContext)
-        fourToSix.name = "Speech: Four to Six Minutes"
-        fourToSix.green = 4*60
-        fourToSix.yellow = 5*60
-        fourToSix.red = 6*60
-        fourToSix.redBlink = 6*60 + 30
+    func fourToSixTiming(localContext: NSManagedObjectContext) -> Profile {
+    let fourToSix: Profile = Profile.MR_createEntityInContext(localContext)
+    fourToSix.name = "Speech: Four to Six Minutes"
+    fourToSix.green = 4*60
+    fourToSix.yellow = 5*60
+    fourToSix.red = 6*60
+    fourToSix.redBlink = 6*60 + 30
+        return fourToSix
+    }
 
-        let fiveToSeven: Profile = Profile.MR_createEntityInContext(localContext)
-        fiveToSeven.name = "Speech: Five to Seven Minutes"
-        fiveToSeven.green = 5*60
-        fiveToSeven.yellow = 6*60
-        fiveToSeven.red = 7*60
-        fiveToSeven.redBlink = 7*60 + 30
+    func fiveToSevenTiming(localContext: NSManagedObjectContext) -> Profile {
+    let fiveToSeven: Profile = Profile.MR_createEntityInContext(localContext)
+    fiveToSeven.name = "Speech: Five to Seven Minutes"
+    fiveToSeven.green = 5*60
+    fiveToSeven.yellow = 6*60
+    fiveToSeven.red = 7*60
+    fiveToSeven.redBlink = 7*60 + 30
+        return fiveToSeven
+    }
 
-        let eightToTen: Profile = Profile.MR_createEntityInContext(localContext)
-        eightToTen.name = "Speech: Eight to Ten Minutes"
-        eightToTen.green = 8*60
-        eightToTen.yellow = 9*60
-        eightToTen.red = 10*60
-        eightToTen.redBlink = 10*60 + 30
+    func eightToTenTiming(localContext: NSManagedObjectContext) -> Profile {
+    let eightToTen: Profile = Profile.MR_createEntityInContext(localContext)
+    eightToTen.name = "Speech: Eight to Ten Minutes"
+    eightToTen.green = 8*60
+    eightToTen.yellow = 9*60
+    eightToTen.red = 10*60
+    eightToTen.redBlink = 10*60 + 30
+        return eightToTen
+    }
 
-        let generalEval: Profile = Profile.MR_createEntityInContext(localContext)
-        generalEval.name = "General Evaluation"
-        generalEval.green = 8*60
-        generalEval.yellow = 9*60
-        generalEval.red = 10*60
-        generalEval.redBlink = 10*60 + 30
+    func generalEvalTiming(localContext: NSManagedObjectContext) -> Profile {
+    let generalEval: Profile = Profile.MR_createEntityInContext(localContext)
+    generalEval.name = "General Evaluation"
+    generalEval.green = 8*60
+    generalEval.yellow = 9*60
+    generalEval.red = 10*60
+    generalEval.redBlink = 10*60 + 30
+        return generalEval
+    }
+
+    func configureToastmastersTimings(localContext: NSManagedObjectContext) {
+        let groupToastmasters: Group = Group.MR_createEntityInContext(localContext)
+        groupToastmasters.name = "Toastmasters"
+
+        let tableTopic: Profile = tableTopicTiming(localContext)
+        let speechEvaluation: Profile = speechEvaluationTiming(localContext)
+        let fourToSix: Profile = fourToSixTiming(localContext)
+        let fiveToSeven: Profile = fiveToSevenTiming(localContext)
+        let eightToTen: Profile = eightToTenTiming(localContext)
+        let generalEval: Profile = generalEvalTiming(localContext)
 
         groupToastmasters.childTimings = [
             tableTopic, speechEvaluation,

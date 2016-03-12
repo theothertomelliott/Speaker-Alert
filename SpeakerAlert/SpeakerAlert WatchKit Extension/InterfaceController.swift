@@ -82,58 +82,66 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         super.didDeactivate()
     }
 
+    func updatePause(state: SpeechState) {
+        // Only allow pausing if the speech is currently running
+
+        if state.running == SpeechRunning.RUNNING || state.running == SpeechRunning.PAUSED {
+            self.startStopButton.setTitle("Stop")
+            self.startStopButton.setBackgroundColor(
+                UIColor(
+                    red: 229/255,
+                    green: 0/255,
+                    blue: 15/255,
+                    alpha: 1.0))
+            self.startStopButton.setEnabled(true)
+        } else {
+            // Stopped
+            self.startStopButton.setTitle("Start")
+            self.startStopButton.setBackgroundColor(
+                UIColor(
+                    red: 83/255,
+                    green: 215/255,
+                    blue: 106/255,
+                    alpha: 1.0))
+            self.startStopButton.setEnabled(true)
+        }
+    }
+
+    func setPhaseColor(state: SpeechState) {
+        var newPhaseColor = self.phaseColor
+        if state.phase == SpeechPhase.BELOW_MINIMUM {
+            newPhaseColor = (UIColor.whiteColor())
+        }
+        if state.phase == SpeechPhase.GREEN {
+            newPhaseColor = (UIColor(red: 83/255, green: 215/255, blue: 106/255, alpha: 1.0))
+        }
+        if state.phase == SpeechPhase.YELLOW {
+            newPhaseColor = (UIColor(red: 221/255, green: 170/255, blue: 59/255, alpha: 1.0))
+        }
+        if state.phase == SpeechPhase.RED {
+            newPhaseColor = (UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0))
+        }
+        if state.phase == SpeechPhase.OVER_MAXIMUM {
+            newPhaseColor = UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0)
+            self.blinkState = true
+        }
+
+        if newPhaseColor != self.phaseColor {
+            if self.vibration != 0 {
+                NSLog("Vibrate!")
+                WKInterfaceDevice().playHaptic(.Notification)
+            }
+        }
+        self.phaseColor = newPhaseColor
+    }
+
     func updateUI() {
         if let s = self.speechState {
             self.timeElapsedLabel.setText(TimeUtils.formatStopwatch(s.elapsed))
 
-            // Only allow pausing if the speech is currently running
+            self.updatePause(s)
 
-            if s.running == SpeechRunning.RUNNING || s.running == SpeechRunning.PAUSED {
-                self.startStopButton.setTitle("Stop")
-                self.startStopButton.setBackgroundColor(
-                    UIColor(
-                        red: 229/255,
-                        green: 0/255,
-                        blue: 15/255,
-                        alpha: 1.0))
-                self.startStopButton.setEnabled(true)
-            } else {
-                // Stopped
-                self.startStopButton.setTitle("Start")
-                self.startStopButton.setBackgroundColor(
-                    UIColor(
-                        red: 83/255,
-                        green: 215/255,
-                        blue: 106/255,
-                        alpha: 1.0))
-                self.startStopButton.setEnabled(true)
-            }
-
-            var newPhaseColor = self.phaseColor
-            if s.phase == SpeechPhase.BELOW_MINIMUM {
-                newPhaseColor = (UIColor.whiteColor())
-            }
-            if s.phase == SpeechPhase.GREEN {
-                newPhaseColor = (UIColor(red: 83/255, green: 215/255, blue: 106/255, alpha: 1.0))
-            }
-            if s.phase == SpeechPhase.YELLOW {
-                newPhaseColor = (UIColor(red: 221/255, green: 170/255, blue: 59/255, alpha: 1.0))
-            }
-            if s.phase == SpeechPhase.RED {
-                newPhaseColor = (UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0))
-            }
-            if s.phase == SpeechPhase.OVER_MAXIMUM {
-                newPhaseColor = UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0)
-                self.blinkState = true
-            }
-
-            if newPhaseColor != self.phaseColor {
-                if self.vibration != 0 {
-                    NSLog("Vibrate!")
-                    WKInterfaceDevice().playHaptic(.Notification)
-                }
-            }
-            self.phaseColor = newPhaseColor
+            self.setPhaseColor(s)
 
             if self.blinkState {
                 if Double(self.blinkCycleIndex) >= self.blinkCycle {
