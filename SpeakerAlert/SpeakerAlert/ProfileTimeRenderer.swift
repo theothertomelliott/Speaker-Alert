@@ -21,6 +21,42 @@ class ProfileTimeRenderer: NSObject {
         return ""
     }
 
+    class func phaseColor(phase: SpeechPhase) -> UIColor {
+        var color: UIColor = UIColor.successColor()
+        switch phase {
+        case SpeechPhase.BELOW_MINIMUM:
+            color = UIColor.blackColor()
+        case SpeechPhase.GREEN:
+            color = UIColor.successColor()
+        case SpeechPhase.YELLOW:
+            color = UIColor.warningColor()
+        case SpeechPhase.RED:
+            color = UIColor.dangerColor()
+        case SpeechPhase.OVER_MAXIMUM:
+            color = UIColor.dangerColor()
+        }
+        return color
+    }
+
+    class func phaseAsAttributedString(phase: SpeechPhase) -> NSAttributedString {
+        var str = ""
+        if let phaseName = SpeechPhase.name[phase] {
+            str = "● \(phaseName)"
+            if phase == SpeechPhase.OVER_MAXIMUM {
+                str = "○ \(phaseName)"
+            }
+        }
+        let outStr: NSMutableAttributedString = NSMutableAttributedString(
+            string: str)
+
+        let color = phaseColor(phase)
+        outStr.addAttribute(
+            NSForegroundColorAttributeName,
+            value: color,
+            range: NSRange(location: 0, length: 1))
+        return outStr
+    }
+
     class func timesAsAttributedString(profile: Profile) -> NSAttributedString {
 
         let greenStr: String = ProfileTimeRenderer.timeAsHMS(profile.green)

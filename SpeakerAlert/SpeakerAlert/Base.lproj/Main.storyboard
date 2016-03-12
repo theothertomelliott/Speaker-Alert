@@ -142,14 +142,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="88"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXX-3r-cCC">
-                                            <rect key="frame" x="8" y="8" width="48.5" height="24"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXX-3r-cCC">
+                                            <rect key="frame" x="8" y="8" width="66" height="24"/>
+                                            <string key="text">● Color
+            </string>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="A47-QH-F6u">
-                                            <rect key="frame" x="8" y="37" width="551" height="38"/>
+                                            <rect key="frame" x="26" y="37" width="533" height="38"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -159,7 +161,7 @@
                                         <constraint firstAttribute="topMargin" secondItem="A47-QH-F6u" secondAttribute="top" id="7Jp-Vf-VbQ"/>
                                         <constraint firstItem="qXX-3r-cCC" firstAttribute="top" secondItem="sZ9-g1-dIk" secondAttribute="topMargin" id="IJC-2s-LMa"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="A47-QH-F6u" secondAttribute="bottom" constant="5" id="Nz1-jB-jeQ"/>
-                                        <constraint firstItem="A47-QH-F6u" firstAttribute="leading" secondItem="sZ9-g1-dIk" secondAttribute="leadingMargin" id="QDf-fb-9wE"/>
+                                        <constraint firstItem="A47-QH-F6u" firstAttribute="leading" secondItem="sZ9-g1-dIk" secondAttribute="leadingMargin" constant="18" id="QDf-fb-9wE"/>
                                         <constraint firstItem="A47-QH-F6u" firstAttribute="leading" secondItem="qXX-3r-cCC" secondAttribute="trailing" constant="14.5" id="SzZ-ws-luu"/>
                                         <constraint firstItem="A47-QH-F6u" firstAttribute="top" secondItem="qXX-3r-cCC" secondAttribute="bottom" constant="5" id="hPF-PS-7XL"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="A47-QH-F6u" secondAttribute="trailing" id="iOi-GY-AYq"/>
@@ -188,7 +190,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Profile Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dwT-RD-reS">
                                             <rect key="frame" x="8" y="8" width="584" height="43.5"/>
                                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>

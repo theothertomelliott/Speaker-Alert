@@ -62,7 +62,7 @@ class ProfileTimeSelectorViewController: UIViewController,
                 animated: false)
         }
 
-        self.colorNameLabel.text = SpeechPhase.name[self.phase]
+        self.colorNameLabel.attributedText = ProfileTimeRenderer.phaseAsAttributedString(self.phase)
 
     }
 
