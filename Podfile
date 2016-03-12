@@ -8,7 +8,6 @@ target 'SpeakerAlert' do
 	pod "MagicalRecord"
 	pod "Typhoon"
 	pod "FontAwesome.swift", :git => 'https://github.com/theothertomelliott/FontAwesome.swift.git'
-	pod "TWETimeIntervalField", :git => 'https://github.com/theothertomelliott/TWETimeIntervalField.git'
 	pod "RFAboutView", '~> 1.0.4'
 	pod 'Colours', '~> 5'
 	pod 'IQKeyboardManager'

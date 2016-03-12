@@ -18,7 +18,7 @@ class ProfileTimeSelectorViewController: UIViewController,
     let MINUTE_LABEL_INDEX = 3
     let SECOND_INDEX = 4
     let SECOND_LABEL_INDEX = 5
-    
+
     let TOTAL_COMPONENTS = 6
 
     var profile: Profile? {
