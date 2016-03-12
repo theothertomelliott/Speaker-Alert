@@ -227,17 +227,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ov0-Mq-Pkd">
-                                <rect key="frame" x="20" y="72" width="41.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ov0-Mq-Pkd">
+                                <rect key="frame" x="20" y="79" width="560" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCC-4K-K40">
-                                <rect key="frame" x="30" y="102.5" width="540" height="400.5"/>
+                                <rect key="frame" x="30" y="130" width="540" height="373"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cjK-Ij-tPX">
-                                        <rect key="frame" x="0.0" y="92.5" width="540" height="216"/>
+                                        <rect key="frame" x="0.0" y="78.5" width="540" height="216"/>
                                         <connections>
                                             <outlet property="dataSource" destination="T2G-bZ-3CM" id="nPJ-Be-vvc"/>
                                             <outlet property="delegate" destination="T2G-bZ-3CM" id="stg-6y-tP5"/>
@@ -275,7 +275,8 @@
                             <constraint firstItem="zFp-0m-YF2" firstAttribute="top" secondItem="e4P-7C-LOV" secondAttribute="bottom" constant="8" id="0nb-QP-3Dn"/>
                             <constraint firstItem="ov0-Mq-Pkd" firstAttribute="leading" secondItem="oL5-4o-NIN" secondAttribute="leadingMargin" id="2R6-dl-zGu"/>
                             <constraint firstItem="zFp-0m-YF2" firstAttribute="top" secondItem="ieO-3j-MIS" secondAttribute="bottom" constant="8" id="5fq-7l-iNn"/>
-                            <constraint firstItem="ov0-Mq-Pkd" firstAttribute="top" secondItem="fSQ-hT-Spa" secondAttribute="bottom" constant="8" id="MK9-1m-bs4"/>
+                            <constraint firstItem="ov0-Mq-Pkd" firstAttribute="top" secondItem="fSQ-hT-Spa" secondAttribute="bottom" constant="15" id="MK9-1m-bs4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ov0-Mq-Pkd" secondAttribute="trailing" id="NYr-N6-MtL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hCC-4K-K40" secondAttribute="trailing" constant="10" id="Vs5-jj-d2W"/>
                             <constraint firstItem="hCC-4K-K40" firstAttribute="leading" secondItem="oL5-4o-NIN" secondAttribute="leadingMargin" constant="10" id="fEM-d3-xzV"/>
                             <constraint firstItem="e4P-7C-LOV" firstAttribute="centerX" secondItem="oL5-4o-NIN" secondAttribute="centerX" constant="58" id="fH5-9v-vjY"/>
