@@ -158,21 +158,13 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="topMargin" secondItem="A47-QH-F6u" secondAttribute="top" id="7Jp-Vf-VbQ"/>
                                         <constraint firstItem="qXX-3r-cCC" firstAttribute="top" secondItem="sZ9-g1-dIk" secondAttribute="topMargin" id="IJC-2s-LMa"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="A47-QH-F6u" secondAttribute="bottom" constant="5" id="Nz1-jB-jeQ"/>
                                         <constraint firstItem="A47-QH-F6u" firstAttribute="leading" secondItem="sZ9-g1-dIk" secondAttribute="leadingMargin" constant="18" id="QDf-fb-9wE"/>
-                                        <constraint firstItem="A47-QH-F6u" firstAttribute="leading" secondItem="qXX-3r-cCC" secondAttribute="trailing" constant="14.5" id="SzZ-ws-luu"/>
                                         <constraint firstItem="A47-QH-F6u" firstAttribute="top" secondItem="qXX-3r-cCC" secondAttribute="bottom" constant="5" id="hPF-PS-7XL"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="A47-QH-F6u" secondAttribute="trailing" id="iOi-GY-AYq"/>
                                         <constraint firstItem="qXX-3r-cCC" firstAttribute="leading" secondItem="sZ9-g1-dIk" secondAttribute="leadingMargin" id="k4E-Tn-KHN"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="7Jp-Vf-VbQ"/>
-                                            <exclude reference="SzZ-ws-luu"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="colorNameLabel" destination="qXX-3r-cCC" id="xaM-bm-xLi"/>
