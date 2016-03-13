@@ -41,6 +41,7 @@ class SpeakerAlertUITests: XCTestCase {
         expectationForPredicate(exists, evaluatedWithObject: label, handler: nil)
         waitForExpectationsWithTimeout(5, handler: nil)
 
+        // TODO: Base this off the seed data
         XCTAssertEqual(app.tables.cells.count, 6)
 
         app.tables.staticTexts["Five Minutes"].tap()
