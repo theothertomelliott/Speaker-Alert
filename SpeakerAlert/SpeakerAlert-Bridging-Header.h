@@ -11,7 +11,6 @@
 
 #import "Typhoon/Typhoon.h"
 #import <MagicalRecord/MagicalRecord.h>
-#import "TWETimeIntervalField/TWETimeIntervalField.h"
 #import "RFAboutView/RFAboutViewController.h"
 #import "Colours/Colours.h"
 
