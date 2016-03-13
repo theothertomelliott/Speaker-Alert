@@ -19,6 +19,7 @@ class SpeakerAlertUITests: XCTestCase {
         // Doing this in setup will make sure it happens for each test method.
         let app = XCUIApplication()
         app.launchArguments = ["isUITesting"]
+        setupSnapshot(app)
         app.launch()
     }
 
@@ -46,6 +47,8 @@ class SpeakerAlertUITests: XCTestCase {
         app.navigationBars["Five Minutes"].buttons["Profiles"].tap()
 
         XCTAssertEqual(app.tables.cells.count, 6)
+
+        snapshot("Profile list")
     }
 
     func testLoadAboutScreen() {

@@ -22,6 +22,7 @@
 		E21ADBE01BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21ADBDF1BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift */; };
 		E21ADBE21BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */; };
 		E21B306C1B9B54BA00B89D9F /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */; };
+		E21C341F1C95D08F00157E66 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21C341E1C95D08F00157E66 /* SnapshotHelper.swift */; };
 		E22E8C441B6BA23000DD0793 /* VibrationAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */; };
 		E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */; };
 		E2308A8A1C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2308A891C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift */; };
@@ -158,6 +159,7 @@
 		E21ADBDF1BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechCompleteInterfaceController.swift; sourceTree = "<group>"; };
 		E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechCompleteViewController.swift; sourceTree = "<group>"; };
 		E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
+		E21C341E1C95D08F00157E66 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = ../../fastlane/SnapshotHelper.swift; sourceTree = "<group>"; };
 		E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibrationAlertManager.swift; sourceTree = "<group>"; };
 		E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColorManager.swift; sourceTree = "<group>"; };
 		E2308A891C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTimeSelectorViewController.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 		E23481071B2906EB0076247D /* SpeakerAlertUITests */ = {
 			isa = PBXGroup;
 			children = (
+				E21C341E1C95D08F00157E66 /* SnapshotHelper.swift */,
 				E23481081B2906EB0076247D /* SpeakerAlertUITests.swift */,
 				E234810A1B2906EB0076247D /* Info.plist */,
 			);
@@ -897,6 +900,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23481091B2906EB0076247D /* SpeakerAlertUITests.swift in Sources */,
+				E21C341F1C95D08F00157E66 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

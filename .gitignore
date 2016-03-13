@@ -2,3 +2,5 @@ xcuserdata
 Pods
 Podfile.lock
 SpeakerAlert.xcworkspace/xcshareddata
+fastlane/screenshots
+report.xml
