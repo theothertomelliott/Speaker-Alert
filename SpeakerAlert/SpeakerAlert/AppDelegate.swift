@@ -21,10 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
-        application.registerUserNotificationSettings(UIUserNotificationSettings(
-            forTypes: [.Alert, .Badge, .Sound],
-            categories: (NSSet(array: ["MyCategory"])) as? Set<UIUserNotificationCategory>))
-
         if NSProcessInfo.processInfo().arguments.contains("isUITesting") {
             NSLog("UI Testing!")
             MagicalRecord.setupCoreDataStackWithInMemoryStore()
@@ -34,6 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             // Configure core data
             MagicalRecord.setupCoreDataStack()
+
+            application.registerUserNotificationSettings(UIUserNotificationSettings(
+                forTypes: [.Alert, .Badge, .Sound],
+                categories: (NSSet(array: ["MyCategory"])) as? Set<UIUserNotificationCategory>))
         }
         return true
     }
