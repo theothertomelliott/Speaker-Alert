@@ -33,29 +33,34 @@ platform :ios do
     commit_version_bump(xcodeproj: project_file, message: "Bump build number")
   end
 
+  def bump_version (project_file, type)
+    increment_version_number(xcodeproj: project_file, bump_type: type)
+    commit_version_bump(xcodeproj: project_file, message: "Bump version number")
+  end
+
   desc "Increment patch version number"
   lane :bump_patch do
-    increment_version_number(xcodeproj: project_file)
+    bump_version(project_file, "patch")
   end
 
   desc "Increment major version number"
   lane :bump_major do
-    increment_version_number(xcodeproj: project_file, bump_type: "major")
+    bump_version(project_file, "major")
   end
   
   desc "Increment minor version number"
   lane :bump_minor do
-    increment_version_number(xcodeproj: project_file, bump_type: "minor")
+    bump_version(project_file, "minor")
   end
   
   desc "Runs all the tests"
   lane :test do
-    bump_build(project_file)  
     snapshot
   end
 
   desc "Submit a new Beta Build without Screenshots"
   lane :betafast do
+    bump_build(project_file)
     sigh
     gym(scheme: "SpeakerAlert")
     pilot
@@ -64,6 +69,7 @@ platform :ios do
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
+    bump_build(project_file)
     snapshot
     sigh
     gym(scheme: "SpeakerAlert") # Build your app - more options available
@@ -75,6 +81,7 @@ platform :ios do
 
   desc "Deploy a new version to the App Store"
   lane :deploy do
+    bump_build(project_file)
     snapshot
   desc "** Full Markdown** Support: `code`"
     sigh
