@@ -234,8 +234,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXj-N1-1cE">
                                 <rect key="frame" x="180" y="451" width="240" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4P-7C-LOV" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4P-7C-LOV" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                         <rect key="frame" x="10" y="-2" width="69" height="92"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Save" label="Save Changes"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="OK">
                                             <color key="titleColor" red="0.0" green="0.72545770202020199" blue="0.066955850091567529" alpha="1" colorSpace="calibratedRGB"/>
@@ -250,8 +251,9 @@
                                             <action selector="save" destination="T2G-bZ-3CM" eventType="touchUpInside" id="pX2-7E-WIM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieO-3j-MIS" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieO-3j-MIS" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                         <rect key="frame" x="161" y="-2" width="69" height="92"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Cancel" label="Cancel"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" red="0.74940814389999999" green="0.067594980279999994" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -278,6 +280,9 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ov0-Mq-Pkd">
                                 <rect key="frame" x="20" y="79" width="560" height="41"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -287,6 +292,9 @@
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cjK-Ij-tPX">
                                         <rect key="frame" x="0.0" y="52" width="540" height="216"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Time Selector">
+                                            <bool key="isElement" value="NO"/>
+                                        </accessibility>
                                         <connections>
                                             <outlet property="dataSource" destination="T2G-bZ-3CM" id="nPJ-Be-vvc"/>
                                             <outlet property="delegate" destination="T2G-bZ-3CM" id="stg-6y-tP5"/>
@@ -353,7 +361,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlb-wr-EIt">
                                         <rect key="frame" x="10" y="218" width="520" height="72"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-ZC-aid" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-ZC-aid" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="4.5" width="40" height="63"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="Resume">
@@ -375,7 +383,7 @@
                                                     <action selector="resumePressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="ZhC-zG-XyW"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-ch-or0" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-ch-or0" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                                 <rect key="frame" x="238.5" y="4.5" width="43" height="63"/>
                                                 <state key="normal" title="Stop">
                                                     <color key="titleColor" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -399,7 +407,7 @@
                                                     <action selector="stopPressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="Nd1-lv-o3d"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcd-Dn-PIr" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcd-Dn-PIr" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                                 <rect key="frame" x="469" y="4.5" width="43" height="63"/>
                                                 <state key="normal" title="Pause">
                                                     <color key="titleColor" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>

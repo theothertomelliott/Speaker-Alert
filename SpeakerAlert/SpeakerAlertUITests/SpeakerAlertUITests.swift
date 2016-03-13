@@ -29,6 +29,35 @@ class SpeakerAlertUITests: XCTestCase {
 
     func testAddProfile() {
 
+        let app = XCUIApplication()
+        app.navigationBars["Profiles"].buttons["Add"].tap()
+        app.alerts["Add"].collectionViews.buttons["New Speech Profile"].tap()
+
+        let tablesQuery = app.tables
+        let textField = tablesQuery.childrenMatchingType(.Cell).elementBoundByIndex(0).childrenMatchingType(.TextField).element
+        textField.tap()
+
+        let deleteKey = app.keys["delete"]
+        deleteKey.tap()
+        deleteKey.tap()
+        deleteKey.tap()
+        deleteKey.tap()
+        deleteKey.tap()
+        deleteKey.tap()
+        deleteKey.tap()
+        deleteKey.tap()
+        deleteKey.tap()
+        deleteKey.tap()
+        deleteKey.tap()
+        app.buttons["shift"].tap()
+        textField.typeText("Test")
+        app.toolbars.buttons["Done"].tap()
+        tablesQuery.cells["Green"].staticTexts["0:00"].tap()
+
+        app.pickerWheels.elementBoundByIndex(0).adjustToPickerWheelValue("1")
+        app.pickerWheels.elementBoundByIndex(2).adjustToPickerWheelValue("2")
+        app.pickerWheels.elementBoundByIndex(3).adjustToPickerWheelValue("3")
+        
     }
 
     func testLoadProfileAndReturn() {

@@ -24,6 +24,12 @@ class ProfileTimeTableViewCell: UITableViewCell {
                 colorNameLabel.attributedText = ProfileTimeRenderer.phaseAsAttributedString(phase)
                 if let interval = controller.phaseTimes[phase] {
                     timeLabel.text = TimeUtils.formatStopwatch(interval)
+
+                    if let name = SpeechPhase.name[phase] {
+                        self.isAccessibilityElement = true
+                        self.accessibilityIdentifier = name
+                        self.accessibilityLabel = "\(name): \(TimeUtils.formatStopwatch(interval))"
+                    }
                 }
             }
     }
