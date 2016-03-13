@@ -20,20 +20,37 @@ fastlane_version "1.37.0"
 
 default_platform :ios
 
+project_file = 'SpeakerAlert/SpeakerAlert.xcodeproj'
 
 platform :ios do
   before_all do
-    # Increment the version number of your Xcode project
-    project_file = 'SpeakerAlert/SpeakerAlert.xcodeproj'
-    increment_build_number(xcodeproj: project_file)
-    commit_version_bump(xcodeproj: project_file, message: "Bump build number")
-
     cocoapods
     # xctool # run the tests of your app
   end
 
+  def bump_build (project_file)
+    increment_build_number(xcodeproj: project_file)
+    commit_version_bump(xcodeproj: project_file, message: "Bump build number")
+  end
+
+  desc "Increment patch version number"
+  lane :bump_patch do
+    increment_version_number(xcodeproj: project_file)
+  end
+
+  desc "Increment major version number"
+  lane :bump_major do
+    increment_version_number(xcodeproj: project_file, bump_type: "major")
+  end
+  
+  desc "Increment minor version number"
+  lane :bump_minor do
+    increment_version_number(xcodeproj: project_file, bump_type: "minor")
+  end
+  
   desc "Runs all the tests"
   lane :test do
+    bump_build(project_file)  
     snapshot
   end
 
