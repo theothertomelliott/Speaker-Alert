@@ -27,45 +27,33 @@ class SpeakerAlertUITests: XCTestCase {
 		super.tearDown()
 	}
 
-	func testAddProfile() {
-
+	func testTimeProgression() {
 		let app = XCUIApplication()
-		app.navigationBars["Profiles"].buttons["Add"].tap()
-		app.alerts["Add"].collectionViews.buttons["New Speech Profile"].tap()
 
-		let tablesQuery = app.tables
-		let textField = tablesQuery.childrenMatchingType(.Cell).elementBoundByIndex(0).childrenMatchingType(.TextField).element
-		textField.tap()
-
-//		let deleteKey = app.keys["delete"]
-//		deleteKey.tap()
-//		deleteKey.tap()
-//		deleteKey.tap()
-//		deleteKey.tap()
-//		deleteKey.tap()
-//		deleteKey.tap()
-//		deleteKey.tap()
-//		deleteKey.tap()
-//		deleteKey.tap()
-//		deleteKey.tap()
-//		deleteKey.tap()
-//		app.buttons["shift"]		.tap()
-//		textField.typeText("Test")
-//		app.toolbars.buttons["Done"].tap()
-		tablesQuery.cells["Green"]		.staticTexts["0:00"].tap()
-
-		// Wait until the button is there
-		let button = app.buttons["Cancel"]
+		// Wait until the defaults are loaded
+		let label = app.staticTexts["Toastmasters"]
 		let exists = NSPredicate(format: "exists == 1")
 
-		expectationForPredicate(exists, evaluatedWithObject: button, handler: nil)
+		expectationForPredicate(exists, evaluatedWithObject: label, handler: nil)
 		waitForExpectationsWithTimeout(5, handler: nil)
 
-//        app.pickerWheels.elementBoundByIndex(0).adjustToPickerWheelValue("1")
-//        app.pickerWheels.elementBoundByIndex(2).adjustToPickerWheelValue("2")
-//        app.pickerWheels.elementBoundByIndex(3).adjustToPickerWheelValue("3")
+		// Open the profile
+		app.tables.staticTexts["Toastmasters"].tap()
 
-		app.buttons["Cancel"].tap()
+        let topic = app.staticTexts["Table Topic"]
+
+        expectationForPredicate(exists, evaluatedWithObject: topic, handler: nil)
+        waitForExpectationsWithTimeout(5, handler: nil)
+
+        app.tables.staticTexts["Table Topic"].tap()
+
+        app.buttons["Play"].tap()
+
+        sleep(60)
+
+        XCTAssert(app.staticTexts["1:00"].exists)
+
+        snapshot("Timer green")
 	}
 
 	func testLoadProfileAndReturn() {
@@ -81,7 +69,10 @@ class SpeakerAlertUITests: XCTestCase {
 		// TODO: Base this off the seed data
 		XCTAssertEqual(app.tables.cells.count, 6)
 
+		// Open the profile
 		app.tables.staticTexts["Five Minutes"].tap()
+
+		// Hit the back button
 		app.navigationBars["Five Minutes"].buttons["Profiles"].tap()
 
 		XCTAssertEqual(app.tables.cells.count, 6)
