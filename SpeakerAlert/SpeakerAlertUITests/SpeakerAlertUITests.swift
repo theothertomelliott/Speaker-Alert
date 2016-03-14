@@ -11,13 +11,15 @@ import XCTest
 
 class SpeakerAlertUITests: XCTestCase {
 
+    var app: XCUIApplication!
+    
 	override func setUp() {
 		super.setUp()
 		// In UI tests it is usually best to stop immediately when a failure occurs.
 		continueAfterFailure = false
 		// UI tests must launch the application that they test.
 		// Doing this in setup will make sure it happens for each test method.
-		let app = XCUIApplication()
+		app = XCUIApplication()
 		app.launchArguments = ["isUITesting"]
 		setupSnapshot(app)
 		app.launch()
@@ -28,7 +30,6 @@ class SpeakerAlertUITests: XCTestCase {
 	}
 
 	func testTimeProgression() {
-		let app = XCUIApplication()
 
 		// Wait until the defaults are loaded
 		let label = app.staticTexts["Toastmasters"]
@@ -40,24 +41,27 @@ class SpeakerAlertUITests: XCTestCase {
 		// Open the profile
 		app.tables.staticTexts["Toastmasters"].tap()
 
-        let topic = app.staticTexts["Table Topic"]
+		let topic = app.staticTexts["Table Topic"]
 
-        expectationForPredicate(exists, evaluatedWithObject: topic, handler: nil)
-        waitForExpectationsWithTimeout(5, handler: nil)
+		expectationForPredicate(exists, evaluatedWithObject: topic, handler: nil)
+		waitForExpectationsWithTimeout(5, handler: nil)
 
-        app.tables.staticTexts["Table Topic"].tap()
+		app.tables.staticTexts["Table Topic"].tap()
 
-        app.buttons["Play"].tap()
+		app.buttons["Play"].tap()
 
-        sleep(60)
+		XCTAssert(app.staticTexts["0:00"].exists)
 
-        XCTAssert(app.staticTexts["1:00"].exists)
+		expectationForPredicate(exists, evaluatedWithObject: app.staticTexts["0:01"], handler: nil)
+		waitForExpectationsWithTimeout(1.2, handler: nil)
 
-        snapshot("Timer green")
+		expectationForPredicate(exists, evaluatedWithObject: app.staticTexts["1:00"], handler: nil)
+		waitForExpectationsWithTimeout(65, handler: nil)
+
+		snapshot("Timer green")
 	}
 
 	func testLoadProfileAndReturn() {
-		let app = XCUIApplication()
 
 		// Wait until the defaults are loaded
 		let label = app.staticTexts["Five Minutes"]
@@ -81,7 +85,7 @@ class SpeakerAlertUITests: XCTestCase {
 	}
 
 	func testLoadAboutScreen() {
-		let app = XCUIApplication()
+
 		let tabBarsQuery = app.tabBars
 		tabBarsQuery.buttons["Settings"].tap()
 		app.tables.staticTexts["About Speaker Alert"].tap()
