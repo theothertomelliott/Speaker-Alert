@@ -207,6 +207,59 @@
                                     <outlet property="profileName" destination="dwT-RD-reS" id="6lX-Bu-avE"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OkCancelCell" rowHeight="60" id="CSd-HZ-ymP" customClass="ProfileNameTableViewCell" customModule="SpeakerAlert" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="227" width="600" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CSd-HZ-ymP" id="4kC-OY-oRj">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcM-5Q-MbT" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                            <rect key="frame" x="539" y="13" width="43" height="33.5"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="Cancel" label="Cancel"/>
+                                            <state key="normal" title="Cancel">
+                                                <color key="titleColor" red="0.74940814389999999" green="0.067594980279999994" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="TimesCircle"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="IconSize">
+                                                    <real key="value" value="50"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="dismiss" destination="T2G-bZ-3CM" eventType="touchUpInside" id="70Q-2b-PCT"/>
+                                                <action selector="dismiss" destination="dqY-l4-yfQ" eventType="touchUpInside" id="hyA-PP-bCg"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaP-kb-oSh" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                            <rect key="frame" x="486" y="13" width="43" height="33.5"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="Save" label="Save Changes"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <state key="normal" title="OK">
+                                                <color key="titleColor" red="0.0" green="0.72545770200000004" blue="0.066955850090000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="CheckCircle"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="IconSize">
+                                                    <real key="value" value="50"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="save" destination="T2G-bZ-3CM" eventType="touchUpInside" id="Ojd-Cz-4gt"/>
+                                                <action selector="save" destination="dqY-l4-yfQ" eventType="touchUpInside" id="t9e-iW-sJU"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="BaP-kb-oSh" firstAttribute="top" secondItem="4kC-OY-oRj" secondAttribute="topMargin" constant="5" id="0py-Qh-bEs"/>
+                                        <constraint firstItem="HcM-5Q-MbT" firstAttribute="top" secondItem="4kC-OY-oRj" secondAttribute="topMargin" constant="5" id="JXG-6i-dnW"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="HcM-5Q-MbT" secondAttribute="bottom" constant="5" id="c9q-hG-Lo1"/>
+                                        <constraint firstItem="HcM-5Q-MbT" firstAttribute="trailing" secondItem="4kC-OY-oRj" secondAttribute="trailingMargin" constant="-10" id="d5C-kl-HSU"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="BaP-kb-oSh" secondAttribute="bottom" constant="5" id="kn0-tr-7qV"/>
+                                        <constraint firstItem="HcM-5Q-MbT" firstAttribute="leading" secondItem="BaP-kb-oSh" secondAttribute="trailing" constant="10" id="lZ2-pf-oS9"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>
@@ -234,7 +287,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXj-N1-1cE">
                                 <rect key="frame" x="180" y="451" width="240" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4P-7C-LOV" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4P-7C-LOV" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                         <rect key="frame" x="10" y="-2" width="69" height="92"/>
                                         <accessibility key="accessibilityConfiguration" identifier="Save" label="Save Changes"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -251,7 +304,7 @@
                                             <action selector="save" destination="T2G-bZ-3CM" eventType="touchUpInside" id="pX2-7E-WIM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieO-3j-MIS" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieO-3j-MIS" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                         <rect key="frame" x="161" y="-2" width="69" height="92"/>
                                         <accessibility key="accessibilityConfiguration" identifier="Cancel" label="Cancel"/>
                                         <state key="normal" title="Cancel">
@@ -361,7 +414,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlb-wr-EIt">
                                         <rect key="frame" x="10" y="218" width="520" height="72"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-ZC-aid" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-ZC-aid" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="4.5" width="40" height="63"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="Play"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -384,7 +437,7 @@
                                                     <action selector="resumePressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="ZhC-zG-XyW"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-ch-or0" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-ch-or0" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                                 <rect key="frame" x="238.5" y="4.5" width="43" height="63"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="Stop"/>
                                                 <state key="normal" title="Stop">
@@ -409,7 +462,7 @@
                                                     <action selector="stopPressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="Nd1-lv-o3d"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcd-Dn-PIr" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcd-Dn-PIr" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                                 <rect key="frame" x="469" y="4.5" width="43" height="63"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="Pause"/>
                                                 <state key="normal" title="Pause">
