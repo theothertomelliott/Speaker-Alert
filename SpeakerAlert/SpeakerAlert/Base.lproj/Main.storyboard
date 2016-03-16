@@ -194,6 +194,9 @@
                                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="nameLabelFinishedEditing:" destination="dqY-l4-yfQ" eventType="editingDidEnd" id="Xb3-sn-yDD"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <constraints>
