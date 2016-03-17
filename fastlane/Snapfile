@@ -10,7 +10,7 @@ devices([
 ])
 
 languages([
-  "en-US"
+  "en-GB"
 #  "de-DE",
 #  "it-IT"
 ])
