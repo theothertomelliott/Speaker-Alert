@@ -12,7 +12,7 @@ import XCTest
 class SpeakerAlertUITests: XCTestCase {
 
     var app: XCUIApplication!
-    
+
 	override func setUp() {
 		super.setUp()
 		// In UI tests it is usually best to stop immediately when a failure occurs.
@@ -30,7 +30,6 @@ class SpeakerAlertUITests: XCTestCase {
 	}
 
 	func testTimeProgression() {
-
 		// Wait until the defaults are loaded
 		let label = app.staticTexts["Toastmasters"]
 		let exists = NSPredicate(format: "exists == 1")
@@ -49,7 +48,7 @@ class SpeakerAlertUITests: XCTestCase {
 		app.tables.staticTexts["Table Topic"].tap()
 
         snapshot("Before starting")
-        
+
 		app.buttons["Play"].tap()
 
 		XCTAssert(app.staticTexts["0:00"].exists)
@@ -61,12 +60,14 @@ class SpeakerAlertUITests: XCTestCase {
 		waitForExpectationsWithTimeout(65, handler: nil)
 
 		snapshot("Timer green")
-        
+
         app.buttons["Stop"].tap()
-        
-        expectationForPredicate(exists, evaluatedWithObject: app.staticTexts["Speech Complete"], handler: nil)
+
+        expectationForPredicate(exists,
+                                evaluatedWithObject: app.staticTexts["Speech Complete"],
+                                handler: nil)
         waitForExpectationsWithTimeout(1.2, handler: nil)
-        
+
         snapshot("Speech complete")
 	}
 

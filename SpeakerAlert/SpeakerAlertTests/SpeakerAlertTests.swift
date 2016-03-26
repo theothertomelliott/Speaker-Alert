@@ -12,8 +12,8 @@ import MagicalRecord
 class SpeakerAlertTests: XCTestCase {
 
     // TODO: Set up these tests to start with empty database
-    
-    
+
+
 //    override func setUp() {
 //        super.setUp()
 //        MagicalRecord.setupCoreDataStackWithInMemoryStore()

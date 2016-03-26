@@ -123,7 +123,9 @@ class ProfileTableViewController: UITableViewController {
 		if self.name == "" {
 			let alertController = UIAlertController(title: "Name required", message:
 					"Please enter a name for your Speech Profile", preferredStyle: UIAlertControllerStyle.Alert)
-			alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+			alertController.addAction(
+                UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            )
 
 			self.presentViewController(alertController, animated: true, completion: nil)
 			return
@@ -131,7 +133,6 @@ class ProfileTableViewController: UITableViewController {
 
 		MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) in
 			// This block runs in background thread
-
 			if let p = self.profile {
 				let storedTiming: Profile = p.MR_inContext(localContext)
 				storedTiming.green = self.phaseTimes[SpeechPhase.GREEN]
@@ -140,21 +141,16 @@ class ProfileTableViewController: UITableViewController {
 				storedTiming.redBlink = self.phaseTimes[SpeechPhase.OVER_MAXIMUM]
 				storedTiming.name = self.nameLabel?.text
 			} else {
-				MagicalRecord.saveWithBlockAndWait({ (localContext: NSManagedObjectContext!) ->
-					Void in
-					// This block runs in background thread
-
-					let newProfile: Profile = Profile.MR_createEntityInContext(localContext)
-					newProfile.name = "New Speech Profile"
-					newProfile.green = self.phaseTimes[SpeechPhase.GREEN]
-					newProfile.yellow = self.phaseTimes[SpeechPhase.YELLOW]
-					newProfile.red = self.phaseTimes[SpeechPhase.RED]
-					newProfile.redBlink = self.phaseTimes[SpeechPhase.OVER_MAXIMUM]
-					newProfile.name = self.nameLabel?.text
-					if let pg: Group = self.parentGroup {
-						newProfile.parent = pg.MR_inContext(localContext)
-					}
-				})
+                let newProfile: Profile = Profile.MR_createEntityInContext(localContext)
+				newProfile.name = "New Speech Profile"
+				newProfile.green = self.phaseTimes[SpeechPhase.GREEN]
+				newProfile.yellow = self.phaseTimes[SpeechPhase.YELLOW]
+				newProfile.red = self.phaseTimes[SpeechPhase.RED]
+				newProfile.redBlink = self.phaseTimes[SpeechPhase.OVER_MAXIMUM]
+				newProfile.name = self.nameLabel?.text
+				if let pg: Group = self.parentGroup {
+					newProfile.parent = pg.MR_inContext(localContext)
+				}
 			}
 		})
 		self.dismiss()
