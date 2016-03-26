@@ -5,17 +5,17 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'SpeakerAlert' do
-	pod "MagicalRecord"
-	pod "Typhoon"
+	pod "MagicalRecord", '2.3.0'
+	pod "Typhoon", '3.4.5'
 	pod "FontAwesome.swift", :git => 'https://github.com/theothertomelliott/FontAwesome.swift.git'
-	pod "RFAboutView", '~> 1.0.4'
-	pod 'Colours', '~> 5'
-	pod 'IQKeyboardManager'
+	pod "RFAboutView", '1.0.4'
+	pod 'Colours', '5.13.0'
+	pod 'IQKeyboardManager', '4.0.0'
 end
 
 target 'SpeakerAlertTests' do
-	pod "MagicalRecord"
-	pod "Typhoon"
+	pod "MagicalRecord", '2.3.0'
+	pod "Typhoon", '3.4.5'
 end
 
 target 'SpeakerAlertUITests' do
