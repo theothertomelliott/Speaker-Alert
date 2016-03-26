@@ -145,7 +145,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         tickTimer = NSTimer.scheduledTimerWithTimeInterval(
             0.1,
             target: self,
-            selector: Selector("doTick:"),
+            selector: #selector(SpeechViewController.doTick(_:)),
             userInfo: nil,
             repeats: true)
         self.updatePhase()
@@ -348,7 +348,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
                     }
                     blinkOn = !blinkOn
                 }
-                blinkCycleIndex++
+                blinkCycleIndex += 1
             } else {
                 self.view.backgroundColor = phaseColor
             }

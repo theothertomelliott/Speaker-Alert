@@ -22,7 +22,7 @@ class GroupTableViewController: UITableViewController {
         let addButton = UIBarButtonItem(
             barButtonSystemItem: UIBarButtonSystemItem.Add,
             target: self,
-            action: "addItem:")
+            action: #selector(GroupTableViewController.addItem(_:)))
         self.navigationItem.rightBarButtonItems = [addButton, self.editButtonItem()]
     }
 

@@ -62,7 +62,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         self.tickTimer = NSTimer.scheduledTimerWithTimeInterval(
             0.2,
             target: self,
-            selector: Selector("tick:"),
+            selector: #selector(InterfaceController.tick(_:)),
             userInfo: nil,
             repeats: true)
         self.tickTimer.tolerance = 0.1
@@ -155,7 +155,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                     }
                     self.blinkOn = !self.blinkOn
                 }
-                self.blinkCycleIndex++
+                self.blinkCycleIndex += 1
             } else {
                 self.mainGroup.setBackgroundColor(self.phaseColor)
             }

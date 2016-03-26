@@ -22,9 +22,9 @@ public class AppColorManager: NSObject {
         }
     }
 
-    public func configureColorsFrom(var baseColor: UIColor) {
+    public func configureColorsFrom(base: UIColor) {
 
-        baseColor = baseColor.darken(0.1)
+        let baseColor = base.darken(0.1)
 
         let colors = baseColor.colorSchemeOfType(ColorScheme.Monochromatic)
 

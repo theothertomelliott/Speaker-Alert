@@ -34,7 +34,7 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
 
     func removeSpeechObserver(observer: SpeechManagerDelegate) {
         var index: Int? = nil
-        for var i: Int = 0; i < observers.count; i++ {
+        for i in 0...(observers.count-1) {
             if let obs: NSObject = observer as? NSObject,
                 let obs_i: NSObject = observers[i] as? NSObject {
                     if obs === obs_i {

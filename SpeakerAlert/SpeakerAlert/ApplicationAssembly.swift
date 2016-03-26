@@ -18,7 +18,7 @@ public class ApplicationAssembly: TyphoonAssembly {
     public dynamic func appDelegate() -> AnyObject {
         return TyphoonDefinition.withClass(AppDelegate.self) {
             (definition) in
-            definition.injectProperty("localNotificationManager",
+            definition.injectProperty(#selector(ApplicationAssembly.localNotificationManager),
                 with: self.localNotificationManager())
         }
     }
@@ -34,7 +34,7 @@ public class ApplicationAssembly: TyphoonAssembly {
         return TyphoonDefinition.withClass(AppColorManager.self) {
             (definition) in
             definition.scope = TyphoonScope.Singleton
-            definition.injectProperty("baseColor",
+            definition.injectProperty(Selector("baseColor"),
                 with: UIColor(
                     red: 160/255,
                     green: 213/255,
@@ -72,7 +72,7 @@ public class ApplicationAssembly: TyphoonAssembly {
             definition.scope = TyphoonScope.Singleton
             definition.injectProperty("configMan", with: self.configurationManager())
             definition.injectProperty("speechMan", with: self.speechManager())
-            definition.injectMethod("activate", parameters: nil)
+            definition.injectMethod(#selector(TyphoonAssembly.activate), parameters: nil)
         }
     }
 
@@ -90,7 +90,9 @@ public class ApplicationAssembly: TyphoonAssembly {
     public dynamic func loadingViewController() -> AnyObject {
         return TyphoonDefinition.withClass(LoadingViewController.self) {
             (definition) in
-            definition.injectProperty("dataSeeder", with: self.dataSeeder())
+            definition.injectProperty(
+                #selector(ApplicationAssembly.dataSeeder),
+                with: self.dataSeeder())
         }
     }
 

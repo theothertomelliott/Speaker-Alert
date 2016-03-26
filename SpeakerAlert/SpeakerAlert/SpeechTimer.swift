@@ -37,7 +37,7 @@ public class SpeechTimer: NSObject {
                     phaseTimers[p] = NSTimer.scheduledTimerWithTimeInterval(
                         timeUntil + 0.1,
                         target: self,
-                        selector: "phaseChange:",
+                        selector: #selector(SpeechTimer.phaseChange(_:)),
                         userInfo: nil,
                         repeats: false)
                     phaseTimers[p]?.tolerance = 0.05
