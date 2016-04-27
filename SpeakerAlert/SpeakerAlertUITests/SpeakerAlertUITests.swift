@@ -102,4 +102,27 @@ class SpeakerAlertUITests: XCTestCase {
 		app.navigationBars["About"].buttons["Settings"].tap()
 		tabBarsQuery.buttons["Speech"].tap()
 	}
+
+    func testCreateProfile() {
+
+        let app = XCUIApplication()
+        app.navigationBars["Profiles"].buttons["Add"].tap()
+        app.alerts["Add"].collectionViews.buttons["New Speech Profile"].tap()
+        app.tables.cells["Green"].staticTexts["0:00"].tap()
+        app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("1")
+        app.buttons["Save"].tap()
+
+        app.tables.cells["Yellow"].staticTexts["0:00"].tap()
+        app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("2")
+        app.buttons["Save"].tap()
+
+        app.tables.cells["Red"].staticTexts["0:00"].tap()
+        app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("3")
+        app.buttons["Save"].tap()
+        
+        app.tables.cells["Over Maximum"].staticTexts["0:00"].tap()
+        app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("4")
+        app.buttons["Save"].tap()
+
+    }
 }

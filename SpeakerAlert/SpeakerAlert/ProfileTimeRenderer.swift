@@ -16,7 +16,9 @@ class ProfileTimeRenderer: NSObject {
             let componentFormatter: NSDateComponentsFormatter = NSDateComponentsFormatter()
             let interval = NSTimeInterval(time.floatValue)
 
-            return componentFormatter.stringFromTimeInterval(interval)!
+            if let result = componentFormatter.stringFromTimeInterval(interval) {
+                return result
+            }
         }
         return ""
     }

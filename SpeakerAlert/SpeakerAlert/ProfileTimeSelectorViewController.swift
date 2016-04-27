@@ -21,6 +21,8 @@ UIPickerViewDataSource {
 
 	let TOTAL_COMPONENTS = 6
 
+    let TOTAL_REPETITIONS = 4
+
 	var profile: Profile? {
 		didSet {
 		}
@@ -54,13 +56,13 @@ UIPickerViewDataSource {
 		if let t = time {
 			workingTime = t
 		}
-		picker?.selectRow(12 * 50 + Int(workingTime.intValue / 3600),
+		picker?.selectRow(12 * TOTAL_REPETITIONS/2 + Int(workingTime.intValue / 3600),
 			inComponent: HOUR_INDEX,
 			animated: false)
-		picker?.selectRow(60 * 50 + Int(workingTime.intValue / 60 % 60),
+		picker?.selectRow(60 * TOTAL_REPETITIONS/2 + Int(workingTime.intValue / 60 % 60),
 			inComponent: MINUTE_INDEX,
 			animated: false)
-		picker?.selectRow(60 * 50 + Int(workingTime.intValue % 60),
+		picker?.selectRow(60 * TOTAL_REPETITIONS/2 + Int(workingTime.intValue % 60),
 			inComponent: SECOND_INDEX,
 			animated: false)
 
@@ -81,7 +83,7 @@ UIPickerViewDataSource {
 		if let p = self.picker {
 			self.profileUpdateReceiver?.phaseTimes[phase] =
 				NSTimeInterval(
-					p.selectedRowInComponent(HOUR_INDEX) % 60 * 3600 +
+					p.selectedRowInComponent(HOUR_INDEX) % 12 * 3600 +
 						p.selectedRowInComponent(MINUTE_INDEX) % 60 * 60 +
 						p.selectedRowInComponent(SECOND_INDEX) % 60
 			)
@@ -101,9 +103,9 @@ UIPickerViewDataSource {
 	// returns the # of rows in each component..
 	func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
 		if component == HOUR_INDEX {
-			return 12 * 100
+			return 12 * TOTAL_REPETITIONS
 		} else if component == MINUTE_INDEX || component == SECOND_INDEX {
-			return 60 * 100
+			return 60 * TOTAL_REPETITIONS
 		} else {
 			return 1
 		}
