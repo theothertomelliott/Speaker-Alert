@@ -1,0 +1,15 @@
+.speech-background {
+	background-image: url(../img/speech_background_whiteout.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.blue-background {
+	background-color: #A0D5E3;
+}
+
+.white-background {
+	background-color: white;
+}
+
