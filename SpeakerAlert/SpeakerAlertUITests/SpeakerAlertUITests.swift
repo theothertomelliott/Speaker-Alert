@@ -61,6 +61,16 @@ class SpeakerAlertUITests: XCTestCase {
 
 		snapshot("Timer green")
 
+        expectationForPredicate(exists, evaluatedWithObject: app.staticTexts["1:30"], handler: nil)
+        waitForExpectationsWithTimeout(65, handler: nil)
+
+        snapshot("Timer amber")
+
+        expectationForPredicate(exists, evaluatedWithObject: app.staticTexts["2:00"], handler: nil)
+        waitForExpectationsWithTimeout(65, handler: nil)
+
+        snapshot("Timer red")
+
         app.buttons["Stop"].tap()
 
         expectationForPredicate(exists,
@@ -108,6 +118,10 @@ class SpeakerAlertUITests: XCTestCase {
         let app = XCUIApplication()
         app.navigationBars["Profiles"].buttons["Add"].tap()
         app.alerts["Add"].collectionViews.buttons["New Speech Profile"].tap()
+
+        app.tables.textFields["Profile Name"].tap()
+        app.tables.textFields["Profile Name"].typeText("Test")
+        app.toolbars.buttons["Done"].tap()
         app.tables.cells["Green"].staticTexts["0:00"].tap()
         app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("1")
         app.buttons["Save"].tap()
@@ -119,10 +133,16 @@ class SpeakerAlertUITests: XCTestCase {
         app.tables.cells["Red"].staticTexts["0:00"].tap()
         app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("3")
         app.buttons["Save"].tap()
-        
+
         app.tables.cells["Over Maximum"].staticTexts["0:00"].tap()
         app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("4")
         app.buttons["Save"].tap()
 
+        app.buttons["Save"].tap()
+        
+        // TODO: Verify test
+        //XCTAssert(app.tables.cells["Test"].exists)
+
     }
+
 }

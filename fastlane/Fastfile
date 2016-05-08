@@ -47,15 +47,16 @@ platform :ios do
   lane :bump_major do
     bump_version(project_file, "major")
   end
-  
+
   desc "Increment minor version number"
   lane :bump_minor do
     bump_version(project_file, "minor")
   end
-  
+
   desc "Runs all the tests"
   lane :test do
     snapshot(number_of_retries: 3)
+    frameit
   end
 
   desc "Submit a new Beta Build without Screenshots"
@@ -94,7 +95,7 @@ platform :ios do
 
   after_all do |lane|
     # This block is called, only if the executed lane was successful
-    
+
     # slack(
     #   message: "Successfully deployed new App Update."
     # )
