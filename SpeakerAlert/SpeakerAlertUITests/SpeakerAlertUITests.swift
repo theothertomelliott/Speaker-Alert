@@ -115,7 +115,6 @@ class SpeakerAlertUITests: XCTestCase {
 
     func testCreateProfile() {
 
-        let app = XCUIApplication()
         app.navigationBars["Profiles"].buttons["Add"].tap()
         app.alerts["Add"].collectionViews.buttons["New Speech Profile"].tap()
 
@@ -139,9 +138,13 @@ class SpeakerAlertUITests: XCTestCase {
         app.buttons["Save"].tap()
 
         app.buttons["Save"].tap()
-        
-        // TODO: Verify test
-        //XCTAssert(app.tables.cells["Test"].exists)
+
+        // Verify the new profile was created
+        expectationForPredicate(
+            NSPredicate(format: "exists == 1"),
+            evaluatedWithObject: app.staticTexts["Test"],
+            handler: nil)
+        waitForExpectationsWithTimeout(2, handler: nil)
 
     }
 
