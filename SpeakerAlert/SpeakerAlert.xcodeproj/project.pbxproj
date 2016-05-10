@@ -82,6 +82,9 @@
 		E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D273CD1B516EF500155349 /* SpeechViewController.swift */; };
 		E2DD5E3B1B5BE03800EF0997 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
 		E2E8DD5D1B6DD021003D3F7C /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
+		E2F0C7A11CE157E800A1A462 /* ProfileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0C7A01CE157E800A1A462 /* ProfileUITests.swift */; };
+		E2F0C7A31CE158D500A1A462 /* TimeProgressionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0C7A21CE158D500A1A462 /* TimeProgressionUITests.swift */; };
+		E2F0C7A51CE1593D00A1A462 /* AboutScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0C7A41CE1593D00A1A462 /* AboutScreenUITests.swift */; };
 		E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
 		E2F6B5F21B378F2600210504 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
 		E2FF3C971B98100F0083CC4F /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2FF3C961B98100F0083CC4F /* Acknowledgements.plist */; };
@@ -214,6 +217,9 @@
 		E2C9020E1B33BAA300B39D37 /* SpeakerAlert.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpeakerAlert.xcdatamodel; sourceTree = "<group>"; };
 		E2D273CD1B516EF500155349 /* SpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
 		E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
+		E2F0C7A01CE157E800A1A462 /* ProfileUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUITests.swift; sourceTree = "<group>"; };
+		E2F0C7A21CE158D500A1A462 /* TimeProgressionUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeProgressionUITests.swift; sourceTree = "<group>"; };
+		E2F0C7A41CE1593D00A1A462 /* AboutScreenUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutScreenUITests.swift; sourceTree = "<group>"; };
 		E2F2A1DD1B6DB91A0014D4A0 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
 		E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E2F6B5F01B378F2600210504 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -400,6 +406,9 @@
 				E21C341E1C95D08F00157E66 /* SnapshotHelper.swift */,
 				E23481081B2906EB0076247D /* SpeakerAlertUITests.swift */,
 				E234810A1B2906EB0076247D /* Info.plist */,
+				E2F0C7A01CE157E800A1A462 /* ProfileUITests.swift */,
+				E2F0C7A21CE158D500A1A462 /* TimeProgressionUITests.swift */,
+				E2F0C7A41CE1593D00A1A462 /* AboutScreenUITests.swift */,
 			);
 			path = SpeakerAlertUITests;
 			sourceTree = "<group>";
@@ -900,6 +909,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23481091B2906EB0076247D /* SpeakerAlertUITests.swift in Sources */,
+				E2F0C7A51CE1593D00A1A462 /* AboutScreenUITests.swift in Sources */,
+				E2F0C7A11CE157E800A1A462 /* ProfileUITests.swift in Sources */,
+				E2F0C7A31CE158D500A1A462 /* TimeProgressionUITests.swift in Sources */,
 				E21C341F1C95D08F00157E66 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

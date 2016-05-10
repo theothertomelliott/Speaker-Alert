@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Configure core data
             MagicalRecord.setupCoreDataStack()
         }
-        
+
         // TODO: Figure out how to dismiss the dialog in tests
         if TARGET_IPHONE_SIMULATOR != 1 && TARGET_OS_SIMULATOR != 1 {
             application.registerUserNotificationSettings(UIUserNotificationSettings(
