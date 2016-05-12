@@ -36,7 +36,7 @@ class ProfileTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 	}
-    
+
     override func viewWillAppear(animated: Bool) {
         self.setTabBarVisible(false, animated: animated)
     }

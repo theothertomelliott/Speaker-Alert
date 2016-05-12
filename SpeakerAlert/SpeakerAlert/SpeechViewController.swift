@@ -150,7 +150,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
             repeats: true)
         self.updatePhase()
         self.updateDisplay()
-        
+
         self.setTabBarVisible(false, animated: animated)
     }
 

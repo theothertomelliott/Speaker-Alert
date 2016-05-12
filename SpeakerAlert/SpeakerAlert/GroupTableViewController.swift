@@ -29,7 +29,7 @@ class GroupTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
             self.setTabBarVisible(true, animated: animated)
     }
-    
+
     override func viewDidAppear(animated: Bool) {
         self.reloadData()
     }
