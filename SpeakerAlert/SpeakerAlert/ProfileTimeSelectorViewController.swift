@@ -72,7 +72,14 @@ UIPickerViewDataSource {
 			self.colorNameLabel.accessibilityLabel = name
 			self.colorNameLabel.accessibilityIdentifier = "Speech Phase"
 		}
-	}
+
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.setTabBarVisible(false, animated: true)
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()

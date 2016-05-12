@@ -26,6 +26,10 @@ class GroupTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItems = [addButton, self.editButtonItem()]
     }
 
+    override func viewWillAppear(animated: Bool) {
+            self.setTabBarVisible(true, animated: animated)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         self.reloadData()
     }

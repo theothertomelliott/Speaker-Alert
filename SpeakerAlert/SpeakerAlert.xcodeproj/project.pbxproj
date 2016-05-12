@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B8E21BF70E82BF41BC4BBC79 /* Pods_SpeakerAlertTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C1174FD04EBE60B6AA870B /* Pods_SpeakerAlertTests.framework */; };
 		D2C50F50FDE26C573823F396 /* Pods_SpeakerAlert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */; };
+		E2065BB81CE4231500EB192C /* TabBarAnimationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2065BB71CE4231500EB192C /* TabBarAnimationExtension.swift */; };
 		E20A8E961B816E6400ECC443 /* SpeechStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A8E951B816E6400ECC443 /* SpeechStateTests.swift */; };
 		E20A8E981B81766000ECC443 /* SpeechProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A8E971B81766000ECC443 /* SpeechProfile.swift */; };
 		E20A8E9A1B817E7500ECC443 /* SpeechProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A8E991B817E7500ECC443 /* SpeechProfileFactory.swift */; };
@@ -153,6 +154,7 @@
 		5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeakerAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		762393DDD7583B928EBD75E6 /* Pods-SpeakerAlertTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlertTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlertTests/Pods-SpeakerAlertTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D43FA6F56ECA171B284DC711 /* Pods-SpeakerAlert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlert.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlert/Pods-SpeakerAlert.release.xcconfig"; sourceTree = "<group>"; };
+		E2065BB71CE4231500EB192C /* TabBarAnimationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarAnimationExtension.swift; sourceTree = "<group>"; };
 		E20A8E951B816E6400ECC443 /* SpeechStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechStateTests.swift; sourceTree = "<group>"; };
 		E20A8E971B81766000ECC443 /* SpeechProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechProfile.swift; sourceTree = "<group>"; };
 		E20A8E991B817E7500ECC443 /* SpeechProfileFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechProfileFactory.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				E24628DE1B9803C2007DD28B /* SettingsViewController.swift */,
 				E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */,
 				E24A428A1BA4BA800071702D /* LoadingViewController.swift */,
+				E2065BB71CE4231500EB192C /* TabBarAnimationExtension.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -848,6 +851,7 @@
 			files = (
 				E2AB35961B82DC97001F8362 /* LocalNotificationManager.swift in Sources */,
 				E2C6D30D1B8ABA85002C69D7 /* FontAwesomeTabBarItem.swift in Sources */,
+				E2065BB81CE4231500EB192C /* TabBarAnimationExtension.swift in Sources */,
 				E25E86C61B65748D00F120FA /* FontAwesomeButton.swift in Sources */,
 				E2C571B91B8AA5A400C83D92 /* FontAwesomeImageView.swift in Sources */,
 				E2C571BB1B8AB1A300C83D92 /* NamedTableViewCell.swift in Sources */,
