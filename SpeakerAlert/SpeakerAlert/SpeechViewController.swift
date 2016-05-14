@@ -18,7 +18,6 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
 
     @IBOutlet weak var playButton: FontAwesomeButton!
     @IBOutlet weak var stopButton: FontAwesomeButton!
-    @IBOutlet weak var pauseButton: FontAwesomeButton!
 
     @IBOutlet weak var elapsedTimeLabel: UILabel!
 
@@ -112,13 +111,6 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         self.updateDisplay()
 
         self.setTabBarVisible(false, animated: animated)
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        guard let _ = self.state else {
-            self.navigationController?.popViewControllerAnimated(true)
-            return
-        }
     }
 
     func doTick(timer: NSTimer) {
@@ -244,17 +236,14 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
             switch state.running {
             case .PAUSED:
                 self.playButton.enabled = true
-                self.pauseButton.enabled = false
                 self.stopButton.enabled = true
+                self.controls?.hidden = false
             case .RUNNING:
-                self.playButton.enabled = false
-                self.pauseButton.enabled = true
-                self.stopButton.enabled = true
                 self.controls?.hidden = true
             case .STOPPED:
                 self.playButton.enabled = true
-                self.pauseButton.enabled = false
                 self.stopButton.enabled = false
+                self.controls?.hidden = false
             }
         }
     }
@@ -301,8 +290,22 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         sender: AnyObject?) {
         if let scvc: SpeechCompleteViewController =
             segue.destinationViewController as? SpeechCompleteViewController {
-                scvc.timeElapsed = lastSpeechElapsed
-            }
+            scvc.timeElapsed = lastSpeechElapsed
+        }
+    }
+
+}
+
+class ReplacementSegue: UIStoryboardSegue {
+
+    override func perform() {
+        let destinationController = self.destinationViewController
+
+        if let navigationController = sourceViewController.navigationController {
+            navigationController.popViewControllerAnimated(false)
+            navigationController.pushViewController(destinationController, animated: false)
+        }
+
     }
 
 }

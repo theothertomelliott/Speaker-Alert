@@ -415,7 +415,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlb-wr-EIt">
-                                        <rect key="frame" x="10" y="218" width="520" height="72"/>
+                                        <rect key="frame" x="145" y="218" width="250" height="72"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-ZC-aid" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="4" width="40" height="63"/>
@@ -441,7 +441,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-ch-or0" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
-                                                <rect key="frame" x="238" y="4" width="43" height="63"/>
+                                                <rect key="frame" x="187" y="4" width="43" height="63"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="Stop"/>
                                                 <state key="normal" title="Stop">
                                                     <color key="titleColor" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -465,41 +465,23 @@
                                                     <action selector="stopPressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="Nd1-lv-o3d"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcd-Dn-PIr" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
-                                                <rect key="frame" x="469" y="4" width="43" height="63"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="Pause"/>
-                                                <state key="normal" title="Pause">
-                                                    <color key="titleColor" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <state key="disabled">
-                                                    <color key="titleColor" red="0.4799360795" green="0.4799360795" blue="0.4799360795" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <state key="selected">
-                                                    <color key="titleColor" red="0.3432785377" green="0.99520959899999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <state key="highlighted">
-                                                    <color key="titleColor" red="0.3432785377" green="0.99520959899999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Pause"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="IconSize">
-                                                        <real key="value" value="50"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="pausePressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="WOA-1x-jTS"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Nxk-ch-or0" firstAttribute="centerY" secondItem="jlb-wr-EIt" secondAttribute="centerY" id="4h4-q6-X0K"/>
-                                            <constraint firstAttribute="trailing" secondItem="Kcd-Dn-PIr" secondAttribute="trailing" constant="8" id="8Tu-Kc-OJL"/>
                                             <constraint firstItem="p1F-ZC-aid" firstAttribute="centerY" secondItem="jlb-wr-EIt" secondAttribute="centerY" id="9tb-Cv-Eqv"/>
+                                            <constraint firstAttribute="width" constant="250" id="Brh-XL-g7y"/>
                                             <constraint firstAttribute="height" constant="72" id="E4p-RO-Q2l"/>
                                             <constraint firstItem="p1F-ZC-aid" firstAttribute="leading" secondItem="jlb-wr-EIt" secondAttribute="leading" constant="20" id="FYZ-TN-qw9"/>
-                                            <constraint firstItem="Kcd-Dn-PIr" firstAttribute="centerY" secondItem="jlb-wr-EIt" secondAttribute="centerY" id="oS0-IJ-tsJ"/>
+                                            <constraint firstItem="Nxk-ch-or0" firstAttribute="centerY" secondItem="jlb-wr-EIt" secondAttribute="centerY" id="Qh1-yo-wNe"/>
+                                            <constraint firstAttribute="trailing" secondItem="Nxk-ch-or0" secondAttribute="trailing" constant="20" id="dgA-aq-K1E"/>
                                             <constraint firstItem="Nxk-ch-or0" firstAttribute="centerX" secondItem="jlb-wr-EIt" secondAttribute="centerX" id="y81-1l-pdG"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="4h4-q6-X0K"/>
+                                                <exclude reference="y81-1l-pdG"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -513,11 +495,14 @@
                                     <constraint firstAttribute="trailing" secondItem="E7o-Bg-pvs" secondAttribute="trailing" id="fqC-h0-DDs"/>
                                     <constraint firstAttribute="width" constant="350" id="ng0-KK-7XI"/>
                                     <constraint firstAttribute="height" constant="300" id="rJz-Vw-hwS"/>
+                                    <constraint firstItem="jlb-wr-EIt" firstAttribute="centerX" secondItem="KbZ-nH-ahp" secondAttribute="centerX" id="s2X-Q8-pxJ"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="ng0-KK-7XI"/>
                                         <exclude reference="M88-DR-dmj"/>
+                                        <exclude reference="56N-nT-eSU"/>
+                                        <exclude reference="LhE-bA-NPE"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -547,11 +532,10 @@
                     <connections>
                         <outlet property="controls" destination="jlb-wr-EIt" id="egG-gH-qsM"/>
                         <outlet property="elapsedTimeLabel" destination="E7o-Bg-pvs" id="kWH-zp-aD0"/>
-                        <outlet property="pauseButton" destination="Kcd-Dn-PIr" id="bfP-rZ-yWf"/>
                         <outlet property="playButton" destination="p1F-ZC-aid" id="BTy-xz-KKg"/>
                         <outlet property="profileSummaryLabel" destination="p4L-Mx-pbd" id="4cY-WT-en8"/>
                         <outlet property="stopButton" destination="Nxk-ch-or0" id="yyA-Rm-rcG"/>
-                        <segue destination="a1d-R4-lgQ" kind="show" identifier="SpeechComplete" id="1P6-Y5-NmS"/>
+                        <segue destination="a1d-R4-lgQ" kind="custom" identifier="SpeechComplete" customClass="ReplacementSegue" customModule="SpeakerAlert" customModuleProvider="target" id="1P6-Y5-NmS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5H-ak-Azo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -572,29 +556,29 @@
                         <viewControllerLayoutGuide type="bottom" id="8do-IX-Qyh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qq9-8x-RXD">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speech Complete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blo-hj-SEp">
-                                <rect key="frame" x="20" y="15" width="560" height="43"/>
+                                <rect key="frame" x="20" y="35" width="560" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Elapsed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUj-Uu-xBI">
-                                <rect key="frame" x="20" y="178" width="560" height="20.5"/>
+                                <rect key="frame" x="20" y="210" width="560" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iu6-qg-zfL">
-                                <rect key="frame" x="20" y="208" width="560" height="119.5"/>
+                                <rect key="frame" x="20" y="240" width="560" height="119.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ig-4y-qjR">
-                                <rect key="frame" x="20" y="471" width="560" height="55"/>
+                                <rect key="frame" x="20" y="535" width="560" height="55"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <state key="normal" title="OK">
                                     <color key="titleColor" red="0.0" green="0.28535160659999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
