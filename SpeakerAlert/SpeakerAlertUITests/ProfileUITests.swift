@@ -20,7 +20,7 @@ class ProfileEditUITests: SpeakerAlertUITests {
         waitForExpectationsWithTimeout(5, handler: nil)
 
         // TODO: Base this off the seed data
-        XCTAssertEqual(app.tables.cells.count, 6)
+        XCTAssertEqual(app.tables.cells.count, 7)
 
         // Open the profile
         app.tables.staticTexts["Five Minutes"].tap()
@@ -28,7 +28,7 @@ class ProfileEditUITests: SpeakerAlertUITests {
         // Hit the back button
         app.navigationBars["Five Minutes"].buttons["Profiles"].tap()
 
-        XCTAssertEqual(app.tables.cells.count, 6)
+        XCTAssertEqual(app.tables.cells.count, 7)
 
         snapshot("Profile list", waitForLoadingIndicator: false)
     }
