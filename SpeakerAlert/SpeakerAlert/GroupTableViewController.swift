@@ -34,6 +34,18 @@ class GroupTableViewController: UITableViewController {
         self.reloadData()
     }
 
+    func rowIsGroup(row: Int) -> Bool {
+        return row < groups.count
+    }
+
+    func rowIsProfile(row: Int) -> Bool {
+        return !rowIsGroup(row) && row < groups.count + timings.count
+    }
+
+    func rowIsDemo(row: Int) -> Bool {
+        return row == groups.count + timings.count
+    }
+
     func setParent(grp: Group) {
         parentGroup = grp
         groups = []
@@ -166,7 +178,7 @@ class GroupTableViewController: UITableViewController {
         indexPath: NSIndexPath) -> UITableViewCell {
 
         // Configure the cell...
-        if indexPath.row < groups.count {
+        if rowIsGroup(indexPath.row) {
             let cell = tableView.dequeueReusableCellWithIdentifier(
                 "GroupCell",
                 forIndexPath: indexPath)
@@ -177,7 +189,7 @@ class GroupTableViewController: UITableViewController {
             }
 
             return cell
-        } else if indexPath.row < groups.count + timings.count {
+        } else if rowIsProfile(indexPath.row) {
             let cell = tableView.dequeueReusableCellWithIdentifier(
                 "TimingCell",
                 forIndexPath: indexPath)
@@ -210,22 +222,20 @@ class GroupTableViewController: UITableViewController {
     }
 
     func deleteItemAtIndexPath(indexPath: NSIndexPath) {
-        if indexPath.row < self.groups.count + self.timings.count {
-        MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) in
-            // Delete the appropriate object
-            if indexPath.row < self.groups.count {
-                let group = self.groups[indexPath.row]
-                group.MR_deleteEntityInContext(localContext)
-            } else {
-                let timing = self.timings[indexPath.row - self.groups.count]
-                timing.MR_deleteEntityInContext(localContext)
-            }
+        if !rowIsDemo(indexPath.row) {
+            MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) in
+                // Delete the appropriate object
+                if self.rowIsGroup(indexPath.row) {
+                    let group = self.groups[indexPath.row]
+                    group.MR_deleteEntityInContext(localContext)
+                } else if self.rowIsProfile(indexPath.row) {
+                    let timing = self.timings[indexPath.row - self.groups.count]
+                    timing.MR_deleteEntityInContext(localContext)
+                }
 
-            }) { (success: Bool, error: NSError!) -> Void in
+                }) { (success: Bool, error: NSError!) -> Void in
                 self.reloadData()
-        }
-        } else {
-            // Alert the user since this is a demo field?
+            }
         }
     }
 
@@ -249,7 +259,7 @@ class GroupTableViewController: UITableViewController {
         editActionsForRowAtIndexPath indexPath: NSIndexPath)
         -> [UITableViewRowAction]? {
 
-            if indexPath.row >= self.groups.count + self.timings.count {
+            if rowIsDemo(indexPath.row) {
                 // Do nothing for the demo row
 
                 let uneditableAction = UITableViewRowAction(
@@ -271,9 +281,9 @@ class GroupTableViewController: UITableViewController {
             title: "Edit",
             handler: {action, indexpath in
 
-            if indexPath.row < self.groups.count {
+            if self.rowIsGroup(indexPath.row) {
                 self.renameGroup(self.groups[indexPath.row])
-            } else {
+            } else if self.rowIsProfile(indexPath.row) {
                 self.performSegueWithIdentifier(
                     "timingEditSegue",
                     sender: tableView.cellForRowAtIndexPath(indexPath))
