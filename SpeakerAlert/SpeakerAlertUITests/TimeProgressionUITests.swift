@@ -42,6 +42,7 @@ class TimeProgressionUITests: SpeakerAlertUITests {
         waitForExpectationsWithTimeout(65, handler: nil)
         snapshot("Timer red", waitForLoadingIndicator: false)
 
+        app.tap()
         app.buttons["Stop"].tap()
 
         expectationForPredicate(exists,
