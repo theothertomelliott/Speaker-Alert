@@ -38,17 +38,19 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
 
     // MARK: Demo mode
 
-    override func canBecomeFirstResponder() -> Bool {
-        return true
-    }
-
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if motion == .MotionShake {
             self.demoNextPhase()
         }
     }
 
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    @IBAction func tapped(sender: AnyObject) {
+        // If a speech is in progress, pause and display the controls
+        if let c = controls where c.hidden {
+            c.hidden = false
+            speechMan?.pause()
+        }
+
         self.demoNextPhase()
     }
 
@@ -129,14 +131,6 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         if let cm = configMan {
             cm.isDisplayTime = isVisible
             self.elapsedTimeLabel.hidden = !isVisible
-        }
-    }
-
-    @IBAction func tapped(sender: AnyObject) {
-        // If a speech is in progress, pause and display the controls
-        if let c = controls where c.hidden {
-            c.hidden = false
-            speechMan?.pause()
         }
     }
 
