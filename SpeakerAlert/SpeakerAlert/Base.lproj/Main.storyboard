@@ -529,6 +529,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="KbZ-nH-ahp" firstAttribute="leading" secondItem="ZOg-E5-qK8" secondAttribute="leadingMargin" constant="10" id="0SZ-Je-dsu"/>
                             <constraint firstItem="p4L-Mx-pbd" firstAttribute="leading" secondItem="ZOg-E5-qK8" secondAttribute="leadingMargin" constant="8" id="7Cd-d3-AMv"/>
@@ -538,9 +539,13 @@
                             <constraint firstItem="p4L-Mx-pbd" firstAttribute="top" secondItem="LOg-uw-c5V" secondAttribute="bottom" constant="18" id="rac-BA-QwH"/>
                             <constraint firstItem="KbZ-nH-ahp" firstAttribute="centerY" secondItem="ZOg-E5-qK8" secondAttribute="centerY" id="vsu-el-eQb"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="uCE-i2-Oz2" appends="YES" id="hWG-ul-nfV"/>
+                        </connections>
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="controls" destination="jlb-wr-EIt" id="egG-gH-qsM"/>
                         <outlet property="elapsedTimeLabel" destination="E7o-Bg-pvs" id="kWH-zp-aD0"/>
                         <outlet property="pauseButton" destination="Kcd-Dn-PIr" id="bfP-rZ-yWf"/>
                         <outlet property="playButton" destination="p1F-ZC-aid" id="BTy-xz-KKg"/>
@@ -550,6 +555,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5H-ak-Azo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="uCE-i2-Oz2">
+                    <connections>
+                        <action selector="tapped:" destination="Ons-tk-MNb" id="rSu-mn-R0s"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2023" y="-412"/>
         </scene>

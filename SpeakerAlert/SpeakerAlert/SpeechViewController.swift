@@ -9,48 +9,6 @@
 import UIKit
 import Colours
 
-class DemoSpeechState: SpeechState {
-
-    override var running: SpeechRunning {
-        get { return SpeechRunning.RUNNING }
-        set {}
-    }
-
-    private var _phase: SpeechPhase
-    override var phase: SpeechPhase {
-        get { return _phase }
-    }
-
-    func nextPhase() {
-        // Go to the next phase
-        switch self._phase {
-        case .BELOW_MINIMUM:
-            self._phase = .GREEN
-        case .GREEN:
-            self._phase = .YELLOW
-        case .YELLOW:
-            self._phase = .RED
-        case .RED:
-            self._phase = .OVER_MAXIMUM
-        case .OVER_MAXIMUM:
-            self._phase = .OVER_MAXIMUM
-        }
-    }
-
-    override func timeUntil(phase: SpeechPhase) -> NSTimeInterval {
-        return 0
-    }
-
-    init() {
-        _phase = SpeechPhase.BELOW_MINIMUM
-        super.init(profile: SpeechProfile(green: 0, yellow: 0, red: 0, redBlink: 0))
-    }
-
-    override func toDictionary() -> [String : AnyObject] {
-        return [:]
-    }
-}
-
 class SpeechViewController: UIViewController, SpeechManagerDelegate {
 
     var speechMan: SpeechManager?
@@ -63,6 +21,8 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     @IBOutlet weak var pauseButton: FontAwesomeButton!
 
     @IBOutlet weak var elapsedTimeLabel: UILabel!
+
+    @IBOutlet weak var controls: UIView?
 
     var demoMode: Bool = false
     var demoState: DemoSpeechState?
@@ -173,11 +133,6 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     func setShowTime(isVisible: Bool) {
         if let cm = configMan {
             cm.isDisplayTime = isVisible
@@ -185,9 +140,12 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         }
     }
 
-    // Call the function from tap gesture recognizer added to your view (or button)
-
     @IBAction func tapped(sender: AnyObject) {
+        // If a speech is in progress, pause and display the controls
+        if let c = controls where c.hidden {
+            c.hidden = false
+            speechMan?.pause()
+        }
     }
 
     func setRunningMode(isRunning: Bool) {
@@ -292,6 +250,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
                 self.playButton.enabled = false
                 self.pauseButton.enabled = true
                 self.stopButton.enabled = true
+                self.controls?.hidden = true
             case .STOPPED:
                 self.playButton.enabled = true
                 self.pauseButton.enabled = false
@@ -346,4 +305,46 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
             }
     }
 
+}
+
+class DemoSpeechState: SpeechState {
+
+    override var running: SpeechRunning {
+        get { return SpeechRunning.RUNNING }
+        set {}
+    }
+
+    private var _phase: SpeechPhase
+    override var phase: SpeechPhase {
+        get { return _phase }
+    }
+
+    func nextPhase() {
+        // Go to the next phase
+        switch self._phase {
+        case .BELOW_MINIMUM:
+            self._phase = .GREEN
+        case .GREEN:
+            self._phase = .YELLOW
+        case .YELLOW:
+            self._phase = .RED
+        case .RED:
+            self._phase = .OVER_MAXIMUM
+        case .OVER_MAXIMUM:
+            self._phase = .OVER_MAXIMUM
+        }
+    }
+
+    override func timeUntil(phase: SpeechPhase) -> NSTimeInterval {
+        return 0
+    }
+
+    init() {
+        _phase = SpeechPhase.BELOW_MINIMUM
+        super.init(profile: SpeechProfile(green: 0, yellow: 0, red: 0, redBlink: 0))
+    }
+
+    override func toDictionary() -> [String : AnyObject] {
+        return [:]
+    }
 }
