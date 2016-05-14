@@ -152,13 +152,12 @@ class GroupTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return groups.count + timings.count
+        let demoCount = (parentGroup == nil) ? 1 : 0
+        return groups.count + timings.count + demoCount
     }
 
     override func tableView(
@@ -178,7 +177,7 @@ class GroupTableViewController: UITableViewController {
             }
 
             return cell
-        } else {
+        } else if indexPath.row < groups.count + timings.count {
             let cell = tableView.dequeueReusableCellWithIdentifier(
                 "TimingCell",
                 forIndexPath: indexPath)
@@ -191,6 +190,11 @@ class GroupTableViewController: UITableViewController {
                     ProfileTimeRenderer.timesAsAttributedString(timing)
             }
 
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier(
+                "DemoCell",
+                forIndexPath: indexPath)
             return cell
         }
 
@@ -206,6 +210,7 @@ class GroupTableViewController: UITableViewController {
     }
 
     func deleteItemAtIndexPath(indexPath: NSIndexPath) {
+        if indexPath.row < self.groups.count + self.timings.count {
         MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) in
             // Delete the appropriate object
             if indexPath.row < self.groups.count {
@@ -218,6 +223,9 @@ class GroupTableViewController: UITableViewController {
 
             }) { (success: Bool, error: NSError!) -> Void in
                 self.reloadData()
+        }
+        } else {
+            // Alert the user since this is a demo field?
         }
     }
 
@@ -240,12 +248,30 @@ class GroupTableViewController: UITableViewController {
         tableView: UITableView,
         editActionsForRowAtIndexPath indexPath: NSIndexPath)
         -> [UITableViewRowAction]? {
+
+            if indexPath.row >= self.groups.count + self.timings.count {
+                // Do nothing for the demo row
+
+                let uneditableAction = UITableViewRowAction(
+                    style: UITableViewRowActionStyle.Default,
+                    title: "Built-in",
+                    handler: {action, indexpath in
+
+                })
+                uneditableAction.backgroundColor = UIColor(red: 0.5,
+                                                           green: 0.5,
+                                                           blue: 0.5,
+                                                           alpha: 1.0)
+
+                return [uneditableAction]
+            }
+
         let moreRowAction = UITableViewRowAction(
             style: UITableViewRowActionStyle.Default,
             title: "Edit",
             handler: {action, indexpath in
 
-            if indexPath.row < Int(Group.MR_countOfEntities()) {
+            if indexPath.row < self.groups.count {
                 self.renameGroup(self.groups[indexPath.row])
             } else {
                 self.performSegueWithIdentifier(
@@ -253,7 +279,7 @@ class GroupTableViewController: UITableViewController {
                     sender: tableView.cellForRowAtIndexPath(indexPath))
             }
         })
-        // TODO: Change this color
+
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0)
 
         let deleteRowAction = UITableViewRowAction(
@@ -276,6 +302,13 @@ class GroupTableViewController: UITableViewController {
             if let destination = segue.destinationViewController as? ProfileTableViewController {
                 destination.profile = nil // Creates an empty profile
                 destination.parentGroup = self.parentGroup
+            }
+            return
+        }
+
+        if "demoSegue" == segue.identifier {
+            if let destination = segue.destinationViewController as? SpeechViewController {
+                destination.demoMode = true
             }
             return
         }
