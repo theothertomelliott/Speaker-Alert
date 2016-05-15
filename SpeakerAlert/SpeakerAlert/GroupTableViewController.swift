@@ -319,6 +319,7 @@ class GroupTableViewController: UITableViewController {
         if "demoSegue" == segue.identifier {
             if let destination = segue.destinationViewController as? SpeechViewController {
                 destination.demoMode = true
+                speechMan?.profile = nil
             }
             return
         }

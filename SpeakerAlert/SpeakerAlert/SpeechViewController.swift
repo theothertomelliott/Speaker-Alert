@@ -23,6 +23,8 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
 
     @IBOutlet weak var controls: UIView?
 
+    @IBOutlet weak var pausedLabel: UILabel?
+
     var demoMode: Bool = false
     var demoState: DemoSpeechState?
     var blinkState: Bool = false
@@ -229,15 +231,16 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         if let state = self.state {
             switch state.running {
             case .PAUSED:
-                self.playButton.enabled = true
                 self.stopButton.enabled = true
                 self.controls?.hidden = false
+                self.pausedLabel?.hidden = false
             case .RUNNING:
                 self.controls?.hidden = true
+                self.pausedLabel?.hidden = true
             case .STOPPED:
-                self.playButton.enabled = true
                 self.stopButton.enabled = false
                 self.controls?.hidden = false
+                self.pausedLabel?.hidden = true
             }
         }
     }
