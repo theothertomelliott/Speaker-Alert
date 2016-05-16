@@ -12,7 +12,22 @@ import XCTest
 class SpeakerAlertUITests: XCTestCase {
 
     var app: XCUIApplication!
+    var device: XCUIDevice!
+    
+    func isLandscape() -> Bool {
+        return false
+    }
 
+    func waitForElement(element: XCUIElement) -> XCUIElement {
+        // Verify the new profile was created
+        expectationForPredicate(
+            NSPredicate(format: "exists == 1"),
+            evaluatedWithObject: element,
+            handler: nil)
+        waitForExpectationsWithTimeout(0.5, handler: nil)
+        return element
+    }
+    
 	override func setUp() {
 		super.setUp()
 		// In UI tests it is usually best to stop immediately when a failure occurs.
@@ -23,6 +38,13 @@ class SpeakerAlertUITests: XCTestCase {
 		app.launchArguments = ["isUITesting"]
 		setupSnapshot(app)
 		app.launch()
+        
+        device = XCUIDevice.sharedDevice()
+        if self.isLandscape() {
+            device.orientation = UIDeviceOrientation.LandscapeLeft
+        } else {
+            device.orientation = UIDeviceOrientation.Portrait
+        }
 	}
 
 	override func tearDown() {

@@ -92,23 +92,16 @@ class ProfileEditUITests: SpeakerAlertUITests {
         app.buttons["Save"].tap()
 
         // Verify the new profile was created
-        expectationForPredicate(
-            NSPredicate(format: "exists == 1"),
-            evaluatedWithObject: app.staticTexts["Test"],
-            handler: nil)
-        waitForExpectationsWithTimeout(2, handler: nil)
+        waitForElement(app.staticTexts["Test"])
 
         app.navigationBars["Profiles"].buttons["Edit"].tap()
 
         app.tables.buttons["Delete Test, ● 4 ● 1 ● 2 ○ 3"].tap()
+
         app.tables.buttons["Edit"].tap()
 
         // Verify the new profile was created
-        expectationForPredicate(
-            NSPredicate(format: "exists == 1"),
-            evaluatedWithObject: app.tables.cells["Green"],
-            handler: nil)
-        waitForExpectationsWithTimeout(10, handler: nil)
+        waitForElement(app.tables.cells["Green"])
 
         app.buttons["Back"].tap()
 

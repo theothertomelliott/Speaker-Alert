@@ -10,6 +10,13 @@ import XCTest
 
 class TimeProgressionUITests: SpeakerAlertUITests {
 
+    func landscapeSuffix() -> String {
+        if isLandscape() {
+            return " - Landscape"
+        }
+        return ""
+    }
+
     func testTimeProgression() {
         // Wait until the defaults are loaded
         let exists = NSPredicate(format: "exists == 1")
@@ -25,22 +32,19 @@ class TimeProgressionUITests: SpeakerAlertUITests {
         waitForExpectationsWithTimeout(5, handler: nil)
 
         app.tables.staticTexts["Table Topic"].tap()
-        snapshot("Before starting", waitForLoadingIndicator: false)
+        snapshot("Before starting" + landscapeSuffix(), waitForLoadingIndicator: false)
 
         app.buttons["Play"].tap()
         XCTAssert(app.staticTexts["0:00"].exists)
 
-        expectationForPredicate(exists, evaluatedWithObject: app.staticTexts["1:00"], handler: nil)
-        waitForExpectationsWithTimeout(65, handler: nil)
-        snapshot("Timer green", waitForLoadingIndicator: false)
+        NSThread.sleepForTimeInterval(60)
+        snapshot("Timer green" + landscapeSuffix(), waitForLoadingIndicator: false)
 
-        expectationForPredicate(exists, evaluatedWithObject: app.staticTexts["1:30"], handler: nil)
-        waitForExpectationsWithTimeout(65, handler: nil)
-        snapshot("Timer amber", waitForLoadingIndicator: false)
+        NSThread.sleepForTimeInterval(30)
+        snapshot("Timer amber" + landscapeSuffix(), waitForLoadingIndicator: false)
 
-        expectationForPredicate(exists, evaluatedWithObject: app.staticTexts["2:00"], handler: nil)
-        waitForExpectationsWithTimeout(65, handler: nil)
-        snapshot("Timer red", waitForLoadingIndicator: false)
+        NSThread.sleepForTimeInterval(30)
+        snapshot("Timer red" + landscapeSuffix(), waitForLoadingIndicator: false)
 
         app.tap()
         app.buttons["Stop"].tap()
@@ -49,7 +53,7 @@ class TimeProgressionUITests: SpeakerAlertUITests {
                                 evaluatedWithObject: app.staticTexts["Speech Complete"],
                                 handler: nil)
         waitForExpectationsWithTimeout(1.2, handler: nil)
-        snapshot("Speech complete", waitForLoadingIndicator: false)
+        snapshot("Speech complete" + landscapeSuffix(), waitForLoadingIndicator: false)
     }
 
 }

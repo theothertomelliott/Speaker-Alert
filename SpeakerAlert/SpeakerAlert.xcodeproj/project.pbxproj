@@ -24,6 +24,7 @@
 		E21ADBE21BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */; };
 		E21B306C1B9B54BA00B89D9F /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */; };
 		E21C341F1C95D08F00157E66 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21C341E1C95D08F00157E66 /* SnapshotHelper.swift */; };
+		E21DF0541CE83CDB00A3E835 /* LandscapeTimeProgressionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF0531CE83CDB00A3E835 /* LandscapeTimeProgressionUITests.swift */; };
 		E22E8C441B6BA23000DD0793 /* VibrationAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */; };
 		E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */; };
 		E2308A8A1C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2308A891C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift */; };
@@ -165,6 +166,7 @@
 		E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechCompleteViewController.swift; sourceTree = "<group>"; };
 		E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		E21C341E1C95D08F00157E66 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = ../../fastlane/SnapshotHelper.swift; sourceTree = "<group>"; };
+		E21DF0531CE83CDB00A3E835 /* LandscapeTimeProgressionUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeTimeProgressionUITests.swift; sourceTree = "<group>"; };
 		E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibrationAlertManager.swift; sourceTree = "<group>"; };
 		E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColorManager.swift; sourceTree = "<group>"; };
 		E2308A891C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTimeSelectorViewController.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				E2F0C7A01CE157E800A1A462 /* ProfileUITests.swift */,
 				E2F0C7A21CE158D500A1A462 /* TimeProgressionUITests.swift */,
 				E2F0C7A41CE1593D00A1A462 /* AboutScreenUITests.swift */,
+				E21DF0531CE83CDB00A3E835 /* LandscapeTimeProgressionUITests.swift */,
 			);
 			path = SpeakerAlertUITests;
 			sourceTree = "<group>";
@@ -840,7 +843,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\npwd\nswiftlint autocorrect\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -914,6 +917,7 @@
 			files = (
 				E23481091B2906EB0076247D /* SpeakerAlertUITests.swift in Sources */,
 				E2F0C7A51CE1593D00A1A462 /* AboutScreenUITests.swift in Sources */,
+				E21DF0541CE83CDB00A3E835 /* LandscapeTimeProgressionUITests.swift in Sources */,
 				E2F0C7A11CE157E800A1A462 /* ProfileUITests.swift in Sources */,
 				E2F0C7A31CE158D500A1A462 /* TimeProgressionUITests.swift in Sources */,
 				E21C341F1C95D08F00157E66 /* SnapshotHelper.swift in Sources */,

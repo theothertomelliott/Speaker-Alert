@@ -16,7 +16,7 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "1.37.0"
+fastlane_version "1.89.0"
 
 default_platform :ios
 
@@ -55,7 +55,7 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
-    snapshot(number_of_retries: 3)
+    snapshot
     frameit
   end
 
@@ -71,7 +71,7 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
     bump_build(project_file)
-    snapshot(number_of_retries: 3)
+    snapshot
     sigh
     gym(scheme: "SpeakerAlert") # Build your app - more options available
     pilot
