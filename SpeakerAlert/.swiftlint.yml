@@ -3,3 +3,4 @@ disabled_rules: # rule identifiers to exclude from running
   - type_name
   - todo
   - type_body_length
+  - trailing_whitespace
