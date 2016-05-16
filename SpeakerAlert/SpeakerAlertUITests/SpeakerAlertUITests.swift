@@ -29,6 +29,12 @@ class SpeakerAlertUITests: XCTestCase {
     }
     
 	override func setUp() {
+        
+        addUIInterruptionMonitorWithDescription("Local Notifications") { (alert) -> Bool in
+            alert.buttons["OK"].tap()
+            return true
+        }
+        
 		super.setUp()
 		// In UI tests it is usually best to stop immediately when a failure occurs.
 		continueAfterFailure = false

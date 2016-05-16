@@ -32,6 +32,11 @@ class GroupTableViewController: UITableViewController {
 
     override func viewDidAppear(animated: Bool) {
         self.reloadData()
+        
+        UIApplication.sharedApplication().registerUserNotificationSettings(
+            UIUserNotificationSettings(
+                forTypes: [.Alert, .Badge, .Sound],
+                categories: (NSSet(array: ["MyCategory"])) as? Set<UIUserNotificationCategory>))
     }
 
     func rowIsGroup(row: Int) -> Bool {
