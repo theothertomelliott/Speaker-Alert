@@ -17,29 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     var localNotificationManager: LocalNotificationManager?
+    var parameterManager: ParameterManager?
 
     func application(application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-
-        let parser = JVArgumentParser()
         
-        var testset = "default"
-        parser.addOptionWithArgumentWithLongName("testset") { (value: String!) in
-            testset = value
-        }
-        var isUITesting = false
-        parser.addOptionWithLongName("uitesting") { () in
-            isUITesting = true
-        }
-        
-        do {
-            try parser.parse(NSProcessInfo.processInfo().arguments)
-        } catch {
-            NSLog("Couldn't parse arguments")
-        }
-        
-        if isUITesting {
+        if let p = parameterManager where p.isUITesting {
             NSLog("UI Testing!")
             MagicalRecord.setupCoreDataStackWithInMemoryStore()
 

@@ -20,6 +20,15 @@ public class ApplicationAssembly: TyphoonAssembly {
             (definition) in
             definition.injectProperty(#selector(ApplicationAssembly.localNotificationManager),
                 with: self.localNotificationManager())
+            definition.injectProperty(#selector(ApplicationAssembly.parameterManager),
+                                      with: self.parameterManager())
+        }
+    }
+    
+    public dynamic func parameterManager() -> AnyObject {
+        return TyphoonDefinition.withClass(ParameterManager.self) {
+            (definition) in
+            definition.scope = TyphoonScope.Singleton
         }
     }
 

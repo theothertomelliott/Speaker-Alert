@@ -60,6 +60,7 @@
 		E27453BF1B9E8DE00058086C /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27453BD1B9E8DE00058086C /* Speech.swift */; };
 		E2784A641B9C8FE30046BF0D /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2784A631B9C8FE30046BF0D /* ProfileTableViewCell.swift */; };
 		E2784A671B9C97180046BF0D /* ProfileTimeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2784A661B9C97180046BF0D /* ProfileTimeRenderer.swift */; };
+		E28270401CEC98A10085DA0E /* ParameterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282703F1CEC98A10085DA0E /* ParameterManager.swift */; };
 		E284FC1C1BA3E89000ABFA68 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC1B1BA3E89000ABFA68 /* ProfileTableViewController.swift */; };
 		E284FC1F1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC1E1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift */; };
 		E284FC211BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC201BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift */; };
@@ -217,6 +218,7 @@
 		E27453BD1B9E8DE00058086C /* Speech.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speech.swift; sourceTree = "<group>"; };
 		E2784A631B9C8FE30046BF0D /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		E2784A661B9C97180046BF0D /* ProfileTimeRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTimeRenderer.swift; sourceTree = "<group>"; };
+		E282703F1CEC98A10085DA0E /* ParameterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterManager.swift; sourceTree = "<group>"; };
 		E284FC1B1BA3E89000ABFA68 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		E284FC1E1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileNameTableViewCell.swift; sourceTree = "<group>"; };
 		E284FC201BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTimeTableViewCell.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */,
+				E282703F1CEC98A10085DA0E /* ParameterManager.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1026,6 +1029,7 @@
 				E2308A8A1C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift in Sources */,
 				E2784A671B9C97180046BF0D /* ProfileTimeRenderer.swift in Sources */,
 				E284FC1F1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift in Sources */,
+				E28270401CEC98A10085DA0E /* ParameterManager.swift in Sources */,
 				E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */,
 				E24628DF1B9803C2007DD28B /* SettingsViewController.swift in Sources */,
 				E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */,
