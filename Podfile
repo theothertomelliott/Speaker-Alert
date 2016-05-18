@@ -1,4 +1,4 @@
-xcodeproj 'SpeakerAlert/SpeakerAlert.xcodeproj/'
+project 'SpeakerAlert/SpeakerAlert.xcodeproj/'
 
 # Uncomment this line to define a global platform for your project
 platform :ios, '8.0'
@@ -11,6 +11,7 @@ target 'SpeakerAlert' do
 	pod "RFAboutView", '1.0.4'
 	pod 'Colours', '5.13.0'
 	pod 'IQKeyboardManager', '4.0.0'
+	pod 'JVArgumentParser', '0.2.0'
 end
 
 target 'SpeakerAlertTests' do
@@ -23,11 +24,11 @@ target 'SpeakerAlertUITests' do
 end
 
 target 'SpeakerAlert WatchKit App' do
-
+platform :watchos, '2.0'
 end
 
 target 'SpeakerAlert WatchKit Extension' do
-
+platform :watchos, '2.0'
 end
 
 post_install do |installer|

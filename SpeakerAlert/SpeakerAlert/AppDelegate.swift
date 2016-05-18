@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import MagicalRecord
+import JVArgumentParser
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
+        _ = JVArgumentParser()
+        
         if NSProcessInfo.processInfo().arguments.contains("isUITesting") {
             NSLog("UI Testing!")
             MagicalRecord.setupCoreDataStackWithInMemoryStore()

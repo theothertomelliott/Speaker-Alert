@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7525BBC2EA2F973BEF44753C /* Pods_SpeakerAlert_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6614182DD0EFC822A4FC6618 /* Pods_SpeakerAlert_WatchKit_App.framework */; };
+		A43EAD2FE72CCA65BBC18FFC /* Pods_SpeakerAlertUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9452747182532551FA027624 /* Pods_SpeakerAlertUITests.framework */; };
 		B8E21BF70E82BF41BC4BBC79 /* Pods_SpeakerAlertTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C1174FD04EBE60B6AA870B /* Pods_SpeakerAlertTests.framework */; };
+		C06CF8739DF16E1BDA5CF353 /* Pods_SpeakerAlert_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B195E91318F57F29987AA888 /* Pods_SpeakerAlert_WatchKit_Extension.framework */; };
 		D2C50F50FDE26C573823F396 /* Pods_SpeakerAlert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */; };
 		E2065BB81CE4231500EB192C /* TabBarAnimationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2065BB71CE4231500EB192C /* TabBarAnimationExtension.swift */; };
 		E20A8E961B816E6400ECC443 /* SpeechStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A8E951B816E6400ECC443 /* SpeechStateTests.swift */; };
@@ -150,10 +153,18 @@
 
 /* Begin PBXFileReference section */
 		037A8FF3AD0A07FC5FF59EA7 /* Pods-SpeakerAlert.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlert.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlert/Pods-SpeakerAlert.debug.xcconfig"; sourceTree = "<group>"; };
+		064D0B0A0BAC0B8D1D869702 /* Pods-SpeakerAlert WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlert WatchKit App.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlert WatchKit App/Pods-SpeakerAlert WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
+		3A69504D40BC6BB9940D6D93 /* Pods-SpeakerAlertUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlertUITests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlertUITests/Pods-SpeakerAlertUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E6C05D69A1F923D69A1DAE7 /* Pods-SpeakerAlertTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlertTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlertTests/Pods-SpeakerAlertTests.release.xcconfig"; sourceTree = "<group>"; };
 		56C1174FD04EBE60B6AA870B /* Pods_SpeakerAlertTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeakerAlertTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeakerAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6614182DD0EFC822A4FC6618 /* Pods_SpeakerAlert_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeakerAlert_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		762393DDD7583B928EBD75E6 /* Pods-SpeakerAlertTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlertTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlertTests/Pods-SpeakerAlertTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8E599167A63CBE8D52D56A63 /* Pods-SpeakerAlert WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlert WatchKit Extension.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlert WatchKit Extension/Pods-SpeakerAlert WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		9452747182532551FA027624 /* Pods_SpeakerAlertUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeakerAlertUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B09C4292100F8D4B5D8F70C7 /* Pods-SpeakerAlert WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlert WatchKit App.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlert WatchKit App/Pods-SpeakerAlert WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
+		B195E91318F57F29987AA888 /* Pods_SpeakerAlert_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeakerAlert_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7B56D163DB9AC16EE56CABD /* Pods-SpeakerAlert WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlert WatchKit Extension.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlert WatchKit Extension/Pods-SpeakerAlert WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 		D43FA6F56ECA171B284DC711 /* Pods-SpeakerAlert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlert.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlert/Pods-SpeakerAlert.release.xcconfig"; sourceTree = "<group>"; };
 		E2065BB71CE4231500EB192C /* TabBarAnimationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarAnimationExtension.swift; sourceTree = "<group>"; };
 		E20A8E951B816E6400ECC443 /* SpeechStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechStateTests.swift; sourceTree = "<group>"; };
@@ -228,9 +239,18 @@
 		E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E2F6B5F01B378F2600210504 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		E2FF3C961B98100F0083CC4F /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
+		E86CA8D1C1D2C717BE36D63A /* Pods-SpeakerAlertUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlertUITests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlertUITests/Pods-SpeakerAlertUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		75A62F319AD3386EF5B185E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7525BBC2EA2F973BEF44753C /* Pods_SpeakerAlert_WatchKit_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E23480E21B2906EA0076247D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,6 +273,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A43EAD2FE72CCA65BBC18FFC /* Pods_SpeakerAlertUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +281,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C06CF8739DF16E1BDA5CF353 /* Pods_SpeakerAlert_WatchKit_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +295,12 @@
 				D43FA6F56ECA171B284DC711 /* Pods-SpeakerAlert.release.xcconfig */,
 				762393DDD7583B928EBD75E6 /* Pods-SpeakerAlertTests.debug.xcconfig */,
 				4E6C05D69A1F923D69A1DAE7 /* Pods-SpeakerAlertTests.release.xcconfig */,
+				B09C4292100F8D4B5D8F70C7 /* Pods-SpeakerAlert WatchKit App.debug.xcconfig */,
+				064D0B0A0BAC0B8D1D869702 /* Pods-SpeakerAlert WatchKit App.release.xcconfig */,
+				8E599167A63CBE8D52D56A63 /* Pods-SpeakerAlert WatchKit Extension.debug.xcconfig */,
+				C7B56D163DB9AC16EE56CABD /* Pods-SpeakerAlert WatchKit Extension.release.xcconfig */,
+				3A69504D40BC6BB9940D6D93 /* Pods-SpeakerAlertUITests.debug.xcconfig */,
+				E86CA8D1C1D2C717BE36D63A /* Pods-SpeakerAlertUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -539,6 +567,9 @@
 				E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */,
 				5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */,
 				56C1174FD04EBE60B6AA870B /* Pods_SpeakerAlertTests.framework */,
+				6614182DD0EFC822A4FC6618 /* Pods_SpeakerAlert_WatchKit_App.framework */,
+				B195E91318F57F29987AA888 /* Pods_SpeakerAlert_WatchKit_Extension.framework */,
+				9452747182532551FA027624 /* Pods_SpeakerAlertUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -550,14 +581,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E23481381B2906EB0076247D /* Build configuration list for PBXNativeTarget "SpeakerAlert" */;
 			buildPhases = (
-				3D7A4282BA74DBAA2AFA4C64 /* Check Pods Manifest.lock */,
+				3D7A4282BA74DBAA2AFA4C64 /* 📦 Check Pods Manifest.lock */,
 				E23480E11B2906EA0076247D /* Sources */,
 				E23480E21B2906EA0076247D /* Frameworks */,
 				E28248521C4A96310055FA24 /* ShellScript */,
 				E23480E31B2906EA0076247D /* Resources */,
 				E23481371B2906EB0076247D /* Embed Watch Content */,
-				5E0806541896A766B2E33215 /* Embed Pods Frameworks */,
-				A4402814F1D513040E22E67A /* Copy Pods Resources */,
+				5E0806541896A766B2E33215 /* 📦 Embed Pods Frameworks */,
+				A4402814F1D513040E22E67A /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -573,12 +604,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E234813B1B2906EB0076247D /* Build configuration list for PBXNativeTarget "SpeakerAlertTests" */;
 			buildPhases = (
-				85EFFFB814D211DA37ACDAF2 /* Check Pods Manifest.lock */,
+				85EFFFB814D211DA37ACDAF2 /* 📦 Check Pods Manifest.lock */,
 				E23480F51B2906EB0076247D /* Sources */,
 				E23480F61B2906EB0076247D /* Frameworks */,
 				E23480F71B2906EB0076247D /* Resources */,
-				689D663AD1EF2530307026DE /* Embed Pods Frameworks */,
-				9AA4B1DAF22C729DBAA09D50 /* Copy Pods Resources */,
+				689D663AD1EF2530307026DE /* 📦 Embed Pods Frameworks */,
+				9AA4B1DAF22C729DBAA09D50 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -594,9 +625,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E234813E1B2906EB0076247D /* Build configuration list for PBXNativeTarget "SpeakerAlertUITests" */;
 			buildPhases = (
+				A3425C2670EB8221DFCAF325 /* 📦 Check Pods Manifest.lock */,
 				E23481001B2906EB0076247D /* Sources */,
 				E23481011B2906EB0076247D /* Frameworks */,
 				E23481021B2906EB0076247D /* Resources */,
+				12934AFEDAF113495EA298F8 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -612,8 +645,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E23481341B2906EB0076247D /* Build configuration list for PBXNativeTarget "SpeakerAlert WatchKit App" */;
 			buildPhases = (
+				4A4AA92A100FFBA79640BD85 /* 📦 Check Pods Manifest.lock */,
 				E234810B1B2906EB0076247D /* Resources */,
 				E23481331B2906EB0076247D /* Embed App Extensions */,
+				75A62F319AD3386EF5B185E8 /* Frameworks */,
+				64088D73F3F357B5AC29EAB8 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -629,9 +665,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E23481301B2906EB0076247D /* Build configuration list for PBXNativeTarget "SpeakerAlert WatchKit Extension" */;
 			buildPhases = (
+				3716FE19D3385F90FC131925 /* 📦 Check Pods Manifest.lock */,
 				E23481181B2906EB0076247D /* Sources */,
 				E23481191B2906EB0076247D /* Frameworks */,
 				E234811A1B2906EB0076247D /* Resources */,
+				CC23E263F69ADD2068B3452B /* 📦 Embed Pods Frameworks */,
+				1F5F6E56C2F3899CC4EB575F /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -742,14 +781,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3D7A4282BA74DBAA2AFA4C64 /* Check Pods Manifest.lock */ = {
+		12934AFEDAF113495EA298F8 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-SpeakerAlertUITests/Pods-SpeakerAlertUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1F5F6E56C2F3899CC4EB575F /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-SpeakerAlert WatchKit Extension/Pods-SpeakerAlert WatchKit Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3716FE19D3385F90FC131925 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -757,14 +826,44 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		5E0806541896A766B2E33215 /* Embed Pods Frameworks */ = {
+		3D7A4282BA74DBAA2AFA4C64 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4A4AA92A100FFBA79640BD85 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5E0806541896A766B2E33215 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -772,14 +871,29 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-SpeakerAlert/Pods-SpeakerAlert-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		689D663AD1EF2530307026DE /* Embed Pods Frameworks */ = {
+		64088D73F3F357B5AC29EAB8 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-SpeakerAlert WatchKit App/Pods-SpeakerAlert WatchKit App-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		689D663AD1EF2530307026DE /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -787,14 +901,14 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-SpeakerAlertTests/Pods-SpeakerAlertTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		85EFFFB814D211DA37ACDAF2 /* Check Pods Manifest.lock */ = {
+		85EFFFB814D211DA37ACDAF2 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -802,14 +916,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		9AA4B1DAF22C729DBAA09D50 /* Copy Pods Resources */ = {
+		9AA4B1DAF22C729DBAA09D50 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -817,19 +931,49 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-SpeakerAlertTests/Pods-SpeakerAlertTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A4402814F1D513040E22E67A /* Copy Pods Resources */ = {
+		A3425C2670EB8221DFCAF325 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A4402814F1D513040E22E67A /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-SpeakerAlert/Pods-SpeakerAlert-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC23E263F69ADD2068B3452B /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-SpeakerAlert WatchKit Extension/Pods-SpeakerAlert WatchKit Extension-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E28248521C4A96310055FA24 /* ShellScript */ = {
@@ -1084,6 +1228,7 @@
 		};
 		E23481311B2906EB0076247D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E599167A63CBE8D52D56A63 /* Pods-SpeakerAlert WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1102,6 +1247,7 @@
 		};
 		E23481321B2906EB0076247D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7B56D163DB9AC16EE56CABD /* Pods-SpeakerAlert WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1120,6 +1266,7 @@
 		};
 		E23481351B2906EB0076247D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B09C4292100F8D4B5D8F70C7 /* Pods-SpeakerAlert WatchKit App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1138,6 +1285,7 @@
 		};
 		E23481361B2906EB0076247D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 064D0B0A0BAC0B8D1D869702 /* Pods-SpeakerAlert WatchKit App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1222,6 +1370,7 @@
 		};
 		E234813F1B2906EB0076247D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A69504D40BC6BB9940D6D93 /* Pods-SpeakerAlertUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SpeakerAlertUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1234,6 +1383,7 @@
 		};
 		E23481401B2906EB0076247D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E86CA8D1C1D2C717BE36D63A /* Pods-SpeakerAlertUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SpeakerAlertUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

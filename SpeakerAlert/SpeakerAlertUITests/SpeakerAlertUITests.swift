@@ -14,20 +14,6 @@ class SpeakerAlertUITests: XCTestCase {
     var app: XCUIApplication!
     var device: XCUIDevice!
     
-    func isLandscape() -> Bool {
-        return false
-    }
-
-    func waitForElement(element: XCUIElement) -> XCUIElement {
-        // Verify the new profile was created
-        expectationForPredicate(
-            NSPredicate(format: "exists == 1"),
-            evaluatedWithObject: element,
-            handler: nil)
-        waitForExpectationsWithTimeout(0.5, handler: nil)
-        return element
-    }
-    
 	override func setUp() {
         
         addUIInterruptionMonitorWithDescription("Local Notifications") { (alert) -> Bool in
@@ -56,5 +42,19 @@ class SpeakerAlertUITests: XCTestCase {
 	override func tearDown() {
 		super.tearDown()
 	}
+    
+    func isLandscape() -> Bool {
+        return false
+    }
+    
+    func waitForElement(element: XCUIElement) -> XCUIElement {
+        // Verify the new profile was created
+        expectationForPredicate(
+            NSPredicate(format: "exists == 1"),
+            evaluatedWithObject: element,
+            handler: nil)
+        waitForExpectationsWithTimeout(0.5, handler: nil)
+        return element
+    }
 
 }

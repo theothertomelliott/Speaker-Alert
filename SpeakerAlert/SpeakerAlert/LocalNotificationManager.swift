@@ -6,7 +6,7 @@
 //  Copyright © 2015 The Other Tom Elliott. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class LocalNotificationManager: NSObject, SpeechManagerDelegate {
 
