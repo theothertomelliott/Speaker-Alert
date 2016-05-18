@@ -22,9 +22,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
-        _ = JVArgumentParser()
+        let parser = JVArgumentParser()
         
-        if NSProcessInfo.processInfo().arguments.contains("isUITesting") {
+        var testset = "default"
+        parser.addOptionWithArgumentWithLongName("testset") { (value: String!) in
+            testset = value
+        }
+        var isUITesting = false
+        parser.addOptionWithLongName("uitesting") { () in
+            isUITesting = true
+        }
+        
+        do {
+            try parser.parse(NSProcessInfo.processInfo().arguments)
+        } catch {
+            NSLog("Couldn't parse arguments")
+        }
+        
+        if isUITesting {
             NSLog("UI Testing!")
             MagicalRecord.setupCoreDataStackWithInMemoryStore()
 

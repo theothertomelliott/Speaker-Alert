@@ -27,7 +27,7 @@ class SpeakerAlertUITests: XCTestCase {
 		// UI tests must launch the application that they test.
 		// Doing this in setup will make sure it happens for each test method.
 		app = XCUIApplication()
-		app.launchArguments = ["isUITesting"]
+		app.launchArguments = ["--uitesting"]
 		setupSnapshot(app)
 		app.launch()
         
