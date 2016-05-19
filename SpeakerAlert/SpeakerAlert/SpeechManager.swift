@@ -18,6 +18,8 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
     // Observers who receive state updates
     private var observers = [SpeechManagerDelegate]()
 
+    var parameterManager: ParameterManager?
+    
     override init() {
         super.init()
     }
@@ -60,6 +62,9 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
             // Create a new timer with the appropriate profile
             if let p: Profile = value {
                 timer = SpeechTimer(withProfile: p)
+                if let p = parameterManager {
+                    timer?.setInterval(NSTimeInterval(p.starttime))
+                }
                 timer?.delegate = self
             } else {
                 timer = nil

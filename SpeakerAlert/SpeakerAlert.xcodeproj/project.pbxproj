@@ -27,7 +27,6 @@
 		E21ADBE21BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */; };
 		E21B306C1B9B54BA00B89D9F /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */; };
 		E21C341F1C95D08F00157E66 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21C341E1C95D08F00157E66 /* SnapshotHelper.swift */; };
-		E21DF0541CE83CDB00A3E835 /* LandscapeTimeProgressionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF0531CE83CDB00A3E835 /* LandscapeTimeProgressionUITests.swift */; };
 		E22E8C441B6BA23000DD0793 /* VibrationAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */; };
 		E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */; };
 		E2308A8A1C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2308A891C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift */; };
@@ -68,8 +67,9 @@
 		E2929A891B3CCE6E007030D4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
 		E2929A8A1B3CCE71007030D4 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
 		E2929A8B1B3CCE74007030D4 /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
+		E29D3FC51CEDE45300FB347C /* ParameterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282703F1CEC98A10085DA0E /* ParameterManager.swift */; };
+		E29D3FC81CEDEA4E00FB347C /* TimeScreenshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D3FC71CEDEA4E00FB347C /* TimeScreenshotUITests.swift */; };
 		E2A377F71B78561A007FA8FE /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
-		E2A377F81B78561A007FA8FE /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20B857F1B66661300D55578 /* SpeechManager.swift */; };
 		E2A377F91B78561A007FA8FE /* SpeechState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2E7CB1B685AF3004BD7FD /* SpeechState.swift */; };
 		E2A377FA1B7856EE007FA8FE /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20B857F1B66661300D55578 /* SpeechManager.swift */; };
 		E2A377FB1B7856F0007FA8FE /* SpeechState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2E7CB1B685AF3004BD7FD /* SpeechState.swift */; };
@@ -89,7 +89,6 @@
 		E2DD5E3B1B5BE03800EF0997 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
 		E2E8DD5D1B6DD021003D3F7C /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
 		E2F0C7A11CE157E800A1A462 /* ProfileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0C7A01CE157E800A1A462 /* ProfileUITests.swift */; };
-		E2F0C7A31CE158D500A1A462 /* TimeProgressionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0C7A21CE158D500A1A462 /* TimeProgressionUITests.swift */; };
 		E2F0C7A51CE1593D00A1A462 /* AboutScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0C7A41CE1593D00A1A462 /* AboutScreenUITests.swift */; };
 		E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
 		E2F6B5F21B378F2600210504 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
@@ -178,7 +177,6 @@
 		E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechCompleteViewController.swift; sourceTree = "<group>"; };
 		E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		E21C341E1C95D08F00157E66 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = ../../fastlane/SnapshotHelper.swift; sourceTree = "<group>"; };
-		E21DF0531CE83CDB00A3E835 /* LandscapeTimeProgressionUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeTimeProgressionUITests.swift; sourceTree = "<group>"; };
 		E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibrationAlertManager.swift; sourceTree = "<group>"; };
 		E22FD26B1B93FDF80022F0B1 /* AppColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColorManager.swift; sourceTree = "<group>"; };
 		E2308A891C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTimeSelectorViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +222,7 @@
 		E284FC201BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTimeTableViewCell.swift; sourceTree = "<group>"; };
 		E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechTimer.swift; sourceTree = "<group>"; };
 		E2929A881B3CCD14007030D4 /* SpeakerAlert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeakerAlert-Bridging-Header.h"; sourceTree = "<group>"; };
+		E29D3FC71CEDEA4E00FB347C /* TimeScreenshotUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeScreenshotUITests.swift; sourceTree = "<group>"; };
 		E2AB35951B82DC97001F8362 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		E2B2CCD01B8755800038C067 /* DataSeeder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSeeder.swift; sourceTree = "<group>"; };
 		E2C2E7CB1B685AF3004BD7FD /* SpeechState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechState.swift; sourceTree = "<group>"; };
@@ -235,7 +234,6 @@
 		E2D273CD1B516EF500155349 /* SpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
 		E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
 		E2F0C7A01CE157E800A1A462 /* ProfileUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUITests.swift; sourceTree = "<group>"; };
-		E2F0C7A21CE158D500A1A462 /* TimeProgressionUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeProgressionUITests.swift; sourceTree = "<group>"; };
 		E2F0C7A41CE1593D00A1A462 /* AboutScreenUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutScreenUITests.swift; sourceTree = "<group>"; };
 		E2F2A1DD1B6DB91A0014D4A0 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
 		E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -443,9 +441,8 @@
 				E23481081B2906EB0076247D /* SpeakerAlertUITests.swift */,
 				E234810A1B2906EB0076247D /* Info.plist */,
 				E2F0C7A01CE157E800A1A462 /* ProfileUITests.swift */,
-				E2F0C7A21CE158D500A1A462 /* TimeProgressionUITests.swift */,
 				E2F0C7A41CE1593D00A1A462 /* AboutScreenUITests.swift */,
-				E21DF0531CE83CDB00A3E835 /* LandscapeTimeProgressionUITests.swift */,
+				E29D3FC71CEDEA4E00FB347C /* TimeScreenshotUITests.swift */,
 			);
 			path = SpeakerAlertUITests;
 			sourceTree = "<group>";
@@ -1054,6 +1051,7 @@
 				E24408A31B4834F200EB056C /* Group.swift in Sources */,
 				E20A8E9D1B8183B500ECC443 /* SpeechProfileFactory.swift in Sources */,
 				E2A377FB1B7856F0007FA8FE /* SpeechState.swift in Sources */,
+				E29D3FC51CEDE45300FB347C /* ParameterManager.swift in Sources */,
 				E2929A891B3CCE6E007030D4 /* Profile.swift in Sources */,
 				E2A377FA1B7856EE007FA8FE /* SpeechManager.swift in Sources */,
 			);
@@ -1064,10 +1062,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23481091B2906EB0076247D /* SpeakerAlertUITests.swift in Sources */,
+				E29D3FC81CEDEA4E00FB347C /* TimeScreenshotUITests.swift in Sources */,
 				E2F0C7A51CE1593D00A1A462 /* AboutScreenUITests.swift in Sources */,
-				E21DF0541CE83CDB00A3E835 /* LandscapeTimeProgressionUITests.swift in Sources */,
 				E2F0C7A11CE157E800A1A462 /* ProfileUITests.swift in Sources */,
-				E2F0C7A31CE158D500A1A462 /* TimeProgressionUITests.swift in Sources */,
 				E21C341F1C95D08F00157E66 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1088,7 +1085,6 @@
 				E2A377FC1B785702007FA8FE /* Profile.swift in Sources */,
 				E20A8E9E1B8183B600ECC443 /* SpeechProfileFactory.swift in Sources */,
 				E20A8E9C1B81825600ECC443 /* SpeechProfile.swift in Sources */,
-				E2A377F81B78561A007FA8FE /* SpeechManager.swift in Sources */,
 				E21ADBE01BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift in Sources */,
 				E2A377FE1B785707007FA8FE /* Group+CoreDataProperties.swift in Sources */,
 			);

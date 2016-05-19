@@ -14,37 +14,49 @@ class SpeakerAlertUITests: XCTestCase {
     var app: XCUIApplication!
     var device: XCUIDevice!
     
+    func setUpNoApp(){
+        super.setUp()
+    }
+    
 	override func setUp() {
-        
+		super.setUp()
+        startApp(isLandscape(), startTime: startTimeOffset())
+	}
+
+    func startApp(landscape: Bool, startTime: Int) {
         addUIInterruptionMonitorWithDescription("Local Notifications") { (alert) -> Bool in
             alert.buttons["OK"].tap()
             return true
         }
         
-		super.setUp()
-		// In UI tests it is usually best to stop immediately when a failure occurs.
-		continueAfterFailure = false
-		// UI tests must launch the application that they test.
-		// Doing this in setup will make sure it happens for each test method.
-		app = XCUIApplication()
-		app.launchArguments = ["--uitesting"]
-		setupSnapshot(app)
-		app.launch()
+        // In UI tests it is usually best to stop immediately when a failure occurs.
+        continueAfterFailure = false
+        // UI tests must launch the application that they test.
+        // Doing this in setup will make sure it happens for each test method.
+        app = XCUIApplication()
+        app.launchArguments = ["--uitesting", "--starttime", String(startTime)]
+        setupSnapshot(app)
+        app.launch()
         
         device = XCUIDevice.sharedDevice()
-        if self.isLandscape() {
+        if landscape {
             device.orientation = UIDeviceOrientation.LandscapeLeft
         } else {
             device.orientation = UIDeviceOrientation.Portrait
         }
-	}
-
+    }
+    
 	override func tearDown() {
 		super.tearDown()
 	}
     
     func isLandscape() -> Bool {
         return false
+    }
+    
+    // Number of seconds to offset the timer's start time
+    func startTimeOffset() -> Int {
+        return 0
     }
     
     func waitForElement(element: XCUIElement) -> XCUIElement {

@@ -17,6 +17,7 @@ end
 target 'SpeakerAlertTests' do
 	pod "MagicalRecord", '2.3.0'
 	pod "Typhoon", '3.4.5'
+	pod 'JVArgumentParser', '0.2.0'
 end
 
 target 'SpeakerAlertUITests' do

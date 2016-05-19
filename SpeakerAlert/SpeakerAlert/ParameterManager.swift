@@ -11,22 +11,33 @@ import JVArgumentParser
 
 class ParameterManager: NSObject {
 
-    var testSet: String = "default"
+    // Set of seed data to use if the data store needs populating
+    var seedDataSet: String = "default"
+    // Indicates we're running UI tests and should not use the normal data store
     var isUITesting: Bool = false
+    // Starting time for speeches - for testing purposes
+    var starttime: Int = 0
     
-    override init(){
+    override init() {
         super.init()
         parseParams()
     }
     
-    func parseParams(){
+    func parseParams() {
         let parser = JVArgumentParser()
         
-        parser.addOptionWithArgumentWithLongName("testset") { (value: String!) in
-            self.testSet = value
+        parser.addOptionWithArgumentWithLongName("seeddata") { (value: String!) in
+            self.seedDataSet = value
         }
         parser.addOptionWithLongName("uitesting") { () in
             self.isUITesting = true
+        }
+        parser.addOptionWithArgumentWithLongName("starttime") { (value: String!) in
+            if let st = Int(value) {
+                self.starttime = st
+            } else {
+                NSLog("Invalid starttime value: %@", value)
+            }
         }
         
         do {

@@ -63,6 +63,8 @@ public class ApplicationAssembly: TyphoonAssembly {
         return TyphoonDefinition.withClass(SpeechManager.self) {
             (definition) in
             definition.scope = TyphoonScope.Singleton
+            definition.injectProperty(#selector(ApplicationAssembly.parameterManager),
+                                      with: self.parameterManager())
         }
     }
 

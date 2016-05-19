@@ -20,6 +20,10 @@ public class SpeechTimer: NSObject {
         state = SpeechState(profile: SpeechProfileFactory.SpeechProfileWithProfile(profile))
         phaseTimers = [:]
     }
+    
+    func setInterval(interval: NSTimeInterval){
+        state.pauseInterval = interval
+    }
 
     /**
         Start this timer.
