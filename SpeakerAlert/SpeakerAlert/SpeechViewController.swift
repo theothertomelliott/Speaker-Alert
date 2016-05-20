@@ -137,6 +137,9 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     }
 
     func setRunningMode(isRunning: Bool) {
+        UIApplication.sharedApplication().setStatusBarHidden(
+            isRunning,
+            withAnimation: UIStatusBarAnimation.Slide)
         self.navigationController?.setNavigationBarHidden(isRunning, animated: true)
         self.profileSummaryLabel?.hidden = isRunning
         self.updateDisplay()
