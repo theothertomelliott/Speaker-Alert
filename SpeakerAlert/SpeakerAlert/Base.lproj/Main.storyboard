@@ -452,7 +452,7 @@
         <!--Speech Name-->
         <scene sceneID="Yae-wg-LH3">
             <objects>
-                <viewController title="Speech Name" id="Ons-tk-MNb" customClass="SpeechViewController" customModule="SpeakerAlert" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Speech Name" id="Ons-tk-MNb" customClass="DefaultSpeechViewController" customModule="SpeakerAlert" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LOg-uw-c5V"/>
                         <viewControllerLayoutGuide type="bottom" id="R63-DW-HFX"/>

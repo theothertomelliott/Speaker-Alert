@@ -55,6 +55,9 @@
 		E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */; };
 		E25E86C61B65748D00F120FA /* FontAwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */; };
 		E25E86C91B65D73A00F120FA /* ApplicationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C81B65D73A00F120FA /* ApplicationAssembly.swift */; };
+		E26D5B981CF4791500E27B9D /* DemoSpeechState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D5B971CF4791500E27B9D /* DemoSpeechState.swift */; };
+		E26D5B9B1CF4797C00E27B9D /* ReplacementSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D5B9A1CF4797C00E27B9D /* ReplacementSegue.swift */; };
+		E26D5BA01CF47B1B00E27B9D /* DefaultSpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D5B9F1CF47B1B00E27B9D /* DefaultSpeechViewController.swift */; };
 		E27453BE1B9E8DE00058086C /* Speech+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27453BC1B9E8DE00058086C /* Speech+CoreDataProperties.swift */; };
 		E27453BF1B9E8DE00058086C /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27453BD1B9E8DE00058086C /* Speech.swift */; };
 		E2784A641B9C8FE30046BF0D /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2784A631B9C8FE30046BF0D /* ProfileTableViewCell.swift */; };
@@ -212,6 +215,9 @@
 		E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeFactory.swift; sourceTree = "<group>"; };
 		E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeButton.swift; sourceTree = "<group>"; };
 		E25E86C81B65D73A00F120FA /* ApplicationAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationAssembly.swift; sourceTree = "<group>"; };
+		E26D5B971CF4791500E27B9D /* DemoSpeechState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoSpeechState.swift; sourceTree = "<group>"; };
+		E26D5B9A1CF4797C00E27B9D /* ReplacementSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplacementSegue.swift; sourceTree = "<group>"; };
+		E26D5B9F1CF47B1B00E27B9D /* DefaultSpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSpeechViewController.swift; sourceTree = "<group>"; };
 		E27453BC1B9E8DE00058086C /* Speech+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Speech+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E27453BD1B9E8DE00058086C /* Speech.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speech.swift; sourceTree = "<group>"; };
 		E2784A631B9C8FE30046BF0D /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
@@ -335,11 +341,13 @@
 		E22E8C3D1B6BA08600DD0793 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E26D5B9C1CF47AEC00E27B9D /* SpeechViewControllers */,
+				E26D5B991CF4796F00E27B9D /* Segues */,
+				E26D5B961CF4790800E27B9D /* Demo */,
 				E284FC1D1BA3E9F700ABFA68 /* ProfileEdit */,
 				E22969E01B65202F00C18012 /* Views */,
 				E22E8C3E1B6BA09300DD0793 /* IB */,
 				E24408A51B483C8400EB056C /* GroupTableViewController.swift */,
-				E2D273CD1B516EF500155349 /* SpeechViewController.swift */,
 				E24628DE1B9803C2007DD28B /* SettingsViewController.swift */,
 				E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */,
 				E24A428A1BA4BA800071702D /* LoadingViewController.swift */,
@@ -500,6 +508,31 @@
 				E27453BD1B9E8DE00058086C /* Speech.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		E26D5B961CF4790800E27B9D /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				E26D5B971CF4791500E27B9D /* DemoSpeechState.swift */,
+			);
+			name = Demo;
+			sourceTree = "<group>";
+		};
+		E26D5B991CF4796F00E27B9D /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				E26D5B9A1CF4797C00E27B9D /* ReplacementSegue.swift */,
+			);
+			name = Segues;
+			sourceTree = "<group>";
+		};
+		E26D5B9C1CF47AEC00E27B9D /* SpeechViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E2D273CD1B516EF500155349 /* SpeechViewController.swift */,
+				E26D5B9F1CF47B1B00E27B9D /* DefaultSpeechViewController.swift */,
+			);
+			name = SpeechViewControllers;
 			sourceTree = "<group>";
 		};
 		E2784A651B9C97050046BF0D /* Rendering Utils */ = {
@@ -1004,6 +1037,7 @@
 				E2C571BB1B8AB1A300C83D92 /* NamedTableViewCell.swift in Sources */,
 				E20B85801B66661300D55578 /* SpeechManager.swift in Sources */,
 				E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */,
+				E26D5BA01CF47B1B00E27B9D /* DefaultSpeechViewController.swift in Sources */,
 				E27453BE1B9E8DE00058086C /* Speech+CoreDataProperties.swift in Sources */,
 				E2F6B5F21B378F2600210504 /* Profile.swift in Sources */,
 				E2C2E7CC1B685AF3004BD7FD /* SpeechState.swift in Sources */,
@@ -1016,6 +1050,7 @@
 				E2DD5E3B1B5BE03800EF0997 /* TimeUtils.swift in Sources */,
 				E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */,
 				E2159F251B6D9F330075E77E /* WatchCommsManager.swift in Sources */,
+				E26D5B9B1CF4797C00E27B9D /* ReplacementSegue.swift in Sources */,
 				E284FC211BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift in Sources */,
 				E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */,
 				E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */,
@@ -1026,6 +1061,7 @@
 				E2308A8A1C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift in Sources */,
 				E2784A671B9C97180046BF0D /* ProfileTimeRenderer.swift in Sources */,
 				E284FC1F1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift in Sources */,
+				E26D5B981CF4791500E27B9D /* DemoSpeechState.swift in Sources */,
 				E28270401CEC98A10085DA0E /* ParameterManager.swift in Sources */,
 				E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */,
 				E24628DF1B9803C2007DD28B /* SettingsViewController.swift in Sources */,

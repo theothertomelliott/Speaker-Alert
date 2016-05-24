@@ -121,6 +121,14 @@ public class ApplicationAssembly: TyphoonAssembly {
             definition.injectProperty("configMan", with: self.configurationManager())
         }
     }
+    
+    public dynamic func defaultSpeechViewController() -> AnyObject {
+        return TyphoonDefinition.withClass(DefaultSpeechViewController.self) {
+            (definition) in
+            definition.injectProperty("speechMan", with: self.speechManager())
+            definition.injectProperty("configMan", with: self.configurationManager())
+        }
+    }
 
     public dynamic func settingsViewController() -> AnyObject {
         return TyphoonDefinition.withClass(SettingsViewController.self) {
