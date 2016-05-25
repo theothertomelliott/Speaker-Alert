@@ -59,5 +59,19 @@ class ConfigurationManager: NSObject {
             defaults.setBool(newValue, forKey: vibrationEnabledKey)
         }
     }
+    
+    let speechDisplayKey = "speechDisplay"
+    var speechDisplay: String {
+        get {
+            if let output = defaults.stringForKey(speechDisplayKey) {
+                return output
+            }
+            // Default
+            return "Default"
+        }
+        set {
+            defaults.setObject(newValue, forKey: speechDisplayKey)
+        }
+    }
 
 }

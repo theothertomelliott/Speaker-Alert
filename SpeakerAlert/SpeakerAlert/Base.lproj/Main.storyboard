@@ -109,7 +109,6 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="ukF-fQ-Hbn" id="4KY-Z2-g4s"/>
                                     <outlet property="profileTimesLabel" destination="pKb-Xq-AkV" id="WNy-R5-0DF"/>
-                                    <segue destination="Ons-tk-MNb" kind="show" identifier="timingSegue" id="DIZ-5b-zXg"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DemoCell" id="tg7-ht-zGu" customClass="ProfileTableViewCell" customModule="SpeakerAlert" customModuleProvider="target">
@@ -165,7 +164,6 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="O64-xn-SBR" id="5Ok-Jj-T7H"/>
                                     <outlet property="profileTimesLabel" destination="ppR-AD-hQn" id="C5B-bs-o07"/>
-                                    <segue destination="Ons-tk-MNb" kind="show" identifier="demoSegue" id="3sW-Bq-RP1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -178,6 +176,7 @@
                     <connections>
                         <segue destination="dqY-l4-yfQ" kind="show" identifier="timingEditSegue" id="QdW-2g-ZHY"/>
                         <segue destination="dqY-l4-yfQ" kind="show" identifier="newProfileSegue" id="hGx-8K-Lk6"/>
+                        <segue destination="Ons-tk-MNb" kind="show" identifier="speechDefault" id="TCO-fj-9Lu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8NA-aO-4Ua" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -273,7 +272,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcM-5Q-MbT" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcM-5Q-MbT" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                             <rect key="frame" x="539" y="13" width="43" height="33.5"/>
                                             <accessibility key="accessibilityConfiguration" identifier="Cancel" label="Cancel"/>
                                             <state key="normal" title="Cancel">
@@ -290,7 +289,7 @@
                                                 <action selector="dismiss" destination="dqY-l4-yfQ" eventType="touchUpInside" id="hyA-PP-bCg"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaP-kb-oSh" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaP-kb-oSh" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                             <rect key="frame" x="486" y="13" width="43" height="33.5"/>
                                             <accessibility key="accessibilityConfiguration" identifier="Save" label="Save Changes"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -346,7 +345,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXj-N1-1cE">
                                 <rect key="frame" x="180" y="451" width="240" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4P-7C-LOV" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4P-7C-LOV" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                         <rect key="frame" x="10" y="-2" width="69" height="92"/>
                                         <accessibility key="accessibilityConfiguration" identifier="Save" label="Save Changes"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -363,7 +362,7 @@
                                             <action selector="save" destination="T2G-bZ-3CM" eventType="touchUpInside" id="pX2-7E-WIM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieO-3j-MIS" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieO-3j-MIS" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                         <rect key="frame" x="161" y="-2" width="69" height="92"/>
                                         <accessibility key="accessibilityConfiguration" identifier="Cancel" label="Cancel"/>
                                         <state key="normal" title="Cancel">
@@ -464,7 +463,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlb-wr-EIt">
                                 <rect key="frame" x="175" y="381" width="250" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-ZC-aid" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-ZC-aid" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                         <rect key="frame" x="20" y="-1" width="32" height="52"/>
                                         <accessibility key="accessibilityConfiguration" identifier="Play"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -487,7 +486,7 @@
                                             <action selector="resumePressed:" destination="Ons-tk-MNb" eventType="touchUpInside" id="ZhC-zG-XyW"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-ch-or0" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-ch-or0" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                         <rect key="frame" x="195" y="-1" width="35" height="52"/>
                                         <accessibility key="accessibilityConfiguration" identifier="Stop"/>
                                         <state key="normal" title="Stop">
@@ -993,9 +992,8 @@
         <image name="IconTransparentBack" width="306" height="294"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZVv-6d-Z7f"/>
         <segue reference="hGx-8K-Lk6"/>
-        <segue reference="3sW-Bq-RP1"/>
+        <segue reference="ZVv-6d-Z7f"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

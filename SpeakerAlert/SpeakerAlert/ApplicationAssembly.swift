@@ -111,6 +111,7 @@ public class ApplicationAssembly: TyphoonAssembly {
         return TyphoonDefinition.withClass(GroupTableViewController.self) {
             (definition) in
             definition.injectProperty("speechMan", with: self.speechManager())
+            definition.injectProperty("configMan", with: self.configurationManager())
         }
     }
 

@@ -16,6 +16,7 @@ class GroupTableViewController: UITableViewController {
     var groups: [Group] = []
     var timings: [Profile] = []
     var parentGroup: Group? = nil
+    var configMan: ConfigurationManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -216,6 +217,22 @@ class GroupTableViewController: UITableViewController {
         }
 
     }
+    
+    // Handle selection for segue to speeches and demo mode
+    override func tableView(
+        tableView: UITableView,
+        didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if rowIsProfile(indexPath.row) || rowIsDemo(indexPath.row) {
+            var display = "Default"
+            if let d = configMan?.speechDisplay {
+                display = d
+            }
+            
+            self.performSegueWithIdentifier(
+                "speech" + display,
+                sender: tableView.cellForRowAtIndexPath(indexPath))
+        }
+    }
 
 
     // Override to support conditional editing of the table view.
@@ -321,14 +338,6 @@ class GroupTableViewController: UITableViewController {
             return
         }
 
-        if "demoSegue" == segue.identifier {
-            if let destination = segue.destinationViewController as? SpeechViewController {
-                destination.demoMode = true
-                speechMan?.profile = nil
-            }
-            return
-        }
-
         let indexPath: NSIndexPath = self.tableView.indexPathForCell((sender as? UITableViewCell)!)!
 
         if "groupSegue" == segue.identifier {
@@ -345,8 +354,15 @@ class GroupTableViewController: UITableViewController {
             destination.profile = self.timings[indexPath.row - self.groups.count]
         }
 
-        if "timingSegue" == segue.identifier {
-            speechMan?.profile = self.timings[indexPath.row - self.groups.count]
+        if let i = segue.identifier where i.hasPrefix("speech") {
+            if rowIsProfile(indexPath.row) {
+                speechMan?.profile = self.timings[indexPath.row - self.groups.count]
+            } else if rowIsDemo(indexPath.row) {
+                speechMan?.profile = nil
+                if let destination = segue.destinationViewController as? SpeechViewController {
+                    destination.demoMode = true
+                }
+            }
         }
 
     }
