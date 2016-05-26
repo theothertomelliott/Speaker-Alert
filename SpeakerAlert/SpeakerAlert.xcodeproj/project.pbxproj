@@ -73,6 +73,7 @@
 		E29D3FC51CEDE45300FB347C /* ParameterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282703F1CEC98A10085DA0E /* ParameterManager.swift */; };
 		E29D3FC81CEDEA4E00FB347C /* TimeScreenshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D3FC71CEDEA4E00FB347C /* TimeScreenshotUITests.swift */; };
 		E2A10D6F1CF71DE700DD769C /* UITestSpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A10D6E1CF71DE700DD769C /* UITestSpeechViewController.swift */; };
+		E2A10D711CF725C300DD769C /* PhaseProgressionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A10D701CF725C300DD769C /* PhaseProgressionUITests.swift */; };
 		E2A377F71B78561A007FA8FE /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
 		E2A377F91B78561A007FA8FE /* SpeechState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2E7CB1B685AF3004BD7FD /* SpeechState.swift */; };
 		E2A377FA1B7856EE007FA8FE /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20B857F1B66661300D55578 /* SpeechManager.swift */; };
@@ -231,6 +232,7 @@
 		E2929A881B3CCD14007030D4 /* SpeakerAlert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeakerAlert-Bridging-Header.h"; sourceTree = "<group>"; };
 		E29D3FC71CEDEA4E00FB347C /* TimeScreenshotUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeScreenshotUITests.swift; sourceTree = "<group>"; };
 		E2A10D6E1CF71DE700DD769C /* UITestSpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestSpeechViewController.swift; sourceTree = "<group>"; };
+		E2A10D701CF725C300DD769C /* PhaseProgressionUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhaseProgressionUITests.swift; sourceTree = "<group>"; };
 		E2AB35951B82DC97001F8362 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		E2B2CCD01B8755800038C067 /* DataSeeder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSeeder.swift; sourceTree = "<group>"; };
 		E2C2E7CB1B685AF3004BD7FD /* SpeechState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechState.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				E2F0C7A01CE157E800A1A462 /* ProfileUITests.swift */,
 				E2F0C7A41CE1593D00A1A462 /* AboutScreenUITests.swift */,
 				E29D3FC71CEDEA4E00FB347C /* TimeScreenshotUITests.swift */,
+				E2A10D701CF725C300DD769C /* PhaseProgressionUITests.swift */,
 			);
 			path = SpeakerAlertUITests;
 			sourceTree = "<group>";
@@ -1106,6 +1109,7 @@
 				E2F0C7A51CE1593D00A1A462 /* AboutScreenUITests.swift in Sources */,
 				E2F0C7A11CE157E800A1A462 /* ProfileUITests.swift in Sources */,
 				E21C341F1C95D08F00157E66 /* SnapshotHelper.swift in Sources */,
+				E2A10D711CF725C300DD769C /* PhaseProgressionUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

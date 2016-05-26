@@ -18,6 +18,8 @@ class ParameterManager: NSObject {
     // Starting time for speeches - for testing purposes
     var starttime: Int = 0
     
+    var speechDisplay: String?
+    
     override init() {
         super.init()
         parseParams()
@@ -38,6 +40,10 @@ class ParameterManager: NSObject {
             } else {
                 NSLog("Invalid starttime value: %@", value)
             }
+        }
+        
+        parser.addOptionWithArgumentWithLongName("speechdisplay") { (value: String!) in
+            self.speechDisplay = value
         }
         
         do {

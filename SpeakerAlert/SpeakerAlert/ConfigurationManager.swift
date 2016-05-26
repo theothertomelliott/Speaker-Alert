@@ -10,6 +10,8 @@ import Foundation
 
 class ConfigurationManager: NSObject {
 
+    var parameterManager: ParameterManager?
+    
     var defaults: NSUserDefaults
 
     override init() {
@@ -63,6 +65,9 @@ class ConfigurationManager: NSObject {
     let speechDisplayKey = "speechDisplay"
     var speechDisplay: String {
         get {
+            if let display = parameterManager?.speechDisplay {
+                return display
+            }
             if let output = defaults.stringForKey(speechDisplayKey) {
                 return output
             }
