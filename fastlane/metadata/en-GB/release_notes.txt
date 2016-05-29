@@ -1,1 +1,5 @@
-- Fix issues with editing and adding to Groups
+We've overhauled the speech view to get rid of any distractions when you're speaking. During a speech, you'll only see the current alert color, and optionally the elapsed time. Tap the screen to pause the speech and get back the full display and controls to finish or resume where you left off.
+
+Demo mode is now accessible from the main speech list, so you can show your speakers what to expect that much quicker!
+
+Not only that, but we've also fixed a couple of annoying bugs that had been reported.
