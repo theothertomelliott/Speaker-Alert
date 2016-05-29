@@ -49,7 +49,7 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
     func testBeforeStarting() {
         startApp(false, startTime: 0)
         openSpeech()
-        snapshot("Before starting", waitForLoadingIndicator: false)
+        snapshot("005 - Before starting", waitForLoadingIndicator: false)
         device.orientation = UIDeviceOrientation.LandscapeLeft
         snapshot("Before starting - Landscape", waitForLoadingIndicator: false)
         device.orientation = UIDeviceOrientation.Portrait
@@ -59,7 +59,7 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
         startApp(false, startTime: 300)
         openSpeech()
         startSpeech()
-        snapshot("Timer green", waitForLoadingIndicator: false)
+        snapshot("002 - Timer green", waitForLoadingIndicator: false)
         device.orientation = UIDeviceOrientation.LandscapeLeft
         snapshot("Timer green - Landscape", waitForLoadingIndicator: false)
         device.orientation = UIDeviceOrientation.Portrait
@@ -71,7 +71,7 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
         startSpeech()
         snapshot("Timer yellow", waitForLoadingIndicator: false)
         device.orientation = UIDeviceOrientation.LandscapeLeft
-        snapshot("Timer yellow - Landscape", waitForLoadingIndicator: false)
+        snapshot("003 - Timer yellow - Landscape", waitForLoadingIndicator: false)
         device.orientation = UIDeviceOrientation.Portrait
     }
     
@@ -94,7 +94,7 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
         
         waitForElement(app.staticTexts["Speech Complete"])
         
-        snapshot("After stopping", waitForLoadingIndicator: false)
+        snapshot("004 - After stopping", waitForLoadingIndicator: false)
         device.orientation = UIDeviceOrientation.LandscapeLeft
         snapshot("After stopping - Landscape", waitForLoadingIndicator: false)
         device.orientation = UIDeviceOrientation.Portrait

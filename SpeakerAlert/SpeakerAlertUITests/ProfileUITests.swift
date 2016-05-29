@@ -30,7 +30,7 @@ class ProfileEditUITests: SpeakerAlertUITests {
 
         XCTAssertEqual(app.tables.cells.count, 7)
 
-        snapshot("Profile list", waitForLoadingIndicator: false)
+        snapshot("001 Profile list", waitForLoadingIndicator: false)
     }
 
     func testCreateProfile() {
