@@ -71,7 +71,7 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
     bump_build(project_file)
-    snapshot
+    snapshot(clear_previous_screenshots:true)
     sigh
     gym(scheme: "SpeakerAlert") # Build your app - more options available
     pilot
@@ -83,7 +83,7 @@ platform :ios do
   desc "Deploy a new version to the App Store"
   lane :deploy do
     bump_build(project_file)
-    snapshot(number_of_retries: 3)
+    snapshot(clear_previous_screenshots:true)
   desc "** Full Markdown** Support: `code`"
     sigh
     gym(scheme: "SpeakerAlert") # Build your app - more options available
