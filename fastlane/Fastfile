@@ -28,16 +28,26 @@ platform :ios do
     # xctool # run the tests of your app
   end
 
+  def commit_bump (project_file)
+    commit_version_bump(xcodeproj: project_file, message: "Bump build number")
+  end
+
   def bump_build (project_file)
     increment_build_number(xcodeproj: project_file)
-    commit_version_bump(xcodeproj: project_file, message: "Bump build number")
-    add_git_tag
+    commit_bump(project_file)
   end
 
   def bump_version (project_file, type)
     increment_version_number(xcodeproj: project_file, bump_type: type)
-    commit_version_bump(xcodeproj: project_file, message: "Bump version number")
-    add_git_tag
+    commit_bump(project_file)
+  end
+
+  def tag_with_version(message)
+    version = get_info_plist_value(path: 'SpeakerAlert/SpeakerAlert/Info.plist', key: 'CFBundleShortVersionString')
+    build = get_info_plist_value(path: 'SpeakerAlert/SpeakerAlert/Info.plist', key: 'CFBundleVersion')
+    add_git_tag(
+      tag: message + "-" + version + "-" + build
+    )
   end
 
   desc "Increment patch version number"
@@ -66,7 +76,8 @@ platform :ios do
     bump_build(project_file)
     sigh
     gym(scheme: "SpeakerAlert")
-    pilot
+    pilot(skip_waiting_for_build_processing: true)
+    tag_with_version("betafast")
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
@@ -77,7 +88,7 @@ platform :ios do
     sigh
     gym(scheme: "SpeakerAlert") # Build your app - more options available
     pilot
-
+    tag_with_version("beta")
     # sh "your_script.sh"
     # You can also use other beta testing services here
   end
@@ -90,6 +101,7 @@ platform :ios do
     sigh
     gym(scheme: "SpeakerAlert") # Build your app - more options available
     deliver(force: true)
+    tag_with_version("deliver")
     # frameit
   end
 
