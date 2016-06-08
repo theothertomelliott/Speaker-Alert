@@ -18,6 +18,8 @@
 # Update this, if you use features of a newer version
 fastlane_version "1.89.0"
 
+require 'mini_magick'
+
 default_platform :ios
 
 project_file = 'SpeakerAlert/SpeakerAlert.xcodeproj'
@@ -48,6 +50,28 @@ platform :ios do
     add_git_tag(
       tag: message + "-" + version + "-" + build
     )
+  end
+
+  def resize_image(img_in, img_out, size)
+    image = MiniMagick::Image.open(img_in)
+    image.resize size
+    image.format "png"
+    image.write img_out
+  end
+
+  def copy_screenshots_website()
+    resize_image('screenshots/en-GB/iPhone6-002 - Timer green_framed.png', '../website/img/framed_green_header.png', '298x600')
+    resize_image('screenshots/en-GB/iPhone6Plus-001 Profile list_framed.png', '../website/img/iPhone6Plus-Before starting_framed.png', '199x400')
+    resize_image('screenshots/en-GB/iPhone6Plus-005 - Before starting_framed.png', '../website/img/iPhone6Plus-Profile list_framed.png', '199x400')
+    resize_image('screenshots/en-GB/iPhone6Plus-Timer yellow_framed.png', '../website/img/iPhone6Plus-Timer amber_framed.png', '199x400')
+    resize_image('screenshots/en-GB/iPhone6Plus-002 - Timer green_framed.png', '../website/img/iPhone6Plus-Timer green_framed.png', '199x400')
+    resize_image('screenshots/en-GB/iPhone6Plus-Timer red_framed.png', '../website/img/iPhone6Plus-Timer red_framed.png', '199x400')
+  end
+
+  desc "Update website"
+  lane :update_website do
+    frameit
+    copy_screenshots_website()
   end
 
   desc "Increment patch version number"
