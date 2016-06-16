@@ -62,6 +62,19 @@ class ConfigurationManager: NSObject {
         }
     }
     
+    let hideControlsKey = "hideControlsInSpeech"
+    var isHideControlsEnabled: Bool {
+        get {
+            if let _ = defaults.objectForKey(hideControlsKey) {
+                return defaults.boolForKey(hideControlsKey)
+            }
+            return true
+        }
+        set {
+            defaults.setBool(newValue, forKey: hideControlsKey)
+        }
+    }
+    
     let speechDisplayKey = "speechDisplay"
     var speechDisplay: String {
         get {

@@ -67,7 +67,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         
         self.updateDisplay()
     }
-
+    
     override func viewWillAppear(animated: Bool) {
         self.setShowTime(configMan!.isDisplayTime)
         if tickTimer.valid {
@@ -91,20 +91,25 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     }
 
     override func viewWillDisappear(animated: Bool) {
+        setNavSatusVisible(true, animated: animated)
         speechMan?.removeSpeechObserver(self)
         if tickTimer.valid {
             tickTimer.invalidate()
         }
     }
 
+    func setNavSatusVisible(visible: Bool, animated: Bool) {
+        UIApplication.sharedApplication().setStatusBarHidden(
+            !visible,
+            withAnimation: animated ? UIStatusBarAnimation.Slide : UIStatusBarAnimation.None)
+        self.navigationController?.setNavigationBarHidden(!visible, animated: animated)
+    }
+    
     func setShowTime(isVisible: Bool) {
     }
 
     func setRunningMode(isRunning: Bool) {
-        UIApplication.sharedApplication().setStatusBarHidden(
-            isRunning,
-            withAnimation: UIStatusBarAnimation.Slide)
-        self.navigationController?.setNavigationBarHidden(isRunning, animated: true)
+        self.setNavSatusVisible(!isRunning, animated: true)
         self.updateDisplay()
 
         // Prevent the screen dimming or locking when idle
@@ -129,7 +134,11 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         if self.demoMode {
             return
         }
-        speechMan?.start()
+        if self.state?.running == .RUNNING {
+            speechMan?.pause()
+        } else {
+            speechMan?.start()
+        }
     }
 
     func updatePhase() {
@@ -161,6 +170,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     override func prepareForSegue(
         segue: UIStoryboardSegue,
         sender: AnyObject?) {
+        setNavSatusVisible(true, animated: false)
         if let scvc: SpeechCompleteViewController =
             segue.destinationViewController as? SpeechCompleteViewController {
             scvc.timeElapsed = lastSpeechElapsed
@@ -168,4 +178,3 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     }
 
 }
-

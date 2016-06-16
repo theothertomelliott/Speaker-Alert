@@ -48,6 +48,15 @@ class FontAwesomeButton: UIButton {
     override func prepareForInterfaceBuilder() {
         self._setup()
     }
+    
+    func setIconAndAccessibilityIdentifier(name: String, aId: String? = nil) {
+        self.IconName = name
+        if let i: String = aId {
+            self.accessibilityIdentifier = i
+        } else {
+            self.accessibilityIdentifier = name
+        }
+    }
 
     private func getFullString(icon: FontAwesome, additional: String) -> String {
         return String.fontAwesomeIconWithName(icon) +

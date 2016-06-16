@@ -115,10 +115,17 @@ class DefaultSpeechViewController: SpeechViewController {
                 self.stopButton.enabled = true
                 self.controls?.hidden = false
                 self.pausedLabel?.hidden = false
+                self.playButton.setIconAndAccessibilityIdentifier("Play")
             case .RUNNING:
-                self.controls?.hidden = true
+                if let hc = configMan?.isHideControlsEnabled where hc {
+                    self.controls?.hidden = true
+                } else {
+                self.playButton.setIconAndAccessibilityIdentifier("Pause")
+                    self.stopButton.enabled = true
+                }
                 self.pausedLabel?.hidden = true
             case .STOPPED:
+                self.playButton.setIconAndAccessibilityIdentifier("Play")
                 self.stopButton.enabled = false
                 self.controls?.hidden = false
                 self.pausedLabel?.hidden = true
