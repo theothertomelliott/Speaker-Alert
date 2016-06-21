@@ -10,12 +10,7 @@ sudo gem install fastlane
 ```
 fastlane ios update_website
 ```
-Test website
-### ios copy_screens
-```
-fastlane ios copy_screens
-```
-Test screenshot copy
+Update website
 ### ios bump_patch
 ```
 fastlane ios bump_patch
