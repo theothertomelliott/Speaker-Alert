@@ -30,6 +30,8 @@ class DefaultSpeechViewController: SpeechViewController {
     // Position in blink cycle
     var blinkCycleIndex = 0
     
+    var voiceOverEnabled: Bool = false
+    
     @IBAction func tapped(sender: AnyObject) {
         // If a speech is in progress, pause and display the controls
         if let c = controls where c.hidden {
@@ -51,6 +53,15 @@ class DefaultSpeechViewController: SpeechViewController {
         if let sm = speechMan, let profile = sm.profile where !self.demoMode {
             profileSummaryLabel?.attributedText =
                 ProfileTimeRenderer.timesAsAttributedString(profile)
+        }
+        
+        voiceOverEnabled = UIAccessibilityIsVoiceOverRunning()
+        NSNotificationCenter.defaultCenter().addObserverForName(
+        UIAccessibilityVoiceOverStatusChanged,
+        object: nil,
+        queue: nil) { (notification: NSNotification) in
+            self.voiceOverEnabled = UIAccessibilityIsVoiceOverRunning()
+            self.updateDisplay()
         }
     }
     
@@ -108,6 +119,17 @@ class DefaultSpeechViewController: SpeechViewController {
         }
     }
     
+    func shouldHideControls() -> Bool {
+        if voiceOverEnabled {
+            return false
+        }
+        
+        if let hc = configMan?.isHideControlsEnabled where hc {
+            return true
+        }
+        return false
+    }
+    
     func updateControls() {
         if let state = self.state {
             switch state.running {
@@ -117,7 +139,7 @@ class DefaultSpeechViewController: SpeechViewController {
                 self.pausedLabel?.hidden = false
                 self.playButton.setIconAndAccessibilityIdentifier("Play")
             case .RUNNING:
-                if let hc = configMan?.isHideControlsEnabled where hc {
+                if shouldHideControls() {
                     self.controls?.hidden = true
                 } else {
                 self.playButton.setIconAndAccessibilityIdentifier("Pause")
