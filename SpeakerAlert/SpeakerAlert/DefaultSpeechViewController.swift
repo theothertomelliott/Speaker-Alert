@@ -131,23 +131,24 @@ class DefaultSpeechViewController: SpeechViewController {
     }
     
     func updateControls() {
+        self.stopButton.setIconAndAccessibility("Stop")
         if let state = self.state {
             switch state.running {
             case .PAUSED:
                 self.stopButton.enabled = true
                 self.controls?.hidden = false
                 self.pausedLabel?.hidden = false
-                self.playButton.setIconAndAccessibilityIdentifier("Play")
+                self.playButton.setIconAndAccessibility("Play")
             case .RUNNING:
                 if shouldHideControls() {
                     self.controls?.hidden = true
                 } else {
-                self.playButton.setIconAndAccessibilityIdentifier("Pause")
+                self.playButton.setIconAndAccessibility("Pause")
                     self.stopButton.enabled = true
                 }
                 self.pausedLabel?.hidden = true
             case .STOPPED:
-                self.playButton.setIconAndAccessibilityIdentifier("Play")
+                self.playButton.setIconAndAccessibility("Play")
                 self.stopButton.enabled = false
                 self.controls?.hidden = false
                 self.pausedLabel?.hidden = true

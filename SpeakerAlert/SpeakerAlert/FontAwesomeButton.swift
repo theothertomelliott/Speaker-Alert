@@ -49,12 +49,16 @@ class FontAwesomeButton: UIButton {
         self._setup()
     }
     
-    func setIconAndAccessibilityIdentifier(name: String, aId: String? = nil) {
+    func setIconAndAccessibility(name: String, aId: String? = nil) {
         self.IconName = name
         if let i: String = aId {
             self.accessibilityIdentifier = i
+            self.accessibilityLabel = i
+            self.accessibilityHint = i
         } else {
             self.accessibilityIdentifier = name
+            self.accessibilityLabel = name
+            self.accessibilityHint = name
         }
     }
 
