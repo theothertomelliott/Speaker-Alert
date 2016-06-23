@@ -74,20 +74,26 @@ class DefaultSpeechViewController: SpeechViewController {
             blinkState = false
             if phase == SpeechPhase.BELOW_MINIMUM {
                 self.phaseColor = UIColor.whiteColor()
+                self.pausedLabel?.text = "Below minimum"
             }
             if phase == SpeechPhase.GREEN {
                 self.phaseColor = UIColor.successColor()
+                self.pausedLabel?.text = "Green"
             }
             if phase == SpeechPhase.YELLOW {
                 self.phaseColor = UIColor.warningColor()
+                self.pausedLabel?.text = "Yellow"
             }
             if phase == SpeechPhase.RED {
                 self.phaseColor = UIColor.dangerColor()
+                self.pausedLabel?.text = "Red"
             }
             if phase == SpeechPhase.OVER_MAXIMUM {
                 self.phaseColor = UIColor.dangerColor()
+                self.pausedLabel?.text = "Alert!"
                 blinkState = true
             }
+            
         }
     }
     
@@ -138,6 +144,7 @@ class DefaultSpeechViewController: SpeechViewController {
                 self.stopButton.enabled = true
                 self.controls?.hidden = false
                 self.pausedLabel?.hidden = false
+                self.pausedLabel?.text = "Paused"
                 self.playButton.setIconAndAccessibility("Play")
             case .RUNNING:
                 if shouldHideControls() {
@@ -146,7 +153,7 @@ class DefaultSpeechViewController: SpeechViewController {
                 self.playButton.setIconAndAccessibility("Pause")
                     self.stopButton.enabled = true
                 }
-                self.pausedLabel?.hidden = true
+                self.pausedLabel?.hidden = !voiceOverEnabled
             case .STOPPED:
                 self.playButton.setIconAndAccessibility("Play")
                 self.stopButton.enabled = false
