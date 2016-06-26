@@ -14,7 +14,7 @@ class SpeakerAlertUITests: XCTestCase {
     var app: XCUIApplication!
     var device: XCUIDevice!
     
-    func setUpNoApp(){
+    func setUpNoApp() {
         super.setUp()
     }
     

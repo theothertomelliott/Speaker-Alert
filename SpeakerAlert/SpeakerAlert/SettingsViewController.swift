@@ -14,17 +14,17 @@ class SettingsViewController: UITableViewController {
     let APP_ID = "488585337"
 
     var configManager: ConfigurationManager?
-    @IBOutlet weak var autoStartSwitch: UISwitch!
-    @IBOutlet weak var displayTimeSwitch: UISwitch!
-    @IBOutlet weak var vibrationSwitch: UISwitch!
-    @IBOutlet weak var hideControlsSwitch: UISwitch!
+    @IBOutlet weak var autoStartSwitch: UISwitch?
+    @IBOutlet weak var displayTimeSwitch: UISwitch?
+    @IBOutlet weak var vibrationSwitch: UISwitch?
+    @IBOutlet weak var hideControlsSwitch: UISwitch?
 
     override func viewWillAppear(animated: Bool) {
         if let cm = configManager {
-            autoStartSwitch.setOn(cm.isAutoStartEnabled, animated: false)
-            displayTimeSwitch.setOn(cm.isDisplayTime, animated: false)
-            vibrationSwitch.setOn(cm.isVibrationEnabled, animated: false)
-            hideControlsSwitch.setOn(cm.isHideControlsEnabled, animated: false)
+            autoStartSwitch?.setOn(cm.isAutoStartEnabled, animated: false)
+            displayTimeSwitch?.setOn(cm.isDisplayTime, animated: false)
+            vibrationSwitch?.setOn(cm.isVibrationEnabled, animated: false)
+            hideControlsSwitch?.setOn(cm.isHideControlsEnabled, animated: false)
         }
     }
 

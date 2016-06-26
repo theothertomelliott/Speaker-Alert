@@ -10,6 +10,11 @@ import XCTest
 
 class AboutScreenUITests: SpeakerAlertUITests {
 
+    override func setUp() {
+        super.setUp()
+        startApp(isLandscape(), startTime: startTimeOffset())
+    }
+    
     func testLoadAboutScreen() {
         let tabBarsQuery = app.tabBars
         tabBarsQuery.buttons["Settings"].tap()
