@@ -62,6 +62,19 @@ class ConfigurationManager: NSObject {
         }
     }
     
+    let audioEnabledKey = "audioEnabled"
+    var isAudioEnabled: Bool {
+        get {
+            if let _ = defaults.objectForKey(audioEnabledKey) {
+                return defaults.boolForKey(audioEnabledKey)
+            }
+            return false
+        }
+        set {
+            defaults.setBool(newValue, forKey: audioEnabledKey)
+        }
+    }
+    
     let hideControlsKey = "hideControlsInSpeech"
     var isHideControlsEnabled: Bool {
         get {

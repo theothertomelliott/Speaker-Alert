@@ -18,6 +18,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var displayTimeSwitch: UISwitch?
     @IBOutlet weak var vibrationSwitch: UISwitch?
     @IBOutlet weak var hideControlsSwitch: UISwitch?
+    @IBOutlet weak var audioAlertSwitch: UISwitch?
 
     override func viewWillAppear(animated: Bool) {
         if let cm = configManager {
@@ -25,6 +26,7 @@ class SettingsViewController: UITableViewController {
             displayTimeSwitch?.setOn(cm.isDisplayTime, animated: false)
             vibrationSwitch?.setOn(cm.isVibrationEnabled, animated: false)
             hideControlsSwitch?.setOn(cm.isHideControlsEnabled, animated: false)
+            audioAlertSwitch?.setOn(cm.isAudioEnabled, animated: false)
         }
     }
 
@@ -43,6 +45,12 @@ class SettingsViewController: UITableViewController {
     @IBAction func vibrationChanged(sender: AnyObject) {
         if let sendSwitch: UISwitch = sender as? UISwitch {
             configManager?.isVibrationEnabled = sendSwitch.on
+        }
+    }
+    
+    @IBAction func audioAlertChanged(sender: AnyObject) {
+        if let sendSwitch: UISwitch = sender as? UISwitch {
+            configManager?.isAudioEnabled = sendSwitch.on
         }
     }
     

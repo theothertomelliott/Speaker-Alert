@@ -52,6 +52,7 @@
 		E24408A61B483C8400EB056C /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A51B483C8400EB056C /* GroupTableViewController.swift */; };
 		E24628DF1B9803C2007DD28B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24628DE1B9803C2007DD28B /* SettingsViewController.swift */; };
 		E24A428B1BA4BA800071702D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24A428A1BA4BA800071702D /* LoadingViewController.swift */; };
+		E255FB901D23F59800AA9F91 /* beep-xylo.aif in Resources */ = {isa = PBXBuildFile; fileRef = E255FB8F1D23F30900AA9F91 /* beep-xylo.aif */; };
 		E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */; };
 		E25E86C61B65748D00F120FA /* FontAwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */; };
 		E25E86C91B65D73A00F120FA /* ApplicationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C81B65D73A00F120FA /* ApplicationAssembly.swift */; };
@@ -63,6 +64,7 @@
 		E2784A641B9C8FE30046BF0D /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2784A631B9C8FE30046BF0D /* ProfileTableViewCell.swift */; };
 		E2784A671B9C97180046BF0D /* ProfileTimeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2784A661B9C97180046BF0D /* ProfileTimeRenderer.swift */; };
 		E28270401CEC98A10085DA0E /* ParameterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282703F1CEC98A10085DA0E /* ParameterManager.swift */; };
+		E283F4AC1D25FB4600AC9002 /* AudioAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283F4AB1D25FB4600AC9002 /* AudioAlertManager.swift */; };
 		E284FC1C1BA3E89000ABFA68 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC1B1BA3E89000ABFA68 /* ProfileTableViewController.swift */; };
 		E284FC1F1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC1E1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift */; };
 		E284FC211BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC201BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift */; };
@@ -214,6 +216,7 @@
 		E24408A51B483C8400EB056C /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		E24628DE1B9803C2007DD28B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E24A428A1BA4BA800071702D /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		E255FB8F1D23F30900AA9F91 /* beep-xylo.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "beep-xylo.aif"; sourceTree = "<group>"; };
 		E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeFactory.swift; sourceTree = "<group>"; };
 		E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeButton.swift; sourceTree = "<group>"; };
 		E25E86C81B65D73A00F120FA /* ApplicationAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationAssembly.swift; sourceTree = "<group>"; };
@@ -225,6 +228,7 @@
 		E2784A631B9C8FE30046BF0D /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		E2784A661B9C97180046BF0D /* ProfileTimeRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTimeRenderer.swift; sourceTree = "<group>"; };
 		E282703F1CEC98A10085DA0E /* ParameterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterManager.swift; sourceTree = "<group>"; };
+		E283F4AB1D25FB4600AC9002 /* AudioAlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioAlertManager.swift; sourceTree = "<group>"; };
 		E284FC1B1BA3E89000ABFA68 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		E284FC1E1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileNameTableViewCell.swift; sourceTree = "<group>"; };
 		E284FC201BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTimeTableViewCell.swift; sourceTree = "<group>"; };
@@ -374,6 +378,7 @@
 			children = (
 				E22E8C431B6BA23000DD0793 /* VibrationAlertManager.swift */,
 				E2AB35951B82DC97001F8362 /* LocalNotificationManager.swift */,
+				E283F4AB1D25FB4600AC9002 /* AudioAlertManager.swift */,
 			);
 			name = UserNotification;
 			sourceTree = "<group>";
@@ -418,6 +423,7 @@
 		E23480E71B2906EA0076247D /* SpeakerAlert */ = {
 			isa = PBXGroup;
 			children = (
+				E255FB8E1D23F2FF00AA9F91 /* Sounds */,
 				E21B306A1B9B549E00B89D9F /* Settings */,
 				E22FD2681B93F1D70022F0B1 /* Styling */,
 				E2B2CCCF1B87556D0038C067 /* Data Management */,
@@ -491,6 +497,14 @@
 				E23481221B2906EB0076247D /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E255FB8E1D23F2FF00AA9F91 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				E255FB8F1D23F30900AA9F91 /* beep-xylo.aif */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 		E25E86C71B65D70C00F120FA /* Assembly */ = {
@@ -783,6 +797,7 @@
 				E23480F01B2906EA0076247D /* Assets.xcassets in Resources */,
 				E23480EE1B2906EA0076247D /* Main.storyboard in Resources */,
 				E2FF3C971B98100F0083CC4F /* Acknowledgements.plist in Resources */,
+				E255FB901D23F59800AA9F91 /* beep-xylo.aif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1042,6 +1057,7 @@
 				E2C571B91B8AA5A400C83D92 /* FontAwesomeImageView.swift in Sources */,
 				E2C571BB1B8AB1A300C83D92 /* NamedTableViewCell.swift in Sources */,
 				E20B85801B66661300D55578 /* SpeechManager.swift in Sources */,
+				E283F4AC1D25FB4600AC9002 /* AudioAlertManager.swift in Sources */,
 				E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */,
 				E26D5BA01CF47B1B00E27B9D /* DefaultSpeechViewController.swift in Sources */,
 				E27453BE1B9E8DE00058086C /* Speech+CoreDataProperties.swift in Sources */,

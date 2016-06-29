@@ -97,6 +97,15 @@ public class ApplicationAssembly: TyphoonAssembly {
             definition.injectProperty("configMan", with: self.configurationManager())
         }
     }
+    
+    public dynamic func audioAlertManager() -> AnyObject {
+        return TyphoonDefinition.withClass(AudioAlertManager.self) {
+            (definition) in
+            definition.scope = TyphoonScope.Singleton
+            definition.injectProperty("speechMan", with: self.speechManager())
+            definition.injectProperty("configMan", with: self.configurationManager())
+        }
+    }
 
     // MARK: View Controllers
 
