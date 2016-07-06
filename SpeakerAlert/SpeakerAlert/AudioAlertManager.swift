@@ -11,8 +11,11 @@ import AudioToolbox
 
 class AudioAlertManager: NSObject, SpeechManagerDelegate {
     
+    // TODO: Import some of these as options
+    // https://notificationsounds.com/notification-sounds
+    
     override init() {
-        if let filePath = NSBundle.mainBundle().pathForResource("beep-xylo", ofType: "aif") {
+        if let filePath = NSBundle.mainBundle().pathForResource("alarm-frenzy", ofType: "mp3") {
             soundURL = NSURL(fileURLWithPath: filePath)
             if let url = soundURL {
                 AudioServicesCreateSystemSoundID(url, &soundID)

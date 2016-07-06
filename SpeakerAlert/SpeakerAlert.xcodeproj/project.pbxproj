@@ -45,6 +45,18 @@
 		E23481281B2906EB0076247D /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23481271B2906EB0076247D /* NotificationController.swift */; };
 		E234812A1B2906EB0076247D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23481291B2906EB0076247D /* ComplicationController.swift */; };
 		E234812C1B2906EB0076247D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E234812B1B2906EB0076247D /* Assets.xcassets */; };
+		E23EC2511D2D28EA00097414 /* alarm-frenzy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC2501D2D28EA00097414 /* alarm-frenzy.mp3 */; };
+		E23EC2531D2D2A5900097414 /* chafing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC2521D2D2A5900097414 /* chafing.mp3 */; };
+		E23EC2551D2D2B1D00097414 /* communication-channel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC2541D2D2B1D00097414 /* communication-channel.mp3 */; };
+		E23EC2571D2D2B6400097414 /* demonstrative.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC2561D2D2B6400097414 /* demonstrative.mp3 */; };
+		E23EC2591D2D2B8400097414 /* jingle-bells-sms.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC2581D2D2B8400097414 /* jingle-bells-sms.mp3 */; };
+		E23EC2611D2D2C6000097414 /* job-done.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC25A1D2D2C6000097414 /* job-done.mp3 */; };
+		E23EC2621D2D2C6000097414 /* just-like-magic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC25B1D2D2C6000097414 /* just-like-magic.mp3 */; };
+		E23EC2631D2D2C6000097414 /* nice-cut.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC25C1D2D2C6000097414 /* nice-cut.mp3 */; };
+		E23EC2641D2D2C6000097414 /* served.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC25D1D2D2C6000097414 /* served.mp3 */; };
+		E23EC2651D2D2C6000097414 /* solemn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC25E1D2D2C6000097414 /* solemn.mp3 */; };
+		E23EC2661D2D2C6000097414 /* system-fault.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC25F1D2D2C6000097414 /* system-fault.mp3 */; };
+		E23EC2671D2D2C6000097414 /* what-friends-are-for.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC2601D2D2C6000097414 /* what-friends-are-for.mp3 */; };
 		E24408A11B48338400EB056C /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */; };
 		E24408A21B48338400EB056C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A01B48338400EB056C /* Group.swift */; };
 		E24408A31B4834F200EB056C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A01B48338400EB056C /* Group.swift */; };
@@ -52,7 +64,6 @@
 		E24408A61B483C8400EB056C /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A51B483C8400EB056C /* GroupTableViewController.swift */; };
 		E24628DF1B9803C2007DD28B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24628DE1B9803C2007DD28B /* SettingsViewController.swift */; };
 		E24A428B1BA4BA800071702D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24A428A1BA4BA800071702D /* LoadingViewController.swift */; };
-		E255FB901D23F59800AA9F91 /* beep-xylo.aif in Resources */ = {isa = PBXBuildFile; fileRef = E255FB8F1D23F30900AA9F91 /* beep-xylo.aif */; };
 		E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */; };
 		E25E86C61B65748D00F120FA /* FontAwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */; };
 		E25E86C91B65D73A00F120FA /* ApplicationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C81B65D73A00F120FA /* ApplicationAssembly.swift */; };
@@ -211,12 +222,23 @@
 		E23481291B2906EB0076247D /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		E234812B1B2906EB0076247D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E234812D1B2906EB0076247D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E23EC2501D2D28EA00097414 /* alarm-frenzy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "alarm-frenzy.mp3"; path = "../../Assets/sounds/alarm-frenzy.mp3"; sourceTree = "<group>"; };
+		E23EC2521D2D2A5900097414 /* chafing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chafing.mp3; path = ../../Assets/sounds/chafing.mp3; sourceTree = "<group>"; };
+		E23EC2541D2D2B1D00097414 /* communication-channel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "communication-channel.mp3"; path = "../../Assets/sounds/communication-channel.mp3"; sourceTree = "<group>"; };
+		E23EC2561D2D2B6400097414 /* demonstrative.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = demonstrative.mp3; path = ../../Assets/sounds/demonstrative.mp3; sourceTree = "<group>"; };
+		E23EC2581D2D2B8400097414 /* jingle-bells-sms.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "jingle-bells-sms.mp3"; path = "../../Assets/sounds/jingle-bells-sms.mp3"; sourceTree = "<group>"; };
+		E23EC25A1D2D2C6000097414 /* job-done.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "job-done.mp3"; path = "../../Assets/sounds/job-done.mp3"; sourceTree = "<group>"; };
+		E23EC25B1D2D2C6000097414 /* just-like-magic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "just-like-magic.mp3"; path = "../../Assets/sounds/just-like-magic.mp3"; sourceTree = "<group>"; };
+		E23EC25C1D2D2C6000097414 /* nice-cut.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "nice-cut.mp3"; path = "../../Assets/sounds/nice-cut.mp3"; sourceTree = "<group>"; };
+		E23EC25D1D2D2C6000097414 /* served.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = served.mp3; path = ../../Assets/sounds/served.mp3; sourceTree = "<group>"; };
+		E23EC25E1D2D2C6000097414 /* solemn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = solemn.mp3; path = ../../Assets/sounds/solemn.mp3; sourceTree = "<group>"; };
+		E23EC25F1D2D2C6000097414 /* system-fault.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "system-fault.mp3"; path = "../../Assets/sounds/system-fault.mp3"; sourceTree = "<group>"; };
+		E23EC2601D2D2C6000097414 /* what-friends-are-for.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "what-friends-are-for.mp3"; path = "../../Assets/sounds/what-friends-are-for.mp3"; sourceTree = "<group>"; };
 		E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E24408A01B48338400EB056C /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		E24408A51B483C8400EB056C /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		E24628DE1B9803C2007DD28B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E24A428A1BA4BA800071702D /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
-		E255FB8F1D23F30900AA9F91 /* beep-xylo.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "beep-xylo.aif"; sourceTree = "<group>"; };
 		E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeFactory.swift; sourceTree = "<group>"; };
 		E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeButton.swift; sourceTree = "<group>"; };
 		E25E86C81B65D73A00F120FA /* ApplicationAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationAssembly.swift; sourceTree = "<group>"; };
@@ -502,7 +524,18 @@
 		E255FB8E1D23F2FF00AA9F91 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				E255FB8F1D23F30900AA9F91 /* beep-xylo.aif */,
+				E23EC2501D2D28EA00097414 /* alarm-frenzy.mp3 */,
+				E23EC2521D2D2A5900097414 /* chafing.mp3 */,
+				E23EC2541D2D2B1D00097414 /* communication-channel.mp3 */,
+				E23EC25A1D2D2C6000097414 /* job-done.mp3 */,
+				E23EC25B1D2D2C6000097414 /* just-like-magic.mp3 */,
+				E23EC25C1D2D2C6000097414 /* nice-cut.mp3 */,
+				E23EC25D1D2D2C6000097414 /* served.mp3 */,
+				E23EC25E1D2D2C6000097414 /* solemn.mp3 */,
+				E23EC25F1D2D2C6000097414 /* system-fault.mp3 */,
+				E23EC2601D2D2C6000097414 /* what-friends-are-for.mp3 */,
+				E23EC2561D2D2B6400097414 /* demonstrative.mp3 */,
+				E23EC2581D2D2B8400097414 /* jingle-bells-sms.mp3 */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -793,11 +826,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E23EC2651D2D2C6000097414 /* solemn.mp3 in Resources */,
+				E23EC2591D2D2B8400097414 /* jingle-bells-sms.mp3 in Resources */,
+				E23EC2661D2D2C6000097414 /* system-fault.mp3 in Resources */,
 				E23480F31B2906EA0076247D /* LaunchScreen.storyboard in Resources */,
+				E23EC2611D2D2C6000097414 /* job-done.mp3 in Resources */,
+				E23EC2531D2D2A5900097414 /* chafing.mp3 in Resources */,
+				E23EC2511D2D28EA00097414 /* alarm-frenzy.mp3 in Resources */,
+				E23EC2641D2D2C6000097414 /* served.mp3 in Resources */,
 				E23480F01B2906EA0076247D /* Assets.xcassets in Resources */,
+				E23EC2571D2D2B6400097414 /* demonstrative.mp3 in Resources */,
 				E23480EE1B2906EA0076247D /* Main.storyboard in Resources */,
+				E23EC2671D2D2C6000097414 /* what-friends-are-for.mp3 in Resources */,
+				E23EC2551D2D2B1D00097414 /* communication-channel.mp3 in Resources */,
 				E2FF3C971B98100F0083CC4F /* Acknowledgements.plist in Resources */,
-				E255FB901D23F59800AA9F91 /* beep-xylo.aif in Resources */,
+				E23EC2631D2D2C6000097414 /* nice-cut.mp3 in Resources */,
+				E23EC2621D2D2C6000097414 /* just-like-magic.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
