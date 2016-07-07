@@ -29,7 +29,14 @@ class SettingsViewController: UITableViewController {
             vibrationSwitch?.setOn(cm.isVibrationEnabled, animated: false)
             hideControlsSwitch?.setOn(cm.isHideControlsEnabled, animated: false)
             audioAlertSwitch?.setOn(cm.isAudioEnabled, animated: false)
-            audioTitleLabel?.text = cm.audioFile
+            
+            for (title, fileName) in SoundSelectorTableViewController.soundFiles {
+                if fileName == cm.audioFile {
+                    audioTitleLabel?.text = title
+                }
+            }
+            
+            
         }
     }
 

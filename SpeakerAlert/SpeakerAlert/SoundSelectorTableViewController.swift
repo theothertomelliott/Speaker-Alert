@@ -12,7 +12,7 @@ class SoundSelectorTableViewController: UITableViewController {
 
     var configManager: ConfigurationManager?
     
-    let soundFiles: [String:String] = [
+    static let soundFiles: [String:String] = [
         "Alarm Frenzy" : "alarm-frenzy",
         "Chafing" : "chafing",
         "Communication Channel" : "communication-channel",
@@ -28,7 +28,7 @@ class SoundSelectorTableViewController: UITableViewController {
     ]
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return soundFiles.keys.count
+        return SoundSelectorTableViewController.soundFiles.keys.count
     }
     
     override func tableView(
@@ -36,10 +36,10 @@ class SoundSelectorTableViewController: UITableViewController {
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LabelCell", forIndexPath: indexPath)
         
-        var titles = Array(soundFiles.keys)
+        var titles = Array(SoundSelectorTableViewController.soundFiles.keys)
         let title = titles[indexPath.row]
         cell.textLabel?.text = title
-        if let fileName = soundFiles[title] where fileName == configManager?.audioFile {
+        if let fileName = SoundSelectorTableViewController.soundFiles[title] where fileName == configManager?.audioFile {
             tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.Middle)
         }
         
@@ -49,7 +49,7 @@ class SoundSelectorTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         if let text = cell?.textLabel?.text {
-            if let fileName = soundFiles[text] {
+            if let fileName = SoundSelectorTableViewController.soundFiles[text] {
                 configManager?.audioFile = fileName
             }
         }
