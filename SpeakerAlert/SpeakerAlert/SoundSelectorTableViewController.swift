@@ -11,6 +11,7 @@ import UIKit
 class SoundSelectorTableViewController: UITableViewController {
 
     var configManager: ConfigurationManager?
+    var audioAlertManager: AudioAlertManager?
     
     static let soundFiles: [String:String] = [
         "Alarm Frenzy" : "alarm-frenzy",
@@ -51,6 +52,7 @@ class SoundSelectorTableViewController: UITableViewController {
         if let text = cell?.textLabel?.text {
             if let fileName = SoundSelectorTableViewController.soundFiles[text] {
                 configManager?.audioFile = fileName
+                audioAlertManager?.playSound()
             }
         }
     }

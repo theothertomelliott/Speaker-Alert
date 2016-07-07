@@ -161,6 +161,7 @@ public class ApplicationAssembly: TyphoonAssembly {
         return TyphoonDefinition.withClass(SoundSelectorTableViewController.self) {
             (definition) in
             definition.injectProperty("configManager", with: self.configurationManager())
+            definition.injectProperty("audioAlertManager", with: self.audioAlertManager())
         }
     }
 
