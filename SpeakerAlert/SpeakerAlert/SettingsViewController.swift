@@ -19,6 +19,8 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var vibrationSwitch: UISwitch?
     @IBOutlet weak var hideControlsSwitch: UISwitch?
     @IBOutlet weak var audioAlertSwitch: UISwitch?
+    
+    @IBOutlet weak var audioTitleLabel: UILabel?
 
     override func viewWillAppear(animated: Bool) {
         if let cm = configManager {
@@ -27,6 +29,7 @@ class SettingsViewController: UITableViewController {
             vibrationSwitch?.setOn(cm.isVibrationEnabled, animated: false)
             hideControlsSwitch?.setOn(cm.isHideControlsEnabled, animated: false)
             audioAlertSwitch?.setOn(cm.isAudioEnabled, animated: false)
+            audioTitleLabel?.text = cm.audioFile
         }
     }
 

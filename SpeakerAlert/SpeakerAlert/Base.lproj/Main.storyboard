@@ -1021,6 +1021,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="Vwb-Yj-TEb"/>
                     <connections>
                         <outlet property="audioAlertSwitch" destination="Xr2-bc-ghd" id="mAP-cc-D51"/>
+                        <outlet property="audioTitleLabel" destination="rJz-Cy-RTS" id="PGB-IZ-mMS"/>
                         <outlet property="autoStartSwitch" destination="wE1-fm-Bwn" id="6Aw-h6-haf"/>
                         <outlet property="displayTimeSwitch" destination="TGm-wd-3ZZ" id="hBC-ID-fiI"/>
                         <outlet property="vibrationSwitch" destination="uTb-hV-ubH" id="gQu-Dg-eJi"/>
