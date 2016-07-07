@@ -156,5 +156,12 @@ public class ApplicationAssembly: TyphoonAssembly {
             definition.injectProperty("configManager", with: self.configurationManager())
         }
     }
+    
+    public dynamic func soundSelectorTableViewController() -> AnyObject {
+        return TyphoonDefinition.withClass(SoundSelectorTableViewController.self) {
+            (definition) in
+            definition.injectProperty("configManager", with: self.configurationManager())
+        }
+    }
 
 }

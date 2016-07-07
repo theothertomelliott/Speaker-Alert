@@ -11,18 +11,12 @@ import AudioToolbox
 
 class AudioAlertManager: NSObject, SpeechManagerDelegate {
     
-    // TODO: Import some of these as options
+    // TODO: Attribute sounds
     // https://notificationsounds.com/notification-sounds
+    // https://creativecommons.org/licenses/by/4.0/legalcode
     
     override init() {
-        if let filePath = NSBundle.mainBundle().pathForResource("alarm-frenzy", ofType: "mp3") {
-            soundURL = NSURL(fileURLWithPath: filePath)
-            if let url = soundURL {
-                AudioServicesCreateSystemSoundID(url, &soundID)
-            }
-        } else {
-            print("Sound file not found")
-        }
+        // TODO: Import all sounds here
     }
 
     var configMan: ConfigurationManager?
@@ -48,6 +42,18 @@ class AudioAlertManager: NSObject, SpeechManagerDelegate {
     var soundID: SystemSoundID = 0
     
     func playSound() {
+        if let filePath = NSBundle.mainBundle().pathForResource(
+            configMan?.audioFile,
+            ofType: "mp3"
+            ) {
+            soundURL = NSURL(fileURLWithPath: filePath)
+            if let url = soundURL {
+                AudioServicesCreateSystemSoundID(url, &soundID)
+            }
+        } else {
+            print("Sound file not found")
+        }
+        
         // Sound from: http://raisedbeaches.com/octave/
         // Add attribution to About screen
         if soundID != 0 {

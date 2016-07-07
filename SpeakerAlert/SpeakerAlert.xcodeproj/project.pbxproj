@@ -57,6 +57,7 @@
 		E23EC2651D2D2C6000097414 /* solemn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC25E1D2D2C6000097414 /* solemn.mp3 */; };
 		E23EC2661D2D2C6000097414 /* system-fault.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC25F1D2D2C6000097414 /* system-fault.mp3 */; };
 		E23EC2671D2D2C6000097414 /* what-friends-are-for.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC2601D2D2C6000097414 /* what-friends-are-for.mp3 */; };
+		E23EC2691D2D2FD800097414 /* SoundSelectorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23EC2681D2D2FD800097414 /* SoundSelectorTableViewController.swift */; };
 		E24408A11B48338400EB056C /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */; };
 		E24408A21B48338400EB056C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A01B48338400EB056C /* Group.swift */; };
 		E24408A31B4834F200EB056C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A01B48338400EB056C /* Group.swift */; };
@@ -234,6 +235,7 @@
 		E23EC25E1D2D2C6000097414 /* solemn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = solemn.mp3; path = ../../Assets/sounds/solemn.mp3; sourceTree = "<group>"; };
 		E23EC25F1D2D2C6000097414 /* system-fault.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "system-fault.mp3"; path = "../../Assets/sounds/system-fault.mp3"; sourceTree = "<group>"; };
 		E23EC2601D2D2C6000097414 /* what-friends-are-for.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "what-friends-are-for.mp3"; path = "../../Assets/sounds/what-friends-are-for.mp3"; sourceTree = "<group>"; };
+		E23EC2681D2D2FD800097414 /* SoundSelectorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundSelectorTableViewController.swift; sourceTree = "<group>"; };
 		E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E24408A01B48338400EB056C /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		E24408A51B483C8400EB056C /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */,
 				E24A428A1BA4BA800071702D /* LoadingViewController.swift */,
 				E2065BB71CE4231500EB192C /* TabBarAnimationExtension.swift */,
+				E23EC2681D2D2FD800097414 /* SoundSelectorTableViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1102,6 +1105,7 @@
 				E2C571BB1B8AB1A300C83D92 /* NamedTableViewCell.swift in Sources */,
 				E20B85801B66661300D55578 /* SpeechManager.swift in Sources */,
 				E283F4AC1D25FB4600AC9002 /* AudioAlertManager.swift in Sources */,
+				E23EC2691D2D2FD800097414 /* SoundSelectorTableViewController.swift in Sources */,
 				E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */,
 				E26D5BA01CF47B1B00E27B9D /* DefaultSpeechViewController.swift in Sources */,
 				E27453BE1B9E8DE00058086C /* Speech+CoreDataProperties.swift in Sources */,

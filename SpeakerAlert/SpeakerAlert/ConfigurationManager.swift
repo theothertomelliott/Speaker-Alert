@@ -75,6 +75,20 @@ class ConfigurationManager: NSObject {
         }
     }
     
+    let audioFileKey = "audioFile"
+    var audioFile: String {
+        get {
+            if let fileName = defaults.objectForKey(audioFileKey) as? String {
+                return fileName
+            }
+            return "alarm-frenzy"
+        }
+        set {
+            defaults.setObject(newValue, forKey: audioFileKey)
+        }
+    }
+    
+    
     let hideControlsKey = "hideControlsInSpeech"
     var isHideControlsEnabled: Bool {
         get {
