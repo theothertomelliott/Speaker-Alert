@@ -110,6 +110,15 @@ class SettingsViewController: UITableViewController {
         aboutView.blurStyle = .Dark
         aboutView.headerBackgroundImage = UIImage(named: "Icon1024")
 
+        aboutView.addAdditionalButtonWithTitle(
+            "Audio",
+            subtitle: "Content Creators",
+            andContent:"Audio clips provided by NotificationSounds\n" +
+            "https://notificationsounds.com/\n\n" +
+            "Under a Creative Commons Attribution License.\n" +
+            "https://creativecommons.org/licenses/by/4.0/legalcode"
+        )
+        
         self.navigationController?.pushViewController(aboutView, animated: true)
     }
 

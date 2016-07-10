@@ -11,10 +11,6 @@ import AudioToolbox
 
 class AudioAlertManager: NSObject, SpeechManagerDelegate {
     
-    // TODO: Attribute sounds
-    // https://notificationsounds.com/notification-sounds
-    // https://creativecommons.org/licenses/by/4.0/legalcode
-    
     override init() {
         // TODO: Import all sounds here
     }
