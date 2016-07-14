@@ -1,5 +1,3 @@
-We've overhauled the speech view to get rid of any distractions when you're speaking. During a speech, you'll only see the current alert color, and optionally the elapsed time. Tap the screen to pause the speech and get back the full display and controls to finish or resume where you left off.
+This update adds optional sound alerts for each phase of a speech. Choose from a selection of 10 sounds provided by the good people at https://notificationsounds.com/!
 
-Demo mode is now accessible from the main speech list, so you can show your speakers what to expect that much quicker!
-
-Not only that, but we've also fixed a couple of annoying bugs that had been reported.
+We've also fixed a problem with the rating button, so if you're enjoying Speaker Alert, please be sure to leave your thoughts!
