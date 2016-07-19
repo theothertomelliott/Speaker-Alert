@@ -222,6 +222,12 @@ class GroupTableViewController: UITableViewController {
     override func tableView(
         tableView: UITableView,
         didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if self.editing {
+            doEdit(indexPath)
+            return
+        }
+        
         if rowIsProfile(indexPath.row) || rowIsDemo(indexPath.row) {
             var display = "Default"
             if let d = configMan?.speechDisplay {
@@ -275,6 +281,16 @@ class GroupTableViewController: UITableViewController {
             // insert it into the array, and add a new row to the table view
         }
     }
+    
+    func doEdit(indexPath: NSIndexPath){
+        if self.rowIsGroup(indexPath.row) {
+            self.renameGroup(self.groups[indexPath.row])
+        } else if self.rowIsProfile(indexPath.row) {
+            self.performSegueWithIdentifier(
+                "timingEditSegue",
+                sender: tableView.cellForRowAtIndexPath(indexPath))
+        }
+    }
 
     override func tableView(
         tableView: UITableView,
@@ -302,14 +318,7 @@ class GroupTableViewController: UITableViewController {
             style: UITableViewRowActionStyle.Default,
             title: "Edit",
             handler: {action, indexpath in
-
-            if self.rowIsGroup(indexPath.row) {
-                self.renameGroup(self.groups[indexPath.row])
-            } else if self.rowIsProfile(indexPath.row) {
-                self.performSegueWithIdentifier(
-                    "timingEditSegue",
-                    sender: tableView.cellForRowAtIndexPath(indexPath))
-            }
+                self.doEdit(indexPath)
         })
 
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0)
@@ -325,7 +334,16 @@ class GroupTableViewController: UITableViewController {
     }
 
     // MARK: - Navigation
-
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if "groupSegue" == identifier {
+            if self.editing {
+                return false
+            }
+        }
+        return true
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

@@ -39,6 +39,11 @@ class ProfileTableViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         self.setTabBarVisible(false, animated: animated)
+        if let _ = self.profile {
+            self.title = "Edit Profile"
+        } else {
+            self.title = "New Profile"
+        }
     }
 
 	override func didReceiveMemoryWarning() {
