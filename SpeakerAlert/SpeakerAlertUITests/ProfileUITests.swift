@@ -105,6 +105,8 @@ class ProfileEditUITests: SpeakerAlertUITests {
 
         app.buttons["Back"].tap()
 
+        app.navigationBars["Profiles"].buttons["Done"].tap()
+        
         app.tables.staticTexts["Test"].tap()
         app.buttons["Play"].tap()
     }
