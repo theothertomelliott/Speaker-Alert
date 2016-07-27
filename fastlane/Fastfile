@@ -52,6 +52,18 @@ platform :ios do
     )
   end
 
+  lane :makematch do
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert")
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp")
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp.watchkitextension")
+  end
+
+  lane :getmatch do
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert", readonly: true)
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp", readonly: true)
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp.watchkitextension", readonly: true)
+  end
+
   def resize_image(img_in, img_out, size)
     image = MiniMagick::Image.open(img_in)
     image.resize size

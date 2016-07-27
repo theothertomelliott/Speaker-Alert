@@ -6,6 +6,16 @@ sudo gem install fastlane
 ```
 # Available Actions
 ## iOS
+### ios makematch
+```
+fastlane ios makematch
+```
+
+### ios getmatch
+```
+fastlane ios getmatch
+```
+
 ### ios update_website
 ```
 fastlane ios update_website
