@@ -21,7 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+        // Set up Pyze for analytics
+        if _isDebugAssertConfiguration() {
+            Pyze.initialize("HkpiF7XpQaqgwGDidBvmzw")
+        } else {
+            Pyze.initialize("mkneZ7xjSjKM5Mdn0Mra_w")
+        }
         
         if let p = parameterManager where p.isUITesting {
             NSLog("UI Testing!")

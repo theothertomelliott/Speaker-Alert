@@ -9,4 +9,6 @@
 #ifndef SpeakerAlert_Bridging_Header_h
 #define SpeakerAlert_Bridging_Header_h
 
+#import <Pyze/Pyze.h>
+
 #endif /* SpeakerAlert_Bridging_Header_h */
