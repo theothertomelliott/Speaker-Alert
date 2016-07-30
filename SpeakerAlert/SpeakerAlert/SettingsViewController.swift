@@ -9,7 +9,7 @@
 import UIKit
 import RFAboutView
 
-class SettingsViewController: UITableViewController {
+class SettingsViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 
     let APP_ID = "488585337"
 
@@ -77,14 +77,83 @@ class SettingsViewController: UITableViewController {
         tableView.cellForRowAtIndexPath(indexPath)?.selectionStyle =
             UITableViewCellSelectionStyle.None
 
-        if indexPath.section == 1 && indexPath.row == 0 {
-            self.showAbout()
-        } else if indexPath.section == 1 && indexPath.row == 1 {
-            self.rateApp()
-        } else {
+        if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                self.showAbout()
+            } else if indexPath.row == 1 {
+                self.rateApp()
+            }
+        } else if indexPath.section == 2 {
+            if indexPath.row == 0 {
+                // email
+                contactEmail()
+            } else if indexPath.row == 1 {
+                // facebook
+                contactFacebook()
+            } else {
+                // twitter
+                contactTwitter()
+            }
         }
     }
 
+    func contactEmail() {
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            self.showSendMailErrorAlert()
+        }
+    }
+    
+    func contactFacebook() {
+        UIApplication.sharedApplication().openURL(
+            NSURL(
+                string : "https://www.facebook.com/speakeralert")!
+        )
+    }
+    
+    func contactTwitter() {
+        UIApplication.sharedApplication().openURL(
+            NSURL(
+                string : "https://twitter.com/speakeralertapp")!
+        )
+    }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        
+        mailComposerVC.setToRecipients(["speakeralert@telliott.io"])
+        
+        let bundle = NSBundle.mainBundle()
+        if let version = bundle.infoDictionary?["CFBundleShortVersionString"] as? String {
+            mailComposerVC.setSubject("Speaker Alert version " + version)
+        } else {
+            mailComposerVC.setSubject("Speaker Alert")
+        }
+        
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(
+            title: "Could Not Send Email",
+            message: "Your device could not send e-mail." +
+                     "Please check e-mail configuration and try again.",
+            delegate: self,
+            cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(
+        controller: MFMailComposeViewController,
+        didFinishWithResult result: MFMailComposeResult,
+                            error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func rateApp() {
         UIApplication.sharedApplication().openURL(
             NSURL(
