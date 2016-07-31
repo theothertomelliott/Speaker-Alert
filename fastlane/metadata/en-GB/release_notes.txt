@@ -1,1 +1,1 @@
-This quick update cuts down on the number of clicks to edit a profile. Now you just tap "Edit" on the profile list and tap the name of the profile you want to change. 
+Having trouble or just want to get in touch? The Settings menu now has contact links for e-mail, Facebook and Twitter.
