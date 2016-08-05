@@ -19,6 +19,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     @IBOutlet weak var vibrationSwitch: UISwitch?
     @IBOutlet weak var hideControlsSwitch: UISwitch?
     @IBOutlet weak var audioAlertSwitch: UISwitch?
+    @IBOutlet weak var hideStatusSwitch: UISwitch?
     
     @IBOutlet weak var audioTitleLabel: UILabel?
 
@@ -29,6 +30,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             vibrationSwitch?.setOn(cm.isVibrationEnabled, animated: false)
             hideControlsSwitch?.setOn(cm.isHideControlsEnabled, animated: false)
             audioAlertSwitch?.setOn(cm.isAudioEnabled, animated: false)
+            hideStatusSwitch?.setOn(cm.isHideStatusEnabled, animated: false)
             
             for (title, fileName) in SoundSelectorTableViewController.soundFiles {
                 if fileName == cm.audioFile {
@@ -39,7 +41,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             
         }
     }
-
+    
     @IBAction func autoStartChanged(sender: AnyObject) {
         if let sendSwitch: UISwitch = sender as? UISwitch {
             configManager?.isAutoStartEnabled = sendSwitch.on
@@ -67,6 +69,12 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     @IBAction func hideControlsChanged(sender: AnyObject) {
         if let sendSwitch: UISwitch = sender as? UISwitch {
             configManager?.isHideControlsEnabled = sendSwitch.on
+        }
+    }
+    
+    @IBAction func hideStatusChanged(sender: AnyObject) {
+        if let sendSwitch: UISwitch = sender as? UISwitch {
+            configManager?.isHideStatusEnabled = sendSwitch.on
         }
     }
 

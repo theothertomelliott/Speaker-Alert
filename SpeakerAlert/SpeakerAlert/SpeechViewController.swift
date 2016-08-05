@@ -99,9 +99,11 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     }
 
     func setNavSatusVisible(visible: Bool, animated: Bool) {
-        UIApplication.sharedApplication().setStatusBarHidden(
-            !visible,
-            withAnimation: animated ? UIStatusBarAnimation.Slide : UIStatusBarAnimation.None)
+        if let hs = configMan?.isHideStatusEnabled where hs {
+            UIApplication.sharedApplication().setStatusBarHidden(
+                !visible,
+                withAnimation: animated ? UIStatusBarAnimation.Slide : UIStatusBarAnimation.None)
+        }
         self.navigationController?.setNavigationBarHidden(!visible, animated: animated)
     }
     

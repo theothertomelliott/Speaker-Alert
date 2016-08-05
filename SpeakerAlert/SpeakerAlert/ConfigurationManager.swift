@@ -118,5 +118,18 @@ class ConfigurationManager: NSObject {
             defaults.setObject(newValue, forKey: speechDisplayKey)
         }
     }
+    
+    let hideStatusKey = "hideStatus"
+    var isHideStatusEnabled: Bool {
+        get {
+            if let _ = defaults.objectForKey(hideStatusKey) {
+                return defaults.boolForKey(hideStatusKey)
+            }
+            return true
+        }
+        set {
+            defaults.setBool(newValue, forKey: hideStatusKey)
+        }
+    }
 
 }
