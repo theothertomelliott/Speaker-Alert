@@ -14,6 +14,11 @@ class ConfigurationManager: NSObject, AppConfiguration {
     
     private var defaults: NSUserDefaults
     private var presetModes: [ConfigurationMode]
+    
+    func allPresets() -> [ConfigurationMode] {
+        return presetModes
+    }
+    
     let defaultConfiguration = ConfigurationMode(
         name: "Practice",
         isDisplayTime: true,
