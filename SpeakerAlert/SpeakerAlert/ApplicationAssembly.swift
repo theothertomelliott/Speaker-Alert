@@ -36,6 +36,10 @@ public class ApplicationAssembly: TyphoonAssembly {
         return TyphoonDefinition.withClass(ConfigurationManager.self) {
             (definition) in
             definition.scope = TyphoonScope.Singleton
+            definition.useInitializer(#selector(ConfigurationManager.init(defaults:))) {
+                (parameters) in
+                    parameters.injectParameterWith(NSUserDefaults.standardUserDefaults())
+                }
             definition.injectProperty(#selector(ApplicationAssembly.parameterManager),
                                       with: self.parameterManager())
         }

@@ -34,7 +34,6 @@
 		E23480EE1B2906EA0076247D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23480EC1B2906EA0076247D /* Main.storyboard */; };
 		E23480F01B2906EA0076247D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E23480EF1B2906EA0076247D /* Assets.xcassets */; };
 		E23480F31B2906EA0076247D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23480F11B2906EA0076247D /* LaunchScreen.storyboard */; };
-		E23480FE1B2906EB0076247D /* SpeakerAlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23480FD1B2906EB0076247D /* SpeakerAlertTests.swift */; };
 		E23481091B2906EB0076247D /* SpeakerAlertUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23481081B2906EB0076247D /* SpeakerAlertUITests.swift */; };
 		E234810E1B2906EB0076247D /* SpeakerAlert WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E234810D1B2906EB0076247D /* SpeakerAlert WatchKit App.app */; };
 		E23481141B2906EB0076247D /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23481121B2906EB0076247D /* Interface.storyboard */; };
@@ -64,6 +63,10 @@
 		E24408A41B4834F400EB056C /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E244089F1B48338400EB056C /* Group+CoreDataProperties.swift */; };
 		E24408A61B483C8400EB056C /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24408A51B483C8400EB056C /* GroupTableViewController.swift */; };
 		E24628DF1B9803C2007DD28B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24628DE1B9803C2007DD28B /* SettingsViewController.swift */; };
+		E246CE1F1D56AEF60037367A /* ConfigurationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246CE1E1D56AEF60037367A /* ConfigurationManagerTests.swift */; };
+		E246CE201D56C0190037367A /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */; };
+		E246CE211D56C0300037367A /* ConfigurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CC76901D562FDC006E901A /* ConfigurationProtocol.swift */; };
+		E246CE221D56C0300037367A /* ConfigurationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CC76921D5634BE006E901A /* ConfigurationMode.swift */; };
 		E24A428B1BA4BA800071702D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24A428A1BA4BA800071702D /* LoadingViewController.swift */; };
 		E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */; };
 		E25E86C61B65748D00F120FA /* FontAwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */; };
@@ -104,6 +107,8 @@
 		E2C6D30D1B8ABA85002C69D7 /* FontAwesomeTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6D30C1B8ABA85002C69D7 /* FontAwesomeTabBarItem.swift */; };
 		E2C9020C1B33BA5600B39D37 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C9020B1B33BA5600B39D37 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2C9020D1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld */; };
+		E2CC76911D562FDC006E901A /* ConfigurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CC76901D562FDC006E901A /* ConfigurationProtocol.swift */; };
+		E2CC76931D5634BE006E901A /* ConfigurationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CC76921D5634BE006E901A /* ConfigurationMode.swift */; };
 		E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D273CD1B516EF500155349 /* SpeechViewController.swift */; };
 		E2DD5E3B1B5BE03800EF0997 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
 		E2E8DD5D1B6DD021003D3F7C /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
@@ -206,7 +211,6 @@
 		E23480F21B2906EA0076247D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E23480F41B2906EA0076247D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E23480F91B2906EB0076247D /* SpeakerAlertTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeakerAlertTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E23480FD1B2906EB0076247D /* SpeakerAlertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerAlertTests.swift; sourceTree = "<group>"; };
 		E23480FF1B2906EB0076247D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E23481041B2906EB0076247D /* SpeakerAlertUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeakerAlertUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23481081B2906EB0076247D /* SpeakerAlertUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerAlertUITests.swift; sourceTree = "<group>"; };
@@ -240,6 +244,7 @@
 		E24408A01B48338400EB056C /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		E24408A51B483C8400EB056C /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		E24628DE1B9803C2007DD28B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E246CE1E1D56AEF60037367A /* ConfigurationManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManagerTests.swift; sourceTree = "<group>"; };
 		E24A428A1BA4BA800071702D /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeFactory.swift; sourceTree = "<group>"; };
 		E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeButton.swift; sourceTree = "<group>"; };
@@ -269,6 +274,8 @@
 		E2C6D30C1B8ABA85002C69D7 /* FontAwesomeTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeTabBarItem.swift; sourceTree = "<group>"; };
 		E2C9020B1B33BA5600B39D37 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E2C9020E1B33BAA300B39D37 /* SpeakerAlert.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpeakerAlert.xcdatamodel; sourceTree = "<group>"; };
+		E2CC76901D562FDC006E901A /* ConfigurationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationProtocol.swift; sourceTree = "<group>"; };
+		E2CC76921D5634BE006E901A /* ConfigurationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationMode.swift; sourceTree = "<group>"; };
 		E2D273CD1B516EF500155349 /* SpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
 		E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
 		E2F0C7A01CE157E800A1A462 /* ProfileUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUITests.swift; sourceTree = "<group>"; };
@@ -356,6 +363,8 @@
 			children = (
 				E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */,
 				E282703F1CEC98A10085DA0E /* ParameterManager.swift */,
+				E2CC76901D562FDC006E901A /* ConfigurationProtocol.swift */,
+				E2CC76921D5634BE006E901A /* ConfigurationMode.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -470,9 +479,9 @@
 		E23480FC1B2906EB0076247D /* SpeakerAlertTests */ = {
 			isa = PBXGroup;
 			children = (
-				E23480FD1B2906EB0076247D /* SpeakerAlertTests.swift */,
 				E23480FF1B2906EB0076247D /* Info.plist */,
 				E20A8E951B816E6400ECC443 /* SpeechStateTests.swift */,
+				E246CE1E1D56AEF60037367A /* ConfigurationManagerTests.swift */,
 			);
 			path = SpeakerAlertTests;
 			sourceTree = "<group>";
@@ -1107,10 +1116,12 @@
 				E283F4AC1D25FB4600AC9002 /* AudioAlertManager.swift in Sources */,
 				E23EC2691D2D2FD800097414 /* SoundSelectorTableViewController.swift in Sources */,
 				E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */,
+				E2CC76911D562FDC006E901A /* ConfigurationProtocol.swift in Sources */,
 				E26D5BA01CF47B1B00E27B9D /* DefaultSpeechViewController.swift in Sources */,
 				E27453BE1B9E8DE00058086C /* Speech+CoreDataProperties.swift in Sources */,
 				E2F6B5F21B378F2600210504 /* Profile.swift in Sources */,
 				E2C2E7CC1B685AF3004BD7FD /* SpeechState.swift in Sources */,
+				E2CC76931D5634BE006E901A /* ConfigurationMode.swift in Sources */,
 				E21B306C1B9B54BA00B89D9F /* ConfigurationManager.swift in Sources */,
 				E20A8E9A1B817E7500ECC443 /* SpeechProfileFactory.swift in Sources */,
 				E25E86C91B65D73A00F120FA /* ApplicationAssembly.swift in Sources */,
@@ -1149,17 +1160,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E23480FE1B2906EB0076247D /* SpeakerAlertTests.swift in Sources */,
 				E24408A41B4834F400EB056C /* Group+CoreDataProperties.swift in Sources */,
 				E20A8E961B816E6400ECC443 /* SpeechStateTests.swift in Sources */,
 				E2929A8B1B3CCE74007030D4 /* SpeechTimer.swift in Sources */,
 				E2929A8A1B3CCE71007030D4 /* Profile+CoreDataProperties.swift in Sources */,
 				E20A8E9B1B81825300ECC443 /* SpeechProfile.swift in Sources */,
+				E246CE221D56C0300037367A /* ConfigurationMode.swift in Sources */,
 				E24408A31B4834F200EB056C /* Group.swift in Sources */,
 				E20A8E9D1B8183B500ECC443 /* SpeechProfileFactory.swift in Sources */,
 				E2A377FB1B7856F0007FA8FE /* SpeechState.swift in Sources */,
+				E246CE201D56C0190037367A /* ConfigurationManager.swift in Sources */,
 				E29D3FC51CEDE45300FB347C /* ParameterManager.swift in Sources */,
+				E246CE211D56C0300037367A /* ConfigurationProtocol.swift in Sources */,
 				E2929A891B3CCE6E007030D4 /* Profile.swift in Sources */,
+				E246CE1F1D56AEF60037367A /* ConfigurationManagerTests.swift in Sources */,
 				E2A377FA1B7856EE007FA8FE /* SpeechManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
