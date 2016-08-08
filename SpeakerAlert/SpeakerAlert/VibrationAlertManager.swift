@@ -21,6 +21,9 @@ class VibrationAlertManager: NSObject, SpeechManagerDelegate {
 
     func phaseChanged(state: SpeechState, timer: SpeechTimer) {
         if let cm = configMan where cm.isVibrationEnabled {
+            if state.phase == SpeechPhase.OVER_MAXIMUM && !cm.isVibrationEnabled {
+                return
+            }
             NSLog("Vibrating")
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         }

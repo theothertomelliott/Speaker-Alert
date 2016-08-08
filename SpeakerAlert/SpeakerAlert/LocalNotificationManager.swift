@@ -10,6 +10,8 @@ import UIKit
 
 class LocalNotificationManager: NSObject, SpeechManagerDelegate {
 
+    var configMan: ConfigurationManager?
+    
     var speechMan: SpeechManager? {
         didSet {
             speechMan?.addSpeechObserver(self)
@@ -30,6 +32,16 @@ class LocalNotificationManager: NSObject, SpeechManagerDelegate {
 
     private func setNotificationForPhase(phase: SpeechPhase) {
 
+        if let cm = configMan where cm.isVibrationEnabled {
+            return
+        }
+        
+        if phase == SpeechPhase.OVER_MAXIMUM {
+            if let cm = configMan where !cm.isAlertOvertimeEnabled {
+                return
+            }
+        }
+        
         if speechMan == nil || speechMan!.state == nil || speechMan?.state?.timeUntil(phase) < 0 {
             return
         }

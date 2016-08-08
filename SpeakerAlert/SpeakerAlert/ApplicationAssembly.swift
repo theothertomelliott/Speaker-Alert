@@ -78,6 +78,7 @@ public class ApplicationAssembly: TyphoonAssembly {
         return TyphoonDefinition.withClass(LocalNotificationManager.self) {
             (definition) in
             definition.scope = TyphoonScope.Singleton
+            definition.injectProperty("configMan", with: self.configurationManager())
             definition.injectProperty("speechMan", with: self.speechManager())
         }
     }

@@ -90,8 +90,12 @@ class DefaultSpeechViewController: SpeechViewController {
             }
             if phase == SpeechPhase.OVER_MAXIMUM {
                 self.phaseColor = UIColor.dangerColor()
-                self.pausedLabel?.text = "Alert!"
-                blinkState = true
+                if let cm = configMan where cm.isAlertOvertimeEnabled {
+                    self.pausedLabel?.text = "Alert!"
+                    blinkState = true
+                } else {
+                    self.pausedLabel?.text = "Red"
+                }
             }
             
         }
