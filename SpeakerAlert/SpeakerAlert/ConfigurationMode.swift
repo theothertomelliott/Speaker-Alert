@@ -17,5 +17,6 @@ struct ConfigurationMode: ModeConfiguration {
     var isAudioEnabled: Bool = false
     var speechDisplay: String = "Default"
     var isHideStatusEnabled: Bool = false
+    var isAlertOvertimeEnabled: Bool = false
     
 }

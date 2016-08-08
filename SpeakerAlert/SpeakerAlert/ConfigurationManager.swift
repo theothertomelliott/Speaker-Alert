@@ -25,7 +25,8 @@ class ConfigurationManager: NSObject, AppConfiguration {
         isVibrationEnabled: true,
         isAudioEnabled: false,
         speechDisplay: "Default",
-        isHideStatusEnabled: true
+        isHideStatusEnabled: true,
+        isAlertOvertimeEnabled: true
     )
 
     init(defaults: NSUserDefaults) {
@@ -60,6 +61,7 @@ class ConfigurationManager: NSObject, AppConfiguration {
         self.isAudioEnabled = preset.isAudioEnabled
         self.speechDisplay = preset.speechDisplay
         self.isHideStatusEnabled = preset.isHideStatusEnabled
+        self.isAlertOvertimeEnabled = preset.isAlertOvertimeEnabled
     }
 
     private func defaultPresets() -> [ConfigurationMode] {
@@ -70,7 +72,8 @@ class ConfigurationManager: NSObject, AppConfiguration {
                 isVibrationEnabled: false,
                 isAudioEnabled: false,
                 speechDisplay: "Default",
-                isHideStatusEnabled: true
+                isHideStatusEnabled: true,
+                isAlertOvertimeEnabled: true
             ),
             ConfigurationMode(
                 name: "Contest",
@@ -78,7 +81,8 @@ class ConfigurationManager: NSObject, AppConfiguration {
                 isVibrationEnabled: false,
                 isAudioEnabled: false,
                 speechDisplay: "Default",
-                isHideStatusEnabled: true
+                isHideStatusEnabled: true,
+                isAlertOvertimeEnabled: false
             ),
             defaultConfiguration
         ]
@@ -191,6 +195,19 @@ class ConfigurationManager: NSObject, AppConfiguration {
         }
         set {
             defaults.setBool(newValue, forKey: hideStatusKey)
+        }
+    }
+    
+    private let alertOvertimeKey = "alertOvertime"
+    var isAlertOvertimeEnabled: Bool {
+        get {
+            if let _ = defaults.objectForKey(alertOvertimeKey) {
+                return defaults.boolForKey(alertOvertimeKey)
+            }
+            return defaultConfiguration.isAlertOvertimeEnabled
+        }
+        set {
+            defaults.setBool(newValue, forKey: alertOvertimeKey)
         }
     }
 

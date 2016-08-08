@@ -126,8 +126,14 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
                     hasDisclosure: true,
                     action: {
                         self.performSegueWithIdentifier("showAudioList", sender: self)
-                })
-                // TODO: Flash when over time
+                }),
+                BoolCellDefinition(
+                    title: "Additional alert when over time",
+                    value: config.isAlertOvertimeEnabled,
+                    onChange: { (value: Bool) in
+                        config.isAlertOvertimeEnabled = value
+                        self.loadData()
+                }),
             ])
     }
     

@@ -23,6 +23,7 @@ protocol SpeechConfiguration {
     var isDisplayTime: Bool { get }
     var speechDisplay: String { get }
     var isHideStatusEnabled: Bool { get }
+    var isAlertOvertimeEnabled: Bool { get }
 }
 
 protocol AlertConfiguration {
@@ -40,7 +41,8 @@ protocol AudioConfiguration {
 func ==<T: SpeechConfiguration>(lhs: SpeechConfiguration, rhs: T) -> Bool {
     return  lhs.isDisplayTime == rhs.isDisplayTime &&
         lhs.speechDisplay == rhs.speechDisplay &&
-        lhs.isHideStatusEnabled == rhs.isHideStatusEnabled
+        lhs.isHideStatusEnabled == rhs.isHideStatusEnabled &&
+        lhs.isAlertOvertimeEnabled == rhs.isAlertOvertimeEnabled
 }
 
 func ==<T: AlertConfiguration>(lhs: AlertConfiguration, rhs: T) -> Bool {
