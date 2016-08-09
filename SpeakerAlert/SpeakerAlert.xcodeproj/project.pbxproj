@@ -114,6 +114,10 @@
 		E2E8DD5D1B6DD021003D3F7C /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
 		E2F0C7A11CE157E800A1A462 /* ProfileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0C7A01CE157E800A1A462 /* ProfileUITests.swift */; };
 		E2F0C7A51CE1593D00A1A462 /* AboutScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0C7A41CE1593D00A1A462 /* AboutScreenUITests.swift */; };
+		E2F2C2B01D5975C000A23437 /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2C2AF1D5975C000A23437 /* SelectionCell.swift */; };
+		E2F2C2B21D597D0100A23437 /* BoolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2C2B11D597D0100A23437 /* BoolCell.swift */; };
+		E2F2C2B41D597D6100A23437 /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2C2B31D597D6100A23437 /* ActionCell.swift */; };
+		E2F2C2B61D597DC000A23437 /* CellDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2C2B51D597DC000A23437 /* CellDefinition.swift */; };
 		E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
 		E2F6B5F21B378F2600210504 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
 		E2FF3C971B98100F0083CC4F /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2FF3C961B98100F0083CC4F /* Acknowledgements.plist */; };
@@ -281,6 +285,10 @@
 		E2F0C7A01CE157E800A1A462 /* ProfileUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUITests.swift; sourceTree = "<group>"; };
 		E2F0C7A41CE1593D00A1A462 /* AboutScreenUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutScreenUITests.swift; sourceTree = "<group>"; };
 		E2F2A1DD1B6DB91A0014D4A0 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
+		E2F2C2AF1D5975C000A23437 /* SelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionCell.swift; sourceTree = "<group>"; };
+		E2F2C2B11D597D0100A23437 /* BoolCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoolCell.swift; sourceTree = "<group>"; };
+		E2F2C2B31D597D6100A23437 /* ActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
+		E2F2C2B51D597DC000A23437 /* CellDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellDefinition.swift; sourceTree = "<group>"; };
 		E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E2F6B5F01B378F2600210504 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		E2FF3C961B98100F0083CC4F /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
@@ -382,6 +390,7 @@
 		E22E8C3D1B6BA08600DD0793 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E2F2C2AE1D5975A200A23437 /* Settings */,
 				E26D5B9C1CF47AEC00E27B9D /* SpeechViewControllers */,
 				E26D5B991CF4796F00E27B9D /* Segues */,
 				E26D5B961CF4790800E27B9D /* Demo */,
@@ -389,7 +398,6 @@
 				E22969E01B65202F00C18012 /* Views */,
 				E22E8C3E1B6BA09300DD0793 /* IB */,
 				E24408A51B483C8400EB056C /* GroupTableViewController.swift */,
-				E24628DE1B9803C2007DD28B /* SettingsViewController.swift */,
 				E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */,
 				E24A428A1BA4BA800071702D /* LoadingViewController.swift */,
 				E2065BB71CE4231500EB192C /* TabBarAnimationExtension.swift */,
@@ -656,6 +664,18 @@
 				E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		E2F2C2AE1D5975A200A23437 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E24628DE1B9803C2007DD28B /* SettingsViewController.swift */,
+				E2F2C2AF1D5975C000A23437 /* SelectionCell.swift */,
+				E2F2C2B11D597D0100A23437 /* BoolCell.swift */,
+				E2F2C2B31D597D6100A23437 /* ActionCell.swift */,
+				E2F2C2B51D597DC000A23437 /* CellDefinition.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		E80F4507498E5D6E3CB32507 /* Frameworks */ = {
@@ -1110,6 +1130,7 @@
 				E2C6D30D1B8ABA85002C69D7 /* FontAwesomeTabBarItem.swift in Sources */,
 				E2065BB81CE4231500EB192C /* TabBarAnimationExtension.swift in Sources */,
 				E25E86C61B65748D00F120FA /* FontAwesomeButton.swift in Sources */,
+				E2F2C2B61D597DC000A23437 /* CellDefinition.swift in Sources */,
 				E2C571B91B8AA5A400C83D92 /* FontAwesomeImageView.swift in Sources */,
 				E2C571BB1B8AB1A300C83D92 /* NamedTableViewCell.swift in Sources */,
 				E20B85801B66661300D55578 /* SpeechManager.swift in Sources */,
@@ -1126,6 +1147,7 @@
 				E20A8E9A1B817E7500ECC443 /* SpeechProfileFactory.swift in Sources */,
 				E25E86C91B65D73A00F120FA /* ApplicationAssembly.swift in Sources */,
 				E24408A21B48338400EB056C /* Group.swift in Sources */,
+				E2F2C2B01D5975C000A23437 /* SelectionCell.swift in Sources */,
 				E22E8C441B6BA23000DD0793 /* VibrationAlertManager.swift in Sources */,
 				E2B2CCD11B8755800038C067 /* DataSeeder.swift in Sources */,
 				E2DD5E3B1B5BE03800EF0997 /* TimeUtils.swift in Sources */,
@@ -1135,6 +1157,7 @@
 				E2A10D6F1CF71DE700DD769C /* UITestSpeechViewController.swift in Sources */,
 				E284FC211BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift in Sources */,
 				E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */,
+				E2F2C2B21D597D0100A23437 /* BoolCell.swift in Sources */,
 				E23480E91B2906EA0076247D /* AppDelegate.swift in Sources */,
 				E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */,
 				E24A428B1BA4BA800071702D /* LoadingViewController.swift in Sources */,
@@ -1145,6 +1168,7 @@
 				E284FC1F1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift in Sources */,
 				E26D5B981CF4791500E27B9D /* DemoSpeechState.swift in Sources */,
 				E28270401CEC98A10085DA0E /* ParameterManager.swift in Sources */,
+				E2F2C2B41D597D6100A23437 /* ActionCell.swift in Sources */,
 				E22FD26C1B93FDF80022F0B1 /* AppColorManager.swift in Sources */,
 				E24628DF1B9803C2007DD28B /* SettingsViewController.swift in Sources */,
 				E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */,

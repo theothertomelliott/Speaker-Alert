@@ -282,7 +282,7 @@ class GroupTableViewController: UITableViewController {
         }
     }
     
-    func doEdit(indexPath: NSIndexPath){
+    func doEdit(indexPath: NSIndexPath) {
         if self.rowIsGroup(indexPath.row) {
             self.renameGroup(self.groups[indexPath.row])
         } else if self.rowIsProfile(indexPath.row) {

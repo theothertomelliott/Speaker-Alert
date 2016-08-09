@@ -21,7 +21,7 @@ public class SpeechTimer: NSObject {
         phaseTimers = [:]
     }
     
-    func setInterval(interval: NSTimeInterval){
+    func setInterval(interval: NSTimeInterval) {
         state.pauseInterval = interval
     }
 
