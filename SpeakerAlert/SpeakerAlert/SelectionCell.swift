@@ -82,7 +82,7 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
         picker.showsSelectionIndicator = true
         picker.backgroundColor = UIColor.whiteColor()
         
-        let pickerDateToolbar = UIToolbar(frame:
+        let pickerToolbarPadding = UIToolbar(frame:
             CGRect(
                 x: 0,
                 y: 0,
@@ -91,13 +91,24 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
             )
         )
         
+        
+        let pickerToolbar = UIToolbar(frame:
+            CGRect(
+                x: 10,
+                y: 0,
+                width: kSCREEN_WIDTH - 20,
+                height: 44
+            )
+        )
+        
         let barItems = buildBarItems()
         
         picker.selectRow(1, inComponent: 0, animated: false)
     
-        pickerDateToolbar.setItems(barItems, animated: true)
+        pickerToolbar.setItems(barItems, animated: true)
         
-        actionView.addSubview(pickerDateToolbar)
+        pickerToolbarPadding.addSubview(pickerToolbar)
+        actionView.addSubview(pickerToolbarPadding)
         actionView.addSubview(picker)
         
         if (window) != nil {
