@@ -106,6 +106,12 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
             self.superview?.addSubview(actionView)
         }
         
+        self.actionView.frame = CGRect(
+            x: 0,
+            y: UIScreen.mainScreen().bounds.size.height,
+            width: UIScreen.mainScreen().bounds.size.width,
+            height: 260.0)
+        
         UIView.animateWithDuration(0.2, animations: {
             self.actionView.frame = CGRect(
                 x: 0,
