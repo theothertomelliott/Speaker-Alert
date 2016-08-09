@@ -15,7 +15,7 @@ class DefaultSpeechViewController: SpeechViewController {
     @IBOutlet weak var playButton: FontAwesomeButton!
     @IBOutlet weak var stopButton: FontAwesomeButton!
     
-    @IBOutlet weak var elapsedTimeLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     @IBOutlet weak var controls: UIView?
     
@@ -66,7 +66,7 @@ class DefaultSpeechViewController: SpeechViewController {
     }
     
     override func setShowTime(isVisible: Bool) {
-        self.elapsedTimeLabel.hidden = !isVisible
+        self.timeLabel.hidden = !isVisible
     }
     
     override func updatePhase() {
@@ -106,7 +106,13 @@ class DefaultSpeechViewController: SpeechViewController {
         if let state = speechMan?.state {
             
             let running: Bool = state.running == SpeechRunning.RUNNING
-            let timeStr = TimeUtils.formatStopwatch(state.elapsed)
+            
+            var timeToDisplay = state.elapsed
+            if let c = configMan where c.isCountdown {
+                timeToDisplay = state.timeUntil(SpeechPhase.RED)
+            }
+            
+            let timeStr = TimeUtils.formatStopwatch(timeToDisplay)
             var timeAttr: NSMutableAttributedString =
                 NSMutableAttributedString(string: "\(timeStr)")
             if !running {
@@ -124,7 +130,7 @@ class DefaultSpeechViewController: SpeechViewController {
                 }
             }
             
-            elapsedTimeLabel.attributedText = timeAttr
+            timeLabel.attributedText = timeAttr
             
         }
     }

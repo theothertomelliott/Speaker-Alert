@@ -588,11 +588,11 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="controls" destination="jlb-wr-EIt" id="egG-gH-qsM"/>
-                        <outlet property="elapsedTimeLabel" destination="E7o-Bg-pvs" id="kWH-zp-aD0"/>
                         <outlet property="pausedLabel" destination="q3v-Nc-NXz" id="L0T-fy-AGo"/>
                         <outlet property="playButton" destination="p1F-ZC-aid" id="BTy-xz-KKg"/>
                         <outlet property="profileSummaryLabel" destination="p4L-Mx-pbd" id="4cY-WT-en8"/>
                         <outlet property="stopButton" destination="Nxk-ch-or0" id="yyA-Rm-rcG"/>
+                        <outlet property="timeLabel" destination="E7o-Bg-pvs" id="M58-3s-Apx"/>
                         <segue destination="a1d-R4-lgQ" kind="custom" identifier="SpeechComplete" customClass="ReplacementSegue" customModule="SpeakerAlert" customModuleProvider="target" id="1P6-Y5-NmS"/>
                     </connections>
                 </viewController>
@@ -1075,11 +1075,11 @@
                     <connections>
                         <outlet property="colorLabel" destination="tMX-NJ-cUl" id="fow-zl-MZq"/>
                         <outlet property="controls" destination="jy9-VU-F0N" id="kOV-qP-gT3"/>
-                        <outlet property="elapsedTimeLabel" destination="u5f-tG-XCf" id="ZTI-0m-4yW"/>
                         <outlet property="pausedLabel" destination="qgm-Xr-BJC" id="t7e-GY-mJg"/>
                         <outlet property="playButton" destination="HkD-cA-hsR" id="gRI-dd-KXR"/>
                         <outlet property="profileSummaryLabel" destination="1kE-L4-6wL" id="sIB-L4-sGr"/>
                         <outlet property="stopButton" destination="lXE-4V-kfy" id="BJS-RD-EU3"/>
+                        <outlet property="timeLabel" destination="u5f-tG-XCf" id="WrQ-1y-7sD"/>
                         <segue destination="a1d-R4-lgQ" kind="show" identifier="SpeechComplete" id="9tM-wb-iCi"/>
                     </connections>
                 </viewController>

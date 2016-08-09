@@ -210,5 +210,18 @@ class ConfigurationManager: NSObject, AppConfiguration {
             defaults.setBool(newValue, forKey: alertOvertimeKey)
         }
     }
+    
+    private let countdownKey = "countdown"
+    var isCountdown: Bool {
+        get {
+            if let _ = defaults.objectForKey(countdownKey) {
+                return defaults.boolForKey(countdownKey)
+            }
+            return true
+        }
+        set {
+            defaults.setBool(newValue, forKey: countdownKey)
+        }
+    }
 
 }
