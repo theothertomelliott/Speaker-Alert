@@ -82,33 +82,7 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
         picker.showsSelectionIndicator = true
         picker.backgroundColor = UIColor.whiteColor()
         
-        let pickerToolbarPadding = UIToolbar(frame:
-            CGRect(
-                x: 0,
-                y: 0,
-                width: kSCREEN_WIDTH,
-                height: 44
-            )
-        )
-        
-        
-        let pickerToolbar = UIToolbar(frame:
-            CGRect(
-                x: 10,
-                y: 0,
-                width: kSCREEN_WIDTH - 20,
-                height: 44
-            )
-        )
-        
-        let barItems = buildBarItems()
-        
-        picker.selectRow(1, inComponent: 0, animated: false)
-    
-        pickerToolbar.setItems(barItems, animated: true)
-        
-        pickerToolbarPadding.addSubview(pickerToolbar)
-        actionView.addSubview(pickerToolbarPadding)
+        actionView.addSubview(setupToolbar())
         actionView.addSubview(picker)
         
         if (window) != nil {
@@ -130,6 +104,38 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
                 width: UIScreen.mainScreen().bounds.size.width,
                 height: 260.0)
         })
+    }
+    
+    private func setupToolbar() -> UIView {
+        let kSCREEN_WIDTH  =    UIScreen.mainScreen().bounds.size.width
+        
+        let pickerToolbarPadding = UIToolbar(frame:
+            CGRect(
+                x: 0,
+                y: 0,
+                width: kSCREEN_WIDTH,
+                height: 44
+            )
+        )
+        
+        let pickerToolbar = UIToolbar(frame:
+            CGRect(
+                x: 10,
+                y: 0,
+                width: kSCREEN_WIDTH - 20,
+                height: 44
+            )
+        )
+        
+        let barItems = buildBarItems()
+        
+        picker.selectRow(1, inComponent: 0, animated: false)
+        
+        pickerToolbar.setItems(barItems, animated: true)
+        
+        pickerToolbarPadding.addSubview(pickerToolbar)
+        
+        return pickerToolbarPadding
     }
     
     private func buildBarItems() -> [UIBarButtonItem] {
