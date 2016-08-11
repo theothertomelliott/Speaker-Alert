@@ -19,8 +19,27 @@ protocol GeneralConfiguration {
     var isAutoStartEnabled: Bool { get }
 }
 
+enum TimeDisplay: String {
+    case None = "None"
+    case CountUp = "Count Up"
+    case CountDown = "Count Down"
+}
+
+func StringToTimeDisplay(input: String) -> TimeDisplay {
+    switch input {
+    case TimeDisplay.None.rawValue:
+        return TimeDisplay.None
+    case TimeDisplay.CountUp.rawValue:
+        return TimeDisplay.CountUp
+    case TimeDisplay.CountDown.rawValue:
+        return TimeDisplay.CountDown
+    default:
+        return TimeDisplay.None
+    }
+}
+
 protocol SpeechConfiguration {
-    var isDisplayTime: Bool { get }
+    var timeDisplayMode: TimeDisplay { get }
     var speechDisplay: String { get }
     var isHideStatusEnabled: Bool { get }
     var isAlertOvertimeEnabled: Bool { get }
@@ -39,7 +58,7 @@ protocol AudioConfiguration {
 // MARK: Equatable
 
 func ==<T: SpeechConfiguration>(lhs: SpeechConfiguration, rhs: T) -> Bool {
-    return  lhs.isDisplayTime == rhs.isDisplayTime &&
+    return  lhs.timeDisplayMode == rhs.timeDisplayMode &&
         lhs.speechDisplay == rhs.speechDisplay &&
         lhs.isHideStatusEnabled == rhs.isHideStatusEnabled &&
         lhs.isAlertOvertimeEnabled == rhs.isAlertOvertimeEnabled

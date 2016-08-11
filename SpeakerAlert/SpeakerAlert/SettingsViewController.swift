@@ -85,11 +85,16 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         return SectionDefinition(
             title: "Speech Display",
             cells: [
-                BoolCellDefinition(
-                    title: "Display time elapsed",
-                    value: config.isDisplayTime,
-                    onChange: { (value: Bool) in
-                        config.isDisplayTime = value
+                SelectionCellDefinition(
+                    title: "Time display",
+                    initialValue: config.timeDisplayMode.rawValue,
+                    options: [
+                        TimeDisplay.None.rawValue,
+                        TimeDisplay.CountUp.rawValue,
+                        TimeDisplay.CountDown.rawValue
+                    ],
+                    onChange: { (value: String) in
+                        config.timeDisplayMode = StringToTimeDisplay(value)
                         self.loadData()
                 }),
                 BoolCellDefinition(

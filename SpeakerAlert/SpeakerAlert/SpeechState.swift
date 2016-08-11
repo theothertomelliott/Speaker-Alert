@@ -49,8 +49,8 @@ class SpeechState {
         default:
             targetElapsed = 0
         }
-        let e: NSTimeInterval = elapsed
-        return targetElapsed - e
+        let e: NSInteger = Int(elapsed)
+        return targetElapsed - Double(e)
     }
 
 

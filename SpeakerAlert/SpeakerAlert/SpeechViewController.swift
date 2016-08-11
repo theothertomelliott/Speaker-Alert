@@ -69,7 +69,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.setShowTime(configMan!.isDisplayTime)
+        self.setShowTime(configMan!.timeDisplayMode != TimeDisplay.None)
         if tickTimer.valid {
             tickTimer.invalidate()
         }

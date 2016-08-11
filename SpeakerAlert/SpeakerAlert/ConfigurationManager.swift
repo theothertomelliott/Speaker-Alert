@@ -21,7 +21,7 @@ class ConfigurationManager: NSObject, AppConfiguration {
     
     let defaultConfiguration = ConfigurationMode(
         name: "Practice",
-        isDisplayTime: true,
+        timeDisplayMode: TimeDisplay.CountUp,
         isVibrationEnabled: true,
         isAudioEnabled: false,
         speechDisplay: "Default",
@@ -56,7 +56,7 @@ class ConfigurationManager: NSObject, AppConfiguration {
     }
     
     func applyPreset(preset: ConfigurationMode) {
-        self.isDisplayTime = preset.isDisplayTime
+        self.timeDisplayMode = preset.timeDisplayMode
         self.isVibrationEnabled = preset.isVibrationEnabled
         self.isAudioEnabled = preset.isAudioEnabled
         self.speechDisplay = preset.speechDisplay
@@ -68,7 +68,7 @@ class ConfigurationManager: NSObject, AppConfiguration {
         return [
             ConfigurationMode(
                 name: "Meeting",
-                isDisplayTime: false,
+                timeDisplayMode: TimeDisplay.None,
                 isVibrationEnabled: false,
                 isAudioEnabled: false,
                 speechDisplay: "Default",
@@ -77,7 +77,7 @@ class ConfigurationManager: NSObject, AppConfiguration {
             ),
             ConfigurationMode(
                 name: "Contest",
-                isDisplayTime: false,
+                timeDisplayMode: TimeDisplay.None,
                 isVibrationEnabled: false,
                 isAudioEnabled: false,
                 speechDisplay: "Default",
@@ -101,17 +101,27 @@ class ConfigurationManager: NSObject, AppConfiguration {
            defaults.setBool(newValue, forKey: autoStartKey)
         }
     }
-
-    private let displayTimeKey = "displayTimeByDefault"
-    var isDisplayTime: Bool {
+    
+    
+    private let timeDisplayKey = "timeDisplayMode"
+    private let legacyDisplayTimeKey = "displayTimeByDefault"
+    var timeDisplayMode: TimeDisplay {
         get {
-            if let _ = defaults.objectForKey(displayTimeKey) {
-                return defaults.boolForKey(displayTimeKey)
+            if let mode = defaults.objectForKey(timeDisplayKey) as? String {
+                return StringToTimeDisplay(mode)
             }
-            return defaultConfiguration.isDisplayTime
+            if let _ = defaults.objectForKey(legacyDisplayTimeKey) {
+                return
+                    defaults.boolForKey(legacyDisplayTimeKey)
+                        ?
+                        TimeDisplay.CountUp
+                            :
+                        TimeDisplay.CountDown
+            }
+            return defaultConfiguration.timeDisplayMode
         }
         set {
-            defaults.setBool(newValue, forKey: displayTimeKey)
+            defaults.setObject(newValue.rawValue, forKey: timeDisplayKey)
         }
     }
 
@@ -208,19 +218,6 @@ class ConfigurationManager: NSObject, AppConfiguration {
         }
         set {
             defaults.setBool(newValue, forKey: alertOvertimeKey)
-        }
-    }
-    
-    private let countdownKey = "countdown"
-    var isCountdown: Bool {
-        get {
-            if let _ = defaults.objectForKey(countdownKey) {
-                return defaults.boolForKey(countdownKey)
-            }
-            return true
-        }
-        set {
-            defaults.setBool(newValue, forKey: countdownKey)
         }
     }
 

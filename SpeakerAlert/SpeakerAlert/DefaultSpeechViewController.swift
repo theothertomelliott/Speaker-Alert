@@ -107,9 +107,12 @@ class DefaultSpeechViewController: SpeechViewController {
             
             let running: Bool = state.running == SpeechRunning.RUNNING
             
-            var timeToDisplay = state.elapsed
-            if let c = configMan where c.isCountdown {
+            var timeToDisplay: Double = state.elapsed
+            if let c = configMan where c.timeDisplayMode == TimeDisplay.CountDown {
                 timeToDisplay = state.timeUntil(SpeechPhase.RED)
+                if timeToDisplay < 0 {
+                    timeToDisplay = 0
+                }
             }
             
             let timeStr = TimeUtils.formatStopwatch(timeToDisplay)

@@ -12,7 +12,7 @@ struct ConfigurationMode: ModeConfiguration {
     
     var name: String = ""
     
-    var isDisplayTime: Bool = false
+    var timeDisplayMode: TimeDisplay
     var isVibrationEnabled: Bool = false
     var isAudioEnabled: Bool = false
     var speechDisplay: String = "Default"
