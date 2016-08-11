@@ -27,6 +27,7 @@ class SelectionCellDefinition: CellDefinition, CellWithAction {
     func performAction() {
         if let c = cell {
             c.openPicker()
+            c.setSelectedValue(initialValue)
         }
     }
     
@@ -71,6 +72,14 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
     // returns the # of rows in each component..
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
+    }
+    
+    func setSelectedValue(value: String){
+        for (index, item) in pickerData.enumerate() {
+            if item == value {
+                picker.selectRow(index, inComponent: 0, animated: false)
+            }
+        }
     }
     
     func openPicker() {
@@ -128,8 +137,6 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
         )
         
         let barItems = buildBarItems()
-        
-        picker.selectRow(1, inComponent: 0, animated: false)
         
         pickerToolbar.setItems(barItems, animated: true)
         
