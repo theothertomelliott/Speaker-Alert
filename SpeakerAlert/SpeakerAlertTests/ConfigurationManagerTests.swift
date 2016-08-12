@@ -52,7 +52,7 @@ class ConfigurationManagerTests: XCTestCase {
             "Expected practice as default mode"
         )
         
-        cfgMan.isDisplayTime = false
+        cfgMan.timeDisplayMode = TimeDisplay.None
         cfgMan.isVibrationEnabled = false
         XCTAssertEqual(
             cfgMan.currentPreset()?.name,
