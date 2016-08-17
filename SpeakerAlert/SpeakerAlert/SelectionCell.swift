@@ -74,7 +74,7 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
         return pickerData.count
     }
     
-    func setSelectedValue(value: String){
+    func setSelectedValue(value: String) {
         for (index, item) in pickerData.enumerate() {
             if item == value {
                 picker.selectRow(index, inComponent: 0, animated: false)
@@ -84,8 +84,9 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
     
     func openPicker() {
         let kSCREEN_WIDTH  =    UIScreen.mainScreen().bounds.size.width
+        let PICKER_HEIGHT = UIScreen.mainScreen().bounds.size.height/3
         
-        picker.frame = CGRect(x: 0.0, y: 44.0, width: kSCREEN_WIDTH, height: 216.0)
+        picker.frame = CGRect(x: 0.0, y: 44.0, width: kSCREEN_WIDTH, height: (PICKER_HEIGHT - 44))
         picker.dataSource = self
         picker.delegate = self
         picker.showsSelectionIndicator = true
@@ -104,14 +105,14 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
             x: 0,
             y: UIScreen.mainScreen().bounds.size.height,
             width: UIScreen.mainScreen().bounds.size.width,
-            height: 260.0)
+            height: PICKER_HEIGHT)
         
         UIView.animateWithDuration(0.2, animations: {
             self.actionView.frame = CGRect(
                 x: 0,
-                y: UIScreen.mainScreen().bounds.size.height - 260.0,
+                y: UIScreen.mainScreen().bounds.size.height - PICKER_HEIGHT,
                 width: UIScreen.mainScreen().bounds.size.width,
-                height: 260.0)
+                height: PICKER_HEIGHT)
         })
     }
     
@@ -173,6 +174,7 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
     }
     
     func cancelPickerSelectionButtonClicked(sender: UIBarButtonItem) {
+        let PICKER_HEIGHT = UIScreen.mainScreen().bounds.size.height/3
         
         UIView.animateWithDuration(0.2, animations: {
             
@@ -180,7 +182,7 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
                 x: 0,
                 y: UIScreen.mainScreen().bounds.size.height,
                 width: UIScreen.mainScreen().bounds.size.width,
-                height: 260.0
+                height: PICKER_HEIGHT
             )
             
             }, completion: { _ in
@@ -193,6 +195,8 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
     }
     
     func doneClicked(sender: UIBarButtonItem) {
+        let PICKER_HEIGHT = UIScreen.mainScreen().bounds.size.height/3
+        
         let myRow = picker.selectedRowInComponent(0)
         self.detailTextLabel?.text = pickerData[myRow]
         
@@ -202,7 +206,7 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
                 x: 0,
                 y: UIScreen.mainScreen().bounds.size.height,
                 width: UIScreen.mainScreen().bounds.size.width,
-                height: 260.0
+                height:  PICKER_HEIGHT
             )
             
             }, completion: { _ in
