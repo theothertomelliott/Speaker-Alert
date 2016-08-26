@@ -25,7 +25,7 @@ class LocalNotificationManager: NSObject, SpeechManagerDelegate {
     func runningChanged(state: SpeechState, timer: SpeechTimer) {
     }
 
-    func speechComplete(state: SpeechState, timer: SpeechTimer) {
+    func speechComplete(state: SpeechState, timer: SpeechTimer, record: Speech) {
         // Kill all notifications if a speech has been stopped
         UIApplication.sharedApplication().cancelAllLocalNotifications()
     }

@@ -31,6 +31,6 @@ class VibrationAlertManager: NSObject, SpeechManagerDelegate {
 
     func runningChanged(state: SpeechState, timer: SpeechTimer) {}
 
-    func speechComplete(state: SpeechState, timer: SpeechTimer) {
+    func speechComplete(state: SpeechState, timer: SpeechTimer, record: Speech) {
     }
 }

@@ -151,7 +151,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     }
 
     var lastSpeechElapsed: NSTimeInterval?
-    func speechComplete(state: SpeechState, timer: SpeechTimer) {
+    func speechComplete(state: SpeechState, timer: SpeechTimer, record: Speech) {
         // Leave this speech
         lastSpeechElapsed = state.elapsed
         self.performSegueWithIdentifier("SpeechComplete", sender: self)

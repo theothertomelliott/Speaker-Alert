@@ -34,7 +34,7 @@ class AudioAlertManager: NSObject, SpeechManagerDelegate {
     
     func runningChanged(state: SpeechState, timer: SpeechTimer) {}
     
-    func speechComplete(state: SpeechState, timer: SpeechTimer) {
+    func speechComplete(state: SpeechState, timer: SpeechTimer, record: Speech) {
     }
     
     var soundURL: NSURL?

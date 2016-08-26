@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MagicalRecord
 
 /*
 * Responsible for handling the currently running speech across the entire app.
@@ -94,9 +95,24 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
     }
 
     func speechComplete(state: SpeechState, timer: SpeechTimer) {
-        for observer in observers {
-            observer.speechComplete(state, timer: timer)
+        
+        MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) -> Void in
+            
+            let speech: Speech = Speech.MR_createEntityInContext(localContext)
+            speech.time = state.elapsed
+            // TODO: Apply the profile
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                for observer in self.observers {
+                    observer.speechComplete(state, timer: timer, record: speech)
+                }
+            })
+
+        }) { (success: Bool, error: NSError!) -> Void in
+            // TODO: Handle failure
+            NSLog("Failure saving!")
         }
+        
     }
 
     // MARK: Timer lifecycle methods
@@ -127,6 +143,6 @@ protocol SpeechManagerDelegate {
 
     func phaseChanged(state: SpeechState, timer: SpeechTimer)
     func runningChanged(state: SpeechState, timer: SpeechTimer)
-    func speechComplete(state: SpeechState, timer: SpeechTimer)
+    func speechComplete(state: SpeechState, timer: SpeechTimer, record: Speech)
 
 }

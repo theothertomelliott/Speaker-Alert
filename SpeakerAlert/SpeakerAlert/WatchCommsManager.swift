@@ -76,7 +76,7 @@ class WatchCommsManager: NSObject, WCSessionDelegate, SpeechManagerDelegate {
         updateState(state)
     }
 
-    func speechComplete(state: SpeechState, timer: SpeechTimer) {
+    func speechComplete(state: SpeechState, timer: SpeechTimer, record: Speech) {
         do {
             // Send a notification that the speech ended
             watchSession?.sendMessage(
