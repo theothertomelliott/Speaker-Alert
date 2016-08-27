@@ -50,7 +50,7 @@ public class SpeechTimer: NSObject {
 
             self.state.startTime = NSDate()
             
-            if state.running == SpeechRunning.PAUSED {
+            if state.running == SpeechRunning.STOPPED {
                 self.state.initialStart = NSDate()
             }
             

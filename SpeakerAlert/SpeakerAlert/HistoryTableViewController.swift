@@ -37,7 +37,17 @@ class HistoryTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(
                 "LogItem",
                 forIndexPath: indexPath)
-        cell.textLabel?.text = "\(speech.duration)"
+        
+        var s: String = "Unknown"
+        var d: String = "Unknown"
+        if let start = speech.startTime {
+            s = start.description
+        }
+        if let duration = speech.duration {
+            d = duration.description
+        }
+        
+        cell.textLabel?.text = "\(s): \(d)"
         return cell
        
     }
