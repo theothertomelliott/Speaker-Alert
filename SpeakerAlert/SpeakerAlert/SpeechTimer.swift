@@ -49,6 +49,11 @@ public class SpeechTimer: NSObject {
             }
 
             self.state.startTime = NSDate()
+            
+            if state.running == SpeechRunning.PAUSED {
+                self.state.initialStart = NSDate()
+            }
+            
             setRunning(SpeechRunning.RUNNING)
         }
     }
@@ -104,6 +109,7 @@ public class SpeechTimer: NSObject {
             profile: self.state.profile,
             running: running,
             startTime: self.state.startTime,
+            initialStartTime: self.state.initialStart,
             pauseInterval: self.state.pauseInterval)
         delegate?.runningChanged(self.state, timer: self)
     }

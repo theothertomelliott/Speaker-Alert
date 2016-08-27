@@ -99,7 +99,9 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) -> Void in
             
             let speech: Speech = Speech.MR_createEntityInContext(localContext)
-            speech.time = state.elapsed
+            speech.duration = state.elapsed
+            speech.startTime = state.initialStart
+            
             // TODO: Apply the profile
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in

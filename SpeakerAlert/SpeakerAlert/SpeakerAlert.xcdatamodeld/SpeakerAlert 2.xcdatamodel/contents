@@ -15,13 +15,14 @@
     </entity>
     <entity name="Speech" representedClassName=".Speech" syncable="YES">
         <attribute name="comments" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="time" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 64" defaultValueString="0" elementID="time" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="speeches" inverseEntity="Profile" syncable="YES"/>
     </entity>
     <elements>
         <element name="Group" positionX="-18" positionY="54" width="128" height="73"/>
         <element name="Profile" positionX="178" positionY="54" width="128" height="150"/>
-        <element name="Speech" positionX="81" positionY="108" width="128" height="105"/>
+        <element name="Speech" positionX="81" positionY="108" width="128" height="120"/>
     </elements>
 </model>

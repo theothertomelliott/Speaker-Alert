@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
         } else {
             // Configure core data
-            MagicalRecord.setupCoreDataStack()
+            MagicalRecord.setupAutoMigratingCoreDataStack()
         }
         
         return true

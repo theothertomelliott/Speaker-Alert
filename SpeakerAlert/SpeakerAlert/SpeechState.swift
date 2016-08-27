@@ -33,7 +33,8 @@ class SpeechState {
             return phase
         }
     }
-
+    
+    var initialStart: NSDate?
 
     func timeUntil(phase: SpeechPhase) -> NSTimeInterval {
         var targetElapsed: NSTimeInterval = 0
@@ -77,9 +78,11 @@ class SpeechState {
     init(profile: SpeechProfile,
         running: SpeechRunning,
         startTime: NSDate?,
+        initialStartTime: NSDate?,
         pauseInterval: NSTimeInterval?) {
         self.profile = profile
         self.running = running
+        self.initialStart = initialStartTime
         if running == SpeechRunning.RUNNING {
             self.startTime = startTime
         } else {
@@ -120,6 +123,7 @@ class SpeechState {
                 profile: profile,
                 running: running,
                 startTime: dict["startTime"] as? NSDate,
+                initialStartTime: dict["initialStart"] as? NSDate,
                 pauseInterval: dict["pauseInterval"] as? NSTimeInterval)
 
         }
@@ -136,9 +140,13 @@ class SpeechState {
                 "redBlink" : profile.redBlink
             ],
             "running" : self.running.hashValue,
-            "pauseInterval" : self.pauseInterval
+            "pauseInterval" : self.pauseInterval,
         ]
 
+        if let s: NSDate = self.initialStart {
+            dict["initialStart"] = s
+        }
+        
         if let s: NSDate = self.startTime {
             dict["startTime"] = s
         }
