@@ -8,16 +8,16 @@
 
 import UIKit
 
-class SpeechCompleteViewController: UIViewController {
+class SpeechCompleteViewController: UITableViewController {
 
     var timeElapsed: NSTimeInterval?
 
-    @IBOutlet weak var timeElapsedLabel: UILabel!
-
+    @IBOutlet weak var timeElapsedLabel: UILabel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let te = self.timeElapsed {
-            self.timeElapsedLabel.text = TimeUtils.formatStopwatch(te)
+        if let te = self.timeElapsed, let tel = self.timeElapsedLabel {
+            tel.text = TimeUtils.formatStopwatch(te)
         }
     }
 
@@ -26,6 +26,12 @@ class SpeechCompleteViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func commentUpdated(sender: AnyObject){
+        if let tf = sender as? UITextField {
+            NSLog("Updated comment to \(tf.text)")
+        }
+    }
+    
     @IBAction func okButtonPressed(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
