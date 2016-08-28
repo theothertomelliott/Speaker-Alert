@@ -101,8 +101,7 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
             let speech: Speech = Speech.MR_createEntityInContext(localContext)
             speech.duration = state.elapsed
             speech.startTime = state.initialStart
-            
-            // TODO: Apply the profile
+            speech.profile = self._profile?.MR_inContext(localContext)
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 for observer in self.observers {
@@ -111,7 +110,7 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
             })
 
         }) { (success: Bool, error: NSError!) -> Void in
-            // TODO: Handle failure
+            // TODO: Handle failure more clearly (error out to user?)
             NSLog("Failure saving!")
         }
         
