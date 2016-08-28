@@ -769,7 +769,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogItem" textLabel="k4f-qQ-E0j" style="IBUITableViewCellStyleDefault" id="aev-Pn-s23">
-                                <rect key="frame" x="0.0" y="28" width="600" height="75"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aev-Pn-s23" id="I1B-Wk-Oke">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="74.5"/>
@@ -796,11 +796,32 @@
                             <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Book"/>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Speech History" id="2AI-gG-5F8"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XcY-hp-exT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="359" y="-1396"/>
+            <point key="canvasLocation" x="579" y="-2080"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="UY7-4y-jPI">
+            <objects>
+                <navigationController id="alD-RU-cQy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="History" id="WXd-Rz-FFv" customClass="FontAwesomeTabBarItem" customModule="SpeakerAlert" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="IconName" value="Book"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nWU-Cw-ndH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BAd-Og-gzs" kind="relationship" relationship="rootViewController" id="ixT-qf-MFD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d2F-3l-pve" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-160" y="-1537"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="l3g-E9-0SO">
@@ -814,7 +835,7 @@
                     <connections>
                         <segue destination="5S5-J6-2IJ" kind="relationship" relationship="viewControllers" id="jiS-fO-Zmw"/>
                         <segue destination="ndO-HV-6DD" kind="relationship" relationship="viewControllers" id="7bl-qx-sla"/>
-                        <segue destination="BAd-Og-gzs" kind="relationship" relationship="viewControllers" id="GfU-Se-Jzr"/>
+                        <segue destination="alD-RU-cQy" kind="relationship" relationship="viewControllers" id="HtD-4r-P94"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S3k-yB-TtN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1195,9 +1216,9 @@
         <image name="IconTransparentBack" width="306" height="294"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="fK8-JX-jCt"/>
         <segue reference="ZVv-6d-Z7f"/>
         <segue reference="hGx-8K-Lk6"/>
-        <segue reference="fK8-JX-jCt"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

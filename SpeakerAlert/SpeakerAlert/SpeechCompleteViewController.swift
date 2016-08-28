@@ -7,17 +7,17 @@
 //
 
 import UIKit
+import MagicalRecord
 
 class SpeechCompleteViewController: UITableViewController {
 
-    var timeElapsed: NSTimeInterval?
-
+    var speechRecord: Speech?
     @IBOutlet weak var timeElapsedLabel: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let te = self.timeElapsed, let tel = self.timeElapsedLabel {
-            tel.text = TimeUtils.formatStopwatch(te)
+        if let sr = self.speechRecord, let tel = self.timeElapsedLabel, let d = sr.duration {
+            tel.text = TimeUtils.formatStopwatch(d)
         }
     }
 
@@ -26,9 +26,20 @@ class SpeechCompleteViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func commentUpdated(sender: AnyObject){
+    @IBAction func commentUpdated(sender: AnyObject) {
         if let tf = sender as? UITextField {
             NSLog("Updated comment to \(tf.text)")
+            if let speech = self.speechRecord {
+                MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) -> Void in
+                    let s: Speech = speech.MR_inContext(localContext)
+                    s.comments = tf.text
+                }) { (success: Bool, error: NSError!) -> Void in
+                    // TODO: handle failure
+                    if !success {
+                        NSLog("Failure saving speech record with comment: \(error.description)")
+                    }
+                }
+            }
         }
     }
     

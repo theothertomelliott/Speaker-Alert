@@ -150,10 +150,10 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         self.updatePhase()
     }
 
-    var lastSpeechElapsed: NSTimeInterval?
+    var lastSpeechRecord: Speech?
     func speechComplete(state: SpeechState, timer: SpeechTimer, record: Speech) {
         // Leave this speech
-        lastSpeechElapsed = state.elapsed
+        lastSpeechRecord = record
         self.performSegueWithIdentifier("SpeechComplete", sender: self)
     }
 
@@ -175,7 +175,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         setNavSatusVisible(true, animated: false)
         if let scvc: SpeechCompleteViewController =
             segue.destinationViewController as? SpeechCompleteViewController {
-            scvc.timeElapsed = lastSpeechElapsed
+            scvc.speechRecord = self.lastSpeechRecord
         }
     }
 

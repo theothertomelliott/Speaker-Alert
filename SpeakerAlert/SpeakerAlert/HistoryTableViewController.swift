@@ -40,14 +40,21 @@ class HistoryTableViewController: UITableViewController {
         
         var s: String = "Unknown"
         var d: String = "Unknown"
+        var c: String = "<Title>"
         if let start = speech.startTime {
             s = start.description
         }
         if let duration = speech.duration {
             d = duration.description
         }
+        if let name = speech.profile?.name {
+            c = name
+        }
+        if let comment = speech.comments {
+            c = comment
+        }
         
-        cell.textLabel?.text = "\(s): \(d)"
+        cell.textLabel?.text = "\(c): \(s) - \(d)"
         return cell
        
     }

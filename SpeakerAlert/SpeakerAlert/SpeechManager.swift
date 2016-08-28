@@ -96,6 +96,8 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
 
     func speechComplete(state: SpeechState, timer: SpeechTimer) {
         
+        var speechRecord: Speech?
+        
         MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) -> Void in
             
             let speech: Speech = Speech.MR_createEntityInContext(localContext)
@@ -103,15 +105,21 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
             speech.startTime = state.initialStart
             speech.profile = self._profile?.MR_inContext(localContext)
             
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                for observer in self.observers {
-                    observer.speechComplete(state, timer: timer, record: speech)
-                }
-            })
-
+            speechRecord = speech
+            
         }) { (success: Bool, error: NSError!) -> Void in
             // TODO: Handle failure more clearly (error out to user?)
-            NSLog("Failure saving!")
+            if !success {
+                NSLog("Failure saving speech record: \(error.description)")
+            }
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                for observer in self.observers {
+                    observer.speechComplete(
+                        state,
+                        timer: timer,
+                        record: speechRecord!.MR_inThreadContext())
+                }
+            })
         }
         
     }
