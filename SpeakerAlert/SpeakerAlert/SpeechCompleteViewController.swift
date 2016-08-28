@@ -13,17 +13,16 @@ class SpeechCompleteViewController: UITableViewController {
 
     var speechRecord: Speech?
     @IBOutlet weak var timeElapsedLabel: UILabel?
+    @IBOutlet weak var commentField: UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let sr = self.speechRecord, let tel = self.timeElapsedLabel, let d = sr.duration {
             tel.text = TimeUtils.formatStopwatch(d)
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        if let p = self.speechRecord?.profile {
+            commentField?.placeholder = p.name
+        }
     }
 
     @IBAction func commentUpdated(sender: AnyObject) {
@@ -43,7 +42,7 @@ class SpeechCompleteViewController: UITableViewController {
         }
     }
     
-    @IBAction func okButtonPressed(sender: AnyObject) {
+    override func viewWillDisappear(animated: Bool) {
         self.navigationController?.popViewControllerAnimated(true)
     }
 

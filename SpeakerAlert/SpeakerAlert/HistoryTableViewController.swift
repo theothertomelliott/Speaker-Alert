@@ -13,7 +13,7 @@ class HistoryTableViewController: UITableViewController {
     var history: [Speech] = []
     
     override func viewWillAppear(animated: Bool) {
-        if let h = Speech.MR_findAll() as? [Speech] {
+        if let h = Speech.MR_findAllSortedBy("startTime", ascending: false) as? [Speech] {
             history = h
         }
         self.tableView.reloadData()
@@ -34,29 +34,50 @@ class HistoryTableViewController: UITableViewController {
         
         let speech = history[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(
+        let reusedCell = tableView.dequeueReusableCellWithIdentifier(
                 "LogItem",
                 forIndexPath: indexPath)
         
-        var s: String = "Unknown"
-        var d: String = "Unknown"
-        var c: String = "<Title>"
-        if let start = speech.startTime {
-            s = start.description
-        }
-        if let duration = speech.duration {
-            d = duration.description
-        }
-        if let name = speech.profile?.name {
-            c = name
-        }
-        if let comment = speech.comments {
-            c = comment
+        if let cell = reusedCell as? HistoryItemCell {
+        
+            cell.elapsed?.text = ""
+            cell.date?.text = "Start time unknown"
+            cell.name?.text = "<Title>"
+            if let start = speech.startTime {
+                
+                let formatter = NSDateFormatter()
+                formatter.dateStyle = .ShortStyle
+                formatter.timeStyle = .ShortStyle
+                
+                cell.date?.text = formatter.stringFromDate(start)
+            }
+            if let duration = speech.duration {
+                cell.elapsed?.text = TimeUtils.formatStopwatch(duration)
+            }
+            if let name = speech.profile?.name {
+                cell.name?.text = name
+            }
+            if let comment = speech.comments {
+                cell.name?.text = comment
+            }
+            if let profile = speech.profile {
+                cell.profileInfo?.attributedText =
+                    ProfileTimeRenderer.timesAsAttributedString(profile)
+            }
+            return cell
         }
         
-        cell.textLabel?.text = "\(c): \(s) - \(d)"
-        return cell
+        return reusedCell
        
     }
+    
+}
+
+class HistoryItemCell: UITableViewCell {
+    
+    @IBOutlet var name: UILabel?
+    @IBOutlet var date: UILabel?
+    @IBOutlet var elapsed: UILabel?
+    @IBOutlet var profileInfo: UILabel?
     
 }

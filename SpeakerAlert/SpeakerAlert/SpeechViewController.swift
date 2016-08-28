@@ -173,6 +173,8 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         segue: UIStoryboardSegue,
         sender: AnyObject?) {
         setNavSatusVisible(true, animated: false)
+        self.setTabBarVisible(true, animated: true)
+        
         if let scvc: SpeechCompleteViewController =
             segue.destinationViewController as? SpeechCompleteViewController {
             scvc.speechRecord = self.lastSpeechRecord
