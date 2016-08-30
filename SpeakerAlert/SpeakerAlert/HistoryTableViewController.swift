@@ -10,21 +10,41 @@ import UIKit
 
 class HistoryTableViewController: UITableViewController {
 
-    var history: [Speech] = []
+    var history: [String:[Speech]] = [:]
+    var dates: [String] = []
     
     override func viewWillAppear(animated: Bool) {
-        if let h = Speech.MR_findAllSortedBy("startTime", ascending: false) as? [Speech] {
-            history = h
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .MediumStyle
+        formatter.timeStyle = .NoStyle
+        
+        if let h = Speech.MR_findAllSortedBy("startTime", ascending: true) as? [Speech] {
+            for speech: Speech in h {
+                if let s = speech.startTime {
+                    let dateStr = formatter.stringFromDate(s)
+                    if let _ = history[dateStr] {
+                        history[dateStr]?.append(speech)
+                    } else {
+                        history[dateStr] = [speech]
+                        dates.append(dateStr)
+                    }
+                }
+            }
         }
+        dates = dates.reverse()
         self.tableView.reloadData()
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return dates.count
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return dates[section]
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return history.count
+        return history[dates[section]]!.count
     }
     
     override func tableView(
@@ -32,7 +52,7 @@ class HistoryTableViewController: UITableViewController {
         cellForRowAtIndexPath
         indexPath: NSIndexPath) -> UITableViewCell {
         
-        let speech = history[indexPath.row]
+        let speech = history[dates[indexPath.section]]![indexPath.row]
         
         let reusedCell = tableView.dequeueReusableCellWithIdentifier(
                 "LogItem",
@@ -46,8 +66,8 @@ class HistoryTableViewController: UITableViewController {
             if let start = speech.startTime {
                 
                 let formatter = NSDateFormatter()
-                formatter.dateStyle = .ShortStyle
-                formatter.timeStyle = .ShortStyle
+                formatter.dateStyle = .NoStyle
+                formatter.timeStyle = .MediumStyle
                 
                 cell.date?.text = formatter.stringFromDate(start)
             }
