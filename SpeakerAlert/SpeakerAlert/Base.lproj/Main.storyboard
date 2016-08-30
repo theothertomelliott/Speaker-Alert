@@ -665,7 +665,7 @@
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5g-cb-UUC">
                                                     <rect key="frame" x="8" y="128" width="584" height="13.5"/>
-                                                    <string key="text">Enter a description of this speech that will show in your speech history. This can be the speaker's name, or a note on how your practice went. Anything to help you identify this speech later. Defaults to the profile name.</string>
+                                                    <string key="text">Enter a description of this speech that will show in your speech history and help you identify the speech later. The speaker's name, for example. Defaults to the profile name.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
