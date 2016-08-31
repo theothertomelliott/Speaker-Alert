@@ -7,13 +7,26 @@
 //
 
 import UIKit
+import MagicalRecord
 
 class HistoryTableViewController: UITableViewController {
 
     var history: [String:[Speech]] = [:]
     var dates: [String] = []
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.rightBarButtonItems = [self.editButtonItem()]
+    }
+    
     override func viewWillAppear(animated: Bool) {
+        self.reloadData()
+    }
+    
+    func reloadData() {
+        history = [:]
+        dates = []
+        
         let formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
         formatter.timeStyle = .NoStyle
@@ -89,6 +102,29 @@ class HistoryTableViewController: UITableViewController {
         
         return reusedCell
        
+    }
+    
+    // Override to support editing the table view.
+    override func tableView(
+        tableView: UITableView,
+        commitEditingStyle editingStyle: UITableViewCellEditingStyle,
+                           forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            self.deleteItemAtIndexPath(indexPath)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class,
+            // insert it into the array, and add a new row to the table view
+        }
+    }
+    
+    func deleteItemAtIndexPath(indexPath: NSIndexPath) {
+            MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) in
+                // Delete the appropriate object
+                let speech = self.history[self.dates[indexPath.section]]![indexPath.row]
+                speech.MR_deleteEntityInContext(localContext)
+            }) { (success: Bool, error: NSError!) -> Void in
+                self.reloadData()
+            }
     }
     
 }
