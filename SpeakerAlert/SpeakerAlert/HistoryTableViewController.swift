@@ -52,7 +52,9 @@ class HistoryTableViewController: UITableViewController {
         return dates.count
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(
+        tableView: UITableView,
+        titleForHeaderInSection section: Int) -> String? {
         return dates[section]
     }
     
@@ -104,6 +106,44 @@ class HistoryTableViewController: UITableViewController {
        
     }
     
+    func changeComment(speech: Speech) {
+        let alertController = UIAlertController(
+            title: "Change Description",
+            message: "Please enter a new description for this speech",
+            preferredStyle: .Alert)
+        let createAction = UIAlertAction(title: "Update", style: .Default) { (_) in
+            let commentField = alertController.textFields![0] as UITextField
+            MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) -> Void in
+                let localSpeech: Speech = speech.MR_inContext(localContext)
+                localSpeech.comments = commentField.text
+            }) { (success: Bool, error: NSError!) -> Void in
+                self.reloadData()
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+        alertController.addAction(createAction)
+        alertController.addAction(cancelAction)
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = speech.profile?.name
+            textField.text = speech.comments
+        }
+        self.presentViewController(alertController, animated: true) {
+            // ...
+        }
+    }
+    
+    // Handle selection for segue to speeches and demo mode
+    override func tableView(
+        tableView: UITableView,
+        didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if self.editing {
+            let speech = self.history[self.dates[indexPath.section]]![indexPath.row]
+            changeComment(speech)
+            return
+        }
+    }
+    
     // Override to support editing the table view.
     override func tableView(
         tableView: UITableView,
@@ -125,6 +165,30 @@ class HistoryTableViewController: UITableViewController {
             }) { (success: Bool, error: NSError!) -> Void in
                 self.reloadData()
             }
+    }
+    
+    override func tableView(
+        tableView: UITableView,
+        editActionsForRowAtIndexPath indexPath: NSIndexPath)
+        -> [UITableViewRowAction]? {
+            let moreRowAction = UITableViewRowAction(
+                style: UITableViewRowActionStyle.Default,
+                title: "Edit",
+                handler: {action, indexpath in
+                    let speech = self.history[self.dates[indexPath.section]]![indexPath.row]
+                    self.changeComment(speech)
+            })
+            
+            moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0)
+            
+            let deleteRowAction = UITableViewRowAction(
+                style: UITableViewRowActionStyle.Default,
+                title: "Delete",
+                handler: {action, indexpath in
+                    self.deleteItemAtIndexPath(indexPath)
+            })
+            
+            return [deleteRowAction, moreRowAction]
     }
     
 }
