@@ -99,6 +99,24 @@ class HistoryTableViewController: UITableViewController {
                 cell.profileInfo?.attributedText =
                     ProfileTimeRenderer.timesAsAttributedString(profile)
             }
+            
+            // Set the background for the cell as appropriate
+            if  let d = speech.duration,
+                let c = speech.profile?.green
+                where d.intValue >= c.intValue {
+                cell.backgroundColor = UIColor.successColor()
+            }
+            if  let d = speech.duration,
+                let c = speech.profile?.yellow
+                where d.intValue >= c.intValue {
+                cell.backgroundColor = UIColor.warningColor()
+            }
+            if  let d = speech.duration,
+                let c = speech.profile?.red
+                where d.intValue >= c.intValue {
+                cell.backgroundColor = UIColor.successColor()
+            }
+            
             return cell
         }
         
