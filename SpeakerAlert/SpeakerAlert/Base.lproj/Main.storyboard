@@ -657,6 +657,7 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FAB-rm-5sO">
                                                     <rect key="frame" x="8" y="37" width="584" height="81"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="Speech Description" label="Speech Description"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>

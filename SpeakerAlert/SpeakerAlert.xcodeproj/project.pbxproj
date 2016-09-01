@@ -110,6 +110,7 @@
 		E2C9020F1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2C9020D1B33BAA300B39D37 /* SpeakerAlert.xcdatamodeld */; };
 		E2CC76911D562FDC006E901A /* ConfigurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CC76901D562FDC006E901A /* ConfigurationProtocol.swift */; };
 		E2CC76931D5634BE006E901A /* ConfigurationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CC76921D5634BE006E901A /* ConfigurationMode.swift */; };
+		E2CC77891D78556900EF4649 /* HistoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CC77881D78556900EF4649 /* HistoryUITests.swift */; };
 		E2D273CE1B516EF500155349 /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D273CD1B516EF500155349 /* SpeechViewController.swift */; };
 		E2DD5E3B1B5BE03800EF0997 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
 		E2E8DD5D1B6DD021003D3F7C /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
@@ -282,6 +283,7 @@
 		E2C9020E1B33BAA300B39D37 /* SpeakerAlert.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpeakerAlert.xcdatamodel; sourceTree = "<group>"; };
 		E2CC76901D562FDC006E901A /* ConfigurationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationProtocol.swift; sourceTree = "<group>"; };
 		E2CC76921D5634BE006E901A /* ConfigurationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationMode.swift; sourceTree = "<group>"; };
+		E2CC77881D78556900EF4649 /* HistoryUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryUITests.swift; sourceTree = "<group>"; };
 		E2D273CD1B516EF500155349 /* SpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
 		E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
 		E2E702CB1D71E29400422306 /* SpeakerAlert 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SpeakerAlert 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 				E2F0C7A41CE1593D00A1A462 /* AboutScreenUITests.swift */,
 				E29D3FC71CEDEA4E00FB347C /* TimeScreenshotUITests.swift */,
 				E2A10D701CF725C300DD769C /* PhaseProgressionUITests.swift */,
+				E2CC77881D78556900EF4649 /* HistoryUITests.swift */,
 			);
 			path = SpeakerAlertUITests;
 			sourceTree = "<group>";
@@ -1222,6 +1225,7 @@
 				E23481091B2906EB0076247D /* SpeakerAlertUITests.swift in Sources */,
 				E29D3FC81CEDEA4E00FB347C /* TimeScreenshotUITests.swift in Sources */,
 				E2F0C7A51CE1593D00A1A462 /* AboutScreenUITests.swift in Sources */,
+				E2CC77891D78556900EF4649 /* HistoryUITests.swift in Sources */,
 				E2F0C7A11CE157E800A1A462 /* ProfileUITests.swift in Sources */,
 				E21C341F1C95D08F00157E66 /* SnapshotHelper.swift in Sources */,
 				E2A10D711CF725C300DD769C /* PhaseProgressionUITests.swift in Sources */,

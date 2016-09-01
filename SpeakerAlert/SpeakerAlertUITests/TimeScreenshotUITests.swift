@@ -15,37 +15,6 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
         setUpNoApp()
     }
     
-    let speechGroup = "Toastmasters"
-    let speechTitle = "Speech: Five to Seven Minutes"
-    
-    func openSpeech() {
-        // Wait until the defaults are loaded
-        let exists = NSPredicate(format: "exists == 1")
-        expectationForPredicate(exists,
-                                evaluatedWithObject: app.staticTexts[speechGroup], handler: nil)
-        waitForExpectationsWithTimeout(5, handler: nil)
-        
-        // Open the profile
-        app.tables.staticTexts[speechGroup].tap()
-        
-        expectationForPredicate(exists,
-                                evaluatedWithObject: app.staticTexts[speechTitle],
-                                handler: nil)
-        waitForExpectationsWithTimeout(5, handler: nil)
-        
-        app.tables.staticTexts[speechTitle].tap()
-    }
-    
-    func startSpeech() {
-        app.buttons["Play"].tap()
-
-    }
-    
-    func stopSpeech() {
-        app.tap()
-        app.buttons["Stop"].tap()
-    }
-    
     func testBeforeStarting() {
         startApp(false, startTime: 0)
         openSpeech()
