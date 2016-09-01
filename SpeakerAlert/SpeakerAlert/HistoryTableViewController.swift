@@ -104,17 +104,17 @@ class HistoryTableViewController: UITableViewController {
             if  let d = speech.duration,
                 let c = speech.profile?.green
                 where d.intValue >= c.intValue {
-                cell.backgroundColor = UIColor.successColor()
+                cell.backgroundColor = UIColor.successColor().lighten(80)
             }
             if  let d = speech.duration,
                 let c = speech.profile?.yellow
                 where d.intValue >= c.intValue {
-                cell.backgroundColor = UIColor.warningColor()
+                cell.backgroundColor = UIColor.warningColor().lighten(80)
             }
             if  let d = speech.duration,
                 let c = speech.profile?.red
                 where d.intValue >= c.intValue {
-                cell.backgroundColor = UIColor.successColor()
+                cell.backgroundColor = UIColor.successColor().lighten(80)
             }
             
             return cell
