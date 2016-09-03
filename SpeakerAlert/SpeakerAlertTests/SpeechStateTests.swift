@@ -27,6 +27,7 @@ class SpeechStateTests: XCTestCase {
             profile: profile,
             running: SpeechRunning.RUNNING,
             startTime: startTime,
+            initialStartTime: startTime,
             pauseInterval: pauseInterval)
         let dict: [String : AnyObject] = state.toDictionary()
 
@@ -56,6 +57,7 @@ class SpeechStateTests: XCTestCase {
             profile: profile,
             running: SpeechRunning.RUNNING,
             startTime: startTime,
+            initialStartTime: startTime,
             pauseInterval: pauseInterval)
         let dict: [String : AnyObject] = state.toDictionary()
 
