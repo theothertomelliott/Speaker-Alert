@@ -8,3 +8,4 @@ SpeakerAlert.app.dSYM.zip
 SpeakerAlert.ipa
 fastlane/screenshots/*
 DerivedData
+*.swp
