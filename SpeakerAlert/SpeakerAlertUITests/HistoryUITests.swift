@@ -24,7 +24,7 @@ class HistoryUITests: SpeakerAlertUITests {
         app.tabBars.buttons["History"].tap()
         XCTAssertEqual(app.tables.cells.count, 1)
         XCTAssert(app.staticTexts["test speech"].exists)
-        XCTAssert(app.staticTexts["0:03"].exists)
+        XCTAssert(app.staticTexts["0:03"].exists || app.staticTexts["0:04"].exists)
     }
     
 }
