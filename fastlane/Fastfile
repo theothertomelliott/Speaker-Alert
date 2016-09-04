@@ -122,9 +122,9 @@ platform :ios do
     snapshot(clear_previous_screenshots:true)
     sigh
     gym(scheme: "SpeakerAlert") # Build your app - more options available
-    pilot
     tag_with_version("beta")
     bump_build(project_file)
+    pilot
     # sh "your_script.sh"
     # You can also use other beta testing services here
   end
@@ -134,9 +134,9 @@ platform :ios do
     snapshot(clear_previous_screenshots:true)
     sigh
     gym(scheme: "SpeakerAlert") # Build your app - more options available
-    deliver(force: true)
     tag_with_version("deliver")
     bump_build(project_file)
+    deliver(force: true)
     # frameit
   end
 
