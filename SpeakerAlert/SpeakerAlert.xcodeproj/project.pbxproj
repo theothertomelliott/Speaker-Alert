@@ -70,7 +70,7 @@
 		E24A428B1BA4BA800071702D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24A428A1BA4BA800071702D /* LoadingViewController.swift */; };
 		E25E86C41B656F6D00F120FA /* FontAwesomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */; };
 		E25E86C61B65748D00F120FA /* FontAwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */; };
-		E25E86C91B65D73A00F120FA /* ApplicationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C81B65D73A00F120FA /* ApplicationAssembly.swift */; };
+		E25E86C91B65D73A00F120FA /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E86C81B65D73A00F120FA /* Environment.swift */; };
 		E26D5B981CF4791500E27B9D /* DemoSpeechState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D5B971CF4791500E27B9D /* DemoSpeechState.swift */; };
 		E26D5B9B1CF4797C00E27B9D /* ReplacementSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D5B9A1CF4797C00E27B9D /* ReplacementSegue.swift */; };
 		E26D5BA01CF47B1B00E27B9D /* DefaultSpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D5B9F1CF47B1B00E27B9D /* DefaultSpeechViewController.swift */; };
@@ -256,7 +256,7 @@
 		E24A428A1BA4BA800071702D /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		E25E86C31B656F6D00F120FA /* FontAwesomeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeFactory.swift; sourceTree = "<group>"; };
 		E25E86C51B65748D00F120FA /* FontAwesomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeButton.swift; sourceTree = "<group>"; };
-		E25E86C81B65D73A00F120FA /* ApplicationAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationAssembly.swift; sourceTree = "<group>"; };
+		E25E86C81B65D73A00F120FA /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		E26D5B971CF4791500E27B9D /* DemoSpeechState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoSpeechState.swift; sourceTree = "<group>"; };
 		E26D5B9A1CF4797C00E27B9D /* ReplacementSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplacementSegue.swift; sourceTree = "<group>"; };
 		E26D5B9F1CF47B1B00E27B9D /* DefaultSpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSpeechViewController.swift; sourceTree = "<group>"; };
@@ -481,7 +481,7 @@
 				E2159F231B6D9F1B0075E77E /* Watch */,
 				E22E8C3F1B6BA13500DD0793 /* UserNotification */,
 				E22E8C3D1B6BA08600DD0793 /* UI */,
-				E25E86C71B65D70C00F120FA /* Assembly */,
+				E25E86C71B65D70C00F120FA /* Environment */,
 				E2DD5E391B5BE00400EF0997 /* Utilities */,
 				E28AA3531B2CA70F000F5A15 /* SpeechTimer */,
 				E23480E81B2906EA0076247D /* AppDelegate.swift */,
@@ -569,12 +569,12 @@
 			name = Sounds;
 			sourceTree = "<group>";
 		};
-		E25E86C71B65D70C00F120FA /* Assembly */ = {
+		E25E86C71B65D70C00F120FA /* Environment */ = {
 			isa = PBXGroup;
 			children = (
-				E25E86C81B65D73A00F120FA /* ApplicationAssembly.swift */,
+				E25E86C81B65D73A00F120FA /* Environment.swift */,
 			);
-			name = Assembly;
+			name = Environment;
 			sourceTree = "<group>";
 		};
 		E25F8F221B76B94900A16A92 /* Models */ = {
@@ -1179,7 +1179,7 @@
 				E2CC76931D5634BE006E901A /* ConfigurationMode.swift in Sources */,
 				E21B306C1B9B54BA00B89D9F /* ConfigurationManager.swift in Sources */,
 				E20A8E9A1B817E7500ECC443 /* SpeechProfileFactory.swift in Sources */,
-				E25E86C91B65D73A00F120FA /* ApplicationAssembly.swift in Sources */,
+				E25E86C91B65D73A00F120FA /* Environment.swift in Sources */,
 				E24408A21B48338400EB056C /* Group.swift in Sources */,
 				E2F2C2B01D5975C000A23437 /* SelectionCell.swift in Sources */,
 				E22E8C441B6BA23000DD0793 /* VibrationAlertManager.swift in Sources */,

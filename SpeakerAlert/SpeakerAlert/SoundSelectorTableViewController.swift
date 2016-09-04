@@ -8,10 +8,31 @@
 
 import UIKit
 
-class SoundSelectorTableViewController: UITableViewController {
+class SoundSelectorTableViewController: UITableViewController,
+                                        ConfigurationManagerDependency,
+                                        AudioAlertManagerDependency {
 
-    var configManager: ConfigurationManager?
-    var audioAlertManager: AudioAlertManager?
+    var configManager: ConfigurationManager
+    var audioAlertManager: AudioAlertManager
+    
+    // Initializers for the app, using property injection
+    required init?(coder aDecoder: NSCoder) {
+        configManager = SoundSelectorTableViewController._configurationManager()
+        audioAlertManager = SoundSelectorTableViewController._audioAlertManager()
+        super.init(coder: aDecoder)
+    }
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        configManager = SoundSelectorTableViewController._configurationManager()
+        audioAlertManager = SoundSelectorTableViewController._audioAlertManager()
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    // Initializer for testing, using initializer injection
+    init(configurationManager: ConfigurationManager, audioAlertManager: AudioAlertManager) {
+        self.configManager = configurationManager
+        self.audioAlertManager = audioAlertManager
+        super.init(nibName: nil, bundle: nil)
+    }
     
     static let soundFiles: [String:String] = [
         "Alarm Frenzy" : "alarm-frenzy",
@@ -41,7 +62,7 @@ class SoundSelectorTableViewController: UITableViewController {
         let title = titles[indexPath.row]
         cell.textLabel?.text = title
         if let fileName = SoundSelectorTableViewController.soundFiles[title]
-            where fileName == configManager?.audioFile {
+            where fileName == configManager.audioFile {
             tableView.selectRowAtIndexPath(
                 indexPath,
                 animated: false,
@@ -59,8 +80,8 @@ class SoundSelectorTableViewController: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         if let text = cell?.textLabel?.text {
             if let fileName = SoundSelectorTableViewController.soundFiles[text] {
-                configManager?.audioFile = fileName
-                audioAlertManager?.playSound()
+                configManager.audioFile = fileName
+                audioAlertManager.playSound()
             }
         }
     }

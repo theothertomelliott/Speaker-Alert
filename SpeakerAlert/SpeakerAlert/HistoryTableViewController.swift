@@ -197,7 +197,11 @@ class HistoryTableViewController: UITableViewController {
                     self.changeComment(speech)
             })
             
-            moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0)
+            moreRowAction.backgroundColor = UIColor(
+                red: 0.298,
+                green: 0.851,
+                blue: 0.3922,
+                alpha: 1.0)
             
             let deleteRowAction = UITableViewRowAction(
                 style: UITableViewRowActionStyle.Default,

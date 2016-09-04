@@ -6,7 +6,6 @@ use_frameworks!
 
 target 'SpeakerAlert' do
 	pod "MagicalRecord", '2.3.0'
-	pod "Typhoon", '3.4.5'
 	pod "FontAwesome.swift", :git => 'https://github.com/theothertomelliott/FontAwesome.swift.git'
 	pod "RFAboutView", '1.0.4'
 	pod 'Colours', '5.13.0'
@@ -17,7 +16,6 @@ end
 
 target 'SpeakerAlertTests' do
 	pod "MagicalRecord", '2.3.0'
-	pod "Typhoon", '3.4.5'
 	pod 'JVArgumentParser', '0.2.0'
 	pod 'pyze-sdk-iOS', '2.5.1'
 end

@@ -9,27 +9,35 @@
 import Foundation
 import WatchConnectivity
 
+protocol WatchComms: SpeechManagerDelegate {
+    func activate()
+}
+
+class NullWatchCommsManager: NSObject, WatchComms {
+    func activate() {}
+    func phaseChanged(state: SpeechState, timer: SpeechTimer) {}
+    func runningChanged(state: SpeechState, timer: SpeechTimer) {}
+    func speechComplete(state: SpeechState, timer: SpeechTimer, record: Speech) {}
+}
+
 @available(iOS 9, *)
-class WatchCommsManager: NSObject, WCSessionDelegate, SpeechManagerDelegate {
+class WatchCommsManager: NSObject, WCSessionDelegate, WatchComms {
 
-    var configMan: ConfigurationManager?
+    var configMan: ConfigurationManager
+    var speechMan: SpeechManager
     var watchSession: WCSession?
-
-    var speechMan: SpeechManager? {
-        didSet {
-            speechMan?.addSpeechObserver(self)
+    
+    init(configManager: ConfigurationManager, speechManager: SpeechManager) {
+        self.configMan = configManager
+        self.speechMan = speechManager
+        super.init()
+        if WCSession.isSupported() {
+            NSLog("WCSession supported, initializing")
+            watchSession = WCSession.defaultSession()
+        } else {
+            NSLog("WCSession is not supported, will not initialize")
         }
-    }
-
-    override init() {
-        if #available(iOS 9, *) {
-            if WCSession.isSupported() {
-                NSLog("WCSession supported, initializing")
-                watchSession = WCSession.defaultSession()
-            } else {
-                NSLog("WCSession is not supported, will not initialize")
-            }
-        }
+        speechMan.addSpeechObserver(self)
     }
 
     func activate() {
@@ -50,7 +58,7 @@ class WatchCommsManager: NSObject, WCSessionDelegate, SpeechManagerDelegate {
             }
 
             var speechName = ""
-            if let sn = speechMan?.profile?.name {
+            if let sn = speechMan.profile?.name {
                 speechName = sn
             }
 
@@ -113,7 +121,7 @@ class WatchCommsManager: NSObject, WCSessionDelegate, SpeechManagerDelegate {
             if messageName == "pauseResume" {
                 if sm.state?.running == SpeechRunning.PAUSED {
                     sm.start()
-                } else if speechMan!.state?.running == SpeechRunning.RUNNING {
+                } else if speechMan.state?.running == SpeechRunning.RUNNING {
                     sm.pause()
                 } else {
                     NSLog("Did not expect to receive pauseResume while STOPPED")

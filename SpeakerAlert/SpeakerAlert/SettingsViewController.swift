@@ -9,12 +9,30 @@
 import UIKit
 import RFAboutView
 
-class SettingsViewController: UITableViewController, MFMailComposeViewControllerDelegate {
+class SettingsViewController: UITableViewController,
+                                MFMailComposeViewControllerDelegate,
+                                ConfigurationManagerDependency {
 
     let APP_ID = "488585337"
 
-    var configManager: ConfigurationManager?
+    var configManager: ConfigurationManager
     var tableSections: [SectionDefinition] = []
+    
+    // Initializers for the app, using property injection
+    required init?(coder aDecoder: NSCoder) {
+        configManager = SettingsViewController._configurationManager()
+        super.init(coder: aDecoder)
+    }
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        configManager = SettingsViewController._configurationManager()
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    // Initializer for testing, using initializer injection
+    init(configurationManager: ConfigurationManager) {
+        self.configManager = configurationManager
+        super.init(nibName: nil, bundle: nil)
+    }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return tableSections.count
@@ -192,17 +210,15 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     }
     
     func loadData() {
-        if let cm = configManager {
             tableSections = [
-                generalSection(cm),
-                presetSection(cm),
-                speechDisplaySection(cm),
-                alertSection(cm),
+                generalSection(configManager),
+                presetSection(configManager),
+                speechDisplaySection(configManager),
+                alertSection(configManager),
                 appSection(),
                 contactSection()
             ]
             tableView.reloadData()
-        }
     }
     
     override func viewWillAppear(animated: Bool) {

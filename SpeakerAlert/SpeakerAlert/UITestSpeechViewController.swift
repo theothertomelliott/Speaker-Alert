@@ -29,7 +29,7 @@ class UITestSpeechViewController: DefaultSpeechViewController {
                 colorLabel?.text = "Red"
             }
             if phase == SpeechPhase.OVER_MAXIMUM {
-                if let cm = configMan where cm.isAlertOvertimeEnabled {
+                if configMan.isAlertOvertimeEnabled {
                     colorLabel?.text = "Alert"
                 } else {
                     colorLabel?.text = "Red"

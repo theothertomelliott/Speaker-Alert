@@ -7,17 +7,38 @@
 //
 
 import UIKit
-
 import MagicalRecord
 
-class GroupTableViewController: UITableViewController {
+class GroupTableViewController: UITableViewController,
+                                SpeechManagerDependency,
+                                ConfigurationManagerDependency {
 
-    var speechMan: SpeechManager?
+    var speechMan: SpeechManager
+    var configMan: ConfigurationManager
+    
     var groups: [Group] = []
     var timings: [Profile] = []
     var parentGroup: Group? = nil
-    var configMan: ConfigurationManager?
 
+    // Initializers for the app, using property injection
+    required init?(coder aDecoder: NSCoder) {
+        speechMan = GroupTableViewController._speechManager()
+        configMan = GroupTableViewController._configurationManager()
+        super.init(coder: aDecoder)
+    }
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        speechMan = GroupTableViewController._speechManager()
+        configMan = GroupTableViewController._configurationManager()
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    // Initializer for testing, using initializer injection
+    init(speechManager: SpeechManager, configurationManager: ConfigurationManager) {
+        self.speechMan = speechManager
+        self.configMan = configurationManager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let addButton = UIBarButtonItem(
@@ -229,13 +250,8 @@ class GroupTableViewController: UITableViewController {
         }
         
         if rowIsProfile(indexPath.row) || rowIsDemo(indexPath.row) {
-            var display = "Default"
-            if let d = configMan?.speechDisplay {
-                display = d
-            }
-            
             self.performSegueWithIdentifier(
-                "speech" + display,
+                "speech" + configMan.speechDisplay,
                 sender: tableView.cellForRowAtIndexPath(indexPath))
         }
     }
@@ -374,9 +390,9 @@ class GroupTableViewController: UITableViewController {
 
         if let i = segue.identifier where i.hasPrefix("speech") {
             if rowIsProfile(indexPath.row) {
-                speechMan?.profile = self.timings[indexPath.row - self.groups.count]
+                speechMan.profile = self.timings[indexPath.row - self.groups.count]
             } else if rowIsDemo(indexPath.row) {
-                speechMan?.profile = nil
+                speechMan.profile = nil
                 if let destination = segue.destinationViewController as? SpeechViewController {
                     destination.demoMode = true
                 }

@@ -9,16 +9,38 @@
 import UIKit
 import Colours
 
-class SpeechViewController: UIViewController, SpeechManagerDelegate {
+class SpeechViewController: UIViewController,
+                            SpeechManagerDelegate,
+                            SpeechManagerDependency,
+                            ConfigurationManagerDependency {
 
-    var speechMan: SpeechManager?
-    var configMan: ConfigurationManager?
+    var speechMan: SpeechManager
+    var configMan: ConfigurationManager
 
     var demoMode: Bool = false
     var demoState: DemoSpeechState?
 
     var tickTimer: NSTimer = NSTimer()
 
+    // Initializers for the app, using property injection
+    required init?(coder aDecoder: NSCoder) {
+        speechMan = SpeechViewController._speechManager()
+        configMan = SpeechViewController._configurationManager()
+        super.init(coder: aDecoder)
+    }
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        speechMan = SpeechViewController._speechManager()
+        configMan = SpeechViewController._configurationManager()
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    // Initializer for testing, using initializer injection
+    init(speechManager: SpeechManager, configurationManager: ConfigurationManager) {
+        self.speechMan = speechManager
+        self.configMan = configurationManager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     // MARK: Demo mode
 
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
@@ -38,13 +60,10 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
 
     var state: SpeechState? {
         get {
-            if let sm = speechMan, let st = sm.state {
-                return st
-            }
             if self.demoMode {
                 return demoState
             }
-            return nil
+            return speechMan.state
         }
     }
 
@@ -56,12 +75,12 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         }
 
         // Configure speech manager if not in demo mode
-        if let sm = speechMan, let profile = sm.profile where !self.demoMode {
-            sm.addSpeechObserver(self)
+        if let profile = speechMan.profile where !self.demoMode {
+            speechMan.addSpeechObserver(self)
             self.title = profile.name
         }
         
-        if let cm = configMan where cm.isAutoStartEnabled {
+        if configMan.isAutoStartEnabled {
             self.resumePressed(self)
         }
         
@@ -69,7 +88,7 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.setShowTime(configMan!.timeDisplayMode != TimeDisplay.None)
+        self.setShowTime(configMan.timeDisplayMode != TimeDisplay.None)
         if tickTimer.valid {
             tickTimer.invalidate()
         }
@@ -92,14 +111,14 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
 
     override func viewWillDisappear(animated: Bool) {
         setNavSatusVisible(true, animated: animated)
-        speechMan?.removeSpeechObserver(self)
+        speechMan.removeSpeechObserver(self)
         if tickTimer.valid {
             tickTimer.invalidate()
         }
     }
 
     func setNavSatusVisible(visible: Bool, animated: Bool) {
-        if let hs = configMan?.isHideStatusEnabled where hs {
+        if configMan.isHideStatusEnabled {
             UIApplication.sharedApplication().setStatusBarHidden(
                 !visible,
                 withAnimation: animated ? UIStatusBarAnimation.Slide : UIStatusBarAnimation.None)
@@ -122,14 +141,14 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
         if self.demoMode {
             return
         }
-        speechMan?.pause()
+        speechMan.pause()
     }
 
     @IBAction func stopPressed(sender: AnyObject) {
         if self.demoMode {
             return
         }
-        speechMan?.stop()
+        speechMan.stop()
     }
 
     @IBAction func resumePressed(sender: AnyObject) {
@@ -137,9 +156,9 @@ class SpeechViewController: UIViewController, SpeechManagerDelegate {
             return
         }
         if self.state?.running == .RUNNING {
-            speechMan?.pause()
+            speechMan.pause()
         } else {
-            speechMan?.start()
+            speechMan.start()
         }
     }
 

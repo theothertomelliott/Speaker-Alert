@@ -11,21 +11,19 @@ import AudioToolbox
 
 class AudioAlertManager: NSObject, SpeechManagerDelegate {
     
-    override init() {
-        // TODO: Import all sounds here
-    }
-
-    var configMan: ConfigurationManager?
+    var configMan: ConfigurationManager
+    var speechMan: SpeechManager
     
-    var speechMan: SpeechManager? {
-        didSet {
-            speechMan?.addSpeechObserver(self)
-        }
+    init(configManager: ConfigurationManager, speechManager: SpeechManager) {
+        self.configMan = configManager
+        self.speechMan = speechManager
+        super.init()
+        speechMan.addSpeechObserver(self)
     }
     
     func phaseChanged(state: SpeechState, timer: SpeechTimer) {
-        if let cm = configMan where cm.isAudioEnabled {
-            if state.phase == SpeechPhase.OVER_MAXIMUM && !cm.isVibrationEnabled {
+        if configMan.isAudioEnabled {
+            if state.phase == SpeechPhase.OVER_MAXIMUM && !configMan.isAlertOvertimeEnabled {
                 return
             }
             playSound()
@@ -42,7 +40,7 @@ class AudioAlertManager: NSObject, SpeechManagerDelegate {
     
     func playSound() {
         if let filePath = NSBundle.mainBundle().pathForResource(
-            configMan?.audioFile,
+            configMan.audioFile,
             ofType: "mp3"
             ) {
             soundURL = NSURL(fileURLWithPath: filePath)

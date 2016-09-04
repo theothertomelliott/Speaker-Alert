@@ -36,7 +36,7 @@ class DefaultSpeechViewController: SpeechViewController {
         // If a speech is in progress, pause and display the controls
         if let c = controls where c.hidden {
             c.hidden = false
-            speechMan?.pause()
+            speechMan.pause()
         }
         
         self.demoNextPhase()
@@ -50,7 +50,7 @@ class DefaultSpeechViewController: SpeechViewController {
         }
 
         // Configure speech manager if not in demo mode
-        if let sm = speechMan, let profile = sm.profile where !self.demoMode {
+        if let profile = speechMan.profile where !self.demoMode {
             profileSummaryLabel?.attributedText =
                 ProfileTimeRenderer.timesAsAttributedString(profile)
         }
@@ -90,7 +90,7 @@ class DefaultSpeechViewController: SpeechViewController {
             }
             if phase == SpeechPhase.OVER_MAXIMUM {
                 self.phaseColor = UIColor.dangerColor()
-                if let cm = configMan where cm.isAlertOvertimeEnabled {
+                if configMan.isAlertOvertimeEnabled {
                     self.pausedLabel?.text = "Alert!"
                     blinkState = true
                 } else {
@@ -103,12 +103,12 @@ class DefaultSpeechViewController: SpeechViewController {
     
     func updateTimeLabel() {
         
-        if let state = speechMan?.state {
+        if let state = speechMan.state {
             
             let running: Bool = state.running == SpeechRunning.RUNNING
             
             var timeToDisplay: Double = state.elapsed
-            if let c = configMan where c.timeDisplayMode == TimeDisplay.CountDown {
+            if configMan.timeDisplayMode == TimeDisplay.CountDown {
                 timeToDisplay = state.timeUntil(SpeechPhase.RED)
                 if timeToDisplay < 0 {
                     timeToDisplay = 0
@@ -143,7 +143,7 @@ class DefaultSpeechViewController: SpeechViewController {
             return false
         }
         
-        if let hc = configMan?.isHideControlsEnabled where hc {
+        if configMan.isHideControlsEnabled {
             return true
         }
         return false

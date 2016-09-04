@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Vjl-WT-gXF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Vjl-WT-gXF">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -593,7 +593,7 @@
                         <outlet property="profileSummaryLabel" destination="p4L-Mx-pbd" id="4cY-WT-en8"/>
                         <outlet property="stopButton" destination="Nxk-ch-or0" id="yyA-Rm-rcG"/>
                         <outlet property="timeLabel" destination="E7o-Bg-pvs" id="M58-3s-Apx"/>
-                        <segue destination="a1O-Mb-NL0" kind="show" identifier="SpeechComplete" customClass="ReplacementSegue" customModule="SpeakerAlert" customModuleProvider="target" id="eUM-8t-II4"/>
+                        <segue destination="a1O-Mb-NL0" kind="custom" identifier="SpeechComplete" customClass="ReplacementSegue" customModule="SpeakerAlert" customModuleProvider="target" id="eUM-8t-II4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5H-ak-Azo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -617,7 +617,7 @@
                             <tableViewSection id="k6n-3v-716">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="W61-qI-mU1">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W61-qI-mU1" id="X3D-KQ-v7U">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="149.5"/>
@@ -643,7 +643,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fz0-Ou-sde">
-                                        <rect key="frame" x="0.0" y="214" width="600" height="150"/>
+                                        <rect key="frame" x="0.0" y="150" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fz0-Ou-sde" id="jed-ho-pOI">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="149.5"/>
@@ -686,7 +686,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="sP0-2X-fpa">
-                                        <rect key="frame" x="0.0" y="364" width="600" height="150"/>
+                                        <rect key="frame" x="0.0" y="300" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sP0-2X-fpa" id="lj1-eR-LQB">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="149.5"/>
@@ -1219,7 +1219,7 @@
                         <outlet property="profileSummaryLabel" destination="1kE-L4-6wL" id="sIB-L4-sGr"/>
                         <outlet property="stopButton" destination="lXE-4V-kfy" id="BJS-RD-EU3"/>
                         <outlet property="timeLabel" destination="u5f-tG-XCf" id="WrQ-1y-7sD"/>
-                        <segue destination="a1O-Mb-NL0" kind="show" identifier="SpeechComplete" customClass="ReplacementSegue" customModule="SpeakerAlert" customModuleProvider="target" id="fK8-JX-jCt"/>
+                        <segue destination="a1O-Mb-NL0" kind="custom" identifier="SpeechComplete" customClass="ReplacementSegue" customModule="SpeakerAlert" customModuleProvider="target" id="fK8-JX-jCt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XIa-wG-5VE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1273,9 +1273,9 @@
         <image name="IconTransparentBack" width="306" height="294"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fK8-JX-jCt"/>
         <segue reference="ZVv-6d-Z7f"/>
         <segue reference="hGx-8K-Lk6"/>
+        <segue reference="fK8-JX-jCt"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

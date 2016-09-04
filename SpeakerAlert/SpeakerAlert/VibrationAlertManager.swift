@@ -11,17 +11,19 @@ import AudioToolbox
 
 class VibrationAlertManager: NSObject, SpeechManagerDelegate {
 
-    var configMan: ConfigurationManager?
-
-    var speechMan: SpeechManager? {
-        didSet {
-            speechMan?.addSpeechObserver(self)
-        }
+    var configMan: ConfigurationManager
+    var speechMan: SpeechManager
+    
+    init(configManager: ConfigurationManager, speechManager: SpeechManager) {
+        self.configMan = configManager
+        self.speechMan = speechManager
+        super.init()
+        speechMan.addSpeechObserver(self)
     }
-
+    
     func phaseChanged(state: SpeechState, timer: SpeechTimer) {
-        if let cm = configMan where cm.isVibrationEnabled {
-            if state.phase == SpeechPhase.OVER_MAXIMUM && !cm.isVibrationEnabled {
+        if configMan.isVibrationEnabled {
+            if state.phase == SpeechPhase.OVER_MAXIMUM && !configMan.isAlertOvertimeEnabled {
                 return
             }
             NSLog("Vibrating")

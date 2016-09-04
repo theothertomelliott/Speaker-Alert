@@ -8,10 +8,26 @@
 
 import UIKit
 
-class LoadingViewController: UIViewController {
+class LoadingViewController: UIViewController, DataSeederDependency {
 
-    var dataSeeder: DataSeeder?
+    var dataSeeder: DataSeeder
 
+    // Initializers for the app, using property injection
+    required init?(coder aDecoder: NSCoder) {
+        dataSeeder = LoadingViewController._dataSeeder()
+        super.init(coder: aDecoder)
+    }
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        dataSeeder = LoadingViewController._dataSeeder()
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    // Initializer for testing, using initializer injection
+    init(dataSeeder: DataSeeder) {
+        self.dataSeeder = dataSeeder
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -20,7 +36,7 @@ class LoadingViewController: UIViewController {
         super.viewDidAppear(animated)
 
         // Add seed data
-        dataSeeder?.seedAsRequired()
+        dataSeeder.seedAsRequired()
 
         self.performSegueWithIdentifier("showMain", sender: self)
     }

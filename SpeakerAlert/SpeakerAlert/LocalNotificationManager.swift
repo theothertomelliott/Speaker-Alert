@@ -10,14 +10,16 @@ import UIKit
 
 class LocalNotificationManager: NSObject, SpeechManagerDelegate {
 
-    var configMan: ConfigurationManager?
-    
-    var speechMan: SpeechManager? {
-        didSet {
-            speechMan?.addSpeechObserver(self)
-        }
-    }
+    var configMan: ConfigurationManager
+    var speechMan: SpeechManager
 
+    init(configManager: ConfigurationManager, speechManager: SpeechManager) {
+        self.configMan = configManager
+        self.speechMan = speechManager
+        super.init()
+        speechMan.addSpeechObserver(self)
+    }
+    
     func phaseChanged(state: SpeechState, timer: SpeechTimer) {
         // Nothing to do
     }
@@ -32,21 +34,21 @@ class LocalNotificationManager: NSObject, SpeechManagerDelegate {
 
     private func setNotificationForPhase(phase: SpeechPhase) {
 
-        if let cm = configMan where cm.isVibrationEnabled {
+        if configMan.isVibrationEnabled {
             return
         }
         
         if phase == SpeechPhase.OVER_MAXIMUM {
-            if let cm = configMan where !cm.isAlertOvertimeEnabled {
+            if !configMan.isAlertOvertimeEnabled {
                 return
             }
         }
         
-        if speechMan == nil || speechMan!.state == nil || speechMan?.state?.timeUntil(phase) < 0 {
+        if speechMan.state == nil || speechMan.state?.timeUntil(phase) < 0 {
             return
         }
 
-        let state: SpeechState = speechMan!.state!
+        let state: SpeechState = speechMan.state!
 
         let phaseName: String = SpeechPhase.name[phase]!
 
@@ -60,7 +62,7 @@ class LocalNotificationManager: NSObject, SpeechManagerDelegate {
     }
 
     private func setNotifications() {
-        if speechMan?.state?.running == SpeechRunning.RUNNING {
+        if speechMan.state?.running == SpeechRunning.RUNNING {
             for s: SpeechPhase in SpeechPhase.allCases {
                 setNotificationForPhase(s)
             }

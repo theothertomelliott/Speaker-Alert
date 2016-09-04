@@ -15,13 +15,13 @@ import JVArgumentParser
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-    var localNotificationManager: LocalNotificationManager?
-    var parameterManager: ParameterManager?
-
+    let localNotificationManager = Environment.Default.localNotificationManager
+    
     func application(application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
+        let parameterManager = Environment.Default.parameterManager
+        
         // Set up Pyze for analytics
         if _isDebugAssertConfiguration() {
             Pyze.initialize("HkpiF7XpQaqgwGDidBvmzw")
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Pyze.initialize("mkneZ7xjSjKM5Mdn0Mra_w")
         }
         
-        if let p = parameterManager where p.isUITesting {
+        if parameterManager.isUITesting {
             NSLog("UI Testing!")
             MagicalRecord.setupCoreDataStackWithInMemoryStore()
 
@@ -40,6 +40,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             MagicalRecord.setupAutoMigratingCoreDataStack()
         }
         
+        let m = AppColorManager()
+        m.baseColor = UIColor(
+            red: 160/255,
+            green: 213/255,
+            blue: 227/255,
+            alpha: 1.0)
+        
         return true
     }
 
@@ -47,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        self.localNotificationManager?.enteredBackground()
+        self.localNotificationManager.enteredBackground()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
