@@ -121,7 +121,7 @@ class DefaultSpeechViewController: SpeechViewController {
             if !running {
                 timeAttr = NSMutableAttributedString(string: "● \(timeStr)")
                 if state.phase == SpeechPhase.OVER_MAXIMUM {
-                    timeAttr = NSMutableAttributedString(string: "◎ \(timeStr)")
+                    timeAttr = NSMutableAttributedString(string: "▾ \(timeStr)")
                 }
                 if state.phase == SpeechPhase.BELOW_MINIMUM {
                     timeAttr = NSMutableAttributedString(string: "◦ \(timeStr)")

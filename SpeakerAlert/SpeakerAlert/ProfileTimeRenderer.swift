@@ -67,7 +67,7 @@ class ProfileTimeRenderer: NSObject {
         let alertString: String = ProfileTimeRenderer.timeAsHMS(profile.redBlink)
 
         let outStr: NSMutableAttributedString = NSMutableAttributedString(
-            string: "● \(greenStr) ● \(yellowStr) ● \(redStr) ○ \(alertString)")
+            string: "● \(greenStr) ● \(yellowStr) ● \(redStr) ▾ \(alertString)")
         var index = 0
 
         outStr.addAttribute(

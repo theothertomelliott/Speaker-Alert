@@ -74,55 +74,72 @@ class HistoryTableViewController: UITableViewController {
                 forIndexPath: indexPath)
         
         if let cell = reusedCell as? HistoryItemCell {
-        
-            cell.elapsed?.text = ""
-            cell.date?.text = "Start time unknown"
-            cell.name?.text = "<Title>"
-            if let start = speech.startTime {
-                
-                let formatter = NSDateFormatter()
-                formatter.dateStyle = .NoStyle
-                formatter.timeStyle = .MediumStyle
-                
-                cell.date?.text = formatter.stringFromDate(start)
-            }
-            if let duration = speech.duration {
-                cell.elapsed?.text = TimeUtils.formatStopwatch(duration)
-            }
-            if let name = speech.profile?.name {
-                cell.name?.text = name
-            }
-            if let comment = speech.comments {
-                cell.name?.text = comment
-            }
-            if let profile = speech.profile {
-                cell.profileInfo?.attributedText =
-                    ProfileTimeRenderer.timesAsAttributedString(profile)
-            }
-            
-            // Set the background for the cell as appropriate
-            if  let d = speech.duration,
-                let c = speech.profile?.green
-                where d.intValue >= c.intValue {
-                cell.backgroundColor = UIColor.successColor().lighten(80)
-            }
-            if  let d = speech.duration,
-                let c = speech.profile?.yellow
-                where d.intValue >= c.intValue {
-                cell.backgroundColor = UIColor.warningColor().lighten(80)
-            }
-            if  let d = speech.duration,
-                let c = speech.profile?.red
-                where d.intValue >= c.intValue {
-                cell.backgroundColor = UIColor.successColor().lighten(80)
-            }
-            
-            return cell
+            return configureCell(speech, cell: cell)
         }
         
         return reusedCell
        
     }
+    
+    func formatDateForCell(start: NSDate) -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .NoStyle
+        formatter.timeStyle = .MediumStyle
+        return formatter.stringFromDate(start)
+    }
+    
+    func configureCell(speech: Speech, cell: HistoryItemCell) -> HistoryItemCell {
+        cell.elapsed?.text = ""
+        cell.date?.text = "Start time unknown"
+        cell.name?.text = "<Title>"
+        if let start = speech.startTime {
+            cell.date?.text = formatDateForCell(start)
+        }
+        if let duration = speech.duration {
+            cell.elapsed?.text = TimeUtils.formatStopwatch(duration)
+        }
+        if let name = speech.profile?.name {
+            cell.name?.text = name
+        }
+        if let comment = speech.comments {
+            cell.name?.text = comment
+        }
+        if let profile = speech.profile {
+            cell.profileInfo?.attributedText =
+                ProfileTimeRenderer.timesAsAttributedString(profile)
+        }
+        
+        setPhaseIndicator(speech, cell: cell)
+        
+        return cell
+    }
+    
+    func setPhaseIndicator(speech: Speech, cell: HistoryItemCell) {
+        if let d = speech.duration, let p = speech.profile {
+            // Set the background for the cell as appropriate
+            if  let c = p.green
+                where d.intValue >= c.intValue {
+                cell.phaseIndicator?.textColor = UIColor.successColor()
+                cell.phaseIndicator?.text = "●"
+            }
+            if  let c = p.yellow
+                where d.intValue >= c.intValue {
+                cell.phaseIndicator?.textColor = UIColor.warningColor()
+                cell.phaseIndicator?.text = "●"
+            }
+            if  let c = p.red
+                where d.intValue >= c.intValue {
+                cell.phaseIndicator?.textColor = UIColor.dangerColor()
+                cell.phaseIndicator?.text = "●"
+            }
+            if  let c = p.redBlink
+                where d.intValue >= c.intValue {
+                cell.phaseIndicator?.textColor = UIColor.dangerColor()
+                cell.phaseIndicator?.text = "▾"
+            }
+        }
+    }
+    
     
     func changeComment(speech: Speech) {
         let alertController = UIAlertController(
@@ -220,6 +237,7 @@ class HistoryItemCell: UITableViewCell {
     @IBOutlet var name: UILabel?
     @IBOutlet var date: UILabel?
     @IBOutlet var elapsed: UILabel?
+    @IBOutlet var phaseIndicator: UILabel?
     @IBOutlet var profileInfo: UILabel?
     
 }

@@ -96,7 +96,7 @@ class ProfileEditUITests: SpeakerAlertUITests {
         waitForElement(app.staticTexts["Test"])
 
         app.navigationBars["Profiles"].buttons["Edit"].tap()
-        app.tables.buttons["Delete Test, ● 4 ● 1 ● 2 ○ 3"].tap()
+        app.tables.buttons["Delete Test, ● 4 ● 1 ● 2 ▾ 3"].tap()
         app.tables.buttons["Edit"].tap()
         app.buttons["Back"].tap()
         app.navigationBars["Profiles"].buttons["Done"].tap()

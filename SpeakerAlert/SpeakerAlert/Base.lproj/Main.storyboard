@@ -812,9 +812,14 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="●" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKX-xl-6Xc">
+                                            <rect key="frame" x="460.5" y="6" width="22.5" height="43"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="N5Y-mh-Pcz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yjM-B4-hxz" secondAttribute="trailing" constant="5" id="1P5-uS-h11"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="GPe-3n-zxQ" secondAttribute="bottom" id="4Zi-yR-spM"/>
                                         <constraint firstItem="1ry-Bg-DOc" firstAttribute="top" secondItem="N5Y-mh-Pcz" secondAttribute="bottom" constant="5" id="4d1-sd-7RG"/>
                                         <constraint firstItem="N5Y-mh-Pcz" firstAttribute="trailing" secondItem="I1B-Wk-Oke" secondAttribute="trailingMargin" id="Aw8-eC-fPL"/>
@@ -822,7 +827,10 @@
                                         <constraint firstItem="1ry-Bg-DOc" firstAttribute="trailing" secondItem="I1B-Wk-Oke" secondAttribute="trailingMargin" id="Geu-JZ-Zmi"/>
                                         <constraint firstItem="N5Y-mh-Pcz" firstAttribute="top" secondItem="I1B-Wk-Oke" secondAttribute="topMargin" id="Uzk-Tu-6Y9"/>
                                         <constraint firstItem="GPe-3n-zxQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yjM-B4-hxz" secondAttribute="bottom" constant="5" id="XdC-sf-htc"/>
+                                        <constraint firstItem="KKX-xl-6Xc" firstAttribute="centerY" secondItem="N5Y-mh-Pcz" secondAttribute="centerY" id="ZKo-OF-Xtb"/>
+                                        <constraint firstItem="N5Y-mh-Pcz" firstAttribute="leading" secondItem="KKX-xl-6Xc" secondAttribute="trailing" constant="10" id="blZ-Yo-pqu"/>
                                         <constraint firstItem="N5Y-mh-Pcz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GPe-3n-zxQ" secondAttribute="trailing" constant="5" id="gof-Dx-UPk"/>
+                                        <constraint firstItem="KKX-xl-6Xc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yjM-B4-hxz" secondAttribute="trailing" constant="5" id="iXW-nm-DHB"/>
                                         <constraint firstItem="yjM-B4-hxz" firstAttribute="leading" secondItem="I1B-Wk-Oke" secondAttribute="leadingMargin" id="iio-VB-KAj"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="1ry-Bg-DOc" secondAttribute="bottom" id="nVY-af-5GF"/>
                                         <constraint firstItem="yjM-B4-hxz" firstAttribute="top" secondItem="I1B-Wk-Oke" secondAttribute="topMargin" id="ncb-sb-iVP"/>
@@ -839,6 +847,7 @@
                                     <outlet property="date" destination="GPe-3n-zxQ" id="Xen-nJ-aUL"/>
                                     <outlet property="elapsed" destination="N5Y-mh-Pcz" id="hoy-DJ-S3g"/>
                                     <outlet property="name" destination="yjM-B4-hxz" id="K68-56-BOe"/>
+                                    <outlet property="phaseIndicator" destination="KKX-xl-6Xc" id="6yh-GU-5dZ"/>
                                     <outlet property="profileInfo" destination="1ry-Bg-DOc" id="71T-Bq-fgC"/>
                                 </connections>
                             </tableViewCell>
