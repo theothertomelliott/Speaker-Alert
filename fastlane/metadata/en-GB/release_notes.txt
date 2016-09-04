@@ -1,9 +1,1 @@
-The settings screen has been totally rebuilt, but don't worry, all your settings are still here! Plus a few others.
-
-Need to see the time while practicing a speech? You can now choose not to hide the status bar.
-
-Running a contest and don't want to alert speakers when they're over time? You can now disable the additional flashing alert.
-
-You can also choose between the timer counting up as previously or counting down. Or don't show the time at all, entirely your choice!
-
-With all these new settings, we realize it can be tricky making sure you have the right ones for the current situation. To help, we've added preset configurations for meetings, contests and practicing that all-important speech.
+Speaker Alert now keeps a record of all the speeches you've timed. No more juggling your phone and a paper notepad during a meeting. After a speech, you can set a short description to help you remember who was speaking, and during your timer's report, just read down the history for the day.
