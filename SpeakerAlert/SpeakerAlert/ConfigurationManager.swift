@@ -10,8 +10,6 @@ import Foundation
 
 class ConfigurationManager: NSObject, AppConfiguration {
 
-    var parameterManager: ParameterManager?
-    
     private var defaults: NSUserDefaults
     private var presetModes: [ConfigurationMode]
     
@@ -24,7 +22,6 @@ class ConfigurationManager: NSObject, AppConfiguration {
         timeDisplayMode: TimeDisplay.CountUp,
         isVibrationEnabled: true,
         isAudioEnabled: false,
-        speechDisplay: "Default",
         isHideStatusEnabled: true,
         isAlertOvertimeEnabled: true
     )
@@ -59,7 +56,6 @@ class ConfigurationManager: NSObject, AppConfiguration {
         self.timeDisplayMode = preset.timeDisplayMode
         self.isVibrationEnabled = preset.isVibrationEnabled
         self.isAudioEnabled = preset.isAudioEnabled
-        self.speechDisplay = preset.speechDisplay
         self.isHideStatusEnabled = preset.isHideStatusEnabled
         self.isAlertOvertimeEnabled = preset.isAlertOvertimeEnabled
     }
@@ -71,7 +67,6 @@ class ConfigurationManager: NSObject, AppConfiguration {
                 timeDisplayMode: TimeDisplay.None,
                 isVibrationEnabled: false,
                 isAudioEnabled: false,
-                speechDisplay: "Default",
                 isHideStatusEnabled: true,
                 isAlertOvertimeEnabled: true
             ),
@@ -80,7 +75,6 @@ class ConfigurationManager: NSObject, AppConfiguration {
                 timeDisplayMode: TimeDisplay.None,
                 isVibrationEnabled: false,
                 isAudioEnabled: false,
-                speechDisplay: "Default",
                 isHideStatusEnabled: true,
                 isAlertOvertimeEnabled: false
             ),
@@ -178,23 +172,6 @@ class ConfigurationManager: NSObject, AppConfiguration {
         }
     }
     
-    private let speechDisplayKey = "speechDisplay"
-    var speechDisplay: String {
-        get {
-            if let display = parameterManager?.speechDisplay {
-                return display
-            }
-            if let output = defaults.stringForKey(speechDisplayKey) {
-                return output
-            }
-            // Default
-            return defaultConfiguration.speechDisplay
-        }
-        set {
-            defaults.setObject(newValue, forKey: speechDisplayKey)
-        }
-    }
-    
     private let hideStatusKey = "hideStatus"
     var isHideStatusEnabled: Bool {
         get {
@@ -221,4 +198,15 @@ class ConfigurationManager: NSObject, AppConfiguration {
         }
     }
 
+}
+
+extension NSUserDefaults {
+    
+    func clear() {
+        for key in (self.dictionaryRepresentation().keys) {
+            self.removeObjectForKey(key)
+        }
+        self.synchronize()
+    }
+    
 }

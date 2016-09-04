@@ -46,7 +46,7 @@ class PhaseProgressionUITests: SpeakerAlertUITests {
         startAppTestDisplay(450)
         openSpeech()
         startSpeech()
-        XCTAssert(app.staticTexts["Alert"].exists)
+        XCTAssert(app.staticTexts["Alert!"].exists)
     }
     
 }

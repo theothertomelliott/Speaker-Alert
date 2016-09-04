@@ -15,7 +15,6 @@ struct ConfigurationMode: ModeConfiguration {
     var timeDisplayMode: TimeDisplay
     var isVibrationEnabled: Bool = false
     var isAudioEnabled: Bool = false
-    var speechDisplay: String = "Default"
     var isHideStatusEnabled: Bool = false
     var isAlertOvertimeEnabled: Bool = false
     

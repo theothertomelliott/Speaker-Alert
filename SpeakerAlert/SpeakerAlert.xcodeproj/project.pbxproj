@@ -90,7 +90,6 @@
 		E2932DEB1D7066E700A749A4 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2932DEA1D7066E700A749A4 /* HistoryTableViewController.swift */; };
 		E29D3FC51CEDE45300FB347C /* ParameterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282703F1CEC98A10085DA0E /* ParameterManager.swift */; };
 		E29D3FC81CEDEA4E00FB347C /* TimeScreenshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D3FC71CEDEA4E00FB347C /* TimeScreenshotUITests.swift */; };
-		E2A10D6F1CF71DE700DD769C /* UITestSpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A10D6E1CF71DE700DD769C /* UITestSpeechViewController.swift */; };
 		E2A10D711CF725C300DD769C /* PhaseProgressionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A10D701CF725C300DD769C /* PhaseProgressionUITests.swift */; };
 		E2A377F71B78561A007FA8FE /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
 		E2A377F91B78561A007FA8FE /* SpeechState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2E7CB1B685AF3004BD7FD /* SpeechState.swift */; };
@@ -273,7 +272,6 @@
 		E2929A881B3CCD14007030D4 /* SpeakerAlert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeakerAlert-Bridging-Header.h"; sourceTree = "<group>"; };
 		E2932DEA1D7066E700A749A4 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		E29D3FC71CEDEA4E00FB347C /* TimeScreenshotUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeScreenshotUITests.swift; sourceTree = "<group>"; };
-		E2A10D6E1CF71DE700DD769C /* UITestSpeechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestSpeechViewController.swift; sourceTree = "<group>"; };
 		E2A10D701CF725C300DD769C /* PhaseProgressionUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhaseProgressionUITests.swift; sourceTree = "<group>"; };
 		E2AB35951B82DC97001F8362 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		E2B2CCD01B8755800038C067 /* DataSeeder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSeeder.swift; sourceTree = "<group>"; };
@@ -612,7 +610,6 @@
 			children = (
 				E2D273CD1B516EF500155349 /* SpeechViewController.swift */,
 				E26D5B9F1CF47B1B00E27B9D /* DefaultSpeechViewController.swift */,
-				E2A10D6E1CF71DE700DD769C /* UITestSpeechViewController.swift */,
 			);
 			name = SpeechViewControllers;
 			sourceTree = "<group>";
@@ -1188,7 +1185,6 @@
 				E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */,
 				E2159F251B6D9F330075E77E /* WatchCommsManager.swift in Sources */,
 				E26D5B9B1CF4797C00E27B9D /* ReplacementSegue.swift in Sources */,
-				E2A10D6F1CF71DE700DD769C /* UITestSpeechViewController.swift in Sources */,
 				E284FC211BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift in Sources */,
 				E28AA3591B2CB74C000F5A15 /* SpeechTimer.swift in Sources */,
 				E2F2C2B21D597D0100A23437 /* BoolCell.swift in Sources */,

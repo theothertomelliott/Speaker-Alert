@@ -40,7 +40,6 @@ func StringToTimeDisplay(input: String) -> TimeDisplay {
 
 protocol SpeechConfiguration {
     var timeDisplayMode: TimeDisplay { get }
-    var speechDisplay: String { get }
     var isHideStatusEnabled: Bool { get }
     var isAlertOvertimeEnabled: Bool { get }
 }
@@ -59,7 +58,6 @@ protocol AudioConfiguration {
 
 func ==<T: SpeechConfiguration>(lhs: SpeechConfiguration, rhs: T) -> Bool {
     return  lhs.timeDisplayMode == rhs.timeDisplayMode &&
-        lhs.speechDisplay == rhs.speechDisplay &&
         lhs.isHideStatusEnabled == rhs.isHideStatusEnabled &&
         lhs.isAlertOvertimeEnabled == rhs.isAlertOvertimeEnabled
 }

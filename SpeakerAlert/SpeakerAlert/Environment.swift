@@ -23,8 +23,10 @@ public class Environment {
     
     init() {
         parameterManager = ParameterManager()
-        configurationManager = ConfigurationManager(defaults: NSUserDefaults.standardUserDefaults())
-        dataSeeder = DataSeeder()
+        
+        let defaults = Environment.createDefaults(parameterManager)
+        configurationManager = ConfigurationManager(defaults: defaults)
+        dataSeeder = DataSeeder(defaults: defaults)
         speechManager = SpeechManager(parameterManager: parameterManager)
         localNotificationManager = LocalNotificationManager(
             configManager: configurationManager,
@@ -49,6 +51,18 @@ public class Environment {
             configManager: configurationManager,
             speechManager: speechManager
         )
+    }
+    
+    static func createDefaults(
+        parameterManager: ParameterManager
+        ) -> NSUserDefaults {
+        if parameterManager.isUITesting {
+            if let defaults = NSUserDefaults(suiteName: "speakerAlertUITests") {
+                defaults.clear()
+                return defaults
+            }
+        }
+        return NSUserDefaults.standardUserDefaults()
     }
     
 }

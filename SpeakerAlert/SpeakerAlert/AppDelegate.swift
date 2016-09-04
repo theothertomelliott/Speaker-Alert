@@ -32,9 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if parameterManager.isUITesting {
             NSLog("UI Testing!")
             MagicalRecord.setupCoreDataStackWithInMemoryStore()
-
-            let appDomain = NSBundle.mainBundle().bundleIdentifier!
-            NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
         } else {
             // Configure core data
             MagicalRecord.setupAutoMigratingCoreDataStack()

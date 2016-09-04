@@ -16,21 +16,14 @@ class ConfigurationManagerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         defaults = NSUserDefaults(suiteName: suite)
-        clearDefaults()
+        defaults?.clear()
     }
     
     override func tearDown() {
         super.tearDown()
-        clearDefaults()
+        defaults?.clear()
     }
     
-    func clearDefaults() {
-        for key in (defaults?.dictionaryRepresentation().keys)! {
-            defaults?.removeObjectForKey(key)
-        }
-        defaults?.synchronize()
-    }
-
     func testItAppliesDefaultPreset() {
         guard let _ = defaults else {
             XCTFail("Defaults not set up")

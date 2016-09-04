@@ -82,8 +82,7 @@ class SpeakerAlertUITests: XCTestCase {
         app = XCUIApplication()
         app.launchArguments = [
             "--uitesting",
-            "--starttime", String(startTime),
-            "--speechdisplay", "Test"
+            "--starttime", String(startTime)
         ]
         setupSnapshot(app)
         app.launch()

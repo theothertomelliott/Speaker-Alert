@@ -14,6 +14,13 @@ class DataSeeder: NSObject {
     private let seedVersion = 1
     private let seedVersionKey = "seedVersion"
 
+    let defaults: NSUserDefaults
+    
+    init(defaults: NSUserDefaults){
+        self.defaults = defaults
+        super.init()
+    }
+    
     private func doSeeding() {
         NSLog("Seeding data")
 
@@ -144,9 +151,6 @@ Profile.MR_createEntityInContext(localContext)
     }
 
     func seedAsRequired() {
-
-
-        let defaults = NSUserDefaults.standardUserDefaults()
 
         var shouldSeed: Bool = true
 

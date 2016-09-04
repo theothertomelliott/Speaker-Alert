@@ -251,7 +251,7 @@ class GroupTableViewController: UITableViewController,
         
         if rowIsProfile(indexPath.row) || rowIsDemo(indexPath.row) {
             self.performSegueWithIdentifier(
-                "speech" + configMan.speechDisplay,
+                "speechDefault",
                 sender: tableView.cellForRowAtIndexPath(indexPath))
         }
     }
