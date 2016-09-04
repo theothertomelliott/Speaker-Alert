@@ -86,6 +86,11 @@ platform :ios do
     copy_screenshots_website()
   end
 
+  desc "Increment build number"
+  lane :bump_build do
+    bump_build(project_file)
+  end
+
   desc "Increment patch version number"
   lane :bump_patch do
     bump_version(project_file, "patch")

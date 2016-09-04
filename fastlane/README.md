@@ -21,6 +21,11 @@ fastlane ios getmatch
 fastlane ios update_website
 ```
 Update website
+### ios bump_build
+```
+fastlane ios bump_build
+```
+Increment build number
 ### ios bump_patch
 ```
 fastlane ios bump_patch
