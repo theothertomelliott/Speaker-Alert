@@ -32,11 +32,20 @@ class ProfileEditUITests: SpeakerAlertUITests {
 
         snapshot("001 Profile list", waitForLoadingIndicator: false)
     }
+    
+    
+    func openAddProfile() {
+        app.navigationBars["Profiles"].buttons["Add"].tap()
+        if app.alerts["Add"].collectionViews.buttons["New Speech Profile"].exists {
+            app.alerts["Add"].collectionViews.buttons["New Speech Profile"].tap()
+        } else if app.alerts["Add"].buttons["New Speech Profile"].exists {
+            app.alerts["Add"].buttons["New Speech Profile"].tap()
+        }
+    }
 
     func testCreateProfile() {
-        app.navigationBars["Profiles"].buttons["Add"].tap()
-        app.alerts["Add"].collectionViews.buttons["New Speech Profile"].tap()
-
+        openAddProfile()
+        
         app.tables.textFields["Profile Name"].tap()
         app.tables.textFields["Profile Name"].typeText("Test")
         app.toolbars.buttons["Done"].tap()
@@ -67,8 +76,7 @@ class ProfileEditUITests: SpeakerAlertUITests {
     }
 
     func testOutOfOrderTimings() {
-        app.navigationBars["Profiles"].buttons["Add"].tap()
-        app.alerts["Add"].collectionViews.buttons["New Speech Profile"].tap()
+        openAddProfile()
 
         app.tables.textFields["Profile Name"].tap()
         app.tables.textFields["Profile Name"].typeText("Test")
