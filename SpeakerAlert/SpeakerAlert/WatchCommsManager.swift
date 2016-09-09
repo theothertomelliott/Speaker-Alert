@@ -130,4 +130,18 @@ class WatchCommsManager: NSObject, WCSessionDelegate, WatchComms {
         }
     }
 
+    @available(iOS 9.3, *)
+    func session(
+        session: WCSession,
+        activationDidCompleteWithState activationState: WCSessionActivationState,
+                                       error: NSError?
+        ) {}
+    
+    @available(iOS 9.3, *)
+    func sessionDidBecomeInactive(session: WCSession) {}
+    
+    
+    @available(iOS 9.3, *)
+    func sessionDidDeactivate(session: WCSession) {}
+    
 }

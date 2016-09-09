@@ -211,5 +211,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             NSLog("Error received")
         })
     }
-
+    
+    @available(watchOSApplicationExtension 2.2, *)
+    func session(
+        session: WCSession,
+        activationDidCompleteWithState activationState: WCSessionActivationState,
+                                       error: NSError?
+        ) {}
+    
+    
 }

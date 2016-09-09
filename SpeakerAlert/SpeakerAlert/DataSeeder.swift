@@ -16,7 +16,7 @@ class DataSeeder: NSObject {
 
     let defaults: NSUserDefaults
     
-    init(defaults: NSUserDefaults){
+    init(defaults: NSUserDefaults) {
         self.defaults = defaults
         super.init()
     }
