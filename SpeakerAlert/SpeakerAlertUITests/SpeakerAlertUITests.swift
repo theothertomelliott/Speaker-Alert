@@ -25,7 +25,11 @@ class SpeakerAlertUITests: XCTestCase {
 
     func startApp(landscape: Bool, startTime: Int) {
         addUIInterruptionMonitorWithDescription("Local Notifications") { (alert) -> Bool in
-            alert.buttons["OK"].tap()
+            if alert.buttons["OK"].exists {
+                alert.buttons["OK"].tap()
+            } else if alert.buttons["Allow"].exists {
+                alert.buttons["Allow"].tap()
+            }
             return true
         }
         

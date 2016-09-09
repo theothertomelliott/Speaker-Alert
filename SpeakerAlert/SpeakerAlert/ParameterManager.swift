@@ -17,6 +17,8 @@ class ParameterManager: NSObject {
     var isUITesting: Bool = false
     // Starting time for speeches - for testing purposes
     var starttime: Int = 0
+    // Should accessibility mode be forced?
+    var forceAccessibility: Bool = false
     
     var speechDisplay: String?
     
@@ -33,6 +35,7 @@ class ParameterManager: NSObject {
         }
         parser.addOptionWithLongName("uitesting") { () in
             self.isUITesting = true
+            self.forceAccessibility = true
         }
         parser.addOptionWithArgumentWithLongName("starttime") { (value: String!) in
             if let st = Int(value) {

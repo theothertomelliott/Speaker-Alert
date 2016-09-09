@@ -90,3 +90,10 @@ extension AudioAlertManagerDependency {
         return Environment.Default.audioAlertManager
     }
 }
+
+protocol ParameterManagerDependency {}
+extension ParameterManagerDependency {
+    static func _parameterManager() -> ParameterManager {
+        return Environment.Default.parameterManager
+    }
+}

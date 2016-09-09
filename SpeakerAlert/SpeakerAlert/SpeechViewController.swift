@@ -12,10 +12,12 @@ import Colours
 class SpeechViewController: UIViewController,
                             SpeechManagerDelegate,
                             SpeechManagerDependency,
-                            ConfigurationManagerDependency {
+                            ConfigurationManagerDependency,
+                            ParameterManagerDependency {
 
     var speechMan: SpeechManager
     var configMan: ConfigurationManager
+    var paramMan: ParameterManager
 
     var demoMode: Bool = false
     var demoState: DemoSpeechState?
@@ -26,18 +28,25 @@ class SpeechViewController: UIViewController,
     required init?(coder aDecoder: NSCoder) {
         speechMan = SpeechViewController._speechManager()
         configMan = SpeechViewController._configurationManager()
+        paramMan = SpeechViewController._parameterManager()
         super.init(coder: aDecoder)
     }
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         speechMan = SpeechViewController._speechManager()
         configMan = SpeechViewController._configurationManager()
+        paramMan = SpeechViewController._parameterManager()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
     // Initializer for testing, using initializer injection
-    init(speechManager: SpeechManager, configurationManager: ConfigurationManager) {
+    init(
+        speechManager: SpeechManager,
+        configurationManager: ConfigurationManager,
+        parameterManager: ParameterManager
+        ) {
         self.speechMan = speechManager
         self.configMan = configurationManager
+        self.paramMan = parameterManager
         super.init(nibName: nil, bundle: nil)
     }
     
