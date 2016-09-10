@@ -23,6 +23,14 @@
 		E20B85801B66661300D55578 /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20B857F1B66661300D55578 /* SpeechManager.swift */; };
 		E2159F221B6D9D8B0075E77E /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */; };
 		E2159F251B6D9F330075E77E /* WatchCommsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2159F241B6D9F330075E77E /* WatchCommsManager.swift */; };
+		E216B5581D84622600080AA3 /* ProfileEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E216B5571D84622600080AA3 /* ProfileEditorTests.swift */; };
+		E216B5591D8463DC00080AA3 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC1B1BA3E89000ABFA68 /* ProfileTableViewController.swift */; };
+		E216B55A1D8463DF00080AA3 /* ProfileNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC1E1BA3EA8000ABFA68 /* ProfileNameTableViewCell.swift */; };
+		E216B55B1D8463E200080AA3 /* ProfileTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E284FC201BA3EBF600ABFA68 /* ProfileTimeTableViewCell.swift */; };
+		E216B55C1D8463E500080AA3 /* ProfileTimeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2308A891C34BE6C00B18551 /* ProfileTimeSelectorViewController.swift */; };
+		E216B55D1D84654E00080AA3 /* ProfileTimeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2784A661B9C97180046BF0D /* ProfileTimeRenderer.swift */; };
+		E216B55E1D84655900080AA3 /* TabBarAnimationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2065BB71CE4231500EB192C /* TabBarAnimationExtension.swift */; };
+		E216B55F1D84656000080AA3 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
 		E21ADBE01BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21ADBDF1BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift */; };
 		E21ADBE21BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */; };
 		E21B306C1B9B54BA00B89D9F /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */; };
@@ -204,6 +212,7 @@
 		E20B857F1B66661300D55578 /* SpeechManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
 		E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
 		E2159F241B6D9F330075E77E /* WatchCommsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchCommsManager.swift; sourceTree = "<group>"; };
+		E216B5571D84622600080AA3 /* ProfileEditorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditorTests.swift; sourceTree = "<group>"; };
 		E21ADBDF1BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechCompleteInterfaceController.swift; sourceTree = "<group>"; };
 		E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechCompleteViewController.swift; sourceTree = "<group>"; };
 		E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
@@ -496,6 +505,7 @@
 				E23480FF1B2906EB0076247D /* Info.plist */,
 				E20A8E951B816E6400ECC443 /* SpeechStateTests.swift */,
 				E246CE1E1D56AEF60037367A /* ConfigurationManagerTests.swift */,
+				E216B5571D84622600080AA3 /* ProfileEditorTests.swift */,
 			);
 			path = SpeakerAlertTests;
 			sourceTree = "<group>";
@@ -1221,20 +1231,28 @@
 			files = (
 				E24408A41B4834F400EB056C /* Group+CoreDataProperties.swift in Sources */,
 				E20A8E961B816E6400ECC443 /* SpeechStateTests.swift in Sources */,
+				E216B55C1D8463E500080AA3 /* ProfileTimeSelectorViewController.swift in Sources */,
 				E2B677EB1D7B174C002F78CD /* Speech+CoreDataProperties.swift in Sources */,
 				E2929A8B1B3CCE74007030D4 /* SpeechTimer.swift in Sources */,
 				E2929A8A1B3CCE71007030D4 /* Profile+CoreDataProperties.swift in Sources */,
 				E20A8E9B1B81825300ECC443 /* SpeechProfile.swift in Sources */,
+				E216B55A1D8463DF00080AA3 /* ProfileNameTableViewCell.swift in Sources */,
 				E246CE221D56C0300037367A /* ConfigurationMode.swift in Sources */,
+				E216B55B1D8463E200080AA3 /* ProfileTimeTableViewCell.swift in Sources */,
 				E24408A31B4834F200EB056C /* Group.swift in Sources */,
 				E20A8E9D1B8183B500ECC443 /* SpeechProfileFactory.swift in Sources */,
 				E2A377FB1B7856F0007FA8FE /* SpeechState.swift in Sources */,
+				E216B5591D8463DC00080AA3 /* ProfileTableViewController.swift in Sources */,
 				E246CE201D56C0190037367A /* ConfigurationManager.swift in Sources */,
 				E29D3FC51CEDE45300FB347C /* ParameterManager.swift in Sources */,
+				E216B55F1D84656000080AA3 /* TimeUtils.swift in Sources */,
 				E246CE211D56C0300037367A /* ConfigurationProtocol.swift in Sources */,
 				E2929A891B3CCE6E007030D4 /* Profile.swift in Sources */,
+				E216B55E1D84655900080AA3 /* TabBarAnimationExtension.swift in Sources */,
+				E216B55D1D84654E00080AA3 /* ProfileTimeRenderer.swift in Sources */,
 				E246CE1F1D56AEF60037367A /* ConfigurationManagerTests.swift in Sources */,
 				E2A377FA1B7856EE007FA8FE /* SpeechManager.swift in Sources */,
+				E216B5581D84622600080AA3 /* ProfileEditorTests.swift in Sources */,
 				E2B677EA1D7B1695002F78CD /* Speech.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

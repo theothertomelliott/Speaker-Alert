@@ -49,19 +49,19 @@ class ProfileEditUITests: SpeakerAlertUITests {
         app.tables.textFields["Profile Name"].tap()
         app.tables.textFields["Profile Name"].typeText("Test")
         app.toolbars.buttons["Done"].tap()
-        app.tables.cells["Green"].staticTexts["0:00"].tap()
+        app.tables.cells["Green"].tap()
         app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("1")
         app.buttons["Save"].tap()
 
-        app.tables.cells["Yellow"].staticTexts["0:00"].tap()
+        app.tables.cells["Yellow"].tap()
         app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("2")
         app.buttons["Save"].tap()
 
-        app.tables.cells["Red"].staticTexts["0:00"].tap()
+        app.tables.cells["Red"].tap()
         app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("3")
         app.buttons["Save"].tap()
 
-        app.tables.cells["Over Maximum"].staticTexts["0:00"].tap()
+        app.tables.cells["Over Maximum"].tap()
         app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("4")
         app.buttons["Save"].tap()
 
@@ -82,34 +82,13 @@ class ProfileEditUITests: SpeakerAlertUITests {
         app.tables.textFields["Profile Name"].typeText("Test")
         app.toolbars.buttons["Done"].tap()
         
-        app.tables.cells["Green"].staticTexts["0:00"].tap()
+        app.tables.cells["Green"].tap()
         app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("4")
         app.buttons["Save"].tap()
 
-        app.tables.cells["Yellow"].staticTexts["0:00"].tap()
-        app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("1")
         app.buttons["Save"].tap()
 
-        app.tables.cells["Red"].staticTexts["0:00"].tap()
-        app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("2")
-        app.buttons["Save"].tap()
-
-        app.tables.cells["Over Maximum"].staticTexts["0:00"].tap()
-        app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("3")
-        app.buttons["Save"].tap()
-
-        app.buttons["Save"].tap()
-
-        // Verify the new profile was created
-        waitForElement(app.staticTexts["Test"])
-
-        app.navigationBars["Profiles"].buttons["Edit"].tap()
-        app.tables.buttons["Delete Test, ● 4 ● 1 ● 2 ▾ 3"].tap()
-        app.tables.buttons["Edit"].tap()
-        app.buttons["Back"].tap()
-        app.navigationBars["Profiles"].buttons["Done"].tap()
-        
-        app.tables.staticTexts["Test"].tap()
-        app.buttons["Play"].tap()
+        // Expect an error
+        waitForElement(app.alerts["Out of order"])
     }
 }

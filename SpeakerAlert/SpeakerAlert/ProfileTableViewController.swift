@@ -127,18 +127,42 @@ class ProfileTableViewController: UITableViewController {
 	@IBAction func nameLabelFinishedEditing(sender: UITextView) {
 		self.name = sender.text
 	}
+    
+    func phasesInOrder() -> Bool {
+        if self.phaseTimes[SpeechPhase.GREEN] > self.phaseTimes[SpeechPhase.YELLOW] {
+            return false
+        }
+        if self.phaseTimes[SpeechPhase.YELLOW] > self.phaseTimes[SpeechPhase.RED] {
+            return false
+        }
+        if self.phaseTimes[SpeechPhase.RED] > self.phaseTimes[SpeechPhase.OVER_MAXIMUM] {
+            return false
+        }
+        return true
+    }
+    
+    func saveError(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message:
+            message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(
+            UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+        )
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+
+    }
 
 	@IBAction func save() {
 		if self.name == "" {
-			let alertController = UIAlertController(title: "Name required", message:
-					"Please enter a name for your Speech Profile", preferredStyle: UIAlertControllerStyle.Alert)
-			alertController.addAction(
-                UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
-            )
-
-			self.presentViewController(alertController, animated: true, completion: nil)
+			saveError("Name required", message:
+					"Please enter a name for your Speech Profile")
 			return
 		}
+        if !phasesInOrder() {
+            saveError("Out of order",
+                message: "For best effect, alert timings must be in ascending order, or equal.")
+            return
+        }
 
 		MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) in
 			// This block runs in background thread

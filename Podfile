@@ -18,6 +18,7 @@ target 'SpeakerAlertTests' do
 	pod "MagicalRecord", '2.3.0'
 	pod 'JVArgumentParser', '0.2.0'
 	pod 'pyze-sdk-iOS', '2.5.1'
+	pod 'Colours', '5.13.0'
 end
 
 target 'SpeakerAlertUITests' do
