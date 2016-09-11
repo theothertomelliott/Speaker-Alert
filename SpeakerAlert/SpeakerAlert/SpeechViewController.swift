@@ -139,7 +139,7 @@ class SpeechViewController: UIViewController,
     }
 
     func setRunningMode(isRunning: Bool) {
-        self.setNavSatusVisible(!isRunning, animated: true)
+        self.setNavSatusVisible(false, animated: true)
         self.updateDisplay()
 
         // Prevent the screen dimming or locking when idle
