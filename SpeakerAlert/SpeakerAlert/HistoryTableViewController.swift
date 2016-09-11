@@ -117,20 +117,19 @@ class HistoryTableViewController: UITableViewController {
     func setPhaseIndicator(speech: Speech, cell: HistoryItemCell) {
         if let d = speech.duration, let p = speech.profile {
             // Set the background for the cell as appropriate
+            cell.phaseIndicator?.textColor = UIColor.blackColor()
+            cell.phaseIndicator?.text = "●"
             if  let c = p.green
                 where d.intValue >= c.intValue {
                 cell.phaseIndicator?.textColor = UIColor.successColor()
-                cell.phaseIndicator?.text = "●"
             }
             if  let c = p.yellow
                 where d.intValue >= c.intValue {
                 cell.phaseIndicator?.textColor = UIColor.warningColor()
-                cell.phaseIndicator?.text = "●"
             }
             if  let c = p.red
                 where d.intValue >= c.intValue {
                 cell.phaseIndicator?.textColor = UIColor.dangerColor()
-                cell.phaseIndicator?.text = "●"
             }
             if  let c = p.redBlink
                 where d.intValue >= c.intValue {
