@@ -16,6 +16,8 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
     }
     
     func testBeforeStarting() {
+        XCTFail("Need to hide the accessibility text for screenshots")
+        
         startApp(false, startTime: 0)
         openSpeech()
         snapshot("005 - Before starting", waitForLoadingIndicator: false)
