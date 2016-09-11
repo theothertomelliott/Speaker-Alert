@@ -43,7 +43,10 @@ class SpeechCompleteViewController: UITableViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.popViewControllerAnimated(true)
+        super.viewWillDisappear(animated)
+        if let nc = self.navigationController where nc.viewControllers.contains(self) {
+            nc.popViewControllerAnimated(true)
+        }
     }
 
 }
