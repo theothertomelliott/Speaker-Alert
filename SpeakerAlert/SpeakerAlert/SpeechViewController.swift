@@ -13,11 +13,12 @@ class SpeechViewController: UIViewController,
                             SpeechManagerDelegate,
                             SpeechManagerDependency,
                             ConfigurationManagerDependency,
-                            ParameterManagerDependency {
+                            ParameterManagerDependency,
+                            AccessibilityTrackerDependency {
 
     var speechMan: SpeechManager
     var configMan: ConfigurationManager
-    var paramMan: ParameterManager
+    var accessibilityTracker: AccessibilityTracker
 
     var demoMode: Bool = false
     var demoState: DemoSpeechState?
@@ -28,13 +29,13 @@ class SpeechViewController: UIViewController,
     required init?(coder aDecoder: NSCoder) {
         speechMan = SpeechViewController._speechManager()
         configMan = SpeechViewController._configurationManager()
-        paramMan = SpeechViewController._parameterManager()
+        accessibilityTracker = SpeechViewController._accessibilityTracker()
         super.init(coder: aDecoder)
     }
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         speechMan = SpeechViewController._speechManager()
         configMan = SpeechViewController._configurationManager()
-        paramMan = SpeechViewController._parameterManager()
+        accessibilityTracker = SpeechViewController._accessibilityTracker()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -42,11 +43,11 @@ class SpeechViewController: UIViewController,
     init(
         speechManager: SpeechManager,
         configurationManager: ConfigurationManager,
-        parameterManager: ParameterManager
+        accessibilityTracker: AccessibilityTracker
         ) {
         self.speechMan = speechManager
         self.configMan = configurationManager
-        self.paramMan = parameterManager
+        self.accessibilityTracker = accessibilityTracker
         super.init(nibName: nil, bundle: nil)
     }
     

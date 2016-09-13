@@ -15,35 +15,35 @@ class PhaseProgressionUITests: SpeakerAlertUITests {
     }
             
     func testTimerBefore() {
-        startAppTestDisplay(0)
+        startApp(0)
         openSpeech()
         startSpeech()
         XCTAssert(app.staticTexts["Below minimum"].exists)
     }
     
     func testTimerGreen() {
-        startAppTestDisplay(300)
+        startApp(300)
         openSpeech()
         startSpeech()
         XCTAssert(app.staticTexts["Green"].exists)
     }
     
     func testTimerYellow() {
-        startAppTestDisplay(360)
+        startApp(360)
         openSpeech()
         startSpeech()
         XCTAssert(app.staticTexts["Yellow"].exists)
     }
     
     func testTimerRed() {
-        startAppTestDisplay(420)
+        startApp(420)
         openSpeech()
         startSpeech()
         XCTAssert(app.staticTexts["Red"].exists)
     }
     
     func testTimerAlert() {
-        startAppTestDisplay(450)
+        startApp(450)
         openSpeech()
         startSpeech()
         XCTAssert(app.staticTexts["Alert!"].exists)

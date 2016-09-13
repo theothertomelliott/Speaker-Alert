@@ -12,7 +12,7 @@ class HistoryUITests: SpeakerAlertUITests {
     
     func testSaveSpeech() {
         
-        startAppTestDisplay(3)
+        startApp(3)
         openSpeech()
         startSpeech()
         stopSpeech()

@@ -20,10 +20,10 @@ class SpeakerAlertUITests: XCTestCase {
     
 	override func setUp() {
 		super.setUp()
-        startApp(isLandscape(), startTime: startTimeOffset())
+        startApp(startTimeOffset(), landscape: isLandscape())
 	}
 
-    func startApp(landscape: Bool, startTime: Int) {
+    func startApp(startTime: Int, landscape: Bool = false, accessibility: Bool = true) {
         addUIInterruptionMonitorWithDescription("Local Notifications") { (alert) -> Bool in
             if alert.buttons["OK"].exists {
                 alert.buttons["OK"].tap()
@@ -39,6 +39,9 @@ class SpeakerAlertUITests: XCTestCase {
         // Doing this in setup will make sure it happens for each test method.
         app = XCUIApplication()
         app.launchArguments = ["--uitesting", "--starttime", String(startTime)]
+        if accessibility {
+            app.launchArguments.append("--accessibility")
+        }
         setupSnapshot(app)
         app.launch()
         
@@ -72,29 +75,7 @@ class SpeakerAlertUITests: XCTestCase {
         waitForExpectationsWithTimeout(0.5, handler: nil)
         return element
     }
-    
-    func startAppTestDisplay(startTime: Int) {
-        addUIInterruptionMonitorWithDescription("Local Notifications") { (alert) -> Bool in
-            alert.buttons["OK"].tap()
-            return true
-        }
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-        // UI tests must launch the application that they test.
-        // Doing this in setup will make sure it happens for each test method.
-        app = XCUIApplication()
-        app.launchArguments = [
-            "--uitesting",
-            "--starttime", String(startTime)
-        ]
-        setupSnapshot(app)
-        app.launch()
-        
-        device = XCUIDevice.sharedDevice()
-        device.orientation = UIDeviceOrientation.Portrait
-    }
-    
+
     let speechGroup = "Toastmasters"
     let speechTitle = "Speech: Five to Seven Minutes"
     

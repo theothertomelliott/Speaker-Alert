@@ -13,6 +13,7 @@ public class Environment {
     static var Default: Environment = Environment()
     
     var parameterManager: ParameterManager
+    var accessibilityTracker: AccessibilityTracker
     var configurationManager: ConfigurationManager
     var dataSeeder: DataSeeder
     var speechManager: SpeechManager
@@ -23,6 +24,8 @@ public class Environment {
     
     init() {
         parameterManager = ParameterManager()
+        
+        accessibilityTracker = AccessibilityTracker(parameterManager: parameterManager)
         
         let defaults = Environment.createDefaults(parameterManager)
         configurationManager = ConfigurationManager(defaults: defaults)
@@ -65,6 +68,13 @@ public class Environment {
         return NSUserDefaults.standardUserDefaults()
     }
     
+}
+
+protocol AccessibilityTrackerDependency {}
+extension AccessibilityTrackerDependency {
+    static func _accessibilityTracker() -> AccessibilityTracker {
+        return Environment.Default.accessibilityTracker
+    }
 }
 
 protocol ConfigurationManagerDependency {}

@@ -55,7 +55,7 @@ class DefaultSpeechViewController: SpeechViewController {
                 ProfileTimeRenderer.timesAsAttributedString(profile)
         }
         
-        voiceOverEnabled = UIAccessibilityIsVoiceOverRunning() || paramMan.forceAccessibility
+        voiceOverEnabled = accessibilityTracker.accessibilityMode
         
         NSNotificationCenter.defaultCenter().addObserverForName(
         UIAccessibilityVoiceOverStatusChanged,

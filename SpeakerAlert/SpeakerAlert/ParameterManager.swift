@@ -35,6 +35,8 @@ class ParameterManager: NSObject {
         }
         parser.addOptionWithLongName("uitesting") { () in
             self.isUITesting = true
+        }
+        parser.addOptionWithLongName("accessibility") { () in
             self.forceAccessibility = true
         }
         parser.addOptionWithArgumentWithLongName("starttime") { (value: String!) in

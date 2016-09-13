@@ -31,6 +31,7 @@
 		E216B55D1D84654E00080AA3 /* ProfileTimeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2784A661B9C97180046BF0D /* ProfileTimeRenderer.swift */; };
 		E216B55E1D84655900080AA3 /* TabBarAnimationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2065BB71CE4231500EB192C /* TabBarAnimationExtension.swift */; };
 		E216B55F1D84656000080AA3 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD5E3A1B5BE03800EF0997 /* TimeUtils.swift */; };
+		E2199AC51D88232800D5DE68 /* AccessibilityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2199AC41D88232800D5DE68 /* AccessibilityTracker.swift */; };
 		E21ADBE01BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21ADBDF1BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift */; };
 		E21ADBE21BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */; };
 		E21B306C1B9B54BA00B89D9F /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */; };
@@ -214,6 +215,7 @@
 		E2159F211B6D9D8B0075E77E /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
 		E2159F241B6D9F330075E77E /* WatchCommsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchCommsManager.swift; sourceTree = "<group>"; };
 		E216B5571D84622600080AA3 /* ProfileEditorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditorTests.swift; sourceTree = "<group>"; };
+		E2199AC41D88232800D5DE68 /* AccessibilityTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessibilityTracker.swift; sourceTree = "<group>"; };
 		E21ADBDF1BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechCompleteInterfaceController.swift; sourceTree = "<group>"; };
 		E21ADBE11BA11AEE00DC9EA6 /* SpeechCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechCompleteViewController.swift; sourceTree = "<group>"; };
 		E21B306B1B9B54BA00B89D9F /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
@@ -382,6 +384,14 @@
 			name = Watch;
 			sourceTree = "<group>";
 		};
+		E2199AC31D88230600D5DE68 /* Accessibility */ = {
+			isa = PBXGroup;
+			children = (
+				E2199AC41D88232800D5DE68 /* AccessibilityTracker.swift */,
+			);
+			name = Accessibility;
+			sourceTree = "<group>";
+		};
 		E21B306A1B9B549E00B89D9F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,6 +492,7 @@
 		E23480E71B2906EA0076247D /* SpeakerAlert */ = {
 			isa = PBXGroup;
 			children = (
+				E2199AC31D88230600D5DE68 /* Accessibility */,
 				E255FB8E1D23F2FF00AA9F91 /* Sounds */,
 				E21B306A1B9B549E00B89D9F /* Settings */,
 				E22FD2681B93F1D70022F0B1 /* Styling */,
@@ -1191,6 +1202,7 @@
 				E27453BE1B9E8DE00058086C /* Speech+CoreDataProperties.swift in Sources */,
 				E2F6B5F21B378F2600210504 /* Profile.swift in Sources */,
 				E2C2E7CC1B685AF3004BD7FD /* SpeechState.swift in Sources */,
+				E2199AC51D88232800D5DE68 /* AccessibilityTracker.swift in Sources */,
 				E2CC76931D5634BE006E901A /* ConfigurationMode.swift in Sources */,
 				E21B306C1B9B54BA00B89D9F /* ConfigurationManager.swift in Sources */,
 				E20A8E9A1B817E7500ECC443 /* SpeechProfileFactory.swift in Sources */,

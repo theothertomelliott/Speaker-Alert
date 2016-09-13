@@ -16,9 +16,7 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
     }
     
     func testBeforeStarting() {
-        XCTFail("Need to hide the accessibility text for screenshots")
-        
-        startApp(false, startTime: 0)
+        startApp(0, landscape: false, accessibility: false)
         openSpeech()
         snapshot("005 - Before starting", waitForLoadingIndicator: false)
         device.orientation = UIDeviceOrientation.LandscapeLeft
@@ -27,7 +25,7 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
     }
     
     func testTimerGreen() {
-        startApp(false, startTime: 300)
+        startApp(300, landscape: false, accessibility: false)
         openSpeech()
         startSpeech()
         snapshot("002 - Timer green", waitForLoadingIndicator: false)
@@ -37,7 +35,7 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
     }
     
     func testTimerYellow() {
-        startApp(false, startTime: 360)
+        startApp(360, landscape: false, accessibility: false)
         openSpeech()
         startSpeech()
         snapshot("Timer yellow", waitForLoadingIndicator: false)
@@ -47,7 +45,7 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
     }
     
     func testTimerRed() {
-        startApp(false, startTime: 420)
+        startApp(420, landscape: false, accessibility: false)
         openSpeech()
         startSpeech()
         snapshot("Timer red", waitForLoadingIndicator: false)
@@ -57,7 +55,7 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
     }
     
     func testStopSpeech() {
-        startApp(false, startTime: 430)
+        startApp(430, landscape: false, accessibility: false)
         
         openSpeech()
         startSpeech()
