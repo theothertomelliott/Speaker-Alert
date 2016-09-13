@@ -12,7 +12,7 @@ class AccessibilityTracker: NSObject {
 
     var parameterManager: ParameterManager
     
-    init(parameterManager: ParameterManager){
+    init(parameterManager: ParameterManager) {
         self.parameterManager = parameterManager
         super.init()
     }

@@ -28,6 +28,7 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
         startApp(300, landscape: false, accessibility: false)
         openSpeech()
         startSpeech()
+        XCTAssert(!app.staticTexts["Green"].exists)
         snapshot("002 - Timer green", waitForLoadingIndicator: false)
         device.orientation = UIDeviceOrientation.LandscapeLeft
         snapshot("Timer green - Landscape", waitForLoadingIndicator: false)
@@ -38,6 +39,7 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
         startApp(360, landscape: false, accessibility: false)
         openSpeech()
         startSpeech()
+        XCTAssert(!app.staticTexts["Yellow"].exists)
         snapshot("Timer yellow", waitForLoadingIndicator: false)
         device.orientation = UIDeviceOrientation.LandscapeLeft
         snapshot("003 - Timer yellow - Landscape", waitForLoadingIndicator: false)
@@ -48,6 +50,7 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
         startApp(420, landscape: false, accessibility: false)
         openSpeech()
         startSpeech()
+        XCTAssert(!app.staticTexts["Red"].exists)
         snapshot("Timer red", waitForLoadingIndicator: false)
         device.orientation = UIDeviceOrientation.LandscapeLeft
         snapshot("Timer red - Landscape", waitForLoadingIndicator: false)
