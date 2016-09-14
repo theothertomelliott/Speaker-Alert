@@ -35,15 +35,6 @@ class AccessibilityTracker: NSObject {
                     observer.accessibilityUpdated()
                 }
         }
-        
-        NSNotificationCenter.defaultCenter().addObserverForName(
-            UIAccessibilitySpeakScreenStatusDidChangeNotification,
-            object: nil,
-            queue: nil) { (notification: NSNotification) in
-                for observer in self.observers {
-                    observer.accessibilityUpdated()
-                }
-        }
     }
 
     // Should enable accessibility settings
@@ -52,7 +43,6 @@ class AccessibilityTracker: NSObject {
             return
                 UIAccessibilityIsGrayscaleEnabled() ||
                 UIAccessibilityIsVoiceOverRunning() ||
-                UIAccessibilityIsSpeakScreenEnabled() ||
                 parameterManager.forceAccessibility
         }
     }
