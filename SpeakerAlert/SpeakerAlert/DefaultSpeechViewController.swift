@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DefaultSpeechViewController: SpeechViewController {
+class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
 
     @IBOutlet weak var profileSummaryLabel: UILabel!
     
@@ -29,8 +29,6 @@ class DefaultSpeechViewController: SpeechViewController {
     let blinkCycle = 10
     // Position in blink cycle
     var blinkCycleIndex = 0
-    
-    var voiceOverEnabled: Bool = false
     
     @IBAction func tapped(sender: AnyObject) {
         // If a speech is in progress, pause and display the controls
@@ -55,15 +53,21 @@ class DefaultSpeechViewController: SpeechViewController {
                 ProfileTimeRenderer.timesAsAttributedString(profile)
         }
         
-        voiceOverEnabled = accessibilityTracker.accessibilityMode
-        
-        NSNotificationCenter.defaultCenter().addObserverForName(
-        UIAccessibilityVoiceOverStatusChanged,
-        object: nil,
-        queue: nil) { (notification: NSNotification) in
-            self.voiceOverEnabled = UIAccessibilityIsVoiceOverRunning()
-            self.updateDisplay()
-        }
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        accessibilityTracker.addAccessibilityObserver(self)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        accessibilityTracker.removeAccessibilityObserver(self)
+    }
+    
+    
+    func accessibilityUpdated() {
+        self.updateDisplay()
     }
     
     override func setShowTime(isVisible: Bool) {
@@ -140,7 +144,7 @@ class DefaultSpeechViewController: SpeechViewController {
     }
     
     func shouldHideControls() -> Bool {
-        if voiceOverEnabled {
+        if accessibilityTracker.accessibilityMode {
             return false
         }
         
@@ -167,7 +171,7 @@ class DefaultSpeechViewController: SpeechViewController {
                 self.playButton.setIconAndAccessibility("Pause")
                     self.stopButton.enabled = true
                 }
-                self.pausedLabel?.hidden = !voiceOverEnabled
+                self.pausedLabel?.hidden = !accessibilityTracker.accessibilityMode
             case .STOPPED:
                 self.playButton.setIconAndAccessibility("Play")
                 self.stopButton.enabled = false
