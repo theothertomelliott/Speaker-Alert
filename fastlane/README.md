@@ -58,6 +58,11 @@ fastlane ios beta
 Submit a new Beta Build to Apple TestFlight
 
 This will also make sure the profile is up to date
+### ios deployfast
+```
+fastlane ios deployfast
+```
+Deploy a new version to the App Store without screenshots
 ### ios deploy
 ```
 fastlane ios deploy
