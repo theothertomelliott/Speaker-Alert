@@ -1,4 +1,4 @@
-Speaker Alert is a speech timing application for all occasions: work presentations, club meetings, stand up comedy spots or even that all important wedding speech.
+Speaker Alert is a speech timing application inspired by Toastmasters and designed for all occasions: work presentations, club meetings, stand up comedy spots or even that all important wedding speech.
 
 You get alerts at 4 times during your speech. Green for your minimum time, Amber for when you're approaching the end, Red for when you need to be finishing up and a flashing alert if you really should be off stage.
 
