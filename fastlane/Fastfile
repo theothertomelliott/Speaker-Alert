@@ -135,7 +135,7 @@ platform :ios do
   end
 
   desc "Deploy a new version to the App Store without screenshots"
-  lane :deploy do
+  lane :deployfast do
     sigh
     gym(scheme: "SpeakerAlert") # Build your app - more options available
     deliver(force: true)
