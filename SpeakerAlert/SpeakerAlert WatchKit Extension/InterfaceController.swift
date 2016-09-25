@@ -188,8 +188,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
     }
 
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
-
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        replyHandler([:])
         NSLog("Message = \(message)")
 
         if let messageName: String = message["messageName"] as? String,
