@@ -106,9 +106,8 @@ class WatchCommsManager: NSObject, WCSessionDelegate, WatchComms {
     }
 
     // WSSessionDelegate
-
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
-
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        replyHandler([:])
         if let sm: SpeechManager = speechMan,
             let messageName: String = message["messageName"] as? String {
             if messageName == "startStop" {

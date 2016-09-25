@@ -208,7 +208,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             replyHandler: { (reply: [String : AnyObject]) -> Void in
             NSLog("Reply received")
             }, errorHandler: { (error: NSError) -> Void in
-            NSLog("Error received")
+            NSLog("Error received: \(error.description)")
         })
     }
     
