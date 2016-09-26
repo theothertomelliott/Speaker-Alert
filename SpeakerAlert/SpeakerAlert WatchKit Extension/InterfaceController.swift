@@ -78,6 +78,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         if self.tickTimer.valid {
             self.tickTimer.invalidate()
         }
+        
+        watchSession = nil
 
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
