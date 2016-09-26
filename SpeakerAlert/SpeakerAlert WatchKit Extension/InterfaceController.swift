@@ -17,21 +17,23 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     var tickTimer: NSTimer = NSTimer()
     var speechState: SpeechState?
     var vibration: NSNumber = 0
-
-    @IBOutlet var speechNameLabel: WKInterfaceLabel!
-
-    @IBOutlet var mainGroup: WKInterfaceGroup!
-    @IBOutlet var timeElapsedLabel: WKInterfaceLabel!
-    @IBOutlet var startStopButton: WKInterfaceButton!
-
+    
     var phaseColor: UIColor = UIColor.whiteColor()
-
+    
     var blinkState: Bool = false
     var blinkOn: Bool = false
     // Number of ticks before changing colour in blink
     let blinkCycle = 1/0.2
     // Position in blink cycle
     var blinkCycleIndex = 0
+    
+    var stopping: Bool = false
+
+    @IBOutlet var speechNameLabel: WKInterfaceLabel!
+
+    @IBOutlet var mainGroup: WKInterfaceGroup!
+    @IBOutlet var timeElapsedLabel: WKInterfaceLabel!
+    @IBOutlet var startStopButton: WKInterfaceButton!
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -41,6 +43,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         self.startStopButton.setTitle("Start")
         self.startStopButton.setEnabled(false)
         self.startStopButton.setBackgroundColor(UIColor.lightGrayColor())
+    }
+
+    override func willActivate() {
 
         if WCSession.isSupported() {
             NSLog("WCSession supported, initializing")
@@ -51,11 +56,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         } else {
             NSLog("WCSession is not supported, will not initialize")
         }
-    }
-
-    override func willActivate() {
-        NSLog("willActivate")
-
+        
         if self.tickTimer.valid {
             self.tickTimer.invalidate()
         }
@@ -85,7 +86,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     func updatePause(state: SpeechState) {
         // Only allow pausing if the speech is currently running
 
-        if state.running == SpeechRunning.RUNNING || state.running == SpeechRunning.PAUSED {
+        if state.running == SpeechRunning.RUNNING {
             self.startStopButton.setTitle("Stop")
             self.startStopButton.setBackgroundColor(
                 UIColor(
@@ -167,6 +168,10 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             self.phaseColor = UIColor.whiteColor()
             self.mainGroup.setBackgroundColor(self.phaseColor)
         }
+        
+        if stopping {
+            self.startStopButton.setEnabled(false)
+        }
     }
 
     @objc
@@ -186,6 +191,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         if let state = applicationContext["state"] as? [String : AnyObject] {
             self.speechState = SpeechState.fromDictionary(state)
         }
+        if applicationContext.count == 0 {
+            self.speechState = nil
+        }
+        self.stopping = false
+        self.updateUI()
     }
 
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
@@ -203,6 +213,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
 
     @IBAction func stopStartPressed() {
+        stopping = true
+        
         watchSession?.sendMessage(
             ["messageName" : "startStop"],
             replyHandler: { (reply: [String : AnyObject]) -> Void in

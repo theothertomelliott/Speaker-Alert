@@ -111,7 +111,8 @@ class WatchCommsManager: NSObject, WCSessionDelegate, WatchComms {
         if let sm: SpeechManager = speechMan,
             let messageName: String = message["messageName"] as? String {
             if messageName == "startStop" {
-                if sm.state?.running == SpeechRunning.STOPPED {
+                if sm.state?.running == SpeechRunning.STOPPED ||
+                    sm.state?.running == SpeechRunning.PAUSED {
                     sm.start()
                 } else {
                     sm.stop()

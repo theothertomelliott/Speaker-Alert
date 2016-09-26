@@ -50,8 +50,6 @@
 		E234811D1B2906EB0076247D /* SpeakerAlert WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E234811C1B2906EB0076247D /* SpeakerAlert WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E23481241B2906EB0076247D /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23481231B2906EB0076247D /* InterfaceController.swift */; };
 		E23481261B2906EB0076247D /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23481251B2906EB0076247D /* ExtensionDelegate.swift */; };
-		E23481281B2906EB0076247D /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23481271B2906EB0076247D /* NotificationController.swift */; };
-		E234812A1B2906EB0076247D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23481291B2906EB0076247D /* ComplicationController.swift */; };
 		E234812C1B2906EB0076247D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E234812B1B2906EB0076247D /* Assets.xcassets */; };
 		E23EC2511D2D28EA00097414 /* alarm-frenzy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC2501D2D28EA00097414 /* alarm-frenzy.mp3 */; };
 		E23EC2531D2D2A5900097414 /* chafing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E23EC2521D2D2A5900097414 /* chafing.mp3 */; };
@@ -242,8 +240,6 @@
 		E23481221B2906EB0076247D /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		E23481231B2906EB0076247D /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		E23481251B2906EB0076247D /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		E23481271B2906EB0076247D /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		E23481291B2906EB0076247D /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		E234812B1B2906EB0076247D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E234812D1B2906EB0076247D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E23EC2501D2D28EA00097414 /* alarm-frenzy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "alarm-frenzy.mp3"; path = "../../Assets/sounds/alarm-frenzy.mp3"; sourceTree = "<group>"; };
@@ -555,8 +551,6 @@
 				E23481231B2906EB0076247D /* InterfaceController.swift */,
 				E21ADBDF1BA1099200DC9EA6 /* SpeechCompleteInterfaceController.swift */,
 				E23481251B2906EB0076247D /* ExtensionDelegate.swift */,
-				E23481271B2906EB0076247D /* NotificationController.swift */,
-				E23481291B2906EB0076247D /* ComplicationController.swift */,
 				E234812B1B2906EB0076247D /* Assets.xcassets */,
 				E234812D1B2906EB0076247D /* Info.plist */,
 				E23481211B2906EB0076247D /* Supporting Files */,
@@ -1291,11 +1285,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E23481281B2906EB0076247D /* NotificationController.swift in Sources */,
 				E2E8DD5D1B6DD021003D3F7C /* TimeUtils.swift in Sources */,
 				E2A377FD1B785705007FA8FE /* Profile+CoreDataProperties.swift in Sources */,
 				E2A377FF1B78570A007FA8FE /* Group.swift in Sources */,
-				E234812A1B2906EB0076247D /* ComplicationController.swift in Sources */,
 				E2A377F71B78561A007FA8FE /* SpeechTimer.swift in Sources */,
 				E23481261B2906EB0076247D /* ExtensionDelegate.swift in Sources */,
 				E2A377F91B78561A007FA8FE /* SpeechState.swift in Sources */,
