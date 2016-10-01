@@ -1,5 +1,5 @@
 app_identifier "com.theothertomelliott.SpeakerAlert" # The bundle identifier of your app
-apple_id "tom.w.elliott@gmail.com" # Your Apple email address
+apple_id "iosdev@telliott.io" # Your Apple email address
 
 # You can uncomment any of the lines below and add your own
 # team selection in case you're in multiple teams
