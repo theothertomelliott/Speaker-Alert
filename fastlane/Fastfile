@@ -114,7 +114,6 @@ platform :ios do
 
   desc "Submit a new Beta Build without Screenshots"
   lane :betafast do
-    sigh
     gym(scheme: "SpeakerAlert")
     pilot(skip_waiting_for_build_processing: true)
     tag_with_version("betafast")
@@ -125,7 +124,6 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
     snapshot(clear_previous_screenshots:true)
-    sigh
     gym(scheme: "SpeakerAlert") # Build your app - more options available
     pilot(skip_waiting_for_build_processing: true)
     tag_with_version("beta")
@@ -136,7 +134,6 @@ platform :ios do
 
   desc "Deploy a new version to the App Store without screenshots"
   lane :deployfast do
-    sigh
     gym(scheme: "SpeakerAlert") # Build your app - more options available
     deliver(force: true)
     tag_with_version("deliver")
@@ -147,7 +144,6 @@ platform :ios do
   desc "Deploy a new version to the App Store"
   lane :deploy do
     snapshot(clear_previous_screenshots:true)
-    sigh
     gym(scheme: "SpeakerAlert") # Build your app - more options available
     deliver(force: true)
     tag_with_version("deliver")
