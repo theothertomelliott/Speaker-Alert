@@ -72,12 +72,13 @@ platform :ios do
   end
 
   def copy_screenshots_website()
-    resize_image('screenshots/en-GB/iPhone6-002 - Timer green_framed.png', '../website/img/framed_green_header.png', '298x600')
-    resize_image('screenshots/en-GB/iPhone6Plus-001 Profile list_framed.png', '../website/img/iPhone6Plus-Before starting_framed.png', '199x400')
-    resize_image('screenshots/en-GB/iPhone6Plus-005 - Before starting_framed.png', '../website/img/iPhone6Plus-Profile list_framed.png', '199x400')
-    resize_image('screenshots/en-GB/iPhone6Plus-Timer yellow_framed.png', '../website/img/iPhone6Plus-Timer amber_framed.png', '199x400')
-    resize_image('screenshots/en-GB/iPhone6Plus-002 - Timer green_framed.png', '../website/img/iPhone6Plus-Timer green_framed.png', '199x400')
-    resize_image('screenshots/en-GB/iPhone6Plus-Timer red_framed.png', '../website/img/iPhone6Plus-Timer red_framed.png', '199x400')
+    resize_image('./screenshots/en-GB/iPhone6-002 - Timer green_framed.png', '../website/img/framed_green_header.png', '298x600')
+    resize_image('./screenshots/en-GB/iPhone7Plus-001 Profile list_framed.png', '../website/img/iPhone6Plus-Before starting_framed.png', '199x400')
+    resize_image('./screenshots/en-GB/iPhone7Plus-005 - Before starting_framed.png', '../website/img/iPhone6Plus-Profile list_framed.png', '199x400')
+    resize_image('./screenshots/en-GB/iPhone7Plus-Timer yellow_framed.png', '../website/img/iPhone6Plus-Timer amber_framed.png', '199x400')
+    resize_image('./screenshots/en-GB/iPhone7Plus-002 - Timer green_framed.png', '../website/img/iPhone6Plus-Timer green_framed.png', '199x400')
+    resize_image('./screenshots/en-GB/iPhone7Plus-Timer red_framed.png', '../website/img/iPhone6Plus-Timer red_framed.png', '199x400')
+    resize_image('./screenshots/en-GB/iPhone7Plus-006 - History_framed.png', '../website/img/iPhone6Plus-History.png', '199x400')
   end
 
   desc "Update website"
