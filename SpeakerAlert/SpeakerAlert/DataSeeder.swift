@@ -16,10 +16,19 @@ class DataSeeder: NSObject {
 
     let defaults: NSUserDefaults
     
-    init(defaults: NSUserDefaults) {
+    var parameterManager: ParameterManager
+    
+    init(defaults: NSUserDefaults, parameters: ParameterManager) {
         self.defaults = defaults
+        self.parameterManager = parameters
         super.init()
     }
+    
+    private var fourToSix: Profile?
+    private var fiveToSeven: Profile?
+    private var speechEvaluation: Profile?
+    private var tableTopic: Profile?
+    private var generalEvaluation: Profile?
     
     private func doSeeding() {
         NSLog("Seeding data")
@@ -30,9 +39,69 @@ class DataSeeder: NSObject {
             // This block runs in background thread
             self.configureToastmastersTimings(localContext)
             self.configureGeneralTimings(localContext)
+            
+            if self.parameterManager.populateMeeting {
+                self.createDemoMeeting(localContext)
+            }
         }
     }
+    
+    private func createDate(dateAsString: String) -> NSDate {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+        return dateFormatter.dateFromString(dateAsString)!
+    }
 
+    func createDemoMeeting(localContext: NSManagedObjectContext) {
+        let speech1: Speech = Speech.MR_createEntityInContext(localContext)
+        speech1.comments = "Alice - Icebreaker"
+        speech1.duration = 3*60 + 42
+        speech1.profile = fourToSix
+        speech1.startTime = createDate("30-09-2016 19:07")
+
+        let eval1: Speech = Speech.MR_createEntityInContext(localContext)
+        eval1.comments = "Bob - Evaluation"
+        eval1.duration = 2*60 + 11
+        eval1.profile = speechEvaluation
+        eval1.startTime = createDate("30-09-2016 19:12")
+
+        let speech2: Speech = Speech.MR_createEntityInContext(localContext)
+        speech2.comments = "Chris - Speech 3"
+        speech2.duration = 5*60 + 10
+        speech2.profile = fiveToSeven
+        speech2.startTime = createDate("30-09-2016 19:16")
+        
+        let eval2: Speech = Speech.MR_createEntityInContext(localContext)
+        eval2.comments = "Diane - Evaluation"
+        eval2.duration = 3*60 + 1
+        eval2.profile = speechEvaluation
+        eval2.startTime = createDate("30-09-2016 19:23")
+        
+        let tableTopic1: Speech = Speech.MR_createEntityInContext(localContext)
+        tableTopic1.comments = "Eric - Table Topic"
+        tableTopic1.duration = 1*60 + 12
+        tableTopic1.profile = speechEvaluation
+        tableTopic1.startTime = createDate("30-09-2016 19:27")
+        
+        let tableTopic2: Speech = Speech.MR_createEntityInContext(localContext)
+        tableTopic2.comments = "Faith - Table Topic"
+        tableTopic2.duration = 2*60 + 31
+        tableTopic2.profile = speechEvaluation
+        tableTopic2.startTime = createDate("30-09-2016 19:30")
+        
+        let tableTopic3: Speech = Speech.MR_createEntityInContext(localContext)
+        tableTopic3.comments = "Georgia - Table Topic"
+        tableTopic3.duration = 1*60 + 59
+        tableTopic3.profile = speechEvaluation
+        tableTopic3.startTime = createDate("30-09-2016 19:35")
+        
+        let ge: Speech = Speech.MR_createEntityInContext(localContext)
+        ge.comments = "Harry - General Evaluation"
+        ge.duration = 8*60 + 17
+        ge.profile = generalEvaluation
+        ge.startTime = createDate("30-09-2016 19:40")
+    }
+    
     func configureGeneralTimings(localContext: NSManagedObjectContext) {
         // General timings
 
@@ -137,17 +206,17 @@ Profile.MR_createEntityInContext(localContext)
         let groupToastmasters: Group = Group.MR_createEntityInContext(localContext)
         groupToastmasters.name = "Toastmasters"
 
-        let tableTopic: Profile = tableTopicTiming(localContext)
-        let speechEvaluation: Profile = speechEvaluationTiming(localContext)
-        let fourToSix: Profile = fourToSixTiming(localContext)
-        let fiveToSeven: Profile = fiveToSevenTiming(localContext)
+        tableTopic = tableTopicTiming(localContext)
+        speechEvaluation = speechEvaluationTiming(localContext)
+        fourToSix = fourToSixTiming(localContext)
+        fiveToSeven = fiveToSevenTiming(localContext)
         let eightToTen: Profile = eightToTenTiming(localContext)
-        let generalEval: Profile = generalEvalTiming(localContext)
+        generalEvaluation = generalEvalTiming(localContext)
 
         groupToastmasters.childTimings = [
-            tableTopic, speechEvaluation,
-            fourToSix, fiveToSeven,
-            eightToTen, generalEval]
+            tableTopic!, speechEvaluation!,
+            fourToSix!, fiveToSeven!,
+            eightToTen, generalEvaluation!]
     }
 
     func seedAsRequired() {

@@ -29,7 +29,7 @@ public class Environment {
         
         let defaults = Environment.createDefaults(parameterManager)
         configurationManager = ConfigurationManager(defaults: defaults)
-        dataSeeder = DataSeeder(defaults: defaults)
+        dataSeeder = DataSeeder(defaults: defaults, parameters: parameterManager)
         speechManager = SpeechManager(parameterManager: parameterManager)
         localNotificationManager = LocalNotificationManager(
             configManager: configurationManager,

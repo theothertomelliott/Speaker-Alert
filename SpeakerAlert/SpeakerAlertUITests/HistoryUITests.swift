@@ -28,4 +28,10 @@ class HistoryUITests: SpeakerAlertUITests {
         // XCTAssert(app.staticTexts["0:03"].exists || app.staticTexts["0:04"].exists)
     }
     
+    func testScreenshotMeeting() {
+        startAppWithArguments(["--populatemeeting"])
+        app.tabBars.buttons["History"].tap()
+        snapshot("006 - History", waitForLoadingIndicator: false)
+    }
+    
 }

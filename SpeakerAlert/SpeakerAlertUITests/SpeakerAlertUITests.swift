@@ -23,7 +23,7 @@ class SpeakerAlertUITests: XCTestCase {
         startApp(startTimeOffset(), landscape: isLandscape())
 	}
 
-    func startApp(startTime: Int, landscape: Bool = false, accessibility: Bool = true) {
+    func startAppWithArguments(arguments: [String], landscape: Bool = false) {
         addUIInterruptionMonitorWithDescription("Local Notifications") { (alert) -> Bool in
             if alert.buttons["OK"].exists {
                 alert.buttons["OK"].tap()
@@ -38,10 +38,8 @@ class SpeakerAlertUITests: XCTestCase {
         // UI tests must launch the application that they test.
         // Doing this in setup will make sure it happens for each test method.
         app = XCUIApplication()
-        app.launchArguments = ["--uitesting", "--starttime", String(startTime)]
-        if accessibility {
-            app.launchArguments.append("--accessibility")
-        }
+        app.launchArguments = arguments
+        app.launchArguments.append("--uitesting")
         setupSnapshot(app)
         app.launch()
         
@@ -51,6 +49,15 @@ class SpeakerAlertUITests: XCTestCase {
         } else {
             device.orientation = UIDeviceOrientation.Portrait
         }
+    }
+    
+    
+    func startApp(startTime: Int, landscape: Bool = false, accessibility: Bool = true) {
+        var arguments: [String] = ["--starttime", String(startTime)]
+        if accessibility {
+            arguments.append("--accessibility")
+        }
+        startAppWithArguments(arguments, landscape: landscape)
     }
     
 	override func tearDown() {

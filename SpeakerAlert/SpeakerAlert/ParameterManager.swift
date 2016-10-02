@@ -19,6 +19,8 @@ class ParameterManager: NSObject {
     var starttime: Int = 0
     // Should accessibility mode be forced?
     var forceAccessibility: Bool = false
+    // For testing, populate history with a meeting
+    var populateMeeting: Bool = false
     
     var speechDisplay: String?
     
@@ -35,6 +37,9 @@ class ParameterManager: NSObject {
         }
         parser.addOptionWithLongName("uitesting") { () in
             self.isUITesting = true
+        }
+        parser.addOptionWithLongName("populatemeeting") { () in
+            self.populateMeeting = true
         }
         parser.addOptionWithLongName("accessibility") { () in
             self.forceAccessibility = true
