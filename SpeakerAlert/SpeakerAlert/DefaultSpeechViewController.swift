@@ -17,6 +17,8 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
     
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var inSpeechTimeLabel: UILabel!
+    
     @IBOutlet weak var controls: UIView?
     
     @IBOutlet weak var pausedLabel: UILabel?
@@ -29,6 +31,8 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
     let blinkCycle = 10
     // Position in blink cycle
     var blinkCycleIndex = 0
+    
+    private var shouldShowTime: Bool = false
     
     @IBAction func tapped(sender: AnyObject) {
         // If a speech is in progress, pause and display the controls
@@ -71,7 +75,7 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
     }
     
     override func setShowTime(isVisible: Bool) {
-        self.timeLabel.hidden = !isVisible
+        self.shouldShowTime = isVisible
     }
     
     override func updatePhase() {
@@ -139,7 +143,10 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
             }
             
             timeLabel.attributedText = timeAttr
+            inSpeechTimeLabel.attributedText = timeAttr
             
+            timeLabel.hidden = running
+            inSpeechTimeLabel.hidden = !shouldShowTime || !running
         }
     }
     
