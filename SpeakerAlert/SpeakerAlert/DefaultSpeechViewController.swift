@@ -146,6 +146,7 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
             inSpeechTimeLabel.attributedText = timeAttr
             
             timeLabel.hidden = running
+            timeLabel.alpha = shouldShowTime ? 1 : 0.3
             inSpeechTimeLabel.hidden = !shouldShowTime || !running
         }
     }
