@@ -35,21 +35,17 @@ platform :ios do
   end
 
   def bump_build (project_file)
-    increment_build_number(xcodeproj: project_file)
-    commit_bump(project_file)
+    if ENV["TRAVIS"] == "true"
+      build_number = "#{Time.now.to_i}.1.#{ENV["TRAVIS_BUILD_NUMBER"]}"
+    else
+      build_number = "#{Time.now.to_i}.0.0"
+    end
+    increment_build_number build_number: build_number
   end
 
   def bump_version (project_file, type)
     increment_version_number(xcodeproj: project_file, bump_type: type)
     commit_bump(project_file)
-  end
-
-  def tag_with_version(message)
-    version = get_info_plist_value(path: 'SpeakerAlert/SpeakerAlert/Info.plist', key: 'CFBundleShortVersionString')
-    build = get_info_plist_value(path: 'SpeakerAlert/SpeakerAlert/Info.plist', key: 'CFBundleVersion')
-    add_git_tag(
-      tag: message + "-" + version + "-" + build
-    )
   end
 
   lane :makematch do
@@ -124,32 +120,25 @@ platform :ios do
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
+    bump_build(project_file)
     snapshot(clear_previous_screenshots:true)
     gym(scheme: "SpeakerAlert") # Build your app - more options available
     pilot(skip_waiting_for_build_processing: true)
-    tag_with_version("beta")
-    bump_build(project_file)
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
   end
 
   desc "Deploy a new version to the App Store without screenshots"
   lane :deployfast do
+    bump_build(project_file)
     gym(scheme: "SpeakerAlert") # Build your app - more options available
     deliver(force: true)
-    tag_with_version("deliver")
-    bump_build(project_file)
-    # frameit
   end
 
   desc "Deploy a new version to the App Store"
   lane :deploy do
+    bump_build(project_file)
     snapshot(clear_previous_screenshots:true)
     gym(scheme: "SpeakerAlert") # Build your app - more options available
     deliver(force: true)
-    tag_with_version("deliver")
-    bump_build(project_file)
-    # frameit
   end
 
   # You can define as many lanes as you want
