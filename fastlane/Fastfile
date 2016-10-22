@@ -112,7 +112,7 @@ platform :ios do
   desc "Submit a new Beta Build without Screenshots"
   lane :betafast do
     bump_build(project_file)
-    gym(scheme: "SpeakerAlert", use_legacy_build_api: true)
+    gym(scheme: "SpeakerAlert", use_legacy_build_api: true, toolchain: :swift_2_3)
     pilot(skip_waiting_for_build_processing: true)
   end
 
