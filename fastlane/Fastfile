@@ -49,15 +49,21 @@ platform :ios do
   end
 
   lane :makematch do
-    match(app_identifier: "com.theothertomelliott.SpeakerAlert")
-    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp")
-    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp.watchkitextension")
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert", type: "development")
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp", type: "development")
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp.watchkitextension", type: "development")
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert", type: "appstore")
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp", type: "appstore")
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp.watchkitextension", type: "appstore")
   end
 
   lane :getmatch do
-    match(app_identifier: "com.theothertomelliott.SpeakerAlert", readonly: true)
-    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp", readonly: true)
-    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp.watchkitextension", readonly: true)
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert", readonly: true, type: "development")
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp", readonly: true, type: "development")
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp.watchkitextension", readonly: true, type: "development")
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert", readonly: true, type: "appstore")
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp", readonly: true, type: "appstore")
+    match(app_identifier: "com.theothertomelliott.SpeakerAlert.watchkitapp.watchkitextension", readonly: true, type: "appstore")
   end
 
   def resize_image(img_in, img_out, size)
