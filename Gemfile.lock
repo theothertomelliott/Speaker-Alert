@@ -58,12 +58,12 @@ GEM
       commander (>= 4.3.5)
       highline (>= 1.7.1)
       security
-    deliver (1.14.2)
-      credentials_manager (>= 0.16.1, < 1.0.0)
+    deliver (1.14.3)
+      credentials_manager (>= 0.16.2, < 1.0.0)
       fastimage (~> 1.6)
-      fastlane_core (>= 0.52.1, < 1.0.0)
+      fastlane_core (>= 0.52.3, < 1.0.0)
       plist (>= 3.1.0, < 4.0.0)
-      spaceship (>= 0.35.0, < 1.0.0)
+      spaceship (>= 0.36.1, < 1.0.0)
     domain_name (0.5.20160826)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.1.1)
@@ -108,7 +108,7 @@ GEM
       xcode-install (~> 2.0.0)
       xcodeproj (>= 0.20, < 2.0.0)
       xcpretty (>= 0.2.4, < 1.0.0)
-    fastlane_core (0.52.3)
+    fastlane_core (0.53.0)
       babosa
       colored
       commander (>= 4.4.0, <= 5.0.0)
@@ -129,7 +129,7 @@ GEM
       mini_magick (~> 4.5.1)
     fuzzy_match (2.0.4)
     gh_inspector (1.0.2)
-    google-api-client (0.9.18)
+    google-api-client (0.9.19)
       addressable (~> 2.3)
       googleauth (~> 0.5)
       httpclient (~> 2.7)
@@ -240,7 +240,7 @@ GEM
       fastlane_core (>= 0.52.1, < 1.0.0)
       plist (~> 3.1.0)
       xcpretty (>= 0.2.3)
-    spaceship (0.36.0)
+    spaceship (0.36.1)
       colored
       credentials_manager (>= 0.16.0)
       faraday (~> 0.9)
@@ -283,4 +283,4 @@ DEPENDENCIES
   fastlane (~> 1)
 
 BUNDLED WITH
-   1.12.5
+   1.13.6
