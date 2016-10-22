@@ -111,10 +111,9 @@ platform :ios do
 
   desc "Submit a new Beta Build without Screenshots"
   lane :betafast do
-    gym(scheme: "SpeakerAlert")
-    pilot(skip_waiting_for_build_processing: true)
-    tag_with_version("betafast")
     bump_build(project_file)
+    gym(scheme: "SpeakerAlert", use_legacy_build_api: true)
+    pilot(skip_waiting_for_build_processing: true)
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
@@ -122,14 +121,14 @@ platform :ios do
   lane :beta do
     bump_build(project_file)
     snapshot(clear_previous_screenshots:true)
-    gym(scheme: "SpeakerAlert") # Build your app - more options available
+    gym(scheme: "SpeakerAlert", use_legacy_build_api: true) # Build your app - more options available
     pilot(skip_waiting_for_build_processing: true)
   end
 
   desc "Deploy a new version to the App Store without screenshots"
   lane :deployfast do
     bump_build(project_file)
-    gym(scheme: "SpeakerAlert") # Build your app - more options available
+    gym(scheme: "SpeakerAlert", use_legacy_build_api: true) # Build your app - more options available
     deliver(force: true)
   end
 
@@ -137,7 +136,7 @@ platform :ios do
   lane :deploy do
     bump_build(project_file)
     snapshot(clear_previous_screenshots:true)
-    gym(scheme: "SpeakerAlert") # Build your app - more options available
+    gym(scheme: "SpeakerAlert", use_legacy_build_api: true) # Build your app - more options available
     deliver(force: true)
   end
 
