@@ -40,7 +40,7 @@ platform :ios do
     else
       build_number = "#{Time.now.to_i}.0.0"
     end
-    increment_build_number build_number: build_number
+    increment_build_number(xcodeproj: project_file, build_number: build_number)
   end
 
   def bump_version (project_file, type)
