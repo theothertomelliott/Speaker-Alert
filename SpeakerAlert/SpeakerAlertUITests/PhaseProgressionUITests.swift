@@ -26,6 +26,7 @@ class PhaseProgressionUITests: SpeakerAlertUITests {
         openSpeech()
         startSpeech()
         XCTAssert(app.staticTexts["Green"].exists)
+        snapshot("Accessible green", waitForLoadingIndicator: false)
     }
     
     func testTimerYellow() {
