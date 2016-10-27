@@ -9,3 +9,5 @@ SpeakerAlert.ipa
 fastlane/screenshots/*
 DerivedData
 *.swp
+vendor/bundle
+.bundle
