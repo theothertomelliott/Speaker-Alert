@@ -41,16 +41,16 @@ class ConfigurationManagerTests: XCTestCase {
         let cfgMan = ConfigurationManager(defaults: defaults!)
         XCTAssertEqual(
             cfgMan.currentPreset()?.name,
-            "Practice",
-            "Expected practice as default mode"
+            "Meeting",
+            "Expected meeting as default mode"
         )
         
-        cfgMan.timeDisplayMode = TimeDisplay.None
-        cfgMan.isVibrationEnabled = false
+        cfgMan.timeDisplayMode = TimeDisplay.CountUp
+        cfgMan.isVibrationEnabled = true
         XCTAssertEqual(
             cfgMan.currentPreset()?.name,
-            "Meeting",
-            "Expected meeting as mode"
+            "Practice",
+            "Expected practice as mode"
         )
     }
     
