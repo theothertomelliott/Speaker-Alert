@@ -1,1 +1,3 @@
-Speaker Alert now keeps a record of all the speeches you've timed. No more juggling your phone and a paper notepad during a meeting. After a speech, you can set a short description to help you remember who was speaking, and during your timer's report, just read down the history for the day.
+Following your feedback, we've increased the size of the time display mid-speech so it can be seen more easily across a room! If you choose not to display the time during a speech (recommended for meetings), there is now a preview of the time when paused.
+
+Meeting mode is now the default.
