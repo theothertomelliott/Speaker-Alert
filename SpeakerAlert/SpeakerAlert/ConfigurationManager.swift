@@ -18,13 +18,13 @@ class ConfigurationManager: NSObject, AppConfiguration {
     }
     
     let defaultConfiguration = ConfigurationMode(
-        name: "Practice",
-        timeDisplayMode: TimeDisplay.CountUp,
-        isVibrationEnabled: true,
+        name: "Meeting",
+        timeDisplayMode: TimeDisplay.None,
+        isVibrationEnabled: false,
         isAudioEnabled: false,
         isHideStatusEnabled: true,
         isAlertOvertimeEnabled: true
-    )
+        )
 
     init(defaults: NSUserDefaults) {
         self.defaults = defaults
@@ -63,9 +63,9 @@ class ConfigurationManager: NSObject, AppConfiguration {
     private func defaultPresets() -> [ConfigurationMode] {
         return [
             ConfigurationMode(
-                name: "Meeting",
-                timeDisplayMode: TimeDisplay.None,
-                isVibrationEnabled: false,
+                name: "Practice",
+                timeDisplayMode: TimeDisplay.CountUp,
+                isVibrationEnabled: true,
                 isAudioEnabled: false,
                 isHideStatusEnabled: true,
                 isAlertOvertimeEnabled: true
