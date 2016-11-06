@@ -1,8 +1,9 @@
 #!/bin/sh
 
+git status
+
 # If a pull request, only ever test
 if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
-  git status
   bundle exec fastlane test
   exit $?
 fi
