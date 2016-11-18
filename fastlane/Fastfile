@@ -25,17 +25,6 @@ default_platform :ios
 project_file = 'SpeakerAlert/SpeakerAlert.xcodeproj'
 
 platform :ios do
-  before_all do
-    ensure_git_status_clean
-  end
-
-  after_all do |lane|
-    reset_git_repo
-  end
-
-  error do |lane, exception|
-    reset_git_repo
-  end
 
   def commit_bump (project_file)
     commit_version_bump(xcodeproj: project_file, message: "Bump build number")
