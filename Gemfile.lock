@@ -289,7 +289,6 @@ PLATFORMS
 DEPENDENCIES
   cocoapods!
   fastlane (~> 1)
-  gh_inspector
 
 BUNDLED WITH
    1.13.6
