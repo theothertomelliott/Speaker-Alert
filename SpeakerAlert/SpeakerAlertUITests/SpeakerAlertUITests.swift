@@ -27,10 +27,12 @@ class SpeakerAlertUITests: XCTestCase {
         addUIInterruptionMonitorWithDescription("Local Notifications") { (alert) -> Bool in
             if alert.buttons["OK"].exists {
                 alert.buttons["OK"].tap()
+                return true
             } else if alert.buttons["Allow"].exists {
                 alert.buttons["Allow"].tap()
+                return true
             }
-            return true
+            return false
         }
         
         // In UI tests it is usually best to stop immediately when a failure occurs.
