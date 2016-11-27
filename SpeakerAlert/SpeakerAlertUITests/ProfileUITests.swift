@@ -10,30 +10,6 @@ import XCTest
 
 class ProfileEditUITests: SpeakerAlertUITests {
 
-    func testLoadProfileAndReturn() {
-
-        // Wait until the defaults are loaded
-        let label = app.staticTexts["Five Minutes"]
-        let exists = NSPredicate(format: "exists == 1")
-
-        expectationForPredicate(exists, evaluatedWithObject: label, handler: nil)
-        waitForExpectationsWithTimeout(5, handler: nil)
-
-        // TODO: Base this off the seed data
-        XCTAssertEqual(app.tables.cells.count, 7)
-
-        // Open the profile
-        app.tables.staticTexts["Five Minutes"].tap()
-
-        // Hit the back button
-        app.navigationBars["Five Minutes"].buttons["Profiles"].tap()
-
-        XCTAssertEqual(app.tables.cells.count, 7)
-
-        snapshot("001 Profile list", waitForLoadingIndicator: false)
-    }
-    
-    
     func openAddProfile() {
         app.navigationBars["Profiles"].buttons["Add"].tap()
         if app.alerts["Add"].collectionViews.buttons["New Speech Profile"].exists {

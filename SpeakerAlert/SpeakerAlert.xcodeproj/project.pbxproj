@@ -95,8 +95,8 @@
 		E2929A8A1B3CCE71007030D4 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
 		E2929A8B1B3CCE74007030D4 /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
 		E2932DEB1D7066E700A749A4 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2932DEA1D7066E700A749A4 /* HistoryTableViewController.swift */; };
+		E29A68001DEAB7A800661BC1 /* ProfileScreenshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A67FF1DEAB7A800661BC1 /* ProfileScreenshotUITests.swift */; };
 		E29D3FC51CEDE45300FB347C /* ParameterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282703F1CEC98A10085DA0E /* ParameterManager.swift */; };
-		E29D3FC81CEDEA4E00FB347C /* TimeScreenshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D3FC71CEDEA4E00FB347C /* TimeScreenshotUITests.swift */; };
 		E2A10D711CF725C300DD769C /* PhaseProgressionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A10D701CF725C300DD769C /* PhaseProgressionUITests.swift */; };
 		E2A377F71B78561A007FA8FE /* SpeechTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */; };
 		E2A377F91B78561A007FA8FE /* SpeechState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2E7CB1B685AF3004BD7FD /* SpeechState.swift */; };
@@ -131,6 +131,9 @@
 		E2F2C2B61D597DC000A23437 /* CellDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2C2B51D597DC000A23437 /* CellDefinition.swift */; };
 		E2F6B5F11B378F2600210504 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */; };
 		E2F6B5F21B378F2600210504 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F6B5F01B378F2600210504 /* Profile.swift */; };
+		E2FB13DA1DEAAF54004EF2AB /* TimeScreenshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D3FC71CEDEA4E00FB347C /* TimeScreenshotUITests.swift */; };
+		E2FB13DE1DEAB251004EF2AB /* SpeakerAlertUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB13DD1DEAB251004EF2AB /* SpeakerAlertUITests.swift */; };
+		E2FB13E01DEAB2B4004EF2AB /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB13DF1DEAB2B4004EF2AB /* SnapshotHelper.swift */; };
 		E2FF3C971B98100F0083CC4F /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2FF3C961B98100F0083CC4F /* Acknowledgements.plist */; };
 /* End PBXBuildFile section */
 
@@ -162,6 +165,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = E234811B1B2906EB0076247D;
 			remoteInfo = "SpeakerAlert WatchKit Extension";
+		};
+		E2FB13D51DEAAF18004EF2AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E23480DD1B2906EA0076247D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E23480E41B2906EA0076247D;
+			remoteInfo = SpeakerAlert;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -279,7 +289,8 @@
 		E28AA3581B2CB74C000F5A15 /* SpeechTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechTimer.swift; sourceTree = "<group>"; };
 		E2929A881B3CCD14007030D4 /* SpeakerAlert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeakerAlert-Bridging-Header.h"; sourceTree = "<group>"; };
 		E2932DEA1D7066E700A749A4 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
-		E29D3FC71CEDEA4E00FB347C /* TimeScreenshotUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeScreenshotUITests.swift; sourceTree = "<group>"; };
+		E29A67FF1DEAB7A800661BC1 /* ProfileScreenshotUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileScreenshotUITests.swift; sourceTree = "<group>"; };
+		E29D3FC71CEDEA4E00FB347C /* TimeScreenshotUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeScreenshotUITests.swift; path = ../SpeakerAlertUITests/TimeScreenshotUITests.swift; sourceTree = "<group>"; };
 		E2A10D701CF725C300DD769C /* PhaseProgressionUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhaseProgressionUITests.swift; sourceTree = "<group>"; };
 		E2AB35951B82DC97001F8362 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		E2B2CCD01B8755800038C067 /* DataSeeder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSeeder.swift; sourceTree = "<group>"; };
@@ -305,6 +316,10 @@
 		E2F2C2B51D597DC000A23437 /* CellDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellDefinition.swift; sourceTree = "<group>"; };
 		E2F6B5EF1B378F2600210504 /* Profile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E2F6B5F01B378F2600210504 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		E2FB13D01DEAAF18004EF2AB /* SpeakerAlertScreenshotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeakerAlertScreenshotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2FB13D41DEAAF18004EF2AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2FB13DD1DEAB251004EF2AB /* SpeakerAlertUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerAlertUITests.swift; sourceTree = "<group>"; };
+		E2FB13DF1DEAB2B4004EF2AB /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		E2FF3C961B98100F0083CC4F /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
 		E86CA8D1C1D2C717BE36D63A /* Pods-SpeakerAlertUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeakerAlertUITests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SpeakerAlertUITests/Pods-SpeakerAlertUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -349,6 +364,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C06CF8739DF16E1BDA5CF353 /* Pods_SpeakerAlert_WatchKit_Extension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2FB13CD1DEAAF18004EF2AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +489,7 @@
 				E23481071B2906EB0076247D /* SpeakerAlertUITests */,
 				E23481111B2906EB0076247D /* SpeakerAlert WatchKit App */,
 				E23481201B2906EB0076247D /* SpeakerAlert WatchKit Extension */,
+				E2FB13D11DEAAF18004EF2AB /* SpeakerAlertScreenshotUITests */,
 				E23480E61B2906EA0076247D /* Products */,
 				7F8F9C42A66E73FB67688328 /* Pods */,
 				E80F4507498E5D6E3CB32507 /* Frameworks */,
@@ -481,6 +504,7 @@
 				E23481041B2906EB0076247D /* SpeakerAlertUITests.xctest */,
 				E234810D1B2906EB0076247D /* SpeakerAlert WatchKit App.app */,
 				E234811C1B2906EB0076247D /* SpeakerAlert WatchKit Extension.appex */,
+				E2FB13D01DEAAF18004EF2AB /* SpeakerAlertScreenshotUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -527,7 +551,6 @@
 				E234810A1B2906EB0076247D /* Info.plist */,
 				E2F0C7A01CE157E800A1A462 /* ProfileUITests.swift */,
 				E2F0C7A41CE1593D00A1A462 /* AboutScreenUITests.swift */,
-				E29D3FC71CEDEA4E00FB347C /* TimeScreenshotUITests.swift */,
 				E2A10D701CF725C300DD769C /* PhaseProgressionUITests.swift */,
 				E2CC77881D78556900EF4649 /* HistoryUITests.swift */,
 				E2E697871D85ADBA00E33652 /* SpeechCompleteUITests.swift */,
@@ -710,6 +733,18 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		E2FB13D11DEAAF18004EF2AB /* SpeakerAlertScreenshotUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E2FB13DF1DEAB2B4004EF2AB /* SnapshotHelper.swift */,
+				E2FB13DD1DEAB251004EF2AB /* SpeakerAlertUITests.swift */,
+				E29D3FC71CEDEA4E00FB347C /* TimeScreenshotUITests.swift */,
+				E2FB13D41DEAAF18004EF2AB /* Info.plist */,
+				E29A67FF1DEAB7A800661BC1 /* ProfileScreenshotUITests.swift */,
+			);
+			path = SpeakerAlertScreenshotUITests;
+			sourceTree = "<group>";
+		};
 		E80F4507498E5D6E3CB32507 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -832,13 +867,31 @@
 			productReference = E234811C1B2906EB0076247D /* SpeakerAlert WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
+		E2FB13CF1DEAAF18004EF2AB /* SpeakerAlertScreenshotUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2FB13D91DEAAF18004EF2AB /* Build configuration list for PBXNativeTarget "SpeakerAlertScreenshotUITests" */;
+			buildPhases = (
+				E2FB13CC1DEAAF18004EF2AB /* Sources */,
+				E2FB13CD1DEAAF18004EF2AB /* Frameworks */,
+				E2FB13CE1DEAAF18004EF2AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E2FB13D61DEAAF18004EF2AB /* PBXTargetDependency */,
+			);
+			name = SpeakerAlertScreenshotUITests;
+			productName = SpeakerAlertScreenshotUITests;
+			productReference = E2FB13D01DEAAF18004EF2AB /* SpeakerAlertScreenshotUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		E23480DD1B2906EA0076247D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "The Other Tom Elliott";
 				TargetAttributes = {
@@ -870,6 +923,12 @@
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Manual;
 					};
+					E2FB13CF1DEAAF18004EF2AB = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = XZ59JQ28M5;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E23480E41B2906EA0076247D;
+					};
 				};
 			};
 			buildConfigurationList = E23480E01B2906EA0076247D /* Build configuration list for PBXProject "SpeakerAlert" */;
@@ -890,6 +949,7 @@
 				E23481031B2906EB0076247D /* SpeakerAlertUITests */,
 				E234810C1B2906EB0076247D /* SpeakerAlert WatchKit App */,
 				E234811B1B2906EB0076247D /* SpeakerAlert WatchKit Extension */,
+				E2FB13CF1DEAAF18004EF2AB /* SpeakerAlertScreenshotUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -946,6 +1006,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E234812C1B2906EB0076247D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2FB13CE1DEAAF18004EF2AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1275,7 +1342,6 @@
 			files = (
 				E2E697881D85ADBA00E33652 /* SpeechCompleteUITests.swift in Sources */,
 				E23481091B2906EB0076247D /* SpeakerAlertUITests.swift in Sources */,
-				E29D3FC81CEDEA4E00FB347C /* TimeScreenshotUITests.swift in Sources */,
 				E2F0C7A51CE1593D00A1A462 /* AboutScreenUITests.swift in Sources */,
 				E2CC77891D78556900EF4649 /* HistoryUITests.swift in Sources */,
 				E2F0C7A11CE157E800A1A462 /* ProfileUITests.swift in Sources */,
@@ -1303,6 +1369,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E2FB13CC1DEAAF18004EF2AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2FB13DA1DEAAF54004EF2AB /* TimeScreenshotUITests.swift in Sources */,
+				E29A68001DEAB7A800661BC1 /* ProfileScreenshotUITests.swift in Sources */,
+				E2FB13DE1DEAB251004EF2AB /* SpeakerAlertUITests.swift in Sources */,
+				E2FB13E01DEAB2B4004EF2AB /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1325,6 +1402,11 @@
 			isa = PBXTargetDependency;
 			target = E234811B1B2906EB0076247D /* SpeakerAlert WatchKit Extension */;
 			targetProxy = E234811E1B2906EB0076247D /* PBXContainerItemProxy */;
+		};
+		E2FB13D61DEAAF18004EF2AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E23480E41B2906EA0076247D /* SpeakerAlert */;
+			targetProxy = E2FB13D51DEAAF18004EF2AB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1638,6 +1720,43 @@
 			};
 			name = Release;
 		};
+		E2FB13D71DEAAF18004EF2AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = XZ59JQ28M5;
+				INFOPLIST_FILE = SpeakerAlertScreenshotUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.telliott.SpeakerAlertScreenshotUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "cd204da6-5e12-4f86-84dc-5876ce56b8ce";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SpeakerAlert;
+			};
+			name = Debug;
+		};
+		E2FB13D81DEAAF18004EF2AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = XZ59JQ28M5;
+				INFOPLIST_FILE = SpeakerAlertScreenshotUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.telliott.SpeakerAlertScreenshotUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "cd204da6-5e12-4f86-84dc-5876ce56b8ce";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SpeakerAlert;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1691,6 +1810,15 @@
 			buildConfigurations = (
 				E234813F1B2906EB0076247D /* Debug */,
 				E23481401B2906EB0076247D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2FB13D91DEAAF18004EF2AB /* Build configuration list for PBXNativeTarget "SpeakerAlertScreenshotUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2FB13D71DEAAF18004EF2AB /* Debug */,
+				E2FB13D81DEAAF18004EF2AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

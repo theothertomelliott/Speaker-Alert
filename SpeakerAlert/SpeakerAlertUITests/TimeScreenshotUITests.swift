@@ -16,60 +16,60 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
     }
     
     func testBeforeStarting() {
-        startApp(0, landscape: false, accessibility: false)
+        startApp(startTime: 0, landscape: false, accessibility: false)
         openSpeech()
-        snapshot("005 - Before starting", waitForLoadingIndicator: false)
-        device.orientation = UIDeviceOrientation.LandscapeLeft
-        snapshot("Before starting - Landscape", waitForLoadingIndicator: false)
-        device.orientation = UIDeviceOrientation.Portrait
+        snapshot(name: "005 - Before starting", waitForLoadingIndicator: false)
+        device.orientation = UIDeviceOrientation.landscapeLeft
+        snapshot(name: "Before starting - Landscape", waitForLoadingIndicator: false)
+        device.orientation = UIDeviceOrientation.portrait
     }
     
     func testTimerGreen() {
-        startApp(300, landscape: false, accessibility: false)
+        startApp(startTime: 300, landscape: false, accessibility: false)
         openSpeech()
         startSpeech()
         XCTAssert(!app.staticTexts["Green"].exists)
-        snapshot("002 - Timer green", waitForLoadingIndicator: false)
-        device.orientation = UIDeviceOrientation.LandscapeLeft
-        snapshot("Timer green - Landscape", waitForLoadingIndicator: false)
-        device.orientation = UIDeviceOrientation.Portrait
+        snapshot(name: "002 - Timer green", waitForLoadingIndicator: false)
+        device.orientation = UIDeviceOrientation.landscapeLeft
+        snapshot(name: "Timer green - Landscape", waitForLoadingIndicator: false)
+        device.orientation = UIDeviceOrientation.portrait
     }
     
     func testTimerYellow() {
-        startApp(360, landscape: false, accessibility: false)
+        startApp(startTime: 360, landscape: false, accessibility: false)
         openSpeech()
         startSpeech()
         XCTAssert(!app.staticTexts["Yellow"].exists)
-        snapshot("Timer yellow", waitForLoadingIndicator: false)
-        device.orientation = UIDeviceOrientation.LandscapeLeft
-        snapshot("003 - Timer yellow - Landscape", waitForLoadingIndicator: false)
-        device.orientation = UIDeviceOrientation.Portrait
+        snapshot(name: "Timer yellow", waitForLoadingIndicator: false)
+        device.orientation = UIDeviceOrientation.landscapeLeft
+        snapshot(name: "003 - Timer yellow - Landscape", waitForLoadingIndicator: false)
+        device.orientation = UIDeviceOrientation.portrait
     }
     
     func testTimerRed() {
-        startApp(420, landscape: false, accessibility: false)
+        startApp(startTime: 420, landscape: false, accessibility: false)
         openSpeech()
         startSpeech()
         XCTAssert(!app.staticTexts["Red"].exists)
-        snapshot("Timer red", waitForLoadingIndicator: false)
-        device.orientation = UIDeviceOrientation.LandscapeLeft
-        snapshot("Timer red - Landscape", waitForLoadingIndicator: false)
-        device.orientation = UIDeviceOrientation.Portrait
+        snapshot(name: "Timer red", waitForLoadingIndicator: false)
+        device.orientation = UIDeviceOrientation.landscapeLeft
+        snapshot(name: "Timer red - Landscape", waitForLoadingIndicator: false)
+        device.orientation = UIDeviceOrientation.portrait
     }
     
     func testStopSpeech() {
-        startApp(430, landscape: false, accessibility: false)
+        startApp(startTime: 430, landscape: false, accessibility: false)
         
         openSpeech()
         startSpeech()
         stopSpeech()
         
-        waitForElement(app.staticTexts["Speech Complete"])
+        waitForElement(element: app.staticTexts["Speech Complete"])
         
-        snapshot("004 - After stopping", waitForLoadingIndicator: false)
-        device.orientation = UIDeviceOrientation.LandscapeLeft
-        snapshot("After stopping - Landscape", waitForLoadingIndicator: false)
-        device.orientation = UIDeviceOrientation.Portrait
+        snapshot(name: "004 - After stopping", waitForLoadingIndicator: false)
+        device.orientation = UIDeviceOrientation.landscapeLeft
+        snapshot(name: "After stopping - Landscape", waitForLoadingIndicator: false)
+        device.orientation = UIDeviceOrientation.portrait
     }
     
 }

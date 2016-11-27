@@ -56,6 +56,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E2FB13CF1DEAAF18004EF2AB"
+               BuildableName = "SpeakerAlertScreenshotUITests.xctest"
+               BlueprintName = "SpeakerAlertScreenshotUITests"
+               ReferencedContainer = "container:SpeakerAlert.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
