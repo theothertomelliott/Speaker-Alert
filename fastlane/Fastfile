@@ -79,6 +79,25 @@ platform :ios do
     resize_image('./screenshots/en-GB/iPhone7Plus-006 - History_framed.png', '../website/img/iPhone6Plus-History.png', '199x400')
   end
 
+  def tests()
+    snapshot(clear_previous_screenshots:true)
+  end
+
+  def screenshots()
+    snapshot(
+      scheme: 'Screenshots',
+      clear_previous_screenshots:true,
+      stop_after_first_error: true,
+      devices: [
+        "iPhone 6",
+        "iPhone 7 Plus",
+        "iPhone 5",
+        "iPad Retina",
+        "iPad Pro (12.9 inch)"
+      ]
+    )
+  end
+
   desc "Update website"
   lane :update_website do
     frameit
@@ -107,7 +126,12 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
-    snapshot(clear_previous_screenshots:true)
+    tests()
+  end
+
+  desc "Generate screenshots for visual verification"
+  lane :visual do
+    screenshots()
   end
 
   desc "Submit a new Beta Build without Screenshots"
@@ -121,7 +145,8 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
     bump_build(project_file)
-    snapshot(clear_previous_screenshots:true)
+    tests()
+    screenshots()
     gym(scheme: "SpeakerAlert", toolchain: :swift_2_3) # Build your app - more options available
     pilot(skip_waiting_for_build_processing: true)
   end
@@ -136,7 +161,8 @@ platform :ios do
   desc "Deploy a new version to the App Store"
   lane :deploy do
     bump_build(project_file)
-    snapshot(clear_previous_screenshots:true)
+    tests()
+    screenshots()
     gym(scheme: "SpeakerAlert", toolchain: :swift_2_3) # Build your app - more options available
     deliver(force: true)
   end

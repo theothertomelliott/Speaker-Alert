@@ -46,6 +46,11 @@ Increment minor version number
 fastlane ios test
 ```
 Runs all the tests
+### ios visual
+```
+fastlane ios visual
+```
+Generate screenshots for visual verification
 ### ios betafast
 ```
 fastlane ios betafast
