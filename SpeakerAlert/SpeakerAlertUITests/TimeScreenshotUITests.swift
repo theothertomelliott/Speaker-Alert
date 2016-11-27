@@ -15,6 +15,12 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
         setUpNoApp()
     }
     
+    func testScreenshotHistory() {
+        startAppWithArguments(arguments: ["--populatemeeting"])
+        app.tabBars.buttons["History"].tap()
+        snapshot(name: "006 - History", waitForLoadingIndicator: false)
+    }
+    
     func testBeforeStarting() {
         startApp(startTime: 0, landscape: false, accessibility: false)
         openSpeech()

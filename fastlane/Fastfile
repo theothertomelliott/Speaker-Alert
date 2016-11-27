@@ -107,7 +107,7 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
-    snapshot
+    snapshot(clear_previous_screenshots:true)
   end
 
   desc "Submit a new Beta Build without Screenshots"

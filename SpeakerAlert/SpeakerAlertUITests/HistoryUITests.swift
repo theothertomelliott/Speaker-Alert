@@ -27,11 +27,5 @@ class HistoryUITests: SpeakerAlertUITests {
         // TODO: Determine the time that this stopped at and pass that on
         // XCTAssert(app.staticTexts["0:03"].exists || app.staticTexts["0:04"].exists)
     }
-    
-    func testScreenshotMeeting() {
-        startAppWithArguments(["--populatemeeting"])
-        app.tabBars.buttons["History"].tap()
-        snapshot("006 - History", waitForLoadingIndicator: false)
-    }
-    
+
 }
