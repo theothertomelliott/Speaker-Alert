@@ -47,6 +47,7 @@ protocol SpeechConfiguration {
 protocol AlertConfiguration {
     var isVibrationEnabled: Bool { get }
     var isAudioEnabled: Bool { get }
+    var areNotificationsEnabled: Bool { get }
 }
 
 protocol AudioConfiguration {
@@ -64,7 +65,9 @@ func ==<T: SpeechConfiguration>(lhs: SpeechConfiguration, rhs: T) -> Bool {
 
 func ==<T: AlertConfiguration>(lhs: AlertConfiguration, rhs: T) -> Bool {
     return  lhs.isAudioEnabled == rhs.isAudioEnabled &&
-            lhs.isVibrationEnabled == rhs.isVibrationEnabled
+            lhs.isVibrationEnabled == rhs.isVibrationEnabled &&
+            lhs.areNotificationsEnabled == rhs.areNotificationsEnabled
+    
 }
 
 func ==<T: ModeConfiguration, U: ModeConfiguration>(lhs: T, rhs: U) -> Bool {

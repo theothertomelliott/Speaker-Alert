@@ -137,6 +137,13 @@ class SettingsViewController: UITableViewController,
                         self.loadData()
                 }),
                 BoolCellDefinition(
+                    title: "Notification Alerts in Background",
+                    value: config.areNotificationsEnabled,
+                    onChange: { (value: Bool) in
+                        config.areNotificationsEnabled = value
+                        self.loadData()
+                }),
+                BoolCellDefinition(
                     title: "Audio Alerts",
                     value: config.isAudioEnabled,
                     onChange: { (value: Bool) in

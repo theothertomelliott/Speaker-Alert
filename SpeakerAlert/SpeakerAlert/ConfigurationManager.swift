@@ -23,7 +23,8 @@ class ConfigurationManager: NSObject, AppConfiguration {
         isVibrationEnabled: false,
         isAudioEnabled: false,
         isHideStatusEnabled: true,
-        isAlertOvertimeEnabled: true
+        isAlertOvertimeEnabled: true,
+        areNotificationsEnabled: false
         )
 
     init(defaults: NSUserDefaults) {
@@ -58,6 +59,7 @@ class ConfigurationManager: NSObject, AppConfiguration {
         self.isAudioEnabled = preset.isAudioEnabled
         self.isHideStatusEnabled = preset.isHideStatusEnabled
         self.isAlertOvertimeEnabled = preset.isAlertOvertimeEnabled
+        self.areNotificationsEnabled = preset.areNotificationsEnabled
     }
 
     private func defaultPresets() -> [ConfigurationMode] {
@@ -68,7 +70,8 @@ class ConfigurationManager: NSObject, AppConfiguration {
                 isVibrationEnabled: true,
                 isAudioEnabled: false,
                 isHideStatusEnabled: true,
-                isAlertOvertimeEnabled: true
+                isAlertOvertimeEnabled: true,
+                areNotificationsEnabled: true
             ),
             ConfigurationMode(
                 name: "Contest",
@@ -76,7 +79,8 @@ class ConfigurationManager: NSObject, AppConfiguration {
                 isVibrationEnabled: false,
                 isAudioEnabled: false,
                 isHideStatusEnabled: true,
-                isAlertOvertimeEnabled: false
+                isAlertOvertimeEnabled: false,
+                areNotificationsEnabled: false
             ),
             defaultConfiguration
         ]
@@ -129,6 +133,19 @@ class ConfigurationManager: NSObject, AppConfiguration {
         }
         set {
             defaults.setBool(newValue, forKey: vibrationEnabledKey)
+        }
+    }
+    
+    private let notificationsEnabledKey = "notificationsEnabled"
+    var areNotificationsEnabled: Bool {
+        get {
+            if let _ = defaults.objectForKey(notificationsEnabledKey) {
+                return defaults.boolForKey(notificationsEnabledKey)
+            }
+            return defaultConfiguration.isVibrationEnabled
+        }
+        set {
+            defaults.setBool(newValue, forKey: notificationsEnabledKey)
         }
     }
     

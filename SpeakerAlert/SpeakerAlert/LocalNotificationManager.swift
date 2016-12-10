@@ -34,7 +34,7 @@ class LocalNotificationManager: NSObject, SpeechManagerDelegate {
 
     private func setNotificationForPhase(phase: SpeechPhase) {
 
-        if configMan.isVibrationEnabled {
+        if !configMan.areNotificationsEnabled {
             return
         }
         
