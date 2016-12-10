@@ -1,52 +1,6 @@
 {
   "default": {
-    "keyword": {
-      "fonts": [
-        {
-          "font": "./fonts/AlwynNewRd-Rg.otf",
-          "supported": ["de-DE", "en-US", "es-ES", "fr-FR", "it-IT", "nl-NL", "sv-SE", "pt-BR"]
-        },
-        {
-          "font": "./fonts/Chinese.ttf",
-          "supported": ["zcmn-Hans"]
-        },
-        {
-          "font": "./fonts/Japanese.ttf",
-          "supported": ["ja-JP"]
-        },
-        {
-          "font": "./fonts/Korean.ttc",
-          "supported": ["ko-KR"]
-        },
-        {
-          "font": "./fonts/Russian.ttf",
-          "supported": ["ru-RU"]
-        }
-      ]
-    },
     "title": {
-      "fonts": [
-        {
-          "font": "./fonts/AlwynNewRd-Rg.otf",
-          "supported": ["de-DE", "en-US", "es-ES", "fr-FR", "it-IT", "nl-NL", "sv-SE", "pt-BR"]
-        },
-        {
-          "font": "./fonts/Chinese.ttf",
-          "supported": ["zcmn-Hans"]
-        },
-        {
-          "font": "./fonts/Japanese.ttf",
-          "supported": ["ja-JP"]
-        },
-        {
-          "font": "./fonts/Korean.ttc",
-          "supported": ["ko-KR"]
-        },
-        {
-          "font": "./fonts/Russian.ttf",
-          "supported": ["ru-RU"]
-        }
-      ],
       "color": "#545454"
     },
     "background": "./background.jpg",
@@ -56,27 +10,33 @@
 
   "data": [
     {
-      "filter": "Brainstorming",
+      "filter": "Profile list",
       "keyword": {
         "color": "#d21559"
       }
     },
     {
-      "filter": "Organizing",
+      "filter": "Timer",
       "keyword": {
-        "color": "#feb909"
+        "color": "#d21559"
       }
     },
     {
-      "filter": "Sharing",
+      "filter": "Before starting",
       "keyword": {
-        "color": "#aa4dbc"
+        "color": "#d21559"
       }
     },
     {
-      "filter": "Styling",
+      "filter": "After stopping",
       "keyword": {
-        "color": "#31bb48"
+        "color": "#d21559"
+      }
+    },
+    {
+      "filter": "History",
+      "keyword": {
+        "color": "#d21559"
       }
     }
   ]
