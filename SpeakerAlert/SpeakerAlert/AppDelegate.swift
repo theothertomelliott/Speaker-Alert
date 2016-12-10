@@ -15,12 +15,14 @@ import JVArgumentParser
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let localNotificationManager = Environment.Default.localNotificationManager
+    var localNotificationManager: LocalNotificationManager?
     
     func application(application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         let parameterManager = Environment.Default.parameterManager
+        localNotificationManager = Environment.Default.localNotificationManager
+
         
         // Set up Pyze for analytics
         if _isDebugAssertConfiguration() {
@@ -51,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        self.localNotificationManager.enteredBackground()
+        self.localNotificationManager?.enteredBackground()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
