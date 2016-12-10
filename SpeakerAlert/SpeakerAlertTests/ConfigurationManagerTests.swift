@@ -47,6 +47,7 @@ class ConfigurationManagerTests: XCTestCase {
         
         cfgMan.timeDisplayMode = TimeDisplay.CountUp
         cfgMan.isVibrationEnabled = true
+        cfgMan.areNotificationsEnabled = true
         XCTAssertEqual(
             cfgMan.currentPreset()?.name,
             "Practice",
