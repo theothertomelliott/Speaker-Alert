@@ -6,7 +6,6 @@ report.xml
 AppStore_com.theothertomelliott.SpeakerAlert.mobileprovision
 SpeakerAlert.app.dSYM.zip
 SpeakerAlert.ipa
-fastlane/screenshots/*
 DerivedData
 *.swp
 vendor/bundle
