@@ -12,9 +12,9 @@ class ConfigurationManager: NSObject, AppConfiguration {
 
     private var defaults: NSUserDefaults
     private var presetModes: [ConfigurationMode]
-    private var parameterManager: ParameterManager
-    
-    init(defaults: NSUserDefaults, parameters: ParameterManager) {
+    private var parameterManager: ParameterManager?
+   
+    init(defaults: NSUserDefaults, parameters: ParameterManager? = nil) {
         self.defaults = defaults
         self.parameterManager = parameters
         presetModes = []
@@ -107,7 +107,7 @@ class ConfigurationManager: NSObject, AppConfiguration {
     private let legacyDisplayTimeKey = "displayTimeByDefault"
     var timeDisplayMode: TimeDisplay {
         get {
-            if parameterManager.forceShowTime {
+            if let p = parameterManager where p.forceShowTime {
                 return TimeDisplay.CountUp
             }
             if let mode = defaults.objectForKey(timeDisplayKey) as? String {
