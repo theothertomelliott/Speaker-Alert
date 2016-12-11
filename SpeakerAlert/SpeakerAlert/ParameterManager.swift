@@ -22,6 +22,9 @@ class ParameterManager: NSObject {
     // For testing, populate history with a meeting
     var populateMeeting: Bool = false
     
+    // Force time display
+    var forceShowTime: Bool = false
+    
     var speechDisplay: String?
     
     override init() {
@@ -43,6 +46,9 @@ class ParameterManager: NSObject {
         }
         parser.addOptionWithLongName("accessibility") { () in
             self.forceAccessibility = true
+        }
+        parser.addOptionWithLongName("forceshowtime") { () in
+            self.forceShowTime = true
         }
         parser.addOptionWithArgumentWithLongName("starttime") { (value: String!) in
             if let st = Int(value) {

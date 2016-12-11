@@ -28,7 +28,10 @@ public class Environment {
         accessibilityTracker = AccessibilityTracker(parameterManager: parameterManager)
         
         let defaults = Environment.createDefaults(parameterManager)
-        configurationManager = ConfigurationManager(defaults: defaults)
+        configurationManager = ConfigurationManager(
+            defaults: defaults,
+            parameters: parameterManager
+        )
         dataSeeder = DataSeeder(defaults: defaults, parameters: parameterManager)
         speechManager = SpeechManager(parameterManager: parameterManager)
         localNotificationManager = LocalNotificationManager(

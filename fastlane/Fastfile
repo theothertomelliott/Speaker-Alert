@@ -89,13 +89,17 @@ platform :ios do
       clear_previous_screenshots:true,
       stop_after_first_error: true,
       devices: [
-        "iPhone 6",
         "iPhone 7 Plus",
-        "iPhone 5",
-        "iPad Retina",
         "iPad Pro (12.9 inch)"
-      ]
+      ],
+      erase_simulator: true,
     )
+    frameit
+  end
+
+  desc "Generate screenshots"
+  lane :screenshots do
+    screenshots()
   end
 
   desc "Update website"
@@ -127,11 +131,6 @@ platform :ios do
   desc "Runs all the tests"
   lane :test do
     tests()
-  end
-
-  desc "Generate screenshots for visual verification"
-  lane :visual do
-    screenshots()
   end
 
   desc "Submit a new Beta Build without Screenshots"

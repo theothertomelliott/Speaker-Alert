@@ -53,11 +53,18 @@ class SpeakerAlertUITests: XCTestCase {
         }
     }
     
-    
-    func startApp(startTime: Int, landscape: Bool = false, accessibility: Bool = true) {
+    func startApp(
+        startTime: Int,
+        landscape: Bool = false,
+        accessibility: Bool = true,
+        forceShowTime: Bool = false
+        ) {
         var arguments: [String] = ["--starttime", String(startTime)]
         if accessibility {
             arguments.append("--accessibility")
+        }
+        if forceShowTime {
+            arguments.append("--forceshowtime")
         }
         startAppWithArguments(arguments: arguments, landscape: landscape)
     }

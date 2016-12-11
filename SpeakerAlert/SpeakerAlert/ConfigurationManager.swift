@@ -12,6 +12,16 @@ class ConfigurationManager: NSObject, AppConfiguration {
 
     private var defaults: NSUserDefaults
     private var presetModes: [ConfigurationMode]
+    private var parameterManager: ParameterManager
+    
+    init(defaults: NSUserDefaults, parameters: ParameterManager) {
+        self.defaults = defaults
+        self.parameterManager = parameters
+        presetModes = []
+        
+        super.init()
+        presetModes = defaultPresets()
+    }
     
     func allPresets() -> [ConfigurationMode] {
         return presetModes
@@ -26,14 +36,6 @@ class ConfigurationManager: NSObject, AppConfiguration {
         isAlertOvertimeEnabled: true,
         areNotificationsEnabled: false
         )
-
-    init(defaults: NSUserDefaults) {
-        self.defaults = defaults
-        presetModes = []
-        
-        super.init()
-        presetModes = defaultPresets()
-    }
     
     func currentPreset() -> ConfigurationMode? {
         for preset in self.presetModes {
@@ -105,6 +107,9 @@ class ConfigurationManager: NSObject, AppConfiguration {
     private let legacyDisplayTimeKey = "displayTimeByDefault"
     var timeDisplayMode: TimeDisplay {
         get {
+            if parameterManager.forceShowTime {
+                return TimeDisplay.CountUp
+            }
             if let mode = defaults.objectForKey(timeDisplayKey) as? String {
                 return StringToTimeDisplay(mode)
             }
