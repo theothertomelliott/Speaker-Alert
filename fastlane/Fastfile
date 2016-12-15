@@ -90,7 +90,8 @@ platform :ios do
       stop_after_first_error: true,
       devices: [
         "iPhone 7 Plus",
-        "iPad Pro (12.9 inch)"
+        "iPad Pro (12.9 inch)",
+	"iPad Retina"
       ],
       erase_simulator: true,
     )
