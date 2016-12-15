@@ -1,3 +1,3 @@
-Following your feedback, we've increased the size of the time display mid-speech so it can be seen more easily across a room! If you choose not to display the time during a speech (recommended for meetings), there is now a preview of the time when paused.
+This release fixes a bug that was preventing local notifications from being sent when Speaker Alert was in the background. We've also added a setting to directly control whether or not these notifications are sent.
 
-Meeting mode is now the default.
+Happy Speaking!
