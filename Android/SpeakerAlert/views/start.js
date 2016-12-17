@@ -3,16 +3,22 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 
 export default class Start extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text>
+          {this.props.title}
+        </Text>
         <Text style={styles.welcome}>
           Welcome to Speaker Alert!
         </Text>
+        <Button title='Next Scene' onPress={this.props.loadProfile}/>
+        <Button title='Previous Scene' onPress={this.props.onBack}/>
       </View>
     );
   }
