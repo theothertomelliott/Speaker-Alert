@@ -52,11 +52,7 @@ class WatchCommsManager: NSObject, WCSessionDelegate, WatchComms {
 
     fileprivate func updateState(_ state: SpeechState) {
         do {
-            var vibration: Bool = false
-            if let cm: ConfigurationManager = self.configMan {
-                vibration = cm.isVibrationEnabled
-            }
-
+            let vibration = self.configMan.isVibrationEnabled
             var speechName = ""
             if let sn = speechMan.profile?.name {
                 speechName = sn

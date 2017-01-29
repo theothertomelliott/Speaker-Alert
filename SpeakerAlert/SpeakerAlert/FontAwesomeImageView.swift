@@ -43,7 +43,7 @@ class FontAwesomeImageView: UIImageView {
     }
 
     fileprivate func _setup() {
-        if let icon: FontAwesome = FontAwesomeFactory.fetchFontAwesome(IconName)! {
+        if let icon: FontAwesome = FontAwesomeFactory.fetchFontAwesome(IconName) {
             setFontAwesome(icon)
         } else {
             setFontAwesome(FontAwesome.warning)

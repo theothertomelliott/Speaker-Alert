@@ -42,7 +42,7 @@ open class Snapshot: NSObject {
 
         do {
             let trimCharacterSet = CharacterSet.whitespacesAndNewlines
-            deviceLanguage = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8).trimmingCharacters(in: trimCharacterSet) as String
+            deviceLanguage = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue).trimmingCharacters(in: trimCharacterSet) as String
             app.launchArguments += ["-AppleLanguages", "(\(deviceLanguage))"]
         } catch {
             print("Couldn't detect/set language...")
@@ -58,12 +58,12 @@ open class Snapshot: NSObject {
 
         do {
             let trimCharacterSet = CharacterSet.whitespacesAndNewlines
-            locale = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8).trimmingCharacters(in: trimCharacterSet) as String
+            locale = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue).trimmingCharacters(in: trimCharacterSet) as String
         } catch {
             print("Couldn't detect/set locale...")
         }
         if locale.isEmpty {
-            locale = Locale(localeIdentifier: deviceLanguage).localeIdentifier
+            locale = Locale(identifier: deviceLanguage).identifier
         }
         app.launchArguments += ["-AppleLocale", "\"\(locale)\""]
     }
@@ -77,7 +77,7 @@ open class Snapshot: NSObject {
         app.launchArguments += ["-FASTLANE_SNAPSHOT", "YES", "-ui_testing"]
 
         do {
-            let launchArguments = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8) as String
+            let launchArguments = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue) as String
             let regex = try NSRegularExpression(pattern: "(\\\".+?\\\"|\\S+)", options: [])
             let matches = regex.matches(in: launchArguments, options: [], range: NSRange(location:0, length:launchArguments.characters.count))
             let results = matches.map { result -> String in
@@ -111,7 +111,7 @@ open class Snapshot: NSObject {
 
     class func pathPrefix() -> NSString? {
         if let path = ProcessInfo().environment["SIMULATOR_HOST_HOME"] as NSString? {
-            return path.appendingPathComponent("Library/Caches/tools.fastlane")
+            return path.appendingPathComponent("Library/Caches/tools.fastlane") as NSString
         }
         print("Couldn't find Snapshot configuration files at ~/Library/Caches/tools.fastlane")
         return nil

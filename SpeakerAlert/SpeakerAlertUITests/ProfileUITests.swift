@@ -48,7 +48,7 @@ class ProfileEditUITests: SpeakerAlertUITests {
             for: NSPredicate(format: "exists == 1"),
             evaluatedWith: app.staticTexts["Test"],
             handler: nil)
-        waitForExpectations(withTimeout: 2, handler: nil)
+        waitForExpectations(timeout: 2, handler: nil)
     }
 
     func testOutOfOrderTimings() {

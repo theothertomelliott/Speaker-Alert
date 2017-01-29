@@ -81,7 +81,6 @@ class ProfileTableViewController: UITableViewController {
 			segue.destination as? ProfileTimeSelectorViewController {
 
 				if let timeCell: ProfileTimeTableViewCell = sender as? ProfileTimeTableViewCell {
-					NSLog("\(timeCell.colorNameLabel.text)")
 					destination.colorName = timeCell.colorNameLabel.text
 
 					if let phase = timeCell.phase {

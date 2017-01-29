@@ -81,7 +81,7 @@ class FontAwesomeButton: UIButton {
 
         self.titleLabel!.font = UIFont.fontAwesome(ofSize: IconSize)
 
-        if let icon: FontAwesome = FontAwesomeFactory.fetchFontAwesome(IconName)! {
+        if let icon: FontAwesome = FontAwesomeFactory.fetchFontAwesome(IconName) {
             setFontAwesome(icon)
         } else {
            setFontAwesome(FontAwesome.warning)

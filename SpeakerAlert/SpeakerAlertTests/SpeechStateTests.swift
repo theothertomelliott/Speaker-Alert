@@ -29,7 +29,7 @@ class SpeechStateTests: XCTestCase {
             startTime: startTime,
             initialStartTime: startTime,
             pauseInterval: pauseInterval)
-        let dict: [String : AnyObject] = state.toDictionary()
+        let dict: [String : Any] = state.toDictionary()
 
         if let interval = dict["pauseInterval"] as? TimeInterval {
             XCTAssert(interval == 5)
@@ -37,11 +37,11 @@ class SpeechStateTests: XCTestCase {
             XCTFail("pauseInterval was not a time interval object")
         }
 
-        if let profileRetrieved: [String : AnyObject] = dict["profile"] as? [String : AnyObject] {
-            XCTAssert(profileRetrieved["green"] as? Int == 1)
-            XCTAssert(profileRetrieved["yellow"] as? Int == 2)
-            XCTAssert(profileRetrieved["red"] as? Int == 3)
-            XCTAssert(profileRetrieved["redBlink"] as? Int == 4)
+        if let profileRetrieved: [String : Any] = dict["profile"] as? [String : Any] {
+            XCTAssert(profileRetrieved["green"] as? TimeInterval == 1)
+            XCTAssert(profileRetrieved["yellow"] as? TimeInterval == 2)
+            XCTAssert(profileRetrieved["red"] as? TimeInterval == 3)
+            XCTAssert(profileRetrieved["redBlink"] as? TimeInterval == 4)
         } else {
             XCTFail("No profile obtained")
         }
@@ -59,7 +59,7 @@ class SpeechStateTests: XCTestCase {
             startTime: startTime,
             initialStartTime: startTime,
             pauseInterval: pauseInterval)
-        let dict: [String : AnyObject] = state.toDictionary()
+        let dict: [String : Any] = state.toDictionary()
 
         let stateRetrieved: SpeechState = SpeechState.fromDictionary(dict)!
 

@@ -81,7 +81,7 @@ class SpeakerAlertUITests: XCTestCase {
             for: NSPredicate(format: "exists == 1"),
             evaluatedWith: element,
             handler: nil)
-        waitForExpectations(withTimeout: 0.5, handler: nil)
+        waitForExpectations(timeout: 0.5, handler: nil)
         return element
     }
 
@@ -93,7 +93,7 @@ class SpeakerAlertUITests: XCTestCase {
         let exists = NSPredicate(format: "exists == 1")
         expectation(for: exists,
                                 evaluatedWith: app.staticTexts[speechGroup], handler: nil)
-        waitForExpectations(withTimeout: 5, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
         
         // Open the profile
         app.tables.staticTexts[speechGroup].tap()
@@ -101,7 +101,7 @@ class SpeakerAlertUITests: XCTestCase {
         expectation(for: exists,
                                 evaluatedWith: app.staticTexts[speechTitle],
                                 handler: nil)
-        waitForExpectations(withTimeout: 5, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
         
         app.tables.staticTexts[speechTitle].tap()
     }

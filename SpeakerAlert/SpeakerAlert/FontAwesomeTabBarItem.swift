@@ -34,11 +34,11 @@ class FontAwesomeTabBarItem: UITabBarItem {
         self.image = selectedImg.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
 
         var attrs = UITabBarItem.appearance().titleTextAttributes(for: UIControlState())
-        if let color = attrs?[NSForegroundColorAttributeName],
+        if let color = attrs?[NSForegroundColorAttributeName] {
             let unselectedImg: UIImage = UIImage.fontAwesomeIcon(
                 name: icon,
                 textColor: (color as? UIColor)!,
-                size: CGSize(width: 20, height: 20)) {
+                size: CGSize(width: 20, height: 20))
             self.image = unselectedImg.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         }
     }

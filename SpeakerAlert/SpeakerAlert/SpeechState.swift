@@ -95,9 +95,9 @@ class SpeechState {
         }
     }
 
-    static func fromDictionary(_ dict: [String : AnyObject]) -> SpeechState? {
+    static func fromDictionary(_ dict: [String : Any]) -> SpeechState? {
 
-        if let profileDict: [String : AnyObject] = dict["profile"] as? [String : AnyObject],
+        if let profileDict: [String : Any] = dict["profile"] as? [String : Any],
             let r: Int = dict["running"] as? Int {
 
             var running: SpeechRunning = SpeechRunning.stopped
