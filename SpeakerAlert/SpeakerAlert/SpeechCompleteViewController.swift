@@ -18,7 +18,7 @@ class SpeechCompleteViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let sr = self.speechRecord, let tel = self.timeElapsedLabel, let d = sr.duration {
-            tel.text = TimeUtils.formatStopwatch(d)
+            tel.text = TimeUtils.formatStopwatch(Int(d))
         }
         if let p = self.speechRecord?.profile {
             commentField?.placeholder = p.name

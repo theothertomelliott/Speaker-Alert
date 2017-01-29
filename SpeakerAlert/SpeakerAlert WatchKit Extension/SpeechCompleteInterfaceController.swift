@@ -22,7 +22,7 @@ class SpeechCompleteInterfaceController: WKInterfaceController {
         super.awake(withContext: context)
 
         if let speechState: SpeechState = context as? SpeechState {
-            elapsedTimeLabel.setText(TimeUtils.formatStopwatch(NSNumber(floatLiteral: speechState.elapsed)))
+            elapsedTimeLabel.setText(TimeUtils.formatStopwatch(Int(speechState.elapsed)))
         }
     }
 

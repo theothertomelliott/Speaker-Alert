@@ -140,7 +140,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
     func updateUI() {
         if let s = self.speechState {
-            self.timeElapsedLabel.setText(TimeUtils.formatStopwatch(NSNumber(floatLiteral: s.elapsed)))
+            self.timeElapsedLabel.setText(TimeUtils.formatStopwatch(Int(s.elapsed)))
 
             self.updatePause(s)
 

@@ -124,7 +124,7 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
                 }
             }
             
-            let timeStr = TimeUtils.formatStopwatch(NSNumber(value: timeToDisplay))
+            let timeStr = TimeUtils.formatStopwatch(Int(timeToDisplay))
             var timeAttr: NSMutableAttributedString =
                 NSMutableAttributedString(string: "\(timeStr)")
             if !running {

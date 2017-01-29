@@ -96,7 +96,7 @@ class HistoryTableViewController: UITableViewController {
             cell.date?.text = formatDateForCell(start)
         }
         if let duration = speech.duration {
-            cell.elapsed?.text = TimeUtils.formatStopwatch(duration)
+            cell.elapsed?.text = TimeUtils.formatStopwatch(Int(duration))
         }
         if let name = speech.profile?.name {
             cell.name?.text = name
