@@ -20,7 +20,7 @@ class SpeakerAlertUITests: XCTestCase {
     
 	override func setUp() {
 		super.setUp()
-        startApp(startTime: startTimeOffset(), landscape: isLandscape())
+        startApp(startTimeOffset(), landscape: isLandscape())
 	}
 
     func startAppWithArguments(_ arguments: [String], landscape: Bool = false) {
@@ -42,7 +42,7 @@ class SpeakerAlertUITests: XCTestCase {
         app = XCUIApplication()
         app.launchArguments = arguments
         app.launchArguments.append("--uitesting")
-        setupSnapshot(app: app)
+        setupSnapshot(app)
         app.launch()
         
         device = XCUIDevice.shared()
@@ -66,7 +66,7 @@ class SpeakerAlertUITests: XCTestCase {
         if forceShowTime {
             arguments.append("--forceshowtime")
         }
-        startAppWithArguments(arguments: arguments, landscape: landscape)
+        startAppWithArguments(arguments, landscape: landscape)
     }
     
 	override func tearDown() {

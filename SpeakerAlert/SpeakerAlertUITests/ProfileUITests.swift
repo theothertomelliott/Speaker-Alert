@@ -65,6 +65,6 @@ class ProfileEditUITests: SpeakerAlertUITests {
         app.buttons["Save"].tap()
 
         // Expect an error
-        waitForElement(app.alerts["Out of order"])
+        _ = waitForElement(app.alerts["Out of order"])
     }
 }

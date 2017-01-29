@@ -16,10 +16,8 @@ class SpeechCompleteUITests: SpeakerAlertUITests {
         startSpeech()
         stopSpeech()
         
-        waitForElement(app.navigationBars.buttons["Toastmasters"])
-        app.navigationBars.buttons["Toastmasters"].tap()
-        
-        waitForElement(app.navigationBars["Toastmasters"])
+        waitForElement(app.navigationBars.buttons["Toastmasters"]).tap()
+        _ = waitForElement(app.navigationBars["Toastmasters"])
     }
     
     // Check that viewing the history automatically dismisses the speech complete dialog
@@ -29,10 +27,10 @@ class SpeechCompleteUITests: SpeakerAlertUITests {
         stopSpeech()
         
         app.tabBars.buttons["History"].tap()
-        waitForElement(app.navigationBars["Speech History"])
+        _ = waitForElement(app.navigationBars["Speech History"])
         
         app.tabBars.buttons["Speech"].tap()
-        waitForElement(app.navigationBars["Toastmasters"])
+        _ = waitForElement(app.navigationBars["Toastmasters"])
     }
     
 }

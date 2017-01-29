@@ -30,7 +30,7 @@ class ProfileScreenshotUITests: SpeakerAlertUITests {
         
         XCTAssertEqual(app.tables.cells.count, 7)
         
-        snapshot(name: "001 Profile list", waitForLoadingIndicator: false)
+        snapshot("001 Profile list", waitForLoadingIndicator: false)
     }
     
 }
