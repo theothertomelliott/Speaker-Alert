@@ -49,7 +49,7 @@ class FontAwesomeButton: UIButton {
         self._setup()
     }
     
-    func setIconAndAccessibility(name: String, aId: String? = nil) {
+    func setIconAndAccessibility(_ name: String, aId: String? = nil) {
         self.IconName = name
         if let i: String = aId {
             self.accessibilityIdentifier = i
@@ -62,29 +62,29 @@ class FontAwesomeButton: UIButton {
         }
     }
 
-    private func getFullString(icon: FontAwesome, additional: String) -> String {
-        return String.fontAwesomeIconWithName(icon) +
+    fileprivate func getFullString(_ icon: FontAwesome, additional: String) -> String {
+        return String.fontAwesomeIcon(name: icon) +
             ( additional.characters.count > 0 ? (" " + additional) : "" )
     }
 
-    private func setFontAwesome(icon: FontAwesome) {
+    fileprivate func setFontAwesome(_ icon: FontAwesome) {
 
         let str: String = getFullString(icon, additional: AdditionalText)
 
-        setTitle(str, forState: UIControlState.Disabled)
-        setTitle(str, forState: UIControlState.Highlighted)
-        setTitle(str, forState: UIControlState.Normal)
-        setTitle(str, forState: UIControlState.Selected)
+        setTitle(str, for: UIControlState.disabled)
+        setTitle(str, for: UIControlState.highlighted)
+        setTitle(str, for: UIControlState())
+        setTitle(str, for: UIControlState.selected)
     }
 
-    private func _setup() {
+    fileprivate func _setup() {
 
-        self.titleLabel!.font = UIFont.fontAwesomeOfSize(IconSize)
+        self.titleLabel!.font = UIFont.fontAwesome(ofSize: IconSize)
 
         if let icon: FontAwesome = FontAwesomeFactory.fetchFontAwesome(IconName)! {
             setFontAwesome(icon)
         } else {
-           setFontAwesome(FontAwesome.Warning)
+           setFontAwesome(FontAwesome.warning)
         }
     }
 

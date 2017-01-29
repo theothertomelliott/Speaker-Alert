@@ -26,29 +26,29 @@ class ProfileEditUITests: SpeakerAlertUITests {
         app.tables.textFields["Profile Name"].typeText("Test")
         app.toolbars.buttons["Done"].tap()
         app.tables.cells["Green"].tap()
-        app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("1")
+        app.pickerWheels.element(boundBy: 4).adjust(toPickerWheelValue: "1")
         app.buttons["Save"].tap()
 
         app.tables.cells["Yellow"].tap()
-        app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("2")
+        app.pickerWheels.element(boundBy: 4).adjust(toPickerWheelValue: "2")
         app.buttons["Save"].tap()
 
         app.tables.cells["Red"].tap()
-        app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("3")
+        app.pickerWheels.element(boundBy: 4).adjust(toPickerWheelValue: "3")
         app.buttons["Save"].tap()
 
         app.tables.cells["Over Maximum"].tap()
-        app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("4")
+        app.pickerWheels.element(boundBy: 4).adjust(toPickerWheelValue: "4")
         app.buttons["Save"].tap()
 
         app.buttons["Save"].tap()
 
         // Verify the new profile was created
-        expectationForPredicate(
-            NSPredicate(format: "exists == 1"),
-            evaluatedWithObject: app.staticTexts["Test"],
+        expectation(
+            for: NSPredicate(format: "exists == 1"),
+            evaluatedWith: app.staticTexts["Test"],
             handler: nil)
-        waitForExpectationsWithTimeout(2, handler: nil)
+        waitForExpectations(withTimeout: 2, handler: nil)
     }
 
     func testOutOfOrderTimings() {
@@ -59,7 +59,7 @@ class ProfileEditUITests: SpeakerAlertUITests {
         app.toolbars.buttons["Done"].tap()
         
         app.tables.cells["Green"].tap()
-        app.pickerWheels.elementBoundByIndex(4).adjustToPickerWheelValue("4")
+        app.pickerWheels.element(boundBy: 4).adjust(toPickerWheelValue: "4")
         app.buttons["Save"].tap()
 
         app.buttons["Save"].tap()

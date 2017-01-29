@@ -25,7 +25,7 @@ enum TimeDisplay: String {
     case CountDown = "Count Down"
 }
 
-func StringToTimeDisplay(input: String) -> TimeDisplay {
+func StringToTimeDisplay(_ input: String) -> TimeDisplay {
     switch input {
     case TimeDisplay.None.rawValue:
         return TimeDisplay.None

@@ -7,6 +7,19 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 class LocalNotificationManager: NSObject, SpeechManagerDelegate {
 
@@ -20,25 +33,25 @@ class LocalNotificationManager: NSObject, SpeechManagerDelegate {
         speechMan.addSpeechObserver(self)
     }
     
-    func phaseChanged(state: SpeechState, timer: SpeechTimer) {
+    func phaseChanged(_ state: SpeechState, timer: SpeechTimer) {
         // Nothing to do
     }
 
-    func runningChanged(state: SpeechState, timer: SpeechTimer) {
+    func runningChanged(_ state: SpeechState, timer: SpeechTimer) {
     }
 
-    func speechComplete(state: SpeechState, timer: SpeechTimer, record: Speech) {
+    func speechComplete(_ state: SpeechState, timer: SpeechTimer, record: Speech) {
         // Kill all notifications if a speech has been stopped
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        UIApplication.shared.cancelAllLocalNotifications()
     }
 
-    private func setNotificationForPhase(phase: SpeechPhase) {
+    fileprivate func setNotificationForPhase(_ phase: SpeechPhase) {
 
         if !configMan.areNotificationsEnabled {
             return
         }
         
-        if phase == SpeechPhase.OVER_MAXIMUM {
+        if phase == SpeechPhase.over_MAXIMUM {
             if !configMan.isAlertOvertimeEnabled {
                 return
             }
@@ -56,13 +69,13 @@ class LocalNotificationManager: NSObject, SpeechManagerDelegate {
         let notification = UILocalNotification()
         notification.alertBody = "Time Alert: \(phaseName)"
         notification.hasAction = false
-        notification.fireDate = NSDate(timeIntervalSinceNow: state.timeUntil(phase))
+        notification.fireDate = Date(timeIntervalSinceNow: state.timeUntil(phase))
         notification.soundName = UILocalNotificationDefaultSoundName // play default sound
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        UIApplication.shared.scheduleLocalNotification(notification)
     }
 
-    private func setNotifications() {
-        if speechMan.state?.running == SpeechRunning.RUNNING {
+    fileprivate func setNotifications() {
+        if speechMan.state?.running == SpeechRunning.running {
             for s: SpeechPhase in SpeechPhase.allCases {
                 setNotificationForPhase(s)
             }
@@ -76,7 +89,7 @@ class LocalNotificationManager: NSObject, SpeechManagerDelegate {
 
     func leftBackground() {
         NSLog("Left background")
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        UIApplication.shared.cancelAllLocalNotifications()
     }
 
 }

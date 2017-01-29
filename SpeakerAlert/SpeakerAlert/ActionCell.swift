@@ -19,21 +19,21 @@ struct ActionCellDefinition: CellDefinition, CellWithAction {
         self.action()
     }
     
-    func cell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(
-            "ActionCell",
-            forIndexPath: indexPath
+    func cell(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "ActionCell",
+            for: indexPath
         )
         if let c = cell as? ActionCell {
             c.titleLabel?.text = self.title
-            c.detailTextLabel?.hidden = true
+            c.detailTextLabel?.isHidden = true
             if self.hasDisclosure {
-                c.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                c.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             } else {
-                c.accessoryType = UITableViewCellAccessoryType.None
+                c.accessoryType = UITableViewCellAccessoryType.none
             }
             if let d = self.detail {
-                c.detailTextLabel?.hidden = false
+                c.detailTextLabel?.isHidden = false
                 c.detailTextLabel?.text = d
             }
         }

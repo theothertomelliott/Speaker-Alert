@@ -11,40 +11,40 @@ import Colours
 
 class ProfileTimeRenderer: NSObject {
 
-    class func timeAsHMS(timeOptional: NSNumber?) -> String {
+    class func timeAsHMS(_ timeOptional: NSNumber?) -> String {
         if let time = timeOptional {
-            let componentFormatter: NSDateComponentsFormatter = NSDateComponentsFormatter()
-            let interval = NSTimeInterval(time.floatValue)
+            let componentFormatter: DateComponentsFormatter = DateComponentsFormatter()
+            let interval = TimeInterval(time.floatValue)
 
-            if let result = componentFormatter.stringFromTimeInterval(interval) {
+            if let result = componentFormatter.string(from: interval) {
                 return result
             }
         }
         return ""
     }
 
-    class func phaseColor(phase: SpeechPhase) -> UIColor {
-        var color: UIColor = UIColor.successColor()
+    class func phaseColor(_ phase: SpeechPhase) -> UIColor {
+        var color: UIColor = UIColor.success()
         switch phase {
-        case SpeechPhase.BELOW_MINIMUM:
-            color = UIColor.blackColor()
-        case SpeechPhase.GREEN:
-            color = UIColor.successColor()
-        case SpeechPhase.YELLOW:
-            color = UIColor.warningColor()
-        case SpeechPhase.RED:
-            color = UIColor.dangerColor()
-        case SpeechPhase.OVER_MAXIMUM:
-            color = UIColor.dangerColor()
+        case SpeechPhase.below_MINIMUM:
+            color = UIColor.black
+        case SpeechPhase.green:
+            color = UIColor.success()
+        case SpeechPhase.yellow:
+            color = UIColor.warning()
+        case SpeechPhase.red:
+            color = UIColor.danger()
+        case SpeechPhase.over_MAXIMUM:
+            color = UIColor.danger()
         }
         return color
     }
 
-    class func phaseAsAttributedString(phase: SpeechPhase) -> NSAttributedString {
+    class func phaseAsAttributedString(_ phase: SpeechPhase) -> NSAttributedString {
         var str = ""
         if let phaseName = SpeechPhase.name[phase] {
             str = "● \(phaseName)"
-            if phase == SpeechPhase.OVER_MAXIMUM {
+            if phase == SpeechPhase.over_MAXIMUM {
                 str = "○ \(phaseName)"
             }
         }
@@ -59,7 +59,7 @@ class ProfileTimeRenderer: NSObject {
         return outStr
     }
 
-    class func timesAsAttributedString(profile: Profile) -> NSAttributedString {
+    class func timesAsAttributedString(_ profile: Profile) -> NSAttributedString {
 
         let greenStr: String = ProfileTimeRenderer.timeAsHMS(profile.green)
         let yellowStr: String = ProfileTimeRenderer.timeAsHMS(profile.yellow)
@@ -72,20 +72,20 @@ class ProfileTimeRenderer: NSObject {
 
         outStr.addAttribute(
             NSForegroundColorAttributeName,
-            value: UIColor.successColor(),
+            value: UIColor.success(),
             range: NSRange(location: index, length: 1))
         index += 1 + greenStr.characters.count + 2
         outStr.addAttribute(
             NSForegroundColorAttributeName,
-            value: UIColor.warningColor(),
+            value: UIColor.warning(),
             range: NSRange(location: index, length: 1))
         index += 1 + yellowStr.characters.count + 2
         outStr.addAttribute(NSForegroundColorAttributeName,
-            value: UIColor.dangerColor(),
+            value: UIColor.danger(),
             range: NSRange(location: index, length: 1))
         index += 1 + redStr.characters.count + 2
         outStr.addAttribute(NSForegroundColorAttributeName,
-            value: UIColor.dangerColor(),
+            value: UIColor.danger(),
             range: NSRange(location: index, length: 1))
 
         return outStr

@@ -25,27 +25,27 @@ class SpeechCompleteViewController: UITableViewController {
         }
     }
 
-    @IBAction func commentUpdated(sender: AnyObject) {
+    @IBAction func commentUpdated(_ sender: AnyObject) {
         if let tf = sender as? UITextField {
-            NSLog("Updated comment to \(tf.text)")
+            NSLog("Updated comment to \(String(describing: tf.text))")
             if let speech = self.speechRecord {
-                MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) -> Void in
-                    let s: Speech = speech.MR_inContext(localContext)
+                MagicalRecord.save({ (localContext: NSManagedObjectContext?) -> Void in
+                    let s: Speech = speech.mr_(in: localContext)
                     s.comments = tf.text
-                }) { (success: Bool, error: NSError!) -> Void in
+                }) { (success: Bool, error: Error?) -> Void in
                     // TODO: handle failure
                     if !success {
-                        NSLog("Failure saving speech record with comment: \(error.description)")
+                        NSLog("Failure saving speech record with comment: \(String(describing: error?.localizedDescription))")
                     }
                 }
             }
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if let nc = self.navigationController where nc.viewControllers.contains(self) {
-            nc.popViewControllerAnimated(true)
+        if let nc = self.navigationController, nc.viewControllers.contains(self) {
+            nc.popViewController(animated: true)
         }
     }
 

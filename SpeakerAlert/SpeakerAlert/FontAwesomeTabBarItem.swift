@@ -12,7 +12,7 @@ import FontAwesome_swift
 @IBDesignable
 class FontAwesomeTabBarItem: UITabBarItem {
 
-    private var faIcon: FontAwesome?
+    fileprivate var faIcon: FontAwesome?
 
     @IBInspectable var IconName: String = "Warning" {
         didSet {
@@ -24,30 +24,30 @@ class FontAwesomeTabBarItem: UITabBarItem {
         self._setup()
     }
 
-    private func setFontAwesome(icon: FontAwesome) {
+    fileprivate func setFontAwesome(_ icon: FontAwesome) {
 
-        let selectedImg: UIImage = UIImage.fontAwesomeIconWithName(
-            icon,
-            textColor: UIColor.whiteColor(),
+        let selectedImg: UIImage = UIImage.fontAwesomeIcon(
+            name: icon,
+            textColor: UIColor.white,
             size: CGSize(width: 20, height: 20))
-        self.selectedImage = selectedImg.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        self.image = selectedImg.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        self.selectedImage = selectedImg.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        self.image = selectedImg.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
 
-        var attrs = UITabBarItem.appearance().titleTextAttributesForState(UIControlState.Normal)
+        var attrs = UITabBarItem.appearance().titleTextAttributes(for: UIControlState())
         if let color = attrs?[NSForegroundColorAttributeName],
-            let unselectedImg: UIImage = UIImage.fontAwesomeIconWithName(
-                icon,
+            let unselectedImg: UIImage = UIImage.fontAwesomeIcon(
+                name: icon,
                 textColor: (color as? UIColor)!,
                 size: CGSize(width: 20, height: 20)) {
-            self.image = unselectedImg.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+            self.image = unselectedImg.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         }
     }
 
-    private func _setup() {
-        if let icon: FontAwesome = FontAwesomeFactory.fetchFontAwesome(IconName)! {
+    fileprivate func _setup() {
+        if let icon: FontAwesome = FontAwesomeFactory.fetchFontAwesome(IconName) {
             setFontAwesome(icon)
         } else {
-            setFontAwesome(FontAwesome.Warning)
+            setFontAwesome(FontAwesome.warning)
         }
     }
 

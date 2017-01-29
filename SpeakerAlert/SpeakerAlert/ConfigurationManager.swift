@@ -10,11 +10,11 @@ import Foundation
 
 class ConfigurationManager: NSObject, AppConfiguration {
 
-    private var defaults: NSUserDefaults
-    private var presetModes: [ConfigurationMode]
-    private var parameterManager: ParameterManager?
+    fileprivate var defaults: UserDefaults
+    fileprivate var presetModes: [ConfigurationMode]
+    fileprivate var parameterManager: ParameterManager?
    
-    init(defaults: NSUserDefaults, parameters: ParameterManager? = nil) {
+    init(defaults: UserDefaults, parameters: ParameterManager? = nil) {
         self.defaults = defaults
         self.parameterManager = parameters
         presetModes = []
@@ -46,7 +46,7 @@ class ConfigurationManager: NSObject, AppConfiguration {
         return nil
     }
     
-    func findPreset(name: String) -> ConfigurationMode? {
+    func findPreset(_ name: String) -> ConfigurationMode? {
         for preset in self.presetModes {
             if preset.name == name {
                 return preset
@@ -55,7 +55,7 @@ class ConfigurationManager: NSObject, AppConfiguration {
         return nil
     }
     
-    func applyPreset(preset: ConfigurationMode) {
+    func applyPreset(_ preset: ConfigurationMode) {
         self.timeDisplayMode = preset.timeDisplayMode
         self.isVibrationEnabled = preset.isVibrationEnabled
         self.isAudioEnabled = preset.isAudioEnabled
@@ -64,7 +64,7 @@ class ConfigurationManager: NSObject, AppConfiguration {
         self.areNotificationsEnabled = preset.areNotificationsEnabled
     }
 
-    private func defaultPresets() -> [ConfigurationMode] {
+    fileprivate func defaultPresets() -> [ConfigurationMode] {
         return [
             ConfigurationMode(
                 name: "Practice",
@@ -88,34 +88,34 @@ class ConfigurationManager: NSObject, AppConfiguration {
         ]
     }
     
-    private let autoStartKey = "autoStartEnabled"
+    fileprivate let autoStartKey = "autoStartEnabled"
     var isAutoStartEnabled: Bool {
         get {
-            if let _ = defaults.objectForKey(autoStartKey) {
-                return defaults.boolForKey(autoStartKey)
+            if let _ = defaults.object(forKey: autoStartKey) {
+                return defaults.bool(forKey: autoStartKey)
             }
             // Default
             return false
         }
         set {
-           defaults.setBool(newValue, forKey: autoStartKey)
+           defaults.set(newValue, forKey: autoStartKey)
         }
     }
     
     
-    private let timeDisplayKey = "timeDisplayMode"
-    private let legacyDisplayTimeKey = "displayTimeByDefault"
+    fileprivate let timeDisplayKey = "timeDisplayMode"
+    fileprivate let legacyDisplayTimeKey = "displayTimeByDefault"
     var timeDisplayMode: TimeDisplay {
         get {
-            if let p = parameterManager where p.forceShowTime {
+            if let p = parameterManager, p.forceShowTime {
                 return TimeDisplay.CountUp
             }
-            if let mode = defaults.objectForKey(timeDisplayKey) as? String {
+            if let mode = defaults.object(forKey: timeDisplayKey) as? String {
                 return StringToTimeDisplay(mode)
             }
-            if let _ = defaults.objectForKey(legacyDisplayTimeKey) {
+            if let _ = defaults.object(forKey: legacyDisplayTimeKey) {
                 return
-                    defaults.boolForKey(legacyDisplayTimeKey)
+                    defaults.bool(forKey: legacyDisplayTimeKey)
                         ?
                         TimeDisplay.CountUp
                             :
@@ -124,109 +124,109 @@ class ConfigurationManager: NSObject, AppConfiguration {
             return defaultConfiguration.timeDisplayMode
         }
         set {
-            defaults.setObject(newValue.rawValue, forKey: timeDisplayKey)
+            defaults.set(newValue.rawValue, forKey: timeDisplayKey)
         }
     }
 
-    private let vibrationEnabledKey = "vibrationEnabled"
+    fileprivate let vibrationEnabledKey = "vibrationEnabled"
     var isVibrationEnabled: Bool {
         get {
-            if let _ = defaults.objectForKey(vibrationEnabledKey) {
-                return defaults.boolForKey(vibrationEnabledKey)
+            if let _ = defaults.object(forKey: vibrationEnabledKey) {
+                return defaults.bool(forKey: vibrationEnabledKey)
             }
             return defaultConfiguration.isVibrationEnabled
         }
         set {
-            defaults.setBool(newValue, forKey: vibrationEnabledKey)
+            defaults.set(newValue, forKey: vibrationEnabledKey)
         }
     }
     
-    private let notificationsEnabledKey = "notificationsEnabled"
+    fileprivate let notificationsEnabledKey = "notificationsEnabled"
     var areNotificationsEnabled: Bool {
         get {
-            if let _ = defaults.objectForKey(notificationsEnabledKey) {
-                return defaults.boolForKey(notificationsEnabledKey)
+            if let _ = defaults.object(forKey: notificationsEnabledKey) {
+                return defaults.bool(forKey: notificationsEnabledKey)
             }
             return defaultConfiguration.isVibrationEnabled
         }
         set {
-            defaults.setBool(newValue, forKey: notificationsEnabledKey)
+            defaults.set(newValue, forKey: notificationsEnabledKey)
         }
     }
     
-    private let audioEnabledKey = "audioEnabled"
+    fileprivate let audioEnabledKey = "audioEnabled"
     var isAudioEnabled: Bool {
         get {
-            if let _ = defaults.objectForKey(audioEnabledKey) {
-                return defaults.boolForKey(audioEnabledKey)
+            if let _ = defaults.object(forKey: audioEnabledKey) {
+                return defaults.bool(forKey: audioEnabledKey)
             }
             return defaultConfiguration.isAudioEnabled
         }
         set {
-            defaults.setBool(newValue, forKey: audioEnabledKey)
+            defaults.set(newValue, forKey: audioEnabledKey)
         }
     }
     
-    private let audioFileKey = "audioFile"
+    fileprivate let audioFileKey = "audioFile"
     var audioFile: String {
         get {
-            if let fileName = defaults.objectForKey(audioFileKey) as? String {
+            if let fileName = defaults.object(forKey: audioFileKey) as? String {
                 return fileName
             }
             return "alarm-frenzy"
         }
         set {
-            defaults.setObject(newValue, forKey: audioFileKey)
+            defaults.set(newValue, forKey: audioFileKey)
         }
     }
     
     
-    private let hideControlsKey = "hideControlsInSpeech"
+    fileprivate let hideControlsKey = "hideControlsInSpeech"
     var isHideControlsEnabled: Bool {
         get {
-            if let _ = defaults.objectForKey(hideControlsKey) {
-                return defaults.boolForKey(hideControlsKey)
+            if let _ = defaults.object(forKey: hideControlsKey) {
+                return defaults.bool(forKey: hideControlsKey)
             }
             return true
         }
         set {
-            defaults.setBool(newValue, forKey: hideControlsKey)
+            defaults.set(newValue, forKey: hideControlsKey)
         }
     }
     
-    private let hideStatusKey = "hideStatus"
+    fileprivate let hideStatusKey = "hideStatus"
     var isHideStatusEnabled: Bool {
         get {
-            if let _ = defaults.objectForKey(hideStatusKey) {
-                return defaults.boolForKey(hideStatusKey)
+            if let _ = defaults.object(forKey: hideStatusKey) {
+                return defaults.bool(forKey: hideStatusKey)
             }
             return defaultConfiguration.isHideStatusEnabled
         }
         set {
-            defaults.setBool(newValue, forKey: hideStatusKey)
+            defaults.set(newValue, forKey: hideStatusKey)
         }
     }
     
-    private let alertOvertimeKey = "alertOvertime"
+    fileprivate let alertOvertimeKey = "alertOvertime"
     var isAlertOvertimeEnabled: Bool {
         get {
-            if let _ = defaults.objectForKey(alertOvertimeKey) {
-                return defaults.boolForKey(alertOvertimeKey)
+            if let _ = defaults.object(forKey: alertOvertimeKey) {
+                return defaults.bool(forKey: alertOvertimeKey)
             }
             return defaultConfiguration.isAlertOvertimeEnabled
         }
         set {
-            defaults.setBool(newValue, forKey: alertOvertimeKey)
+            defaults.set(newValue, forKey: alertOvertimeKey)
         }
     }
 
 }
 
-extension NSUserDefaults {
+extension UserDefaults {
     
     func clear() {
         for key in (self.dictionaryRepresentation().keys) {
-            self.removeObjectForKey(key)
+            self.removeObject(forKey: key)
         }
         self.synchronize()
     }

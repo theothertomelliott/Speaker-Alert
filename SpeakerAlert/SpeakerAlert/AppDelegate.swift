@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var localNotificationManager: LocalNotificationManager?
     
-    func application(application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         let parameterManager = Environment.Default.parameterManager
         localNotificationManager = Environment.Default.localNotificationManager
@@ -49,25 +49,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         self.localNotificationManager?.enteredBackground()
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         NSLog("applicationWillEnterForeground")
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         NSLog("applicationDidBecomeActive")
     }
 
-    func applicationWillTerminate(application: UIApplication) {
-        MagicalRecord.saveWithBlock { (context: NSManagedObjectContext!) -> Void in
+    func applicationWillTerminate(_ application: UIApplication) {
+        MagicalRecord.save( { (context: NSManagedObjectContext?) -> Void in
             NSLog("Saving context")
-        }
+        })
 
         NSLog("Cleaning up")
         MagicalRecord.cleanUp()

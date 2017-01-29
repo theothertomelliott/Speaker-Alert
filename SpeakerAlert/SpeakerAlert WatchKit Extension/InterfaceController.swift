@@ -14,11 +14,11 @@ import WatchConnectivity
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
     var watchSession: WCSession?
-    var tickTimer: NSTimer = NSTimer()
+    var tickTimer: Timer = Timer()
     var speechState: SpeechState?
     var vibration: NSNumber = 0
     
-    var phaseColor: UIColor = UIColor.whiteColor()
+    var phaseColor: UIColor = UIColor.white
     
     var blinkState: Bool = false
     var blinkOn: Bool = false
@@ -35,33 +35,33 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var timeElapsedLabel: WKInterfaceLabel!
     @IBOutlet var startStopButton: WKInterfaceButton!
 
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
 
         // Configure interface objects here.
         // Set up initial state
         self.startStopButton.setTitle("Start")
         self.startStopButton.setEnabled(false)
-        self.startStopButton.setBackgroundColor(UIColor.lightGrayColor())
+        self.startStopButton.setBackgroundColor(UIColor.lightGray)
     }
 
     override func willActivate() {
 
         if WCSession.isSupported() {
             NSLog("WCSession supported, initializing")
-            watchSession = WCSession.defaultSession()
+            watchSession = WCSession.default()
             NSLog("Activating WCSession and adding delegate")
             watchSession!.delegate = self
-            watchSession!.activateSession()
+            watchSession!.activate()
         } else {
             NSLog("WCSession is not supported, will not initialize")
         }
         
-        if self.tickTimer.valid {
+        if self.tickTimer.isValid {
             self.tickTimer.invalidate()
         }
-        self.tickTimer = NSTimer.scheduledTimerWithTimeInterval(
-            0.2,
+        self.tickTimer = Timer.scheduledTimer(
+            timeInterval: 0.2,
             target: self,
             selector: #selector(InterfaceController.tick(_:)),
             userInfo: nil,
@@ -75,7 +75,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     override func didDeactivate() {
         NSLog("didDeactivate")
 
-        if self.tickTimer.valid {
+        if self.tickTimer.isValid {
             self.tickTimer.invalidate()
         }
         
@@ -85,10 +85,10 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         super.didDeactivate()
     }
 
-    func updatePause(state: SpeechState) {
+    func updatePause(_ state: SpeechState) {
         // Only allow pausing if the speech is currently running
 
-        if state.running == SpeechRunning.RUNNING {
+        if state.running == SpeechRunning.running {
             self.startStopButton.setTitle("Stop")
             self.startStopButton.setBackgroundColor(
                 UIColor(
@@ -110,21 +110,21 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
     }
 
-    func setPhaseColor(state: SpeechState) {
+    func setPhaseColor(_ state: SpeechState) {
         var newPhaseColor = self.phaseColor
-        if state.phase == SpeechPhase.BELOW_MINIMUM {
-            newPhaseColor = (UIColor.whiteColor())
+        if state.phase == SpeechPhase.below_MINIMUM {
+            newPhaseColor = (UIColor.white)
         }
-        if state.phase == SpeechPhase.GREEN {
+        if state.phase == SpeechPhase.green {
             newPhaseColor = (UIColor(red: 83/255, green: 215/255, blue: 106/255, alpha: 1.0))
         }
-        if state.phase == SpeechPhase.YELLOW {
+        if state.phase == SpeechPhase.yellow {
             newPhaseColor = (UIColor(red: 221/255, green: 170/255, blue: 59/255, alpha: 1.0))
         }
-        if state.phase == SpeechPhase.RED {
+        if state.phase == SpeechPhase.red {
             newPhaseColor = (UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0))
         }
-        if state.phase == SpeechPhase.OVER_MAXIMUM {
+        if state.phase == SpeechPhase.over_MAXIMUM {
             newPhaseColor = UIColor(red: 229/255, green: 0/255, blue: 15/255, alpha: 1.0)
             self.blinkState = true
         }
@@ -132,7 +132,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         if newPhaseColor != self.phaseColor {
             if self.vibration != 0 {
                 NSLog("Vibrate!")
-                WKInterfaceDevice().playHaptic(.Notification)
+                WKInterfaceDevice().play(.notification)
             }
         }
         self.phaseColor = newPhaseColor
@@ -140,7 +140,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
     func updateUI() {
         if let s = self.speechState {
-            self.timeElapsedLabel.setText(TimeUtils.formatStopwatch(s.elapsed))
+            self.timeElapsedLabel.setText(TimeUtils.formatStopwatch(NSNumber(floatLiteral: s.elapsed)))
 
             self.updatePause(s)
 
@@ -154,7 +154,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                     if self.blinkOn {
                         self.mainGroup.setBackgroundColor(self.phaseColor)
                     } else {
-                        self.mainGroup.setBackgroundColor(UIColor.whiteColor())
+                        self.mainGroup.setBackgroundColor(UIColor.white)
                     }
                     self.blinkOn = !self.blinkOn
                 }
@@ -164,10 +164,10 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             }
         } else {
             self.startStopButton.setEnabled(false)
-            self.startStopButton.setBackgroundColor(UIColor.lightGrayColor())
+            self.startStopButton.setBackgroundColor(UIColor.lightGray)
             self.speechNameLabel.setText("< No Speech >")
             self.timeElapsedLabel.setText("-- : --")
-            self.phaseColor = UIColor.whiteColor()
+            self.phaseColor = UIColor.white
             self.mainGroup.setBackgroundColor(self.phaseColor)
         }
         
@@ -177,13 +177,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
 
     @objc
-    func tick(timer: NSTimer!) {
+    func tick(_ timer: Timer!) {
         self.updateUI()
     }
 
     func session(
-        session: WCSession,
-        didReceiveApplicationContext applicationContext: [String : AnyObject]) {
+        _ session: WCSession,
+        didReceiveApplicationContext applicationContext: [String : Any]) {
         if let n = applicationContext["speechName"] as? String {
             self.speechNameLabel.setText(n)
         }
@@ -200,15 +200,14 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         self.updateUI()
     }
 
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         replyHandler([:])
         NSLog("Message = \(message)")
 
         if let messageName: String = message["messageName"] as? String,
             let stateDict = message["state"] as? [String : AnyObject],
-            let speechState = SpeechState.fromDictionary(stateDict)
-            where messageName == "speechComplete" {
-                self.pushControllerWithName("SpeechComplete", context: speechState)
+            let speechState = SpeechState.fromDictionary(stateDict), messageName == "speechComplete" {
+                self.pushController(withName: "SpeechComplete", context: speechState)
         }
 
 
@@ -219,18 +218,18 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
         watchSession?.sendMessage(
             ["messageName" : "startStop"],
-            replyHandler: { (reply: [String : AnyObject]) -> Void in
-            NSLog("Reply received")
-            }, errorHandler: { (error: NSError) -> Void in
-            NSLog("Error received: \(error.description)")
+            replyHandler: { (reply: [String : Any]) -> Void in
+                NSLog("Reply received")
+        }, errorHandler: { (error: Error) -> Void in
+            NSLog("Error received: \(error.localizedDescription)")
         })
     }
     
     @available(watchOSApplicationExtension 2.2, *)
     func session(
-        session: WCSession,
-        activationDidCompleteWithState activationState: WCSessionActivationState,
-                                       error: NSError?
+        _ session: WCSession,
+        activationDidCompleteWith activationState: WCSessionActivationState,
+                                       error: Error?
         ) {}
     
     

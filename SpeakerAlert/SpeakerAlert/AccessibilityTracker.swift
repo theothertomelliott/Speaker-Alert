@@ -13,24 +13,24 @@ class AccessibilityTracker: NSObject {
     var parameterManager: ParameterManager
     
     // Observers who receive state updates
-    private var observers = [AccessibilityObserver]()
+    fileprivate var observers = [AccessibilityObserver]()
     
     init(parameterManager: ParameterManager) {
         self.parameterManager = parameterManager
         super.init()
         
-        NSNotificationCenter.defaultCenter().addObserverForName(
-            UIAccessibilityVoiceOverStatusChanged,
+        NotificationCenter.default.addObserver(
+            forName: NSNotification.Name(rawValue: UIAccessibilityVoiceOverStatusChanged),
             object: nil,
-            queue: nil) { (notification: NSNotification) in
+            queue: nil) { (notification: Notification) in
                 for observer in self.observers {
                     observer.accessibilityUpdated()
                 }
         }
-        NSNotificationCenter.defaultCenter().addObserverForName(
-            UIAccessibilityGrayscaleStatusDidChangeNotification,
+        NotificationCenter.default.addObserver(
+            forName: NSNotification.Name.UIAccessibilityGrayscaleStatusDidChange,
             object: nil,
-            queue: nil) { (notification: NSNotification) in
+            queue: nil) { (notification: Notification) in
                 for observer in self.observers {
                     observer.accessibilityUpdated()
                 }
@@ -47,11 +47,11 @@ class AccessibilityTracker: NSObject {
         }
     }
     
-    func addAccessibilityObserver(observer: AccessibilityObserver) {
+    func addAccessibilityObserver(_ observer: AccessibilityObserver) {
         observers.append(observer)
     }
     
-    func removeAccessibilityObserver(observer: AccessibilityObserver) {
+    func removeAccessibilityObserver(_ observer: AccessibilityObserver) {
         var index: Int? = nil
         for i in 0...(observers.count-1) {
             if let obs: NSObject = observer as? NSObject,
@@ -63,7 +63,7 @@ class AccessibilityTracker: NSObject {
         }
         
         if let ix = index {
-            observers.removeAtIndex(ix)
+            observers.remove(at: ix)
         }
         
     }

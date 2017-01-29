@@ -10,11 +10,11 @@ import Foundation
 
 class SpeechProfileFactory: NSObject {
 
-    static func SpeechProfileWithProfile(profile: Profile) -> SpeechProfile {
-        let green: NSTimeInterval = NSTimeInterval(profile.green!)
-        let yellow: NSTimeInterval = NSTimeInterval(profile.yellow!)
-        let red: NSTimeInterval = NSTimeInterval(profile.red!)
-        let redBlink: NSTimeInterval = NSTimeInterval(profile.redBlink!)
+    static func SpeechProfileWithProfile(_ profile: Profile) -> SpeechProfile {
+        let green: TimeInterval = TimeInterval(profile.green!)
+        let yellow: TimeInterval = TimeInterval(profile.yellow!)
+        let red: TimeInterval = TimeInterval(profile.red!)
+        let redBlink: TimeInterval = TimeInterval(profile.redBlink!)
 
         return SpeechProfile(green: green, yellow: yellow, red: red, redBlink: redBlink)
     }

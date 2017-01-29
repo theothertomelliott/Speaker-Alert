@@ -17,7 +17,7 @@ extension Speech {
     @NSManaged var comments: String?
     @NSManaged var duration: NSNumber?
     @NSManaged var title: String?
-    @NSManaged var startTime: NSDate?
+    @NSManaged var startTime: Date?
     @NSManaged var profile: Profile?
 
 }

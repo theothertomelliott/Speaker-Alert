@@ -15,14 +15,14 @@ class SelectionCellDefinition: CellDefinition, CellWithAction {
     var options: [String] = []
     var onChange: (String) -> () = {_ in}
     
-    init(title: String, initialValue: String, options: [String], onChange: (String) -> ()) {
+    init(title: String, initialValue: String, options: [String], onChange: @escaping (String) -> ()) {
         self.title = title
         self.initialValue = initialValue
         self.options = options
         self.onChange = onChange
     }
     
-    private var cell: SelectionCell?
+    fileprivate var cell: SelectionCell?
     
     func performAction() {
         if let c = cell {
@@ -31,10 +31,10 @@ class SelectionCellDefinition: CellDefinition, CellWithAction {
         }
     }
     
-    func cell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(
-            "SelectionCell",
-            forIndexPath: indexPath
+    func cell(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "SelectionCell",
+            for: indexPath
         )
         if let c = cell as? SelectionCell {
             c.textLabel?.text = self.title
@@ -58,24 +58,24 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
     // MARK - Picker delegate
     
     func pickerView(
-        _pickerView: UIPickerView,
+        _ _pickerView: UIPickerView,
         titleForRow row: Int,
                     forComponent component: Int) -> String? {
         return pickerData[row]
     }
     
     // returns the number of 'columns' to display.
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     // returns the # of rows in each component..
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
     
-    func setSelectedValue(value: String) {
-        for (index, item) in pickerData.enumerate() {
+    func setSelectedValue(_ value: String) {
+        for (index, item) in pickerData.enumerated() {
             if item == value {
                 picker.selectRow(index, inComponent: 0, animated: false)
             }
@@ -83,14 +83,14 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
     }
     
     func openPicker() {
-        let kSCREEN_WIDTH  =    UIScreen.mainScreen().bounds.size.width
-        let PICKER_HEIGHT = UIScreen.mainScreen().bounds.size.height/3
+        let kSCREEN_WIDTH  =    UIScreen.main.bounds.size.width
+        let PICKER_HEIGHT = UIScreen.main.bounds.size.height/3
         
         picker.frame = CGRect(x: 0.0, y: 44.0, width: kSCREEN_WIDTH, height: (PICKER_HEIGHT - 44))
         picker.dataSource = self
         picker.delegate = self
         picker.showsSelectionIndicator = true
-        picker.backgroundColor = UIColor.whiteColor()
+        picker.backgroundColor = UIColor.white
         
         actionView.addSubview(setupToolbar())
         actionView.addSubview(picker)
@@ -103,21 +103,21 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
         
         self.actionView.frame = CGRect(
             x: 0,
-            y: UIScreen.mainScreen().bounds.size.height,
-            width: UIScreen.mainScreen().bounds.size.width,
+            y: UIScreen.main.bounds.size.height,
+            width: UIScreen.main.bounds.size.width,
             height: PICKER_HEIGHT)
         
-        UIView.animateWithDuration(0.2, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             self.actionView.frame = CGRect(
                 x: 0,
-                y: UIScreen.mainScreen().bounds.size.height - PICKER_HEIGHT,
-                width: UIScreen.mainScreen().bounds.size.width,
+                y: UIScreen.main.bounds.size.height - PICKER_HEIGHT,
+                width: UIScreen.main.bounds.size.width,
                 height: PICKER_HEIGHT)
         })
     }
     
-    private func setupToolbar() -> UIView {
-        let kSCREEN_WIDTH  =    UIScreen.mainScreen().bounds.size.width
+    fileprivate func setupToolbar() -> UIView {
+        let kSCREEN_WIDTH  =    UIScreen.main.bounds.size.width
         
         let pickerToolbarPadding = UIToolbar(frame:
             CGRect(
@@ -146,26 +146,26 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
         return pickerToolbarPadding
     }
     
-    private func buildBarItems() -> [UIBarButtonItem] {
+    fileprivate func buildBarItems() -> [UIBarButtonItem] {
         var barItems: [UIBarButtonItem] = []
         
         let labelCancel = UILabel()
         labelCancel.text = "Cancel"
         let titleCancel = UIBarButtonItem(
             title: labelCancel.text,
-            style: UIBarButtonItemStyle.Plain,
+            style: UIBarButtonItemStyle.plain,
             target: self,
             action: #selector(SelectionCell.cancelPickerSelectionButtonClicked(_:)))
         barItems.append(titleCancel)
         
         var flexSpace: UIBarButtonItem
         flexSpace = UIBarButtonItem(
-            barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace,
+            barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace,
             target: self,
             action: nil)
         barItems.append(flexSpace)
         
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done,
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done,
                                       target: self,
                                       action: #selector(SelectionCell.doneClicked(_:)))
         barItems.append(doneBtn)
@@ -173,15 +173,15 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
         return barItems
     }
     
-    func cancelPickerSelectionButtonClicked(sender: UIBarButtonItem) {
-        let PICKER_HEIGHT = UIScreen.mainScreen().bounds.size.height/3
+    func cancelPickerSelectionButtonClicked(_ sender: UIBarButtonItem) {
+        let PICKER_HEIGHT = UIScreen.main.bounds.size.height/3
         
-        UIView.animateWithDuration(0.2, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             
             self.actionView.frame = CGRect(
                 x: 0,
-                y: UIScreen.mainScreen().bounds.size.height,
-                width: UIScreen.mainScreen().bounds.size.width,
+                y: UIScreen.main.bounds.size.height,
+                width: UIScreen.main.bounds.size.width,
                 height: PICKER_HEIGHT
             )
             
@@ -194,18 +194,18 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
         })
     }
     
-    func doneClicked(sender: UIBarButtonItem) {
-        let PICKER_HEIGHT = UIScreen.mainScreen().bounds.size.height/3
+    func doneClicked(_ sender: UIBarButtonItem) {
+        let PICKER_HEIGHT = UIScreen.main.bounds.size.height/3
         
-        let myRow = picker.selectedRowInComponent(0)
+        let myRow = picker.selectedRow(inComponent: 0)
         self.detailTextLabel?.text = pickerData[myRow]
         
-        UIView.animateWithDuration(0.2, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             
             self.actionView.frame = CGRect(
                 x: 0,
-                y: UIScreen.mainScreen().bounds.size.height,
-                width: UIScreen.mainScreen().bounds.size.width,
+                y: UIScreen.main.bounds.size.height,
+                width: UIScreen.main.bounds.size.width,
                 height:  PICKER_HEIGHT
             )
             

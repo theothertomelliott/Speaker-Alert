@@ -892,40 +892,41 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "The Other Tom Elliott";
 				TargetAttributes = {
 					E23480E41B2906EA0076247D = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = XZ59JQ28M5;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Manual;
 					};
 					E23480F81B2906EB0076247D = {
 						CreatedOnToolsVersion = 7.0;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0830;
 						TestTargetID = E23480E41B2906EA0076247D;
 					};
 					E23481031B2906EB0076247D = {
 						CreatedOnToolsVersion = 7.0;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0830;
 						TestTargetID = E23480E41B2906EA0076247D;
 					};
 					E234810C1B2906EB0076247D = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = XZ59JQ28M5;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Manual;
 					};
 					E234811B1B2906EB0076247D = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = XZ59JQ28M5;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Manual;
 					};
 					E2FB13CF1DEAAF18004EF2AB = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = XZ59JQ28M5;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E23480E41B2906EA0076247D;
 					};
@@ -1542,7 +1543,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.theothertomelliott.SpeakerAlert.watchkitapp.watchkitextension";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -1564,7 +1565,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.theothertomelliott.SpeakerAlert.watchkitapp.watchkitextension";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -1587,7 +1588,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.theothertomelliott.SpeakerAlert.watchkitapp";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
@@ -1610,7 +1611,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.theothertomelliott.SpeakerAlert.watchkitapp";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
@@ -1635,7 +1636,7 @@
 				PROVISIONING_PROFILE = "1515de44-80ba-43cc-8efc-12766c34ff53";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.theothertomelliott.SpeakerAlert";
 				SWIFT_OBJC_BRIDGING_HEADER = "SpeakerAlert-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1658,7 +1659,7 @@
 				PROVISIONING_PROFILE = "cd204da6-5e12-4f86-84dc-5876ce56b8ce";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.theothertomelliott.SpeakerAlert";
 				SWIFT_OBJC_BRIDGING_HEADER = "SpeakerAlert-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1672,7 +1673,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.theothertomelliott.SpeakerAlertTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SpeakerAlert-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeakerAlert.app/SpeakerAlert";
 			};
 			name = Debug;
@@ -1687,7 +1688,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.theothertomelliott.SpeakerAlertTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SpeakerAlert-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeakerAlert.app/SpeakerAlert";
 			};
 			name = Release;
@@ -1700,7 +1701,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.theothertomelliott.SpeakerAlertUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = SpeakerAlert;
 				USES_XCTRUNNER = YES;
 			};
@@ -1714,7 +1715,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.theothertomelliott.SpeakerAlertUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = SpeakerAlert;
 				USES_XCTRUNNER = YES;
 			};

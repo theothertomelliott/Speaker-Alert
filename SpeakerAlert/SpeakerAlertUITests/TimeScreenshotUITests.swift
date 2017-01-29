@@ -16,9 +16,9 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
     }
     
     func testScreenshotHistory() {
-        startAppWithArguments(arguments: ["--populatemeeting"])
+        startAppWithArguments(["--populatemeeting"])
         app.tabBars.buttons["History"].tap()
-        snapshot(name: "003 - History", waitForLoadingIndicator: false)
+        snapshot("003 - History", waitForLoadingIndicator: false)
     }
     
 //    func testBeforeStarting() {
@@ -28,18 +28,18 @@ class TimeScreenshotUITests: SpeakerAlertUITests {
 //    }
     
     func testTimerGreen() {
-        startApp(startTime: 300, landscape: false, accessibility: false)
+        startApp(300, landscape: false, accessibility: false)
         openSpeech()
         startSpeech()
         XCTAssert(!app.staticTexts["Green"].exists)
-        snapshot(name: "002 - Timer green", waitForLoadingIndicator: false)
+        snapshot("002 - Timer green", waitForLoadingIndicator: false)
     }
     
     func testTimerYellow() {
-        startApp(startTime: 360, landscape: true, accessibility: false, forceShowTime: true)
+        startApp(360, landscape: true, accessibility: false, forceShowTime: true)
         openSpeech()
         startSpeech()
-        snapshot(name: "003 - Timer yellow with time - Landscape", waitForLoadingIndicator: false)
+        snapshot("003 - Timer yellow with time - Landscape", waitForLoadingIndicator: false)
     }
     
 //    func testTimerRed() {

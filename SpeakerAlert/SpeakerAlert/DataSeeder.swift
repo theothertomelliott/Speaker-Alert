@@ -11,199 +11,201 @@ import MagicalRecord
 
 class DataSeeder: NSObject {
 
-    private let seedVersion = 1
-    private let seedVersionKey = "seedVersion"
+    fileprivate let seedVersion = 1
+    fileprivate let seedVersionKey = "seedVersion"
 
-    let defaults: NSUserDefaults
+    let defaults: UserDefaults
     
     var parameterManager: ParameterManager
     
-    init(defaults: NSUserDefaults, parameters: ParameterManager) {
+    init(defaults: UserDefaults, parameters: ParameterManager) {
         self.defaults = defaults
         self.parameterManager = parameters
         super.init()
     }
     
-    private var fourToSix: Profile?
-    private var fiveToSeven: Profile?
-    private var speechEvaluation: Profile?
-    private var tableTopic: Profile?
-    private var generalEvaluation: Profile?
+    fileprivate var fourToSix: Profile?
+    fileprivate var fiveToSeven: Profile?
+    fileprivate var speechEvaluation: Profile?
+    fileprivate var tableTopic: Profile?
+    fileprivate var generalEvaluation: Profile?
     
-    private func doSeeding() {
+    fileprivate func doSeeding() {
         NSLog("Seeding data")
-
+        
         // Toastmasters speech timings
-
-        MagicalRecord.saveWithBlockAndWait { (localContext: NSManagedObjectContext!) -> Void in
+        
+        MagicalRecord.save( { (localContext: NSManagedObjectContext?) -> Void in
             // This block runs in background thread
-            self.configureToastmastersTimings(localContext)
-            self.configureGeneralTimings(localContext)
-            
-            if self.parameterManager.populateMeeting {
-                self.createDemoMeeting(localContext)
+            if let l = localContext {
+                self.configureToastmastersTimings(l)
+                self.configureGeneralTimings(l)
+                
+                if self.parameterManager.populateMeeting {
+                    self.createDemoMeeting(l)
+                }
             }
-        }
+        })
     }
     
-    private func createDate(dateAsString: String) -> NSDate {
-        let dateFormatter = NSDateFormatter()
+    fileprivate func createDate(_ dateAsString: String) -> Date {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
-        return dateFormatter.dateFromString(dateAsString)!
+        return dateFormatter.date(from: dateAsString)!
     }
 
-    func createDemoMeeting(localContext: NSManagedObjectContext) {
-        let speech1: Speech = Speech.MR_createEntityInContext(localContext)
+    func createDemoMeeting(_ localContext: NSManagedObjectContext) {
+        let speech1: Speech = Speech.mr_createEntity(in: localContext)
         speech1.comments = "Alice - Icebreaker"
-        speech1.duration = 3*60 + 42
+        speech1.duration = 3*60 + 42 as NSNumber
         speech1.profile = fourToSix
         speech1.startTime = createDate("30-09-2016 19:07")
 
-        let eval1: Speech = Speech.MR_createEntityInContext(localContext)
+        let eval1: Speech = Speech.mr_createEntity(in: localContext)
         eval1.comments = "Bob - Evaluation"
-        eval1.duration = 2*60 + 11
+        eval1.duration = 2*60 + 11 as NSNumber
         eval1.profile = speechEvaluation
         eval1.startTime = createDate("30-09-2016 19:12")
 
-        let speech2: Speech = Speech.MR_createEntityInContext(localContext)
+        let speech2: Speech = Speech.mr_createEntity(in: localContext)
         speech2.comments = "Chris - Speech 3"
-        speech2.duration = 5*60 + 10
+        speech2.duration = 5*60 + 10 as NSNumber
         speech2.profile = fiveToSeven
         speech2.startTime = createDate("30-09-2016 19:16")
         
-        let eval2: Speech = Speech.MR_createEntityInContext(localContext)
+        let eval2: Speech = Speech.mr_createEntity(in: localContext)
         eval2.comments = "Diane - Evaluation"
-        eval2.duration = 3*60 + 1
+        eval2.duration = 3*60 + 1 as NSNumber
         eval2.profile = speechEvaluation
         eval2.startTime = createDate("30-09-2016 19:23")
         
-        let tableTopic1: Speech = Speech.MR_createEntityInContext(localContext)
+        let tableTopic1: Speech = Speech.mr_createEntity(in: localContext)
         tableTopic1.comments = "Eric - Table Topic"
-        tableTopic1.duration = 1*60 + 12
+        tableTopic1.duration = 1*60 + 12 as NSNumber
         tableTopic1.profile = speechEvaluation
         tableTopic1.startTime = createDate("30-09-2016 19:27")
         
-        let tableTopic2: Speech = Speech.MR_createEntityInContext(localContext)
+        let tableTopic2: Speech = Speech.mr_createEntity(in: localContext)
         tableTopic2.comments = "Faith - Table Topic"
-        tableTopic2.duration = 2*60 + 31
+        tableTopic2.duration = 2*60 + 31 as NSNumber
         tableTopic2.profile = speechEvaluation
         tableTopic2.startTime = createDate("30-09-2016 19:30")
         
-        let tableTopic3: Speech = Speech.MR_createEntityInContext(localContext)
+        let tableTopic3: Speech = Speech.mr_createEntity(in: localContext)
         tableTopic3.comments = "Georgia - Table Topic"
-        tableTopic3.duration = 1*60 + 59
+        tableTopic3.duration = 1*60 + 59 as NSNumber
         tableTopic3.profile = speechEvaluation
         tableTopic3.startTime = createDate("30-09-2016 19:35")
         
-        let ge: Speech = Speech.MR_createEntityInContext(localContext)
+        let ge: Speech = Speech.mr_createEntity(in: localContext)
         ge.comments = "Harry - General Evaluation"
-        ge.duration = 8*60 + 17
+        ge.duration = 8*60 + 17 as NSNumber
         ge.profile = generalEvaluation
         ge.startTime = createDate("30-09-2016 19:40")
     }
     
-    func configureGeneralTimings(localContext: NSManagedObjectContext) {
+    func configureGeneralTimings(_ localContext: NSManagedObjectContext) {
         // General timings
 
-        let fiveMinutes: Profile = Profile.MR_createEntityInContext(localContext)
+        let fiveMinutes: Profile = Profile.mr_createEntity(in: localContext)
         fiveMinutes.name = "Five Minutes"
-        fiveMinutes.green = 4*60
-        fiveMinutes.yellow = 4*60 + 30
-        fiveMinutes.red = 5*60
-        fiveMinutes.redBlink = 5*60 + 30
+        fiveMinutes.green = 4*60 as NSNumber
+        fiveMinutes.yellow = 4*60 + 30 as NSNumber
+        fiveMinutes.red = 5*60 as NSNumber
+        fiveMinutes.redBlink = 5*60 + 30 as NSNumber
 
-        let tenMinutes: Profile = Profile.MR_createEntityInContext(localContext)
+        let tenMinutes: Profile = Profile.mr_createEntity(in: localContext)
         tenMinutes.name = "Ten Minutes"
-        tenMinutes.green = 8*60
-        tenMinutes.yellow = 9*60
-        tenMinutes.red = 10*60
-        tenMinutes.redBlink = 10*60 + 30
+        tenMinutes.green = 8*60 as NSNumber
+        tenMinutes.yellow = 9*60 as NSNumber
+        tenMinutes.red = 10*60 as NSNumber
+        tenMinutes.redBlink = 10*60 + 30 as NSNumber
 
-        let twentyMinutes: Profile = Profile.MR_createEntityInContext(localContext)
+        let twentyMinutes: Profile = Profile.mr_createEntity(in: localContext)
         twentyMinutes.name = "Twenty Minutes"
-        twentyMinutes.green = 18*60
-        twentyMinutes.yellow = 19*60
-        twentyMinutes.red = 20*60
-        twentyMinutes.redBlink = 20*60 + 30
+        twentyMinutes.green = 18*60 as NSNumber
+        twentyMinutes.yellow = 19*60 as NSNumber
+        twentyMinutes.red = 20*60 as NSNumber
+        twentyMinutes.redBlink = 20*60 + 30 as NSNumber
 
-        let thirtyMinutes: Profile = Profile.MR_createEntityInContext(localContext)
+        let thirtyMinutes: Profile = Profile.mr_createEntity(in: localContext)
         thirtyMinutes.name = "Thirty Minutes"
-        thirtyMinutes.green = 25*60
-        thirtyMinutes.yellow = 27*60 + 30
-        thirtyMinutes.red = 30*60
-        thirtyMinutes.redBlink = 30*60 + 30
+        thirtyMinutes.green = 25*60 as NSNumber
+        thirtyMinutes.yellow = 27*60 + 30 as NSNumber
+        thirtyMinutes.red = 30*60 as NSNumber
+        thirtyMinutes.redBlink = 30*60 + 30 as NSNumber
 
-        let oneHour: Profile = Profile.MR_createEntityInContext(localContext)
+        let oneHour: Profile = Profile.mr_createEntity(in: localContext)
         oneHour.name = "One Hour"
-        oneHour.green = 50*60
-        oneHour.yellow = 55*60
-        oneHour.red = 60*60
-        oneHour.redBlink = 60*60 + 30
+        oneHour.green = 50*60 as NSNumber
+        oneHour.yellow = 55*60 as NSNumber
+        oneHour.red = 60*60 as NSNumber
+        oneHour.redBlink = 60*60 + 30 as NSNumber
     }
 
-    func tableTopicTiming(localContext: NSManagedObjectContext) -> Profile {
+    func tableTopicTiming(_ localContext: NSManagedObjectContext) -> Profile {
         let tableTopic: Profile =
-Profile.MR_createEntityInContext(localContext)
+Profile.mr_createEntity(in: localContext)
         tableTopic.name = "Table Topic"
-        tableTopic.green = 1*60
-        tableTopic.yellow = 1*60 + 30
-        tableTopic.red = 2*60
-        tableTopic.redBlink = 2*60 + 30
+        tableTopic.green = 1*60 as NSNumber
+        tableTopic.yellow = 1*60 + 30 as NSNumber
+        tableTopic.red = 2*60 as NSNumber
+        tableTopic.redBlink = 2*60 + 30 as NSNumber
         return tableTopic
     }
 
-    func speechEvaluationTiming(localContext: NSManagedObjectContext) -> Profile {
-        let speechEvaluation: Profile = Profile.MR_createEntityInContext(localContext)
+    func speechEvaluationTiming(_ localContext: NSManagedObjectContext) -> Profile {
+        let speechEvaluation: Profile = Profile.mr_createEntity(in: localContext)
         speechEvaluation.name = "Speech Evaluation"
-        speechEvaluation.green = 2*60
-        speechEvaluation.yellow = 2*60 + 30
-        speechEvaluation.red = 3*60
-        speechEvaluation.redBlink = 3*60 + 30
+        speechEvaluation.green = 2*60 as NSNumber
+        speechEvaluation.yellow = 2*60 + 30 as NSNumber
+        speechEvaluation.red = 3*60 as NSNumber
+        speechEvaluation.redBlink = 3*60 + 30 as NSNumber
         return speechEvaluation
     }
 
-    func fourToSixTiming(localContext: NSManagedObjectContext) -> Profile {
-    let fourToSix: Profile = Profile.MR_createEntityInContext(localContext)
+    func fourToSixTiming(_ localContext: NSManagedObjectContext) -> Profile {
+    let fourToSix: Profile = Profile.mr_createEntity(in: localContext)
     fourToSix.name = "Speech: Four to Six Minutes"
-    fourToSix.green = 4*60
-    fourToSix.yellow = 5*60
-    fourToSix.red = 6*60
-    fourToSix.redBlink = 6*60 + 30
+    fourToSix.green = 4*60 as NSNumber
+    fourToSix.yellow = 5*60 as NSNumber
+    fourToSix.red = 6*60 as NSNumber
+    fourToSix.redBlink = 6*60 + 30 as NSNumber
         return fourToSix
     }
 
-    func fiveToSevenTiming(localContext: NSManagedObjectContext) -> Profile {
-    let fiveToSeven: Profile = Profile.MR_createEntityInContext(localContext)
+    func fiveToSevenTiming(_ localContext: NSManagedObjectContext) -> Profile {
+    let fiveToSeven: Profile = Profile.mr_createEntity(in: localContext)
     fiveToSeven.name = "Speech: Five to Seven Minutes"
-    fiveToSeven.green = 5*60
-    fiveToSeven.yellow = 6*60
-    fiveToSeven.red = 7*60
-    fiveToSeven.redBlink = 7*60 + 30
+    fiveToSeven.green = 5*60 as NSNumber
+    fiveToSeven.yellow = 6*60 as NSNumber
+    fiveToSeven.red = 7*60 as NSNumber
+    fiveToSeven.redBlink = 7*60 + 30 as NSNumber
         return fiveToSeven
     }
 
-    func eightToTenTiming(localContext: NSManagedObjectContext) -> Profile {
-    let eightToTen: Profile = Profile.MR_createEntityInContext(localContext)
+    func eightToTenTiming(_ localContext: NSManagedObjectContext) -> Profile {
+    let eightToTen: Profile = Profile.mr_createEntity(in: localContext)
     eightToTen.name = "Speech: Eight to Ten Minutes"
-    eightToTen.green = 8*60
-    eightToTen.yellow = 9*60
-    eightToTen.red = 10*60
-    eightToTen.redBlink = 10*60 + 30
+    eightToTen.green = 8*60 as NSNumber
+    eightToTen.yellow = 9*60 as NSNumber
+    eightToTen.red = 10*60 as NSNumber
+    eightToTen.redBlink = 10*60 + 30 as NSNumber
         return eightToTen
     }
 
-    func generalEvalTiming(localContext: NSManagedObjectContext) -> Profile {
-    let generalEval: Profile = Profile.MR_createEntityInContext(localContext)
+    func generalEvalTiming(_ localContext: NSManagedObjectContext) -> Profile {
+    let generalEval: Profile = Profile.mr_createEntity(in: localContext)
     generalEval.name = "General Evaluation"
-    generalEval.green = 8*60
-    generalEval.yellow = 9*60
-    generalEval.red = 10*60
-    generalEval.redBlink = 10*60 + 30
+    generalEval.green = 8*60 as NSNumber
+    generalEval.yellow = 9*60 as NSNumber
+    generalEval.red = 10*60 as NSNumber
+    generalEval.redBlink = 10*60 + 30 as NSNumber
         return generalEval
     }
 
-    func configureToastmastersTimings(localContext: NSManagedObjectContext) {
-        let groupToastmasters: Group = Group.MR_createEntityInContext(localContext)
+    func configureToastmastersTimings(_ localContext: NSManagedObjectContext) {
+        let groupToastmasters: Group = Group.mr_createEntity(in: localContext)
         groupToastmasters.name = "Toastmasters"
 
         tableTopic = tableTopicTiming(localContext)
@@ -223,14 +225,14 @@ Profile.MR_createEntityInContext(localContext)
 
         var shouldSeed: Bool = true
 
-        if let seedVersion: Int = defaults.integerForKey(seedVersionKey)
-            where seedVersion >= self.seedVersion {
+        if let seedVersion: Int = defaults.integer(forKey: seedVersionKey),
+            seedVersion >= self.seedVersion {
             shouldSeed = false
         }
 
         if shouldSeed {
             self.doSeeding()
-            defaults.setInteger(self.seedVersion, forKey: self.seedVersionKey)
+            defaults.set(self.seedVersion, forKey: self.seedVersionKey)
         }
 
     }

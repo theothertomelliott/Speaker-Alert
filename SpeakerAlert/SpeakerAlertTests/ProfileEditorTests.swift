@@ -12,17 +12,17 @@ class ProfileEditorTests: XCTestCase {
 
     func testInOrderCheckSuccess() {
         let profileEditor: ProfileTableViewController = ProfileTableViewController()
-        profileEditor.phaseTimes[SpeechPhase.GREEN] = 1
-        profileEditor.phaseTimes[SpeechPhase.YELLOW] = 2
-        profileEditor.phaseTimes[SpeechPhase.RED] = 3
-        profileEditor.phaseTimes[SpeechPhase.OVER_MAXIMUM] = 4
+        profileEditor.phaseTimes[SpeechPhase.green] = 1
+        profileEditor.phaseTimes[SpeechPhase.yellow] = 2
+        profileEditor.phaseTimes[SpeechPhase.red] = 3
+        profileEditor.phaseTimes[SpeechPhase.over_MAXIMUM] = 4
         
         XCTAssertTrue(profileEditor.phasesInOrder())
         
-        profileEditor.phaseTimes[SpeechPhase.GREEN] = 5
-        profileEditor.phaseTimes[SpeechPhase.YELLOW] = 5
-        profileEditor.phaseTimes[SpeechPhase.RED] = 5
-        profileEditor.phaseTimes[SpeechPhase.OVER_MAXIMUM] = 5
+        profileEditor.phaseTimes[SpeechPhase.green] = 5
+        profileEditor.phaseTimes[SpeechPhase.yellow] = 5
+        profileEditor.phaseTimes[SpeechPhase.red] = 5
+        profileEditor.phaseTimes[SpeechPhase.over_MAXIMUM] = 5
         
         XCTAssertTrue(profileEditor.phasesInOrder())
     }
@@ -30,31 +30,31 @@ class ProfileEditorTests: XCTestCase {
     func testInOrderCheckFail() {
         let profileEditor: ProfileTableViewController = ProfileTableViewController()
     
-        profileEditor.phaseTimes[SpeechPhase.GREEN] = 5
-        profileEditor.phaseTimes[SpeechPhase.YELLOW] = 0
-        profileEditor.phaseTimes[SpeechPhase.RED] = 0
-        profileEditor.phaseTimes[SpeechPhase.OVER_MAXIMUM] = 0
+        profileEditor.phaseTimes[SpeechPhase.green] = 5
+        profileEditor.phaseTimes[SpeechPhase.yellow] = 0
+        profileEditor.phaseTimes[SpeechPhase.red] = 0
+        profileEditor.phaseTimes[SpeechPhase.over_MAXIMUM] = 0
         
         XCTAssertTrue(!profileEditor.phasesInOrder())
         
-        profileEditor.phaseTimes[SpeechPhase.GREEN] = 5
-        profileEditor.phaseTimes[SpeechPhase.YELLOW] = 0
-        profileEditor.phaseTimes[SpeechPhase.RED] = 0
-        profileEditor.phaseTimes[SpeechPhase.OVER_MAXIMUM] = 0
+        profileEditor.phaseTimes[SpeechPhase.green] = 5
+        profileEditor.phaseTimes[SpeechPhase.yellow] = 0
+        profileEditor.phaseTimes[SpeechPhase.red] = 0
+        profileEditor.phaseTimes[SpeechPhase.over_MAXIMUM] = 0
         
         XCTAssertTrue(!profileEditor.phasesInOrder())
         
-        profileEditor.phaseTimes[SpeechPhase.GREEN] = 0
-        profileEditor.phaseTimes[SpeechPhase.YELLOW] = 6
-        profileEditor.phaseTimes[SpeechPhase.RED] = 0
-        profileEditor.phaseTimes[SpeechPhase.OVER_MAXIMUM] = 0
+        profileEditor.phaseTimes[SpeechPhase.green] = 0
+        profileEditor.phaseTimes[SpeechPhase.yellow] = 6
+        profileEditor.phaseTimes[SpeechPhase.red] = 0
+        profileEditor.phaseTimes[SpeechPhase.over_MAXIMUM] = 0
         
         XCTAssertTrue(!profileEditor.phasesInOrder())
         
-        profileEditor.phaseTimes[SpeechPhase.GREEN] = 0
-        profileEditor.phaseTimes[SpeechPhase.YELLOW] = 0
-        profileEditor.phaseTimes[SpeechPhase.RED] = 7
-        profileEditor.phaseTimes[SpeechPhase.OVER_MAXIMUM] = 0
+        profileEditor.phaseTimes[SpeechPhase.green] = 0
+        profileEditor.phaseTimes[SpeechPhase.yellow] = 0
+        profileEditor.phaseTimes[SpeechPhase.red] = 7
+        profileEditor.phaseTimes[SpeechPhase.over_MAXIMUM] = 0
         
         XCTAssertTrue(!profileEditor.phasesInOrder())
     }

@@ -21,31 +21,31 @@ class AudioAlertManager: NSObject, SpeechManagerDelegate {
         speechMan.addSpeechObserver(self)
     }
     
-    func phaseChanged(state: SpeechState, timer: SpeechTimer) {
+    func phaseChanged(_ state: SpeechState, timer: SpeechTimer) {
         if configMan.isAudioEnabled {
-            if state.phase == SpeechPhase.OVER_MAXIMUM && !configMan.isAlertOvertimeEnabled {
+            if state.phase == SpeechPhase.over_MAXIMUM && !configMan.isAlertOvertimeEnabled {
                 return
             }
             playSound()
         }
     }
     
-    func runningChanged(state: SpeechState, timer: SpeechTimer) {}
+    func runningChanged(_ state: SpeechState, timer: SpeechTimer) {}
     
-    func speechComplete(state: SpeechState, timer: SpeechTimer, record: Speech) {
+    func speechComplete(_ state: SpeechState, timer: SpeechTimer, record: Speech) {
     }
     
-    var soundURL: NSURL?
+    var soundURL: URL?
     var soundID: SystemSoundID = 0
     
     func playSound() {
-        if let filePath = NSBundle.mainBundle().pathForResource(
-            configMan.audioFile,
+        if let filePath = Bundle.main.path(
+            forResource: configMan.audioFile,
             ofType: "mp3"
             ) {
-            soundURL = NSURL(fileURLWithPath: filePath)
+            soundURL = URL(fileURLWithPath: filePath)
             if let url = soundURL {
-                AudioServicesCreateSystemSoundID(url, &soundID)
+                AudioServicesCreateSystemSoundID(url as NSURL, &soundID)
             }
         } else {
             print("Sound file not found")

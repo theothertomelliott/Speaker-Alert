@@ -35,35 +35,35 @@ class ParameterManager: NSObject {
     func parseParams() {
         let parser = JVArgumentParser()
         
-        parser.addOptionWithArgumentWithLongName("seeddata") { (value: String!) in
-            self.seedDataSet = value
+        parser.addOptionWithArgument(withLongName: "seeddata") { (value: String?) in
+            self.seedDataSet = value!
         }
-        parser.addOptionWithLongName("uitesting") { () in
+        parser.addOption(withLongName: "uitesting") { () in
             self.isUITesting = true
         }
-        parser.addOptionWithLongName("populatemeeting") { () in
+        parser.addOption(withLongName: "populatemeeting") { () in
             self.populateMeeting = true
         }
-        parser.addOptionWithLongName("accessibility") { () in
+        parser.addOption(withLongName: "accessibility") { () in
             self.forceAccessibility = true
         }
-        parser.addOptionWithLongName("forceshowtime") { () in
+        parser.addOption(withLongName: "forceshowtime") { () in
             self.forceShowTime = true
         }
-        parser.addOptionWithArgumentWithLongName("starttime") { (value: String!) in
-            if let st = Int(value) {
+        parser.addOptionWithArgument(withLongName: "starttime") { (value: String?) in
+            if let st = Int(value!) {
                 self.starttime = st
             } else {
-                NSLog("Invalid starttime value: %@", value)
+                NSLog("Invalid starttime value: %@", value!)
             }
         }
         
-        parser.addOptionWithArgumentWithLongName("speechdisplay") { (value: String!) in
+        parser.addOptionWithArgument(withLongName: "speechdisplay") { (value: String?) in
             self.speechDisplay = value
         }
         
         do {
-            try parser.parse(NSProcessInfo.processInfo().arguments)
+            try parser.parse(ProcessInfo().arguments)
         } catch {
             NSLog("Couldn't parse arguments")
         }

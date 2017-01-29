@@ -23,8 +23,8 @@ class SpeakerAlertUITests: XCTestCase {
         startApp(startTimeOffset(), landscape: isLandscape())
 	}
 
-    func startAppWithArguments(arguments: [String], landscape: Bool = false) {
-        addUIInterruptionMonitorWithDescription("Local Notifications") { (alert) -> Bool in
+    func startAppWithArguments(_ arguments: [String], landscape: Bool = false) {
+        addUIInterruptionMonitor(withDescription: "Local Notifications") { (alert) -> Bool in
             if alert.buttons["OK"].exists {
                 alert.buttons["OK"].tap()
                 return true
@@ -45,16 +45,16 @@ class SpeakerAlertUITests: XCTestCase {
         setupSnapshot(app)
         app.launch()
         
-        device = XCUIDevice.sharedDevice()
+        device = XCUIDevice.shared()
         if landscape {
-            device.orientation = UIDeviceOrientation.LandscapeLeft
+            device.orientation = UIDeviceOrientation.landscapeLeft
         } else {
-            device.orientation = UIDeviceOrientation.Portrait
+            device.orientation = UIDeviceOrientation.portrait
         }
     }
     
     
-    func startApp(startTime: Int, landscape: Bool = false, accessibility: Bool = true) {
+    func startApp(_ startTime: Int, landscape: Bool = false, accessibility: Bool = true) {
         var arguments: [String] = ["--starttime", String(startTime)]
         if accessibility {
             arguments.append("--accessibility")
@@ -75,13 +75,13 @@ class SpeakerAlertUITests: XCTestCase {
         return 0
     }
     
-    func waitForElement(element: XCUIElement) -> XCUIElement {
+    func waitForElement(_ element: XCUIElement) -> XCUIElement {
         // Verify the new profile was created
-        expectationForPredicate(
-            NSPredicate(format: "exists == 1"),
-            evaluatedWithObject: element,
+        expectation(
+            for: NSPredicate(format: "exists == 1"),
+            evaluatedWith: element,
             handler: nil)
-        waitForExpectationsWithTimeout(0.5, handler: nil)
+        waitForExpectations(withTimeout: 0.5, handler: nil)
         return element
     }
 
@@ -91,17 +91,17 @@ class SpeakerAlertUITests: XCTestCase {
     func openSpeech() {
         // Wait until the defaults are loaded
         let exists = NSPredicate(format: "exists == 1")
-        expectationForPredicate(exists,
-                                evaluatedWithObject: app.staticTexts[speechGroup], handler: nil)
-        waitForExpectationsWithTimeout(5, handler: nil)
+        expectation(for: exists,
+                                evaluatedWith: app.staticTexts[speechGroup], handler: nil)
+        waitForExpectations(withTimeout: 5, handler: nil)
         
         // Open the profile
         app.tables.staticTexts[speechGroup].tap()
         
-        expectationForPredicate(exists,
-                                evaluatedWithObject: app.staticTexts[speechTitle],
+        expectation(for: exists,
+                                evaluatedWith: app.staticTexts[speechTitle],
                                 handler: nil)
-        waitForExpectationsWithTimeout(5, handler: nil)
+        waitForExpectations(withTimeout: 5, handler: nil)
         
         app.tables.staticTexts[speechTitle].tap()
     }

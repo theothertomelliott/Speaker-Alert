@@ -27,7 +27,7 @@ UIPickerViewDataSource {
 		didSet {
 		}
 	}
-	var phase: SpeechPhase = SpeechPhase.BELOW_MINIMUM
+	var phase: SpeechPhase = SpeechPhase.below_MINIMUM
 	var profileUpdateReceiver: ProfileTableViewController?
 
 	@IBOutlet var picker: UIPickerView?
@@ -41,28 +41,28 @@ UIPickerViewDataSource {
 		// Do any additional setup after loading the view.
 	}
 
-	override func viewWillAppear(animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		var time: NSNumber?
 
 		switch self.phase {
-		case .BELOW_MINIMUM: break
-		case .OVER_MAXIMUM: time = self.profile?.redBlink
-		case .GREEN: time = self.profile?.green
-		case .YELLOW: time = self.profile?.yellow
-		case .RED: time = self.profile?.red
+		case .below_MINIMUM: break
+		case .over_MAXIMUM: time = self.profile?.redBlink
+		case .green: time = self.profile?.green
+		case .yellow: time = self.profile?.yellow
+		case .red: time = self.profile?.red
 		}
 
 		var workingTime: NSNumber = 0
 		if let t = time {
 			workingTime = t
 		}
-		picker?.selectRow(12 * TOTAL_REPETITIONS/2 + Int(workingTime.intValue / 3600),
+		picker?.selectRow(12 * TOTAL_REPETITIONS/2 + Int(workingTime.int32Value / 3600),
 			inComponent: HOUR_INDEX,
 			animated: false)
-		picker?.selectRow(60 * TOTAL_REPETITIONS/2 + Int(workingTime.intValue / 60 % 60),
+		picker?.selectRow(60 * TOTAL_REPETITIONS/2 + Int(workingTime.int32Value / 60 % 60),
 			inComponent: MINUTE_INDEX,
 			animated: false)
-		picker?.selectRow(60 * TOTAL_REPETITIONS/2 + Int(workingTime.intValue % 60),
+		picker?.selectRow(60 * TOTAL_REPETITIONS/2 + Int(workingTime.int32Value % 60),
 			inComponent: SECOND_INDEX,
 			animated: false)
 
@@ -77,7 +77,7 @@ UIPickerViewDataSource {
         self.setTabBarVisible(false, animated: true)
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
@@ -89,10 +89,10 @@ UIPickerViewDataSource {
 	@IBAction func save() {
 		if let p = self.picker {
 			self.profileUpdateReceiver?.phaseTimes[phase] =
-				NSTimeInterval(
-					p.selectedRowInComponent(HOUR_INDEX) % 12 * 3600 +
-						p.selectedRowInComponent(MINUTE_INDEX) % 60 * 60 +
-						p.selectedRowInComponent(SECOND_INDEX) % 60
+				TimeInterval(
+					p.selectedRow(inComponent: HOUR_INDEX) % 12 * 3600 +
+						p.selectedRow(inComponent: MINUTE_INDEX) % 60 * 60 +
+						p.selectedRow(inComponent: SECOND_INDEX) % 60
 			)
 		}
 		self.profileUpdateReceiver?.phaseUpdated()
@@ -100,15 +100,15 @@ UIPickerViewDataSource {
 	}
 
 	@IBAction func dismiss() {
-		self.navigationController?.popViewControllerAnimated(true)
+		self.navigationController?.popViewController(animated: true)
 	}
 
-	func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+	func numberOfComponents(in pickerView: UIPickerView) -> Int {
 		return TOTAL_COMPONENTS
 	}
 
 	// returns the # of rows in each component..
-	func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
 		if component == HOUR_INDEX {
 			return 12 * TOTAL_REPETITIONS
 		} else if component == MINUTE_INDEX || component == SECOND_INDEX {
@@ -119,14 +119,14 @@ UIPickerViewDataSource {
 	}
 
 	func pickerView(
-		pickerView: UIPickerView,
+		_ pickerView: UIPickerView,
 		attributedTitleForRow row: Int,
 		forComponent component: Int) -> NSAttributedString? {
 			let paragraphStyle = NSMutableParagraphStyle()
 			if component == HOUR_INDEX || component == MINUTE_INDEX || component == SECOND_INDEX {
-				paragraphStyle.alignment = NSTextAlignment.Right
+				paragraphStyle.alignment = NSTextAlignment.right
 			} else {
-				paragraphStyle.alignment = NSTextAlignment.Left
+				paragraphStyle.alignment = NSTextAlignment.left
 			}
 
 			if let titleData = getPickerTitle(row, forComponent: component) {
@@ -139,7 +139,7 @@ UIPickerViewDataSource {
 			return nil
 	}
 
-	func getPickerTitle(row: Int, forComponent component: Int) -> String? {
+	func getPickerTitle(_ row: Int, forComponent component: Int) -> String? {
 		if component == HOUR_INDEX {
 			return "\(row%12)"
 		} else if component == MINUTE_INDEX || component == SECOND_INDEX {

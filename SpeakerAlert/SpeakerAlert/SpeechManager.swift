@@ -15,9 +15,9 @@ import MagicalRecord
 class SpeechManager: NSObject, SpeechTimerDelegate {
 
     // Speech timer
-    private var timer: SpeechTimer?
+    fileprivate var timer: SpeechTimer?
     // Observers who receive state updates
-    private var observers = [SpeechManagerDelegate]()
+    fileprivate var observers = [SpeechManagerDelegate]()
 
     var parameterManager: ParameterManager
     
@@ -32,11 +32,11 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         }
     }
 
-    func addSpeechObserver(observer: SpeechManagerDelegate) {
+    func addSpeechObserver(_ observer: SpeechManagerDelegate) {
         observers.append(observer)
     }
 
-    func removeSpeechObserver(observer: SpeechManagerDelegate) {
+    func removeSpeechObserver(_ observer: SpeechManagerDelegate) {
         var index: Int? = nil
         for i in 0...(observers.count-1) {
             if let obs: NSObject = observer as? NSObject,
@@ -48,11 +48,11 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         }
 
         if let ix = index {
-            observers.removeAtIndex(ix)
+            observers.remove(at: ix)
         }
     }
 
-    private var _profile: Profile?
+    fileprivate var _profile: Profile?
     var profile: Profile? {
         set(value) {
 
@@ -64,7 +64,7 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
             // Create a new timer with the appropriate profile
             if let p: Profile = value {
                 timer = SpeechTimer(withProfile: p)
-                timer?.setInterval(NSTimeInterval(parameterManager.starttime))
+                timer?.setInterval(TimeInterval(parameterManager.starttime))
                 timer?.delegate = self
             } else {
                 timer = nil
@@ -80,43 +80,43 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
 
     // MARK: SpeechTimerDelegate
 
-    func phaseChanged(state: SpeechState, timer: SpeechTimer) {
+    func phaseChanged(_ state: SpeechState, timer: SpeechTimer) {
         NSLog("Speech timer state changed: \(state)")
         for observer in observers {
             observer.phaseChanged(state, timer: timer)
         }
     }
 
-    func runningChanged(state: SpeechState, timer: SpeechTimer) {
+    func runningChanged(_ state: SpeechState, timer: SpeechTimer) {
         for observer in observers {
             observer.runningChanged(state, timer: timer)
         }
     }
 
-    func speechComplete(state: SpeechState, timer: SpeechTimer) {
+    func speechComplete(_ state: SpeechState, timer: SpeechTimer) {
         
         var speechRecord: Speech?
         
-        MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) -> Void in
+        MagicalRecord.save({ (localContext: NSManagedObjectContext?) -> Void in
             
-            let speech: Speech = Speech.MR_createEntityInContext(localContext)
-            speech.duration = state.elapsed
+            let speech: Speech = Speech.mr_createEntity(in: localContext)
+            speech.duration = state.elapsed as NSNumber
             speech.startTime = state.initialStart
-            speech.profile = self._profile?.MR_inContext(localContext)
+            speech.profile = self._profile?.mr_(in: localContext)
             
             speechRecord = speech
             
-        }) { (success: Bool, error: NSError!) -> Void in
+        }) { (success: Bool, error: Error?) -> Void in
             // TODO: Handle failure more clearly (error out to user?)
             if !success {
-                NSLog("Failure saving speech record: \(error.description)")
+                NSLog("Failure saving speech record: \(String(describing: error?.localizedDescription))")
             }
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 for observer in self.observers {
                     observer.speechComplete(
                         state,
                         timer: timer,
-                        record: speechRecord!.MR_inThreadContext())
+                        record: speechRecord!.mr_inThreadContext())
                 }
             })
         }
@@ -126,13 +126,13 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
     // MARK: Timer lifecycle methods
 
     func start() {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             self.timer?.start()
         })
     }
 
     func stop() {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             self.speechComplete(self.state!, timer: self.timer!)
             self.timer?.stop()
             self.timer = nil
@@ -140,7 +140,7 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
     }
 
     func pause() {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             self.timer?.pause()
         })
     }
@@ -149,8 +149,8 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
 
 protocol SpeechManagerDelegate {
 
-    func phaseChanged(state: SpeechState, timer: SpeechTimer)
-    func runningChanged(state: SpeechState, timer: SpeechTimer)
-    func speechComplete(state: SpeechState, timer: SpeechTimer, record: Speech)
+    func phaseChanged(_ state: SpeechState, timer: SpeechTimer)
+    func runningChanged(_ state: SpeechState, timer: SpeechTimer)
+    func speechComplete(_ state: SpeechState, timer: SpeechTimer, record: Speech)
 
 }

@@ -17,7 +17,7 @@ class LoadingViewController: UIViewController, DataSeederDependency {
         dataSeeder = LoadingViewController._dataSeeder()
         super.init(coder: aDecoder)
     }
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
         dataSeeder = LoadingViewController._dataSeeder()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -32,13 +32,13 @@ class LoadingViewController: UIViewController, DataSeederDependency {
         super.viewDidLoad()
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         // Add seed data
         dataSeeder.seedAsRequired()
 
-        self.performSegueWithIdentifier("showMain", sender: self)
+        self.performSegue(withIdentifier: "showMain", sender: self)
     }
 
     override func didReceiveMemoryWarning() {

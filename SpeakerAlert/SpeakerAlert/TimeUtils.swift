@@ -10,25 +10,25 @@ import UIKit
 
 class TimeUtils: NSObject {
 
-    static func formatTime(interval: NSNumber) -> String {
-        let formatter = NSDateComponentsFormatter()
-        formatter.unitsStyle = .Abbreviated
+    static func formatTime(_ interval: NSNumber) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .abbreviated
 
-        let components = NSDateComponents()
+        var components = DateComponents()
         components.minute = Int(interval)/60
         components.second = Int(interval)%60
 
-        return formatter.stringFromDateComponents(components)!
+        return formatter.string(from: components)!
     }
 
-    static func formatStopwatch(interval: NSNumber) -> String {
-        let components = NSDateComponents()
+    static func formatStopwatch(_ interval: NSNumber) -> String {
+        var components = DateComponents()
         components.minute = Int(interval)/60
         components.second = Int(interval)%60
 
-        let secondStr: String = String(format: "%02d", components.second)
+        let secondStr: String = String(format: "%02d", components.second!)
 
-        return "\(components.minute):\(secondStr)"
+        return "\(String(describing: components.minute)):\(secondStr)"
     }
 
 }

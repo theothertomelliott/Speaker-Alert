@@ -15,9 +15,9 @@ protocol WatchComms: SpeechManagerDelegate {
 
 class NullWatchCommsManager: NSObject, WatchComms {
     func activate() {}
-    func phaseChanged(state: SpeechState, timer: SpeechTimer) {}
-    func runningChanged(state: SpeechState, timer: SpeechTimer) {}
-    func speechComplete(state: SpeechState, timer: SpeechTimer, record: Speech) {}
+    func phaseChanged(_ state: SpeechState, timer: SpeechTimer) {}
+    func runningChanged(_ state: SpeechState, timer: SpeechTimer) {}
+    func speechComplete(_ state: SpeechState, timer: SpeechTimer, record: Speech) {}
 }
 
 @available(iOS 9, *)
@@ -33,7 +33,7 @@ class WatchCommsManager: NSObject, WCSessionDelegate, WatchComms {
         super.init()
         if WCSession.isSupported() {
             NSLog("WCSession supported, initializing")
-            watchSession = WCSession.defaultSession()
+            watchSession = WCSession.default()
         } else {
             NSLog("WCSession is not supported, will not initialize")
         }
@@ -44,13 +44,13 @@ class WatchCommsManager: NSObject, WCSessionDelegate, WatchComms {
         if let ws: WCSession = watchSession {
             NSLog("Activating WCSession and adding delegate")
             ws.delegate = self
-            ws.activateSession()
+            ws.activate()
         } else {
             NSLog("No session added, will not activate")
         }
     }
 
-    private func updateState(state: SpeechState) {
+    fileprivate func updateState(_ state: SpeechState) {
         do {
             var vibration: Bool = false
             if let cm: ConfigurationManager = self.configMan {
@@ -76,15 +76,15 @@ class WatchCommsManager: NSObject, WCSessionDelegate, WatchComms {
 
     // SpeechTimerDelegate
 
-    func phaseChanged(state: SpeechState, timer: SpeechTimer) {
+    func phaseChanged(_ state: SpeechState, timer: SpeechTimer) {
         // Watch app will catch phase changes, so no need to send
     }
 
-    func runningChanged(state: SpeechState, timer: SpeechTimer) {
+    func runningChanged(_ state: SpeechState, timer: SpeechTimer) {
         updateState(state)
     }
 
-    func speechComplete(state: SpeechState, timer: SpeechTimer, record: Speech) {
+    func speechComplete(_ state: SpeechState, timer: SpeechTimer, record: Speech) {
         do {
             // Send a notification that the speech ended
             watchSession?.sendMessage(
@@ -92,10 +92,10 @@ class WatchCommsManager: NSObject, WCSessionDelegate, WatchComms {
                 "messageName" : "speechComplete",
                 "state" : state.toDictionary()
                 ],
-                replyHandler: { (reply: [String : AnyObject]) -> Void in
+                replyHandler: { (reply: [String : Any]) -> Void in
                 NSLog("Reply received")
-                }, errorHandler: { (error: NSError) -> Void in
-                    NSLog("Error received: \(error.description)")
+                }, errorHandler: { (error: Error) -> Void in
+                    NSLog("Error received: \(error.localizedDescription)")
             })
 
             // Update with an empty context to indicate no speech
@@ -106,22 +106,22 @@ class WatchCommsManager: NSObject, WCSessionDelegate, WatchComms {
     }
 
     // WSSessionDelegate
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         replyHandler([:])
         if let sm: SpeechManager = speechMan,
             let messageName: String = message["messageName"] as? String {
             if messageName == "startStop" {
-                if sm.state?.running == SpeechRunning.STOPPED ||
-                    sm.state?.running == SpeechRunning.PAUSED {
+                if sm.state?.running == SpeechRunning.stopped ||
+                    sm.state?.running == SpeechRunning.paused {
                     sm.start()
                 } else {
                     sm.stop()
                 }
             }
             if messageName == "pauseResume" {
-                if sm.state?.running == SpeechRunning.PAUSED {
+                if sm.state?.running == SpeechRunning.paused {
                     sm.start()
-                } else if speechMan.state?.running == SpeechRunning.RUNNING {
+                } else if speechMan.state?.running == SpeechRunning.running {
                     sm.pause()
                 } else {
                     NSLog("Did not expect to receive pauseResume while STOPPED")
@@ -132,16 +132,16 @@ class WatchCommsManager: NSObject, WCSessionDelegate, WatchComms {
 
     @available(iOS 9.3, *)
     func session(
-        session: WCSession,
-        activationDidCompleteWithState activationState: WCSessionActivationState,
-                                       error: NSError?
+        _ session: WCSession,
+        activationDidCompleteWith activationState: WCSessionActivationState,
+                                       error: Error?
         ) {}
     
     @available(iOS 9.3, *)
-    func sessionDidBecomeInactive(session: WCSession) {}
+    func sessionDidBecomeInactive(_ session: WCSession) {}
     
     
     @available(iOS 9.3, *)
-    func sessionDidDeactivate(session: WCSession) {}
+    func sessionDidDeactivate(_ session: WCSession) {}
     
 }

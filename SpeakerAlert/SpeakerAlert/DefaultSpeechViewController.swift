@@ -23,7 +23,7 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
     
     @IBOutlet weak var pausedLabel: UILabel?
     
-    var phaseColor: UIColor = UIColor.whiteColor()
+    var phaseColor: UIColor = UIColor.white
     
     var blinkState: Bool = false
     var blinkOn: Bool = false
@@ -32,12 +32,12 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
     // Position in blink cycle
     var blinkCycleIndex = 0
     
-    private var shouldShowTime: Bool = false
+    fileprivate var shouldShowTime: Bool = false
     
-    @IBAction func tapped(sender: AnyObject) {
+    @IBAction func tapped(_ sender: AnyObject) {
         // If a speech is in progress, pause and display the controls
-        if let c = controls where c.hidden {
-            c.hidden = false
+        if let c = controls, c.isHidden {
+            c.isHidden = false
             speechMan.pause()
         }
         
@@ -52,19 +52,19 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
         }
 
         // Configure speech manager if not in demo mode
-        if let profile = speechMan.profile where !self.demoMode {
+        if let profile = speechMan.profile, !self.demoMode {
             profileSummaryLabel?.attributedText =
                 ProfileTimeRenderer.timesAsAttributedString(profile)
         }
         
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         accessibilityTracker.addAccessibilityObserver(self)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         accessibilityTracker.removeAccessibilityObserver(self)
     }
@@ -74,31 +74,31 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
         self.updateDisplay()
     }
     
-    override func setShowTime(isVisible: Bool) {
+    override func setShowTime(_ isVisible: Bool) {
         self.shouldShowTime = isVisible
     }
     
     override func updatePhase() {
         if let phase = self.state?.phase {
             blinkState = false
-            if phase == SpeechPhase.BELOW_MINIMUM {
-                self.phaseColor = UIColor.whiteColor()
+            if phase == SpeechPhase.below_MINIMUM {
+                self.phaseColor = UIColor.white
                 self.pausedLabel?.text = "Below minimum"
             }
-            if phase == SpeechPhase.GREEN {
-                self.phaseColor = UIColor.successColor()
+            if phase == SpeechPhase.green {
+                self.phaseColor = UIColor.success()
                 self.pausedLabel?.text = "Green"
             }
-            if phase == SpeechPhase.YELLOW {
-                self.phaseColor = UIColor.warningColor()
+            if phase == SpeechPhase.yellow {
+                self.phaseColor = UIColor.warning()
                 self.pausedLabel?.text = "Yellow"
             }
-            if phase == SpeechPhase.RED {
-                self.phaseColor = UIColor.dangerColor()
+            if phase == SpeechPhase.red {
+                self.phaseColor = UIColor.danger()
                 self.pausedLabel?.text = "Red"
             }
-            if phase == SpeechPhase.OVER_MAXIMUM {
-                self.phaseColor = UIColor.dangerColor()
+            if phase == SpeechPhase.over_MAXIMUM {
+                self.phaseColor = UIColor.danger()
                 if configMan.isAlertOvertimeEnabled {
                     self.pausedLabel?.text = "Alert!"
                     blinkState = true
@@ -114,25 +114,25 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
         
         if let state = speechMan.state {
             
-            let running: Bool = state.running == SpeechRunning.RUNNING
+            let running: Bool = state.running == SpeechRunning.running
             
             var timeToDisplay: Double = state.elapsed
             if configMan.timeDisplayMode == TimeDisplay.CountDown {
-                timeToDisplay = state.timeUntil(SpeechPhase.RED)
+                timeToDisplay = state.timeUntil(SpeechPhase.red)
                 if timeToDisplay < 0 {
                     timeToDisplay = 0
                 }
             }
             
-            let timeStr = TimeUtils.formatStopwatch(timeToDisplay)
+            let timeStr = TimeUtils.formatStopwatch(NSNumber(value: timeToDisplay))
             var timeAttr: NSMutableAttributedString =
                 NSMutableAttributedString(string: "\(timeStr)")
             if !running {
                 timeAttr = NSMutableAttributedString(string: "● \(timeStr)")
-                if state.phase == SpeechPhase.OVER_MAXIMUM {
+                if state.phase == SpeechPhase.over_MAXIMUM {
                     timeAttr = NSMutableAttributedString(string: "▾ \(timeStr)")
                 }
-                if state.phase == SpeechPhase.BELOW_MINIMUM {
+                if state.phase == SpeechPhase.below_MINIMUM {
                     timeAttr = NSMutableAttributedString(string: "◦ \(timeStr)")
                 } else {
                     timeAttr.addAttribute(
@@ -145,9 +145,9 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
             timeLabel.attributedText = timeAttr
             inSpeechTimeLabel.attributedText = timeAttr
             
-            timeLabel.hidden = running
+            timeLabel.isHidden = running
             timeLabel.alpha = shouldShowTime ? 1 : 0.3
-            inSpeechTimeLabel.hidden = !shouldShowTime || !running
+            inSpeechTimeLabel.isHidden = !shouldShowTime || !running
         }
     }
     
@@ -166,35 +166,35 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
         self.stopButton.setIconAndAccessibility("Stop")
         if let state = self.state {
             switch state.running {
-            case .PAUSED:
-                self.stopButton.enabled = true
-                self.controls?.hidden = false
-                self.pausedLabel?.hidden = false
+            case .paused:
+                self.stopButton.isEnabled = true
+                self.controls?.isHidden = false
+                self.pausedLabel?.isHidden = false
                 self.pausedLabel?.text = "Paused"
                 self.playButton.setIconAndAccessibility("Play")
-            case .RUNNING:
+            case .running:
                 if shouldHideControls() {
-                    self.controls?.hidden = true
+                    self.controls?.isHidden = true
                 } else {
                 self.playButton.setIconAndAccessibility("Pause")
-                    self.stopButton.enabled = true
+                    self.stopButton.isEnabled = true
                 }
-                self.pausedLabel?.hidden = !accessibilityTracker.accessibilityMode
-            case .STOPPED:
+                self.pausedLabel?.isHidden = !accessibilityTracker.accessibilityMode
+            case .stopped:
                 self.playButton.setIconAndAccessibility("Play")
-                self.stopButton.enabled = false
-                self.controls?.hidden = false
-                self.pausedLabel?.hidden = true
+                self.stopButton.isEnabled = false
+                self.controls?.isHidden = false
+                self.pausedLabel?.isHidden = true
             }
         }
     }
     
     override func updateDisplay() {
-        let running: Bool = self.state?.running == SpeechRunning.RUNNING
+        let running: Bool = self.state?.running == SpeechRunning.running
         self.updateTimeLabel()
         self.updateControls()
         
-        self.profileSummaryLabel?.hidden = running
+        self.profileSummaryLabel?.isHidden = running
         
         if running {
             if blinkState {
@@ -205,7 +205,7 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
                     if blinkOn {
                         self.view.backgroundColor = phaseColor
                     } else {
-                        self.view.backgroundColor = UIColor.whiteColor()
+                        self.view.backgroundColor = UIColor.white
                     }
                     blinkOn = !blinkOn
                 }
@@ -214,7 +214,7 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
                 self.view.backgroundColor = phaseColor
             }
         } else {
-            self.view.backgroundColor = UIColor.whiteColor()
+            self.view.backgroundColor = UIColor.white
         }
         
     }

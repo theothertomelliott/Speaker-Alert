@@ -23,7 +23,7 @@ class FontAwesomeImageView: UIImageView {
         }
     }
 
-    @IBInspectable var IconColor: UIColor = UIColor.blackColor() {
+    @IBInspectable var IconColor: UIColor = UIColor.black {
         didSet {
             self.tintColor = IconColor
             self._setup()
@@ -34,19 +34,19 @@ class FontAwesomeImageView: UIImageView {
         self._setup()
     }
 
-    private func setFontAwesome(icon: FontAwesome) {
-        self.image = UIImage.fontAwesomeIconWithName(
-            icon,
+    fileprivate func setFontAwesome(_ icon: FontAwesome) {
+        self.image = UIImage.fontAwesomeIcon(
+            name: icon,
             textColor:
             self.IconColor,
             size: self.frame.size)
     }
 
-    private func _setup() {
+    fileprivate func _setup() {
         if let icon: FontAwesome = FontAwesomeFactory.fetchFontAwesome(IconName)! {
             setFontAwesome(icon)
         } else {
-            setFontAwesome(FontAwesome.Warning)
+            setFontAwesome(FontAwesome.warning)
         }
     }
 

@@ -7,15 +7,28 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 extension UIViewController {
 
     func tabBarIsVisible() -> Bool {
-        return self.tabBarController?.tabBar.frame.origin.y < CGRectGetMaxY(self.view.frame)
+        return self.tabBarController?.tabBar.frame.origin.y < self.view.frame.maxY
     }
 
     // Code from: http://bit.ly/1JRtVVb
-    func setTabBarVisible(visible: Bool, animated: Bool) {
+    func setTabBarVisible(_ visible: Bool, animated: Bool) {
 
         /* This cannot be called before viewDidLayoutSubviews(),
          because the frame is not set before this time */
@@ -29,14 +42,14 @@ extension UIViewController {
         let offsetY = (visible ? -height! : height)
 
         // zero duration means no animation
-        let duration: NSTimeInterval = (animated ? 0.3 : 0.0)
+        let duration: TimeInterval = (animated ? 0.3 : 0.0)
 
         //  animate the tabBar
         if frame != nil {
-            UIView.animateWithDuration(duration) {
-                self.tabBarController?.tabBar.frame = CGRectOffset(frame!, 0, offsetY!)
+            UIView.animate(withDuration: duration, animations: {
+                self.tabBarController?.tabBar.frame = frame!.offsetBy(dx: 0, dy: offsetY!)
                 return
-            }
+            }) 
         }
     }
 

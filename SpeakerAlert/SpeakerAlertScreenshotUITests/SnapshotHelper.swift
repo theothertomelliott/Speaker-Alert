@@ -12,28 +12,28 @@ import XCTest
 var deviceLanguage = ""
 var locale = ""
 
-@available(*, deprecated, message: "use setupSnapshot: instead")
-func setLanguage(app: XCUIApplication) {
-    setupSnapshot(app: app)
+@available(*, deprecated, message="use setupSnapshot: instead")
+func setLanguage(_ app: XCUIApplication) {
+    setupSnapshot(app)
 }
 
-func setupSnapshot(app: XCUIApplication) {
-    Snapshot.setupSnapshot(app: app)
+func setupSnapshot(_ app: XCUIApplication) {
+    Snapshot.setupSnapshot(app)
 }
 
-func snapshot(name: String, waitForLoadingIndicator: Bool = true) {
-    Snapshot.snapshot(name: name, waitForLoadingIndicator: waitForLoadingIndicator)
+func snapshot(_ name: String, waitForLoadingIndicator: Bool = true) {
+    Snapshot.snapshot(name, waitForLoadingIndicator: waitForLoadingIndicator)
 }
 
-public class Snapshot: NSObject {
+open class Snapshot: NSObject {
 
-    public class func setupSnapshot(app: XCUIApplication) {
-        setLanguage(app: app)
-        setLocale(app: app)
-        setLaunchArguments(app: app)
+    open class func setupSnapshot(_ app: XCUIApplication) {
+        setLanguage(app)
+        setLocale(app)
+        setLaunchArguments(app)
     }
 
-    class func setLanguage(app: XCUIApplication) {
+    class func setLanguage(_ app: XCUIApplication) {
         guard let prefix = pathPrefix() else {
             return
         }
@@ -41,7 +41,7 @@ public class Snapshot: NSObject {
         let path = prefix.appendingPathComponent("language.txt")
 
         do {
-            let trimCharacterSet = NSCharacterSet.whitespacesAndNewlines
+            let trimCharacterSet = CharacterSet.whitespacesAndNewlines
             deviceLanguage = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue).trimmingCharacters(in: trimCharacterSet) as String
             app.launchArguments += ["-AppleLanguages", "(\(deviceLanguage))"]
         } catch {
@@ -49,7 +49,7 @@ public class Snapshot: NSObject {
         }
     }
 
-    class func setLocale(app: XCUIApplication) {
+    class func setLocale(_ app: XCUIApplication) {
         guard let prefix = pathPrefix() else {
             return
         }
@@ -57,18 +57,18 @@ public class Snapshot: NSObject {
         let path = prefix.appendingPathComponent("locale.txt")
 
         do {
-            let trimCharacterSet = NSCharacterSet.whitespacesAndNewlines
+            let trimCharacterSet = CharacterSet.whitespacesAndNewlines
             locale = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue).trimmingCharacters(in: trimCharacterSet) as String
         } catch {
             print("Couldn't detect/set locale...")
         }
         if locale.isEmpty {
-            locale = NSLocale(localeIdentifier: deviceLanguage).localeIdentifier
+            locale = Locale(identifier: deviceLanguage).identifier
         }
         app.launchArguments += ["-AppleLocale", "\"\(locale)\""]
     }
 
-    class func setLaunchArguments(app: XCUIApplication) {
+    class func setLaunchArguments(_ app: XCUIApplication) {
         guard let prefix = pathPrefix() else {
             return
         }
@@ -89,7 +89,7 @@ public class Snapshot: NSObject {
         }
     }
 
-    public class func snapshot(name: String, waitForLoadingIndicator: Bool = true) {
+    open class func snapshot(_ name: String, waitForLoadingIndicator: Bool = true) {
         if waitForLoadingIndicator {
             waitForLoadingIndicatorToDisappear()
         }

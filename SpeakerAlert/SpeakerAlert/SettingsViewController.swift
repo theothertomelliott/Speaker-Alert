@@ -23,7 +23,7 @@ class SettingsViewController: UITableViewController,
         configManager = SettingsViewController._configurationManager()
         super.init(coder: aDecoder)
     }
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
         configManager = SettingsViewController._configurationManager()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -34,31 +34,31 @@ class SettingsViewController: UITableViewController,
         super.init(nibName: nil, bundle: nil)
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return tableSections.count
     }
     
     override func tableView(
-        tableView: UITableView,
+        _ tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
         return tableSections[section].cells.count
     }
     
     override func tableView(
-        tableView: UITableView,
+        _ tableView: UITableView,
         titleForHeaderInSection section: Int) -> String? {
         return tableSections[section].title
     }
     
     override func tableView(
-        tableView: UITableView,
-        cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let def = tableSections[indexPath.section].cells[indexPath.row]
         return def.cell(tableView, indexPath: indexPath)
     }
 
-    func generalSection(config: ConfigurationManager) -> SectionDefinition {
+    func generalSection(_ config: ConfigurationManager) -> SectionDefinition {
         return SectionDefinition(
             title: "General",
             cells: [
@@ -72,7 +72,7 @@ class SettingsViewController: UITableViewController,
             ])
     }
     
-    func presetSection(config: ConfigurationManager) -> SectionDefinition {
+    func presetSection(_ config: ConfigurationManager) -> SectionDefinition {
         var presetName = "[Custom]"
         if let ps = config.currentPreset() {
             presetName = ps.name
@@ -99,7 +99,7 @@ class SettingsViewController: UITableViewController,
             ])
     }
     
-    func speechDisplaySection(config: ConfigurationManager) -> SectionDefinition {
+    func speechDisplaySection(_ config: ConfigurationManager) -> SectionDefinition {
         return SectionDefinition(
             title: "Speech Display",
             cells: [
@@ -125,7 +125,7 @@ class SettingsViewController: UITableViewController,
             ])
     }
     
-    func alertSection(config: ConfigurationManager) -> SectionDefinition {
+    func alertSection(_ config: ConfigurationManager) -> SectionDefinition {
         return SectionDefinition(
             title: "Alerts",
             cells: [
@@ -155,7 +155,7 @@ class SettingsViewController: UITableViewController,
                     detail: config.audioFile,
                     hasDisclosure: true,
                     action: {
-                        self.performSegueWithIdentifier("showAudioList", sender: self)
+                        self.performSegue(withIdentifier: "showAudioList", sender: self)
                 }),
                 BoolCellDefinition(
                     title: "Additional alert when over time",
@@ -228,41 +228,41 @@ class SettingsViewController: UITableViewController,
             tableView.reloadData()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         loadData()
     }
     
     override func tableView(
-        tableView: UITableView,
-        didHighlightRowAtIndexPath indexPath: NSIndexPath) {
+        _ tableView: UITableView,
+        didHighlightRowAt indexPath: IndexPath) {
         
         if let def = tableSections[indexPath.section].cells[indexPath.row] as? CellWithAction {
             def.performAction()
         }
         
-        tableView.cellForRowAtIndexPath(indexPath)?.selectionStyle =
-            UITableViewCellSelectionStyle.None
+        tableView.cellForRow(at: indexPath)?.selectionStyle =
+            UITableViewCellSelectionStyle.none
     }
 
     func contactEmail() {
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
-            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+            self.present(mailComposeViewController, animated: true, completion: nil)
         } else {
             self.showSendMailErrorAlert()
         }
     }
     
     func contactFacebook() {
-        UIApplication.sharedApplication().openURL(
-            NSURL(
+        UIApplication.shared.openURL(
+            URL(
                 string : "https://www.facebook.com/speakeralert")!
         )
     }
     
     func contactTwitter() {
-        UIApplication.sharedApplication().openURL(
-            NSURL(
+        UIApplication.shared.openURL(
+            URL(
                 string : "https://twitter.com/speakeralertapp")!
         )
     }
@@ -273,7 +273,7 @@ class SettingsViewController: UITableViewController,
         
         mailComposerVC.setToRecipients(["speakeralert@telliott.io"])
         
-        let bundle = NSBundle.mainBundle()
+        let bundle = Bundle.main
         if let version = bundle.infoDictionary?["CFBundleShortVersionString"] as? String {
             mailComposerVC.setSubject("Speaker Alert version " + version)
         } else {
@@ -295,15 +295,15 @@ class SettingsViewController: UITableViewController,
     
     // MARK: MFMailComposeViewControllerDelegate Method
     func mailComposeController(
-        controller: MFMailComposeViewController,
-        didFinishWithResult result: MFMailComposeResult,
-                            error: NSError?) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+        _ controller: MFMailComposeViewController,
+        didFinishWith result: MFMailComposeResult,
+                            error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
     func rateApp() {
-        UIApplication.sharedApplication().openURL(
-            NSURL(
+        UIApplication.shared.openURL(
+            URL(
                 string : "itms-apps://itunes.apple.com/app/id\(APP_ID)")!
         )
     }
@@ -316,16 +316,16 @@ class SettingsViewController: UITableViewController,
             copyrightHolderName: "Tom Elliott",
             contactEmail: "tom.w.elliott@gmail.com",
             titleForEmail: "Tom Elliott",
-            websiteURL: NSURL(string: "http://telliott.io"),
+            websiteURL: URL(string: "http://telliott.io"),
             titleForWebsiteURL: "telliott.io",
             andPublicationYear: nil)
         aboutView.navigationBarBarTintColor = UINavigationBar.appearance().barTintColor
         aboutView.navigationBarTintColor = UINavigationBar.appearance().tintColor
-        aboutView.blurStyle = .Dark
+        aboutView.blurStyle = .dark
         aboutView.headerBackgroundImage = UIImage(named: "Icon1024")
 
-        aboutView.addAdditionalButtonWithTitle(
-            "Audio",
+        aboutView.addAdditionalButton(
+            withTitle: "Audio",
             subtitle: "Content Creators",
             andContent:"Audio clips provided by NotificationSounds\n" +
             "https://notificationsounds.com/\n\n" +
@@ -336,11 +336,11 @@ class SettingsViewController: UITableViewController,
         self.navigationController?.pushViewController(aboutView, animated: true)
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "demoSegue" {
             if let speechVC: SpeechViewController =
-                segue.destinationViewController as? SpeechViewController {
+                segue.destination as? SpeechViewController {
                 speechVC.demoMode = true
             }
         }

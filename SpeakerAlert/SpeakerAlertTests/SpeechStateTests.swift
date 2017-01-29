@@ -21,17 +21,17 @@ class SpeechStateTests: XCTestCase {
     func testItSerializesCorrectly() {
 
         let profile: SpeechProfile = SpeechProfile(green: 1, yellow: 2, red: 3, redBlink: 4)
-        let startTime: NSDate = NSDate()
-        let pauseInterval: NSTimeInterval = 5
+        let startTime: Date = Date()
+        let pauseInterval: TimeInterval = 5
         let state: SpeechState = SpeechState(
             profile: profile,
-            running: SpeechRunning.RUNNING,
+            running: SpeechRunning.running,
             startTime: startTime,
             initialStartTime: startTime,
             pauseInterval: pauseInterval)
         let dict: [String : AnyObject] = state.toDictionary()
 
-        if let interval = dict["pauseInterval"] as? NSTimeInterval {
+        if let interval = dict["pauseInterval"] as? TimeInterval {
             XCTAssert(interval == 5)
         } else {
             XCTFail("pauseInterval was not a time interval object")
@@ -51,11 +51,11 @@ class SpeechStateTests: XCTestCase {
     func testItDeserializesCorrectly() {
 
         let profile: SpeechProfile = SpeechProfile(green: 1, yellow: 2, red: 3, redBlink: 4)
-        let startTime: NSDate = NSDate()
-        let pauseInterval: NSTimeInterval = 5
+        let startTime: Date = Date()
+        let pauseInterval: TimeInterval = 5
         let state: SpeechState = SpeechState(
             profile: profile,
-            running: SpeechRunning.RUNNING,
+            running: SpeechRunning.running,
             startTime: startTime,
             initialStartTime: startTime,
             pauseInterval: pauseInterval)
@@ -68,8 +68,8 @@ class SpeechStateTests: XCTestCase {
         XCTAssert(stateRetrieved.profile.red == 3)
         XCTAssert(stateRetrieved.profile.redBlink == 4)
         XCTAssert(stateRetrieved.pauseInterval == 5)
-        XCTAssert(stateRetrieved.phase == SpeechPhase.OVER_MAXIMUM)
-        XCTAssert(stateRetrieved.running == SpeechRunning.RUNNING)
+        XCTAssert(stateRetrieved.phase == SpeechPhase.over_MAXIMUM)
+        XCTAssert(stateRetrieved.running == SpeechRunning.running)
 
     }
 

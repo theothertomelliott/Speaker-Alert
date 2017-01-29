@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class Environment {
+open class Environment {
     
     static var Default: Environment = Environment()
     
@@ -60,15 +60,15 @@ public class Environment {
     }
     
     static func createDefaults(
-        parameterManager: ParameterManager
-        ) -> NSUserDefaults {
+        _ parameterManager: ParameterManager
+        ) -> UserDefaults {
         if parameterManager.isUITesting {
-            if let defaults = NSUserDefaults(suiteName: "speakerAlertUITests") {
+            if let defaults = UserDefaults(suiteName: "speakerAlertUITests") {
                 defaults.clear()
                 return defaults
             }
         }
-        return NSUserDefaults.standardUserDefaults()
+        return UserDefaults.standard
     }
     
 }

@@ -11,10 +11,10 @@ import UIKit
 class ReplacementSegue: UIStoryboardSegue {
     
     override func perform() {
-        let destinationController = self.destinationViewController
+        let destinationController = self.destination
         
-        if let navigationController = sourceViewController.navigationController {
-            navigationController.popViewControllerAnimated(false)
+        if let navigationController = source.navigationController {
+            navigationController.popViewController(animated: false)
             navigationController.pushViewController(destinationController, animated: false)
         }
         

@@ -17,18 +17,18 @@ class ProfileTimeTableViewCell: UITableViewCell {
     var phase: SpeechPhase?
 
     func setControllerAndPhase(
-        controller: ProfileTableViewController,
+        _ controller: ProfileTableViewController,
         phase: SpeechPhase) {
             self.phase = phase
             if let phase = self.phase {
                 colorNameLabel.attributedText = ProfileTimeRenderer.phaseAsAttributedString(phase)
                 if let interval = controller.phaseTimes[phase] {
-                    timeLabel.text = TimeUtils.formatStopwatch(interval)
+                    timeLabel.text = TimeUtils.formatStopwatch(NSNumber(value: interval))
 
                     if let name = SpeechPhase.name[phase] {
                         self.isAccessibilityElement = true
                         self.accessibilityIdentifier = name
-                        self.accessibilityLabel = "\(name): \(TimeUtils.formatStopwatch(interval))"
+                        self.accessibilityLabel = "\(name): \(TimeUtils.formatStopwatch(NSNumber(value: interval)))"
                     }
                 }
             }

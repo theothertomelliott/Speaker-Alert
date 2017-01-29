@@ -8,6 +8,19 @@
 
 import UIKit
 import MagicalRecord
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 class GroupTableViewController: UITableViewController,
                                 SpeechManagerDependency,
@@ -26,7 +39,7 @@ class GroupTableViewController: UITableViewController,
         configMan = GroupTableViewController._configurationManager()
         super.init(coder: aDecoder)
     }
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
         speechMan = GroupTableViewController._speechManager()
         configMan = GroupTableViewController._configurationManager()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -42,38 +55,38 @@ class GroupTableViewController: UITableViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         let addButton = UIBarButtonItem(
-            barButtonSystemItem: UIBarButtonSystemItem.Add,
+            barButtonSystemItem: UIBarButtonSystemItem.add,
             target: self,
             action: #selector(GroupTableViewController.addItem(_:)))
-        self.navigationItem.rightBarButtonItems = [addButton, self.editButtonItem()]
+        self.navigationItem.rightBarButtonItems = [addButton, self.editButtonItem]
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
             self.setTabBarVisible(true, animated: animated)
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.reloadData()
         
-        UIApplication.sharedApplication().registerUserNotificationSettings(
+        UIApplication.shared.registerUserNotificationSettings(
             UIUserNotificationSettings(
-                forTypes: [.Alert, .Badge, .Sound],
+                types: [.alert, .badge, .sound],
                 categories: (NSSet(array: ["MyCategory"])) as? Set<UIUserNotificationCategory>))
     }
 
-    func rowIsGroup(row: Int) -> Bool {
+    func rowIsGroup(_ row: Int) -> Bool {
         return row < groups.count
     }
 
-    func rowIsProfile(row: Int) -> Bool {
+    func rowIsProfile(_ row: Int) -> Bool {
         return !rowIsGroup(row) && row < groups.count + timings.count
     }
 
-    func rowIsDemo(row: Int) -> Bool {
+    func rowIsDemo(_ row: Int) -> Bool {
         return row == groups.count + timings.count
     }
 
-    func setParent(grp: Group) {
+    func setParent(_ grp: Group) {
         parentGroup = grp
         groups = []
         timings = []
@@ -81,19 +94,19 @@ class GroupTableViewController: UITableViewController,
         self.reloadData()
     }
 
-    func createGroupWithName(name: String) {
+    func createGroupWithName(_ name: String) {
 
-        MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) -> Void in
-            let group: Group = Group.MR_createEntityInContext(localContext)
+        MagicalRecord.save({ (localContext: NSManagedObjectContext?) -> Void in
+            let group: Group = Group.mr_createEntity(in: localContext)
             group.name = name
-        }) { (success: Bool, error: NSError!) -> Void in
+        }) { (success: Bool, error: Error?) -> Void in
             self.reloadData()
         }
 
     }
 
     func createTiming() {
-        self.performSegueWithIdentifier("newProfileSegue", sender: self)
+        self.performSegue(withIdentifier: "newProfileSegue", sender: self)
     }
 
     func reloadData() {
@@ -104,16 +117,16 @@ class GroupTableViewController: UITableViewController,
                 timings = t
             }
         } else {
-            if let g = Group.MR_findAll() as? [Group] {
+            if let g = Group.mr_findAll() as? [Group] {
                 groups = g
             }
             let predicate = NSPredicate(format: "parent = nil")
-            if let t = Profile.MR_findAllWithPredicate(predicate) as? [Profile] {
+            if let t = Profile.mr_findAll(with: predicate) as? [Profile] {
                 timings = t
             }
         }
-        groups = groups.sort({ $0.name < $1.name })
-        timings = timings.sort({ $0.name < $1.name })
+        groups = groups.sorted(by: { $0.name < $1.name })
+        timings = timings.sorted(by: { $0.name < $1.name })
         self.tableView.reloadData()
     }
 
@@ -121,50 +134,50 @@ class GroupTableViewController: UITableViewController,
         let alertController = UIAlertController(
             title: "Create Group",
             message: "Please name your new group",
-            preferredStyle: .Alert)
-        let createAction = UIAlertAction(title: "Create", style: .Default) { (_) in
+            preferredStyle: .alert)
+        let createAction = UIAlertAction(title: "Create", style: .default) { (_) in
             let groupNameField = alertController.textFields![0] as UITextField
             self.createGroupWithName(groupNameField.text!)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
 
         alertController.addAction(createAction)
         alertController.addAction(cancelAction)
-        alertController.addTextFieldWithConfigurationHandler { (textField) in
+        alertController.addTextField { (textField) in
             textField.placeholder = "Name"
         }
-        self.presentViewController(alertController, animated: true) {
+        self.present(alertController, animated: true) {
             // ...
         }
     }
 
-    func renameGroup(group: Group) {
+    func renameGroup(_ group: Group) {
         let alertController = UIAlertController(
             title: "Rename Group",
             message: "Please enter a new name for your group",
-            preferredStyle: .Alert)
-        let createAction = UIAlertAction(title: "Update", style: .Default) { (_) in
+            preferredStyle: .alert)
+        let createAction = UIAlertAction(title: "Update", style: .default) { (_) in
             let groupNameField = alertController.textFields![0] as UITextField
-            MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) -> Void in
-                let localGroup: Group = group.MR_inContext(localContext)
+            MagicalRecord.save({ (localContext: NSManagedObjectContext?) -> Void in
+                let localGroup: Group = group.mr_(in: localContext)
                 localGroup.name = groupNameField.text
-                }) { (success: Bool, error: NSError!) -> Void in
+                }) { (success: Bool, error: Error?) -> Void in
                     self.reloadData()
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         alertController.addAction(createAction)
         alertController.addAction(cancelAction)
-        alertController.addTextFieldWithConfigurationHandler { (textField) in
+        alertController.addTextField { (textField) in
             textField.placeholder = group.name
         }
-        self.presentViewController(alertController, animated: true) {
+        self.present(alertController, animated: true) {
             // ...
         }
     }
 
     @objc
-    func addItem(sender: AnyObject) {
+    func addItem(_ sender: AnyObject) {
         if parentGroup != nil {
             self.createTiming()
             return
@@ -172,43 +185,43 @@ class GroupTableViewController: UITableViewController,
         let alertController = UIAlertController(
             title: "Add",
             message: "What would you like to create?",
-            preferredStyle: .Alert)
-        let oneAction = UIAlertAction(title: "New Group", style: .Default) { (_) in
+            preferredStyle: .alert)
+        let oneAction = UIAlertAction(title: "New Group", style: .default) { (_) in
             self.createGroup()
         }
-        let twoAction = UIAlertAction(title: "New Speech Profile", style: .Default) { (_) in
+        let twoAction = UIAlertAction(title: "New Speech Profile", style: .default) { (_) in
             self.createTiming()
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         alertController.addAction(oneAction)
         alertController.addAction(twoAction)
         alertController.addAction(cancelAction)
-        self.presentViewController(alertController, animated: true) {
+        self.present(alertController, animated: true) {
             // ...
         }
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let demoCount = (parentGroup == nil) ? 1 : 0
         return groups.count + timings.count + demoCount
     }
 
     override func tableView(
-        tableView: UITableView,
-        cellForRowAtIndexPath
-        indexPath: NSIndexPath) -> UITableViewCell {
+        _ tableView: UITableView,
+        cellForRowAt
+        indexPath: IndexPath) -> UITableViewCell {
 
         // Configure the cell...
         if rowIsGroup(indexPath.row) {
-            let cell = tableView.dequeueReusableCellWithIdentifier(
-                "GroupCell",
-                forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "GroupCell",
+                for: indexPath)
             let group = groups[indexPath.row]
 
             if let nameCell: NamedTableViewCell = cell as? NamedTableViewCell {
@@ -217,9 +230,9 @@ class GroupTableViewController: UITableViewController,
 
             return cell
         } else if rowIsProfile(indexPath.row) {
-            let cell = tableView.dequeueReusableCellWithIdentifier(
-                "TimingCell",
-                forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "TimingCell",
+                for: indexPath)
 
             if let timing: Profile = timings[indexPath.row - groups.count],
                 let tn: String = timing.name,
@@ -231,9 +244,9 @@ class GroupTableViewController: UITableViewController,
 
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(
-                "DemoCell",
-                forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "DemoCell",
+                for: indexPath)
             return cell
         }
 
@@ -241,43 +254,43 @@ class GroupTableViewController: UITableViewController,
     
     // Handle selection for segue to speeches and demo mode
     override func tableView(
-        tableView: UITableView,
-        didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath) {
         
-        if self.editing {
+        if self.isEditing {
             doEdit(indexPath)
             return
         }
         
         if rowIsProfile(indexPath.row) || rowIsDemo(indexPath.row) {
-            self.performSegueWithIdentifier(
-                "speechDefault",
-                sender: tableView.cellForRowAtIndexPath(indexPath))
+            self.performSegue(
+                withIdentifier: "speechDefault",
+                sender: tableView.cellForRow(at: indexPath))
         }
     }
 
 
     // Override to support conditional editing of the table view.
     override func tableView(
-        tableView: UITableView,
-        canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        _ tableView: UITableView,
+        canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
 
-    func deleteItemAtIndexPath(indexPath: NSIndexPath) {
+    func deleteItemAtIndexPath(_ indexPath: IndexPath) {
         if !rowIsDemo(indexPath.row) {
-            MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext!) in
+            MagicalRecord.save({ (localContext: NSManagedObjectContext?) in
                 // Delete the appropriate object
                 if self.rowIsGroup(indexPath.row) {
                     let group = self.groups[indexPath.row]
-                    group.MR_deleteEntityInContext(localContext)
+                    group.mr_deleteEntity(in: localContext)
                 } else if self.rowIsProfile(indexPath.row) {
                     let timing = self.timings[indexPath.row - self.groups.count]
-                    timing.MR_deleteEntityInContext(localContext)
+                    timing.mr_deleteEntity(in: localContext)
                 }
 
-                }) { (success: Bool, error: NSError!) -> Void in
+                }) { (success: Bool, error: Error?) -> Void in
                 self.reloadData()
             }
         }
@@ -285,39 +298,39 @@ class GroupTableViewController: UITableViewController,
 
     // Override to support editing the table view.
     override func tableView(
-        tableView: UITableView,
-        commitEditingStyle editingStyle: UITableViewCellEditingStyle,
-        forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCellEditingStyle,
+        forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             // Delete the row from the data source
             NSLog("Deleting row at \(indexPath.row)")
             self.deleteItemAtIndexPath(indexPath)
-        } else if editingStyle == .Insert {
+        } else if editingStyle == .insert {
             // Create a new instance of the appropriate class,
             // insert it into the array, and add a new row to the table view
         }
     }
     
-    func doEdit(indexPath: NSIndexPath) {
+    func doEdit(_ indexPath: IndexPath) {
         if self.rowIsGroup(indexPath.row) {
             self.renameGroup(self.groups[indexPath.row])
         } else if self.rowIsProfile(indexPath.row) {
-            self.performSegueWithIdentifier(
-                "timingEditSegue",
-                sender: tableView.cellForRowAtIndexPath(indexPath))
+            self.performSegue(
+                withIdentifier: "timingEditSegue",
+                sender: tableView.cellForRow(at: indexPath))
         }
     }
 
     override func tableView(
-        tableView: UITableView,
-        editActionsForRowAtIndexPath indexPath: NSIndexPath)
+        _ tableView: UITableView,
+        editActionsForRowAt indexPath: IndexPath)
         -> [UITableViewRowAction]? {
 
             if rowIsDemo(indexPath.row) {
                 // Do nothing for the demo row
 
                 let uneditableAction = UITableViewRowAction(
-                    style: UITableViewRowActionStyle.Default,
+                    style: UITableViewRowActionStyle.default,
                     title: "Built-in",
                     handler: {action, indexpath in
 
@@ -331,7 +344,7 @@ class GroupTableViewController: UITableViewController,
             }
 
         let moreRowAction = UITableViewRowAction(
-            style: UITableViewRowActionStyle.Default,
+            style: UITableViewRowActionStyle.default,
             title: "Edit",
             handler: {action, indexpath in
                 self.doEdit(indexPath)
@@ -340,7 +353,7 @@ class GroupTableViewController: UITableViewController,
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0)
 
         let deleteRowAction = UITableViewRowAction(
-            style: UITableViewRowActionStyle.Default,
+            style: UITableViewRowActionStyle.default,
             title: "Delete",
             handler: {action, indexpath in
             self.deleteItemAtIndexPath(indexPath)
@@ -351,49 +364,49 @@ class GroupTableViewController: UITableViewController,
 
     // MARK: - Navigation
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if "groupSegue" == identifier {
-            if self.editing {
+            if self.isEditing {
                 return false
             }
         }
         return true
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
 
         if "newProfileSegue" == segue.identifier {
-            if let destination = segue.destinationViewController as? ProfileTableViewController {
+            if let destination = segue.destination as? ProfileTableViewController {
                 destination.profile = nil // Creates an empty profile
                 destination.parentGroup = self.parentGroup
             }
             return
         }
 
-        let indexPath: NSIndexPath = self.tableView.indexPathForCell((sender as? UITableViewCell)!)!
+        let indexPath: IndexPath = self.tableView.indexPath(for: (sender as? UITableViewCell)!)!
 
         if "groupSegue" == segue.identifier {
             let g: Group = self.groups[indexPath.row]
 
             if let destination: GroupTableViewController =
-                segue.destinationViewController as? GroupTableViewController {
+                segue.destination as? GroupTableViewController {
                 destination.setParent(g)
             }
         }
 
         if "timingEditSegue" == segue.identifier, let destination: ProfileTableViewController =
-            segue.destinationViewController as? ProfileTableViewController {
+            segue.destination as? ProfileTableViewController {
             destination.profile = self.timings[indexPath.row - self.groups.count]
         }
 
-        if let i = segue.identifier where i.hasPrefix("speech") {
+        if let i = segue.identifier, i.hasPrefix("speech") {
             if rowIsProfile(indexPath.row) {
                 speechMan.profile = self.timings[indexPath.row - self.groups.count]
             } else if rowIsDemo(indexPath.row) {
                 speechMan.profile = nil
-                if let destination = segue.destinationViewController as? SpeechViewController {
+                if let destination = segue.destination as? SpeechViewController {
                     destination.demoMode = true
                 }
             }

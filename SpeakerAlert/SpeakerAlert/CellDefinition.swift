@@ -10,7 +10,7 @@ import UIKit
 
 protocol CellDefinition {
     var title: String { get set }
-    func cell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell
+    func cell(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell
 }
 
 protocol CellWithAction {

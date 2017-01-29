@@ -23,7 +23,7 @@ class SpeakerAlertUITests: XCTestCase {
         startApp(startTime: startTimeOffset(), landscape: isLandscape())
 	}
 
-    func startAppWithArguments(arguments: [String], landscape: Bool = false) {
+    func startAppWithArguments(_ arguments: [String], landscape: Bool = false) {
         addUIInterruptionMonitor(withDescription: "Local Notifications") { (alert) -> Bool in
             if alert.buttons["OK"].exists {
                 alert.buttons["OK"].tap()
@@ -54,7 +54,7 @@ class SpeakerAlertUITests: XCTestCase {
     }
     
     func startApp(
-        startTime: Int,
+        _ startTime: Int,
         landscape: Bool = false,
         accessibility: Bool = true,
         forceShowTime: Bool = false
@@ -82,7 +82,7 @@ class SpeakerAlertUITests: XCTestCase {
         return 0
     }
     
-    func waitForElement(element: XCUIElement) -> XCUIElement {
+    func waitForElement(_ element: XCUIElement) -> XCUIElement {
         // Verify the new profile was created
         expectation(
             for: NSPredicate(format: "exists == 1"),

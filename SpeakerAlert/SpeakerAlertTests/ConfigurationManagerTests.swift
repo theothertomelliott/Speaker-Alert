@@ -10,12 +10,12 @@ import XCTest
 
 class ConfigurationManagerTests: XCTestCase {
 
-    var defaults: NSUserDefaults?
+    var defaults: UserDefaults?
     let suite = "speakerAlertTestSuite"
     
     override func setUp() {
         super.setUp()
-        defaults = NSUserDefaults(suiteName: suite)
+        defaults = UserDefaults(suiteName: suite)
         defaults?.clear()
     }
     

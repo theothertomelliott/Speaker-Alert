@@ -13,11 +13,11 @@ struct BoolCellDefinition: CellDefinition {
     var value: Bool = false
     var onChange: (Bool) -> () = {_ in}
     
-    func cell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
-        let c = tableView.dequeueReusableCellWithIdentifier("OnOffCell", forIndexPath: indexPath)
+    func cell(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let c = tableView.dequeueReusableCell(withIdentifier: "OnOffCell", for: indexPath)
         if let cell = c as? OnOffCell {
             cell.titleLabel?.text = self.title
-            cell.valueSwitch?.on = self.value
+            cell.valueSwitch?.isOn = self.value
             cell.onChange = self.onChange
             return cell
         }
@@ -31,9 +31,9 @@ class OnOffCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var valueSwitch: UISwitch?
-    @IBAction func valueChanged(sender: AnyObject) {
+    @IBAction func valueChanged(_ sender: AnyObject) {
         if let sendSwitch: UISwitch = sender as? UISwitch {
-            onChange(sendSwitch.on)
+            onChange(sendSwitch.isOn)
         }
     }
     

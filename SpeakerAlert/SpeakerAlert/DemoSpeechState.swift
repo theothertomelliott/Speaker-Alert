@@ -11,11 +11,11 @@ import Foundation
 class DemoSpeechState: SpeechState {
     
     override var running: SpeechRunning {
-        get { return SpeechRunning.RUNNING }
+        get { return SpeechRunning.running }
         set {}
     }
     
-    private var _phase: SpeechPhase
+    fileprivate var _phase: SpeechPhase
     override var phase: SpeechPhase {
         get { return _phase }
     }
@@ -23,29 +23,29 @@ class DemoSpeechState: SpeechState {
     func nextPhase() {
         // Go to the next phase
         switch self._phase {
-        case .BELOW_MINIMUM:
-            self._phase = .GREEN
-        case .GREEN:
-            self._phase = .YELLOW
-        case .YELLOW:
-            self._phase = .RED
-        case .RED:
-            self._phase = .OVER_MAXIMUM
-        case .OVER_MAXIMUM:
-            self._phase = .OVER_MAXIMUM
+        case .below_MINIMUM:
+            self._phase = .green
+        case .green:
+            self._phase = .yellow
+        case .yellow:
+            self._phase = .red
+        case .red:
+            self._phase = .over_MAXIMUM
+        case .over_MAXIMUM:
+            self._phase = .over_MAXIMUM
         }
     }
     
-    override func timeUntil(phase: SpeechPhase) -> NSTimeInterval {
+    override func timeUntil(_ phase: SpeechPhase) -> TimeInterval {
         return 0
     }
     
     init() {
-        _phase = SpeechPhase.BELOW_MINIMUM
+        _phase = SpeechPhase.below_MINIMUM
         super.init(profile: SpeechProfile(green: 0, yellow: 0, red: 0, redBlink: 0))
     }
     
-    override func toDictionary() -> [String : AnyObject] {
+    override func toDictionary() -> [String : Any] {
         return [:]
     }
 }

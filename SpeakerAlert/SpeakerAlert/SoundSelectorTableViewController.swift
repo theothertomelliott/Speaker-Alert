@@ -21,7 +21,7 @@ class SoundSelectorTableViewController: UITableViewController,
         audioAlertManager = SoundSelectorTableViewController._audioAlertManager()
         super.init(coder: aDecoder)
     }
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
         configManager = SoundSelectorTableViewController._configurationManager()
         audioAlertManager = SoundSelectorTableViewController._audioAlertManager()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -49,24 +49,23 @@ class SoundSelectorTableViewController: UITableViewController,
         "Jingle Bells SMS" : "jingle-bells-sms"
     ]
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return SoundSelectorTableViewController.soundFiles.keys.count
     }
     
     override func tableView(
-        tableView: UITableView,
-        cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("LabelCell", forIndexPath: indexPath)
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
         
         var titles = Array(SoundSelectorTableViewController.soundFiles.keys)
         let title = titles[indexPath.row]
         cell.textLabel?.text = title
-        if let fileName = SoundSelectorTableViewController.soundFiles[title]
-            where fileName == configManager.audioFile {
-            tableView.selectRowAtIndexPath(
-                indexPath,
+        if let fileName = SoundSelectorTableViewController.soundFiles[title], fileName == configManager.audioFile {
+            tableView.selectRow(
+                at: indexPath,
                 animated: false,
-                scrollPosition: UITableViewScrollPosition.Middle
+                scrollPosition: UITableViewScrollPosition.middle
             )
         }
         
@@ -74,10 +73,10 @@ class SoundSelectorTableViewController: UITableViewController,
     }
     
     override func tableView(
-        tableView: UITableView,
-        didSelectRowAtIndexPath indexPath: NSIndexPath
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
         ) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRow(at: indexPath)
         if let text = cell?.textLabel?.text {
             if let fileName = SoundSelectorTableViewController.soundFiles[text] {
                 configManager.audioFile = fileName

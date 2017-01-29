@@ -8,20 +8,20 @@
 
 import Foundation
 
-public class SpeechTimer: NSObject {
+open class SpeechTimer: NSObject {
 
     var delegate: SpeechTimerDelegate?
     var state: SpeechState
 
     // Timers for tracking state changes
-    var phaseTimers: [SpeechPhase : NSTimer]
+    var phaseTimers: [SpeechPhase : Timer]
 
     init(withProfile profile: Profile) {
         state = SpeechState(profile: SpeechProfileFactory.SpeechProfileWithProfile(profile))
         phaseTimers = [:]
     }
     
-    func setInterval(interval: NSTimeInterval) {
+    func setInterval(_ interval: TimeInterval) {
         state.pauseInterval = interval
     }
 
@@ -32,14 +32,14 @@ public class SpeechTimer: NSObject {
     */
     func start() {
 
-        if state.running != SpeechRunning.RUNNING {
+        if state.running != SpeechRunning.running {
             NSLog("Starting, pause interval = %g", self.state.pauseInterval)
 
             for p: SpeechPhase in SpeechPhase.allCases {
-                let timeUntil: NSTimeInterval = state.timeUntil(p)
+                let timeUntil: TimeInterval = state.timeUntil(p)
                 if timeUntil > 0 {
-                    phaseTimers[p] = NSTimer.scheduledTimerWithTimeInterval(
-                        timeUntil + 0.1,
+                    phaseTimers[p] = Timer.scheduledTimer(
+                        timeInterval: timeUntil + 0.1,
                         target: self,
                         selector: #selector(SpeechTimer.phaseChange(_:)),
                         userInfo: nil,
@@ -48,13 +48,13 @@ public class SpeechTimer: NSObject {
                 }
             }
 
-            self.state.startTime = NSDate()
+            self.state.startTime = Date()
             
-            if state.running == SpeechRunning.STOPPED {
-                self.state.initialStart = NSDate()
+            if state.running == SpeechRunning.stopped {
+                self.state.initialStart = Date()
             }
             
-            setRunning(SpeechRunning.RUNNING)
+            setRunning(SpeechRunning.running)
         }
     }
 
@@ -67,17 +67,17 @@ public class SpeechTimer: NSObject {
     */
     func pause() {
 
-        if state.running == SpeechRunning.RUNNING {
+        if state.running == SpeechRunning.running {
             self.state.pauseInterval = self.state.pauseInterval +
-                NSDate().timeIntervalSinceDate(self.state.startTime!)
+                Date().timeIntervalSince(self.state.startTime!)
 
             NSLog("Pausing with interval %g", self.state.pauseInterval)
 
             for p: SpeechPhase in phaseTimers.keys {
-                let t: NSTimer = phaseTimers[p]!
+                let t: Timer = phaseTimers[p]!
                 t.invalidate()
             }
-            setRunning(SpeechRunning.PAUSED)
+            setRunning(SpeechRunning.paused)
         }
     }
 
@@ -89,12 +89,12 @@ public class SpeechTimer: NSObject {
         When start() is next called, the timer will start from zero.
     */
     func stop() {
-        if state.running != SpeechRunning.STOPPED {
+        if state.running != SpeechRunning.stopped {
             NSLog("Stopping")
-            setRunning(SpeechRunning.STOPPED)
+            setRunning(SpeechRunning.stopped)
 
             for p: SpeechPhase in phaseTimers.keys {
-                let t: NSTimer = phaseTimers[p]!
+                let t: Timer = phaseTimers[p]!
                 t.invalidate()
             }
 
@@ -104,7 +104,7 @@ public class SpeechTimer: NSObject {
         }
     }
 
-    private func setRunning(running: SpeechRunning) {
+    fileprivate func setRunning(_ running: SpeechRunning) {
         state = SpeechState(
             profile: self.state.profile,
             running: running,
@@ -114,13 +114,13 @@ public class SpeechTimer: NSObject {
         delegate?.runningChanged(self.state, timer: self)
     }
 
-    func phaseChange(timer: NSTimer!) {
+    func phaseChange(_ timer: Timer!) {
         delegate?.phaseChanged(state, timer: self)
     }
 
-    func elapsed() -> NSTimeInterval {
-        if let s: NSDate = self.state.startTime {
-            return self.state.pauseInterval + NSDate().timeIntervalSinceDate(s)
+    func elapsed() -> TimeInterval {
+        if let s: Date = self.state.startTime {
+            return self.state.pauseInterval + Date().timeIntervalSince(s)
         } else {
             return self.state.pauseInterval
         }
@@ -130,7 +130,7 @@ public class SpeechTimer: NSObject {
 
 protocol SpeechTimerDelegate {
 
-    func phaseChanged(state: SpeechState, timer: SpeechTimer)
-    func runningChanged(state: SpeechState, timer: SpeechTimer)
+    func phaseChanged(_ state: SpeechState, timer: SpeechTimer)
+    func runningChanged(_ state: SpeechState, timer: SpeechTimer)
 
 }
