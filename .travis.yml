@@ -1,6 +1,6 @@
 language: objective-c
 osx_image: xcode8
 before_script:
-  - pod install
+  - bundle exec pod install
 script:
   - ./fastlane/travis.sh
