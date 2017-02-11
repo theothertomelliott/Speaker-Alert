@@ -81,16 +81,6 @@ class SpeakerAlertUITests: XCTestCase {
     func startTimeOffset() -> Int {
         return 0
     }
-    
-    func waitForElement(_ element: XCUIElement) -> XCUIElement {
-        // Verify the new profile was created
-        expectation(
-            for: NSPredicate(format: "exists == 1"),
-            evaluatedWith: element,
-            handler: nil)
-        waitForExpectations(timeout: 0.5, handler: nil)
-        return element
-    }
 
     let speechGroup = "Toastmasters"
     let speechTitle = "Speech: Five to Seven Minutes"

@@ -16,8 +16,18 @@ class SpeechCompleteUITests: SpeakerAlertUITests {
         startSpeech()
         stopSpeech()
         
-        waitForElement(app.navigationBars.buttons["Toastmasters"]).tap()
-        _ = waitForElement(app.navigationBars["Toastmasters"])
+        expectation(
+            for: NSPredicate(format: "exists == 1"),
+            evaluatedWith: app.navigationBars.buttons["Toastmasters"],
+            handler: nil)
+        waitForExpectations(timeout: 2, handler: nil)
+        app.navigationBars.buttons["Toastmasters"].tap()
+        
+        expectation(
+            for: NSPredicate(format: "exists == 1"),
+            evaluatedWith: app.navigationBars["Toastmasters"],
+            handler: nil)
+        waitForExpectations(timeout: 2, handler: nil)
     }
     
     // Check that viewing the history automatically dismisses the speech complete dialog
@@ -27,10 +37,18 @@ class SpeechCompleteUITests: SpeakerAlertUITests {
         stopSpeech()
         
         app.tabBars.buttons["History"].tap()
-        _ = waitForElement(app.navigationBars["Speech History"])
+        expectation(
+            for: NSPredicate(format: "exists == 1"),
+            evaluatedWith: app.navigationBars["Speech History"],
+            handler: nil)
+        waitForExpectations(timeout: 2, handler: nil)
         
         app.tabBars.buttons["Speech"].tap()
-        _ = waitForElement(app.navigationBars["Toastmasters"])
+        expectation(
+            for: NSPredicate(format: "exists == 1"),
+            evaluatedWith: app.navigationBars["Toastmasters"],
+            handler: nil)
+        waitForExpectations(timeout: 2, handler: nil)
     }
     
 }

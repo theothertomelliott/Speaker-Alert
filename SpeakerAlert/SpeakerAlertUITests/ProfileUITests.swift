@@ -65,6 +65,10 @@ class ProfileEditUITests: SpeakerAlertUITests {
         app.buttons["Save"].tap()
 
         // Expect an error
-        _ = waitForElement(app.alerts["Out of order"])
+        expectation(
+            for: NSPredicate(format: "exists == 1"),
+            evaluatedWith: app.alerts["Out of order"],
+            handler: nil)
+        waitForExpectations(timeout: 2, handler: nil)
     }
 }

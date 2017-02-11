@@ -81,7 +81,7 @@ class SpeakerAlertUITests: XCTestCase {
             for: NSPredicate(format: "exists == 1"),
             evaluatedWith: element,
             handler: nil)
-        waitForExpectations(timeout: 0.5, handler: nil)
+        waitForExpectations(timeout: 2, handler: nil)
         return element
     }
 
