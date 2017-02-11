@@ -1575,7 +1575,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B09C4292100F8D4B5D8F70C7 /* Pods-SpeakerAlert WatchKit App.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
@@ -1598,7 +1597,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 064D0B0A0BAC0B8D1D869702 /* Pods-SpeakerAlert WatchKit App.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution";
@@ -1621,7 +1619,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 037A8FF3AD0A07FC5FF59EA7 /* Pods-SpeakerAlert.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1644,7 +1641,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D43FA6F56ECA171B284DC711 /* Pods-SpeakerAlert.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
