@@ -10,7 +10,6 @@
 		7525BBC2EA2F973BEF44753C /* Pods_SpeakerAlert_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6614182DD0EFC822A4FC6618 /* Pods_SpeakerAlert_WatchKit_App.framework */; };
 		A43EAD2FE72CCA65BBC18FFC /* Pods_SpeakerAlertUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9452747182532551FA027624 /* Pods_SpeakerAlertUITests.framework */; };
 		B8E21BF70E82BF41BC4BBC79 /* Pods_SpeakerAlertTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C1174FD04EBE60B6AA870B /* Pods_SpeakerAlertTests.framework */; };
-		C06CF8739DF16E1BDA5CF353 /* Pods_SpeakerAlert_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B195E91318F57F29987AA888 /* Pods_SpeakerAlert_WatchKit_Extension.framework */; };
 		D2C50F50FDE26C573823F396 /* Pods_SpeakerAlert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6ED5E883E8B550F9EB9F98 /* Pods_SpeakerAlert.framework */; };
 		E2065BB81CE4231500EB192C /* TabBarAnimationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2065BB71CE4231500EB192C /* TabBarAnimationExtension.swift */; };
 		E20A8E961B816E6400ECC443 /* SpeechStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A8E951B816E6400ECC443 /* SpeechStateTests.swift */; };
@@ -135,6 +134,7 @@
 		E2FB13DE1DEAB251004EF2AB /* SpeakerAlertUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB13DD1DEAB251004EF2AB /* SpeakerAlertUITests.swift */; };
 		E2FB13E01DEAB2B4004EF2AB /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB13DF1DEAB2B4004EF2AB /* SnapshotHelper.swift */; };
 		E2FF3C971B98100F0083CC4F /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2FF3C961B98100F0083CC4F /* Acknowledgements.plist */; };
+		F404E5F0159482EAEF36C9CC /* Pods_SpeakerAlert_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B195E91318F57F29987AA888 /* Pods_SpeakerAlert_WatchKit_Extension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -363,7 +363,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C06CF8739DF16E1BDA5CF353 /* Pods_SpeakerAlert_WatchKit_Extension.framework in Frameworks */,
+				F404E5F0159482EAEF36C9CC /* Pods_SpeakerAlert_WatchKit_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
