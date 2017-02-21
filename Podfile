@@ -6,7 +6,7 @@ use_frameworks!
 
 target 'SpeakerAlert' do
 	pod "MagicalRecord", '2.3.0'
-	pod "FontAwesome.swift", :git => 'https://github.com/theothertomelliott/FontAwesome.swift.git', :tag => '1.1.0'
+	pod "FontAwesome.swift", :git => 'https://github.com/thii/FontAwesome.swift.git', :tag => '1.1.0'
 	pod "RFAboutView", '1.0.4'
 	pod 'Colours', '5.13.0'
 	pod 'IQKeyboardManager', '4.0.0'
