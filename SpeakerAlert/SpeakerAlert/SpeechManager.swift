@@ -145,6 +145,13 @@ class SpeechManager: NSObject, SpeechTimerDelegate {
         })
     }
 
+    func reset() {
+        DispatchQueue.main.async(execute: { () -> Void in
+            self.timer?.reset()
+        })
+    }
+
+    
 }
 
 protocol SpeechManagerDelegate {

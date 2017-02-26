@@ -80,6 +80,20 @@ open class SpeechTimer: NSObject {
             setRunning(SpeechRunning.paused)
         }
     }
+    
+    /**
+     Reset this timer to zero.
+     Returns the timer to the same state as immediately after initialization.
+     */
+    func reset() {
+        let oldRunning = state.running
+        for p: SpeechPhase in SpeechPhase.allCases {
+            phaseTimers[p]?.invalidate()
+        }
+        state = SpeechState(profile: state.profile)
+        phaseTimers = [:]
+        setRunning(oldRunning)
+    }
 
     /**
         Stop this timer.

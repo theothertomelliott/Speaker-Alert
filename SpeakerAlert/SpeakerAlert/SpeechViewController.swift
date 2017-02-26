@@ -161,6 +161,14 @@ class SpeechViewController: UIViewController,
         speechMan.stop()
     }
 
+    @IBAction func resetPressed(_ sender: AnyObject) {
+        if self.demoMode {
+            return
+        }
+        speechMan.reset()
+    }
+
+    
     @IBAction func resumePressed(_ sender: AnyObject) {
         if self.demoMode {
             return

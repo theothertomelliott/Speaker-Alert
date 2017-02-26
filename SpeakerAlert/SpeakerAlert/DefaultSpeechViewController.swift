@@ -14,6 +14,7 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
     
     @IBOutlet weak var playButton: FontAwesomeButton!
     @IBOutlet weak var stopButton: FontAwesomeButton!
+    @IBOutlet weak var resetButton: FontAwesomeButton!
     
     @IBOutlet weak var timeLabel: UILabel!
     
@@ -168,6 +169,7 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
             switch state.running {
             case .paused:
                 self.stopButton.isEnabled = true
+                self.resetButton.isEnabled = true
                 self.controls?.isHidden = false
                 self.pausedLabel?.isHidden = false
                 self.pausedLabel?.text = "Paused"
@@ -176,13 +178,15 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
                 if shouldHideControls() {
                     self.controls?.isHidden = true
                 } else {
-                self.playButton.setIconAndAccessibility("Pause")
+                    self.playButton.setIconAndAccessibility("Pause")
                     self.stopButton.isEnabled = true
+                    self.resetButton.isEnabled = false
                 }
                 self.pausedLabel?.isHidden = !accessibilityTracker.accessibilityMode
             case .stopped:
                 self.playButton.setIconAndAccessibility("Play")
                 self.stopButton.isEnabled = false
+                self.resetButton.isEnabled = false
                 self.controls?.isHidden = false
                 self.pausedLabel?.isHidden = true
             }
