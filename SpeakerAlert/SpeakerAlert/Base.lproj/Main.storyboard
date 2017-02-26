@@ -529,7 +529,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2x-6P-bTi" userLabel="Reset Button" customClass="FontAwesomeButton" customModule="SpeakerAlert" customModuleProvider="target">
                                         <rect key="frame" x="107.5" y="0.0" width="35" height="50.5"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="Play"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Reset"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Resume">
                                             <color key="titleColor" red="0.045572916669999998" green="0.04285923933" blue="0.044894497329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
