@@ -10,7 +10,7 @@ import UIKit
 import MagicalRecord
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
 // Consider refactoring the code to use the non-optional operators.
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l < r
@@ -233,15 +233,15 @@ class GroupTableViewController: UITableViewController,
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: "TimingCell",
                 for: indexPath)
-
-            if let timing: Profile = timings[indexPath.row - groups.count],
-                let tn: String = timing.name,
+            
+            let timing: Profile = timings[indexPath.row - groups.count]
+            if let tn: String = timing.name,
                 let profileCell: ProfileTableViewCell = cell as? ProfileTableViewCell {
                 profileCell.nameLabel!.text = tn
                 profileCell.profileTimesLabel!.attributedText =
                     ProfileTimeRenderer.timesAsAttributedString(timing)
             }
-
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(

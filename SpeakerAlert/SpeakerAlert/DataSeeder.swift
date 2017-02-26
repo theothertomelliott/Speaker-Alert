@@ -35,7 +35,7 @@ class DataSeeder: NSObject {
         
         // Toastmasters speech timings
         
-        MagicalRecord.save( { (localContext: NSManagedObjectContext?) -> Void in
+        MagicalRecord.save({(localContext: NSManagedObjectContext?) -> Void in
             // This block runs in background thread
             if let l = localContext {
                 self.configureToastmastersTimings(l)
@@ -225,8 +225,8 @@ Profile.mr_createEntity(in: localContext)
 
         var shouldSeed: Bool = true
 
-        if let seedVersion: Int = defaults.integer(forKey: seedVersionKey),
-            seedVersion >= self.seedVersion {
+        let seedVersion: Int = defaults.integer(forKey: seedVersionKey)
+        if seedVersion >= self.seedVersion {
             shouldSeed = false
         }
 

@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var localNotificationManager: LocalNotificationManager?
     
     func application(_ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        didFinishLaunchingWithOptions
+        launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         let parameterManager = Environment.Default.parameterManager
         localNotificationManager = Environment.Default.localNotificationManager
@@ -65,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        MagicalRecord.save( { (context: NSManagedObjectContext?) -> Void in
+        MagicalRecord.save({(context: NSManagedObjectContext?) -> Void in
             NSLog("Saving context")
         })
 

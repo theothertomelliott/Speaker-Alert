@@ -102,23 +102,25 @@ class WatchCommsManager: NSObject, WCSessionDelegate, WatchComms {
     }
 
     // WSSessionDelegate
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+    func session(
+        _ session: WCSession,
+        didReceiveMessage message: [String : Any],
+        replyHandler: @escaping ([String : Any]) -> Void) {
         replyHandler([:])
-        if let sm: SpeechManager = speechMan,
-            let messageName: String = message["messageName"] as? String {
+        if let messageName: String = message["messageName"] as? String {
             if messageName == "startStop" {
-                if sm.state?.running == SpeechRunning.stopped ||
-                    sm.state?.running == SpeechRunning.paused {
-                    sm.start()
+                if speechMan.state?.running == SpeechRunning.stopped ||
+                    speechMan.state?.running == SpeechRunning.paused {
+                    speechMan.start()
                 } else {
-                    sm.stop()
+                    speechMan.stop()
                 }
             }
             if messageName == "pauseResume" {
-                if sm.state?.running == SpeechRunning.paused {
-                    sm.start()
+                if speechMan.state?.running == SpeechRunning.paused {
+                    speechMan.start()
                 } else if speechMan.state?.running == SpeechRunning.running {
-                    sm.pause()
+                    speechMan.pause()
                 } else {
                     NSLog("Did not expect to receive pauseResume while STOPPED")
                 }
