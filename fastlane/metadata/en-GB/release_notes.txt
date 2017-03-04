@@ -1,3 +1,4 @@
-This release fixes a bug that was preventing local notifications from being sent when Speaker Alert was in the background. We've also added a setting to directly control whether or not these notifications are sent.
+We've noticed when timing meetings that sometimes you can mistakenly start timing a speech before the speaker is entirely ready.
+This release adds a reset button to the speech view, so you can quickly start over with a single tap.
 
 Happy Speaking!
