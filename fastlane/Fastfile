@@ -137,7 +137,7 @@ platform :ios do
   desc "Submit a new Beta Build without Screenshots"
   lane :betafast do
     bump_build(project_file)
-    gym(scheme: "SpeakerAlert", toolchain: :swift_2_3)
+    gym(scheme: "SpeakerAlert")
     pilot(skip_waiting_for_build_processing: true)
   end
 
@@ -147,14 +147,14 @@ platform :ios do
     bump_build(project_file)
     tests()
     screenshots()
-    gym(scheme: "SpeakerAlert", toolchain: :swift_2_3) # Build your app - more options available
+    gym(scheme: "SpeakerAlert") # Build your app - more options available
     pilot(skip_waiting_for_build_processing: true)
   end
 
   desc "Deploy a new version to the App Store without screenshots"
   lane :deployfast do
     bump_build(project_file)
-    gym(scheme: "SpeakerAlert", toolchain: :swift_2_3) # Build your app - more options available
+    gym(scheme: "SpeakerAlert") # Build your app - more options available
     deliver(force: true)
   end
 
@@ -163,7 +163,7 @@ platform :ios do
     bump_build(project_file)
     tests()
     screenshots()
-    gym(scheme: "SpeakerAlert", toolchain: :swift_2_3) # Build your app - more options available
+    gym(scheme: "SpeakerAlert") # Build your app - more options available
     deliver(force: true)
   end
 end
