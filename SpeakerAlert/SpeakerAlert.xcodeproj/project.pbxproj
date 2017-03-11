@@ -1579,6 +1579,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = XZ59JQ28M5;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = Yes;
 				IBSC_MODULE = SpeakerAlert_WatchKit_Extension;
 				INFOPLIST_FILE = "SpeakerAlert WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.theothertomelliott.SpeakerAlert.watchkitapp;
@@ -1601,6 +1602,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = XZ59JQ28M5;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = Yes;
 				IBSC_MODULE = SpeakerAlert_WatchKit_Extension;
 				INFOPLIST_FILE = "SpeakerAlert WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.theothertomelliott.SpeakerAlert.watchkitapp;
