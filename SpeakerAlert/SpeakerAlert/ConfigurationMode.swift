@@ -16,6 +16,7 @@ struct ConfigurationMode: ModeConfiguration {
     var isVibrationEnabled: Bool = false
     var isAudioEnabled: Bool = false
     var isHideStatusEnabled: Bool = false
+    var isHideControlsEnabled: Bool = true
     var isAlertOvertimeEnabled: Bool = false
     var areNotificationsEnabled: Bool = false
     

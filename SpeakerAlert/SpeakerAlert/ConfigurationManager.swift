@@ -33,6 +33,7 @@ class ConfigurationManager: NSObject, AppConfiguration {
         isVibrationEnabled: false,
         isAudioEnabled: false,
         isHideStatusEnabled: true,
+        isHideControlsEnabled: true,
         isAlertOvertimeEnabled: true,
         areNotificationsEnabled: false
         )
@@ -60,6 +61,7 @@ class ConfigurationManager: NSObject, AppConfiguration {
         self.isVibrationEnabled = preset.isVibrationEnabled
         self.isAudioEnabled = preset.isAudioEnabled
         self.isHideStatusEnabled = preset.isHideStatusEnabled
+        self.isHideControlsEnabled = preset.isHideControlsEnabled
         self.isAlertOvertimeEnabled = preset.isAlertOvertimeEnabled
         self.areNotificationsEnabled = preset.areNotificationsEnabled
     }
@@ -72,6 +74,7 @@ class ConfigurationManager: NSObject, AppConfiguration {
                 isVibrationEnabled: true,
                 isAudioEnabled: false,
                 isHideStatusEnabled: true,
+                isHideControlsEnabled: false,
                 isAlertOvertimeEnabled: true,
                 areNotificationsEnabled: true
             ),
@@ -81,6 +84,7 @@ class ConfigurationManager: NSObject, AppConfiguration {
                 isVibrationEnabled: false,
                 isAudioEnabled: false,
                 isHideStatusEnabled: true,
+                isHideControlsEnabled: true,
                 isAlertOvertimeEnabled: false,
                 areNotificationsEnabled: false
             ),

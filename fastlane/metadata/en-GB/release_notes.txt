@@ -1,4 +1,5 @@
-We've noticed when timing meetings that sometimes you can mistakenly start timing a speech before the speaker is entirely ready.
-This release adds a reset button to the speech view, so you can quickly start over with a single tap.
+You can now control whether or not the controls are displayed, which is now the
+default for Practice mode. That's one less tap to finish your speech and less
+juggling when leaving the stage.
 
 Happy Speaking!

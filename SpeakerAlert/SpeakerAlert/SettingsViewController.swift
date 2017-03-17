@@ -121,6 +121,13 @@ class SettingsViewController: UITableViewController,
                     onChange: { (value: Bool) in
                         config.isHideStatusEnabled = value
                         self.loadData()
+                }),
+                BoolCellDefinition(
+                    title: "Hide controls",
+                    value: config.isHideControlsEnabled,
+                    onChange: { (value: Bool) in
+                        config.isHideControlsEnabled = value
+                        self.loadData()
                 })
             ])
     }
