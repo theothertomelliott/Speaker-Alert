@@ -2,4 +2,7 @@ You can now control whether or not the controls are displayed, which is now the
 default for Practice mode. That's one less tap to finish your speech and less
 juggling when leaving the stage.
 
+The speech and history views now show a count of the amount of time the speaker
+ran over their maximum. Just a little extra detail for your reports and feedback.
+
 Happy Speaking!
