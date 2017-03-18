@@ -110,6 +110,7 @@ class HistoryTableViewController: UITableViewController {
         }
         
         setPhaseIndicator(speech, cell: cell)
+        setOvertimeIndicator(speech, cell: cell)
         
         return cell
     }
@@ -133,6 +134,16 @@ class HistoryTableViewController: UITableViewController {
                 cell.phaseIndicator?.text = "▾"
             }
         }
+    }
+    
+    func setOvertimeIndicator(_ speech: Speech, cell: HistoryItemCell) {
+        if let d = speech.duration, let p = speech.profile, let c = p.red, d.int32Value >= c.int32Value {
+            let overtime = TimeUtils.formatStopwatch(Int(d.int32Value - c.int32Value))
+            cell.overtimeDisplay?.text = "\(overtime) over"
+            cell.overtimeDisplay?.isHidden = false
+            return
+        }
+        cell.overtimeDisplay?.isHidden = true
     }
     
     
@@ -234,5 +245,6 @@ class HistoryItemCell: UITableViewCell {
     @IBOutlet var elapsed: UILabel?
     @IBOutlet var phaseIndicator: UILabel?
     @IBOutlet var profileInfo: UILabel?
+    @IBOutlet var overtimeDisplay: UILabel?
     
 }
