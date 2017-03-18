@@ -20,6 +20,8 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
     
     @IBOutlet weak var inSpeechTimeLabel: UILabel!
     
+    @IBOutlet weak var overtimeLabel: UILabel!
+    
     @IBOutlet weak var controls: UIView?
     
     @IBOutlet weak var pausedLabel: UILabel?
@@ -126,6 +128,7 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
             }
             
             let timeStr = TimeUtils.formatStopwatch(Int(timeToDisplay))
+            let overtimeStr = TimeUtils.formatStopwatch(Int(state.amountOvertime))
             var timeAttr: NSMutableAttributedString =
                 NSMutableAttributedString(string: "\(timeStr)")
             if !running {
@@ -145,6 +148,13 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
             
             timeLabel.attributedText = timeAttr
             inSpeechTimeLabel.attributedText = timeAttr
+            
+            // Update overtime label
+            overtimeLabel.isHidden = true
+            if state.phase == SpeechPhase.red || state.phase == SpeechPhase.over_MAXIMUM {
+                overtimeLabel.isHidden = running
+                overtimeLabel.text = "\(overtimeStr) over"
+            }
             
             timeLabel.isHidden = running
             timeLabel.alpha = shouldShowTime ? 1 : 0.3

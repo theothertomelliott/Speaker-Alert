@@ -64,6 +64,17 @@ class SpeechState {
             }
         }
     }
+    
+    var amountOvertime: TimeInterval {
+        get {
+            switch phase {
+            case SpeechPhase.red, SpeechPhase.over_MAXIMUM:
+                return elapsed - profile.red
+            default:
+                return 0
+            }
+        }
+    }
 
     //
     var startTime: Date?
