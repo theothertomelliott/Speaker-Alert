@@ -173,7 +173,7 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
         return barItems
     }
     
-    func cancelPickerSelectionButtonClicked(_ sender: UIBarButtonItem) {
+    @objc func cancelPickerSelectionButtonClicked(_ sender: UIBarButtonItem) {
         let PICKER_HEIGHT = UIScreen.main.bounds.size.height/3
         
         UIView.animate(withDuration: 0.2, animations: {
@@ -194,7 +194,7 @@ class SelectionCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
         })
     }
     
-    func doneClicked(_ sender: UIBarButtonItem) {
+    @objc func doneClicked(_ sender: UIBarButtonItem) {
         let PICKER_HEIGHT = UIScreen.main.bounds.size.height/3
         
         let myRow = picker.selectedRow(inComponent: 0)

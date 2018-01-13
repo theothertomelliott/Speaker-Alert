@@ -49,7 +49,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
         if WCSession.isSupported() {
             NSLog("WCSession supported, initializing")
-            watchSession = WCSession.default()
+            watchSession = WCSession.default
             NSLog("Activating WCSession and adding delegate")
             watchSession!.delegate = self
             watchSession!.activate()

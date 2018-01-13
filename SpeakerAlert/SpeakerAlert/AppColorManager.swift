@@ -34,16 +34,16 @@ open class AppColorManager: NSObject {
                 UITabBar.appearance().tintColor = baseColor.blackOrWhiteContrasting()
                 
                 UITabBarItem.appearance().setTitleTextAttributes(
-                    [NSForegroundColorAttributeName: colors[2]], for: UIControlState())
+                    [NSAttributedStringKey.foregroundColor: colors[2]], for: UIControlState())
                 UITabBarItem.appearance().setTitleTextAttributes(
-                    [NSForegroundColorAttributeName: baseColor.blackOrWhiteContrasting()],
+                    [NSAttributedStringKey.foregroundColor: baseColor.blackOrWhiteContrasting()],
                     for: UIControlState.selected)
                 
                 UINavigationBar.appearance().tintColor = colors[1] as? UIColor
                 UINavigationBar.appearance().barTintColor = baseColor
                 UINavigationBar.appearance().isTranslucent = false
                 UINavigationBar.appearance().titleTextAttributes = [
-                    NSForegroundColorAttributeName: baseColor.blackOrWhiteContrasting()
+                    NSAttributedStringKey.foregroundColor: baseColor.blackOrWhiteContrasting()
                 ]
                 
             }

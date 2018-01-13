@@ -45,7 +45,7 @@ class SpeakerAlertUITests: XCTestCase {
         setupSnapshot(app)
         app.launch()
         
-        device = XCUIDevice.shared()
+        device = XCUIDevice.shared
         if landscape {
             device.orientation = UIDeviceOrientation.landscapeLeft
         } else {

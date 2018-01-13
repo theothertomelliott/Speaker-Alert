@@ -114,7 +114,7 @@ class SpeechViewController: UIViewController,
         self.setTabBarVisible(false, animated: animated)
     }
 
-    func doTick(_ timer: Timer) {
+    @objc func doTick(_ timer: Timer) {
         self.updatePhase()
         self.updateDisplay()
     }

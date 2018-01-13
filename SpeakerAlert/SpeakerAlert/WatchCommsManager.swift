@@ -33,7 +33,7 @@ class WatchCommsManager: NSObject, WCSessionDelegate, WatchComms {
         super.init()
         if WCSession.isSupported() {
             NSLog("WCSession supported, initializing")
-            watchSession = WCSession.default()
+            watchSession = WCSession.default
         } else {
             NSLog("WCSession is not supported, will not initialize")
         }

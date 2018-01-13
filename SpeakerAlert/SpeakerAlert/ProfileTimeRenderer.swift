@@ -53,7 +53,7 @@ class ProfileTimeRenderer: NSObject {
 
         let color = phaseColor(phase)
         outStr.addAttribute(
-            NSForegroundColorAttributeName,
+            NSAttributedStringKey.foregroundColor,
             value: color,
             range: NSRange(location: 0, length: 1))
         return outStr
@@ -71,20 +71,20 @@ class ProfileTimeRenderer: NSObject {
         var index = 0
 
         outStr.addAttribute(
-            NSForegroundColorAttributeName,
+            NSAttributedStringKey.foregroundColor,
             value: UIColor.success(),
             range: NSRange(location: index, length: 1))
         index += 1 + greenStr.characters.count + 2
         outStr.addAttribute(
-            NSForegroundColorAttributeName,
+            NSAttributedStringKey.foregroundColor,
             value: UIColor.warning(),
             range: NSRange(location: index, length: 1))
         index += 1 + yellowStr.characters.count + 2
-        outStr.addAttribute(NSForegroundColorAttributeName,
+        outStr.addAttribute(NSAttributedStringKey.foregroundColor,
             value: UIColor.danger(),
             range: NSRange(location: index, length: 1))
         index += 1 + redStr.characters.count + 2
-        outStr.addAttribute(NSForegroundColorAttributeName,
+        outStr.addAttribute(NSAttributedStringKey.foregroundColor,
             value: UIColor.danger(),
             range: NSRange(location: index, length: 1))
 

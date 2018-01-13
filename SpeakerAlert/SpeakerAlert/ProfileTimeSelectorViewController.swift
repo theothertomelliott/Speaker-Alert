@@ -132,7 +132,7 @@ UIPickerViewDataSource {
 			if let titleData = getPickerTitle(row, forComponent: component) {
 				let myTitle = NSAttributedString(string: titleData,
 					attributes: [
-						NSParagraphStyleAttributeName: paragraphStyle
+						NSAttributedStringKey.paragraphStyle: paragraphStyle
 				])
 				return myTitle
 			}

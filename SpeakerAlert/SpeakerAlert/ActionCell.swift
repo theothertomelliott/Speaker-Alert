@@ -13,7 +13,7 @@ struct ActionCellDefinition: CellDefinition, CellWithAction {
     var title: String = ""
     var detail: String?
     var hasDisclosure: Bool = false
-    var action: () -> () = {_ in}
+    var action: () -> () = {}
     
     func performAction() {
         self.action()

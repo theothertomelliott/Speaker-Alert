@@ -128,7 +128,7 @@ open class SpeechTimer: NSObject {
         delegate?.runningChanged(self.state, timer: self)
     }
 
-    func phaseChange(_ timer: Timer!) {
+    @objc func phaseChange(_ timer: Timer!) {
         delegate?.phaseChanged(state, timer: self)
     }
 

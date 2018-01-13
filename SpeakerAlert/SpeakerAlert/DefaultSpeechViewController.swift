@@ -140,7 +140,7 @@ class DefaultSpeechViewController: SpeechViewController, AccessibilityObserver {
                     timeAttr = NSMutableAttributedString(string: "◦ \(timeStr)")
                 } else {
                     timeAttr.addAttribute(
-                        NSForegroundColorAttributeName,
+                        NSAttributedStringKey.foregroundColor,
                         value: self.phaseColor,
                         range: NSRange(location: 0, length: 1))
                 }
