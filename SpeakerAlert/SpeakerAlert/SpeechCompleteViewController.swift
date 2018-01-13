@@ -18,7 +18,7 @@ class SpeechCompleteViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let sr = self.speechRecord, let tel = self.timeElapsedLabel, let d = sr.duration {
-            tel.text = TimeUtils.formatStopwatch(Int(d))
+            tel.text = TimeUtils.formatStopwatch(Int(truncating: d))
         }
         if let p = self.speechRecord?.profile {
             commentField?.placeholder = p.name
@@ -29,13 +29,16 @@ class SpeechCompleteViewController: UITableViewController {
         if let tf = sender as? UITextField {
             NSLog("Updated comment to \(String(describing: tf.text))")
             if let speech = self.speechRecord {
-                MagicalRecord.save({ (localContext: NSManagedObjectContext?) -> Void in
-                    let s: Speech = speech.mr_(in: localContext)
-                    s.comments = tf.text
-                }) { (success: Bool, error: Error?) -> Void in
-                    // TODO: handle failure
-                    if !success {
-                        NSLog("Failure saving speech record with comment: \(String(describing: error?.localizedDescription))")
+                DispatchQueue.main.async {
+                    let comments = tf.text
+                    MagicalRecord.save({ (localContext: NSManagedObjectContext?) -> Void in
+                        let s: Speech = speech.mr_(in: localContext)
+                        s.comments = comments
+                    }){ (success: Bool, error: Error?) -> Void in
+                        // TODO: handle failure
+                        if !success {
+                            NSLog("Failure saving speech record with comment: \(String(describing: error?.localizedDescription))")
+                        }
                     }
                 }
             }
