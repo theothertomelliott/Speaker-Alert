@@ -1132,6 +1132,7 @@
 				"${BUILT_PRODUCTS_DIR}/JVArgumentParser/JVArgumentParser.framework",
 				"${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework",
 				"${BUILT_PRODUCTS_DIR}/RFAboutView/RFAboutView.framework",
+				"${PODS_ROOT}/pyze-sdk-iOS/Pyze.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1141,6 +1142,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JVArgumentParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RFAboutView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pyze.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1172,12 +1174,14 @@
 				"${BUILT_PRODUCTS_DIR}/Colours/Colours.framework",
 				"${BUILT_PRODUCTS_DIR}/JVArgumentParser/JVArgumentParser.framework",
 				"${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework",
+				"${PODS_ROOT}/pyze-sdk-iOS/Pyze.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Colours.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JVArgumentParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pyze.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
