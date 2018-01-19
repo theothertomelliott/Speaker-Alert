@@ -64,7 +64,7 @@ class FontAwesomeButton: UIButton {
 
     fileprivate func getFullString(_ icon: FontAwesome, additional: String) -> String {
         return String.fontAwesomeIcon(name: icon) +
-            ( additional.characters.count > 0 ? (" " + additional) : "" )
+            ( additional.count > 0 ? (" " + additional) : "" )
     }
 
     fileprivate func setFontAwesome(_ icon: FontAwesome) {

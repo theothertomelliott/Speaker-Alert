@@ -41,10 +41,10 @@ class ProfileTableViewController: UITableViewController {
 			if let v = self.profile {
 				// Populate internal values
 				self.name = v.name
-				self.phaseTimes[SpeechPhase.green] = TimeInterval(v.green!)
-				self.phaseTimes[SpeechPhase.yellow] = TimeInterval(v.yellow!)
-				self.phaseTimes[SpeechPhase.red] = TimeInterval(v.red!)
-				self.phaseTimes[SpeechPhase.over_MAXIMUM] = TimeInterval(v.redBlink!)
+                self.phaseTimes[SpeechPhase.green] = TimeInterval(truncating: v.green!)
+                self.phaseTimes[SpeechPhase.yellow] = TimeInterval(truncating: v.yellow!)
+                self.phaseTimes[SpeechPhase.red] = TimeInterval(truncating: v.red!)
+                self.phaseTimes[SpeechPhase.over_MAXIMUM] = TimeInterval(truncating: v.redBlink!)
 			} else {
 				self.name = ""
 				self.phaseTimes[SpeechPhase.green] = 0
