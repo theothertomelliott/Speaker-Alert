@@ -41,10 +41,10 @@ class ProfileTableViewController: UITableViewController {
 			if let v = self.profile {
 				// Populate internal values
 				self.name = v.name
-				self.phaseTimes[SpeechPhase.green] = TimeInterval(v.green!)
-				self.phaseTimes[SpeechPhase.yellow] = TimeInterval(v.yellow!)
-				self.phaseTimes[SpeechPhase.red] = TimeInterval(v.red!)
-				self.phaseTimes[SpeechPhase.over_MAXIMUM] = TimeInterval(v.redBlink!)
+                self.phaseTimes[SpeechPhase.green] = TimeInterval(truncating: v.green!)
+                self.phaseTimes[SpeechPhase.yellow] = TimeInterval(truncating: v.yellow!)
+                self.phaseTimes[SpeechPhase.red] = TimeInterval(truncating: v.red!)
+                self.phaseTimes[SpeechPhase.over_MAXIMUM] = TimeInterval(truncating: v.redBlink!)
 			} else {
 				self.name = ""
 				self.phaseTimes[SpeechPhase.green] = 0
@@ -187,28 +187,32 @@ class ProfileTableViewController: UITableViewController {
             return
         }
 
-		MagicalRecord.save({ (localContext: NSManagedObjectContext?) in
-			// This block runs in background thread
-			if let p = self.profile {
-				let storedTiming: Profile = p.mr_(in: localContext)
-				storedTiming.green = self.phaseTimes[SpeechPhase.green]! as NSNumber
-				storedTiming.yellow = self.phaseTimes[SpeechPhase.yellow]! as NSNumber
-				storedTiming.red = self.phaseTimes[SpeechPhase.red]! as NSNumber
-				storedTiming.redBlink = self.phaseTimes[SpeechPhase.over_MAXIMUM]! as NSNumber
-				storedTiming.name = self.nameLabel?.text
-			} else {
-                let newProfile: Profile = Profile.mr_createEntity(in: localContext)
-				newProfile.name = "New Speech Profile"
-				newProfile.green = self.phaseTimes[SpeechPhase.green]! as NSNumber
-				newProfile.yellow = self.phaseTimes[SpeechPhase.yellow]! as NSNumber
-				newProfile.red = self.phaseTimes[SpeechPhase.red]! as NSNumber
-				newProfile.redBlink = self.phaseTimes[SpeechPhase.over_MAXIMUM]! as NSNumber
-				newProfile.name = self.nameLabel?.text
-				if let pg: Group = self.parentGroup {
-					newProfile.parent = pg.mr_(in: localContext)
-				}
-			}
-		})
+        
+        DispatchQueue.main.async {
+            let name = self.nameLabel?.text
+            MagicalRecord.save({ (localContext: NSManagedObjectContext?) in
+                // This block runs in background thread
+                if let p = self.profile {
+                    let storedTiming: Profile = p.mr_(in: localContext)
+                    storedTiming.green = self.phaseTimes[SpeechPhase.green]! as NSNumber
+                    storedTiming.yellow = self.phaseTimes[SpeechPhase.yellow]! as NSNumber
+                    storedTiming.red = self.phaseTimes[SpeechPhase.red]! as NSNumber
+                    storedTiming.redBlink = self.phaseTimes[SpeechPhase.over_MAXIMUM]! as NSNumber
+                    storedTiming.name = name
+                } else {
+                    let newProfile: Profile = Profile.mr_createEntity(in: localContext)
+                    newProfile.name = "New Speech Profile"
+                    newProfile.green = self.phaseTimes[SpeechPhase.green]! as NSNumber
+                    newProfile.yellow = self.phaseTimes[SpeechPhase.yellow]! as NSNumber
+                    newProfile.red = self.phaseTimes[SpeechPhase.red]! as NSNumber
+                    newProfile.redBlink = self.phaseTimes[SpeechPhase.over_MAXIMUM]! as NSNumber
+                    newProfile.name = name
+                    if let pg: Group = self.parentGroup {
+                        newProfile.parent = pg.mr_(in: localContext)
+                    }
+                }
+            })
+        }
 		self.dismiss()
 	}
 

@@ -74,16 +74,16 @@ class ProfileTimeRenderer: NSObject {
             NSAttributedStringKey.foregroundColor,
             value: UIColor.success(),
             range: NSRange(location: index, length: 1))
-        index += 1 + greenStr.characters.count + 2
+        index += 1 + greenStr.count + 2
         outStr.addAttribute(
             NSAttributedStringKey.foregroundColor,
             value: UIColor.warning(),
             range: NSRange(location: index, length: 1))
-        index += 1 + yellowStr.characters.count + 2
+        index += 1 + yellowStr.count + 2
         outStr.addAttribute(NSAttributedStringKey.foregroundColor,
             value: UIColor.danger(),
             range: NSRange(location: index, length: 1))
-        index += 1 + redStr.characters.count + 2
+        index += 1 + redStr.count + 2
         outStr.addAttribute(NSAttributedStringKey.foregroundColor,
             value: UIColor.danger(),
             range: NSRange(location: index, length: 1))

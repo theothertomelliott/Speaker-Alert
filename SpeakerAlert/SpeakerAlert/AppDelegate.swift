@@ -24,12 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let parameterManager = Environment.Default.parameterManager
         localNotificationManager = Environment.Default.localNotificationManager
 
-        
-        // Set up Pyze for analytics
-        if _isDebugAssertConfiguration() {
-            Pyze.initialize("HkpiF7XpQaqgwGDidBvmzw")
-        } else {
-            Pyze.initialize("mkneZ7xjSjKM5Mdn0Mra_w")
+        DispatchQueue.main.async {
+            // Set up Pyze for analytics
+            if _isDebugAssertConfiguration() {
+                Pyze.initialize("HkpiF7XpQaqgwGDidBvmzw")
+            } else {
+                Pyze.initialize("mkneZ7xjSjKM5Mdn0Mra_w")
+            }
         }
         
         if parameterManager.isUITesting {
